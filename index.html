@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Portfolio</title>
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		<link href="https://fonts.googleapis.com/css2?family=Modak&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+		<style>
+			body, html {height: 100%}
+			h1, a{font-family: 'Modak', cursive;}
+			
+            .bgimg {
+  				background-repeat: no-repeat;
+  				background-size: contain;
+				background-position: center;
+  				background-image: url("https://i.pinimg.com/originals/4b/69/ae/4b69aee7487b9d865c4dacbdb628cbea.png");
+  				height:100%;
+			}
+            
+            .img-left{
+            	text-align: left;
+                padding: 50px;
+            }
+			
+			/* Style the header links */
+			.header a {
+				float: left;
+				color: black;
+				text-align: center;
+				padding: 12px;
+				text-decoration: none;
+				font-size: 18px;
+				line-height: 25px;
+				border-radius: 4px;
+			}
+
+			/* Change the background color on mouse-over */
+			.header a:hover {
+				background-color: rgb(255,182,193);
+				color: black;
+			}
+
+			/* Style the active/current link*/
+			.header a.active {
+				background-color: rgb(138,43,226);
+				color: white;
+			}
+
+			/* Float the link section to the right */
+			.header-right {
+				float: right;
+			}
+
+			/* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */
+			@media screen and (max-width: 500px) {
+				.header a {
+					float: none;
+					display: block;
+					text-align: left;
+				}
+
+				.header-right {
+					float: none;
+				}
+			}
+		
+			body{
+            	background: url(https://i.pinimg.com/originals/78/c1/3d/78c13d64695ccd3109702f5e2d8eaf71.png);
+				background-size: cover;
+				background-repeat: no-repeat;
+				background-attachment: fixed;
+    		}
+
+			h1, div, h2 {
+            	text-align: center;
+            }
+			
+            .intro {
+            	font-family: 'Modak', cursive;
+                color: black;
+            }
+            
+			h2 {
+            	font-size: 20px;
+            }
+			
+			ul {
+				text-align: left;
+				list-style: inside;
+			}
+			
+			li, p {
+				padding-right: 20px;
+				padding-left: 10px;
+				max-width: 100%;
+				max-height: 100%;
+			}
+			
+			p {
+				text-overflow: ellipsis;
+				overflow: hidden;
+				font-family: 'Lato', sans-serif;
+			}
+			
+			img {
+				position: relative;
+				max-width: 100%;
+				max-height: 100%;
+			}
+            
+           .col-container {
+           display: flex;
+           flex-wrap: wrap;
+  width: 100%;
+}
+            
+            
+.col {
+  flex: 1;
+  padding: 16px;
+  opacity: 0.7;
+}
+
+           .col:hover { /*hover - when user lands cursor on box, opacity changes*/
+            	opacity: 1;
+                 transform: scale(1.008);
+            }
+
+			.box1{
+    			background-color: #b19cd9; /*vibrant colors employing the RGB or hex colors*/
+               
+    		}
+
+    
+    		.box2{
+    			background-color: pink; /*vibrant colors employing the RGB or hex colors*/
+               
+    		}
+    
+    
+    		.box3{
+    			background-color: lightblue; /*vibrant colors employing the RGB or hex colors*/
+                
+    		}
+    
+    
+    		.box4{
+    			background-color: #fed8b1; /*vibrant colors employing the RGB or hex colors*/
+    		}
+
+
+		</style>
+	</head>
+	<body>
+    <div id="home">
+	<div class="w3-top w3-hide-small">
+  <div class="w3-bar w3-xlarge w3-hover-opacity-off" id="myNavbar">
+    <div class="header">
+			<div class="header-right">
+				<a href="#home">Home</a>
+				<a href="#about">About</a>
+				<a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+			</div>
+		</div>
+  </div>
+</div>
+</div>
+
+		<br><br><hr>
+		
+        <!-- Header with image -->
+<header class="bgimg w3-display-container w3-grayscale-min" id="home">
+  <div class="w3-display-middle w3-center">
+    <span class="intro" style="font-size:10vw;">Welcome!</span>
+    
+    <p class="intro"><a href="#projects" class="w3-button w3-xxlarge" style="background-color:rgb(138,43,226); color:white">Enter</a></p>
+  </div>
+</header>
+     <br><br><hr>   
+ 	
+		<!-- About Container -->
+		<div id="about">
+		<div>
+			<br>
+               <br>
+		<hr>
+
+		<div class="title">
+			<h1>About Me</h1>
+		</div>
+		<div height="200px" width="100px">
+			<img src="profile photo.jpg" height="315px" width="225px" border="1px" style="float: center;">
+			
+			<p>This page belongs to/and highlights the work of Amara Auguste (also known as Amara Ramdhanny, or Amara Davina Ramdhanny). She graduated with a Bachelor's of Science in Multimedia Computing from CUNY-Brooklyn College in Fall 2019. She currently tutors CISC 1115 (Intro to Java) at CUNY-Brooklyn College and works as a freelance writer and illustrator. She currently writes and provides editorial illustrations for <a href= "https://www.trashtalkmag.com/" target="_blank"><i>Trash-Talk Magazine</i></a>, an independent online & print publication documenting fashion history in a different, unpretentious way! Although she currently loves being able to tutor, assist, and help educate her peers and fellow CUNY students through my current position as a tutor and a teacher's assistant, she would love to be able to take a more hands-on approach and actually be able to work on projects in the realm of software and web design/development. She is definitely open to any new opportunities that can help her along this path!</p>
+			
+		</div>
+		</div>
+		</div>
+
+		<br><br><br>
+		<hr>
+		<br>
+        
+
+		<!-- Projects Container -->
+		<div id="projects">
+		<div class="title">
+        <br>
+               <br>
+		<hr>
+
+			<h1>A Brief Guide to My Work</h1>
+		</div>
+		
+		<br>
+        <div class="col-container">
+        <!--LinkedIn Container-->
+		<div class="col box1">
+        	<h1>LinkedIn</h1>
+			<hr>
+			<img src="https://logos-world.net/wp-content/uploads/2020/04/Linkedin-Logo.png" alt="LinkedIn logo" height="150" width="235">
+			<h2><a href="https://www.linkedin.com/in/amara-auguste-b0581a143/" target= "_blank"><i>click to see my profile!</i></a></h2>
+			<p>My LinkedIn account detailing my previous and current experience as:</p>
+			<ul>
+				<li>College Now Tutor/Mentor--Introduction to Multimedia <i>(Feb 2020 – Present)</i>
+</li>
+				<li>Introduction to Java Programming Tutor <i>(Mar 2018 – Present)</i></li>
+				<li>Front Desk Receptionist
+<i>(Oct 2017 – Mar 2018)</i>
+</li>
+			</ul>
+		</div>
+        <!--GitHub Container-->
+		<div class="col box2">
+        	<h1>GitHub</h1>
+			<hr>
+			<img src="https://www.stickpng.com/assets/images/5847f98fcef1014c0b5e48c0.png" alt="GitHub logo" height="150">
+			<h2><a href="https://github.com/amaraauguste" target= "_blank"><i>click to see my profile!</i></a></h2>
+			<p>My GitHub account featuring projects and other miscellaneous code in a series of languages, including but not limited to:</p>
+			<ul>
+				<li>Java</li>
+				<li>Processing</li>
+				<li>Python</li>
+				<li>Html</li>
+			</ul>
+			<p>Projects Include:</p>
+			<ul>
+				<li>Image Recognition API Evaluator <i>(Served as my independent project for CUNY Brooklyn College, Fall 2019)</i></li>
+				<li>Gaming Projects <i>(personal gaming projects that I have worked on for fun and experience)</i></li>
+			</ul>
+        </div>
+        <!--Art Portfolio Container-->
+		<div class="col box3">
+        	<h1>Art Portfolio</h1>
+			<hr>
+			<img src="logo.png" alt="Art logo" height="150">
+			<h2><a href="https://amararamdhanny.carbonmade.com/" target= "_blank"><i>click to see my work!</i></a></h2>
+			<p>Amara Davina Ramdhanny is an Afro-St. Lucian and Indo-Grenadian (Black/Indian of Caribbean descent) Brooklyn-based creative, whose art focuses on/is inspired by bright colors and strong women, specifically women of color. Her work has been featured in:</p>
+			<ul>
+				<li><i>Sorjo Magazine: <a href= "https://sorjomagazine.com/post/a-digital-illustration-series-the-art-of-the-girl?rq=the%20art%20of%20the%20girl" target="_blank">★</a>   <a href= "https://sorjomagazine.com/post/nike-x-amara-ramdhanny-exploring-indo-caribbean-identities" target="_blank">★</a></i></li>
+				<li><i>IndianWomenBlog.org: <a href= "https://www.indianwomenblog.org/this-20-y-o-artist-protests-against-women-of-colour-stereotypes-through-her-illustrations/" target="_blank">★</a></i></li>
+				<li><i>Hypebeast: <a href="https://hypebeast.com/2019/8/nike-nyc-by-you-pack-air-max-200-270-react-element-55-premium-release-info" target="_blank">★</a></i></li>
+				<li><i>Adolescent.net: <a href= "https://www.adolescent.net/a/exploring-indo-caribbean-identities-" target="_blank">★</a></i></li>
+				<li><i>Homegrown India: <a href= "https://homegrown.co.in/article/803906/a-photo-series-avidly-portraying-and-empowering-afro-indian-diaspora" target="_blank">★</a>   <a href= "https://homegrown.co.in/article/803901/we-asked-5-artists-about-their-dream-collaboration-project-with-the-indian-government" target="_blank">★</a></i></li>
+				<li><i>Trash-Talk Magazine:  <a href="https://www.trashtalkmag.com/baby-essays/front-row-the-evolution-of-our-access-to-high-fashion" target="_blank">★</a>   <a href="https://www.trashtalkmag.com/baby-essays/yeah-thats-right-its-sneaker-night-exploring-how-sneakers-became-a-pop-culture-fashion-staple-and-the-women-who-paved-the-way" target="_blank">★</a></i></li>
+				<li><i>Her Collective Sole: <a href="http://hercollectivesole.co/2020/03/20/lets-talk-women-sneaker-designers/" target="_blank">★</a></i></li>
+			</ul>
+			<p>amongst others...</p>
+			<br>
+			<div>
+				<img src="nike promo.gif" alt="nike promo" height="200">
+			</div>
+
+		</div>
+        <!--Misc Container-->
+		<div class="col box4">
+        	<h1>Miscellaneous</h1>
+			<hr>
+            <p>In addition to what is previously mentioned:</p>
+
+			<h2>Coding Resources:</h2>
+			<ul>
+				<li>Codecademy: <a href= "https://www.codecademy.com/profiles/amara_auguste" target="_blank"><i>here</i></a></li>
+				<li>CodeAbbey: <a href= "https://www.codeabbey.com/index/user_profile/amara" target="_blank"><i>here</i></a></li>
+			</ul>
+				
+			<h2>Nike By You x Cultivator "Isle of Spice" by Amara Ramdhanny + दुगला (Dugala) Research and Interview:</h2>
+			<img src="isleofspice.png" alt="Isle of Spice" height="110">
+			<p>In addition to designing the "Isle of Spice" Nike React Element 55 colorway, I also had the pleasure of interviewing three amazing young women about their identity as mixed women of Black and Indian descent, also known as a "dougla" in the Caribbean community (a term with a controversial background. While it means someone of Afro/Indo descent, it is also a slur meaning "bastard" or "mutt", having origins in Bhojpuri, the dialect of Hindi spoken by the majority of Indians who migrated as indentured laborers in the 19th and early 20th centuries) and their feelings about that identity and how they feel that they fit into the Desi community (or not) for <i>Sorjo Magazine</i></p>
+			<a href="https://sorjomagazine.com/post/nike-x-amara-ramdhanny-exploring-indo-caribbean-identities" target="_blank"><i>Nike x Amara Ramdhanny: Exploring Indo-Caribbean Identities / दुगला (Dugala)</i></a>
+		<br><br><br>
+        </div>
+        </div>
+		</div>
+        
+         <br><br><hr> 
+         
+         <!-- Contact Container -->
+		<div id="contact">
+		<div>
+			<br>
+               <br>
+		<hr>
+		
+			
+            <div class="title">
+         
+			<h1>Contact Me!</h1>
+		</div>
+
+            <img src="https://www.freepnglogos.com/uploads/email-png/blue-email-box-circle-png-transparent-icon-2.png" alt="email clip art" width="80px" height="80px">  
+            <ul>
+  				<b><li>amaraauguste@gmail.com</li>
+  				<li>amararamdhanny@gmail.com (for art related inquiries)</li>
+                <li>amara.auguste@brooklyn.cuny.edu (CUNY email)</li></b>
+			</ul>
+		</div>
+        <div class="img-left">
+         <img src="https://lh3.googleusercontent.com/proxy/uMx8KwGvoIUL2p8U9MQ1P9Sn4hFHs_yQbsoReA4LMGmzBEdBF4sTLbkCDTDI_YkxcWA0v-Qfml2xdHI9UbliIYzFvyWJUEBJC0sL1sySFsQX5MP6o8c" alt="instagram clip art" width="80px" height="80px"><b><a href="https://www.instagram.com/amara__davi/" style="font-family: 'Lato', sans-serif;" target="_blank">https://www.instagram.com/amara__davi/</a></b>  
+         </div>
+		</div>
+        
+        
+        
+
+<br><br><br><br><br><hr> 
+	
+		
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
