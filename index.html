@@ -454,8 +454,23 @@
 			
 			<div class="col2">
 				<ul>
-  					<a href = "mailto: amara.auguste@brooklyn.cuny.edu"><li><font size="3" face="verdana" color="blue">amara.auguste@brooklyn.cuny.edu</font></a> <b>(for CUNY/Brooklyn College related inquiries)</li></b>
-					<a href = "mailto: amararamdhanny@gmail.com"><li><font size="3" face="verdana" color="blue">amararamdhanny@gmail.com</font></a> <b>(for art related inquiries)</li></b>
+					<form action="mailto: amara.auguste@brooklyn.cuny.edu"
+					      method="POST"
+					      enctype="multipart/form-data"
+					      name="EmailForm">
+						
+   							Name:<br>
+    							<input type="text" size="19" name="Contact-Name"><br><br>
+   						
+							Email:<br>
+   							<input type="email" name="Contact-Email"><br><br> 
+   			
+							Message:<br> 
+    							<textarea name="Contact-Message" rows="6″ cols="20″>
+    							</textarea><br><br> 
+    							<button type="submit" value="Submit">Send</button>
+					</form>  
+  					
 				</ul>
 			</div>
 		
