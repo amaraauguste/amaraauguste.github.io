@@ -113,7 +113,7 @@
             flex: 1;
             text-align: center;
             background-color: rgb(255,239,213);
-            width: 50%;
+            width: 100%;
             margin:0 auto;
             border: 1px solid pink;
             opacity: 0.7;
@@ -191,6 +191,16 @@
             margin-bottom: 16px;
             resize: vertical;
             }
+            input[type=subject], select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-top: 6px;
+            margin-bottom: 16px;
+            resize: vertical;
+            }
             input[type=submit] {
             background-color: #04AA6D;
             color: white;
@@ -208,8 +218,9 @@
             border: 1px solid pink;
             opacity: 0.7;
             padding: 20px;
+            width: 100%;
             }
-             .container:hover { /*hover - when user lands cursor on box, opacity changes*/
+            .container:hover { /*hover - when user lands cursor on box, opacity changes*/
             opacity: 1;
             transform: scale(1.008);
             }
@@ -431,28 +442,30 @@
             <img src="https://www.freepnglogos.com/uploads/email-png/blue-email-box-circle-png-transparent-icon-2.png" alt="email clip art" width="80px" height="80px">
             <br><br>
             <!--<div class="col2">-->
-                <ul>
-                    <div class="form-center">
-                        <div class="container">
-                            <form action="https://formspree.io/f/xnqragzd" method="POST">
-                                <input type="hidden" name="subject" value="Contact request from personal website" />
-                                <label for="name">Your Name:</label>
-                                <input type="text" id="name" name="name" placeholder="Your name..">
-                                <label for="email">Your Email: </label>
-                                <input type="email" id="email" name="email" placeholder="Your email address.." required>
-                                <label>
-                                Your message:
-                                <textarea name="message" placeholder="Type your message" required></textarea>
-                                </label>
-                                <button type="submit">Send</button>
-                            </form>
-                        </div>
-                    </div>
-                    <!--<li><a href="mailto: amara.auguste@brooklyn.cuny.edu" target= "_blank"style="color:blue;font-family:'Lato'">amara.auguste@brooklyn.cuny.edu</a> (for Brooklyn College related inquiries)</li>
-                        <li><a href="mailto: amararamdhanny@gmail.com" target= "_blank"style="color:blue;font-family:'Lato'">amararamdhanny@gmail.com</a> (for art related inquiries)</li>
-                        -->
-                </ul>
-            </div>
+            <ul>
+                <!-- <div class="form-center">-->
+                <div class="container">
+                    <form action="https://formspree.io/f/xnqragzd" method="POST">
+                        <input type="hidden" name="subject" value="Contact request from personal website" />
+                        <label for="name">Your Name:</label>
+                        <input type="text" id="name" name="name" placeholder="Your name..">
+                        <label for="email">Your Email: </label>
+                        <input type="email" id="email" name="email" placeholder="Your email address.." required>
+                        <label for="subject">Subject: </label>
+                        <input type="subject" id="subject" name="subject" placeholder="Reason for email.." required>
+                        <label>
+                        Your message:
+                        <textarea name="message" placeholder="Type your message" required></textarea>
+                        </label>
+                        <button type="submit">Send</button>
+                    </form>
+                </div>
+                <!--</div>-->
+                <!--<li><a href="mailto: amara.auguste@brooklyn.cuny.edu" target= "_blank"style="color:blue;font-family:'Lato'">amara.auguste@brooklyn.cuny.edu</a> (for Brooklyn College related inquiries)</li>
+                    <li><a href="mailto: amararamdhanny@gmail.com" target= "_blank"style="color:blue;font-family:'Lato'">amararamdhanny@gmail.com</a> (for art related inquiries)</li>
+                    -->
+            </ul>
+        </div>
         <!--</div><-->
         <!--close Contact Container-->
         <br><br><br><br><br><br><br><br><br><br><br><br> 
