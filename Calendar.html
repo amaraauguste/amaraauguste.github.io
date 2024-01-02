@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+	  <title>Class Calendar</title>
+      <!-- CSS for full calendar -->
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.css" rel="stylesheet" />
+      <!-- JS for jQuery -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <!-- JS for full calendar -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js"></script>
+      <style>
+         html,body {
+			background-color: #FFEFFA;
+			font-family: 'Copperplate';
+		 }
+      </style>
+   </head>
+   <body>
+      <div id="calendar"></div>
+   </body>
+   <script>
+      $(document).ready(function() {
+      	$('#calendar').fullCalendar({
+      		defaultView: 'month',
+      		events: [
+      			{
+      				title: 'Start of Spring 2024 Semester',
+      				start: '2024-01-25', // change with current date
+      				color: '#FF0000' // set color here
+      			},
+      			{
+      				title: 'First Day of MY11 Class',
+      				start: '2024-01-29',
+      				color: '#D186FF' // set color here
+      			},
+      			{
+      				title: 'No Class - College Closed',
+      				start: '2024-02-12', // change with current date
+      				color: '#FF0000' // set color here
+      			},
+                  {
+                  	title: 'No Class - College Closed',
+      				start: '2024-02-19', // change with current date
+      				color: '#FF0000' // set color here
+      			},
+                  {
+      				title: 'Class Meets - Monday Schedule',
+      				start: '2024-02-22',
+      				color: '#D186FF' // set color here
+      			},
+                  {
+      				title: 'Spring Break - No Classes',
+      				start: '2024-04-22', // change with current date
+                      end: '2024-04-30',
+      				color: '#FF0000' // set color here
+      			}
+      		],
+      		eventRender: function(event, element) {
+      			element.css('background-color', event.color); // set background color
+      			element.css('border-color', event.color); // set border color
+      		} 
+      	});
+      });
+   </script>
+</html>
