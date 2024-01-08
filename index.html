@@ -15,6 +15,54 @@
       rel="stylesheet"
     />
     <style>
+      /* For screens smaller than 600px (typical mobile screens) */
+      @media only screen and (max-width: 600px) {
+        /* Reduce button width to fit on smaller screens */
+        .introimg .btn {
+          width: 20%;
+          height: 20%;
+          font-size: 20%;
+        }
+      }
+
+      .centerimg {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+      }
+      .introimg {
+        position: relative;
+        width: 100%;
+        max-width: 600px;
+      }
+
+      .introimg img {
+        width: 100%;
+        height: auto;
+      }
+
+      .introimg .btn {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-47%, 5%);
+        -ms-transform: translate(-50%, -50%);
+        background-color: rgb(138, 43, 226);
+        color: white;
+        font-family: "Modak", cursive;
+        font-size: 25px;
+        padding: 12px 24px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        text-align: center;
+      }
+
+      .introimg .btn:hover {
+        background-color: black;
+      }
+
       /* Style the close button */
       .topright {
         float: right;
@@ -417,25 +465,16 @@
     <br /><br />
     <hr />
     <!-- Header with image -->
-    <header
-      class="bgimg w3-display-container w3-grayscale-min"
-      id="home"
-    ></header>
-    <div class="w3-display-middle w3-center">
-      <span class="intro" style="font-size: 10vw" id="welcome-section">
-        <br />
-        <h1>Welcome!</h1>
-      </span>
-      <p class="intro">
-        <a
-          href="#projects"
-          class="w3-button w3-xxlarge"
-          style="background-color: rgb(138, 43, 226); color: white"
-          >Enter</a
-        >
-      </p>
+
+    <div class="introimg centerimg">
+      <img
+        src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/welcome%20(larger).gif?raw=true"
+      />
+      <a href="#projects">
+        <button class="btn" style="display: none">Enter</button></a
+      >
     </div>
-    <!---</header>-->
+
     <figure id="img-div">
       <!-- About Container -->
       <div id="about">
@@ -521,46 +560,68 @@
           <h4>As TA:</h4>
 
           <ul style="font-size: 15px">
-            <li>
-              CISC 1600-CN - Introduction to Multimedia Computing, Instructor:
-              Klanti Islam (SPRING 2020)
-            </li>
-            <li>
-              CISC 1115 (MY12) - Introduction to JAVA Programming, Instructor:
-              Dina Sokol (SPRING 2021)
-            </li>
-            <li>
-              CISC 1115 (TR0) - Introduction to JAVA Programming, Instructor:
-              Yedidyah Langsam (SPRING 2021)
-            </li>
-            <li>
-              CISC 3620 (TR5) - Computer Graphics, Instructor: Tzipora Halevi
-              (SPRING 2021)
-            </li>
-            <li>
-              CISC 1115 (2AV) - Introduction to JAVA Programming, Instructor:
-              Yedidyah Langsam (SUMMER 2021)
-            </li>
-            <li>
-              CISC 1050 (2NET) - Introduction to Computer Applications,
-              Instructor: Yedidyah Langsam (SUMMER 2021)
-            </li>
-            <li>
-              CISC 1115 (NET1) - Introduction to JAVA Programming, Instructor:
-              David Arnow (FALL 2021)
-            </li>
-            <li>
-              CISC 3310 (TY2) - Principles of Computer Architecture, Instructor:
-              Tzipora Halevi (FALL 2021)
-            </li>
-            <li>
-              CISC 1050 (NETA) - Introduction to Computer Applications,
-              Instructor: Ekta Goswami (SPRING 2022)
-            </li>
-            <li>
-              CISC 1050 (2NET) - Introduction to Computer Applications,
-              Instructor: Yedidyah Langsam (SUMMER 2022)
-            </li>
+            <li><b>Spring 2020</b></li>
+            <ul style="list-style-type: none">
+              <li>
+                CISC 1600-CN - Introduction to Multimedia Computing, Instructor:
+                Klanti Islam
+              </li>
+            </ul>
+            <br />
+            <li><b>Spring 2021</b></li>
+            <ul style="list-style-type: none">
+              <li>
+                CISC 1115 (MY12) - Introduction to JAVA Programming, Instructor:
+                Dina Sokol
+              </li>
+              <li>
+                CISC 1115 (TR0) - Introduction to JAVA Programming, Instructor:
+                Yedidyah Langsam
+              </li>
+              <li>
+                CISC 3620 (TR5) - Computer Graphics, Instructor: Tzipora Halevi
+              </li>
+            </ul>
+            <br />
+            <li><b>Summer 2021</b></li>
+            <ul style="list-style-type: none">
+              <li>
+                CISC 1115 (2AV) - Introduction to JAVA Programming, Instructor:
+                Yedidyah Langsam
+              </li>
+              <li>
+                CISC 1050 (2NET) - Introduction to Computer Applications,
+                Instructor: Yedidyah Langsam
+              </li>
+            </ul>
+            <br />
+            <li><b>Fall 2021</b></li>
+            <ul style="list-style-type: none">
+              <li>
+                CISC 1115 (NET1) - Introduction to JAVA Programming, Instructor:
+                David Arnow
+              </li>
+              <li>
+                CISC 3310 (TY2) - Principles of Computer Architecture,
+                Instructor: Tzipora Halevi
+              </li>
+            </ul>
+            <br />
+            <li><b>Spring 2022</b></li>
+            <ul style="list-style-type: none">
+              <li>
+                CISC 1050 (NETA) - Introduction to Computer Applications,
+                Instructor: Ekta Goswami
+              </li>
+            </ul>
+            <br />
+            <li><b>Summer 2022</b></li>
+            <ul style="list-style-type: none">
+              <li>
+                CISC 1050 (2NET) - Introduction to Computer Applications,
+                Instructor: Yedidyah Langsam
+              </li>
+            </ul>
           </ul>
         </div>
         <!-- closes current courses -->
@@ -687,13 +748,13 @@
                   Fall 2019)</i
                 >
               </li>
-              <li>
+              <!--<li>
                 Gaming Projects
                 <i
                   >(personal gaming projects that I have worked on for fun and
                   experience)</i
                 >
-              </li>
+              </li>-->
               <li>
                 CodeAbbey Problems #187 - 189:
                 <a href="https://amaraauguste.github.io/codeabbey/">here</a>
@@ -718,21 +779,6 @@
               specifically women of color. Her work has been featured in:
             </p>
             <ul>
-              <li>
-                <i
-                  >Sorjo Magazine:
-                  <a
-                    href="https://sorjomagazine.com/post/a-digital-illustration-series-the-art-of-the-girl?rq=the%20art%20of%20the%20girl"
-                    target="_blank"
-                    >★</a
-                  >
-                  <a
-                    href="https://sorjomagazine.com/post/nike-x-amara-ramdhanny-exploring-indo-caribbean-identities"
-                    target="_blank"
-                    >★</a
-                  ></i
-                >
-              </li>
               <li>
                 <i
                   >IndianWomenBlog.org:
@@ -773,31 +819,6 @@
                   >
                   <a
                     href="https://homegrown.co.in/article/803901/we-asked-5-artists-about-their-dream-collaboration-project-with-the-indian-government"
-                    target="_blank"
-                    >★</a
-                  ></i
-                >
-              </li>
-              <li>
-                <i
-                  >Trash-Talk Magazine:
-                  <a
-                    href="https://www.trashtalkmag.com/baby-essays/front-row-the-evolution-of-our-access-to-high-fashion"
-                    target="_blank"
-                    >★</a
-                  >
-                  <a
-                    href="https://www.trashtalkmag.com/baby-essays/yeah-thats-right-its-sneaker-night-exploring-how-sneakers-became-a-pop-culture-fashion-staple-and-the-women-who-paved-the-way"
-                    target="_blank"
-                    >★</a
-                  ></i
-                >
-              </li>
-              <li>
-                <i
-                  >Her Collective Sole:
-                  <a
-                    href="http://hercollectivesole.co/2020/03/20/lets-talk-women-sneaker-designers/"
                     target="_blank"
                     >★</a
                   ></i
@@ -851,11 +872,11 @@
               by the majority of Indians who migrated as indentured laborers in
               the 19th and early 20th centuries) and their feelings about that
               identity and how they feel that they fit into the Desi community
-              (or not) for
-              <i>Sorjo Magazine</i>
+              (or not)
             </p>
+            <br />
             <a
-              href="https://sorjomagazine.com/post/nike-x-amara-ramdhanny-exploring-indo-caribbean-identities"
+              href="https://www.adolescent.net/a/exploring-indo-caribbean-identities-"
               target="_blank"
               ><i
                 >Nike x Amara Ramdhanny: Exploring Indo-Caribbean Identities /
@@ -983,6 +1004,12 @@
         }
         tab.style.display = "none";
       }
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+      $(window).on("load", function () {
+        $(".btn").delay(2500).fadeIn();
+      });
     </script>
   </body>
 </html>
