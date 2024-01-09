@@ -15,13 +15,26 @@
       rel="stylesheet"
     />
     <style>
-      /* For screens smaller than 600px (typical mobile screens) */
-      @media only screen and (max-width: 600px) {
-        /* Reduce button width to fit on smaller screens */
+      /* Media Queries for different screen sizes */
+      @media (max-width: 2000px) {
         .introimg .btn {
-          width: 20%;
-          height: 20%;
-          font-size: 20%;
+          font-size: 60px;
+        }
+      }
+      @media (max-width: 900px) {
+        .introimg .btn {
+          font-size: 50px;
+        }
+      }
+      @media (max-width: 767px) {
+        .introimg .btn {
+          font-size: 30px;
+        }
+      }
+
+      @media (max-width: 479px) {
+        .introimg .btn {
+          font-size: 20px;
         }
       }
 
@@ -34,7 +47,22 @@
       .introimg {
         position: relative;
         width: 100%;
-        max-width: 600px;
+        max-width: 850px;
+      }
+
+      .introimg {
+        position: relative;
+      }
+
+      .introimg .btn {
+        position: absolute;
+        bottom: 10px; /* Adjust the bottom distance as necessary */
+        right: 10px; /* Adjust the right distance as necessary */
+        padding: 4px 8px; /* Adjust the padding as necessary */
+        width: 25%;
+        height: 25%;
+        white-space: nowrap; /* Ensures that the text doesn't wrap */
+        overflow: hidden; /* Prevents the text from overflowing */
       }
 
       .introimg img {
@@ -51,8 +79,7 @@
         background-color: rgb(138, 43, 226);
         color: white;
         font-family: "Modak", cursive;
-        font-size: 25px;
-        padding: 12px 24px;
+        /*padding: 5px 10px;*/
         border: none;
         cursor: pointer;
         border-radius: 5px;
