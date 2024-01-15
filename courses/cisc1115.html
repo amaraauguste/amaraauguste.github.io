@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 80%;
+      }
+      header {
+        color: black;
+        margin: 10px;
+        text-align: center;
+        font-size: 1.8em;
+        font-weight: thin;
+      }
+      #main-doc header {
+        text-align: left;
+        margin: 0px;
+      }
+      code {
+        display: block;
+        text-align: left;
+        white-space: pre-line;
+        position: relative;
+        word-break: normal;
+        word-wrap: normal;
+        line-height: 2;
+        background-color: black;
+        color: white;
+        padding: 15px;
+        margin: 10px;
+        border-radius: 5px;
+      }
+      @media only screen and (max-width: 400px) {
+        #main-doc {
+          margin-left: -10px;
+        }
+
+        code {
+          margin-left: -20px;
+          width: 100%;
+          padding: 15px;
+          padding-left: 10px;
+          padding-right: 45px;
+          min-width: 233px;
+        }
+      }
+      body {
+        font-family: "Lato", sans-serif;
+      }
+
+      #navbar {
+        height: 100%;
+        width: 160px;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #f4c3e5;
+        overflow-x: hidden;
+        padding-top: 20px;
+      }
+
+      #navbar a {
+        padding: 6px 8px 6px 16px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #000000;
+        display: block;
+      }
+
+      #navbar a:hover {
+        color: #f1f1f1;
+      }
+
+      #main-doc {
+        margin-left: 160px; /* Same as the width of the sidenav */
+        font-size: 28px; /* Increased text to enable scrolling */
+        padding: 0px 10px;
+      }
+
+      @media screen and (max-height: 450px) {
+        #navbar {
+          padding-top: 15px;
+        }
+        #navbar a {
+          font-size: 18px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav id="navbar">
+      <header>CISC 1115</header>
+      <hr />
+      <a class="nav-link" href="#Introduction">Introduction</a>
+      <a class="nav-link" href="CISC1115/CISC_1115_SP24_MY11_Syllabus.pdf"
+        >Syllabus</a
+      >
+      <a class="nav-link" href="CISC1115/calendar.html">Calendar</a>
+      <a class="nav-link" href="#CodeLab">CodeLab</a>
+      <a class="nav-link" href="#Homework">Homework</a>
+      <a class="nav-link" href="CISC1115/notes.html">Class Notes</a>
+      <a class="nav-link" href="CISC1115/class_programs.html"
+        >Programs From Class</a
+      >
+    </nav>
+    <main id="main-doc">
+      <section class="main-section" id="Introduction">
+        <br />
+        <header><b>Introduction</b></header>
+        <article>
+          <p>Welcome to CISC 1115 - Introduction to Java Programming!</p>
+          <p>
+            This web-site will provide a basic course outline, syllabus, and
+            anything else that is important for the class. Feel free to email
+            any questions, suggestions, thoughts, etc.
+          </p>
+          <p></p>
+        </article>
+        <br />
+        <hr />
+      </section>
+      <br />
+      <section class="main-section" id="CodeLab">
+        <br />
+        <header><b>CodeLab</b></header>
+        <article>
+          <p>
+            For this course we will use CodeLab — an online, interactive
+            programming exercise system — for short practice problems that
+            typically consist of a few lines of code that are very narrowly
+            focused on a topic covered in class and are completed and submitted
+            directly in CodeLab.
+          </p>
+          <p>To Register:</p>
+          <ul>
+            <li>
+              Go to <a href="https://www.turingscraft.com/">turingscraft.com</a>
+            </li>
+            <li>Click "Register" and follow the instructions</li>
+            <li style="margin-left: 40px">
+              When you fill out the forms, use your Best Email Address and
+              Actual Name
+            </li>
+            <li style="margin-left: 40px">
+              When asked for a Section Access Code, enter the following:
+              <br /><br />
+              <b style="margin-left: 60px">CUNY-31259-KTQH-59</b>
+            </li>
+            <br />
+            <li>
+              To Login: Same URL, click "Login" and use your username (email)
+              and password
+            </li>
+          </ul>
+          <p></p>
+          <p></p>
+        </article>
+        <br />
+        <hr />
+      </section>
+      <section class="main-section" id="Homework">
+        <br />
+        <header><b>Homework</b></header>
+        <article>
+          <p>
+            As aforementioned, homework/projects are larger, often complete
+            programs incorporating several topics, and give you a better taste
+            of 'real' programming.
+          </p>
+          <p>
+            These should be coded and tested in the IDE of your choice (e.g.
+            NetBeans, Eclipse, IntelliJ, etc.) and submitted to Blackboard by
+            the due date provided.
+          </p>
+          <p>
+            Each homework will be due about a week and a half (two or three
+            class meetings) after it is assigned unless specified otherwise.
+            e.g., homework assigned on a Monday, will be due on the Wednesday of
+            the following week, etc.
+          </p>
+          <p>
+            There will be a penalty for lateness – 5% off per class late and
+            <b
+              >will no longer be accepted after 25 points of penalty have been
+              accumulated (five class sessions later)</b
+            >
+          </p>
+
+          <p>
+            Homework will be listed both here and on Blackboard and
+            <b>MUST</b> be submitted via Blackboard.
+          </p>
+
+        <!--
+          <p>Homework:</p>
+          <ul>
+            <li>
+             <a>Homework 1</a>
+            </li>
+            <br />
+            <li>
+             <a>Homework 2</a>
+            </li>
+            <li>
+              <a>Homework 3</a>
+             </li>
+             <li>
+              <a>Homework 4</a>
+             </li>
+             <li>
+              <a>Homework 5</a>
+             </li>
+             <li>
+              <a>Homework 6</a>
+             </li>
+             <li>
+              <a>Homework 7</a>
+             </li>
+             <li>
+              <a>Homework 8</a>
+             </li>
+             <li>
+              <a>Homework 9</a>
+             </li>
+             <li>
+              <a>Homework 10</a>
+             </li>
+             -->
+          </ul>
+        </article>
+        <br />
+        <hr />
+      </section>
+    </main>
+  </body>
+</html>
