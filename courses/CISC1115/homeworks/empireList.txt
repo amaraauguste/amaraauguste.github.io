@@ -1,0 +1,50 @@
+15,Close Encounters of the Third Kind,1977,Steven Spielberg
+39,12 Monkeys,1995,Terry Gilliam
+3,Star Wars: The Empire Strikes Back,1980,Irvin Kersher
+45,Children of Men,2006,Alfonso Cuaron
+27,Blade Runner 2049,2017,Denis Villeneuve
+35,A.I. Artificial Intelligence,2001,Steven Spielberg
+33,The Day the Earth Stood Still,1951,Robert Wise
+10,E.T. The Extra Terrestrial,1982,Steven Spielberg
+46,The Abyss,1989,James Cameron
+5,2001: A Space Odyssey,1968,Stanley Kubrick
+11,The Thing,1982,John Carpenter
+16,Moon,2009,Duncan Jones
+30,Wall-E,2008,Andrew Stanton
+22,Jurassic Park,1993,Steven Spielberg
+25,Solaris,1972,Andrei Tarkovsky
+41,Stalker,1979,Andrei Tarkovsky
+17,Looper,2012,Rian Johnson
+12,Inception,2010,Christopher Nolan
+44,Donnie Darko,2001,Richard Kelly
+49,High Life,2019,Claire Denis
+21,Interstellar,2014,Christopher Nolan
+42,Predator,1987,John McTiernan
+7,Terminator 2: Judgment Day,1991,James Cameron
+32,Minority Report,2002,Steven Spielberg
+20,RoboCop,1987,Paul Verhoeven
+36,Sunshine,2007,Danny Boyle
+43,Eternal Sunshine of the Spotless Mind,2004,Michel Gondry
+50,Silent Running,1972,Douglas Trumbull
+23,Guardians of the Galaxy,2014,James Gunn
+19,Metropolis,1927,Fritz Lang
+31,The Fly,1986,David Cronenberg
+26,Ghost in the Shell,1995,Mamoru Oshii
+4,The Matrix,1999,Lana Wachowski and Lilly Wachowski
+13,Arrival,2016,Denis Villeneuve
+24,Planet of the Apes,1968,Franklin J. Schaffner
+29,Star Trek II: The Wrath of Khan,1982,Nicholas Meyer
+38,Akira,1988,Katsuhiro Otomo
+48,Snowpiercer,2013,Bong Joon Ho
+28,Dune,2021,Denis Villeneuve
+2,Alien,1979,Ridley Scott
+1,Blade Runner,1982,Ridley Scott
+47,District 9,2009,Neill Blomkamp
+40,Invasion of the Body Snatchers,1978,Philip Kaufman
+14,The Terminator,1984,James Cameron
+34,Avatar,2009,James Cameron
+9,Aliens,1986,James Cameron
+8,Back to The Future,1985,Robert Zemeckis
+37,Under the Skin,2013,Jonathan Glazer
+6,Star Wars,1977,George Lucas
+18,Ex Machina,2015,Alex Garland
