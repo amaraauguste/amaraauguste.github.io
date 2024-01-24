@@ -1,222 +1,349 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <style>
-      .backbutton {
-        text-decoration: none;
-        display: inline-block;
-        padding: 8px 16px;
+<head>
+  <style>
+    .backbutton {
+      text-decoration: none;
+      display: inline-block;
+      padding: 8px 16px;
+    }
+
+    .backbutton:hover {
+      background-color: #f678d0;
+    }
+
+    .previous {
+      background-color: #f4c3e5;
+      color: black;
+    }
+
+    .center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 80%;
+    }
+
+    header {
+      color: black;
+      margin: 10px;
+      text-align: center;
+      font-size: 1.8em;
+      font-weight: thin;
+    }
+
+    #main-doc header {
+      text-align: left;
+      margin: 0px;
+    }
+
+    code {
+      display: block;
+      text-align: left;
+      white-space: pre-line;
+      position: relative;
+      word-break: normal;
+      word-wrap: normal;
+      line-height: 2;
+      background-color: black;
+      color: white;
+      padding: 15px;
+      margin: 10px;
+      border-radius: 5px;
+    }
+
+    @media only screen and (max-width: 400px) {
+      #main-doc {
+        margin-left: -10px;
       }
 
-      .backbutton:hover {
-        background-color: #f678d0;
-      }
-
-      .previous {
-        background-color: #f4c3e5;
-        color: black;
-      }
-
-      .center {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        width: 80%;
-      }
-      header {
-        color: black;
-        margin: 10px;
-        text-align: center;
-        font-size: 1.8em;
-        font-weight: thin;
-      }
-      #main-doc header {
-        text-align: left;
-        margin: 0px;
-      }
       code {
-        display: block;
-        text-align: left;
-        white-space: pre-line;
-        position: relative;
-        word-break: normal;
-        word-wrap: normal;
-        line-height: 2;
-        background-color: black;
-        color: white;
+        margin-left: -20px;
+        width: 100%;
         padding: 15px;
-        margin: 10px;
-        border-radius: 5px;
+        padding-left: 10px;
+        padding-right: 45px;
+        min-width: 233px;
       }
-      @media only screen and (max-width: 400px) {
-        #main-doc {
-          margin-left: -10px;
-        }
+    }
 
-        code {
-          margin-left: -20px;
-          width: 100%;
-          padding: 15px;
-          padding-left: 10px;
-          padding-right: 45px;
-          min-width: 233px;
-        }
-      }
-      body {
-        font-family: "Lato", sans-serif;
-      }
+    body {
+      font-family: "Lato", sans-serif;
+    }
 
+    #navbar {
+      height: 100%;
+      width: 160px;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-color: #f4c3e5;
+      overflow-x: hidden;
+      padding-top: 20px;
+    }
+
+    #navbar a {
+      padding: 6px 8px 6px 16px;
+      text-decoration: none;
+      font-size: 25px;
+      color: #000000;
+      display: block;
+    }
+
+    #navbar a:hover {
+      color: #f1f1f1;
+    }
+
+    #main-doc {
+      margin-left: 160px;
+      /* Same as the width of the sidenav */
+      font-size: 28px;
+      /* Increased text to enable scrolling */
+      padding: 0px 10px;
+    }
+
+    @media screen and (max-height: 450px) {
       #navbar {
-        height: 100%;
-        width: 160px;
-        position: fixed;
-        z-index: 1;
-        top: 0;
-        left: 0;
-        background-color: #f4c3e5;
-        overflow-x: hidden;
-        padding-top: 20px;
+        padding-top: 15px;
       }
 
       #navbar a {
-        padding: 6px 8px 6px 16px;
-        text-decoration: none;
-        font-size: 25px;
-        color: #000000;
-        display: block;
+        font-size: 18px;
       }
+    }
+  </style>
+</head>
 
-      #navbar a:hover {
-        color: #f1f1f1;
-      }
+<body>
+  <nav id="navbar">
+    <header>CISC 1115</header>
+    <hr />
+    <a class="nav-link" href="#Intro" style="font-size: 22px">Intro to Programming</a>
+    <a class="nav-link" href="#What_is_Java?" style="font-size: 21.659px">What is Java?</a>
+    <a class="nav-link" href="#Hello_World" style="font-size: 22px">Hello World</a>
+    <a class="nav-link" href="#Variables" style="font-size: 22px">Variables</a>
+    <a class="nav-link" href="#Operators" style="font-size: 22px">Operators</a>
+    <a class="nav-link" href="#Floating_Point" style="font-size: 22px">Floating-point Numbers</a>
+    <a class="nav-link" href="#Math_Methods" style="font-size: 21.466px">Math Methods</a>
+    <a class="nav-link" href="#Error_Types" style="font-size: 22px">Error Types</a>
 
-      #main-doc {
-        margin-left: 160px; /* Same as the width of the sidenav */
-        font-size: 28px; /* Increased text to enable scrolling */
-        padding: 0px 10px;
-      }
+    <!--add more later-->
 
-      @media screen and (max-height: 450px) {
-        #navbar {
-          padding-top: 15px;
-        }
-        #navbar a {
-          font-size: 18px;
-        }
-      }
-    </style>
-  </head>
+    <a class="nav-link" href="#Reference" style="font-size: 22px">Reference</a>
+    <a href="https://amaraauguste.github.io/courses/cisc1115.html" class="previous backbutton"
+      style="font-size: 22px">&laquo; Back</a>
+  </nav>
+  <main id="main-doc">
+    <!-- WEEK 1 NOTES -->
+    <section class="main-section" id="Intro">
+      <br />
+      <header><b>Intro to Programming</b></header>
+      <p>
+        In this class, we will write programs.
+        <br /><br />
+        But first, what is a program?
+        <br /><br />
+        A <b>program</b> is a sequence of instructions that specifies how to
+        perform a computation. <br />
 
-  <body>
-    <nav id="navbar">
-      <header>CISC 1115</header>
-      <hr />
-      <a class="nav-link" href="#What_is_Java?">What is Java?</a>
-      <a class="nav-link" href="#Hello_World">Hello World</a>
-      <a class="nav-link" href="#Variables">Variables</a>
-      <a class="nav-link" href="#Operators">Operators</a>
-      <!-- TO COMPLETE LATER
-          
-            <li><a class="nav-link" href="#Operators">Operators</a></li>
-            <li>
-               <a class="nav-link" href="#Global_variables">Global variables</a>
-            </li>
-            <li><a class="nav-link" href="#Constants">Constants</a></li>
-            <li><a class="nav-link" href="#Data_types">Data types</a></li>
-            <li>
-               <a class="nav-link" href="#if...else_statement"
-                  >if...else statement</a
-                  >
-            </li>
-            <li><a class="nav-link" href="#while_statement">while statement</a></li>
-            <li>
-               <a class="nav-link" href="#Function_declarations"
-                  >Function declarations</a
-                  >
-            </li>-->
-      <a class="nav-link" href="#Reference">Reference</a>
-      <a
-        href="https://amaraauguste.github.io/courses/cisc1115.html"
-        class="previous backbutton"
-        >&laquo; Back</a
-      >
-    </nav>
-    <main id="main-doc">
-      <!-- WEEK 1 NOTES -->
-      <section class="main-section" id="What_is_Java?">
+        Every program you’ve
+        ever used, no matter how complicated, is made up of small instructions that
+        look much like the following:
+      </p>
+      <ul>
+        <li>
+          <b>input:</b> get data from the keyboard, a file, a sensor, or some other device
+        </li>
         <br />
-        <header><b>What is Java?</b></header>
+        <li>
+          <b>output:</b> display data on the screen, or send data to a file or other device.
+        </li>
+        <br />
+        <li>
+          <b>math:</b> perform basic mathematical operations like addition and division.
+        </li>
+        <br />
+        <li>
+          <b>decisions:</b> check for certain conditions and execute the appropriate code
+        </li>
+        <br />
+        <li>
+          <b>repetition:</b> perform some action repeatedly, usually with some variation.
+        </li>
+      </ul>
+      <p>We can think of <b>programming</b> as the process of:
+        <i>breaking down a large, complex task into smaller and smaller subtasks.</i>
+        <br><br>
+        The process continues until the subtasks are simple enough to be performed with
+        the basic instructions provided by the computer.
+      </p>
+      <br />
+      <header>What is Computer Science?</header>
+      <article>
+        <p>
+          One of the most interesting aspects of writing programs is deciding <i><b>how</b></i> to
+          solve a particular problem, especially when there are multiple solutions.
+          <br /><br />
+
+          In order to determine which way is best for a given situation,
+          we need techniques for describing and analyzing solutions formally.
+        </p>
+        <p>
+          <b>Computer science</b> is the science of algorithms, including their discovery and
+          analysis.
+          <br /><br />
+          An <b>algorithm</b> is a sequence of steps that specifies how to solve a
+          problem.
+        <ul>
+          <li>Some algorithms are faster than others, and some use less space
+            in computer memory.</li>
+        </ul>
+        </p>
+        <p>
+          Designing algorithms and writing code is difficult and error-prone.
+          <br><br>
+          For historical reasons, programming errors are called <b>bugs</b>, and the process of tracking them down and
+          correcting them is called <b>debugging</b>.
+        </p>
+        <br />
+        <header>Programming Languages</header>
         <article>
           <p>
-            Java is a high-level, class-based, object-oriented programming
-            language and software platform that runs on billions of devices,
-            including notebook computers, mobile devices, gaming consoles,
-            medical devices and many others. The rules and syntax of Java are
-            based on the C and C++ languages.
-          </p>
-          <p>To create an application using Java, you will need:</p>
+            The programming language you will learn in this class is <b>Java</b>, which is a high-level language.
+            <br> <br>
+            A <b>high-level language</b> is any programming language that enables development of a program
+            in a much more <b>user-friendly programming context and is generally independent of the computer's hardware
+              architecture.</b>
+            <br><br>
+            Other high-level languages you may have heard of include:
           <ul>
-            <li>
-              to download and install the Java Development Kit (JDK),
-              <a href="https://www.oracle.com/java/technologies/downloads/"
-                >which is available for Windows, macOS, and Linux</a
-              >.
-            </li>
-            <br />
-            <li>
-              A command-line interface (CLI) on your computer that allows you to
-              create and delete files, run programs, and navigate through
-              folders and files (<b
-                >On a Mac, it's called Terminal, and on Windows, it's Command
-                Prompt</b
-              >) OR an integrated development environment (IDE) - a software
-              application that helps programmers develop software code
-              efficiently by combining capabilities such as software editing,
-              building, testing, and packaging in an easy-to-use application,
-              such as
-              <a href="https://www.eclipse.org/downloads/packages/">Eclipse</a>,
-              <a
-                href="https://netbeans.apache.org/front/main/download/index.html"
-                >NetBeans</a
-              >,
-              <a href="https://www.jetbrains.com/idea/download/?section=windows"
-                >IntelliJ</a
-              >, <a href="https://drjava.sourceforge.net/">DrJava</a>, etc.
+            <li>Python</li>
+            <li>C and C++</li>
+            <li>Ruby</li>
+            <li>JavaScript</li>
+          </ul>
+          Before they can run, programs in high-level languages have to be translated
+          into a <b>low-level language</b>, also called “machine language”.
+          <br><br>
+          This translation takes some time, which is a small disadvantage of high-level languages.
+          </p>
+          <p>
+            High-level languages have two advantages:
+          <ol>
+            <li>It is much <b>easier</b> to program in a high-level language.</li>
+            <ul>
+              <li> Programs take
+                less time to write, they are shorter and easier to read, and they are more
+                likely to be correct.</li>
+            </ul>
+            <br>
+            <li>High-level languages are <b>portable</b>, meaning they can run on different
+              kinds of computers with few or no modifications.</li>
+            <ul>
+              <li>Low-level programs
+                can only run on one kind of computer, and have to be rewritten to run
+                on another.
+              </li>
+            </ul>
+          </ol>
+          Two kinds of programs translate high-level languages into low-level languages:
+          <b>interpreters</b> and <b>compilers</b>
+          <ul>
+            <li>An <b>interpreter</b> reads a high-level program and
+              executes it, meaning that it does what the program says.
+              It processes the program a little at a time, alternately reading lines and performing computations</li>
+            <br>
+            <li>A <b>compiler</b> reads the entire program and translates it completely
+              before the program starts running. In this context, the high-level program is called the <b>source
+                code</b>, and the translated program is called the object
+              code or the executable. Once a program is compiled, you can execute it
+              repeatedly without further translation. As a result, <b>compiled programs often
+                run faster than interpreted programs.</b>
             </li>
           </ul>
-          <p>
-            You write the program in the Java programming language, then a
-            compiler turns the program into Java bytecode—the instruction set
-            for the Java Virtual Machine (JVM) that is a part of the Java
-            runtime environment (JRE). Java bytecode runs without modification
-            on any system that supports JVMs, allowing your Java code to be run
-            anywhere. The Java software platform consists of the JVM, the Java
-            API, and a complete development environment. The JVM parses and runs
-            (interprets) the Java bytecode. The Java API consists of an
-            extensive set of libraries including basic objects, networking and
-            security functions; Extensible Markup Language (XML) generation; and
-            web services. Taken together, the Java language and the Java
-            software platform create a powerful, proven technology for
-            enterprise software development.
           </p>
         </article>
         <br />
         <hr />
-      </section>
-      <section class="main-section" id="Hello_World">
-        <br />
-        <header><b>Hello World</b></header>
-        <article>
-          <p>
-            To start programming in Java, we can write a simple program that
-            outputs "Hello, World!" on the screen. Since it's a very simple
-            program, it's often used to introduce a new programming language to
-            a newbie! 😃
-          </p>
-          <p>Let's explore how Java "Hello, World!" program works:</p>
+    </section>
+    <section class="main-section" id="What_is_Java?">
+      <br />
+      <header><b>What is Java?</b></header>
+      <article>
+        <p>
+          As aforementioned, Java is a high-level, class-based, object-oriented programming
+          language and software platform that runs on billions of devices,
+          including notebook computers, mobile devices, gaming consoles,
+          medical devices and many others. The rules and syntax of Java are
+          based on the C and C++ languages.
+        </p>
+        <p>Here are some specific examples of real world applications that use Java: </p>
+        <ul>
+          <li>LinkedIn</li>
+          <li>Minecraft</li>
+          <li>Amazon Web Services (AWS)</li>
+        </ul>
+        <p>To create an application using Java, you will need:</p>
+        <ul>
+          <li>
+            to download and install the Java Development Kit (JDK),
+            <a href="https://www.oracle.com/java/technologies/downloads/">which is available for Windows, macOS, and
+              Linux</a>.
+          </li>
           <br />
-          <code
-            ><text style="color: lightskyblue">// Our First Program</text>
+          <li>
+            A command-line interface (CLI) on your computer that allows you to
+            create and delete files, run programs, and navigate through
+            folders and files (<b>On a Mac, it's called Terminal, and on Windows, it's Command
+              Prompt</b>) OR an integrated development environment (IDE) - a software
+            application that helps programmers develop software code
+            efficiently by combining capabilities such as software editing,
+            building, testing, and packaging in an easy-to-use application,
+            such as
+            <a href="https://www.eclipse.org/downloads/packages/">Eclipse</a>,
+            <a href="https://netbeans.apache.org/front/main/download/index.html">NetBeans</a>,
+            <a href="https://www.jetbrains.com/idea/download/?section=windows">IntelliJ</a>, <a
+              href="https://drjava.sourceforge.net/">DrJava</a>, etc.
+          </li>
+        </ul>
+        <p>
+          You write the program in the Java programming language, then a
+          compiler turns the program into Java bytecode—the instruction set
+          for the Java Virtual Machine (JVM) that is a part of the Java
+          runtime environment (JRE). Java bytecode runs without modification
+          on any system that supports JVMs, allowing your Java code to be run
+          anywhere. The Java software platform consists of the JVM, the Java
+          API, and a complete development environment. The JVM parses and runs
+          (interprets) the Java bytecode.
+          <br><br>
+          <img style="width: 100%; height: 100%"
+            src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC1115/images/JavaProcess.png?raw=true"
+            alt="Java Process">
+          <br><br>
+          The Java API consists of an
+          extensive set of libraries including basic objects, networking and
+          security functions; Extensible Markup Language (XML) generation; and
+          web services. Taken together, the Java language and the Java
+          software platform create a powerful, proven technology for
+          enterprise software development.
+        </p>
+      </article>
+      <br />
+      <hr />
+    </section>
+    <section class="main-section" id="Hello_World">
+      <br />
+      <header><b>Hello World</b></header>
+      <article>
+        <p>
+          To start programming in Java, we can write a simple program that
+          outputs "Hello, World!" on the screen. Since it's a very simple
+          program, it's often used to introduce a new programming language to
+          a newbie! 😃
+        </p>
+        <p>Let's explore how Java "Hello, World!" program works:</p>
+        <code><text style="color: lightskyblue; font-size:20px">// Our First Program</text>
             <text>public class HelloWorld {</text>
             <text style="margin-left: 40px"
               >public static void main(String[] args) {</text
@@ -227,322 +354,361 @@
             <text style="margin-left: 40px">}</text>
             <text>}</text>
           </code>
-          <br />
-          <p><b>How does the "Hello, World!" program work?</b></p>
-          <ol>
-            <li>
-              In Java, any line starting with // is a <b>single-line</b> comment
-              (We will learn more about multi-line comments in a bit). Comments
-              are intended for users reading the code to understand the intent
-              and functionality of the program. It is completely ignored by the
-              Java compiler (an application that translates Java program to Java
-              bytecode that computer can execute).
-            </li>
-            <br />
-            <li>
-              Every application begins with a class definition. In this
-              particular program, HelloWorld is the name of the class and the
-              name of the class should match the filename in Java.
-            </li>
-            <br />
-            <li>
-              Next is the main method. Every application in Java must contain
-              the main method. The Java compiler starts executing the code from
-              the main method, and it's mandatory in each of our executable Java
-              programs. The signature of the main method in Java is:
-              <br /><br />
-              <text style="margin-left: 50px"
-                >public static void main(String[] args) { ... .. ... }</text
-              >
-            </li>
-            <br />
-            <li>
-              Lastly, we have a print statement. It prints the text Hello,
-              World! to standard output (your screen). The text inside the
-              quotation marks is called a String <i>literal</i> in Java.
-              <b
-                >Notice the print statement is inside the main function, which
-                is inside the class definition.</b
-              >
-            </li>
-          </ol>
-        </article>
         <br />
-        <hr />
-      </section>
-
-      <section class="main-section" id="Variables">
-        <br />
-        <header><b>Variables</b></header>
-        <p>
-          You may have seen variables before (Think back to high school algebra!
-          Solving for X, etc.)
-          <br /><br />
-          In programming, a variable is a location in memory (storage area) that
-          holds data.
-          <br /><br />
-          (For now just one value at a time ... we'll come back to this later)
-          <br /><br />
-          To indicate the storage area, each variable is given a unique name.
-          The names of variables, called <b>identifiers</b>, conform to the
-          following rules:
-        </p>
-        <ul>
+        <p><b>How does the "Hello, World!" program work?</b></p>
+        <ol>
           <li>
-            Identifiers CANNOT be a keyword (ex. keywords like int, for, class,
-            etc CANNOT be used as a variable name (or identifier) as they are
-            part of the Java programming language syntax
+            In Java, any line starting with // is a <b>single-line</b> comment
+            (We will learn more about multi-line comments in a bit). Comments
+            are intended for users reading the code to understand the intent
+            and functionality of the program. It is completely ignored by the
+            Java compiler (an application that translates Java program to Java
+            bytecode that computer can execute).
           </li>
           <br />
           <li>
-            Identifiers are case-sensitive (ex. age, AGE, Age, etc. are all
-            valid identifiers and can all exist within the same program,
-            although NOT RECOMMENDED 😡)
+            Every application begins with a class definition. In this
+            particular program, HelloWorld is the name of the class and the
+            name of the class should match the filename in Java.
           </li>
           <br />
           <li>
-            Identifiers can be made up of a sequence of letters and digits.
-            However,
-            <b
-              >it must begin with a letter, '$' (dollar sign) or '_'
-              (underscore).</b
-            >
-            (It is convention to start an identifier with a letter) The first
-            letter of an identifier CANNOT be a digit.
+            Next is the main method. Every application in Java must contain
+            the main method. The Java compiler starts executing the code from
+            the main method, and it's mandatory in each of our executable Java
+            programs. The signature of the main method in Java is:
+            <br /><br />
+            <text style="margin-left: 50px">public static void main(String[] args) { ... .. ... }</text>
           </li>
           <br />
           <li>
-            Identifiers CANNOT contain whitespaces, nor symbols such as @, #,
-            and so on.
+            Lastly, we have a print statement. It prints the text Hello,
+            World! to standard output (your screen). The text inside the
+            quotation marks is called a String <i>literal</i> in Java.
+            <b>Notice the print statement is inside the main function, which
+              is inside the class definition.</b>
           </li>
-          <br />
-          <li>Examples of <b>VALID</b> ✔️ identifiers:</li>
-          <ul>
-            <li>player1</li>
-            <li>score</li>
-            <li>level</li>
-            <li>highScore</li>
-            <br />
-          </ul>
-          <li>Examples of <b>INVALID</b> ❌ identifiers:</li>
-          <ul>
-            <li>pl@yer</li>
-            <li>1score</li>
-            <li>class</li>
-            <li>highest Score</li>
-          </ul>
+        </ol>
+      </article>
+      <br />
+      <header>Comments</header>
+      <article>
+        <p> Comments have no effect on
+          the execution of the program, but they make it easier for other programmers
+          (and yourself!) to understand what you meant to do and how the program works.</p>
+        <p>There are three types of comments:</p>
+        <ul style="list-style: none;">
+          <li>// single line comments</li>
+          <br>
+          <li>/*<br>
+            multiline comments<br>
+            */ </li>
+          <br>
+          <li>/** <br>
+            multiline Documentation Comments
+            to create formal documentation using Javadoc
+            <br>
+            */
+          </li>
         </ul>
+      </article>
+      <br />
+      <hr />
+    </section>
+
+    <section class="main-section" id="Variables">
+      <br />
+      <header><b>Variables</b></header>
+      <p>
+        You may have seen variables before (Think back to high school algebra!
+        Solving for X, etc.)
+        <br /><br />
+        In programming, a variable is a location in memory (storage area) that
+        holds data.
+        <br /><br />
+        (For now just one value at a time ... we'll come back to this later)
+        <br /><br />
+        To indicate the storage area, each variable is given a unique name.
+        The names of variables, called <b>identifiers</b>, conform to the
+        following rules:
+      </p>
+      <ul>
+        <li>
+          Identifiers CANNOT be a keyword (ex. keywords like int, for, class,
+          etc CANNOT be used as a variable name (or identifier) as they are
+          part of the Java programming language syntax
+        </li>
         <br />
-        <header>Declaring variables</header>
+        <li>
+          Identifiers are case-sensitive (ex. age, AGE, Age, etc. are all
+          valid identifiers and can all exist within the same program,
+          although NOT RECOMMENDED 😡)
+        </li>
         <br />
-        <article>
-          It is easy to declare a variable!
+        <li>
+          Identifiers can be made up of a sequence of letters and digits.
+          However,
+          <b>it must begin with a letter, '$' (dollar sign) or '_'
+            (underscore).</b>
+          (It is convention to start an identifier with a letter) The first
+          letter of an identifier CANNOT be a digit.
+        </li>
+        <br />
+        <li>
+          Identifiers CANNOT contain whitespaces, nor symbols such as @, #,
+          and so on.
+        </li>
+        <br />
+        <li>Examples of <b>VALID</b> ✔️ identifiers:</li>
+        <ul>
+          <li>player1</li>
+          <li>score</li>
+          <li>level</li>
+          <li>highScore</li>
+          <br />
+        </ul>
+        <li>Examples of <b>INVALID</b> ❌ identifiers:</li>
+        <ul>
+          <li>pl@yer</li>
+          <li>1score</li>
+          <li>class</li>
+          <li>highest Score</li>
+        </ul>
+      </ul>
+      <br />
+      <header>Declaring Variables</header>
+      <br />
+      <article>
+        It is easy to declare a variable!
+        <br />
+        <p>
+          First we identify the necessary keyword for the variable datatype.
+          For example, a whole number should be declared as an integer type
+          known as int while a decimal number should be declared as a float or
+          double.
           <br /><br />
-          <p>
-            First we idenitfy the necessary keyword for the variable datatype.
-            For example, a whole number should be declared as an integer type
-            known as int while a decimal number should be declared as a float or
-            double.
-            <br /><br />
-            <code><text>int score = 42;</text> </code>
-            <br />
-            This syntax can be used to declare both local and global variables
-            (we'll talk about this more later 😉).
-          </p>
-          <p>
-            In the previous example, we have assigned value to the variable
-            during declaration -- this is known as initialization, because we
-            assign an initial value to a variable.
-            <br /><br />
-            However, we can also declare variables and assign variables
-            separately.
-          </p>
-          <p>For example:</p>
-          <code
-            ><text>int score;</text>
+          <code><text>int score = 42;</text> </code>
+          <br />
+          This syntax can be used to declare both local and global variables
+          (we'll talk about this more later 😉).
+        </p>
+        <p>
+          In the previous example, we have assigned value to the variable
+          during declaration -- this is known as initialization, because we
+          assign an initial value to a variable.
+          <br /><br />
+          However, we can also declare variables and assign variables
+          separately.
+        </p>
+        <p>For example:</p>
+        <code><text>int score;</text>
             <text>score = 42;</text>
           </code>
+        <p>When you declare a variable, you create a named storage location.
+          <br><br>
+          When you make an assignment to a variable, you update its value.
+        </p>
+        <p>
+          The value of a variable can be modified throughout the program
+          (that's what makes it a <i>variable</i>, opposed to a
+          <i>literal</i>)
+        </p>
+        <p>For example:</p>
+        <code><text>int score = 0;</text>
+            <text>...</text>
+            <text>...</text>
+            <text>...</text>
+            <text>score = 42;</text></code>
+        <p>Here, initially, we set the score to 0.</p>
+        <p>
+          Later (after some more code -- not yet specified) we changed it to
+          42.
+        </p>
+        <p>
+          It is important to remember, however, that we CANNOT change the data
+          type of a variable in Java within the same scope (we'll discuss
+          scope a bit more later, for now just think of our scope limited to
+          the main method)
+        </p>
+      </article>
+      <br />
+      <header>Printing Variables</header>
+      <article>
+        <p>
+          We can display the value of a variable using print or println.
+          <br /><br />
+          <code><text>int score = 42;</text> 
+              <text style="color: lightskyblue; font-size:20px">//What should be printed below?</text>
+              <text>System.out.println(score);</text>
+            </code>
+          <br />
+          When we talk about displaying a variable, we generally mean the <b>value</b> of the variable.
+          <br><br>
+          To display the name of a variable, you have to put it in quotes.
+        </p>
+      </article>
+      <br />
+      <hr />
+    </section>
 
-          <p>
-            The value of a variable can be modified throughout the program
-            (that's what makes it a <i>variable</i>, opposed to a
-            <i>literal</i>)
-          </p>
-          <p>For example:</p>
-          <code
-            ><text>int score = 0;</text>
-            <text>...</text>
-            <text>...</text>
-            <text>...</text>
-            <text>score = 42;</text></code
-          >
-          <p>Here, initially, we set the score to 0.</p>
-          <p>
-            Later (after some more code -- not yet specified) we changed it to
-            42.
-          </p>
-          <p>
-            It is important to remember, however, that we CANNOT change the data
-            type of a variable in Java within the same scope (we'll discuss
-            scope a bit more later, for now just think of our scope limited to
-            the main method)
-          </p>
-        </article>
-        <br />
-        <hr />
-      </section>
-
-      <section class="main-section" id="Operators">
-        <br />
-        <header><b>Java Operators</b></header>
-        <article>
-          <p>
-            Operators are symbols that perform operations on variables and
-            values. For example, we know that + is an operator used for
-            addition, while * is an operator used for multiplication.
-          </p>
-          <p>Operators in Java can be classified into the following types:</p>
-          <ol>
-            <b><li>Arithmetic Operators</li></b>
-            <ul>
-              <li>
-                Arithmetic operators are used to perform arithmetic operations
-                on variables and data.
-              </li>
-              <li>The various arithmetic operators we use include:</li>
-              <ul style="list-style-type: none">
-                <li>+ (Addition, e.g. a + b)</li>
-                <li>- (Subtraction, e.g. a - b)</li>
-                <li>* (Multiplication, e.g. a * b)</li>
-                <li>/ (Division, e.g. a / b)</li>
-                <li>% (Modulus -Remainder after division, e.g. a % b)</li>
-                <li>++ (Increment, e.g. a++ or ++a)</li>
-                <li>-- (Decrement, e.g. a-- or --a)</li>
-              </ul>
+    <section class="main-section" id="Operators">
+      <br />
+      <header><b>Java Operators</b></header>
+      <article>
+        <p>
+          Operators are symbols that perform operations on variables and
+          values. For example, we know that + is an operator used for
+          addition, while * is an operator used for multiplication.
+        </p>
+        <p>Operators in Java can be classified into the following types:</p>
+        <ol>
+          <b>
+            <li>Arithmetic Operators</li>
+          </b>
+          <ul>
+            <li>
+              Arithmetic operators are used to perform arithmetic operations
+              on variables and data.
+            </li>
+            <li>The various arithmetic operators we use include:</li>
+            <ul style="list-style-type: none">
+              <li>+ (Addition, e.g. a + b)</li>
+              <li>- (Subtraction, e.g. a - b)</li>
+              <li>* (Multiplication, e.g. a * b)</li>
+              <li>/ (Division, e.g. a / b)</li>
+              <li>% (Modulus -Remainder after division, e.g. a % b)</li>
+              <li>++ (Increment, e.g. a++ or ++a)</li>
+              <li>-- (Decrement, e.g. a-- or --a)</li>
             </ul>
-            <br />
-            <b><li>Assignment Operators</li></b>
-            <ul>
+          </ul>
+          <br />
+          <b>
+            <li>Assignment Operators</li>
+          </b>
+          <ul>
+            <li>
+              Assignment operators are used in Java to assign values to
+              variables.
+            </li>
+            <li>A few assignment operators available in Java include:</li>
+            <ul style="list-style-type: none">
+              <li>= (Assignment, e.g. a = b)</li>
               <li>
-                Assignment operators are used in Java to assign values to
-                variables.
+                += (Additional assignment, e.g. a += b is equivalent to a = a
+                + b)
               </li>
-              <li>A few assignment operators available in Java include:</li>
-              <ul style="list-style-type: none">
-                <li>= (Assignment, e.g. a = b)</li>
-                <li>
-                  += (Additional assignment, e.g. a += b is equivalent to a = a
-                  + b)
-                </li>
-                <li>
-                  we can also write assignment operators for other arithmetic
-                  operations such as subtraction, multiplication, division,
-                  modulus, etc.
-                </li>
-              </ul>
+              <li>
+                we can also write assignment operators for other arithmetic
+                operations such as subtraction, multiplication, division,
+                modulus, etc.
+              </li>
             </ul>
-            <br />
-            <b><li>Relational (or Comparison) operators</li></b>
-            <ul>
+          </ul>
+          <br />
+          <b>
+            <li>Relational (or Comparison) operators</li>
+          </b>
+          <ul>
+            <li>
+              Relational/Comparison operators are used to compare two values
+              (or variables). The values returned from comparison are known as
+              Boolean values and will either be true or false.
+            </li>
+            <li>
+              A few relational/comparison operators available in Java include:
+            </li>
+            <ul style="list-style-type: none">
+              <li>== (Equal to, e.g. a == b)</li>
+              <li>!= (Not equal to, e.g. a != b)</li>
+              <li>> (Greater than, e.g. a > b)</li>
               <li>
-                Relational/Comparison operators are used to compare two values
-                (or variables). The values returned from comparison are known as
-                Boolean values and will either be true or false.
-              </li>
+                < (Less than, e.g. a < b)</li>
+              <li>>= (Greater than or equal to, e.g. a >= b)</li>
               <li>
-                A few relational/comparison operators available in Java include:
-              </li>
-              <ul style="list-style-type: none">
-                <li>== (Equal to, e.g. a == b)</li>
-                <li>!= (Not equal to, e.g. a != b)</li>
-                <li>> (Greater than, e.g. a > b)</li>
-                <li>< (Less than, e.g. a < b)</li>
-                <li>>= (Greater than or equal to, e.g. a >= b)</li>
-                <li><= (Less than or equal to, e.g. a <=b)</li>
-              </ul>
+                <= (Less than or equal to, e.g. a <=b)</li>
             </ul>
-            <br />
-            <b><li>Logical Operators</li></b>
-            <ul>
+          </ul>
+          <br />
+          <b>
+            <li>Logical Operators</li>
+          </b>
+          <ul>
+            <li>
+              Logical operators are used to determine the logic (whether a
+              statement is true or false) between variables or values.
+            </li>
+            <li>A few logical operators available in Java include:</li>
+            <ul style="list-style-type: none">
               <li>
-                Logical operators are used to determine the logic (whether a
-                statement is true or false) between variables or values.
-              </li>
-              <li>A few logical operators available in Java include:</li>
-              <ul style="list-style-type: none">
-                <li>
-                  && (Logical and - returns true if both statements are true,
-                  e.g. a < 5 && b < 5)
-                </li>
-                <li>
-                  || (Logical or - returns true if one of the statements is
-                  true, e.g. a < 5 || b < 5)
-                </li>
-                <li>
-                  ! (Logical not - reverses the result, returns false if the
-                  result is true, e.g. !(a < 5 && b < 5)))
-                </li>
-              </ul>
+                && (Logical and - returns true if both statements are true,
+                e.g. a < 5 && b < 5) </li>
+              <li>
+                || (Logical or - returns true if one of the statements is
+                true, e.g. a < 5 || b < 5) </li>
+              <li>
+                ! (Logical not - reverses the result, returns false if the
+                result is true, e.g. !(a < 5 && b < 5))) </li>
             </ul>
-            <br />
-            <b><li>Unary Operators</li></b>
-            <ul>
+          </ul>
+          <br />
+          <b>
+            <li>Unary Operators</li>
+          </b>
+          <ul>
+            <li>
+              Unary operators are operators that need only one operand to
+              perform any operation, such as: increment, decrement, negation,
+              etc. It consists of various arithmetic, logical and other
+              operators that operate on a single operand.
+            </li>
+            <li>A few unary operators available in Java include:</li>
+            <ul style="list-style-type: none">
               <li>
-                Unary operators are operators that need only one operand to
-                perform any operation, such as: increment, decrement, negation,
-                etc. It consists of various arithmetic, logical and other
-                operators that operate on a single operand.
+                + (Unary Plus - represents a <i>positive</i> value, e.g. +a)
               </li>
-              <li>A few unary operators available in Java include:</li>
-              <ul style="list-style-type: none">
-                <li>
-                  + (Unary Plus - represents a <i>positive</i> value, e.g. +a)
-                </li>
-                <li>
-                  - (Unary Minus - represents a <i>negative</i> value, e.g. -a)
-                </li>
-                <li>! (Greater than or equal to, e.g. a >= b)</li>
-                <li>
-                  ++ (Increment Operator - increments the value of a variable by
-                  1, e.g. ++a OR a++)
-                </li>
-                <li>
-                  -- (Decrement Operator - decrements the value of a variable by
-                  1, e.g. --a OR a--)
-                </li>
-              </ul>
               <li>
-                The last previous two operators (increment and decrement) are
-                especially important because not only are they incredibly useful
-                in multiple cases but they also have two variants of these
-                operators:
+                - (Unary Minus - represents a <i>negative</i> value, e.g. -a)
               </li>
-              <ol>
-                <li>Pre-increment/decrement (also known as prefix)</li>
-                <ul>
-                  <li>
-                    Here our code <b>increments/decrements the value first</b>,
-                    and <i>then</i>
-                    performs the specified operation.
-                  </li>
-                  <code
-                    ><text style="color: lightskyblue"
+              <li>! (Greater than or equal to, e.g. a >= b)</li>
+              <li>
+                ++ (Increment Operator - increments the value of a variable by
+                1, e.g. ++a OR a++)
+              </li>
+              <li>
+                -- (Decrement Operator - decrements the value of a variable by
+                1, e.g. --a OR a--)
+              </li>
+            </ul>
+            <li>
+              The last previous two operators (increment and decrement) are
+              especially important because not only are they incredibly useful
+              in multiple cases but they also have two variants of these
+              operators:
+            </li>
+            <ol>
+              <li>Pre-increment/decrement (also known as prefix)</li>
+              <ul>
+                <li>
+                  Here our code <b>increments/decrements the value first</b>,
+                  and <i>then</i>
+                  performs the specified operation.
+                </li>
+                <code><text style="color: lightskyblue; font-size:20px"
                       >// Prefix increment example</text
                     >
-                    <text>public class Prefix_Example {</text>
+                    <text>public class PrefixExample {</text>
                     <text style="margin-left: 40px"
                       >public static void main(String[] args) {</text
                     >
                     <text style="margin-left: 80px">int a = 5;</text>
-                    <text style="margin-left: 80px; color: lightskyblue"
+                    <text style="margin-left: 80px; color: lightskyblue; font-size:20px"
                       >//this immediately increments to 5+1 and prints 6</text
                     >
                     <text style="margin-left: 80px"
                       >System.out.println(++a);</text
                     >
-                    <text style="margin-left: 80px; color: lightskyblue"
-                      >//this reflects the modifcation in the previous line AND
-                      also prints 6</text
+                    <text style="margin-left: 80px; color: lightskyblue; font-size:20px"
+                      >//this reflects the modifcation in the previous line AND also prints 6</text
                     >
                     <text style="margin-left: 80px"
                       >System.out.println(a);</text
@@ -550,57 +716,188 @@
                     <text style="margin-left: 40px">}</text>
                     <text>}</text>
                   </code>
-                </ul>
-                <li>Post-increment/decrement (also known as postfix)</li>
-                <ul>
-                  <li>
-                    Here our code <b>performs the specified operation first</b>,
-                    and <i>then</i> increments/decrements the value.
-                  </li>
-                  <code
-                    ><text style="color: lightskyblue"
+              </ul>
+              <li>Post-increment/decrement (also known as postfix)</li>
+              <ul>
+                <li>
+                  Here our code <b>performs the specified operation first</b>,
+                  and <i>then</i> increments/decrements the value.
+                </li>
+                <code><text style="color: lightskyblue; font-size:20px"
                       >// Postfix increment example</text
                     >
-                    <text>public class Postfix_Example {</text>
+                    <text>public class PostfixExample {</text>
                     <text style="margin-left: 40px"
                       >public static void main(String[] args) {</text
                     >
                     <text style="margin-left: 80px">int a = 5;</text>
-                    <text style="margin-left: 80px; color: lightskyblue"
-                      >//prints the current value of a (5) BEFORE
-                      incrementing</text
+                    <text style="margin-left: 80px; color: lightskyblue; font-size:20px"
+                      >//prints the current value of a (5) BEFORE incrementing</text
                     >
                     <text style="margin-left: 80px"
                       >System.out.println(a++);</text
                     >
-                    <text style="margin-left: 80px; color: lightskyblue"
-                      >//now that the value of a has been printed out, then
-                      incremented, prints 6</text
-                    >
+                    <text style="margin-left: 80px; color: lightskyblue; font-size:20px"
+                      >//value has been printed out, incremented, now prints 6</text>
                     <text style="margin-left: 80px"
                       >System.out.println(a);</text
                     >
                     <text style="margin-left: 40px">}</text>
                     <text>}</text>
                   </code>
-                </ul>
-              </ol>
-            </ul>
-            <br />
-            <b><li>Bitwise Operators</li></b>
-          </ol>
-          <h1>TO REMEMBER:</h1>
+              </ul>
+            </ol>
+          </ul>
           <br />
-          <img
-            src="https://qph.cf2.quoracdn.net/main-qimg-0755200da1dbafd34d3b0909ec3a2369.webp"
-            alt="Precedence Table"
-            class="center"
-          />
-        </article>
+          <b>
+            <li>Bitwise Operators</li>
+          </b>
+        </ol>
+        <h1>TO REMEMBER:</h1>
         <br />
-        <hr />
-      </section>
-      <!-- TO COMPLETE LATER
+        <img src="https://qph.cf2.quoracdn.net/main-qimg-0755200da1dbafd34d3b0909ec3a2369.webp" alt="Precedence Table"
+          class="center" />
+      </article>
+      <br />
+      <hr />
+    </section>
+    <section class="main-section" id="Floating_Point">
+      <br />
+      <header><b>Floating-point Numbers</b></header>
+      <article>
+        <p>
+          Floating-point numbers in Java are used to represent fractional values or numbers with a large range of
+          possible values.
+          They are primarily used when precise decimal calculations are not required.
+          <br><br>
+          Java uses two primitive data types to represent floating-point numbers: <b>float</b> and <b>double</b>.
+        <ul>
+          <li>The <b>float</b> data type is a 32-bit single-precision floating-point number</li>
+          <li>The <b>double</b> data type (which we will use in this class rather than float) is a 64-bit
+            double-precision floating-point number.
+            This makes the double data type more accurate than the float data type.
+          </li>
+        </ul>
+        </p>
+        <p> We can create double variables and assign values to them using
+          the same syntax we used for the other types:
+          <br /><br />
+          <code><text>double payRate = 42.5;</text> </code>
+          <br />
+        </p>
+        <header>Integer vs Floating Point Division</header>
+        <p>In math, division ofter allows for remainders.
+          It is why whenever a number is <b>NOT</b> evenly divisible by another number
+          it can result in a decimal number opposed to a whole number
+          e.g. 5/2 is equal to 2.5
+          <br><br>
+          However, <b>integer division</b> and division as we know from math class
+          (also known as <b>floating-point division</b>) are two <b>different</b> ways of performing division
+          operations.
+          <br><br>
+          <b>Integer division</b> is the division operation performed on two integers, resulting in an <b>integer
+            quotient</b>.
+          The result is obtained by discarding the fractional part of the division, if any.
+          In other words, <b>it performs a "round towards zero" operation.</b>
+        <ul>
+          <li>For example, if you perform an integer division of 10 divided by 3, the result is 3 because it discards
+            the fractional part.</li>
+          <li>Similarly, if you divide -10 by 3 using integer division, the result is -3, as it still rounds towards
+            zero.
+          </li>
+        </ul>
+        On the other hand, <b>floating-point division</b> is the division operation performed on floating-point numbers
+        (those with decimal places).
+        <b>It produces a result with decimal places</b>, including the fractional part.
+        This type of division is typically <b>more accurate and provides more precise results</b>.
+        </p>
+        <p>In Java, when dividing two integers using the '/' operator,
+          <b>integer division is performed if both operands are integers</b>.
+          <br><br>
+          To perform floating-point division, <b>at least one of the operands should be a floating-point number</b>.
+          <br><br>
+          For example:
+        </p>
+        <code><text>int result = 10 / 3;<text style="color: lightskyblue; font-size:20px">//Integer division, result is 3</text></text>
+            <text>double result = 10.0 / 3;<text style="color: lightskyblue; font-size:20px">//Regular division, result is approximately 3.3333</text></code>
+        </text>
+        <p>It is important to be aware of the distinction between integer division and floating-point division,
+          especially when working with different data types and when precision is required in calculations.</p>
+      </article>
+      <br />
+      <hr />
+    </section>
+    <section class="main-section" id="Math_Methods">
+      <br />
+      <header><b>Math Methods</b></header>
+      <article>
+        <p>
+          Java has a lot of built-in Math methods that allow us to perform more complex mathematical computations.
+          The Math class is found in the java.lang package, so you don’t have to import it.
+          <br><br>
+          For example, if you need to get the square root of a number, we use the Math.sqrt() method.
+        </p>
+        <p>Some frequently used Math class methods include:</p>
+        <ul>
+          <li><b>Math.abs</b>(n) - for computing the absolute value of a particular number</li>
+          <li><b>Math.sqrt</b>(n) - for computing the square root of a particular number</li>
+          <li><b>Math.pow</b>(base, exp) - for computing the result of a particular base raised to the power of a
+            particular exponent</li>
+        </ul>
+        <p>You can learn more about the Java Math class methods from the Java API <a
+            href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Math.html">here</a></p>
+      </article>
+      <br />
+      <hr />
+    </section>
+
+    <section class="main-section" id="Error_Types">
+      <br />
+      <header><b>Types of Errors</b></header>
+      <article>
+        <p>
+          There are three types of errors can occur in a program:
+        <ol>
+          <li>Compiler errors</li>
+          <li>Run-time errors</li>
+          <li>Logic errors</li>
+        </ol>
+        </p>
+        <p><b>Compiler errors</b> occur when you <b>violate the syntax rules</b> of the Java language.
+          For example, forgetting a semicolon at the end of a statement or
+          that parentheses and braces have to come in matching pairs.
+          So (1 + 2) is legal, but 8) is not.
+          In the latter case, the program cannot be compiled, and the compiler displays an error.
+        <ul>
+          <li>Error messages from the compiler usually indicate where in the program the error occurred, and sometimes
+            they can tell you exactly what the error is.</li>
+        </ul>
+        </p>
+        <p><b>Run-time errors</b> occur while the interpreter is executing byte code
+          and <b>something goes wrong</b>.
+          These errors are also called “exceptions” because they usually
+          indicate that something exceptional (and bad) has happened.
+          (Example: attempting divide by zero)
+        <ul>
+          <li>When a run-time error occurs, the interpreter displays an
+            error message that explains what happened and where.</li>
+        </ul>
+        </p>
+        <p>The third type of error is the <b>logic error</b>.
+          If your program has a logic error, it will compile and run
+          without generating error messages, but <b>it will not do the right thing</b>.
+          Instead, it will do exactly what you told it to do (even if it isn't the right solution).
+        <ul>
+          <li>Usually the compiler and the interpreter <b>CANNOT</b> help you,
+            since they don’t know what the right thing is. </li>
+        </ul>
+        </p>
+      </article>
+      <br />
+      <hr />
+    </section>
+
+    <!-- TO COMPLETE LATER
          <section class="main-section" id="Global_variables">
             <header>Global variables</header>
             <article>
@@ -804,21 +1101,22 @@
             </article>
          </section>
 		 -->
-      <section class="main-section" id="Reference">
-        <header>Reference</header>
-        <article>
-          <p>Documentation on this page is taken from the following:</p>
-          <ul>
-            <li>
-              <a
-                href="https://www.programiz.com/java-programming"
-                target="_blank"
-                >Programiz</a
-              >
-            </li>
-          </ul>
-        </article>
-      </section>
-    </main>
-  </body>
+    <section class="main-section" id="Reference">
+      <header><b>Reference</b></header>
+      <article>
+        <p>Documentation on this page is taken from the following:</p>
+        <ul>
+          <li>Allen Downey and Chris Mayfield, <i><b>Think Java: How to Think Like a Computer Scientist</b></i>, 2nd
+            Edition, Version 7.1.0, Green Tea Press, 2020, Creative Commons License.
+          </li>
+          <br>
+          <li>
+            <a href="https://www.programiz.com/java-programming" target="_blank">Programiz</a>
+          </li>
+        </ul>
+      </article>
+    </section>
+  </main>
+</body>
+
 </html>
