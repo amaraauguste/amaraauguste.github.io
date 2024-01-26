@@ -15,6 +15,20 @@
       rel="stylesheet"
     />
     <style>
+      .center {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 10px;
+      }
+      @media (max-width: 767px) {
+        .introimg img {
+          height: 1000px; /* Adjust the height as necessary */
+          width: 200px;
+        }
+      }
+
       /* Media Queries for different screen sizes */
       @media (max-width: 2000px) {
         .introimg .btn {
@@ -64,6 +78,11 @@
 
       .introimg {
         position: relative;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 10px;
       }
 
       .introimg .btn {
@@ -350,98 +369,6 @@
           margin-top: 50px;
         }
       }
-
-      .form-center {
-        display: flex;
-        justify-content: center;
-      }
-
-      .box1 {
-        background-color: #b19cd9;
-        /*vibrant colors employing the RGB or hex colors*/
-      }
-
-      .box2 {
-        background-color: pink;
-        /*vibrant colors employing the RGB or hex colors*/
-      }
-
-      .box3 {
-        background-color: lightblue;
-        /*vibrant colors employing the RGB or hex colors*/
-      }
-
-      .box4 {
-        background-color: #fed8b1;
-        /*vibrant colors employing the RGB or hex colors*/
-      }
-
-      input[type="text"],
-      select,
-      textarea {
-        width: 100%;
-        padding: 12px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box;
-        margin-top: 6px;
-        margin-bottom: 16px;
-        resize: vertical;
-      }
-
-      input[type="email"],
-      select,
-      textarea {
-        width: 100%;
-        padding: 12px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box;
-        margin-top: 6px;
-        margin-bottom: 16px;
-        resize: vertical;
-      }
-
-      input[type="subject"],
-      select,
-      textarea {
-        width: 100%;
-        padding: 12px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box;
-        margin-top: 6px;
-        margin-bottom: 16px;
-        resize: vertical;
-      }
-
-      input[type="submit"] {
-        background-color: #04aa6d;
-        color: white;
-        padding: 12px 20px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-      }
-
-      input[type="submit"]:hover {
-        background-color: #45a049;
-      }
-
-      .container {
-        border-radius: 5px;
-        background-color: rgb(255, 239, 213);
-        border: 1px solid pink;
-        opacity: 0.7;
-        padding: 20px;
-        width: 100%;
-      }
-
-      .container:hover {
-        /*hover - when user lands cursor on box, opacity changes*/
-        opacity: 1;
-        transform: scale(1.008);
-      }
     </style>
   </head>
 
@@ -451,9 +378,8 @@
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
       />
-     
     </div>
-    <br><br>
+    <br /><br />
     <!-- Header with image -->
 
     <div class="introimg centerimg col2">
@@ -464,6 +390,7 @@
         <button class="btn" style="display: none">Enter</button></a
       >
     </div>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script>
       $(window).on("load", function () {
