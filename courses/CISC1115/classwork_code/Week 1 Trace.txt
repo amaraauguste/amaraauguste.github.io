@@ -1,0 +1,16 @@
+MEMORY:
+a = 10
+b = 27
+c = (10 + 27) = 37
+d = (10 - 27) = -17
+e = (10 + 27 * 3) = (10 + 81) = 91
+f = (27 / 2) = 13 //integer division!
+g = (27 % 10) = 7 
+
+OUTPUT:
+a is 10, b is 27
+a+b is 37
+a-b is -17
+a+b*3 is 91
+b/2 is 13
+b%10 is 7
