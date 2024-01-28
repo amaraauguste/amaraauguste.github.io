@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>CISC 1115</title>
+    <style>
+      .backbutton {
+        text-decoration: none;
+        display: inline-block;
+        padding: 8px 16px;
+      }
+
+      .backbutton:hover {
+        background-color: #f678d0;
+      }
+
+      .previous {
+        background-color: #f4c3e5;
+        color: black;
+      }
+
+      .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 80%;
+      }
+
+      header {
+        color: black;
+        margin: 10px;
+        text-align: center;
+        font-size: 1.8em;
+        font-weight: thin;
+      }
+
+      #main-doc header {
+        text-align: left;
+        margin: 0px;
+      }
+
+      code {
+        display: block;
+        text-align: left;
+        white-space: pre-line;
+        position: relative;
+        word-break: normal;
+        word-wrap: normal;
+        line-height: 2;
+        background-color: black;
+        color: white;
+        padding: 15px;
+        margin: 10px;
+        border-radius: 5px;
+      }
+
+      @media only screen and (max-width: 400px) {
+        #main-doc {
+          margin-left: -10px;
+        }
+
+        code {
+          margin-left: -20px;
+          width: 100%;
+          padding: 15px;
+          padding-left: 10px;
+          padding-right: 45px;
+          min-width: 233px;
+        }
+      }
+
+      body {
+        font-family: "Lato", sans-serif;
+      }
+
+      #navbar {
+        height: 100%;
+        width: 160px;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #f4c3e5;
+        overflow-x: hidden;
+        padding-top: 20px;
+      }
+
+      #navbar a {
+        padding: 6px 8px 6px 16px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #000000;
+        display: block;
+      }
+
+      #navbar a:hover {
+        color: #f1f1f1;
+      }
+
+      #main-doc {
+        margin-left: 160px;
+        /* Same as the width of the sidenav */
+        font-size: 28px;
+        /* Increased text to enable scrolling */
+        padding: 0px 10px;
+      }
+
+      @media screen and (max-height: 450px) {
+        #navbar {
+          padding-top: 15px;
+        }
+
+        #navbar a {
+          font-size: 18px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav id="navbar">
+      <header>CISC 1115</header>
+      <hr />
+      <a class="nav-link" href="#Week1" style="font-size: 22px">Week 1</a>
+      
+      <!--
+      <a class="nav-link" href="#Week2" style="font-size: 21.659px">Week 2</a>
+      <a class="nav-link" href="#Week3" style="font-size: 22px">Week 3</a>
+      <a class="nav-link" href="#Week4" style="font-size: 22px">Week 4</a>
+      <a class="nav-link" href="#Week5" style="font-size: 22px">Week 5</a>
+      -->
+      <!--add more later-->
+
+      <a
+        href="https://amaraauguste.github.io/courses/cisc1115.html"
+        class="previous backbutton"
+        style="font-size: 22px"
+        >&laquo; Back</a
+      >
+    </nav>
+    <main id="main-doc">
+      <!-- WEEK 1 NOTES -->
+      <section class="main-section" id="Week1">
+        <br />
+        <header><b>Week 1</b></header>
+        <p>
+          1) We learned about basic programs such as Hello World!
+          <br />
+          How can we modify this to print a whole message?
+          <br /><br />
+          Let's print two lines:
+        </p>
+        <ul>
+          <li>First: Hello, my name is [YOUR NAME HERE].</li>
+
+          <li>Second: How are you?</li>
+        </ul>
+        <p><a href="">Code found here</a></p>
+        <p>
+            2) Write a Java program that creates TWO integer variables to the
+            values of your choice (e.g. 4 and 5, 12 and 10, etc.) and computes and
+            prints the following:
+          </p>
+          <ul>
+            <li>the sum of the two numbers</li>
+            <li>the difference between the two numbers</li>
+            <li>the product of the two numbers</li>
+            <li>the quotient of the two numbers</li>
+          </ul>
+          <p><a href="">Code found here</a></p>
+        <p>
+        3) Answer the following:
+        </p>
+        <ol>
+          <li>What is the result of the following Java expression: <b>5 + 4 * 2</b> ?</li>
+          <li>How does the order of operations affect the evaluation of the following expression: <b>2 + 3 * 4 - 5</b> ?</li>
+          <li>Evaluate the following Java expression: <b>10 / 2 + 3 * 5 - 4</b></li>
+          <li>What is the output of the following code snippet? 
+            <code><text>int a = 2 + 3 * 4 - 1;</text>
+                <text>System.out.println("Result: " + a);</text>
+            </code>
+          </li>
+          <li>Rewrite the following expression using parentheses to explicitly define the order of operations: <b>8 - 2 * 4 / 2 + 3</b></li>
+          <li>What is the value of the variable 'b' after executing the following code snippet? 
+            <code><text>int b = 10;</text>
+                <text>b += 2 * 3 - 1;</text>
+            </code>
+          </li>
+        </ol>
+        <p>
+            4) Trace the following program:
+            </p>
+            <code><text> public static void main(String [] args){</text>
+                <text style="margin-left: 40px">int a, b, c, d, e, f, g;</text>
+                <text style="margin-left: 40px">a = 10;</text>
+                <text style="margin-left: 40px">b = 27;</text>
+                <text style="margin-left: 40px">System.out.println( "a is " + a + ", b is " + b );</text>
+                <text></text>
+                <text style="margin-left: 40px">c = a + b;</text>
+                <text style="margin-left: 40px">System.out.println( "a+b is " + c );</text>
+                <text style="margin-left: 40px">d = a - b;</text>
+                <text style="margin-left: 40px">System.out.println( "a-b is " + d );</text>
+                <text style="margin-left: 40px">e = a+b*3;</text>
+                <text style="margin-left: 40px">System.out.println( "a+b*3 is " + e );</text>
+                <text style="margin-left: 40px">f = b / 2;</text>
+                <text style="margin-left: 40px">System.out.println( "b/2 is " + f );</text>
+                <text style="margin-left: 40px">g = b % 10;</text>
+                <text style="margin-left: 40px">System.out.println( "b%10 is " + g );</text>
+                <text>}</text>
+            </code>
+            <p>5) Write a Java program to print the area and perimeter of a rectangle.</p>
+            <ul>
+              <li>initialize two integer variables:</li>
+                <ul>
+                  <li>one for length</li>
+                  <li>one for width</li>
+                </ul>
+              <li>compute the formula for area: <b>a = wl</b></li>
+              <li>compute the formula for perimeter: <b>p = 2(l+w)</b></li>
+              <li>print and label the results</li>
+            </ul>
+        <br />
+        <hr />
+      </section>
+     
+    </main>
+  </body>
+</html>
