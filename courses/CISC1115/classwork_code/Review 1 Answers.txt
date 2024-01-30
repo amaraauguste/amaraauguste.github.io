@@ -1,0 +1,12 @@
+Review 1 Answers:
+
+1) It can run on different kinds of computers with few or no modifications.
+
+2) int 123; //invalid (sequence of numbers)
+   int $50; //valid (but not conventional)
+   int 50dollars; //invalid (starts with a number)
+   int abs; //valid
+   int hunter; //valid
+   int @60cents; //invalid (illegal character AND starts with a number)
+   int a_b; //valid
+   int #define; //invalid (illegal character)
