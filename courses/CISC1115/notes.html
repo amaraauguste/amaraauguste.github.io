@@ -3,6 +3,28 @@
 <head>
   <title>CISC 1115</title>
   <style>
+    /* width */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 5px grey; 
+      border-radius: 10px;
+    }
+ 
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      background: rgb(183, 147, 241); 
+      border-radius: 10px;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgb(140, 111, 186); 
+    }
+
     .backbutton {
       text-decoration: none;
       display: inline-block;
@@ -74,7 +96,7 @@
 
     #navbar {
       height: 100%;
-      width: 160px;
+      width: 180px;
       position: fixed;
       z-index: 1;
       top: 0;
@@ -97,7 +119,7 @@
     }
 
     #main-doc {
-      margin-left: 160px;
+      margin-left: 180px;
       /* Same as the width of the sidenav */
       font-size: 28px;
       /* Increased text to enable scrolling */
@@ -128,12 +150,16 @@
     <a class="nav-link" href="#Floating_Point" style="font-size: 22px">Floating-point Numbers</a>
     <a class="nav-link" href="#Math_Methods" style="font-size: 21.466px">Math Methods</a>
     <a class="nav-link" href="#Error_Types" style="font-size: 22px">Error Types</a>
-
+    <a class="nav-link" href="#System" style="font-size: 22px">System Class</a>
+    <!--<a class="nav-link" href="#Input" style="font-size: 22px">Reading Input</a>
+    <a class="nav-link" href="#Output" style="font-size: 21.5px">Writing Output</a>
+    -->
     <!--add more later-->
 
     <a class="nav-link" href="#Reference" style="font-size: 22px">Reference</a>
     <a href="https://amaraauguste.github.io/courses/cisc1115.html" class="previous backbutton"
       style="font-size: 22px">&laquo; Back</a>
+      <br><br><br>
   </nav>
   <main id="main-doc">
     <!-- WEEK 1 NOTES -->
@@ -806,8 +832,16 @@
           the same syntax we used for the other types:
           <br /><br />
           <code><text>double payRate = 42.5;</text> </code>
-          <br />
         </p>
+        <p>The simplest way to convert a floating-point value to an integer 
+          is to use a <b>type cast</b>, so called because it molds or “casts” 
+          a value from one type to another.</p>
+          <p>
+            The syntax for type casting is to put the name of the type 
+            in parentheses and use it as an operator.</p>
+          <code><text>double payRate = 42.5;</text> 
+            <text>int pay = (int) payRate;</text></code>
+          <p style="font-size: 50px;"><b>What is the value of the variable pay?</b></p>
         <header>Integer vs Floating Point Division</header>
         <p>In math, division often allows for remainders.
           It is why whenever a number is <b>NOT</b> evenly divisible by another number
@@ -870,6 +904,39 @@
         <p>You can learn more about the Java Math class methods from the Java API <a
             href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Math.html">here</a></p>
       </article>
+      <header>Generating Random Numbers</header>
+      <article>
+        <p>
+          Most computer programs do the same thing every time they run, 
+          meaning they are <b>deterministic</b>. Usually we want our
+          programs to be deterministic since we expect the same 
+          calculation to yield the same result. But for certain applications (e.g. games)
+          we want to write programs that are <b>nondeterministic.</b>
+          <br><br>
+          It is hard for a computer to generate <i>truly</i> random numbers. But there are algorithms
+          that generate unpredictable sequences called <b>pseudorandom</b> numbers. For
+          most applications, <b>they are as good as random.</b>
+        </p>
+        <p>The <b>Math.random()</b> method returns a pseudorandom 
+        double type number between 0.0 and 1.0, 
+        where 0.0 is <b>inclusive</b> and 1.0 is <b>exclusive.</b></p>
+        <p>When this method is first called, 
+          it creates a single new pseudorandom-number generator</p>
+          <code><text>public class RandomExample {</text>
+          <text style="margin-left: 40px"
+            >public static void main(String[] args) {</text
+          >
+          <text style="margin-left: 80px">double rand = Math.random();<text style="color: lightskyblue; font-size:20px">//Generate random number</text></text>
+          <text style="margin-left: 80px"
+            >System.out.println("Random Number:" + rand);<text style="color: lightskyblue; font-size:20px">//different each run</text></text
+          >
+          <text style="margin-left: 40px">}</text>
+          <text>}</text>
+        </code>
+        <p>to generate random number in range:</p>
+        <text style="margin: 120px; font-size: 50px">
+          Math.random() * (max - min) + min;</text>
+      </article>
       <br />
       <hr />
     </section>
@@ -918,7 +985,211 @@
       <br />
       <hr />
     </section>
-    <!-- WEEK 2 NOTES -->
+  <section class="main-section" id="System">
+  <br />
+  <header><b>The System class</b></header>
+  <article>
+    <p>
+      So far we have used <b>System.out.println()</b> to display text to the
+      screen. But what does it actually mean? <br /><br />
+      <b>System</b> is a class (that belongs to the java.lang package,
+       which is imported automatically) that provides methods related to the “system” or
+      environment where programs run. 
+    </p>
+    <p>
+      System.out represents the <b><i>Standard Output Stream</i></b
+      >. That means that if we want to print any statement on the console, we
+      should use the following statement: <br /><br />
+      <text style="margin: 300px; font-size: 50px">System.out.print();</text>
+    </p>
+    <p>There are three methods we use to print statements:</p>
+    <ol>
+      <li><b>print(String s)</b></li>
+      <ul>
+        <li>Used to print on the console.</li>
+        <li>Accepts a string as a parameter (we can concatenate parts to 
+          the string if necessary, i.e. “Hello” + “ World”, etc. 
+          however, it is typical convention to include all string literals 
+          in the same pair of quotations if they are consecutive) </li>
+        <li>After printing the statement, <b>the cursor remains on the same line.</b></li>
+      </ul>
+      <li><b>println(String s)</b></li>
+      <ul>
+        <li>An upgraded version of the print() method, 
+          also used to display text on the console.</li>
+        <li>After printing the statement, 
+          it throws <b>the cursor at the start of the next line.</b></li>
+      </ul>
+      <li><b>printf(String format, datatype args)</b></li>
+        <ul>
+          <li>Accepts two parameters:</li>
+            <ul>
+              <li style="list-style-type: circle"><b>format</b>: It is a formatted String, uses placeholders 
+                with specific conversion characters to refer to the 
+                arguments that will be replaced when printing</li>
+              <li style="list-style-type: circle">
+                <b>args</b>: It is an argument referenced by the format specifiers. 
+                If the number of arguments is more than the format specifiers, the other arguments are ignored. 
+                The number of arguments may be zero.
+              </li>
+            </ul>
+        </ul>
+        <p>A formatted placeholder is declared as follows:</p>
+        <text style="font-size: 48px">%[flags][width][.precision]conversion-character</text>
+        <p>With any flags, width, and precision as <b><i>optional</i></b> modifiers</p>
+        <p>Feel free to consult the following: </p>
+      <img style="width: 100%; height: 100%" 
+      src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC1115/images/printf%20ref.png?raw=true" alt="printf ref">
+      <p>printf() throws: </p>
+      <ul>
+        <li>a <b>NullPointerException</b> if the format is null</li>
+        <li>an <b>IllegalFormatException</b> if a format string contains illegal syntax</li>
+        <li>an <b>IllegalFormatConversionException</b> if the placeholder and corresponding argument are not of the same type</li>
+      </ul>
+    </ol>
+  </article>
+  <header>Escape Sequences</header>
+  <article>
+    <p>The <b>\n</b> is an <b>escape sequence</b>, which is a sequence of characters that represents a special character. The backslash allows you to “escape” the string’s
+      literal interpretation.</p>
+    <img style="width: 60%; height: 60%; display: block; margin-left: auto;
+    margin-right: auto;" src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC1115/images/escape%20sequences.png?raw=true" alt="escape sequences">
+  </article>
+  <br />
+  <hr />
+</section>
+<!-- WEEK 2 NOTES -->
+<!--
+<section class="main-section" id="Input">
+  <br />
+  <header><b>The Scanner Class</b></header>
+  <article>
+    <p>
+      The System class also provides the special value <b>System.in</b>, which
+      is an InputStream that provides methods for reading input from the
+      keyboard. These methods are not easy to use; fortunately, Java provides
+      other classes that make it easier to handle common input tasks.
+    </p>
+    <p>
+      All reading done in Java uses the <b>Scanner</b> class. Using this class,
+      we can create an object to read input from the standard input channel
+      System.in (in our case, the keyboard)
+    </p>
+    <p>
+      To use the Scanner class, it is necessary to import the class Scanner from
+      the library java.util by including the following line at the top of
+      program:
+    </p>
+    <text style="margin: 250px; font-size: 50px"
+      >import java.util.Scanner;</text
+    >
+    <p>We can declare a Scanner object by saying:</p>
+    <text style="margin: 80px; font-size: 50px"
+      >Scanner sc = new Scanner (System.in);</text
+    >
+    <ul>
+      <li>
+        sc is the <b>name of the Scanner object</b> (this can be changed and is
+        entirely up to the person who writes the code)
+      </li>
+      <li>
+        and System.in connects our object to <b>standard input</b> (the keyboard)
+      </li>
+    </ul>
+    <p>
+      The Scanner class has multiple built-in methods that we can access to help
+      us read data, for example: we can use sc.nextLine() to read in a line of
+      String(s) (spaces included)
+    </p>
+    <p>Other methods include:</p>
+    <ul>
+      <li><b>nextBoolean()</b>: reads a boolean value from the user</li>
+      <li><b>nextByte()</b>: reads a byte value from the user</li>
+      <li><b>nextDouble()</b>: reads a double value from the user</li>
+      <li><b>nextFloat()</b>: reads a float value from the user</li>
+      <li><b>nextInt()</b>: reads a int value from the user</li>
+      <li>
+        <b>next()</b>: reads a complete token (String) from the user. A complete token
+        is preceded and followed by input that matches the delimiter pattern, in
+        most instances this is a space
+      </li>
+    </ul>
+  </article>
+  <br />
+  <header>Reading from Files</header>
+  <article>
+    <p>
+      As previously mentioned, we use a Scanner to read data whether or not the data is from the keyboard or a file. 
+      <b>To read from a file we only need to make one or two modifications from what we learned from reading from the keyboard.</b>
+    </p>
+    <p>
+      First, since we are using files we need to allow our program(s) to use them by including:
+    </p>
+    <text style="margin: 100px; font-size: 45px"
+      >import java.io.File; <text style="color: rgb(65, 180, 252)">//import the File class</text></text
+    >
+    <p>Now we can add a <b>throws Exception</b> declaration to main and create the File object that we will be reading from:</p>
+    <text style="margin: 140px; font-size: 50px"
+      >File file= new File("[filename].txt");</text
+    >
+    <p>And create a Scanner like we have previously done, only changing our reference from the keyboard to the corresponding file object:</p>
+    <text style="margin: 165px; font-size: 50px"
+      >Scanner sc = new Scanner(file);</text
+    >
+    <ul>
+      <li>
+        It is important that you remember to create the .txt file that you are trying to 
+        reading from and make sure that it is in the correct directory or to specify the path 
+        where the file is located when creating the File object else you will receive a <b>FileNotFoundException</b> 
+        when you attempt to run your code.
+      </li>
+    </ul>
+  </article>
+  <br />
+  <hr />
+</section>
+<section class="main-section" id="Output">
+  <br />
+  <header><b>Writing to a File</b></header>
+  <article>
+    <p>
+      We already know about writing data to the screen by using System.out, 
+      but how about writing data to an outside source such as a file?
+    </p>
+    <p>
+      Writing to a file is slightly less work since we do not have 
+      to manually create the .txt file ourselves prior to running the program, 
+      the program will do the creation for us. There are many different ways to 
+      write to file in Java but in this class we will keep it relatively 
+      simple and use the <b>PrintWriter</b> class.
+    </p>
+    <p>
+      Like before, we need to import the PrintWriter class in order to use it:
+    </p>
+    <text style="margin: 150px; font-size: 50px"
+      >import java.io.PrintWriter;</text
+    >
+    <p>We will use the PrintWriter class to create our file:</p>
+    <text style="margin: 20px; font-size: 45px"
+      >PrintWriter pw = new PrintWriter(“[filename]”.txt);</text
+    >
+    <ul>
+      <li>
+        It is important to make sure that the filename that you are trying to create
+       <b>does not already exist</b> in the directory that you are trying to create it in 
+        otherwise, you will overwrite the file and lose your original file data 
+      </li>
+    </ul>
+    <p>
+      Now we can use the PrintWriter object to write, the same way that we wrote
+      to the screen only replacing System.out with our PrintWriter object, 
+      i.e. pw.print(), pw.println(), pw.printf(), etc.
+    </p>
+  </article>
+  <br />
+  <hr />
+</section>
+-->
 
 
 
@@ -926,211 +1197,6 @@
 
 
 
-
-    <!-- TO COMPLETE LATER
-         <section class="main-section" id="Global_variables">
-            <header>Global variables</header>
-            <article>
-               <p>
-                  Global variables are in fact properties of the global object. In web
-                  pages the global object is window, so you can set and access global
-                  variables using the window.variable syntax.
-               </p>
-               <p>
-                  Consequently, you can access global variables declared in one window
-                  or frame from another window or frame by specifying the window or
-                  frame name. For example, if a variable called phoneNumber is
-                  declared in a document, you can refer to this variable from an
-                  iframe as parent.phoneNumber.
-               </p>
-            </article>
-         </section>
-         <section class="main-section" id="Constants">
-            <header>Constants</header>
-            <article>
-               <p>
-                  You can create a read-only, named constant with the const keyword.
-                  The syntax of a constant identifier is the same as for a variable
-                  identifier: it must start with a letter, underscore or dollar sign
-                  and can contain alphabetic, numeric, or underscore characters.
-               </p>
-               <code>const PI = 3.14;</code>
-               <p>
-                  A constant cannot change value through assignment or be re-declared
-                  while the script is running. It has to be initialized to a value.
-               </p>
-               <p>
-                  The scope rules for constants are the same as those for let block
-                  scope variables. If the const keyword is omitted, the identifier is
-                  assumed to represent a variable.
-               </p>
-               <p>
-                  You cannot declare a constant with the same name as a function or
-                  variable in the same scope. For example:
-               </p>
-               <code
-                  >// THIS WILL CAUSE AN ERROR function f() {}; const f = 5; // THIS
-               WILL CAUSE AN ERROR ALSO function f() { const g = 5; var g;
-               //statements }</code
-                  >
-               However, object attributes are not protected, so the following
-               statement is executed without problems.
-               <code
-                  >const MY_OBJECT = {"key": "value"}; MY_OBJECT.key =
-               "otherValue";</code
-                  >
-            </article>
-         </section>
-         <section class="main-section" id="Data_types">
-            <header>Data types</header>
-            <article>
-               <p>The latest ECMAScript standard defines seven data types:</p>
-               <ul>
-                  <li>
-                     <p>Six data types that are primitives:</p>
-                     <ul>
-                        <li>Boolean. true and false.</li>
-                        <li>
-                           null. A special keyword denoting a null value. Because
-                           JavaScript is case-sensitive, null is not the same as Null,
-                           NULL, or any other variant.
-                        </li>
-                        <li>
-                           undefined. A top-level property whose value is undefined.
-                        </li>
-                        <li>Number. 42 or 3.14159.</li>
-                        <li>String. "Howdy"</li>
-                        <li>
-                           Symbol (new in ECMAScript 2015). A data type whose instances
-                           are unique and immutable.
-                        </li>
-                     </ul>
-                  </li>
-                  <li>and Object</li>
-               </ul>
-               Although these data types are a relatively small amount, they enable
-               you to perform useful functions with your applications. Objects and
-               functions are the other fundamental elements in the language. You can
-               think of objects as named containers for values, and functions as
-               procedures that your application can perform.
-            </article>
-         </section>
-         <section class="main-section" id="if...else_statement">
-            <header>if...else statement</header>
-            <article>
-               Use the if statement to execute a statement if a logical condition is
-               true. Use the optional else clause to execute a statement if the
-               condition is false. An if statement looks as follows:
-               <code>if (condition) { statement_1; } else { statement_2; }</code>
-               condition can be any expression that evaluates to true or false. See
-               Boolean for an explanation of what evaluates to true and false. If
-               condition evaluates to true, statement_1 is executed; otherwise,
-               statement_2 is executed. statement_1 and statement_2 can be any
-               statement, including further nested if statements.
-               <p>
-                  You may also compound the statements using else if to have multiple
-                  conditions tested in sequence, as follows:
-               </p>
-               <code
-                  >if (condition_1) { statement_1; } else if (condition_2) {
-               statement_2; } else if (condition_n) { statement_n; } else {
-               statement_last; }
-               </code>
-               In the case of multiple conditions only the first logical condition
-               which evaluates to true will be executed. To execute multiple
-               statements, group them within a block statement ({ ... }) . In
-               general, it's good practice to always use block statements, especially
-               when nesting if statements:
-               <code
-                  >if (condition) { statement_1_runs_if_condition_is_true;
-               statement_2_runs_if_condition_is_true; } else {
-               statement_3_runs_if_condition_is_false;
-               statement_4_runs_if_condition_is_false; }</code
-                  >
-               It is advisable to not use simple assignments in a conditional
-               expression, because the assignment can be confused with equality when
-               glancing over the code. For example, do not use the following code:
-               <code>if (x = y) { /* statements here */ }</code> If you need to use
-               an assignment in a conditional expression, a common practice is to put
-               additional parentheses around the assignment. For example:
-               <code>if ((x = y)) { /* statements here */ }</code>
-            </article>
-         </section>
-         <section class="main-section" id="while_statement">
-            <header>while statement</header>
-            <article>
-               A while statement executes its statements as long as a specified
-               condition evaluates to true. A while statement looks as follows:
-               <code>while (condition) statement</code> If the condition becomes
-               false, statement within the loop stops executing and control passes to
-               the statement following the loop.
-               <p>
-                  The condition test occurs before statement in the loop is executed.
-                  If the condition returns true, statement is executed and the
-                  condition is tested again. If the condition returns false, execution
-                  stops and control is passed to the statement following while.
-               </p>
-               <p>
-                  To execute multiple statements, use a block statement ({ ... }) to
-                  group those statements.
-               </p>
-               Example:
-               <p>
-                  The following while loop iterates as long as n is less than three:
-               </p>
-               <code>var n = 0; var x = 0; while (n &lt; 3) { n++; x += n; }</code>
-               <p>
-                  With each iteration, the loop increments n and adds that value to x.
-                  Therefore, x and n take on the following values:
-               </p>
-               <ul>
-                  <li>After the first pass: n = 1 and x = 1</li>
-                  <li>After the second pass: n = 2 and x = 3</li>
-                  <li>After the third pass: n = 3 and x = 6</li>
-               </ul>
-               <p>
-                  After completing the third pass, the condition n &lt; 3 is no longer
-                  true, so the loop terminates.
-               </p>
-            </article>
-         </section>
-         <section class="main-section" id="Function_declarations">
-            <header>Function declarations</header>
-            <article>
-               A function definition (also called a function declaration, or function
-               statement) consists of the function keyword, followed by:
-               <ul>
-                  <li>The name of the function.</li>
-                  <li>
-                     A list of arguments to the function, enclosed in parentheses and
-                     separated by commas.
-                  </li>
-                  <li>
-                     The JavaScript statements that define the function, enclosed in
-                     curly brackets, { }.
-                  </li>
-               </ul>
-               <p>
-                  For example, the following code defines a simple function named
-                  square:
-               </p>
-               <code>function square(number) { return number * number; }</code>
-               <p>
-                  The function square takes one argument, called number. The function
-                  consists of one statement that says to return the argument of the
-                  function (that is, number) multiplied by itself. The return
-                  statement specifies the value returned by the function.
-               </p>
-               <code>return number * number;</code>
-               <p>
-                  Primitive parameters (such as a number) are passed to functions by
-                  value; the value is passed to the function, but if the function
-                  changes the value of the parameter, this change is not reflected
-                  globally or in the calling function.
-               </p>
-            </article>
-         </section>
-		 -->
     <section class="main-section" id="Reference">
       <br />
       <header><b>Reference</b></header>
