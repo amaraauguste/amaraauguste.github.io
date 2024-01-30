@@ -186,29 +186,29 @@
             </code>
           </li>
         </ol>
-        <p><a href="/courses/CISC1115/classwork_code/Week 1 Question 3.txt">Answers found here</a></p>
+        <p><a href="/courses/CISC1115/classwork_code/Week 1 Question 3.txt">Code found here</a></p>
         <p>
             4) Trace the following program:
             </p>
             <code><text> public static void main(String [] args){</text>
-                <text style="margin-left: 40px">int a, b, c, d, e, f, g;</text>
-                <text style="margin-left: 40px">a = 10;</text>
-                <text style="margin-left: 40px">b = 27;</text>
-                <text style="margin-left: 40px">System.out.println( "a is " + a + ", b is " + b );</text>
+                <text style="margin-left: 50px">int a, b, c, d, e, f, g;</text>
+                <text style="margin-left: 50px">a = 10;</text>
+                <text style="margin-left: 50px">b = 27;</text>
+                <text style="margin-left: 50px">System.out.println( "a is " + a + ", b is " + b );</text>
                 <text></text>
-                <text style="margin-left: 40px">c = a + b;</text>
-                <text style="margin-left: 40px">System.out.println( "a+b is " + c );</text>
-                <text style="margin-left: 40px">d = a - b;</text>
-                <text style="margin-left: 40px">System.out.println( "a-b is " + d );</text>
-                <text style="margin-left: 40px">e = a+b*3;</text>
-                <text style="margin-left: 40px">System.out.println( "a+b*3 is " + e );</text>
-                <text style="margin-left: 40px">f = b / 2;</text>
-                <text style="margin-left: 40px">System.out.println( "b/2 is " + f );</text>
-                <text style="margin-left: 40px">g = b % 10;</text>
-                <text style="margin-left: 40px">System.out.println( "b%10 is " + g );</text>
+                <text style="margin-left: 50px">c = a + b;</text>
+                <text style="margin-left: 50px">System.out.println( "a+b is " + c );</text>
+                <text style="margin-left: 50px">d = a - b;</text>
+                <text style="margin-left: 50px">System.out.println( "a-b is " + d );</text>
+                <text style="margin-left: 50px">e = a+b*3;</text>
+                <text style="margin-left: 50px">System.out.println( "a+b*3 is " + e );</text>
+                <text style="margin-left: 50px">f = b / 2;</text>
+                <text style="margin-left: 50px">System.out.println( "b/2 is " + f );</text>
+                <text style="margin-left: 50px">g = b % 10;</text>
+                <text style="margin-left: 50px">System.out.println( "b%10 is " + g );</text>
                 <text>}</text>
             </code>
-             <p><a href="/courses/CISC1115/classwork_code/Week 1 Trace.txt">Trace found here</a></p>
+             <p><a href="/courses/CISC1115/classwork_code/Week 1 Trace.java">Trace found here</a></p>
             <p>5) Write a Java program to print the area and perimeter of a rectangle.</p>
             <ul>
               <li>initialize two integer variables:</li>
@@ -221,6 +221,65 @@
               <li>print and label the results</li>
             </ul>
             <p><a href="/courses/CISC1115/classwork_code/Rectangle.java">Code found here</a></p>
+            <hr>
+            <h2>Review</h2>
+            <p>a) What does it mean to say that a program is <b>portable</b>?</p>
+            <p>b) Select the valid identifiers from the following list. State why each of the others is not valid.</p>
+            <ol style="column-count:2; list-style-type: lower-alpha;">
+              <li><b>123</b></li>
+              <li><b>$50</b></li>
+              <li><b>50dollars</b></li>
+              <li><b>abs</b></li>
+              <li><b>hunter</b></li>
+              <li><b>@60cents</b></li>
+              <li><b>a_b</b></li>
+              <li><b>#define</b></li>
+            </ol>
+            <hr>
+            <p>6) Write a Java program to divide two numbers and print them on the screen (First use integer division, then fix it to use 'regular' division).</p>
+            <!--<p><a href="">Code found here</a></p>-->
+            <p>7) Write a Java program to convert temperature from Fahrenheit to Celsius degrees.</p>
+              <text style="margin:5px; font-size:25px"><b>Temperature in degrees Celsius (°C) = (Temperature in degrees Fahrenheit (°F) - 32) * 5/9</b></text>
+              <!--<p><a href="/courses/CISC1115/classwork_code/TemperatureConverter.java">Code found here</a></p>-->
+            <p>8) Write a Java program to print the area and circumference (perimeter) of a circle.
+              (Limit each result to a precision of <b>3 decimal places</b>)
+            </p>
+            <ul>
+              <li>Formula for area: <b>πr^2</b></li>
+              <li>Formula for circumference (perimeter): <b>2πr</b></li>
+            </ul>
+            <!--<p><a href="">Code found here</a></p>-->
+            <p>9) What will be printed by the following program?</p>
+            <code><text> public static void main(String [] args){</text>
+              <text style="margin-left: 50px">int w, x;</text>
+              <text style="margin-left: 50px">double y;</text>
+              <text></text>
+              <text style="margin-left: 50px">w = 4;</text>
+              <text style="margin-left: 50px">x = Math.abs(w - 5);</text>
+              <text style="margin-left: 50px">y = Math.sqrt(x);</text>
+              <text></text>
+              <text style="margin-left: 50px">System.out.printf("%d %d %f\n", w, x, y);</text>
+              <text>}</text>
+          </code>
+            <p>10) Write a Java expression that would compute the following:</p>
+            <img style="width: 60%; height: 60%; display: block; margin-left: auto;
+            margin-right: auto;" src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC1115/images/week%201%20equation.png?raw=true" alt="equation">
+            <!--<p><a href="">Code found here</a></p>-->
+            <p>11) Is the following <b>assignment</b> legal? If not why?</p>
+            <text style="margin:300px; font-size:50px;">sqrt = Math.sqrt(x);</text>
+            <p>12) Write a Java program that generates a random <b>INTEGER</b> number between 1 and 10 (<b>exclusive</b>)  </p>
+            <!--<p><a href="">Code found here</a></p>-->
+            <p>13)  Why is the cast (int) necessary when converting from double to int and not when converting from int to double?</p>
+
+
+
+
+
+
+
+
+
+
         <br />
         <hr />
       </section>
@@ -228,3 +287,4 @@
     </main>
   </body>
 </html>
+
