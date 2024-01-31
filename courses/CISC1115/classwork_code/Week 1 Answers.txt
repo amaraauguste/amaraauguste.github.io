@@ -71,9 +71,11 @@ public class Rectangle {
 
 REVIEW:
 
-a) It can run on different kinds of computers with few or no modifications.
+a) It allows us to express an algorithm.
 
-b) int 123; //invalid (sequence of numbers)
+b) It can run on different kinds of computers with few or no modifications.
+
+c) int 123; //invalid (sequence of numbers)
    int $50; //valid (but not conventional)
    int 50dollars; //invalid (starts with a number)
    int abs; //valid
