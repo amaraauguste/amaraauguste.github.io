@@ -129,9 +129,7 @@ public class Circle {
 
 10) (Math.pow(x, 2) - (1 / (y + 3))) / ((1 / z) + Math.sqrt(x))
 
-11) If there is a variable x and a variable sqrt that was declared as a double before this line occurs then YES, 
-this is a perfectly legal statement because the class name Math allows Java to distinguish between the variable sqrt 
-and the method sqrt. However, we should avoid having multiple aspects of a program with the same name as it may cause confusion.
+11) If there is a variable x and a variable sqrt that was declared as a double before this line occurs then YES, this is a perfectly legal statement because the class name Math allows Java to distinguish between the variable sqrt and the method sqrt. However, we should avoid having multiple aspects of a program with the same name as it may cause confusion.
 
 
 12)
@@ -146,5 +144,4 @@ public class RandomNumbers {
 }
 
 
-13) Converting from double to int may cause a loss of precision, so you must explicitly apply the cast. 
-However, converting from int to double will never lead to a loss of precision so Java automatically performs the conversion.
+13) Converting from double to int may cause a loss of precision, so you must explicitly apply the cast. However, converting from int to double will never lead to a loss of precision so Java automatically performs the conversion.
