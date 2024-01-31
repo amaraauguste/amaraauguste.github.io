@@ -3,27 +3,27 @@
   <head>
     <title>CISC 1115</title>
     <style>
-       /* width */
-    ::-webkit-scrollbar {
-      width: 10px;
-    }
+      /* width */
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
 
-    /* Track */
-    ::-webkit-scrollbar-track {
-      box-shadow: inset 0 0 5px grey; 
-      border-radius: 10px;
-    }
- 
-    /* Handle */
-    ::-webkit-scrollbar-thumb {
-      background: rgb(183, 147, 241); 
-      border-radius: 10px;
-    }
+      /* Track */
+      ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px grey;
+        border-radius: 10px;
+      }
 
-    /* Handle on hover */
-    ::-webkit-scrollbar-thumb:hover {
-      background: rgb(140, 111, 186); 
-    }
+      /* Handle */
+      ::-webkit-scrollbar-thumb {
+        background: rgb(183, 147, 241);
+        border-radius: 10px;
+      }
+
+      /* Handle on hover */
+      ::-webkit-scrollbar-thumb:hover {
+        background: rgb(140, 111, 186);
+      }
       .backbutton {
         text-decoration: none;
         display: inline-block;
@@ -142,10 +142,10 @@
       <header>CISC 1115</header>
       <hr />
       <a class="nav-link" href="#Week1" style="font-size: 22px">Week 1</a>
-      
       <!--
-      <a class="nav-link" href="#Week2" style="font-size: 21.659px">Week 2</a>
-      <a class="nav-link" href="#Week3" style="font-size: 22px">Week 3</a>
+      <a class="nav-link" href="#Week2" style="font-size: 22px">Week 2</a>
+      
+        <a class="nav-link" href="#Week3" style="font-size: 22px">Week 3</a>
       <a class="nav-link" href="#Week4" style="font-size: 22px">Week 4</a>
       <a class="nav-link" href="#Week5" style="font-size: 22px">Week 5</a>
       -->
@@ -175,145 +175,217 @@
 
           <li>Second: How are you?</li>
         </ul>
-        <p><a href="/courses/CISC1115/classwork_code/Hello.java">Code found here</a></p>
+
         <p>
-            2) Write a Java program that creates TWO integer variables to the
-            values of your choice (e.g. 4 and 5, 12 and 10, etc.) and computes and
-            prints the following:
-          </p>
-          <ul>
-            <li>the sum of the two numbers</li>
-            <li>the difference between the two numbers</li>
-            <li>the product of the two numbers</li>
-            <li>the quotient of the two numbers</li>
-          </ul>
-          <p><a href="/courses/CISC1115/classwork_code/Arithmetic.java">Code found here</a></p>
-        <p>
-        3) Answer the following:
+          2) Write a Java program that creates TWO integer variables to the
+          values of your choice (e.g. 4 and 5, 12 and 10, etc.) and computes and
+          prints the following:
         </p>
+        <ul>
+          <li>the sum of the two numbers</li>
+          <li>the difference between the two numbers</li>
+          <li>the product of the two numbers</li>
+          <li>the quotient of the two numbers</li>
+        </ul>
+
+        <p>3) Answer the following:</p>
         <ol>
-          <li>What is the result of the following Java expression: <b>5 + 4 * 2</b> ?</li>
-          <li>How does the order of operations affect the evaluation of the following expression: <b>2 + 3 * 4 - 5</b> ?</li>
-          <li>Evaluate the following Java expression: <b>10 / 2 + 3 * 5 - 4</b></li>
-          <li>What is the output of the following code snippet? 
-            <code><text>int a = 2 + 3 * 4 - 1;</text>
-                <text>System.out.println("Result: " + a);</text>
+          <li>
+            What is the result of the following Java expression:
+            <b>5 + 4 * 2</b> ?
+          </li>
+          <li>
+            How does the order of operations affect the evaluation of the
+            following expression: <b>2 + 3 * 4 - 5</b> ?
+          </li>
+          <li>
+            Evaluate the following Java expression: <b>10 / 2 + 3 * 5 - 4</b>
+          </li>
+          <li>
+            What is the output of the following code snippet?
+            <code
+              ><text>int a = 2 + 3 * 4 - 1;</text>
+              <text>System.out.println("Result: " + a);</text>
             </code>
           </li>
-          <li>Rewrite the following expression using parentheses to explicitly define the order of operations: <b>8 - 2 * 4 / 2 + 3</b></li>
-          <li>What is the value of the variable 'b' after executing the following code snippet? 
-            <code><text>int b = 10;</text>
-                <text>b += 2 * 3 - 1;</text>
+          <li>
+            Rewrite the following expression using parentheses to explicitly
+            define the order of operations: <b>8 - 2 * 4 / 2 + 3</b>
+          </li>
+          <li>
+            What is the value of the variable 'b' after executing the following
+            code snippet?
+            <code
+              ><text>int b = 10;</text>
+              <text>b += 2 * 3 - 1;</text>
             </code>
           </li>
         </ol>
-        <p><a href="/courses/CISC1115/classwork_code/Week 1 Question 3.txt">Answers found here</a></p>
+
+        <p>4) Trace the following program:</p>
+        <code
+          ><text> public static void main(String [] args){</text>
+          <text style="margin-left: 50px">int a, b, c, d, e, f, g;</text>
+          <text style="margin-left: 50px">a = 10;</text>
+          <text style="margin-left: 50px">b = 27;</text>
+          <text style="margin-left: 50px"
+            >System.out.println( "a is " + a + ", b is " + b );</text
+          >
+          <text></text>
+          <text style="margin-left: 50px">c = a + b;</text>
+          <text style="margin-left: 50px"
+            >System.out.println( "a+b is " + c );</text
+          >
+          <text style="margin-left: 50px">d = a - b;</text>
+          <text style="margin-left: 50px"
+            >System.out.println( "a-b is " + d );</text
+          >
+          <text style="margin-left: 50px">e = a+b*3;</text>
+          <text style="margin-left: 50px"
+            >System.out.println( "a+b*3 is " + e );</text
+          >
+          <text style="margin-left: 50px">f = b / 2;</text>
+          <text style="margin-left: 50px"
+            >System.out.println( "b/2 is " + f );</text
+          >
+          <text style="margin-left: 50px">g = b % 10;</text>
+          <text style="margin-left: 50px"
+            >System.out.println( "b%10 is " + g );</text
+          >
+          <text>}</text>
+        </code>
+
         <p>
-            4) Trace the following program:
-            </p>
-            <code><text> public static void main(String [] args){</text>
-                <text style="margin-left: 50px">int a, b, c, d, e, f, g;</text>
-                <text style="margin-left: 50px">a = 10;</text>
-                <text style="margin-left: 50px">b = 27;</text>
-                <text style="margin-left: 50px">System.out.println( "a is " + a + ", b is " + b );</text>
-                <text></text>
-                <text style="margin-left: 50px">c = a + b;</text>
-                <text style="margin-left: 50px">System.out.println( "a+b is " + c );</text>
-                <text style="margin-left: 50px">d = a - b;</text>
-                <text style="margin-left: 50px">System.out.println( "a-b is " + d );</text>
-                <text style="margin-left: 50px">e = a+b*3;</text>
-                <text style="margin-left: 50px">System.out.println( "a+b*3 is " + e );</text>
-                <text style="margin-left: 50px">f = b / 2;</text>
-                <text style="margin-left: 50px">System.out.println( "b/2 is " + f );</text>
-                <text style="margin-left: 50px">g = b % 10;</text>
-                <text style="margin-left: 50px">System.out.println( "b%10 is " + g );</text>
-                <text>}</text>
-            </code>
-             <p><a href="/courses/CISC1115/classwork_code/Week 1 Trace.txt">Trace found here</a></p>
-            <p>5) Write a Java program to print the area and perimeter of a rectangle.</p>
-            <ul>
-              <li>initialize two integer variables:</li>
-                <ul>
-                  <li>one for length</li>
-                  <li>one for width</li>
-                </ul>
-              <li>compute the formula for area: <b>a = wl</b></li>
-              <li>compute the formula for perimeter: <b>p = 2(l+w)</b></li>
-              <li>print and label the results</li>
-            </ul>
-            <p><a href="/courses/CISC1115/classwork_code/Rectangle.java">Code found here</a></p>
-            <hr>
-            <h2>Review</h2>
-            <p>a) What best defines a <b>"programming language"</b>?</p>
-              <ol>
-                <li><b>It allows us to control a computer.</b></li>
-                <li><b>It allows us to make a calculation.</b></li>
-                <li><b>It allows to execute a program.</b></li>
-                <li><b>It allows us to express an algorithm.</b></li>
-              </ol>
-            <p>b) What does it mean to say that a program is <b>portable</b>?</p>
-            <p>c) Select the valid identifiers from the following list. State why each of the others is not valid.</p>
-            <ol style="column-count:2; list-style-type: lower-alpha;">
-              <li><b>123</b></li>
-              <li><b>$50</b></li>
-              <li><b>50dollars</b></li>
-              <li><b>abs</b></li>
-              <li><b>hunter</b></li>
-              <li><b>@60cents</b></li>
-              <li><b>a_b</b></li>
-              <li><b>#define</b></li>
-            </ol>
-            <!--<p><a href="/courses/CISC1115/classwork_code/Review 1 Answers.txt">Answers found here</a></p>-->
-            <hr>
-            <p>6) Write a Java program to divide two numbers and print them on the screen (First use integer division, then fix it to use 'regular' division).</p>
-            <!--<p><a href="">Code found here</a></p>-->
-            <p>7) Write a Java program to convert temperature from Fahrenheit to Celsius degrees.</p>
-              <text style="margin:5px; font-size:25px"><b>Temperature in degrees Celsius (°C) = (Temperature in degrees Fahrenheit (°F) - 32) * 5/9</b></text>
-              <!--<p><a href="/courses/CISC1115/classwork_code/TemperatureConverter.java">Code found here</a></p>-->
-            <p>8) Write a Java program that initializes the radius of a circle and computes and prints the circle's area and circumference (perimeter).
-              (Limit each result to a precision of <b>3 decimal places</b>)
-            </p>
-            <ul>
-              <li>Formula for area: <b>πr^2</b></li>
-              <li>Formula for circumference (perimeter): <b>2πr</b></li>
-            </ul>
-            <!--<p><a href="/courses/CISC1115/classwork_code/Circle.java">Code found here</a></p>-->
-            <p>9) What will be printed by the following program?</p>
-            <code><text> public static void main(String [] args){</text>
-              <text style="margin-left: 50px">int w, x;</text>
-              <text style="margin-left: 50px">double y;</text>
-              <text></text>
-              <text style="margin-left: 50px">w = 4;</text>
-              <text style="margin-left: 50px">x = Math.abs(w - 5);</text>
-              <text style="margin-left: 50px">y = Math.sqrt(x);</text>
-              <text></text>
-              <text style="margin-left: 50px">System.out.printf("%d %d %f\n", w,x,y);</text>
-              <text>}</text>
-          </code>
-          <!--<p><a href="/courses/CISC1115/classwork_code/Math Methods Trace.txt">Answer found here</a></p>-->
-            <p>10) Write a Java expression that would compute the following:</p>
-            <img style="width: 60%; height: 60%; display: block; margin-left: auto;
-            margin-right: auto;" src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC1115/images/week%201%20equation.png?raw=true" alt="equation">
-            <!--<p><a href="/courses/CISC1115/classwork_code/week 1 question 10.txt">Answer found here</a></p>-->
-            <p>11) Is the following <b>assignment</b> legal? If not why?</p>
-            <text style="margin:150px; font-size:50px;">sqrt = Math.sqrt(x);</text>
-            <p>12) Write a Java program that generates a random <b>INTEGER</b> number between 1 and 10 (<b>inclusive</b>)  </p>
-            <!--<p><a href="">Code found here</a></p>-->
-            <p>13)  Why is the cast (int) necessary when converting from double to int and not when converting from int to double?</p>
+          5) Write a Java program to print the area and perimeter of a
+          rectangle.
+        </p>
+        <ul>
+          <li>initialize two integer variables:</li>
+          <ul>
+            <li>one for length</li>
+            <li>one for width</li>
+          </ul>
+          <li>compute the formula for area: <b>a = wl</b></li>
+          <li>compute the formula for perimeter: <b>p = 2(l+w)</b></li>
+          <li>print and label the results</li>
+        </ul>
 
+        <hr />
+        <h2>Review</h2>
+        <p>a) What best defines a <b>"programming language"</b>?</p>
+        <ol>
+          <li><b>It allows us to control a computer.</b></li>
+          <li><b>It allows us to make a calculation.</b></li>
+          <li><b>It allows to execute a program.</b></li>
+          <li><b>It allows us to express an algorithm.</b></li>
+        </ol>
+        <p>b) What does it mean to say that a program is <b>portable</b>?</p>
+        <p>
+          c) Select the valid identifiers from the following list. State why
+          each of the others is not valid.
+        </p>
+        <ol style="column-count: 2; list-style-type: lower-alpha">
+          <li><b>123</b></li>
+          <li><b>$50</b></li>
+          <li><b>50dollars</b></li>
+          <li><b>abs</b></li>
+          <li><b>hunter</b></li>
+          <li><b>@60cents</b></li>
+          <li><b>a_b</b></li>
+          <li><b>#define</b></li>
+        </ol>
 
+        <hr />
+        <p>
+          6) Write a Java program to divide two numbers and print them on the
+          screen (First use integer division, then fix it to use 'regular'
+          division).
+        </p>
 
+        <p>
+          7) Write a Java program to convert temperature from Fahrenheit to
+          Celsius degrees.
+        </p>
+        <text style="margin: 5px; font-size: 25px"
+          ><b
+            >Temperature in degrees Celsius (°C) = (Temperature in degrees
+            Fahrenheit (°F) - 32) * 5/9</b
+          ></text
+        >
 
+        <p>
+          8) Write a Java program that initializes the radius of a circle and
+          computes and prints the circle's area and circumference (perimeter).
+          (Limit each result to a precision of <b>3 decimal places</b>)
+        </p>
+        <ul>
+          <li>Formula for area: <b>πr^2</b></li>
+          <li>Formula for circumference (perimeter): <b>2πr</b></li>
+        </ul>
 
+        <p>9) Write a Java <b><i>expression</i></b> that would compute the following:</p>
+        <img
+          style="
+            width: 60%;
+            height: 60%;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+          "
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC1115/images/week%201%20equation.png?raw=true"
+          alt="equation"
+        />
 
-
-
-
-
+        <p>
+          <a href="/courses/CISC1115/classwork_code/Week 1 Answers.txt"
+            >Answers to Week 1 found here</a
+          >
+        </p>
         <br />
         <hr />
       </section>
-  
+      <!--
+      <section class="main-section" id="Week2">
+        <h2>Review</h2>
+
+        <p>a) What will be printed by the following program?</p>
+        <code
+          ><text> public static void main(String [] args){</text>
+          <text style="margin-left: 50px">int w, x;</text>
+          <text style="margin-left: 50px">double y;</text>
+          <text></text>
+          <text style="margin-left: 50px">w = 4;</text>
+          <text style="margin-left: 50px">x = Math.abs(w - 5);</text>
+          <text style="margin-left: 50px">y = Math.sqrt(x);</text>
+          <text></text>
+          <text style="margin-left: 50px"
+            >System.out.printf("%d %d %f\n", w,x,y);</text
+          >
+          <text>}</text>
+        </code>
+
+        <p>b) Is the following <b>assignment</b> legal? If not why?</p>
+        <text style="margin: 150px; font-size: 50px">sqrt = Math.sqrt(x);</text>
+
+        <p>
+          c) Write a Java program that generates a random <b>INTEGER</b> number
+          between 1 and 10 (<b>inclusive</b>)
+        </p>
+
+        <p>
+          d) Why is the cast (int) necessary when converting from double to int
+          and not when converting from int to double?
+        </p>
+
+        <hr />
+        <br />
+        <header><b>Week 2</b></header>
+
+        <p></p>
+        <br />
+        <hr />
+      </section>
+      --->
     </main>
   </body>
 </html>
