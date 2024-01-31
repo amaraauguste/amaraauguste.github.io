@@ -127,23 +127,5 @@ public class Circle {
     }
 }
 
-9) 4 1 1.000000
+9) (Math.pow(x, 2) - (1 / (y + 3))) / ((1 / z) + Math.sqrt(x))
 
-10) (Math.pow(x, 2) - (1 / (y + 3))) / ((1 / z) + Math.sqrt(x))
-
-11) If there is a variable x and a variable sqrt that was declared as a double before this line occurs then YES, this is a perfectly legal statement because the class name Math allows Java to distinguish between the variable sqrt and the method sqrt. However, we should avoid having multiple aspects of a program with the same name as it may cause confusion.
-
-
-12)
-
-public class RandomNumbers {
-    public static void main(String [] args) {
-        int min = 1;
-        int max = 11;
-        int rand = (int) (Math.random() * (max - min) + min);//Generate random number
-        System.out.println("Random Number: " + rand);//different each run
-    }
-}
-
-
-13) Converting from double to int may cause a loss of precision, so you must explicitly apply the cast. However, converting from int to double will never lead to a loss of precision so Java automatically performs the conversion.
