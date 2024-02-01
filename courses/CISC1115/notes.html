@@ -3,6 +3,25 @@
 <head>
   <title>CISC 1115</title>
   <style>
+    table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid black;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(1){
+  background-color: #dddddd;
+}
+
+tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
+  background-color: lightyellow;
+}
     /* width */
     ::-webkit-scrollbar {
       width: 10px;
@@ -153,13 +172,15 @@
     <a class="nav-link" href="#System" style="font-size: 22px">System Class</a>
     <!--<a class="nav-link" href="#Input" style="font-size: 22px">Reading Input</a>
     <a class="nav-link" href="#Output" style="font-size: 21.5px">Writing Output</a>
+    
+    <a class="nav-link" href="#Datatypes" style="font-size: 22px">Data Types</a>
     -->
     <!--add more later-->
 
     <a class="nav-link" href="#Reference" style="font-size: 22px">Reference</a>
     <a href="https://amaraauguste.github.io/courses/cisc1115.html" class="previous backbutton"
       style="font-size: 22px">&laquo; Back</a>
-      <br><br><br>
+      <br><br><br><br><br><br><br><br><br><br>
   </nav>
   <main id="main-doc">
     <!-- WEEK 1 NOTES -->
@@ -934,7 +955,7 @@
           <text>}</text>
         </code>
         <p>to generate random number in range:</p>
-        <text style="margin: 120px; font-size: 50px">
+        <text style="margin: 100px; font-size: 50px">
           Math.random() * (max - min) + min;</text>
       </article>
       <br />
@@ -1000,7 +1021,7 @@
       System.out represents the <b><i>Standard Output Stream</i></b
       >. That means that if we want to print any statement on the console, we
       should use the following statement: <br /><br />
-      <text style="margin: 300px; font-size: 50px">System.out.print();</text>
+      <text style="margin: 250px; font-size: 50px">System.out.print();</text>
     </p>
     <p>There are three methods we use to print statements:</p>
     <ol>
@@ -1035,7 +1056,7 @@
             </ul>
         </ul>
         <p>A formatted placeholder is declared as follows:</p>
-        <text style="font-size: 48px">%[flags][width][.precision]conversion-character</text>
+        <text style="font-size: 40px">%[flags][width][.precision]conversion-character</text>
         <p>With any flags, width, and precision as <b><i>optional</i></b> modifiers</p>
         <p>Feel free to consult the following: </p>
       <img style="width: 100%; height: 100%" 
@@ -1189,9 +1210,73 @@
   <br />
   <hr />
 </section>
+
+<section class="main-section" id="Datatypes">
+  <br />
+  <header><b>Data Types</b></header>
+  <article>
+    <p>As we previously discussed, a variable in Java must be declared as a specific 
+      <b>data type</b>. These data types are divided into <b>two</b> groups:</p>
+      <ul>
+        <li><b>Primitive Data Types</b>, which specify the <b>size and type of variable values</b> and has <b>no additional methods</b></li>
+        <p style="font-size: 30px; margin: 15px">AND</p>
+        <li><b>Non-primitive data types</b></li>
+      </ul>
+      
+    <h2 style="font-size: 40px">Primitive Data Types</h2>
+    <table>
+      <tr>
+        <th>Data Type</th>
+        <th>Size</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td style="color: blue">byte</td>
+        <td>1 byte</td>
+        <td>Stores whole numbers from <b>-128</b> to <b>127</b></td>    
+      </tr>
+      <tr>
+        <td style="color: blue">short</td>
+        <td>2 bytes</td>
+        <td>Stores whole numbers from <b>-32,768</b> to <b>32,767</b></td>
+      </tr>
+      <tr>
+        <td style="color: blue"><b>int</b></td>
+        <td>4 bytes</td>
+        <td>Stores whole numbers from <b>-2,147,483,648</b> to <b>2,147,483,647</b></td>
+      </tr>
+      <tr>
+        <td style="color: blue">long</td>
+        <td>8 bytes</td>
+        <td>Stores whole numbers from <b>-9,223,372,036,854,775,808</b> to <b>9,223,372,036,854,775,807</b></td>
+      </tr>
+       <tr>
+        <td style="color: blue"><b>char</b></td>
+        <td>2 bytes</td>
+        <td>Stores a <b>single character/letter</b> or <b>ASCII values</b></td>
+      </tr>
+      <tr>
+        <td style="color: blue">float</td>
+        <td>4 bytes</td>
+        <td>Stores fractional numbers. Sufficient for storing <b>6</b> to <b>7</b> decimal digits</td>
+      </tr>
+      <tr>
+        <td style="color: blue"><b>double</b></td>
+        <td>8 bytes</td>
+        <td>Stores fractional numbers. Sufficient for storing <b>15</b> decimal digits</td>
+      </tr>
+      <tr>
+        <td style="color: blue"><b>boolean</b></td>
+        <td>1 bit</td>
+        <td>Stores <b>true</b> or <b>false</b> values</td>
+      </tr>
+    </table>
+
+  </article>
+  <br />
+  <hr />
+</section>
 -->
-
-
 
 
 
