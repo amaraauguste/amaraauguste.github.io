@@ -170,11 +170,16 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
     <a class="nav-link" href="#Math_Methods" style="font-size: 21.466px">Math Methods</a>
     <a class="nav-link" href="#Error_Types" style="font-size: 22px">Error Types</a>
     <a class="nav-link" href="#System" style="font-size: 22px">System Class</a>
-    <!--<a class="nav-link" href="#Input" style="font-size: 22px">Reading Input</a>
-    <a class="nav-link" href="#Output" style="font-size: 21.5px">Writing Output</a>
-    
     <a class="nav-link" href="#Datatypes" style="font-size: 22px">Data Types</a>
+    <a class="nav-link" href="#Input" style="font-size: 22px">Reading Input</a>
+    <a class="nav-link" href="#Constants" style="font-size: 22px">Literals and Constants</a>
+    <!--
+      
+    
+    <a class="nav-link" href="#Files" style="font-size: 22px">Using Files</a>
+    
     -->
+    
     <!--add more later-->
 
     <a class="nav-link" href="#Reference" style="font-size: 22px">Reference</a>
@@ -184,6 +189,7 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
   </nav>
   <main id="main-doc">
     <!-- WEEK 1 NOTES -->
+    <!-- WEEK 1 DAY 1-->
     <section class="main-section" id="Intro">
       <br />
       <header><b>Intro to Programming</b></header>
@@ -428,7 +434,7 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
             the main method, and it's mandatory in each of our executable Java
             programs. The signature of the main method in Java is:
             <br /><br />
-            <text style="margin-left: 50px">public static void main(String[] args) { ... .. ... }</text>
+            <text style="margin-left: 10px">public static void main(String [] args) { ... }</text>
           </li>
           <br />
           <li>
@@ -763,7 +769,7 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
                   and <i>then</i>
                   performs the specified operation.
                 </li>
-                <code><text style="color: lightskyblue; font-size:20px"
+                <code style="margin-left: -125px"><text style="color: lightskyblue; font-size:20px"
                       >// Prefix increment example</text
                     >
                     <text>public class PrefixExample {</text>
@@ -793,7 +799,7 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
                   Here our code <b>performs the specified operation first</b>,
                   and <i>then</i> increments/decrements the value.
                 </li>
-                <code><text style="color: lightskyblue; font-size:20px"
+                <code style="margin-left: -125px"><text style="color: lightskyblue; font-size:20px"
                       >// Postfix increment example</text
                     >
                     <text>public class PostfixExample {</text>
@@ -815,9 +821,9 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
                     <text style="margin-left: 40px">}</text>
                     <text>}</text>
                   </code>
-              </ul>
-            </ol>
-          </ul>
+                </ul>
+              </ol>
+            </ul>
           <br />
           <b>
             <li>Bitwise Operators</li>
@@ -831,6 +837,7 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
       <br />
       <hr />
     </section>
+    <!-- WEEK 1 DAY 2-->
     <section class="main-section" id="Floating_Point">
       <br />
       <header><b>Floating-point Numbers</b></header>
@@ -954,8 +961,8 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
           <text style="margin-left: 40px">}</text>
           <text>}</text>
         </code>
-        <p>to generate random number in range:</p>
-        <text style="margin: 100px; font-size: 50px">
+        <p>to generate a random number in range:</p>
+        <text style="margin: 10px; font-size: 35px">
           Math.random() * (max - min) + min;</text>
       </article>
       <br />
@@ -1021,7 +1028,7 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
       System.out represents the <b><i>Standard Output Stream</i></b
       >. That means that if we want to print any statement on the console, we
       should use the following statement: <br /><br />
-      <text style="margin: 250px; font-size: 50px">System.out.print();</text>
+      <text style="margin: 80px; font-size: 50px">System.out.print();</text>
     </p>
     <p>There are three methods we use to print statements:</p>
     <ol>
@@ -1034,6 +1041,7 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
           in the same pair of quotations if they are consecutive) </li>
         <li>After printing the statement, <b>the cursor remains on the same line.</b></li>
       </ul>
+      <br>
       <li><b>println(String s)</b></li>
       <ul>
         <li>An upgraded version of the print() method, 
@@ -1041,6 +1049,7 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
         <li>After printing the statement, 
           it throws <b>the cursor at the start of the next line.</b></li>
       </ul>
+      <br>
       <li><b>printf(String format, datatype args)</b></li>
         <ul>
           <li>Accepts two parameters:</li>
@@ -1056,7 +1065,7 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
             </ul>
         </ul>
         <p>A formatted placeholder is declared as follows:</p>
-        <text style="font-size: 40px">%[flags][width][.precision]conversion-character</text>
+        <text style="margin-left: -22px; font-size: 27px">%[flags][width][.precision]conversion-character</text>
         <p>With any flags, width, and precision as <b><i>optional</i></b> modifiers</p>
         <p>Feel free to consult the following: </p>
       <img style="width: 100%; height: 100%" 
@@ -1080,136 +1089,7 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
   <hr />
 </section>
 <!-- WEEK 2 NOTES -->
-<!--
-<section class="main-section" id="Input">
-  <br />
-  <header><b>The Scanner Class</b></header>
-  <article>
-    <p>
-      The System class also provides the special value <b>System.in</b>, which
-      is an InputStream that provides methods for reading input from the
-      keyboard. These methods are not easy to use; fortunately, Java provides
-      other classes that make it easier to handle common input tasks.
-    </p>
-    <p>
-      All reading done in Java uses the <b>Scanner</b> class. Using this class,
-      we can create an object to read input from the standard input channel
-      System.in (in our case, the keyboard)
-    </p>
-    <p>
-      To use the Scanner class, it is necessary to import the class Scanner from
-      the library java.util by including the following line at the top of
-      program:
-    </p>
-    <text style="margin: 250px; font-size: 50px"
-      >import java.util.Scanner;</text
-    >
-    <p>We can declare a Scanner object by saying:</p>
-    <text style="margin: 80px; font-size: 50px"
-      >Scanner sc = new Scanner (System.in);</text
-    >
-    <ul>
-      <li>
-        sc is the <b>name of the Scanner object</b> (this can be changed and is
-        entirely up to the person who writes the code)
-      </li>
-      <li>
-        and System.in connects our object to <b>standard input</b> (the keyboard)
-      </li>
-    </ul>
-    <p>
-      The Scanner class has multiple built-in methods that we can access to help
-      us read data, for example: we can use sc.nextLine() to read in a line of
-      String(s) (spaces included)
-    </p>
-    <p>Other methods include:</p>
-    <ul>
-      <li><b>nextBoolean()</b>: reads a boolean value from the user</li>
-      <li><b>nextByte()</b>: reads a byte value from the user</li>
-      <li><b>nextDouble()</b>: reads a double value from the user</li>
-      <li><b>nextFloat()</b>: reads a float value from the user</li>
-      <li><b>nextInt()</b>: reads a int value from the user</li>
-      <li>
-        <b>next()</b>: reads a complete token (String) from the user. A complete token
-        is preceded and followed by input that matches the delimiter pattern, in
-        most instances this is a space
-      </li>
-    </ul>
-  </article>
-  <br />
-  <header>Reading from Files</header>
-  <article>
-    <p>
-      As previously mentioned, we use a Scanner to read data whether or not the data is from the keyboard or a file. 
-      <b>To read from a file we only need to make one or two modifications from what we learned from reading from the keyboard.</b>
-    </p>
-    <p>
-      First, since we are using files we need to allow our program(s) to use them by including:
-    </p>
-    <text style="margin: 100px; font-size: 45px"
-      >import java.io.File; <text style="color: rgb(65, 180, 252)">//import the File class</text></text
-    >
-    <p>Now we can add a <b>throws Exception</b> declaration to main and create the File object that we will be reading from:</p>
-    <text style="margin: 140px; font-size: 50px"
-      >File file= new File("[filename].txt");</text
-    >
-    <p>And create a Scanner like we have previously done, only changing our reference from the keyboard to the corresponding file object:</p>
-    <text style="margin: 165px; font-size: 50px"
-      >Scanner sc = new Scanner(file);</text
-    >
-    <ul>
-      <li>
-        It is important that you remember to create the .txt file that you are trying to 
-        reading from and make sure that it is in the correct directory or to specify the path 
-        where the file is located when creating the File object else you will receive a <b>FileNotFoundException</b> 
-        when you attempt to run your code.
-      </li>
-    </ul>
-  </article>
-  <br />
-  <hr />
-</section>
-<section class="main-section" id="Output">
-  <br />
-  <header><b>Writing to a File</b></header>
-  <article>
-    <p>
-      We already know about writing data to the screen by using System.out, 
-      but how about writing data to an outside source such as a file?
-    </p>
-    <p>
-      Writing to a file is slightly less work since we do not have 
-      to manually create the .txt file ourselves prior to running the program, 
-      the program will do the creation for us. There are many different ways to 
-      write to file in Java but in this class we will keep it relatively 
-      simple and use the <b>PrintWriter</b> class.
-    </p>
-    <p>
-      Like before, we need to import the PrintWriter class in order to use it:
-    </p>
-    <text style="margin: 150px; font-size: 50px"
-      >import java.io.PrintWriter;</text
-    >
-    <p>We will use the PrintWriter class to create our file:</p>
-    <text style="margin: 20px; font-size: 45px"
-      >PrintWriter pw = new PrintWriter(“[filename]”.txt);</text
-    >
-    <ul>
-      <li>
-        It is important to make sure that the filename that you are trying to create
-       <b>does not already exist</b> in the directory that you are trying to create it in 
-        otherwise, you will overwrite the file and lose your original file data 
-      </li>
-    </ul>
-    <p>
-      Now we can use the PrintWriter object to write, the same way that we wrote
-      to the screen only replacing System.out with our PrintWriter object, 
-      i.e. pw.print(), pw.println(), pw.printf(), etc.
-    </p>
-  </article>
-  <br />
-  <hr />
-</section>
+<!-- WEEK 2 DAY 1-->
 
 <section class="main-section" id="Datatypes">
   <br />
@@ -1219,8 +1099,10 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
       <b>data type</b>. These data types are divided into <b>two</b> groups:</p>
       <ul>
         <li><b>Primitive Data Types</b>, which specify the <b>size and type of variable values</b> and has <b>no additional methods</b></li>
-        <p style="font-size: 30px; margin: 15px">AND</p>
-        <li><b>Non-primitive data types</b></li>
+        </ul>
+        <p style="font-size: 30px; margin-left: 220px">AND</p>
+        <ul>
+        <li><b>Non-primitive data types</b>, also called reference types because they refer to <b>objects</b></li>
       </ul>
       
     <h2 style="font-size: 40px">Primitive Data Types</h2>
@@ -1272,6 +1154,276 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
       </tr>
     </table>
 
+    <p>The main difference between primitive and non-primitive data types are:</p>
+    <ul>
+      <li>Primitive types are <b>predefined</b> (already defined) in Java. 
+        Non-primitive types are created by the programmer and is not 
+        defined by Java (except for <b>String</b>)</li>
+        <br>
+      <li>Non-primitive types can be used to call methods to 
+        perform certain operations, while primitive types cannot.</li>
+        <br>
+      <li>A primitive type has always a value, 
+        while non-primitive types can be null.</li>
+        <br>
+      <li>A primitive type <b>starts with a lowercase letter</b>, 
+        while non-primitive types starts with an uppercase letter. (e.g. Strings, etc.) </li>
+    </ul>
+  </article>
+  <br>
+  <header>Strings (part 1)</header>
+  <article>
+  <p>We will revisit the concept of Strings in depth a bit later but for now just know that 
+    <b>Strings</b> contain a sequence of “characters” strung together.</p>
+  <p> Characters can be letters, numbers, punctuation marks, 
+    symbols, spaces, tabs, etc.</p>
+    <p>We can initialize a String simply by stating: </p>
+    <code><text>String s = "Hello";</text></code>
+    <p>In most cases, we can use a String as a variable data type just like we have for int, double, etc. 
+      (Although all Strings we create are technically <i>objects</i> and have more behaviors than the primitive data types --
+    but we'll talk more about that later) </p>
+    </article>
+    <br>
+  <header>Operators for Strings</header>
+  <article>
+  <p>In general, you cannot perform mathematical operations on strings, even if
+    the strings look like numbers. The following expressions are illegal:</p>
+    <ul>
+      <li>"Hello" - 1</li>
+      <li>"World" / 123</li>
+      <li>"Hello" * "World"</li>
+    </ul>
+   <p>However, the <b>+</b> operator DOES work with strings. <br><br> For
+    strings, the + operator performs <b>concatenation</b>, which means joining end-to-end. </p>
+      <p>So "Hello, " + "World!" yields the string "Hello, World!".</p>
+    <p>Or if you have a variable called name that has type String, the expression
+      "Hello, " + name <b>appends the value of name to the hello string</b>, which creates
+      a personalized greeting</p>
+      <p>Since addition is defined for both numbers and strings, 
+        Java performs automatic conversions you may not expect:</p>
+      
+        <p>What do we expect the following code to print?</p>
+        <code><text>String s = "Hello";</text>
+        <text>System.out.println(1 + 2 + s);</text></code>
+      
+      <p>How about this one?</p>
+      <code><text>System.out.println(s + 1 + 2);</text></code>
+      <br>
+      <p>Java executes these operations <b>from left to right</b>.</p>
+      <ul>
+        <li>In the first example, 1 + 2 is
+          3, and 3 + the value of variable s ("Hello") is <b>"3Hello"</b></li>
+          <br>
+        <li>In the second example, "Hello" + 1 is
+          "Hello1", and "Hello1" + 2 is <b>"Hello12"</b></li>
+      </ul>
+  </article>
+  <br />
+  <hr />
+</section>
+
+
+
+
+
+
+
+
+<section class="main-section" id="Input">
+  <br />
+  <header><b>The Scanner Class</b></header>
+  <article>
+    <p>
+      The System class also provides the special value <b>System.in</b>, which
+      is an InputStream that provides methods for reading input from the
+      keyboard. These methods are not easy to use; fortunately, Java provides
+      other classes that make it easier to handle common input tasks.
+    </p>
+    <p>
+      All reading done in Java uses the <b>Scanner</b> class. Using this class,
+      we can create an object to read input from the standard input channel
+      System.in (in our case, the keyboard)
+    </p>
+    <p>
+      To use the Scanner class, it is necessary to <b>import the class Scanner from
+      the library java.util</b> by including the following line at the top of
+      program:
+    </p>
+    <text style="margin: 20px; font-size: 50px"
+      >import java.util.Scanner;</text
+    >
+    <p>We can declare a Scanner object by saying:</p>
+    <text style="margin: 5px; font-size: 32px"
+      >Scanner sc = new Scanner (System.in);</text
+    >
+    <ul>
+      <li>
+        sc is the <b>name of the Scanner object</b> (this can be changed and is
+        entirely up to the person who writes the code)
+      </li>
+      <li>
+        and System.in connects our object to <b>standard input</b> (the keyboard)
+      </li>
+    </ul>
+    <p>
+      The Scanner class has multiple built-in methods that we can access to help
+      us read data, for example: we can use <b>sc.nextLine()</b> to read in a line of
+      String(s) (spaces included)
+    </p>
+    <p>Other methods include:</p>
+    <ul>
+      <li><b>nextBoolean()</b>: reads a boolean value from the user</li>
+      <li><b>nextByte()</b>: reads a byte value from the user</li>
+      <li><b>nextDouble()</b>: reads a double value from the user</li>
+      <li><b>nextFloat()</b>: reads a float value from the user</li>
+      <li><b>nextInt()</b>: reads a int value from the user</li>
+      <li>
+        <b>next()</b>: reads a complete token (String) from the user. A complete token
+        is preceded and followed by input that matches the delimiter pattern, in
+        most instances this is a space
+      </li>
+    </ul>
+  </article>
+  <br>
+  <header>Example: Inches to Centimeters</header>
+  <article>
+  <p>Now let's see an example, We will use a <b>Scanner</b> to input a measurement
+    in inches, convert to centimeters, and then display the results.</p>
+
+    <p>First let's declare the variables and create the Scanner object that we will call <b>input</b></p>
+    <code><text>int inches;</text>
+    <text>double cm;</text>
+    <text>Scanner input = new Scanner(System.in);</text></code>
+
+  <p>Next, let's <b>prompt</b> the user for the input (prompts are important because they let the user know HOW they should interact with the program)</p>
+
+  <p>We'll use print() instead of println() so they can enter the input on the <b>same line as the prompt</b>
+    and use the Scanner method nextInt(), which reads input from the keyboard
+    and <b>converts it to an integer</b></p>
+    <code><text>System.out.print("Enter # of inches: ");</text>
+    <text>inches = input.nextInt();</text></code>
+
+  <p>Now we can multiply the number of inches entered by <b>2.54</b> (the number of centimeters there are per inch)
+    and display the results</p>
+    <code><text>cm = inches * 2.54;</text>
+    <text>System.out.print(inches + " inches = ");</text>
+    <text>System.out.printf("%.2f cm%n", cm);</text></code>
+
+  <p>This code works but it does have a minor flaw. If another programmer
+    reads this code, they might wonder where 2.54 comes from.</p>
+
+  <p><b>How can we modify this for clarity?</b></p>
+  </article>
+  <br />
+  <hr>
+</section>
+
+
+
+<section class="main-section" id="Constants">
+  <br />
+  <header><b>Literals and Constants</b></header>
+  <article>
+    <p>A value that appears in a program, like 2.54 (or " inches = "), is called a <b>literal</b>.
+      <br><br>
+      In general, there is nothing wrong with literals. 
+      <br><br>
+      But when numbers like 2.54 appear in an expression with no explanation, they make code hard to read.
+      And if the same value appears many times, and might have to change in the
+      future, it <b>makes code hard to maintain</b>.
+    </p>
+    <p>For the benefit of others (and yourself in the future), it would be better to assign this value to
+      a variable with a meaningful name:</p>
+      <code><text>double cmPerInch = 2.54;</text>
+      <text>cm = inches * cmPerInch;</text></code>
+    <p>This version is easier to read and less error-prone, but it still has a problem.
+      <b>Variables can vary</b>, but the number of centimeters in an inch does not.</p>
+    <p>Once we assign a value to cmPerInch, it should never change.</p>
+    <p>Luckily, Java provides a language feature that enforces that rule, the keyword <b>final</b>.</p>
+    <code><text>final double CM_PER_INCH = 2.54;</text></code>
+    <p>Declaring a variable as <b>final</b> means that it cannot be reassigned once
+      it has been initialized. If you try, <b>the compiler reports an error</b>. </p>
+    <p>Variables declared as final are called <b>constants</b>.</p>
+    <ul>
+      <li>By convention, names for constants are <b>all uppercase</b>, with the underscore character (_) between words.</li>
+    </ul>
+  </article>
+
+  <br />
+  <hr>
+
+
+
+
+<!--Week 2 Day 2-->
+<!--
+<section class="main-section" id="Files">
+  <br />
+  <header><b>Reading from a File</b></header>
+  <article>
+    <p>
+      As previously mentioned, we use a Scanner to read data whether or not the data is from the keyboard or a file. 
+      <b>To read from a file we only need to make one or two modifications from what we learned from reading from the keyboard.</b>
+    </p>
+    <p>
+      First, since we are using files we need to allow our program(s) to use them by including:
+    </p>
+    <text style="margin: 100px; font-size: 45px"
+      >import java.io.File; <text style="color: rgb(65, 180, 252)">//import the File class</text></text
+    >
+    <p>Now we can add a <b>throws Exception</b> declaration to main and create the File object that we will be reading from:</p>
+    <text style="margin: 140px; font-size: 50px"
+      >File file= new File("[filename].txt");</text
+    >
+    <p>And create a Scanner like we have previously done, only changing our reference from the keyboard to the corresponding file object:</p>
+    <text style="margin: 165px; font-size: 50px"
+      >Scanner sc = new Scanner(file);</text
+    >
+    <ul>
+      <li>
+        It is important that you remember to create the .txt file that you are trying to 
+        reading from and make sure that it is in the correct directory or to specify the path 
+        where the file is located when creating the File object else you will receive a <b>FileNotFoundException</b> 
+        when you attempt to run your code.
+      </li>
+    </ul>
+  </article>
+  <br />
+  <header>Writing to a File</header>
+  <article>
+    <p>
+      We already know about writing data to the screen by using System.out, 
+      but how about writing data to an outside source such as a file?
+    </p>
+    <p>
+      Writing to a file is slightly less work since we do not have 
+      to manually create the .txt file ourselves prior to running the program, 
+      the program will do the creation for us. There are many different ways to 
+      write to file in Java but in this class we will keep it relatively 
+      simple and use the <b>PrintWriter</b> class.
+    </p>
+    <p>
+      Like before, we need to import the PrintWriter class in order to use it:
+    </p>
+    <text style="margin: 150px; font-size: 50px"
+      >import java.io.PrintWriter;</text
+    >
+    <p>We will use the PrintWriter class to create our file:</p>
+    <text style="margin: 20px; font-size: 45px"
+      >PrintWriter pw = new PrintWriter(“[filename]”.txt);</text
+    >
+    <ul>
+      <li>
+        It is important to make sure that the filename that you are trying to create
+       <b>does not already exist</b> in the directory that you are trying to create it in 
+        otherwise, you will overwrite the file and lose your original file data 
+      </li>
+    </ul>
+    <p>
+      Now we can use the PrintWriter object to write, the same way that we wrote
+      to the screen only replacing System.out with our PrintWriter object, 
+      i.e. pw.print(), pw.println(), pw.printf(), etc.
+    </p>
   </article>
   <br />
   <hr />
