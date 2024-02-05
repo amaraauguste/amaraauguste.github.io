@@ -142,8 +142,9 @@
       <header>CISC 1115</header>
       <hr />
       <a class="nav-link" href="#Week1" style="font-size: 22px">Week 1</a>
-      <!--
       <a class="nav-link" href="#Week2" style="font-size: 22px">Week 2</a>
+      <!--
+      
       
         <a class="nav-link" href="#Week3" style="font-size: 22px">Week 3</a>
       <a class="nav-link" href="#Week4" style="font-size: 22px">Week 4</a>
@@ -344,7 +345,7 @@
         <br />
         <hr />
       </section>
-      <!--
+      
       <section class="main-section" id="Week2">
         <h2>Review</h2>
 
@@ -354,18 +355,18 @@
           <text style="margin-left: 50px">int w, x;</text>
           <text style="margin-left: 50px">double y;</text>
           <text></text>
-          <text style="margin-left: 50px">w = 4;</text>
-          <text style="margin-left: 50px">x = Math.abs(w - 5);</text>
+          <text style="margin-left: 50px">w = -9;</text>
+          <text style="margin-left: 50px">x = Math.abs(w + 5);</text>
           <text style="margin-left: 50px">y = Math.sqrt(x);</text>
           <text></text>
           <text style="margin-left: 50px"
-            >System.out.printf("%d %d %f\n", w,x,y);</text
+            >System.out.printf("%d %d %.2f%n", w,x,y);</text
           >
           <text>}</text>
         </code>
 
         <p>b) Is the following <b>assignment</b> legal? If not why?</p>
-        <text style="margin: 150px; font-size: 50px">sqrt = Math.sqrt(x);</text>
+        <text style="margin: 100px; font-size: 50px">sqrt = Math.sqrt(x);</text>
 
         <p>
           c) Write a Java program that generates a random <b>INTEGER</b> number
@@ -380,12 +381,33 @@
         <hr />
         <br />
         <header><b>Week 2</b></header>
-
-        <p></p>
+        <p>1) Write a program that computes the cost of traveling between two cities. <br><br>
+          Prompt for and read in the name of each city (two separate prompts), 
+          the distance (in miles) between the two cities, and the cost of travel per mile. </p>
+        <p>Run the program with the following data:</p>
+        <ul>
+          <li><b>Cincinnati</b>, <b>Columbus</b>, <b>115</b> and <b>0.50</b></li>
+        </ul>
+        <p>Your output should look like:</p>
+        <ul>
+          <li><b>The cost of traveling from Cincinnati to Columbus is $57.50</b></li>
+        </ul>
+        <p>2) Write a Java program that converts a total number of seconds to
+          hours, minutes, and seconds. </p>
+          <p>It should: </p>
+          <ol>
+            <li>prompt the user for input</li>
+            <li>read an integer from the keyboard</li>
+            <li>calculate the result</li>
+            <li>and use printf to display the output</li>
+          </ol>
+          <p>For example: <br><br> <b>"5000 seconds = 1 hours, 23 minutes, 
+            and 20 seconds".</b> <br><br> (Hint: Use the modulus operator)
+            </p>
         <br />
         <hr />
       </section>
-      --->
+    
     </main>
   </body>
 </html>
