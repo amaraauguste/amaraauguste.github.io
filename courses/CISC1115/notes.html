@@ -1286,6 +1286,42 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
     </ul>
   </article>
   <br>
+  <header>The Scanner Bug</header>
+  <article>
+    <p>Now that we have had some experience with Scanner, we need to talk about some unexpected
+      behavior that may occur</p>
+      <p>When you read a String followed by an int, everything works just fine.But
+        when you read an int followed by a String, something strange happens.</p>
+      <code><text>System.out.print("What is your age? ");</text>
+      <text>age = in.nextInt();</text>
+      <text>System.out.print("What is your name? ");</text>
+      <text>name = in.nextLine();</text>
+      <text>System.out.printf("Hello %s, age %d\n", name, age);</text></code>
+
+        <p>Try running this example code. It doesn't let you input your name, and it
+          immediately displays the output:</p>
+         <p>What is your name? Hello , age 45</p> 
+          <p>When you call nextInt(), it reads characters until it gets to a non-digit.
+            At this point, nextInt() returns 45. The program then displays the prompt
+            "What is your name? " and calls nextLine(), which reads characters until it
+            gets to a newline. <b>But since the next character is already a newline, nextLine
+            returns the empty string "".</b>
+          </p>
+      <p>To solve this problem, you need an extra nextLine() after nextInt()</p>
+      <code><text>System.out.print("What is your age? ");</text>
+      <text>age = in.nextInt();</text>
+      <text>in.nextLine();<text style="color: lightskyblue; font-size:20px"
+        >// read the newline</text
+      ></text>
+      <text>System.out.print("What is your name? ");</text>
+      <text>name = in.nextLine();</text>
+      <text>System.out.printf("Hello %s, age %d\n", name, age);</text></code>
+      <p>This technique is common when reading int or double values that appear on
+        their own line. <br><br><b>First you read the number, and then you read the rest of the
+        line, which is just a newline character.</b></p>
+
+</article>
+<br>
   <header>Example: Inches to Centimeters</header>
   <article>
   <p>Now let's see an example, We will use a <b>Scanner</b> to input a measurement
