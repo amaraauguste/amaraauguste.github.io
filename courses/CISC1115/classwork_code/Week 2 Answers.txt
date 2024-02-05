@@ -20,7 +20,7 @@ public class RandomNumbers {
 
 d) Converting from double to int may cause a loss of precision, so you must explicitly apply the cast. However, converting from int to double will never lead to a loss of precision so Java automatically performs the conversion.
 
-----------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------
 
 1) 
 
