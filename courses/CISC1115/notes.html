@@ -22,6 +22,13 @@ tr:nth-child(1){
 tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
   background-color: lightyellow;
 }
+
+.structure tr:nth-child(even){
+  background-color: rgb(241, 252, 255);
+}
+.structure tr:nth-child(odd){
+  background-color: rgb(212, 244, 255);
+}
     /* width */
     ::-webkit-scrollbar {
       width: 10px;
@@ -174,6 +181,8 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
     <a class="nav-link" href="#Input" style="font-size: 22px">Reading Input</a>
     <a class="nav-link" href="#Constants" style="font-size: 22px">Literals and Constants</a>
     <a class="nav-link" href="#Program" style="font-size: 22px">Putting it all Together</a>
+    <a class="nav-link" href="#Program_Structure" style="font-size: 22px">Program Structure</a>
+    <a class="nav-link" href="#Files" style="font-size: 22px">Using Files</a>
     <!--
       
     
@@ -1418,7 +1427,91 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
 
 
 <!--Week 2 Day 2-->
-<!--
+<section class="main-section" id="Program_Structure">
+  <br />
+  <header><b>Program Structure</b></header>
+  <article>
+    <p>At this point, we have seen all of the elements that make up Java programs.
+      <br><br>
+      Figure 3.2 shows these organizational units.</p>
+      <img style="
+      width: 80%;
+      height: 80%;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    "src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC1115/images/programStructure.png?raw=true" alt="Figure 3.2">
+  
+  <table class="structure">
+    <tr>
+      <th>Element</th>
+      <th>Definition</th>
+    </tr>
+    <tr>
+      <td style="color: blue"><b>Package</b></td>
+      <td>A collection of <i>classes</i>, which define <i>methods</i>.</td>
+   
+    </tr>
+    <tr>
+      <td style="color: blue"><b>Class</b></td>
+      <td>In object-oriented programming, a class is a <b>basic building block</b>. 
+        It can be defined as template that describes the data and behaviour 
+        associated with the class instantiation.</td>
+  
+    </tr>
+    <tr>
+      <td style="color: blue"><b>Method</b></td>
+      <td>A method in Java is <b>a block of code that, when called, 
+        performs specific actions mentioned in it</b>. When you execute a class with the 
+        Java interpreter, the runtime system <b>starts by calling the class's main() method</b>. 
+        If there are other methods involved, the main() method then calls all 
+        the other methods required to run your application. 
+        <b>The main() method is the key to making a Java program executable.</b></td>
+     
+    </tr>
+    <tr>
+      <td style="color: blue"><b>Statement</b></td>
+      <td>A statement is roughly equivalent to sentences in natural languages. 
+        A statement forms a <b>complete unit of execution and almost always ends in a semicolon (;)</b></td>
+      
+    </tr>
+     <tr>
+      <td style="color: blue"><b>Expression</b></td>
+      <td>An expression is a construct <b>made up of variables, operators, and method invocations</b>, 
+        which are constructed according to the syntax of the language, that <b>evaluates to a single value</b></td>
+
+    </tr>
+    <tr>
+      <td style="color: blue"><b>Token</b></td>
+      <td>Tokens are the <b>basic building blocks</b> of a program. 
+        They are the <b>smallest individual units of a program 
+        that have meaning to the compiler</b> and are used to represent the various elements 
+        of a program, such as <b>keywords, identifiers, operators, and literals</b></td>
+     
+    </tr>
+  </table>
+  <br>
+  <img style="
+  width: 98%;
+  height: 98%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+"src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC1115/images/Program%20Outline.png?raw=true" alt="program outline">
+
+
+
+  </article>
+
+  <br />
+  <hr />
+</section>
+
+
+
+
+
+
 <section class="main-section" id="Files">
   <br />
   <header><b>Reading from a File</b></header>
@@ -1490,7 +1583,9 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
   <br />
   <hr />
 </section>
--->
+
+<!--WEEK 3-->
+
 
 
 
