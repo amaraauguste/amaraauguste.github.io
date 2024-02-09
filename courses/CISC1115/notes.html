@@ -1256,16 +1256,12 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
     </p>
     <p>
       To use the Scanner class, it is necessary to <b>import the class Scanner from
-      the library java.util</b> by including the following line at the top of
-      program:
+      the library java.util</b> by including the following line at the top (before the class declaration) of
+      program: 
     </p>
-    <text style="margin: 20px; font-size: 50px"
-      >import java.util.Scanner;</text
-    >
+    <code><text>import java.util.Scanner;</text></code>
     <p>We can declare a Scanner object by saying:</p>
-    <text style="margin: 5px; font-size: 32px"
-      >Scanner sc = new Scanner (System.in);</text
-    >
+    <code><text>Scanner sc = new Scanner (System.in);</text></code>
     <ul>
       <li>
         sc is the <b>name of the Scanner object</b> (this can be changed and is
@@ -1293,6 +1289,11 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
         most instances this is a space
       </li>
     </ul>
+    <p>When we are done reading in data, it is customary to <b>CLOSE</b> the Scanner to avoid 
+      a possible memory leak. This is simple, we would just state thr following:
+    </p>
+    <code><text>sc.close();</text></code>
+    <p>Once we no longer need the Scanner (this is typically found at the last could lines of the method)</p>
   </article>
   <br>
   <header>The Scanner Bug</header>
@@ -1523,17 +1524,14 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
     <p>
       First, since we are using files we need to allow our program(s) to use them by including:
     </p>
-    <text style="margin: 15px; font-size: 35px"
-      >import java.io.File; <text style="color: rgb(65, 180, 252)">//import the File class</text></text
-    >
-    <p>Now we can add a <b>throws Exception</b> declaration to main and create the File object that we will be reading from:</p>
-    <text style="margin: 20px; font-size: 40px"
-      >File file = new File("[filename].txt");</text
-    >
+    <code><text>import java.io.File; <text style="color: rgb(65, 180, 252)">//import the File class</text></text
+    ></code>
+    <p>Since we are dealing with files, we HAVE to add a <b>throws Exception</b> declaration to main:</p> 
+      <code><text>public static void main (String [] args) throws Exception { </text></code> 
+      <p>and create the File object that we will be reading from:</p>
+    <code><text>File file = new File("[filename].txt");</text></code>
     <p>And create a Scanner like we have previously done, only changing our reference from the keyboard to the corresponding file object:</p>
-    <text style="margin: 25px; font-size: 40px"
-      >Scanner sc = new Scanner(file);</text
-    >
+    <code><text>Scanner sc = new Scanner(file);</text></code>
     <ul>
       <li>
         It is important that you remember to create the .txt file that you are trying to 
@@ -1560,13 +1558,9 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
     <p>
       Like before, we need to import the PrintWriter class in order to use it:
     </p>
-    <text style="margin: 50px; font-size: 40px"
-      >import java.io.PrintWriter;</text
-    >
+    <code><text>import java.io.PrintWriter;</text></code>
     <p>We will use the PrintWriter class to create our file:</p>
-    <text style="margin: 0px; font-size: 33px"
-      >PrintWriter pw = new PrintWriter("[filename].txt");</text
-    >
+    <code><text>PrintWriter pw = new PrintWriter("[filename].txt");</text></code>
     <ul>
       <li>
         It is important to make sure that the filename that you are trying to create
@@ -1579,12 +1573,19 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
       to the screen only replacing System.out with our PrintWriter object, 
       i.e. pw.print(), pw.println(), pw.printf(), etc.
     </p>
+    <p>Just like with the Scanner, we need to <b>CLOSE</b> the PrintWriter object:
+    </p>
+    <code><text>pw.close();</text></code>
+    <p> The intepreter only knows that the program is finished writing
+      to the file <b>after we close</b> the PrintWriter, so if we forget to close 
+      the PrintWriter the file may appear empty.
+    </p>
   </article>
   <br />
   <hr />
 </section>
 
-<!--WEEK 3-->
+<!--WEEK 4-->
 
 
 
