@@ -29,6 +29,22 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
 .structure tr:nth-child(odd){
   background-color: rgb(212, 244, 255);
 }
+
+.relation tr:nth-child(even){
+  background-color: rgb(224, 235, 220);
+}
+
+.relation tr:nth-child(odd){
+  background-color: rgb(245, 247, 244);
+}
+
+.truth tr:nth-child(even){
+  background-color: rgb(247, 246, 244);
+}
+
+.truth tr:nth-child(odd){
+  background-color: rgb(235, 225, 220);
+}
     /* width */
     ::-webkit-scrollbar {
       width: 10px;
@@ -183,11 +199,18 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
     <a class="nav-link" href="#Program" style="font-size: 22px">Putting it all Together</a>
     <a class="nav-link" href="#Program_Structure" style="font-size: 22px">Program Structure</a>
     <a class="nav-link" href="#Files" style="font-size: 22px">Using Files</a>
+    <a class="nav-link" href="#Relational_Operators" style="font-size: 22px">Relational Operators</a>
+    <a class="nav-link" href="#Logical_Operators" style="font-size: 22px">Logical Operators</a>
+    <a class="nav-link" href="#Conditional_Statements" style="font-size: 22px">Conditional Statements</a>
+    <a class="nav-link" href="#Chaining_and_Nesting" style="font-size: 22px">Chaining and Nesting</a>
+    <a class="nav-link" href="#Flag_Variables" style="font-size: 22px">Flag Variables</a>
+
+
     <!--
       
     
     <a class="nav-link" href="#Files" style="font-size: 22px">Using Files</a>
-    
+      
     -->
     
     <!--add more later-->
@@ -698,7 +721,7 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
             <li>
               Relational/Comparison operators are used to compare two values
               (or variables). The values returned from comparison are known as
-              Boolean values and will either be true or false.
+              boolean values and will either be <text style="color:blue"><b>true</b></text> or <text style="color:blue"><b>false</b></text>.
             </li>
             <li>
               A few relational/comparison operators available in Java include:
@@ -721,18 +744,19 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
           <ul>
             <li>
               Logical operators are used to determine the logic (whether a
-              statement is true or false) between variables or values.
+              statement is <text style="color:blue"><b>true</b></text> or <text style="color:blue"><b>false</b></text>) between 
+              variables or values.
             </li>
             <li>A few logical operators available in Java include:</li>
             <ul style="list-style-type: none">
               <li>
-                && (Logical and - returns true if both statements are true,
+                && (Logical and - returns <text style="color:blue"><b>true</b></text> if both statements are true,
                 e.g. a < 5 && b < 5) </li>
               <li>
-                || (Logical or - returns true if one of the statements is
+                || (Logical or - returns <text style="color:blue"><b>true</b></text> if one of the statements is
                 true, e.g. a < 5 || b < 5) </li>
               <li>
-                ! (Logical not - reverses the result, returns false if the
+                ! (Logical not - reverses the result, returns <text style="color:blue"><b>false</b></text> if the
                 result is true, e.g. !(a < 5 && b < 5))) </li>
             </ul>
           </ul>
@@ -1160,7 +1184,7 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
       <tr>
         <td style="color: blue"><b>boolean</b></td>
         <td>1 bit</td>
-        <td>Stores <b>true</b> or <b>false</b> values</td>
+        <td>Stores <text style="color:blue"><b>true</b></text> or <text style="color:blue"><b>false</b></text> values</td>
       </tr>
     </table>
 
@@ -1586,6 +1610,381 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
 </section>
 
 <!--WEEK 4-->
+<!--Week 4 Day 1-->
+<section class="main-section" id="Relational_Operators">
+  <br />
+  <header><b>Relational Operators</b></header>
+  <article>
+    <p>So far we have seen programs that do pretty much the same thing
+      every time, regardless of the input. For more complex computations, 
+      programs usually <b>react to the inputs, check for certain conditions, 
+      and generate appropriate results.</b> </p>
+      <p>We mentioned relational operators briefly before but let's discuss how 
+        they work, more in depth:
+      </p>
+      <p><b>Relational operators</b> are used to <b>check conditions like whether two values
+        are equal, or whether one is greater than the other.</b></p>
+        <table class="relation">
+          <tr>
+            <td><b>x == y</b></td>
+            <td style="color: green">// x is equal to y</td>
+          </tr>
+          <tr>
+            <td><b>x != y</b></td>
+            <td style="color: green">// x is not equal to y</td>
+          </tr>
+          <tr>
+            <td><b>x > y</b></td>
+            <td style="color: green">// x is greater than y</td>  
+          </tr>
+          <tr>
+            <td><b>x < y</b></td>
+            <td style="color: green">// x is less than y</td> 
+          </tr>
+           <tr>
+            <td><b>x >= y</b></td>
+            <td style="color: green">// x is greater than or equal to y</td> 
+          </tr>
+          <tr>
+            <td><b>x <= y</b></td>
+            <td style="color: green">// x is less than or equal to y</td>
+          </tr>
+        </table>
+        <p>You have probably seen these operations before, but it is important to note that the Java
+          operators are different from the mathematical symbols like =, &#8800;, and ≤.</p>
+        <p> A common error is to use a single = instead of a double == </p>
+        <p> Remember that:</p>
+        <ul>
+          <li> <b>=</b> is the <b>assignment</b> operator</li>
+          <li> and <b>==</b> is a <b>comparison</b> operator</li>
+        </ul>
+        <p>The two sides of a relational operator must be <b>compatible</b></p>
+        <p>For example, the expression: <b>5 < "6"</b> is <b>invalid because 5 is an int and "6" is a String</b></p>
+        <p>However, when evaluating the expression <b>5 (an int) < 6.0 (a double)</b>, 
+          Java <b>automatically converts the 5 to 5.0</b> because when comparing values of different 
+          numeric types, Java applies the same conversion rules we saw previously with the assignment operator.</p>
+
+        <p>The result of a relational operator is one of two special values, either <text style="color:blue"><b>true</b></text> or <text style="color:blue"><b>false</b></text>.
+          <br><br>
+          These values belong to the data type <b>boolean</b>. In fact, they are the only
+          boolean values.</p>
+        
+  </article>
+  <br />
+  <hr />
+</section>
+<section class="main-section" id="Logical_Operators">
+  <br />
+  <header><b>Logical Operators</b></header>
+  <article>
+
+    <div class="container" style="width: 100%; display: table;">
+
+
+      <div style="display: table-row">
+        <div style="width: 50%; display: table-cell;">
+        <p>Java has three logical operators:</p>
+       <ul style="list-style: none;">
+          <li><b>&&</b></li>
+          <li><b>||</b></li>
+          <li>and <b>!</b></li>
+        </ul> 
+        </div>
+    
+        <div style="display: table-cell;">
+           <p>Which respectively stand for:</p>
+          <ul style="list-style: none;">
+            <li><b>and</b></li>
+            <li><b>or</b></li>
+            <li>and <b>not</b></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+      <p>The results of these operators are similar to their meanings
+        in English.</p>
+        <p>For example:</p>
+        <ul>
+          <li><b>(x > 0 && x < 10)</b> is <text style="color: blue"><b>true</b></text> when <text style="font-size: 35px;">x is <b>both</b> greater than zero <b>and</b>
+            less than 10</text></li>
+          <li>The expression <b>(evenFlag || n % 3 == 0)</b> is <text style="color: blue"><b>true</b></text> if <text style="font-size: 35px;"><b>either</b> condition 
+            is true, that is, if evenFlag is true <b>or</b> the number n is divisible by 3</text></li>
+            <li>And the ! operator inverts a boolean expression, so <b>!evenFlag</b> is <text style="color: blue"><b>true</b></text> 
+              <text style="font-size: 35px;">if evenFlag is <b>not true (false)</b></text>
+              </li>
+        </ul>
+
+        <p>Logical operators evaluate the second expression only when necessary. For
+          example:</p>
+          <ul>
+            <li><b>(<text style="color: blue">true</text> || anything)</b> is always <text style="color: blue"><b>true</b></text>, 
+              so Java does not need to evaluate the expression <b>anything</b></li>
+            <li>and <b>(<text style="color: blue">false</text> && anything)</b> is <b>always <text style="color: blue">false</text></b></li>
+          </ul>
+          <p>Ignoring the second operand, when possible, is called <b>short circuit evaluation</b>, by analogy with an electrical circuit.</p>
+
+          <p>Short circuit evaluation can save time, especially if <b>anything</b> takes a long time to evaluate. 
+            It can also avoid unnecessary errors, if <b>anything</b> might fail.</p>
+  </article>
+  <br />
+  <header>De Morgan's Laws</header>
+  <article>
+    <p>If I told you I would show you a picture of a <b>blue square</b> and then you saw the picture and it <b>wasn’t true</b>, which part of my claim “a blue square” wasn’t true? <br><br>
+      Maybe it was a square and it was a color other than blue? Or maybe it wasn't even a square at all? Maybe it was neither blue NOR a square entirely? <br><br>
+      You could write this as a logic statement like below using negation (!) and the AND (&&) operator since <b>both parts have to be true for the whole statement to be true</b>.</p>
+      <code><text>!(a && b)</text>
+      <text style="color: lightskyblue; font-size:20px">//a = "blue"</text>
+      <text style="color: lightskyblue; font-size:20px">//b = "square"</text></code>
+    <p>If you ever have to negate an expression that contains logical operators, and you probably 
+      will, <b>De Morgan’s laws</b> can help.</p>
+    <p>De Morgan’s Laws were developed by Augustus De Morgan in the 1800s. 
+      They show how to simplify the negation of a complex boolean expression, 
+      which is when there are multiple expressions joined by an AND (&&) or OR (||), such as <br><b>(x < 3) && (y > 2)</b>. <br><br>
+      Negating a logical expression is the same as negating each term and changing the operator. 
+      The ! operator takes precedence over && and ||, so you don’t have to put parentheses around the individual terms <b>!A</b> and <b>!B</b>.
+     </p>
+      <p>Here’s an easy way to remember De Morgan’s Laws:</p> 
+      <ul>
+        <li>move the NOT inside, AND becomes OR </li>
+        <li>and move the NOT inside, OR becomes AND</li>
+      </ul>
+      <img style="width: 100%; height: 100%" src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC1115/images/demorgan.png?raw=true" alt="De Morgan's Law"/>
+     <p>In Java, De Morgan’s Laws are written with the following operators:</p>
+     <ul>
+      <li><b>!(a && b)</b> is equivalent to <b>!a || !b</b></li>
+      <li><b>!(a || b)</b> is equivalent to <b>!a && !b</b></li>
+     </ul>
+     <p>Going back to our example above, using De Morgan’s Laws:</p> 
+     <ul style="list-style: none">
+      <li><b>!("blue" && "square")</b> is equivalent to <b>!("blue") or !("square")</b></li>
+     </ul>
+     <p>You can also simplify negated boolean expressions that have relational operators like <, >, ==. You can remove negation by moving it inside and flipping the relational operator to its opposite sign. 
+      <br><br>For example, <b>(!) not (c equals d) is the same as saying c does not equal d</b>.</p>
+      <p>An easy way to remember this is to:</p>
+      <ul style="list-style: none">
+        <li><b>Move the NOT inside, flip the sign</b></li>
+        <li>i.e. <b>== becomes !=, < becomes >=, and > becomes <=</b></li>
+      </ul> 
+      <p>In this case, negating each term means using the “opposite” relational operator. For example:</p>
+      <ul>
+        <li><b>!(x < 5 && y == 3)</b> is the same as <b>x >= 5 || y != 3</b></li>
+        <li><b>!(x >= 1 || y != 7)</b> is the same as <b>x < 1 && y == 7</b></li>
+      </ul>
+      <p>It may help to read these examples out loud in English. For instance, <b>"If I
+        don’t want the case where <text style="font-size: 35px">x is less than 5 and y is 3</text>, then I 
+        need <text style="font-size: 35px">x to be greater than or equal to 5, or I need y to be anything but 3</text>."</b></p>
+      <p>You should be able to show that two boolean expressions are equivalent. 
+        One way to do this is by using <b>truth tables</b>.
+        <br><br>For example, we can show that <b>!(a && b) == !a || !b</b> by constructing the truth table below 
+        and seeing that they give identical results for the 2 expressions (the last 2 columns in the table below are identical!):</p>
+        <table class="truth">
+          <tr>
+            <th>a</th>
+            <th>b</th>
+            <th>!(a && b)</th>
+            <th>!a || !b</th>
+          </tr>
+          <tr>
+            <td>true</td>
+            <td>true</td>
+            <td>false</td>
+            <td>false</td>
+          </tr>
+          <tr>
+            <td>false</td>
+            <td>true</td>
+            <td>true</td>
+            <td>true</td>
+          </tr>
+          <tr>
+            <td>true</td>
+            <td>false</td>
+            <td>true</td>
+            <td>true</td>
+          </tr>
+          <tr>
+            <td>false</td>
+            <td>false</td>
+            <td>true</td>
+            <td>true</td>
+          </tr>
+        </table>  
+        <p>Often, you can <b>simplify boolean expressions to create equivalent expressions</b>. <br><br>
+          For example, applying De Morgan’s Laws to <b>!(x < 3 && y > 2) yields !(x < 3) || !(y > 2)</b> as seen in the figure below. 
+          <br><br>
+          This can then be simplified further by <b>moving the not operator inside and flipping the relation operators</b>. 
+          So, <b>!(x < 3) || !(y > 2) is simplified to (x >= 3 || y <= 2)</b> where the relational operators are flipped and the negation is removed. 
+          These two simplification steps are seen below.</p>
+        <img style="width: 100%; height: 100%" src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC1115/images/demorganex.png?raw=true" alt="example"/>
+  </article>
+  <br />
+  <hr />
+</section>
+<section class="main-section" id="Conditional_Statements">
+  <br />
+  <header><b>Conditional Statements</b></header>
+  <article>
+  <p>Our programs have so far been linear. In other words, the programs have executed from top to bottom without major surprises or conditional 
+    behavior. <br><br> However, we usually want to add <b>conditional logic</b> to our programs. By this we mean functionality that's in one way or another 
+    <b>dependent on the state of the program's variables</b>. <br><br>
+    To branch the execution of a program based on user input, for example, we need to use something known as a <b>conditional statement</b>. </p>
+  <header>The if Statements</header>
+  <p>The simplest conditional statement in Java is the <b>if statement</b>:</p>
+  <code><text>if (x > 0) {</text>
+  <text style="margin-left: 40px">System.out.println("x is positive");</text>
+  <text>}</text></code>
+  <p>An if statement specifies a statement(s) to be executed <b>only if a particular boolean expression is true</b></p>
+  <p>The expression in parentheses is called the <b>condition</b>.</p>
+  <ul>
+    <li>If it is <text style="color: blue;"><b>true</b></text>, the <b>statements in braces get executed</b>.</li>
+    <li>If the condition is <text style="color: blue;"><b>false</b></text>, execution <b>skips over that block of code</b>.</li>
+  </ul>
+  <p>The condition in parentheses can be any boolean expression.</p>        
+  </article>
+  <br />
+  <header>An if/else Block</header>
+  <article>
+   <p>A second form of conditional statement has two possibilities, indicated by <b>if</b> and <b>else</b>.</p>
+   <p>The possibilities are called <b>branches</b>, and the condition determines which one gets executed:</p>
+   <code><text>if (x > 0) {</text>
+   <text style="margin-left: 40px">System.out.println("x is positive");</text>
+   <text>} else {</text>
+   <text style="margin-left: 40px">System.out.println("x is NOT positive");</text>
+   <text>}</text></code>
+   <p>If the value of x is greated than zero, we know that x is positive, and this code fragment displays a message to that effect.</p>
+   <p>If the condition is false, the second print statement is executed instead. Since the condition must be <text style="color:blue"><b>true</b></text> or <text style="color:blue"><b>false</b></text>, 
+    exactly one of the branches will run.</p>
+    <p>The <b>braces are optional for branches that have only one statement</b>. So we could have written the previous example this way:</p>
+    <code><text>if (x > 0)</text>
+    <text style="margin-left: 40px">System.out.println("x is positive");</text>
+    <text>else </text>
+    <text style="margin-left: 40px">System.out.println("x is NOT positive");</text></code>
+  <p>However, it’s better to use braces – even when they are optional – to avoid
+    making the mistake of adding statements to an if or else block and forgetting
+    to add the braces.</p>
+    <code><text>if (x > 0)</text>
+    <text style="margin-left: 40px">System.out.println("x is positive");</text>
+    <text style="margin-left: 40px">System.out.println("x is NOT positive");</text></code>
+   <p>This code is misleading because it’s not indented correctly. Since there are no braces, 
+    only the first println is part of the if statement. Here is what the compiler actually sees:</p> 
+   <code><text>if (x > 0) {</text>
+   <text style="margin-left: 40px">System.out.println("x is positive");</text>
+   <text>}</text>
+   <text style="margin-left: 40px">System.out.println("x is NOT positive");</text></code>
+   <p>As a result, <b>the second println runs no matter what</b>. <br><br>Even experienced
+    programmers make this mistake; check out 
+    <a href="https://www.synopsys.com/blogs/software-security/understanding-apple-goto-fail-vulnerability-2.html">Apple’s “goto fail” bug.</a></p>
+  </article>
+  <br />
+  <header>Ternary Operator</header>
+  <article>
+   <p>There is also a short-hand if else, which is known as the <b>ternary operator</b> because it consists of three operands.</p>
+   <p>It can be used to replace multiple lines of code with a single line, and is most often used to replace simple if/else statements:</p>
+   <p>The syntax is as follows:</p>
+   <img style="width: 100%; height: 100%" src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC1115/images/ternary.png?raw=true" alt="ternary operator"/>
+   <p>So we can modify our previous if/else block using the ternary operator as follows:</p>
+   <code><text>String result = (x > 0) ? "x is positive" : "x is NOT positive";</text>
+   <text>System.out.println(result);</text></code>
+  </article>
+  <br />
+  <hr />
+</section>
+<section class="main-section" id="Chaining_and_Nesting">
+  <br />
+  <header><b>Chaining and Nesting</b></header>
+  <article>
+  <p>Sometimes you want to check related conditions and choose one of several
+    actions. One way to do this is by <b>chaining</b> a series of if and else statements.</p>
+    <br />
+  </article>
+    <header>The else if Statement</header>
+    <article>
+    <p>We can use the <b>else if</b> statement to specify a new condition if the first condition is false.</p>
+    <img style="width: 100%; height: 100%" src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC1115/images/else%20if%20block.png?raw=true" alt="else if"/>
+    <p>These chains can be as long as you want, although they can be difficult to
+      read if they get out of hand. <br><br>One way to make them easier to read is to use
+      <b>standard indentation</b>, as demonstrated in these examples. <b>If you keep all the
+      statements and braces lined up, you are less likely to make syntax errors</b>.</p>
+    <p>We can modify out previous if/else block (either printing out "x is positive" or "x is NOT positive") to include more specific options:</p>
+    <code><text>if (x > 0){</text>
+    <text style="margin-left: 40px">System.out.println("x is positive");</text>
+    <text>} else if (x < 0) {</text>
+    <text style="margin-left: 40px">System.out.println("x is negative");</text>
+    <text>} else {</text>
+    <text style="margin-left: 40px">System.out.println("x is zero");</text>
+    <text>}</text></code>
+    <p>Now we can further specify for values of x that are not positive, whether they be 0 or a negative number.</p>
+  </article>
+  <br />
+    <header>Nested if Statements</header>
+    <article>
+    <p>In addition to chaining, you can also make complex decisions by <b>nesting</b> one
+      conditional statement inside another. We could have written the previous
+      example as:</p>
+    <code><text>if (x > 0){</text>
+    <text style="margin-left: 40px">System.out.println("x is positive");</text>
+    <text>} else {</text>
+    <text style="margin-left: 40px">if (x < 0) {</text>
+    <text style="margin-left: 80px">System.out.println("x is negative");</text>
+    <text style="margin-left: 40px">} else {</text>
+    <text style="margin-left: 80px">System.out.println("x is zero");</text>
+    <text style="margin-left: 40px">}</text>
+    <text>}</text></code>
+    <p>The <b>outer conditional has two branches</b>. <br><br><b>The first branch contains a print
+      statement, and the second branch contains another conditional statement,
+      which has two branches of its own</b>. <br><br>
+      These two branches are also print statements, but they could have been conditional statements as well.</p>
+    <p>These kinds of nested structures are common, but they get difficult to read
+      very quickly. <b>Good indentation</b> is essential to make the structure (or intended
+      structure) apparent to the reader.</p>
+    </article>
+  <br />
+  <hr />
+</section>
+<section class="main-section" id="Flag_Variables">
+  <br />
+  <header><b>Flag Variables</b></header>
+  <article>
+  <p>To store a <text style="color:blue"><b>true</b></text> or <text style="color:blue"><b>false</b></text> value, you need a boolean variable. 
+    You can create one like this:</p>  
+  <code><text><text style="color:blue"><b>boolean</b></text> flag; <text style="color: lightskyblue; font-size:20px">//variable declaration</text></text>
+  <text>flag = <text style="color:blue"><b>true</b></text>; <text style="color: lightskyblue; font-size:20px">//assignment</text></text>
+  <text>boolean testResult = <text style="color:blue"><b>false</b></text>; <text style="color: lightskyblue; font-size:20px">//both declaration and assignment</text></text></code>
+  <p> Since relational operators evaluate to a boolean value, you can store the result of a comparison in a variable:</p>
+  <code><text><text style="color:blue"><b>boolean</b></text> positiveFlag =  (x > 0); <text style="color: lightskyblue; font-size:20px">//true if x is positive</text></text>
+  <text><text style="color:blue"><b>boolean</b></text> negativeFlag =  (x < 0); <text style="color: lightskyblue; font-size:20px">//true if x is negative</text></text>
+  <text><text style="color:blue"><b>boolean</b></text> zeroFlag =  (x == 0); <text style="color: lightskyblue; font-size:20px">//true if x is zero</text></text></code>
+  <p>The parentheses are unnecessary, but they make the code easier to read. 
+    A variable defined in this way is called a <b>flag</b>, because it signals or “flags” the presence or absence of a condition.</p>
+  <p>You can use flag variables as part of a conditional statement later:</p>
+  <code><text>if (positiveFlag){</text>
+  <text style="margin-left: 40px">System.out.println("x is positive");</text>
+  <text>}</text></code>
+  <p>Notice that you don’t have to write if (evenFlag == <text style="color:blue"><b>true</b></text>). Since evenFlag
+    is a <text style="color:blue"><b>boolean</b></text>, it’s already a condition. Likewise, to check if a flag is <text style="color:blue"><b>false</b></text>:</p>
+  <code><text>if (!positiveFlag){</text>
+  <text style="margin-left: 40px">System.out.println("x is NOT positive");</text>
+  <text>}</text></code>
+  </article>
+  <br />
+  <hr />
+</section>
+<!--Week 4 Day 2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
