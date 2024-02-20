@@ -1,0 +1,1 @@
+2) In Permutations the order matters. So ABC would be one permutation and ACB would be another, for example. Now, there are 6 (3 factorial) permutations of ABC.
