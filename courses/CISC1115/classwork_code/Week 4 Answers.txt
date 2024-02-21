@@ -32,7 +32,7 @@ c. i = (x > 0) ? 7 : 8;
 import java.util.Scanner;
 
 public class Week4_Exercise2 {
-    public static void main(String[] args) {
+    public static void main(String [] args) {
         Scanner in = new Scanner(System.in);
         System.out.print("Input a number: ");
         int n = in.nextInt();
@@ -50,7 +50,7 @@ public class Week4_Exercise2 {
 import java.util.Scanner;
 
 public class Week4_Exercise3 {
-    public static void main(String[] args) {
+    public static void main(String [] args) {
         Scanner in = new Scanner(System.in);
 
         System.out.print("Enter the first number: ");
