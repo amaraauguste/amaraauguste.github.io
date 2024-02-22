@@ -204,8 +204,9 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
     <a class="nav-link" href="#Conditional_Statements" style="font-size: 22px">Conditional Statements</a>
     <a class="nav-link" href="#Chaining_and_Nesting" style="font-size: 22px">Chaining and Nesting</a>
     <a class="nav-link" href="#Flag_Variables" style="font-size: 22px">Flag Variables</a>
-
-
+    <a class="nav-link" href="#Validating_Input" style="font-size: 22px">Validating Input</a>
+    <a class="nav-link" href="#Switch_Statements" style="font-size: 22px">Switch Statements</a>
+    <a class="nav-link" href="#char_Data_Type" style="font-size: 22px">The char<br>Data Type</a>
     <!--
       
     
@@ -1583,6 +1584,9 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
       Like before, we need to import the PrintWriter class in order to use it:
     </p>
     <code><text>import java.io.PrintWriter;</text></code>
+    <p>Whether we are writing or reading, we are still dealing with files so we still HAVE to add a <b>throws Exception</b> declaration to main:</p> 
+      <code><text>public static void main (String [] args) throws Exception { </text></code> 
+      <p>and create the File object that we will be reading from:</p>
     <p>We will use the PrintWriter class to create our file:</p>
     <code><text>PrintWriter pw = new PrintWriter("[filename].txt");</text></code>
     <ul>
@@ -1971,10 +1975,115 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
   <hr />
 </section>
 <!--Week 4 Day 2-->
+<section class="main-section" id="Validating_Input">
+  <br />
+  <header><b>Validating Input</b></header>
+  <article>
+  <p>In our previous examples, we prompt the user to enter an int (whole number) that we will evaluate using our if/else block.</p> 
+  <p>We use <b>.nextInt()</b>, so the Scanner is <b>expecting to read data that is compatible with an int</b>. <br><br>If the user enters a whole number, the Scanner accepts it and 
+    converts it to a int. <br><br><b>But if the user types anything else, i.e a floating-point number, the Scanner throws
+    an InputMismatchException.</b></p> 
+    <p>We can prevent this error by checking the input before parsing it. 
+      <br><br>The Scanner class has <text style="color:blue"><b>boolean</b></text> methods that can validate whether the input is of a particular type, in our case we can use 
+    <b>.hasNextInt()</b> which will return <text style="color:blue"><b>true</b></text> if the <b>next token in this Scanner's input can be interpreted as an int value</b> 
+    and <text style="color:blue"><b>false</b></text> otherwise.</p>
+      
+
+  </article>
+  <br />
+  <hr />
+</section>
 
 
 
 
+<section class="main-section" id="Switch_Statements">
+  <br />
+  <header><b>Switch Statements</b></header>
+  <article>
+  <p>Instead of writing many if/else statements, we can use the switch statement. 
+    <br><br>The switch statement selects one of many code blocks to be executed:</p>  
+    <img style="width: 45%; height: 45%; display: block;
+    margin-left: auto;
+    margin-right: auto;" src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC1115/images/switchstatement.png?raw=true" alt="switch statement"/>
+    <p>This is how it works:</p>
+    <ul>
+      <li>The <b>switch expression is evaluated once</b>.</li>
+      <li>The <b>value of the expression</b> is <b>compared with the values of each case</b>.</li>
+      <li>If there is a <b>match</b>, the <b>associated block of code is executed</b>.</li>
+      <li>The <b>break</b> and <b>default</b> keywords are optional, but extremely useful. We'll talk about this in a bit.</li>
+    </ul>
+    <p>Let's try an example that <b>reads in a number and uses it to calculate the day of the week</b>:</p>
+
+    <code><text>Scanner sc = new Scanner (System.in);</text>
+    <text>System.out.print("Enter a number (1-7): ");</text>
+    <text>int day = sc.nextInt();</text></code>
+
+    <p>Now, let's write some code that will represent the following:</p>
+    <ol>
+      <li>Monday</li>
+      <li>Tuesday</li>
+      <li>Wednesday</li>
+      <li>Thursday</li>
+      <li>Friday</li>
+      <li>Saturday</li>
+      <li>Sunday</li>
+    </ol>
+
+  </article>
+  <br />
+  <header>The break Keyword</header>
+  <article>
+  <p>When Java reaches a <b>break</b> keyword, it <b>breaks out of the switch block</b>.
+    This will <b>stop the execution of more code and case testing inside the block</b>.
+    When a match is found, and the job is done, it's time for a break. <b>There is no need for more testing</b>.</p>  
+   <p>A break can save a lot of execution time because it "ignores" the execution of all the rest of the code in the switch block.</p>
+
+  </article>
+  <br />
+  <header>The default Keyword</header>
+  <article>
+  <p>The <b>default</b> keyword specifies some code to run if there is <b>no case match</b>.</p>  
+   <p>Note that if the default statement is <b>used as the last statement in a switch block, it does not need a break</b>.</p>
+    <br>
+   <p>How can we modify our <a href="/courses/CISC1115/classwork_code/
+    /MY11Lab1Modified.java">previous lab</a> to utilize switch statements instead of the if/else if/else block we used previously?</p>
+  </article>
+  <br />
+  <hr />
+</section>
+
+
+<section class="main-section" id="char_Data_Type">
+  <br />
+  <header><b>The char Data Type</b></header>
+  <article>
+  <p>Now that we have learned a bit more about user input and choices, what about if the choices AREN'T numbers? What if they were letters? Or symbols?</p>
+  <p>The <b>char</b> data type is used to <b>store a single character</b>. The character <b>must be surrounded by single quotes</b>, like 'A' or 'c'</p> 
+  <p></p> 
+  <code><text>char choice = 'B';</text></code>
+  <p>Alternatively, we can use ASCII values, you can use those to display certain characters:</p>
+  <code><text>char first = 65, second = 66, third = 67;</text>
+  <text>System.out.println(first);</text>
+  <text>System.out.println(second);</text>
+  <text>System.out.println(third);</text></code>
+  <img style="width: 100%; height: 100%" src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC1115/images/ASCII.png?raw=true" alt="ASCII Table" />
+
+
+  </article>
+  <br />
+  <header>Reading in chars</header>
+  <article>
+  <p>Unfortunately the Scanner class does not have a specific method used to read in char values the same we we can ints (.nextInt()), doubles (.nextDouble()), etc.</p>  
+   <p>However, since we CAN read in Strings and Strings are made up of character values, there is a way around this:</p>
+   <code><text>char choice = sc.next().charAt(0);</text></code>
+
+   <p>The <b>.charAt()</b> method <b></b>returns the character at the specified index in a String</b> and the <b>index of the first character is 0</b> (we will talk more about the other characters when we talk more about Strings and their methods)</p>
+   <p>Doing this is a loophole to read in char values from the keyboard.</p>
+  </article>
+  <br />
+  <hr />
+</section>
 
 
 
