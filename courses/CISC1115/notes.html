@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/felipec.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  
+  <!-- and it's easy to individually load additional languages -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+  
+  <script>hljs.highlightAll();</script>
   <title>CISC 1115</title>
   <style>
     table {
@@ -103,19 +110,13 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
     }
 
     code {
-      display: block;
-      text-align: left;
-      white-space: pre-line;
-      position: relative;
-      word-break: normal;
-      word-wrap: normal;
-      line-height: 2;
-      background-color: black;
-      color: white;
-      padding: 15px;
-      margin: 10px;
-      border-radius: 5px;
-    }
+        display: block;
+        line-height: 2;
+        padding: 15px;
+        font-size: 26.5px;
+        margin: 10px;
+        border-radius: 5px;
+      }
 
     @media only screen and (max-width: 400px) {
       #main-doc {
@@ -207,6 +208,7 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
     <a class="nav-link" href="#Validating_Input" style="font-size: 22px">Validating Input</a>
     <a class="nav-link" href="#Switch_Statements" style="font-size: 22px">Switch Statements</a>
     <a class="nav-link" href="#char_Data_Type" style="font-size: 22px">The char<br>Data Type</a>
+    <a class="nav-link" href="#Loops" style="font-size: 22px">Loops</a>
     <!--
       
     
@@ -296,6 +298,7 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
           For historical reasons, programming errors are called <b>bugs</b>, and the process of tracking them down and
           correcting them is called <b>debugging</b>.
         </p>
+      </article>
         <br />
         <header>Programming Languages</header>
         <article>
@@ -433,17 +436,12 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
           a newbie! 😃
         </p>
         <p>Let's explore how Java "Hello, World!" program works:</p>
-        <code><text style="color: lightskyblue; font-size:20px">// Our First Program</text>
-            <text>public class HelloWorld {</text>
-            <text style="margin-left: 40px"
-              >public static void main(String[] args) {</text
-            >
-            <text style="margin-left: 80px"
-              >System.out.println("Hello, World!");</text
-            >
-            <text style="margin-left: 40px">}</text>
-            <text>}</text>
-          </code>
+        <pre><code class="language-java">// Our First Program
+public class HelloWorld {
+    public static void main(String [] args) {
+        System.out.println("Hello, World!");
+    }
+}</code></pre>
         <br />
         <p><b>How does the "Hello, World!" program work?</b></p>
         <ol>
@@ -576,7 +574,7 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
           known as int while a decimal number should be declared as a float or
           double.
           <br /><br />
-          <code><text>int score = 42;</text> </code>
+          <pre><code class="language-java"><text>int score = 42;</text> </code></pre>
           <br />
           This syntax can be used to declare both local and global variables
           (we'll talk about this more later 😉).
@@ -590,9 +588,8 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
           separately.
         </p>
         <p>For example:</p>
-        <code><text>int score;</text>
-            <text>score = 42;</text>
-          </code>
+        <pre><code class="language-java">int score;
+score = 42;</code></pre>
         <p>When you declare a variable, you create a named storage location.
           <br><br>
           When you make an assignment to a variable, you update its value.
@@ -603,11 +600,9 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
           <i>literal</i>)
         </p>
         <p>For example:</p>
-        <code><text>int score = 0;</text>
-            <text>...</text>
-            <text>...</text>
-            <text>...</text>
-            <text>score = 42;</text></code>
+        <pre><code class="language-java">int score = 0;
+//more code to be added here
+score = 42;</code></pre>
         <p>Here, initially, we set the score to 0.</p>
         <p>
           Later (after some more code -- not yet specified) we changed it to
@@ -626,10 +621,9 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
         <p>
           We can display the value of a variable using print or println.
           <br /><br />
-          <code><text>int score = 42;</text> 
-              <text style="color: lightskyblue; font-size:20px">//What should be printed below?</text>
-              <text>System.out.println(score);</text>
-            </code>
+          <pre><code class="language-java">int score = 42;
+//What should be printed below?
+System.out.println(score);</code></pre>
           <br />
           When we talk about displaying a variable, we generally mean the <b>value</b> of the variable.
           <br><br>
@@ -804,29 +798,14 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
                   and <i>then</i>
                   performs the specified operation.
                 </li>
-                <code style="margin-left: -125px"><text style="color: lightskyblue; font-size:20px"
-                      >// Prefix increment example</text
-                    >
-                    <text>public class PrefixExample {</text>
-                    <text style="margin-left: 40px"
-                      >public static void main(String[] args) {</text
-                    >
-                    <text style="margin-left: 80px">int a = 5;</text>
-                    <text style="margin-left: 80px; color: lightskyblue; font-size:20px"
-                      >//this immediately increments to 5+1 and prints 6</text
-                    >
-                    <text style="margin-left: 80px"
-                      >System.out.println(++a);</text
-                    >
-                    <text style="margin-left: 80px; color: lightskyblue; font-size:20px"
-                      >//this reflects the modifcation in the previous line AND also prints 6</text
-                    >
-                    <text style="margin-left: 80px"
-                      >System.out.println(a);</text
-                    >
-                    <text style="margin-left: 40px">}</text>
-                    <text>}</text>
-                  </code>
+                <pre><code style="margin-left: -125px" class="language-java">// Prefix increment example
+public class PrefixExample {
+    public static void main(String [] args) {
+        int a = 5;
+        System.out.println(++a);//this immediately increments to 5+1 and prints 6
+        System.out.println(a);//this reflects the modifcation in the previous line AND also prints 6
+    }
+}</code></pre>
               </ul>
               <li>Post-increment/decrement (also known as postfix)</li>
               <ul>
@@ -834,28 +813,14 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
                   Here our code <b>performs the specified operation first</b>,
                   and <i>then</i> increments/decrements the value.
                 </li>
-                <code style="margin-left: -125px"><text style="color: lightskyblue; font-size:20px"
-                      >// Postfix increment example</text
-                    >
-                    <text>public class PostfixExample {</text>
-                    <text style="margin-left: 40px"
-                      >public static void main(String[] args) {</text
-                    >
-                    <text style="margin-left: 80px">int a = 5;</text>
-                    <text style="margin-left: 80px; color: lightskyblue; font-size:20px"
-                      >//prints the current value of a (5) BEFORE incrementing</text
-                    >
-                    <text style="margin-left: 80px"
-                      >System.out.println(a++);</text
-                    >
-                    <text style="margin-left: 80px; color: lightskyblue; font-size:20px"
-                      >//value has been printed out, incremented, now prints 6</text>
-                    <text style="margin-left: 80px"
-                      >System.out.println(a);</text
-                    >
-                    <text style="margin-left: 40px">}</text>
-                    <text>}</text>
-                  </code>
+                <pre><code style="margin-left: -125px">// Postfix increment example
+public class PostfixExample {
+    public static void main(String [] args) {
+        int a = 5;
+        System.out.println(a++);//prints the current value of a (5) BEFORE incrementing
+        System.out.println(a);//value has been printed out, incremented, now prints 6
+    }
+}</code></pre>
                 </ul>
               </ol>
             </ul>
@@ -894,7 +859,7 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
         <p> We can create double variables and assign values to them using
           the same syntax we used for the other types:
           <br /><br />
-          <code><text>double payRate = 42.5;</text> </code>
+          <pre><code class="language-java">double payRate = 42.5;</code></pre>
         </p>
         <p>The simplest way to convert a floating-point value to an integer 
           is to use a <b>type cast</b>, so called because it molds or “casts” 
@@ -902,8 +867,8 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
           <p>
             The syntax for type casting is to put the name of the type 
             in parentheses and use it as an operator.</p>
-          <code><text>double payRate = 42.5;</text> 
-            <text>int pay = (int) payRate;</text></code>
+          <pre><code class="language-java">double payRate = 42.5;
+int pay = (int) payRate;</code></pre>
           <p style="font-size: 50px;"><b>What is the value of the variable pay?</b></p>
         <header>Integer vs Floating Point Division</header>
         <p>In math, division often allows for remainders.
@@ -938,9 +903,9 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
           <br><br>
           For example:
         </p>
-        <code><text>int result = 10 / 3;<text style="color: lightskyblue; font-size:20px">//Integer division, result is 3</text></text>
-            <text>double result = 10.0 / 3;<text style="color: lightskyblue; font-size:20px">//Regular division, result is approximately 3.3333</text></code>
-        </text>
+        <pre><code class="language-java">int result = 10 / 3;//Integer division, result is 3
+double result = 10.0 / 3;//Regular division, result is approximately 3.3333</code></pre>
+        
         <p>It is important to be aware of the distinction between integer division and floating-point division,
           especially when working with different data types and when precision is required in calculations.</p>
       </article>
@@ -985,17 +950,12 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
         where 0.0 is <b>inclusive</b> and 1.0 is <b>exclusive.</b></p>
         <p>When this method is first called, 
           it creates a single new pseudorandom-number generator</p>
-          <code><text>public class RandomExample {</text>
-          <text style="margin-left: 40px"
-            >public static void main(String[] args) {</text
-          >
-          <text style="margin-left: 80px">double rand = Math.random();<text style="color: lightskyblue; font-size:20px">//Generate random number</text></text>
-          <text style="margin-left: 80px"
-            >System.out.println("Random Number:" + rand);<text style="color: lightskyblue; font-size:20px">//different each run</text></text
-          >
-          <text style="margin-left: 40px">}</text>
-          <text>}</text>
-        </code>
+          <pre><code class="language-java">public class RandomExample {
+    public static void main(String [] args) {
+        double rand = Math.random();//Generate random number
+        System.out.println("Random Number:" + rand);//different each run
+    }
+}</code></pre>
         <p>to generate a random number in range:</p>
         <text style="margin: 10px; font-size: 35px">
           Math.random() * (max - min) + min;</text>
@@ -1213,7 +1173,7 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
   <p> Characters can be letters, numbers, punctuation marks, 
     symbols, spaces, tabs, etc.</p>
     <p>We can initialize a String simply by stating: </p>
-    <code><text>String s = "Hello";</text></code>
+    <pre><code class="language-java">String s = "Hello";</code></pre>
     <p>In most cases, we can use a String as a variable data type just like we have for int, double, etc. 
       (Although all Strings we create are technically <i>objects</i> and have more behaviors than the primitive data types --
     but we'll talk more about that later) </p>
@@ -1238,12 +1198,11 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
         Java performs automatic conversions you may not expect:</p>
       
         <p>What do we expect the following code to print?</p>
-        <code><text>String s = "Hello";</text>
-        <text>System.out.println(1 + 2 + s);</text></code>
+        <pre><code class="language-java">String s = "Hello";
+System.out.println(1 + 2 + s);</code></pre>
       
       <p>How about this one?</p>
-      <code><text>System.out.println(s + 1 + 2);</text></code>
-      <br>
+      <pre><code class="language-java">System.out.println(s + 1 + 2);</code></pre>
       <p>Java executes these operations <b>from left to right</b>.</p>
       <ul>
         <li>In the first example, 1 + 2 is
@@ -1284,9 +1243,9 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
       the library java.util</b> by including the following line at the top (before the class declaration) of
       program: 
     </p>
-    <code><text>import java.util.Scanner;</text></code>
+    <pre><code class="language-java">import java.util.Scanner;</code></pre>
     <p>We can declare a Scanner object by saying:</p>
-    <code><text>Scanner sc = new Scanner (System.in);</text></code>
+    <pre><code class="language-java">Scanner sc = new Scanner (System.in);</code></pre>
     <ul>
       <li>
         sc is the <b>name of the Scanner object</b> (this can be changed and is
@@ -1317,7 +1276,7 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
     <p>When we are done reading in data, it is customary to <b>CLOSE</b> the Scanner to avoid 
       a possible memory leak. This is simple, we would just state thr following:
     </p>
-    <code><text>sc.close();</text></code>
+    <pre><code class="language-java">sc.close();</code></pre>
     <p>Once we no longer need the Scanner (this is typically found at the last could lines of the method)</p>
   </article>
   <br>
@@ -1327,11 +1286,11 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
       behavior that may occur</p>
       <p>When you read a String followed by an int, everything works just fine.But
         when you read an int followed by a String, something strange happens.</p>
-      <code><text>System.out.print("What is your age? ");</text>
-      <text>age = in.nextInt();</text>
-      <text>System.out.print("What is your name? ");</text>
-      <text>name = in.nextLine();</text>
-      <text>System.out.printf("Hello %s, age %d\n", name, age);</text></code>
+      <pre><code class="language-java">System.out.print("What is your age? ");
+age = in.nextInt();
+System.out.print("What is your name? ");
+name = in.nextLine();
+System.out.printf("Hello %s, age %d\n", name, age);</code></pre>
 
         <p>Try running this example code. It doesn't let you input your name, and it
           immediately displays the output:</p>
@@ -1343,14 +1302,12 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
             returns the empty string "".</b>
           </p>
       <p>To solve this problem, you need an extra nextLine() after nextInt()</p>
-      <code><text>System.out.print("What is your age? ");</text>
-      <text>age = in.nextInt();</text>
-      <text>in.nextLine();<text style="color: lightskyblue; font-size:20px"
-        >// read the newline</text
-      ></text>
-      <text>System.out.print("What is your name? ");</text>
-      <text>name = in.nextLine();</text>
-      <text>System.out.printf("Hello %s, age %d\n", name, age);</text></code>
+      <pre><code class="language-java">System.out.print("What is your age? ");
+age = in.nextInt();
+in.nextLine();// read the newline
+System.out.print("What is your name? ");
+name = in.nextLine();
+System.out.printf("Hello %s, age %d\n", name, age);</code></pre>
       <p>This technique is common when reading int or double values that appear on
         their own line. <br><br><b>First you read the number, and then you read the rest of the
         line, which is just a newline character.</b></p>
@@ -1363,23 +1320,23 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
     in inches, convert to centimeters, and then display the results.</p>
 
     <p>First let's declare the variables and create the Scanner object that we will call <b>input</b></p>
-    <code><text>int inches;</text>
-    <text>double cm;</text>
-    <text>Scanner input = new Scanner(System.in);</text></code>
+    <pre><code class="language-java">int inches;
+double cm;
+Scanner input = new Scanner(System.in);</code></pre>
 
   <p>Next, let's <b>prompt</b> the user for the input (prompts are important because they let the user know HOW they should interact with the program)</p>
 
   <p>We'll use print() instead of println() so they can enter the input on the <b>same line as the prompt</b>
     and use the Scanner method nextInt(), which reads input from the keyboard
     and <b>converts it to an integer</b></p>
-    <code><text>System.out.print("Enter # of inches: ");</text>
-    <text>inches = input.nextInt();</text></code>
+    <pre><code class="language-java">System.out.print("Enter # of inches: ");
+inches = input.nextInt();</code></pre>
 
   <p>Now we can multiply the number of inches entered by <b>2.54</b> (the number of centimeters there are per inch)
     and display the results</p>
-    <code><text>cm = inches * 2.54;</text>
-    <text>System.out.print(inches + " inches = ");</text>
-    <text>System.out.printf("%.2f cm%n", cm);</text></code>
+    <pre><code class="language-java">cm = inches * 2.54;
+System.out.print(inches + " inches = ");
+System.out.printf("%.2f cm%n", cm);</code></pre>
 
   <p>This code works but it does have a minor flaw. If another programmer
     reads this code, they might wonder where 2.54 comes from.</p>
@@ -1406,13 +1363,13 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
     </p>
     <p>For the benefit of others (and yourself in the future), it would be better to assign this value to
       a variable with a meaningful name:</p>
-      <code><text>double cmPerInch = 2.54;</text>
-      <text>cm = inches * cmPerInch;</text></code>
+      <pre><code class="language-java">double cmPerInch = 2.54;
+cm = inches * cmPerInch;</code></pre>
     <p>This version is easier to read and less error-prone, but it still has a problem.
       <b>Variables can vary</b>, but the number of centimeters in an inch does not.</p>
     <p>Once we assign a value to cmPerInch, it should never change.</p>
     <p>Luckily, Java provides a language feature that enforces that rule, the keyword <b>final</b>.</p>
-    <code><text>final double CM_PER_INCH = 2.54;</text></code>
+    <pre><code class="language-java">final double CM_PER_INCH = 2.54;</code></pre>
     <p>Declaring a variable as <b>final</b> means that it cannot be reassigned once
       it has been initialized. If you try, <b>the compiler reports an error</b>. </p>
     <p>Variables declared as final are called <b>constants</b>.</p>
@@ -1549,14 +1506,13 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
     <p>
       First, since we are using files we need to allow our program(s) to use them by including:
     </p>
-    <code><text>import java.io.File; <text style="color: rgb(65, 180, 252)">//import the File class</text></text
-    ></code>
+    <pre><code class="language-java">import java.io.File;//import the File class</code></pre>
     <p>Since we are dealing with files, we HAVE to add a <b>throws Exception</b> declaration to main:</p> 
-      <code><text>public static void main (String [] args) throws Exception { </text></code> 
+    <pre><code class="language-java">public static void main (String [] args) throws Exception {</code></pre> 
       <p>and create the File object that we will be reading from:</p>
-    <code><text>File file = new File("[filename].txt");</text></code>
+    <pre><code class="language-java">File file = new File("[filename].txt");</code></pre>
     <p>And create a Scanner like we have previously done, only changing our reference from the keyboard to the corresponding file object:</p>
-    <code><text>Scanner sc = new Scanner(file);</text></code>
+    <pre><code class="language-java">Scanner sc = new Scanner(file);</code></pre>
     <ul>
       <li>
         It is important that you remember to create the .txt file that you are trying to 
@@ -1583,12 +1539,12 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
     <p>
       Like before, we need to import the PrintWriter class in order to use it:
     </p>
-    <code><text>import java.io.PrintWriter;</text></code>
+    <pre><code class="language-java">import java.io.PrintWriter;</code></pre>
     <p>Whether we are writing or reading, we are still dealing with files so we still HAVE to add a <b>throws Exception</b> declaration to main:</p> 
-      <code><text>public static void main (String [] args) throws Exception { </text></code> 
+    <pre><code class="language-java">public static void main (String [] args) throws Exception {</code></pre> 
       <p>and create the File object that we will be reading from:</p>
     <p>We will use the PrintWriter class to create our file:</p>
-    <code><text>PrintWriter pw = new PrintWriter("[filename].txt");</text></code>
+    <pre><code class="language-java">PrintWriter pw = new PrintWriter("[filename].txt");</code></pre>
     <ul>
       <li>
         It is important to make sure that the filename that you are trying to create
@@ -1603,7 +1559,7 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
     </p>
     <p>Just like with the Scanner, we need to <b>CLOSE</b> the PrintWriter object:
     </p>
-    <code><text>pw.close();</text></code>
+    <pre><code class="language-java">pw.close();</code></pre>
     <p> The intepreter only knows that the program is finished writing
       to the file <b>after we close</b> the PrintWriter, so if we forget to close 
       the PrintWriter the file may appear empty.
@@ -1833,11 +1789,11 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
     behavior. <br><br> However, we usually want to add <b>conditional logic</b> to our programs. By this we mean functionality that's in one way or another 
     <b>dependent on the state of the program's variables</b>. <br><br>
     To branch the execution of a program based on user input, for example, we need to use something known as a <b>conditional statement</b>. </p>
-  <header>The if Statements</header>
+  <header>The if Statement</header>
   <p>The simplest conditional statement in Java is the <b>if statement</b>:</p>
-  <code><text>if (x > 0) {</text>
-  <text style="margin-left: 40px">System.out.println("x is positive");</text>
-  <text>}</text></code>
+  <pre><code class="language-java">if (x > 0) {
+    System.out.println("x is positive");
+}</code></pre>
   <p>An if statement specifies a statement(s) to be executed <b>only if a particular boolean expression is true</b></p>
   <p>The expression in parentheses is called the <b>condition</b>.</p>
   <ul>
@@ -1851,31 +1807,31 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
   <article>
    <p>A second form of conditional statement has two possibilities, indicated by <b>if</b> and <b>else</b>.</p>
    <p>The possibilities are called <b>branches</b>, and the condition determines which one gets executed:</p>
-   <code><text>if (x > 0) {</text>
-   <text style="margin-left: 40px">System.out.println("x is positive");</text>
-   <text>} else {</text>
-   <text style="margin-left: 40px">System.out.println("x is NOT positive");</text>
-   <text>}</text></code>
+   <pre><code class="language-java">if (x > 0) {
+    System.out.println("x is positive");
+} else {
+    System.out.println("x is NOT positive");
+}</code></pre>
    <p>If the value of x is greated than zero, we know that x is positive, and this code fragment displays a message to that effect.</p>
    <p>If the condition is false, the second print statement is executed instead. Since the condition must be <text style="color:blue"><b>true</b></text> or <text style="color:blue"><b>false</b></text>, 
     exactly one of the branches will run.</p>
     <p>The <b>braces are optional for branches that have only one statement</b>. So we could have written the previous example this way:</p>
-    <code><text>if (x > 0)</text>
-    <text style="margin-left: 40px">System.out.println("x is positive");</text>
-    <text>else </text>
-    <text style="margin-left: 40px">System.out.println("x is NOT positive");</text></code>
+    <pre><code class="language-java">if (x > 0)
+    System.out.println("x is positive");
+else 
+    System.out.println("x is NOT positive");</code></pre>
   <p>However, it’s better to use braces – even when they are optional – to avoid
     making the mistake of adding statements to an if or else block and forgetting
     to add the braces.</p>
-    <code><text>if (x > 0)</text>
-    <text style="margin-left: 40px">System.out.println("x is positive");</text>
-    <text style="margin-left: 40px">System.out.println("x is NOT positive");</text></code>
+    <pre><code class="language-java">if (x > 0)
+    System.out.println("x is positive");
+    System.out.println("x is NOT positive");</code></pre>
    <p>This code is misleading because it’s not indented correctly. Since there are no braces, 
     only the first println is part of the if statement. Here is what the compiler actually sees:</p> 
-   <code><text>if (x > 0) {</text>
-   <text style="margin-left: 40px">System.out.println("x is positive");</text>
-   <text>}</text>
-   <text style="margin-left: 40px">System.out.println("x is NOT positive");</text></code>
+   <pre><code class="language-java">if (x > 0) {
+    System.out.println("x is positive");
+}
+System.out.println("x is NOT positive");</code></pre>
    <p>As a result, <b>the second println runs no matter what</b>. <br><br>Even experienced
     programmers make this mistake; check out 
     <a href="https://www.synopsys.com/blogs/software-security/understanding-apple-goto-fail-vulnerability-2.html">Apple’s “goto fail” bug.</a></p>
@@ -1888,8 +1844,8 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
    <p>The syntax is as follows:</p>
    <img style="width: 100%; height: 100%" src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC1115/images/ternary.png?raw=true" alt="ternary operator"/>
    <p>So we can modify our previous if/else block using the ternary operator as follows:</p>
-   <code><text>String result = (x > 0) ? "x is positive" : "x is NOT positive";</text>
-   <text>System.out.println(result);</text></code>
+   <pre><code class="language-java">String result = (x > 0) ? "x is positive" : "x is NOT positive";
+System.out.println(result);</code></pre>
   </article>
   <br />
   <hr />
@@ -1911,13 +1867,13 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
       <b>standard indentation</b>, as demonstrated in these examples. <b>If you keep all the
       statements and braces lined up, you are less likely to make syntax errors</b>.</p>
     <p>We can modify out previous if/else block (either printing out "x is positive" or "x is NOT positive") to include more specific options:</p>
-    <code><text>if (x > 0){</text>
-    <text style="margin-left: 40px">System.out.println("x is positive");</text>
-    <text>} else if (x < 0) {</text>
-    <text style="margin-left: 40px">System.out.println("x is negative");</text>
-    <text>} else {</text>
-    <text style="margin-left: 40px">System.out.println("x is zero");</text>
-    <text>}</text></code>
+    <pre><code class="language-java">if (x > 0) {
+    System.out.println("x is positive");
+} else if (x < 0) {
+    System.out.println("x is negative");
+} else {
+    System.out.println("x is zero");
+}</code></pre>
     <p>Now we can further specify for values of x that are not positive, whether they be 0 or a negative number.</p>
   </article>
   <br />
@@ -1926,15 +1882,15 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
     <p>In addition to chaining, you can also make complex decisions by <b>nesting</b> one
       conditional statement inside another. We could have written the previous
       example as:</p>
-    <code><text>if (x > 0){</text>
-    <text style="margin-left: 40px">System.out.println("x is positive");</text>
-    <text>} else {</text>
-    <text style="margin-left: 40px">if (x < 0) {</text>
-    <text style="margin-left: 80px">System.out.println("x is negative");</text>
-    <text style="margin-left: 40px">} else {</text>
-    <text style="margin-left: 80px">System.out.println("x is zero");</text>
-    <text style="margin-left: 40px">}</text>
-    <text>}</text></code>
+    <pre><code class="language-java">if (x > 0) {
+    System.out.println("x is positive");
+} else {
+    if (x < 0) {
+        System.out.println("x is negative");
+    } else {
+        System.out.println("x is zero");
+    }
+}</code></pre>
     <p>The <b>outer conditional has two branches</b>. <br><br><b>The first branch contains a print
       statement, and the second branch contains another conditional statement,
       which has two branches of its own</b>. <br><br>
@@ -1952,24 +1908,24 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
   <article>
   <p>To store a <text style="color:blue"><b>true</b></text> or <text style="color:blue"><b>false</b></text> value, you need a <text style="color:blue"><b>boolean</b></text> variable. 
    <br><br>You can create one like this:</p>  
-  <code><text><text style="color:blue"><b>boolean</b></text> flag; <text style="color: lightskyblue; font-size:20px">//variable declaration</text></text>
-  <text>flag = <text style="color:blue"><b>true</b></text>; <text style="color: lightskyblue; font-size:20px">//assignment</text></text>
-  <text>boolean testResult = <text style="color:blue"><b>false</b></text>; <text style="color: lightskyblue; font-size:20px">//both declaration and assignment</text></text></code>
+  <pre><code class="language-java">boolean flag;//variable declaration
+flag = true;//assignment
+boolean testResult = false;//both declaration and assignment</code></pre>
   <p> Since relational operators evaluate to a boolean value, you can store the result of a comparison in a variable:</p>
-  <code><text><text style="color:blue"><b>boolean</b></text> positiveFlag =  (x > 0); <text style="color: lightskyblue; font-size:20px">//true if x is positive</text></text>
-  <text><text style="color:blue"><b>boolean</b></text> negativeFlag =  (x < 0); <text style="color: lightskyblue; font-size:20px">//true if x is negative</text></text>
-  <text><text style="color:blue"><b>boolean</b></text> zeroFlag =  (x == 0); <text style="color: lightskyblue; font-size:20px">//true if x is zero</text></text></code>
+  <pre><code class="language-java">boolean positiveFlag =  (x > 0);//true if x is positive
+boolean negativeFlag =  (x < 0);//true if x is negative
+boolean zeroFlag =  (x == 0);//true if x is zero</code></pre>
   <p>The parentheses are unnecessary, but they make the code easier to read. 
     A variable defined in this way is called a <b>flag</b>, because it signals or “flags” the presence or absence of a condition.</p>
   <p>You can use flag variables as part of a conditional statement later:</p>
-  <code><text>if (positiveFlag){</text>
-  <text style="margin-left: 40px">System.out.println("x is positive");</text>
-  <text>}</text></code>
+  <pre><code class="language-java">if (positiveFlag){
+    System.out.println("x is positive");
+}</code></pre>
   <p>Notice that you don’t have to write if (evenFlag == <text style="color:blue"><b>true</b></text>). Since evenFlag
     is a <text style="color:blue"><b>boolean</b></text>, it’s already a condition. Likewise, to check if a flag is <text style="color:blue"><b>false</b></text>:</p>
-  <code><text>if (!positiveFlag){</text>
-  <text style="margin-left: 40px">System.out.println("x is NOT positive");</text>
-  <text>}</text></code>
+  <pre><code class="language-java">if (!positiveFlag){
+    System.out.println("x is NOT positive");
+}</code></pre>
   </article>
   <br />
   <hr />
@@ -2018,9 +1974,9 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
     </ul>
     <p>Let's try an example that <b>reads in a number and uses it to calculate the day of the week</b>:</p>
 
-    <code><text>Scanner sc = new Scanner (System.in);</text>
-    <text>System.out.print("Enter a number (1-7): ");</text>
-    <text>int day = sc.nextInt();</text></code>
+    <pre><code class="language-java">Scanner sc = new Scanner (System.in);
+System.out.print("Enter a number (1-7): ");
+int day = sc.nextInt();</code></pre>
 
     <p>Now, let's write some code that will represent the following:</p>
     <ol>
@@ -2074,12 +2030,14 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
   <p>Now that we have learned a bit more about user input and choices, what about if the choices AREN'T numbers? What if they were letters? Or symbols?</p>
   <p>The <b>char</b> data type is used to <b>store a single character</b>. The character <b>must be surrounded by single quotes</b>, like 'A' or 'c'</p> 
   <p></p> 
-  <code><text>char choice = 'B';</text></code>
+  <pre><code class="language-java">char choice = 'B';</code></pre>
   <p>Alternatively, we can use ASCII values, you can use those to display certain characters:</p>
-  <code><text>char first = 65, second = 66, third = 67;</text>
-  <text>System.out.println(first);</text>
-  <text>System.out.println(second);</text>
-  <text>System.out.println(third);</text></code>
+  <pre><code class="language-java">char first = 65; 
+char second = 66; 
+char third = 67;
+System.out.println(first);
+System.out.println(second);
+System.out.println(third);</code></pre>
   <img style="width: 100%; height: 100%" src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC1115/images/ASCII.png?raw=true" alt="ASCII Table" />
 
 
@@ -2089,7 +2047,7 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
   <article>
   <p>Unfortunately the Scanner class does not have a specific method used to read in char values the same we we can ints (.nextInt()), doubles (.nextDouble()), etc.</p>  
    <p>However, since we CAN read in Strings and Strings are made up of character values, there is a way around this:</p>
-   <code><text>char choice = sc.next().charAt(0);</text></code>
+   <pre><code class="language-java">char choice = sc.next().charAt(0);</code></pre>
 
    <p>The <b>.charAt()</b> method <b></b>returns the character at the specified index in a String</b> and the <b>index of the first character is 0</b> (we will talk more about the other characters when we talk more about Strings and their methods)</p>
    <p>Doing this is a loophole to read in char values from the keyboard.</p>
@@ -2097,6 +2055,240 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
   <br />
   <hr />
 </section>
+
+<!-- WEEK 5 NOTES -->
+    <!-- WEEK 5 DAY 1-->
+    <section class="main-section" id="Loops">
+      <br />
+      <header><b>Loops</b></header>
+      <article>
+      <p>Programs are often used to automate repetitive tasks. Running the same code multiple times is called <b>iteration</b>.
+      <br><br>Java provides language features that make iteration easy: loops such as the <b>while</b> loop, 
+      the <b>do while</b> loop, and the <b>for</b> loop.</p>
+      <p>In programming, loops are important to learn and understand
+         how to use to be able to create dynamic programs that can do a lot of different things.</p>
+      <p>Loops are a programming element that repeat a portion of code a set number of times until the desired process is complete. 
+        Repetitive tasks are common in programming, and loops are essential to save time and minimize errors.</p>
+      <p>Think about HW 1 and part 1 of HW 2: we processed the required medical dosage for a set of patients.<br><br> 
+        Each patient's dosage is calculated EXACTLY the same way:
+        <ul>
+          <li>First by reading in the patient's weight,</li>
+          <li>Then by converting the weight 
+            from pounds (lbs) to kilograms (kg),</li>
+          <li>Lastly, we multiply the weight in kilograms by 30 since each kilogram of weight requires 
+            a dosage of 30 milligrams (mg)</li>
+        </ul> 
+      <p>Instead of rewriting the block of code for each new patient, we can implement a loop!</p>
+      <p>When programmers write code, loops allow them to shorten what could be hundreds of lines of code to just a few.</p>
+      <p>This allows them to write the code once and repeat it as many times as needed, making it more likely for the program to run 
+        as expected (less chance of error).</p>
+      </article>
+      <br />
+      <header>The while Loop</header>
+      <article>
+        <p>A while loop is a control flow statement that allows code to be executed repeatedly based on a given Boolean condition.</p>
+        <p>The while loop can be thought of as a <b>repeating if statement</b>.</p>
+        <p>The expression in parentheses is called the <b>condition</b>. The statements in braces
+          are called the <b>body</b>. The flow of execution for a while statement is:</p>
+          <ol>
+            <li>Evaluate the condition, yielding true or false.</li>
+            <li>If the condition is false, skip the body and go to the next statement.</li>
+            <li>If the condition is true, execute the body and go back to step 1.</li>
+          </ol>
+        <p>This type of flow is called a loop, <b>because the last step loops back around to
+          the first</b>.</p>
+        </article>
+        <br />
+      <header>The while Loop vs The if Statement</header>
+      <article>
+        <p>You may find that the breakdown of the while loop sounds quite similar to the parts that make up the if statement that we previous discussed.
+          And you would be right! <br><br>There are similarities in the structure of both concepts, however, there are a significant differences as well.
+        </p>
+        <p>An <b>if statement</b>, when true, will only <b>execute the inner block of code once</b>.</p>
+        <p>In contrast, a <b>while loop</b> will continue to <b>execute the inner block of code as long as the condition is true</b>.</p>
+        <p>If the condition is initially false (in either case), the inner block of code will never execute.</p>
+        <p><b>The body of the loop should change the value of one or more variables so that,
+          eventually, the condition becomes false and the loop terminates.</b></p>
+          <p>The termination is important, otherwise <b>the loop will repeat forever</b>, which is called an <b>infinite loop</b>. <br><br>An endless source
+          of amusement for computer scientists is the observation that the directions on
+          shampoo, “Lather, rinse, repeat,” are an infinite loop.
+          </p>
+        <p>For example, we can write a simple loop to act as a countdown:</p>
+        <pre><code class="language-java">int n = 10;
+while (n > 0) {
+    System.out.println(n);
+    n = n - 1;
+}
+System.out.println("Blastoff!");</code></pre>
+        <p>You can almost read the while statement like English: <br><br><b>"While n is greater
+          than zero, print the value of n and then reduce the value of n by 1. When you
+          get to zero, print Blastoff!"</b></p>
+        
+          <p>In this case, the loop terminates when n is no longer positive. But in general, it is not so easy to tell whether a loop terminates.</p>
+      </article>
+      <br />
+        <header>Collatz Conjecture</header>
+        <article>
+        <p>The Collatz conjecture is one of the most famous unsolved problems in mathematics, named after Lothar Collatz.   
+          The conjecture asks whether repeating two simple arithmetic operations will eventually transform every positive integer into 1. </p>
+        <p>The problem is stated as follows: </p>
+        <ul>
+          <li>Start with any positive integer n</li>
+          <li>If n is even, the next number is n/2</li>
+          <li>If n is odd, the next number is 3n+1</li>
+        </ul>
+        <p>The conjecture is that these sequences <b>always reach 1</b> (more specifically ends in the values 4, 2, 1), 
+          <b>no matter which positive integer is chosen to start the sequence</b>.</p>
+        <pre><code class="language-java">import java.util.Scanner;
+
+public class CollatzConjecture {
+    public static void main(String [] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a posititve Integer: ");
+        int x = sc.nextInt();
+        System.out.println(x);
+        while (x != 1) { //until x is equal to 1
+            if (x % 2 == 0) { //x is even
+                x = x / 2;
+                System.out.println(x);
+            } else { //x is odd
+                x = 3 * x + 1;
+                System.out.println(x);
+            }
+        }
+    }          
+}</code></pre>
+<p>Each time through the loop, the program displays the value of x and then
+  checks whether it is even or odd. <br><br>If it is even, the value of x is divided by two.
+  <br><br>If it is odd, the value is replaced by 3x + 1. <br><br>For example, if the starting value
+  (the argument passed to sequence) is 3, the resulting sequence is 3, 10, 5, 16,
+  8, 4, 2, 1.</p>
+<p>Since x sometimes increases and sometimes decreases, there is no <i>obvious</i> proof
+  that x will ever reach 1 and that the program will ever terminate.</p>
+<p>However, the rules of Collatz Conjecture lets us know that it will.</p>
+<p>The hard question is whether this program terminates for all values of x. So
+  far, no one has been able to prove it or disprove it! </p>
+        </article>
+        <br />
+        <header>Generating Tables</header>
+        <article>
+          <p>Loops are good for generating and displaying tabular data.</p>
+          <p>The following code starts with an integer n and then use a loop to display a multiplication table with a sequence of
+            values (n*1, n*2, ... etc.) in the left column and the results in the right column (after the equal sign):</p>
+          <p>Let's trace it!</p>
+          <pre><code class="language-java">int n = 9; 
+int i = 1;
+while(i <= 10) {
+    System.out.printf("%d * %d = %d \n", num, i, num * i);
+    i++;
+}</code></pre>
+        </article>
+        <br />
+        <header>Counters</header>
+        <article>
+        <p>Sometimes, we know in advance how many times we want to do something, i.e.:</p>
+        <ul>
+          <li>do this ten times</li>
+          <li>do this five times</li>
+          <li>pick a random number, and do it that many times</li>
+        </ul>
+        <p>We can do that sort of thing with a while loop, but we have to use a <b>counter</b>.</p>
+        <p>A counter variable in Java is a special type of variable which is used in the loop to <b>count the repetitions or to know about in which 
+          repetition we are in.</b> <br><br>In simple words, a counter variable is a variable that <b>keeps track of the number of times a 
+          specific piece of code is executed</b>.</p>
+        <p>The counter variable is declared and used in the same way as the normal variables are declared and used.</p>
+        <p>The counter variable can be of only integer type because it is very easy to increase the value of integer type variable.</p>
+        <p>The counter variable is very easy to understand and use. The technique of using the counter variable in Java is as follows:</p>
+        <p>Before the repeating cycle, we have to initialize it to zero.</p>
+        <p>After that, we're going to be adding 1 to the counter everytime we repeat the loop. 
+        And when the counter reaches a predetermined value, we'll stop looping.</p>
+        <p>Let's take a simple example to understand the concept of the counter variable in Java: </p>
+        <pre><code class="language-java">int count = 0;// count is initialized
+while (count <= 10) {// count is tested
+    System.out.print(count + " ");
+    count++;// count is incremented, increased by 1
+}</code></pre>
+        <p>The first statement in the loop prints value of count. 
+          <br><br>The second statement uses the increment operator to add one to number. <br><br>
+          After it executes, the loop starts over. It tests the boolean expression again. <br><br>
+          If it is true, the statements in the body of the loop are executed. 
+          <br><br>This cycle repeats until the boolean expression number <= 10 is false.</p>
+
+        <p>The loop in above example is controlled by a counter, so it is known as a <b>counter controlled loop</b>.</p>
+        <p>However, while loops are best for repeating <b>as long as something is true</b>:</p>
+        <ul>
+          <li>keep going as long as they keep typing in a positive number</li>
+          <li>keep going as long as they haven't typed in a zero</li>
+        </ul>
+          <p>The loop in next example is a <b>sentinel controlled loop</b>, <b>a special value (the "sentinel")</b> that is used to signify 
+            <b>when the loop is done</b>.</p>
+
+          <pre><code class="language-java">public static void main(String [] args) {
+    int sum = 0;// initialize the sum
+    int count = 0;//initialize counter
+    //create a Scanner object for keyboard input.
+    Scanner sc = new Scanner(System.in);
+      
+    //get the first value.
+    System.out.print("Enter first integer (enter 0 to quit): ");
+    int value = sc.nextInt();
+      
+    while (value != 0) {
+        count++;//increment count for each value
+        sum = sum + value;//add value to sum
+      
+        //get next value from the user to avoid infinite loop!
+        System.out.print("Enter next integer (enter 0 to quit): ");
+        value = sc.nextInt();
+    }
+      
+    //display the total sum and count
+    System.out.println("Sum of the integers: " + sum);
+    System.out.println("Total integers entered: " + count);
+}</code></pre>
+      <p>Here the loop allows the user to keep entering numbers (and adding the entered numbers to the running sum and counting how many numbers are entered) 
+        UNTIL the user enters a zero.</p>
+
+        </article>
+        <br />
+        <hr />
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
