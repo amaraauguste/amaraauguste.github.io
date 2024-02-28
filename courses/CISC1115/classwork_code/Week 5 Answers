@@ -1,0 +1,80 @@
+REVIEW
+
+a) TBA
+
+-----------
+
+1) 
+
+a. TBA
+
+b. TBA
+
+--------------
+
+REVIEW 
+
+1)
+
+import java.util.Scanner;
+public class VoterEligibility {
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter your age : ");
+        int age = input.nextInt();
+        int res = (age >= 18) ? 1 : 0;
+        switch (res) {
+        case 0:
+            System.out.println("Sorry, you are not eligible to vote.");
+            break;
+
+        case 1:
+            System.out.printf("Congratulations! You are eligible to vote!");
+            break;
+        }
+    }
+}
+
+2) 
+
+Here is what num and reverseNum look like after ONE iteration:
+
+num => 1234
+
+reverseNum => 0 * 10 
+           => 0
+
+rem => 1234 % 10 
+    => 4
+
+num => 1234 - rem 
+    => 1230 / 10
+    => 123
+
+reverseNum => 0 + 4
+           => 4
+
+
+import java.util.Scanner;
+
+public class ReverseNumber {
+    public static void main(String [] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter number to reverse: ");
+        int num = sc.nextInt();
+
+        int reverseNum = 0; 
+        int rem = 0; //temp variable
+
+        while( num != 0 ) {
+            reverseNum *= 10;
+            rem = num % 10;
+            num = (num - rem) / 10;
+
+            reverseNum += rem;  // <-- 'push' remainder onto end of reversedInteger
+        }
+
+        System.out.println("Reverse of input number is: "+ reverseNum);
+    }
+}
