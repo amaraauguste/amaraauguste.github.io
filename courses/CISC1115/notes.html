@@ -2417,13 +2417,11 @@ System.out.println("\nYou entered the number: " + x);</code></pre>
     <p>A simpler way to solve this problem is to use a <b>break statement</b>.</p>
 
     <pre><code class="language-java">Scanner in = new Scanner(System.in);
-boolean okay;
 while (true) {
     System.out.print("Enter a number: ");
     if (in.hasNextDouble()) {
         break;
     } else {
-        okay = false;
         String word = in.next();
         System.out.println(word + " is not a number");
     }
