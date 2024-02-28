@@ -579,14 +579,91 @@ b += 2 * 3 - 1;</code></pre>
 }
 </code><!--code Tag ends here --></pre>
 <ol style="list-style: lower-alpha;">
-  <li>Draw a table that shows the value of the variables i and n during the
-    execution of loop. The table should contain one column for each variable
-    and one line for each iteration.</li>
+  <li>Trace the program.</li>
     <br>
   <li>What is the output of this program?</li>
 </ol>
 
         <!--<p>
+          <a href="/courses/CISC1115/classwork_code/Week 5 Answers.txt"
+            >Answers to Week 5 found here</a
+          >
+        </p>-->
+        <br />
+        <hr />
+        <h2>Review</h2>
+
+        <p>a) Write a Java program to check whether a person is eligible to vote or not using the switch statement.</p>
+        <p>This Java program checks whether a person is eligible to vote based on their age. </p>
+        <ul style="list-style: none;">
+          <li>The program first <b>prompts the user to enter their age</b> and uses <b>the ternary operator 
+            to check whether the age is greater than or equal to 18</b>:</li>
+            <br>
+            <ul>
+              <li>If it is, <b>set the value of your result variable to 1</b></li>
+              <li>Otherwise, <b>set it to 0</b></li>
+            </ul>
+            <br>
+          <li>The program should use a switch statement to print the corresponding message based on the value of your result variable:</li>
+          <br>
+            <ul>
+              <li>If the age is greater than or equal to 18, the program prints <b>"Congratulations! You are eligible to vote!"</b></li>
+              <li>Otherwise, the program prints <b>"Sorry, you are not eligible to vote."</b> </li>
+            </ul>
+        </ul>
+        <br>
+        <p>b) Write a Java program that prompts the user to input an integer and then
+          outputs the number with the digits reversed. For example, <b>if the input is
+          1234, the output should be 4321</b>.</p>
+
+        <p>Here is a step-by-step walkthrough to help you outline a solution:</p>
+        <ul style="list-style: none;">
+          <li>First, <b>prompt the user for the number that they want to reverse</b></li>
+          <br>
+          <li>Create any necessary variables, we will need two:</li>
+          <ol>
+            <li>a variable initialized to 0 to <b>hold the reversed number</b> (let's call it <b>reverseNum</b>)</li>
+            <li>a variable to hold the temporary values needed during calculation also initialized to 0 (let's call it <b>rem</b>)</li>
+          </ol>
+          <br>
+          <li>At the beginning of each loop, we'll <b>multiply reverseNum by 10</b>.</li>
+          <br>
+          <li>Now, let's take our <b>original number and divide it by 10 using the modulus operator</b>. 
+            This is to find a single-digit remainder which equals the current last digit of nums, 
+            we can hold that value in our temporary variable <b>rem</b>.</li>
+            <br>
+          <li>Then <b>subtract rem from num and divide the result by 10</b>. And now we're left with the same integer, but one digit less.
+            <br><br>(Why are we dividing and multiplying numbers by 10? <br><br>
+            It's because we're replicating decimal place values where each place has a value of times ten from right to left.<br><br>
+Dividing by 10 eliminates the last zero in num, which then gives us access to the next digit that ends up in the ones place.<br><br>
+Multiplying reverseNum by 10 makes room in the ones place where we can place the digit we popped off from num.)
+          </li>
+          <br> 
+          <li>Next, it's time to "push" the "popped" digit from num by taking the remainder 
+            (that we saved in the variable <b>rem</b>) and <b>adding it to reverseNum</b>.</li>
+           <br>
+          <li><b>Now, we've completed one cycle of this process</b>.</li>
+          <br>
+          <li><b>Repeat until num's value dwindles to 0 and there are no more digits to 'pop' or 'push'</b>.<br><br>
+            After the reversal of digits is complete, <b>we can finally print out reverseNum</b>.</li>
+
+
+        </ul>
+        
+        
+        <hr />
+        <br />
+
+
+
+
+
+
+
+
+
+
+         <!--<p>
           <a href="/courses/CISC1115/classwork_code/Week 5 Answers.txt"
             >Answers to Week 5 found here</a
           >
