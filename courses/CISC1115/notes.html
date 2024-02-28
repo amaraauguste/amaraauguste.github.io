@@ -2251,6 +2251,207 @@ while (count <= 10) {// count is tested
 
         </article>
         <br />
+        <header>Pretest vs Posttest Loops</header>
+        <article>
+        <p>Now that we know a bit about iteration, let's discuss the different types:</p>
+        <p>A <b>pretest</b> loop <b>tests its condition before each iteration</b>.<br><br>Examples include:</p>
+        <ul>
+          <li>while loops</li>
+          <li>for loops</li>
+        </ul>
+          
+        <p>A <b>posttest</b> loop <b>tests its condition after each iteration</b>.<br>
+          A posttest loop will <b>always execute at least once</b>.<br><br>Examples include:</p>
+        <ul>
+          <li>do/while loops</li>
+        </ul>
+        <p>This type of loop is useful when you need to run the body of the loop at least once.</p>
+      </article>
+        <br />
+      <header>The do/while Loop</header>
+      <article>
+      <p>The do/while loop is a variant of the while loop.</p>
+      <p>It is very similar to the while loop with one distinct difference. <br><br>
+        So let's discuss the specific behavior that separates them from each other:</p>
+        <ul style="list-style: none;">
+          <li>As previously discussed, the <b>while loop checks the condition first</b>, and if it returns <text style="color:blue"><b>true</b></text>, the code within it runs. 
+            The loop continues until the condition provided returns <text style="color:blue"><b>false</b></text>, then stops.</li>
+            <img style="width: 90%; height: 90%" src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC1115/images/Java-while-loop.png?raw=true" alt="while flowchart"/>
+            <br><br>
+          <li>Alternatively, the <b>do/while loop runs its code once before checking the condition</b> and runs again <b>only</b> if the condition is <text style="color:blue"><b>true</b></text>. 
+            This continues until the condition check returns <text style="color:blue"><b>false</b></text>, then it stops before the next loop starts.
+          </li>
+            <img style="width: 90%; height: 90%" src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC1115/images/java-do-while.png?raw=true" alt="do-while flowchart"/>
+        </ul>
+        <p>The loop will <b>always be executed at least once</b>, even if the condition is false, 
+          because the code block is executed <b>before the condition is tested</b>.</p>
+
+
+
+
+
+          <p>The execution of do/while loop is as follows: </p>
+          <ol>
+            <li>Enter the do/while loop</li>
+            <li>The statements inside the body of the loop get executed</li>
+            <li>Any updation takes place</li>
+            <li>The flow jumps to Condition</li>
+            <li>The Condition is tested</li>
+              <ol style="list-style: lower-alpha;">
+                <li>If Condition yields <text style="color:blue"><b>true</b></text>, go to Step 6</li>
+                <li>If Condition yields <text style="color:blue"><b>false</b></text>, the flow goes outside the loop</li>
+              </ol>
+            <li>The flow goes back to Step 2</li>
+          </ol>
+
+
+
+          <p>As aforementioned, the do/while loop is useful for when you want to execute something at least once.</p>
+
+          <p>As for a good example for using do/while vs. while, lets say we want to modify our previous Medical Dosage Calculator.</p>
+
+          <p>We could approach this by using a while loop and checking after each calculation if the person wants to exit the program (as we discussed last class) </p>
+
+          <pre><code class="language-java" style="font-size: 23.3px;">public static void main(String [] args) {
+    final double LBS_TO_KG = 0.45359237;
+    final double DOSE_PER_KG = 30;
+    Scanner sc = new Scanner(System.in);
+    //create count to keep track of # of patients
+    int count = 0;
+    //prompt user to interact
+    System.out.print("Would you like to enter a patient? (Y/N):");
+    //identify new patient Y/N?
+    char op = sc.next().charAt(0);//reads in Y or N
+    
+    while (op != 'N' && op != 'n') {
+        System.out.print("Enter patient's weight: ");
+        double weight = sc.nextDouble();
+        double kilo = weight * LBS_TO_KG;
+        double dosage = kilo * DOSE_PER_KG;
+        count++;
+        System.out.printf("Dosage required for Patient %d is: %.2f%n%n", 
+                            count, dosage);
+        //prompt user to interact
+        System.out.print("Would you like to enter another patient? (Y/N): ");
+        //identify new patient Y/N?
+        op = sc.next().charAt(0);//reads in Y or N
+    }
+    
+    System.out.printf("%nTotal number of patients processed: %d%n", count);
+    
+}</code></pre>
+
+          <p>Now we can probably assume that once the program is opened the user wants to 
+            <b>interact with it at least once</b> so we could modify our code to use a do/while loop.</p>
+      </article>
+     
+
+      <br />
+        <header>Keyword: break</header>
+        <article>
+        <p>We have already seen the <b>break statement</b> used earlier, it was used to "jump out" of a switch statement.
+          <br><br>The break statement can also be used to <b>jump out of a loop</b>.</p>
+          
+          <p>The following example <b>stops the loop when i is equal to 4</b> despite the original condition of the while loop:</p>
+          <pre><code class="language-java">int i = 0;
+while (i < 10) {
+    System.out.println(i);
+    i++;
+    if (i == 4) {
+        break;
+    }  
+}</code></pre>
+      </article>
+
+
+      <br />
+        <header>Keyword: continue</header>
+        <article>
+        <p>The <b>continue</b> statement breaks one iteration (in the loop), if a specified condition occurs, 
+          and continues with the next iteration in the loop</p>
+          
+          <p>The following example <b>skips the value of 4</b>:</p>
+          <pre><code class="language-java">int i = 0;
+while (i < 10) {
+    if (i == 4) {
+        i++;//why do we need to do this? 
+        continue;
+    }
+    System.out.println(i);
+    i++; 
+}</code></pre>
+      </article>
+
+      <br />
+        <header>Putting it all Together</header>
+        <article>
+        <p>For example, we can use a do-while loop to keep reading input
+          until it’s valid:</p>
+
+          <pre><code class="language-java">Scanner in = new Scanner(System.in);
+boolean okay;
+do {
+    System.out.print("Enter a number: ");
+    if (in.hasNextDouble()) {
+        okay = true;
+    } else {
+        okay = false;
+        String word = in.next();
+        System.out.println(word + " is not a number");
+    }
+} while (!okay);
+double x = in.nextDouble();
+System.out.println("\nYou entered the number: " + x);</code></pre>
+
+  <p>Although this code looks complicated, it is essentially only three steps:</p>
+  <ol>
+    <li>Display a prompt</li>
+    <li>Check the input; if invalid, display an error and start over</li>
+    <li>Read the input</li>
+  </ol>
+  <p>The code uses a <b>flag variable, okay</b>, to indicate whether we need to repeat the
+    loop body. <br><br>If <b>.hasNextDouble()</b> returns <text style="color:blue"><b>false</b></text>, we consume the invalid input
+    by calling <b>.next()</b>. We then display an error message. <br><br>The
+    loop terminates when <b>.hasNextDouble()</b> returns <text style="color:blue"><b>true</b></text>.</p>
+
+    <p>A simpler way to solve this problem is to use a <b>break statement</b>.</p>
+
+    <pre><code class="language-java">Scanner in = new Scanner(System.in);
+boolean okay;
+while (true) {
+    System.out.print("Enter a number: ");
+    if (in.hasNextDouble()) {
+        break;
+    } else {
+        okay = false;
+        String word = in.next();
+        System.out.println(word + " is not a number");
+    }
+}
+double x = in.nextDouble();
+System.out.println("\nYou entered the number: " + x);</code></pre>
+
+    <p>Using <text style="color:blue"><b>true</b></text> as a conditional in a while loop is an idiom that means <b>"loop
+      forever"</b>, or in this case <b>"loop until you get to a break statement"</b>.</p>
+
+    <p>Although break and continue statements give you more control of the loop
+      execution, they can make code difficult to understand and debug. <br><br><b>Use them
+      sparingly</b>.</p>
+
+      </article>
+
+
+
+
+
+
+
+
+
+
+
+
+        <br />
         <hr />
     </section>
 
@@ -2313,6 +2514,10 @@ while (count <= 10) {// count is tested
         <ul>
           <li>Allen Downey and Chris Mayfield, <i><b>Think Java: How to Think Like a Computer Scientist</b></i>, 2nd
             Edition, Version 7.1.0, Green Tea Press, 2020, Creative Commons License.
+          </li>
+          <br>
+          <li>
+            <a href="https://www.geeksforgeeks.org/introduction-to-java/" target="_blank">GeeksforGeeks</a>
           </li>
           <br>
           <li>
