@@ -1,6 +1,22 @@
 REVIEW
 
-a) TBA
+a) 
+
+if (pH < 7) {
+    neutral = 0;
+	base = 0;
+	acid = 1;
+}
+else if (pH > 7) {
+	neutral = 0;
+	base = 1;
+	acid = 0;
+}
+else {
+	neutral = 1;
+	base = 0;
+	acid = 0;
+}
 
 -----------
 
@@ -8,7 +24,12 @@ a) TBA
 
 a. TBA
 
-b. TBA
+b. 10
+   5
+   6
+   3
+   4
+   2
 
 --------------
 
