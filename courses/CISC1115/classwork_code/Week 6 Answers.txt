@@ -7,8 +7,8 @@ b)
 total = 0; //important to make sure total is 0
 k = 1;
 do {
-	total + =Math.pow(k,2); //OR k*k
-	k++;
+   total + =Math.pow(k,2); //OR k*k
+   k++;
 } while (k <= 50);
 
 -----------------------
