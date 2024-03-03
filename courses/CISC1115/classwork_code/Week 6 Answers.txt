@@ -49,3 +49,9 @@ c.
 for(int i = 10; i > 0; i--) {
    System.out.println(i);
 }
+
+d. 
+
+for(int i = 1; i <= 15; i++) { //runs 15 times
+   System.out.println(i * 5);
+}
