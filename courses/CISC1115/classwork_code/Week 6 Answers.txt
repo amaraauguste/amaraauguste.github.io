@@ -30,3 +30,22 @@ for(int i = 2; i <= 20; i+=2){
 }
 
 b. 
+
+for(int i = 30; i <= 50; i++) {
+   if(i % 2 != 0) {
+     System.out.println(i);
+   }
+}
+
+OR 
+
+for(int i = 31; i <= 50; i+=2) {
+   System.out.println(i);
+}
+
+
+c. 
+
+for(int i = 10; i > 0; i--) {
+   System.out.println(i);
+}
