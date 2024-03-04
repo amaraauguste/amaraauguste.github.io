@@ -83,6 +83,8 @@ for(int i = 10; i > 0; i--) {
 
 d. 
 
+int sum = 0;
 for(int i = 1; i <= 15; i++) { //runs 15 times
-   System.out.println(i * 5);
+   sum += i * 5;
 }
+System.out.println(i * 5);
