@@ -2437,8 +2437,220 @@ System.out.println("\nYou entered the number: " + x);</code></pre>
       sparingly</b>.</p>
 
       </article>
+      <br />
+      <header>The for Loop</header>
+      <article>
+      <p>The loops we have written so far have several elements in common. <br><br>They
+        start by:
+        <ul>
+          <li>initializing a variable</li>
+          <li>they have a condition that depends on that
+        variable</li>
+        <li>and inside the loop they do something to update that variable</li>
+        </ul>This
+        type of loop is so common that there is another statement, the <b>for loop</b>, that
+        expresses it more concisely.
+        </p>
+      <p>When we know exactly <b>how many times we want to loop through a block of code</b>, we use the for loop instead of a while loop.</p>
+      <p>Unlike the while and do/while loops, the for loop has all three components enclosed in the parentheses, separated by semicolons: the
+        <b>initializer</b>, the <b>condition</b>, and the <b>update</b>.
+        </p>
+      <ol>
+        <li>The initializer runs once at the very beginning of the loop</li>
+        <li>The condition is checked each time through the loop</li>
+          <ul>
+            <li>If it is <text style="color:blue"><b>false</b></text>, the loop ends</li>
+            <li>Otherwise, the body of the loop is executed (again)</li>
+          </ul>
+        <li>At the end of each iteration, the update runs, and we go back to step 2</li>
+      </ol>
+      <p>The for loop is often easier to read because it puts all the loop-related statements at the top of the loop.</p>
+
+      <p><b>How does the for loop work?</b></p>
+      <ol>
+        <li>Control falls into the for loop, initialization is done</li>
+        <li>The flow jumps to the Condition</li>
+        <li>Condition is tested</li>
+        <ul>
+          <li>If the Condition is <text style="color:blue"><b>true</b></text>, the flow goes into the body of the loop</li>
+          <li>If the Condition is <text style="color:blue"><b>false</b></text>, the flow goes outside the loop</li>
+        </ul>
+        <li>(If <text style="color:blue"><b>true</b></text>) The statements inside the body of the loop get executed.</li>
+        <li>The flow goes to the Updation</li>
+        <li>Updation (the variable is updated) takes place and the flow goes to Step 3 again</li>
+        <li>(If <text style="color:blue"><b>false</b></text>) The for loop has ended and the flow has gone outside of the loop</li>
+      </ol>
+      <img style="width: 90%; height: 90%" src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC1115/images/Java-For-loop-with-Examples.png?raw=true" alt="for loop flowchart"/>
+
+      <p>The example below will print the numbers 0 to 4 (inclusive):</p>
+      <pre><code class="language-java">for (int i = 0; i < 5; i++) {
+    System.out.println(i);
+}</code></pre>
+    <ul>
+      <li>The first statement in the parentheses, initializes a variable before the loop starts <b>(int i = 0)</b></li>
+      <li>The second defines the condition for the loop to run <b>(i must be less than 5)</b></li>
+      <ul>
+        <li>If the condition is <text style="color:blue"><b>true</b></text>, the loop will start over again</li>
+        <li>If it is <text style="color:blue"><b>false</b></text>, the loop will end</li>
+      </ul> 
+      <li>The last part enclosed in the parentheses increases a value <b>(i++)</b> each time the code block in the loop has been executed</li>
+    </ul>
+
+    <p>There is one difference between for loops and while loops: <b>if you declare a
+      variable in the initializer, it only exists inside the scope of the for loop</b>.</p>
+
+    <p>For example, if we attempted to print out the value of i after the loop we would get an error:</p>
+
+    <pre><code class="language-java">for (int i = 0; i < 5; i++) {
+    System.out.println(i);
+}
+System.out.println(i); // compiler error</code></pre>
+
+    <p>The last line tries to display i (for no reason other than demonstration) but
+      it won’t work. <b>If you need to use a loop variable outside the loop, you have to
+      declare it outside the loop</b>, like this:
+      </p>
+
+      <pre><code class="language-java">int i;
+for (i = 0; i < 5; i++) {
+    System.out.println(i);
+}
+System.out.println(i);</code></pre>
+
+      <p>Assignments like i = i + 1 don’t often appear in for loops, because Java
+        provides a more concise way to add and subtract by one.</p>
+
+      <p> Specifically, ++ is
+        the increment operator; it has the same effect as i = i + 1.</p>
+
+      <p>And -- is the
+        decrement operator; it has the same effect as i = i - 1.
+        </p>
+
+      <p>If you want to increment or decrement a variable by an amount other than 1,
+        you can use += and -=. For example, i += 2 increments i by 2.</p>
+
+    <p>This example will only print <b>even values</b> between 0 and 10 (inclusive):</p>
+    <pre><code class="language-java">for (int i = 0; i <= 10; i += 2) {
+    System.out.println(i);
+}</code></pre>
+    <p>How can we rewrite this so that it iterates over every number (not just the even ones) 
+      but only prints out the even numbers (that way the output will be the same as the previous code)? (Hint: use an if statement)</p>
 
 
+
+
+
+
+    </article>
+    <br />
+        <header>Nested Loops</header>
+        <article>
+          <p>If a loop exists inside the body of another loop, it's called a <b>nested loop</b>. Here's an example of the nested for loop:</p>
+          <pre><code class="language-java" style="font-size: 25px;">for (int i = 1; i <= 2; i++) {// Outer loop
+    System.out.println("Outer: " + i);// Executes 2 times
+    
+    for (int j = 1; j <= 3; j++) {// Inner loop
+        System.out.println(" Inner: " + j);// Executes 6 times (2 * 3)
+    }
+}</code></pre>
+        <p>The inner loop will be re-executed for each iteration of the outer loop.</p>
+
+        <p>Example: We can use the nested loop to iterate through each day of a week for 4 weeks (a month).
+          <br><br>
+          In this case, we can create a loop to iterate four times (4 weeks). 
+          And, inside the loop, we can create another loop to iterate 7 times (7 days).</p>
+
+        <pre><code class="language-java">public static void main(String [] args) {
+    int weeks = 4;//4 weeks in a month (on average)
+    int days = 7;// 7 days in a week
+      
+    // outer loop prints weeks
+    for (int i = 1; i <= weeks; i++) {
+        System.out.println("Week: " + i);
+      
+        // inner loop prints days
+        for (int j = 1; j <= days; j++) {
+            System.out.println("  Day: " + j);
+        }
+        System.out.println();//skip a line for every new week
+    }
+}</code></pre>
+
+  <p>Alternate: for loop inside the while loop</p>
+  <p>We can write the same exact program only using a while loop as the outer loop instead. The following code shows how:</p>
+
+  <pre><code class="language-java">int weeks = 4;
+int days = 7;
+int i = 1;//necessary for outer loop
+
+// outer loop prints weeks
+while (i <= weeks) {
+    System.out.println("Week: " + i);
+
+    // inner loop
+    for (int j = 1; j <= days; j++) {
+        System.out.println("  Days: " + j);
+    }
+    i++;//NEED TO INCREMENT
+}</code></pre>
+    <p>We can see that the output of both examples are the same.</p>
+
+    <p>Example: Nested loops to create a pattern</p>
+
+    <p>We can use the nested loop in Java to create <b>patterns</b> like full pyramid, half pyramid, inverted pyramid, and so on.
+      <br><br>
+      Here is a program to create a half pyramid pattern using nested loops:</p>
+
+      <pre><code class="language-java">public static void main(String [] args) {
+    int rows = 5;
+    
+    // outer loop
+    for (int i = 1; i <= rows; ++i) {
+    
+        // inner loop to print the numbers
+        for (int j = 1; j <= i; ++j) {
+            System.out.print(j + " ");
+        }
+        System.out.println();
+    }
+}</code></pre>
+
+
+          </article>
+    <br />
+        <header>The Difference Between for, while, do/while Loops</header>
+        <article>
+          <p>There are several differences among the three types of loops in Java, such as the syntax, optimal time to use, condition checking, and so on. 
+            The table below represents some of the primary dissimilarities between all the loops in Java.</p>
+
+
+            <table>
+              <tr>
+                <th></th>
+                <th>for Loop</th>
+                <th>while Loop</th>
+                <th>do/while Loop</th>
+              </tr>
+              <tr>
+                <td><b>About</b></td>
+                <td>the for loop <b>iterates a given set of statements multiple times</b></td>
+                <td>the while loop <b>executes a set of instructions until a boolean condition is met</b></td>
+                <td>the do/while loop <b>executes a set of statements at least once</b>, <b>even if the condition is not met</b>. 
+                  After the <b></b>first execution, repeats the iteration until the boolean condition is met</b></td>
+              </tr>
+              <tr>
+                <td><b>Best time to use</b></td>
+                <td>when you know <b>the exact number of times</b> to execute this particular part of the program.</td>
+                <td>when you don’t know how many times you want the iteration to repeat but <b>you know when it should stop (a sentinel value)</b></td>
+                <td>when you don’t know how many times you want the iteration to repeat (like the while loop), but it <b>should execute at least one time</b></td>
+              </tr>
+              
+            </table>
+
+          
+
+          </article>
 
 
 
