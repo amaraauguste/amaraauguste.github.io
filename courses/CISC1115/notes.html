@@ -209,6 +209,9 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
     <a class="nav-link" href="#Switch_Statements" style="font-size: 22px">Switch Statements</a>
     <a class="nav-link" href="#char_Data_Type" style="font-size: 22px">The char<br>Data Type</a>
     <a class="nav-link" href="#Loops" style="font-size: 22px">Loops</a>
+    <a class="nav-link" href="#Characters" style="font-size: 22px">Characters</a>
+    <a class="nav-link" href="#The_Character_Class" style="font-size: 22px">The Character Class</a>
+    <a class="nav-link" href="#Strings" style="font-size: 22px">Strings</a>
     <!--
       
     
@@ -238,7 +241,7 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
         A <b>program</b> is a sequence of instructions that specifies how to
         perform a computation. <br /><br />
 
-        Every program you’ve
+        Every program you've
         ever used, no matter how complicated, is made up of small instructions that
         look much like the following:
       </p>
@@ -918,7 +921,7 @@ double result = 10.0 / 3;//Regular division, result is approximately 3.3333</cod
       <article>
         <p>
           Java has a lot of built-in Math methods that allow us to perform more complex mathematical computations.
-          The Math class is found in the java.lang package, so you don’t have to import it.
+          The Math class is found in the java.lang package, so you don't have to import it.
           <br><br>
           For example, if you need to get the square root of a number, we use the Math.sqrt() method.
         </p>
@@ -1001,7 +1004,7 @@ double result = 10.0 / 3;//Regular division, result is approximately 3.3333</cod
           Instead, it will do exactly what you told it to do (even if it isn't the right solution).
         <ul>
           <li>Usually the compiler and the interpreter <b>CANNOT</b> help you,
-            since they don’t know what the right thing is. </li>
+            since they don't know what the right thing is. </li>
         </ul>
         </p>
       </article>
@@ -1075,7 +1078,7 @@ double result = 10.0 / 3;//Regular division, result is approximately 3.3333</cod
   </article>
   <header>Escape Sequences</header>
   <article>
-    <p>The <b>\n</b> is an <b>escape sequence</b>, which is a sequence of characters that represents a special character. The backslash allows you to “escape” the string’s
+    <p>The <b>\n</b> is an <b>escape sequence</b>, which is a sequence of characters that represents a special character. The backslash allows you to “escape” the string's
       literal interpretation.</p>
     <img style="width: 60%; height: 60%; display: block; margin-left: auto;
     margin-right: auto;" src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC1115/images/escape%20sequences.png?raw=true" alt="escape sequences">
@@ -1690,32 +1693,32 @@ cm = inches * cmPerInch;</code></pre>
   <br />
   <header>De Morgan's Laws</header>
   <article>
-    <p>If I told you I would show you a picture of a <b>blue square</b> and then you saw the picture and it <b>wasn’t true</b>, which part of my claim “a blue square” wasn’t true? <br><br>
+    <p>If I told you I would show you a picture of a <b>blue square</b> and then you saw the picture and it <b>wasn't true</b>, which part of my claim “a blue square” wasn't true? <br><br>
       Maybe it was a square and it was a color other than blue? Or maybe it wasn't even a square at all? Maybe it was neither blue NOR a square entirely? <br><br>
       You could write this as a logic statement like below using negation (!) and the AND (&&) operator since <b>both parts have to be true for the whole statement to be true</b>.</p>
       <code><text>!(a && b)</text>
       <text style="color: lightskyblue; font-size:20px">//a = "blue"</text>
       <text style="color: lightskyblue; font-size:20px">//b = "square"</text></code>
     <p>If you ever have to negate an expression that contains logical operators, and you probably 
-      will, <b>De Morgan’s laws</b> can help.</p>
-    <p>De Morgan’s Laws were developed by Augustus De Morgan in the 1800s. 
+      will, <b>De Morgan's laws</b> can help.</p>
+    <p>De Morgan's Laws were developed by Augustus De Morgan in the 1800s. 
       They show how to simplify the negation of a complex boolean expression, 
       which is when there are multiple expressions joined by an AND (&&) or OR (||), such as <br><b>(x < 3) && (y > 2)</b>. <br><br>
       Negating a logical expression is the same as negating each term and changing the operator. 
-      The ! operator takes precedence over && and ||, so you don’t have to put parentheses around the individual terms <b>!A</b> and <b>!B</b>.
+      The ! operator takes precedence over && and ||, so you don't have to put parentheses around the individual terms <b>!A</b> and <b>!B</b>.
      </p>
-      <p>Here’s an easy way to remember De Morgan’s Laws:</p> 
+      <p>Here's an easy way to remember De Morgan's Laws:</p> 
       <ul>
         <li>move the NOT inside, AND becomes OR </li>
         <li>and move the NOT inside, OR becomes AND</li>
       </ul>
       <img style="width: 100%; height: 100%" src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC1115/images/demorgan.png?raw=true" alt="De Morgan's Law"/>
-     <p>In Java, De Morgan’s Laws are written with the following operators:</p>
+     <p>In Java, De Morgan's Laws are written with the following operators:</p>
      <ul>
       <li><b>!(a && b)</b> is equivalent to <b>!a || !b</b></li>
       <li><b>!(a || b)</b> is equivalent to <b>!a && !b</b></li>
      </ul>
-     <p>Going back to our example above, using De Morgan’s Laws:</p> 
+     <p>Going back to our example above, using De Morgan's Laws:</p> 
      <ul style="list-style: none">
       <li><b>!("blue" && "square")</b> is equivalent to <b>!("blue") or !("square")</b></li>
      </ul>
@@ -1732,7 +1735,7 @@ cm = inches * cmPerInch;</code></pre>
         <li><b>!(x >= 1 || y != 7)</b> is the same as <b>x < 1 && y == 7</b></li>
       </ul>
       <p>It may help to read these examples out loud in English. For instance, <b>"If I
-        don’t want the case where <text style="font-size: 35px">x is less than 5 and y is 3</text>, then I 
+        don't want the case where <text style="font-size: 35px">x is less than 5 and y is 3</text>, then I 
         need <text style="font-size: 35px">x to be greater than or equal to 5, or I need y to be anything but 3</text>."</b></p>
       <p>You should be able to show that two boolean expressions are equivalent. 
         One way to do this is by using <b>truth tables</b>.
@@ -1771,7 +1774,7 @@ cm = inches * cmPerInch;</code></pre>
           </tr>
         </table>  
         <p>Often, you can <b>simplify boolean expressions to create equivalent expressions</b>. <br><br>
-          For example, applying De Morgan’s Laws to <b>!(x < 3 && y > 2) yields !(x < 3) || !(y > 2)</b> as seen in the figure below. 
+          For example, applying De Morgan's Laws to <b>!(x < 3 && y > 2) yields !(x < 3) || !(y > 2)</b> as seen in the figure below. 
           <br><br>
           This can then be simplified further by <b>moving the not operator inside and flipping the relation operators</b>. 
           So, <b>!(x < 3) || !(y > 2) is simplified to (x >= 3 || y <= 2)</b> where the relational operators are flipped and the negation is removed. 
@@ -1820,13 +1823,13 @@ cm = inches * cmPerInch;</code></pre>
     System.out.println("x is positive");
 else 
     System.out.println("x is NOT positive");</code></pre>
-  <p>However, it’s better to use braces – even when they are optional – to avoid
+  <p>However, it's better to use braces – even when they are optional – to avoid
     making the mistake of adding statements to an if or else block and forgetting
     to add the braces.</p>
     <pre><code class="language-java">if (x > 0)
     System.out.println("x is positive");
     System.out.println("x is NOT positive");</code></pre>
-   <p>This code is misleading because it’s not indented correctly. Since there are no braces, 
+   <p>This code is misleading because it's not indented correctly. Since there are no braces, 
     only the first println is part of the if statement. Here is what the compiler actually sees:</p> 
    <pre><code class="language-java">if (x > 0) {
     System.out.println("x is positive");
@@ -1834,7 +1837,7 @@ else
 System.out.println("x is NOT positive");</code></pre>
    <p>As a result, <b>the second println runs no matter what</b>. <br><br>Even experienced
     programmers make this mistake; check out 
-    <a href="https://www.synopsys.com/blogs/software-security/understanding-apple-goto-fail-vulnerability-2.html">Apple’s “goto fail” bug.</a></p>
+    <a href="https://www.synopsys.com/blogs/software-security/understanding-apple-goto-fail-vulnerability-2.html">Apple's “goto fail” bug.</a></p>
   </article>
   <br />
   <header>Ternary Operator</header>
@@ -1921,8 +1924,8 @@ boolean zeroFlag =  (x == 0);//true if x is zero</code></pre>
   <pre><code class="language-java">if (positiveFlag){
     System.out.println("x is positive");
 }</code></pre>
-  <p>Notice that you don’t have to write if (evenFlag == <text style="color:blue"><b>true</b></text>). Since evenFlag
-    is a <text style="color:blue"><b>boolean</b></text>, it’s already a condition. Likewise, to check if a flag is <text style="color:blue"><b>false</b></text>:</p>
+  <p>Notice that you don't have to write if (evenFlag == <text style="color:blue"><b>true</b></text>). Since evenFlag
+    is a <text style="color:blue"><b>boolean</b></text>, it's already a condition. Likewise, to check if a flag is <text style="color:blue"><b>false</b></text>:</p>
   <pre><code class="language-java">if (!positiveFlag){
     System.out.println("x is NOT positive");
 }</code></pre>
@@ -2386,7 +2389,7 @@ while (i < 10) {
         <header>Putting it all Together</header>
         <article>
         <p>For example, we can use a do-while loop to keep reading input
-          until it’s valid:</p>
+          until it's valid:</p>
 
           <pre><code class="language-java">Scanner in = new Scanner(System.in);
 boolean okay;
@@ -2507,7 +2510,7 @@ System.out.println("\nYou entered the number: " + x);</code></pre>
 System.out.println(i); // compiler error</code></pre>
 
     <p>The last line tries to display i (for no reason other than demonstration) but
-      it won’t work. <b>If you need to use a loop variable outside the loop, you have to
+      it won't work. <b>If you need to use a loop variable outside the loop, you have to
       declare it outside the loop</b>, like this:
       </p>
 
@@ -2517,7 +2520,7 @@ for (i = 0; i < 5; i++) {
 }
 System.out.println(i);</code></pre>
 
-      <p>Assignments like i = i + 1 don’t often appear in for loops, because Java
+      <p>Assignments like i = i + 1 don't often appear in for loops, because Java
         provides a more concise way to add and subtract by one.</p>
 
       <p> Specifically, ++ is
@@ -2642,8 +2645,8 @@ while (i <= weeks) {
               <tr>
                 <td><b>Best time to use</b></td>
                 <td>when you know <b>the exact number of times</b> to execute this particular part of the program.</td>
-                <td>when you don’t know how many times you want the iteration to repeat but <b>you know when it should stop (a sentinel value)</b></td>
-                <td>when you don’t know how many times you want the iteration to repeat (like the while loop), but it <b>should execute at least one time</b></td>
+                <td>when you don't know how many times you want the iteration to repeat but <b>you know when it should stop (a sentinel value)</b></td>
+                <td>when you don't know how many times you want the iteration to repeat (like the while loop), but it <b>should execute at least one time</b></td>
               </tr>
               
             </table>
@@ -2652,25 +2655,263 @@ while (i <= weeks) {
 
           </article>
 
-
-
-
-
-
-
-
-
-
         <br />
         <hr />
     </section>
 
 
+    <!--WEEK 7 NOTES-->
+    <!--Week 7 Day 2-->
+    <section class="main-section" id="Characters">
+      <br />
+      <header><b>Characters</b></header>
+      <article>
+      <p>We have learned a bit about characters before (see: <b>The char Data Type</b>) as another means of choice input, however, they can be used for 
+        so much more! <br><br>But first, what are characters anyway?</p>
+        <p>We can think of a <b>char</b> in Java as a single letter in a word – it represents a <b>single character</b>, and it's a fundamental part of Java programming.</p>
+      <p>To declare and use a char in Java, you use the char keyword before a variable name. 
+        <br><br>We can then manipulate and use this char in various ways in our programs.</p> 
+      <pre><code class="language-java">char letter = 'A';
+System.out.println(letter);</code></pre>
+      <p>In the above example, we declare a char variable named letter and assign it the value 'A'. 
+        We then print out the value of letter, which outputs 'A'.</p>
+     
+      <p>Character literals, like 'a', appear in <b>single quotes</b>. Unlike string literals,
+        which appear in double quotes (""), character literals can only contain a single
+        character. Escape sequences, like '\t' or '\n', are legal because they represent a
+        single character.
+        <br><br>This is a key difference between chars and strings in Java.</p>
+
+      <p>Chars are incredibly efficient in terms of memory usage. 
+        <b>Each char in Java takes up only 2 bytes of memory</b>, making them a great choice when memory usage is a concern.<br><br>
+
+        However, as previously mentioned, chars in Java can represent a single character only. 
+        If we need to work with <b>multiple characters, we will need to use a string or an array of chars</b> (we'll talk about this more in a bit).
+        <br><br>
+        Also, remember that chars in Java are <b>case-sensitive</b>. This means that the <b>char 'a' is different from the char 'A'</b>. 
+        Always be mindful of this when working with chars in Java.</p>
+
+        <p>As you become more familiar with Java char, you'll find that there's a lot more you can do beyond simply declaring and printing them. 
+          Let's delve into some of these advanced techniques, such as manipulating and comparing characters.</p>
+
+      </article>
+      <br />
+      <header>Manipulating chars</header>
+      <article>
+      <p>We can perform arithmetic operations on chars in Java, similarly to ints and doubles. 
+        This is because chars in Java are, in fact, <b>numeric values representing Unicode characters</b>. <br><br>
+        The increment and decrement operators work perfectly normal with characters.
+        <br><br>Here is an example:</p>
+       <pre><code class="language-java">char letter = 'A';
+letter++;
+System.out.println(letter);</code></pre>
+        <p>In the above example, we increment the char 'A' by 1, which results in the char 'B'. 
+          <br><br>This is because in the Unicode character set, 'B' is one position after 'A'.</p>
+        <p>The character 'A' has a Unicode value of 65, so adding 1 to it results in the Unicode value of 66 or most notably the char 'B'.</p>
+        <p>We can do the same with the other arithmetic operations as well! For example, subtraction:</p>
+        <pre><code class="language-java">char letter = 'W';
+letter--;
+System.out.println(letter); //What will this print out?</code></pre>
+
+          <p>We can also use chars in loops, the following loop
+            displays the letters of the alphabet:</p>
+
+            <pre><code class="language-java">System.out.print("English alphabet: ");
+for (char c = 'A'; c <= 'Z'; c++) {
+    System.out.print(c + " ");
+}
+System.out.println();</code></pre>
+
+          <p>Just like with int or double we can also cast a number to a char using typecasting. (once again, see: <b>The char Data Type</b>)</p>
+
+      </article>
+      <br />
+      <header>Comparing chars</header>
+      <article>
+      <p>Characters work like the other primitive types we have seen. You can compare
+        them using relational operators:</p>
+       <pre><code class="language-java">char firstLetter = 'A';
+char secondLetter = 'B';
+System.out.println(firstLetter < secondLetter); //(T or F)</code></pre>
+        <p>In this code snippet, we compare two chars 'A' and 'B'. Since 'A' comes before 'B' in the Unicode character set, 
+          the expression 'firstLetter < secondLetter' returns <text style="color:blue"><b>true</b></text>.</p>
+        <p>Since, we can use relational operators with chars we can also use them in boolean conditions such as the following:</p>
+        
+        <pre><code class="language-java">if (firstLetter == 'A') {
+    System.out.println("The first letter is " + firstLetter);
+}</code></pre>
+      
 
 
 
 
 
+<p>While the char data type is a powerful tool for handling single characters in Java, there are alternative approaches that offer additional functionality. 
+  We will explore two of these: the <b>Character</b> wrapper class and using <b>Strings</b>.</p>
+        
+      </article>
+      <br />
+      <hr />
+    </section>
+
+    <section class="main-section" id="The_Character_Class">
+      <br />
+      <header><b>The Character Class</b></header>
+      <article>
+      <p>Most of the time, if you are using a single character value, you will use the primitive char type.<br><br> 
+        However in programming, we come across situations where we need to use objects instead of primitive data types. 
+        In order to achieve this, Java provides wrapper class <b>Character</b> for primitive data type char.</p>
+        <p>Character is a <i>wrapper</i> class that "wraps" the char in a Character object.<br><br> 
+          An object of type Character contains a single field, whose type is char.
+          You can create a Character object with the Character constructor.<br><br>
+          To create a Character object: </p> 
+      <pre><code class="language-java">Character ch = new Character('A');</code></pre>
+      <p>The above statement creates a Character object which contains 'A' of type char.</p>
+     
+      <p>This Character class also offers a number of <b>useful class (that is, static) methods</b> for manipulating characters.</p>
+
+      <p>The following table lists some of the most useful methods in the Character class:</p>
+      <table width="50%" border="1" cellpadding="4" cellspacing="3" class="structure">
+      <tr>
+        <th id="h1" width="50%">Method</th>
+        <th id="h2">Description</th>
+        </tr>
+        <tr>
+        <td headers="h1"><code>boolean <b>isLetter</b>(char ch)<br />
+        boolean <b>isDigit</b>(char ch)</code></td>
+        <td headers="h2">Determines whether the specified char value is a letter or a digit, respectively.</td>
+        </tr>
+        <tr>
+        <td headers="h1"><code>boolean <b>isWhitespace</b>(char ch)</code></td>
+        <td headers="h2">Determines whether the specified char value is white space.</td>
+        </tr>
+        <tr>
+        <td headers="h1"><code>boolean <b>isUpperCase</b>(char ch)<br />
+        boolean <b>isLowerCase</b>(char ch)</code></td>
+        <td headers="h2">Determines whether the specified char value is uppercase or lowercase, respectively.</td>
+        </tr>
+        <tr>
+        <td headers="h1"><code>char <b>toUpperCase</b>(char ch)<br />
+        char <b>toLowerCase</b>(char ch)</code></td>
+        <td headers="h2">Returns the uppercase or lowercase form of the specified char value.</td>
+        </tr>
+        <tr>
+        <td headers="h1"><code><b>toString</b>(char ch)</code></td>
+        <td headers="h2">Returns a String object representing the specified character value &#151; that is, a one-character string.</td>
+        </tr>
+        </table>
+
+
+
+      <p>For a complete listing of all methods in this class (there are more than 50), 
+        refer to the <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Character.html">java.lang.Character</a> API specification.</p>
+
+      <p>Here is an example of using the Character class to convert a char to uppercase:</p>
+      <pre><code class="language-java">char lowercaseLetter = 'a';
+char uppercaseLetter = Character.toUpperCase(lowercaseLetter);
+System.out.println(uppercaseLetter);</code></pre>
+      <p>In this example, we use the toUpperCase method of the Character class to convert the lowercase char 'a' to an uppercase 'A'.</p>
+
+
+      </article>
+      
+      <br />
+      <hr />
+    </section>
+
+
+    <section class="main-section" id="Strings">
+      <br />
+      <header><b>Strings</b></header>
+      <article>
+      <p>Strings are the type of objects that can store the character of values and in Java.
+         A String class object acts the same as an <b>array of characters in Java</b>. In Java, objects of the String class 
+        are <b>immutable</b> which means that they are constant and <b>cannot be changed once created</b>.</p> 
+        <p>A String variable contains a collection of characters surrounded by double quotes:</p>
+      <pre><code class="language-java">String greeting = "Hello!";</code></pre>
+
+
+
+      <p>A String in Java is actually an object, which means that it contains methods that can perform certain operations on Strings. </p>
+
+      <p>A couple of the methods, <b>toUpperCase()</b> and <b>toLowerCase()</b> convert from
+uppercase to lowercase and back. These methods are often a source of confusion, because it sounds like they modify strings. But neither these methods
+nor any others can change a string, because strings are immutable</p>
+
+        <p>When you invoke <b>toUpperCase()</b> on a string, you get a new string object as a
+          return value. For example:</p>
+
+          <pre><code class="language-java">String name = "Alan Turing";
+String upperName = name.toUpperCase();</code></pre>
+
+            <p>After these statements run, upperName refers to the String <b>"ALAN TURING"</b>.
+              But name still refers to <b>"Alan Turing"</b>.</p>
+
+          <p>Another useful method is <b>replace()</b>, which finds and replaces instances of one
+            String within another. This example replaces <b>"Computer Science"</b> with <b>"CS"</b>:
+            </p>
+
+            <pre><code class="language-java">String text = "Computer Science is fun!";
+text = text.replace("Computer Science", "CS");</code></pre>
+
+            <p>This example demonstrates a common way to work with String methods. <br><br>
+              It invokes text.replace(), which returns <b>a reference to a new String</b>: "CS is fun!".
+              Then it assigns the new string to text, replacing the old String.</p>
+
+              <p>This assignment is important; <b>if you don’t save the return value, invoking
+                text.replace() has no effect</b>.</p>
+
+      
+</article>
+<br />
+<header>String Traversal</header>
+<article>
+
+  <p>Strings provide a method called <b>length()</b> that returns the number of characters
+    in the string.</p>
+
+  <p>For example:</p>
+  <pre><code class="language-java" style="font-size: 25px;">String fruit = "banana";
+System.out.println("The length of the String is: " + fruit.length());</code></pre>
+
+    <p>The Java String class <b>charAt</b>() method <b>returns a char value at the given index number</b>.
+      <br><br>
+      Since a String is technically an array of characters, <b>the index number starts from 0 and goes to n-1, 
+      where n is the length of the string</b>.</p>
+
+      <pre><code class="language-java" style="font-size: 25px;">char ch = fruit.charAt(2);//returns the char value at the 2nd index  
+System.out.println(ch);</code></pre>
+
+      <p>To find the last letter of a string, you might be tempted to try something like:</p>
+
+      <pre><code class="language-java">int length = fruit.length();
+char last = fruit.charAt(length);//wrong!</code></pre>
+
+      <p>This code compiles and runs, but invoking the charAt method throws a
+        <b>StringIndexOutOfBoundsException</b>. <br><br>The problem is that there is no sixth
+        letter in "banana". Since we started counting at 0, the 6 letters are indexed
+        from 0 to 5. <br><br><b>To get the last character, you have to subtract 1 from length</b>.</p>
+    
+        <pre><code class="language-java">int length = fruit.length();
+char last = fruit.charAt(length - 1);//correct!</code></pre>
+
+        <p>Many String traversals involve reading one String and creating another. For
+          example, to reverse a String, we simply add one character at a time:</p>
+
+        <pre><code class="language-java">String reverse = "";
+for (int i = fruit.length() - 1; i >= 0; i--) {
+    reverse = reverse + fruit.charAt(i);
+}
+System.out.println(reverse);</code></pre>
+
+      <p>The initial value of reverse is "", which is the <b>empty String</b>. <br><br>The loop traverses
+        the letters of fruit in reverse order. Each time through the loop, it creates a new
+        String and assigns it to reverse. When the loop exits, reverse contains the letters from fruit
+        in reverse order. <br><br><b>So the result of when fruit is "banana" is "ananab"</b>.</p>
+      
+      <br />
+      <hr />
+    </section>
 
 
 
@@ -2732,6 +2973,10 @@ while (i <= weeks) {
           <br>
           <li>
             <a href="https://www.programiz.com/java-programming" target="_blank">Programiz</a>
+          </li>
+          <br>
+          <li>
+            <a href="https://ioflood.com/blog/java-char/" target="_blank">IOFLOOD</a>
           </li>
         </ul>
       </article>
