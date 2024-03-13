@@ -2888,8 +2888,8 @@ System.out.println(ch);</code></pre>
 char last = fruit.charAt(length);//wrong!</code></pre>
 
       <p>This code compiles and runs, but invoking the charAt method throws a
-        <b>StringIndexOutOfBoundsException</b>. <br><br>The problem is that there is no sixth
-        letter in "banana". Since we started counting at 0, the 6 letters are indexed
+        <b>StringIndexOutOfBoundsException</b>. <br><br>The problem is that there is no letter at the sixth
+        index in "banana". Since we started counting at 0, the 6 letters are indexed
         from 0 to 5. <br><br><b>To get the last character, you have to subtract 1 from length</b>.</p>
     
         <pre><code class="language-java">int length = fruit.length();
