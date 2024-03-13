@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.0.1/dist/canvas-confetti.min.js"></script>
+    <meta charset="utf-8" />
+    <title>Number guessing game</title>
+    <style>
+      .game-container {
+        background-color: #e6fdff;
+        padding: 20px;
+        border-radius: 10px;
+        margin: 0 auto;
+        text-align: center;
+        font-family: "Arial", sans-serif;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      h1 {
+        font-size: 25px;
+      }
+
+      p {
+        font-size: 16px;
+        margin-top: 10px;
+      }
+
+      .form input[type="number"] {
+        width: 100px;
+        padding: 5px;
+        margin: 0 10px;
+      }
+
+      .guessSubmit {
+        padding: 5px 15px;
+        margin: 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+
+      .resultParas p {
+        font-size: 16px;
+        font-weight: bold;
+        padding: 5px;
+      }
+
+      .guessField {
+        margin-right: 10px;
+      }
+
+      .lastResult {
+        padding: 5px;
+        margin-top: 10px;
+      }
+
+      button {
+        padding: 5px 15px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="game-container">
+      <h1>Welcome to the Number Guessing Game!</h1>
+      <br />
+      <p>I have selected a number between 1 and 100. Can you guess it?</p>
+      <br />
+      <div class="form">
+        <label for="guessField">Enter your guess: </label>
+        <input
+          type="number"
+          min="1"
+          max="100"
+          required
+          id="guessField"
+          class="guessField"
+        />
+        <input type="submit" value="Submit guess" class="guessSubmit" />
+      </div>
+
+      <div class="resultParas">
+        <p class="lowOrHi"></p>
+        <p class="guesses"></p>
+        <p class="lastResult"></p>
+      </div>
+      <br />
+      <!-- Start new game button added inside the game container -->
+      <button id="newGameButton" style="display: none">Start new game</button>
+    </div>
+
+    <script>
+      window.onload = function () {
+        // Globals
+        var random = Math.random,
+          cos = Math.cos,
+          sin = Math.sin,
+          PI = Math.PI,
+          PI2 = PI * 2,
+          timer = undefined,
+          frame = undefined,
+          confetti = [];
+
+        var confettiActive = false;
+
+        var particles = 10,
+          spread = 40,
+          sizeMin = 3,
+          sizeMax = 12 - sizeMin,
+          eccentricity = 10,
+          deviation = 100,
+          dxThetaMin = -0.1,
+          dxThetaMax = -dxThetaMin - dxThetaMin,
+          dyMin = 0.13,
+          dyMax = 0.18,
+          dThetaMin = 0.4,
+          dThetaMax = 0.7 - dThetaMin;
+
+        var colorThemes = [
+          function () {
+            return color(
+              (200 * random()) | 0,
+              (200 * random()) | 0,
+              (200 * random()) | 0
+            );
+          },
+          function () {
+            var black = (200 * random()) | 0;
+            return color(200, black, black);
+          },
+          function () {
+            var black = (200 * random()) | 0;
+            return color(black, 200, black);
+          },
+          function () {
+            var black = (200 * random()) | 0;
+            return color(black, black, 200);
+          },
+          function () {
+            return color(200, 100, (200 * random()) | 0);
+          },
+          function () {
+            return color((200 * random()) | 0, 200, 200);
+          },
+          function () {
+            var black = (256 * random()) | 0;
+            return color(black, black, black);
+          },
+          function () {
+            return colorThemes[random() < 0.5 ? 1 : 2]();
+          },
+          function () {
+            return colorThemes[random() < 0.5 ? 3 : 5]();
+          },
+          function () {
+            return colorThemes[random() < 0.5 ? 2 : 4]();
+          },
+        ];
+        function color(r, g, b) {
+          return "rgb(" + r + "," + g + "," + b + ")";
+        }
+
+        // Cosine interpolation
+        function interpolation(a, b, t) {
+          return ((1 - cos(PI * t)) / 2) * (b - a) + a;
+        }
+
+        // Create a 1D Maximal Poisson Disc over [0, 1]
+        var radius = 1 / eccentricity,
+          radius2 = radius + radius;
+        // Create a 1D Maximal Poisson Disc over [0, 1]
+        function createPoisson() {
+          // domain is the set of points which are still available to pick from
+          // D = union{ [d_i, d_i+1] | i is even }
+          var domain = [radius, window.innerWidth - radius],
+            measure = window.innerWidth - radius2,
+            spline = [0, 1];
+          while (measure) {
+            var dart = measure * random(),
+              i,
+              l,
+              interval,
+              a,
+              b,
+              c,
+              d;
+
+            // Find where dart lies
+            for (i = 0, l = domain.length, measure = 0; i < l; i += 2) {
+              (a = domain[i]), (b = domain[i + 1]), (interval = b - a);
+              if (dart < measure + interval) {
+                spline.push((dart += a - measure));
+                break;
+              }
+              measure += interval;
+            }
+            (c = dart - radius), (d = dart + radius);
+
+            // Update the domain
+            for (i = domain.length - 1; i > 0; i -= 2) {
+              (l = i - 1), (a = domain[l]), (b = domain[i]);
+              if (a >= c && a < d)
+                if (b > d) domain[l] = d; // Move interior (Left case)
+                else domain.splice(l, 2);
+              else if (a < c && b > c)
+                if (b <= d) domain[i] = c; // Move interior (Right case)
+                else domain.splice(i, 0, c, d); // Split interval
+            }
+
+            // Re-measure the domain
+            for (i = 0, l = domain.length, measure = 0; i < l; i += 2)
+              measure += domain[i + 1] - domain[i];
+          }
+
+          return spline.sort();
+        }
+
+        // Create the overarching container
+        var container =
+          document.getElementById("confetti-container") ||
+          document.createElement("div");
+        container.id = "confetti-container";
+        container.style.position = "fixed";
+        container.style.top = "0";
+        container.style.left = "0";
+        container.style.width = "100%";
+        container.style.height = "0";
+        container.style.overflow = "visible";
+        container.style.zIndex = "9999";
+
+        // Confetto constructor
+        function Confetto(theme) {
+          this.frame = 0;
+          this.outer = document.createElement("div");
+          this.inner = document.createElement("div");
+          this.outer.appendChild(this.inner);
+
+          var outerStyle = this.outer.style,
+            innerStyle = this.inner.style;
+          outerStyle.position = "absolute";
+          outerStyle.width = sizeMin + sizeMax * random() + "px";
+          outerStyle.height = sizeMin + sizeMax * random() + "px";
+          innerStyle.width = "100%";
+          innerStyle.height = "100%";
+          innerStyle.backgroundColor = theme();
+          outerStyle.perspective = "50px";
+          outerStyle.transform = "rotate(" + 360 * random() + "deg)";
+          this.axis =
+            "rotate3D(" +
+            cos(360 * random()) +
+            "," +
+            cos(360 * random()) +
+            ",0,";
+          this.theta = 360 * random();
+          this.dTheta = dThetaMin + dThetaMax * random();
+          innerStyle.transform = this.axis + this.theta + "deg)";
+          this.x = window.innerWidth * random();
+          this.y = -deviation;
+          this.dx = sin(dxThetaMin + dxThetaMax * random());
+          this.dy = dyMin + dyMax * random();
+          outerStyle.left = this.x + "px";
+          outerStyle.top = this.y + "px";
+
+          // Create the periodic spline
+          this.splineX = createPoisson();
+          this.splineY = [];
+          for (var i = 1, l = this.splineX.length - 1; i < l; ++i)
+            this.splineY[i] = deviation * random();
+          this.splineY[0] = this.splineY[l] = deviation * random();
+
+          this.update = function (height, delta) {
+            this.frame += delta;
+            this.x += this.dx * delta;
+            this.y += this.dy * delta;
+            this.theta += this.dTheta * delta;
+            // Compute spline and convert to polar
+            var phi = (this.frame % 7777) / 7777,
+              i = 0,
+              j = 1;
+            while (phi >= this.splineX[j]) i = j++;
+            var rho = interpolation(
+              this.splineY[i],
+              this.splineY[j],
+              (phi - this.splineX[i]) / (this.splineX[j] - this.splineX[i])
+            );
+            phi *= PI2;
+            outerStyle.left = this.x + rho * cos(phi) + "px";
+            outerStyle.top = this.y + rho * sin(phi) + "px";
+            innerStyle.transform = this.axis + this.theta + "deg)";
+            return this.y > height + deviation;
+          };
+        }
+
+        function poof() {
+          if (!frame) {
+            // Append the container
+            document.body.appendChild(container);
+            // Add confetti
+            var theme = colorThemes[0],
+              count = 0;
+            (function addConfetto() {
+              var confetto = new Confetto(theme);
+              confetti.push(confetto);
+              container.appendChild(confetto.outer);
+              timer = setTimeout(addConfetto, spread * random());
+            })(0);
+
+            // Start the loop
+            var prev = undefined;
+            requestAnimationFrame(function loop(timestamp) {
+              var delta = prev ? timestamp - prev : 0;
+              prev = timestamp;
+              var height = window.innerHeight;
+
+              for (var i = confetti.length - 1; i >= 0; --i) {
+                if (confetti[i].update(height, delta)) {
+                  container.removeChild(confetti[i].outer);
+                  confetti.splice(i, 1);
+                }
+              }
+
+              if (timer || confetti.length)
+                return (frame = requestAnimationFrame(loop));
+
+              // Cleanup
+              document.body.removeChild(container);
+              frame = undefined;
+              confettiActive = false; // Update confetti active state
+            });
+          }
+          confettiActive = true; // Update confetti active state
+        }
+
+        // Game logic
+        let randomNumber = Math.floor(Math.random() * 100) + 1;
+        const guesses = document.querySelector(".guesses");
+        const lastResult = document.querySelector(".lastResult");
+        const lowOrHi = document.querySelector(".lowOrHi");
+        const guessSubmit = document.querySelector(".guessSubmit");
+        const guessField = document.querySelector(".guessField");
+        let guessCount = 1;
+        let resetButton;
+
+        function checkGuess() {
+    const userGuess = Number(guessField.value);
+    if (guessCount === 1) {
+        guesses.textContent = "Previous guesses: ";
+    }
+
+    guesses.textContent += userGuess + " ";
+
+    if (userGuess === randomNumber) {
+        lastResult.textContent = `Congratulations! You guessed the number in ${guessCount} attempts!`;
+        lowOrHi.textContent = "";
+        poof();
+        setGameOver();
+    } else {
+        if (userGuess < randomNumber) {
+            lowOrHi.textContent = "Too low! Try again.";
+        } else if (userGuess > randomNumber) {
+            lowOrHi.textContent = "Too high! Try again.";
+        }
+    }
+
+    guessCount++;
+    guessField.value = "";
+    guessField.focus();
+}
+
+function setGameOver() {
+    guessField.disabled = true;
+    guessSubmit.disabled = true;
+    resetButton = document.createElement("button");
+    resetButton.textContent = "Start new game";
+    resetButton.classList.add("resetButton");
+    document.querySelector(".game-container").appendChild(resetButton);
+    resetButton.addEventListener("click", resetGame);
+}
+
+function resetGame() {
+    guessCount = 1;
+    const resetParas = document.querySelectorAll(".resultParas p");
+    for (const resetPara of resetParas) {
+        resetPara.textContent = "";
+    }
+
+    if (confettiActive) {
+        cancelAnimationFrame(frame);
+        document.body.removeChild(container);
+        confettiActive = false;
+    }
+
+    guessField.disabled = false;
+    guessSubmit.disabled = false;
+    guessField.value = "";
+    guessField.focus();
+    randomNumber = Math.floor(Math.random() * 100) + 1;
+
+    // Hide the button again
+    resetButton.parentNode.removeChild(resetButton);
+}
+
+guessSubmit.addEventListener("click", checkGuess);
+      };
+    </script>
+  </body>
+</html>
