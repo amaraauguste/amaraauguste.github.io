@@ -2908,7 +2908,279 @@ System.out.println(reverse);</code></pre>
         the letters of fruit in reverse order. Each time through the loop, it creates a new
         String and assigns it to reverse. When the loop exits, reverse contains the letters from fruit
         in reverse order. <br><br><b>So the result of when fruit is "banana" is "ananab"</b>.</p>
+      </article>
+
+      <br />
+<header>Substrings</header>
+<article>
+
+  <p>The <b>.substring()</b> method returns <b>a new string that copies letters from an existing string, starting at the given index</b>.</p>
+
+  <p>For example:</p>
+ <ul>
+  <li>fruit.substring(0) returns "banana"</li>
+  <li>fruit.substring(2) returns "nana"</li>
+  <li>fruit.substring(6) returns ""</li>
+ </ul>
+
+    <p>The first example returns a copy of the entire String. The second example
+      returns all but the first two characters. As the last example shows, substring
+      returns the empty String if the argument is the length of the String.
+      </p>
+
+      <p>To visualize how the substring method works, it helps to draw a picture like the following:</p>
+
+      <img style="width: 100%; height: 100%" src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC1115/images/String%20state%20diagram.png?raw=true" alt="state diagram"/>
+
+      <p>Like most String methods, .substring() is overloaded. That is, there are other
+        versions of .substring() that have different parameters. If it's invoked with two
+        arguments, they are treated as a start and end index:</p>
+
+        <ul>
+          <li>fruit.substring(0, 3) returns "ban"</li>
+          <li>fruit.substring(2, 5) returns "nan"</li>
+          <li>fruit.substring(6, 6) returns ""</li>
+         </ul>
+
+        <p>Notice that the character indicated by the end index is not included. 
+          Defining .substring() this way simplifies some common operations. <br><br>For example,
+          to select a .substring() with length len, starting at index i, you could write
+          fruit.substring(i, i + len).</p> 
+ 
+      </article>
+
+      <br />
+<header>The .indexOf() Method</header>
+<article>
+
+  <p>The <b>.indexOf()</b> method <b>searches for a character in a String</b>.</p>
+
+  <p>There are four variants of the .indexOf() method:</p>
+
+  <ul>
+    <li><b>int indexOf()</b></li>
+      <br>
+      <ul>
+        <li>This method returns the index within this string of the first occurrence of the specified character or -1, 
+          if the character does not occur.</li>
+      </ul>
+      <br>
+    <li><b>int indexOf(char ch, int strt)</b></li>
+    <br>
+    <ul>
+      <li>This method returns the index within this string of the first occurrence of the specified character, 
+        starting the search at the specified index or -1, if the character does not occur.</li>
+    </ul>
+    <br>
+    <li><b>int indexOf(String str)</b></li>
+    <br>
+    <ul>
+      <li>This method returns the index within this string of the first occurrence of the specified substring. 
+        If it does not occur as a substring, -1 is returned.</li>
+    </ul>
+    <br>
+    <li><b>int indexOf(String str, int strt)</b></li>
+    <br>
+    <ul>
+      <li>This method returns the index within this string of the first occurrence of the specified substring, 
+        starting at the specified index. If it does not occur, -1 is returned. </li>
+    </ul>
+  </ul>
+    
+    <p>This example <b>finds the index of 'a' in the String</b>:</p>
+
+    <pre><code class="language-java">String fruit = "banana";
+int index = fruit.indexOf('a');</code></pre>
+
+      <p>But the letter appears three times, so it's not obvious what .indexOf() should do. <br><br>According to the
+        documentation, it returns the <b>index of the <i>first</i> appearance</b>.</p>
+
+      <p>To find subsequent appearances, you can use the second version of .indexOf(), which
+        takes a second argument that indicates where in the String to start looking.</p>
+
+        <pre><code class="language-java">int index = fruit.indexOf('a', 2);</code></pre>
+
+      <p>This code starts at index 2 (the first 'n') and finds the next 'a', which is
+        at index 3. If the letter happens to appear at the starting index, the starting
+        index is the answer. So fruit.indexOf('a', 5) returns 5.</p>
+ 
+        <p>We can also find the <b>last occurrence</b> of a character. 
+          The <b>.lastIndexOf()</b> method returns <b>the position of the last occurrence of specified character(s) in a String</b>.</p>
+
+        <p>Like .indexOf(), there are four variants of the .lastIndexOf() method:</p>
+        <img class="width: 100%; height: 100" src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC1115/images/lastIndexOf.png?raw=true" alt="lastIndexOf" />
+
+      </article>
+
+      <br />
+<header>String Comparison</header>
+<article>
+
+  <p>To compare two Strings, it may be tempting to use the == and != operators.</p>
+
+    <pre><code class="language-java">String name1 = "Alan Turing";
+String name2 = "Ada Lovelace";
+if (name1 == name2) { // wrong!
+    System.out.println("The names are the same.");
+}</code></pre>
+
+      <p>This code compiles and runs, and most of the time it gets the answer right.
+        <b>But it is not correct, and sometimes it gets the answer wrong</b>. <br><br>The problem is
+        that the == operator checks whether the two variables refer to the same object (by comparing the references). 
+        If you give it two different Strings that contain the same letters, it yields <text style="color:blue"><b>false</b></text>.
+        </p>
+
+      <p>The right way to compare Strings is with the equals method, like this:</p>
+
+        <pre><code class="language-java">if (name1.equals(name2)) {
+    System.out.println("The names are the same.");
+}</code></pre>
+
+      <p>This example invokes equals on name1 and passes name2 as an argument.
+        <b>The equals method returns <text style="color:blue"><b>true</b></text> if the strings contain the same characters;
+        otherwise it returns <text style="color:blue"><b>false</b></text></b>.</p>
+
+      <p>If the Strings differ, we can use the .compareTo() method to see which comes first in alphabetical order:</p>
+
+      <pre><code class="language-java">int diff = name1.compareTo(name2);
+if (diff == 0) {
+    System.out.println("The names are the same.");
+} else if (diff < 0) {
+    System.out.println("name1 comes before name2.");
+} else if (diff > 0) {
+    System.out.println("name2 comes before name1.");
+}</code></pre>
+
+      <p>The return value from .compareTo() is the difference between the first characters
+        in the strings that differ.</p>
+
+        <ul>
+          <li>If the Strings are <b>equal, their difference is zero</b>.</li>
+          <li>If the <b>first String (the one on which the method is invoked) comes first in the
+        alphabet, the difference is negative</b>.</li>
+          <li><b>Otherwise, the difference is positive</b>.</li>
+        </ul>
+
+        <p>In the preceding code, compareTo returns positive 8, because the second letter
+          of "Ada" comes before the second letter of "Alan" by 8 letters.</p>
+
+        <p>Both .equals() and .compareTo() are case-sensitive. The uppercase letters come
+          before the lowercase letters, so "Ada" comes before "ada".</p>
+
+        <p>The <b>.equalsIgnoreCase()</b> method compares two Strings, ignoring lower case and upper case differences.
+          
+          This method returns <text style="color:blue"><b>true</b></text> if the Strings are equal, and <text style="color:blue"><b>false</b></text> if not.
+          <br><br>
+          Use the <b>.compareToIgnoreCase()</b> method to compare two Strings lexicographically, ignoring case differences.</p>
+        
+ 
+      </article>
+
+      <br />
+      <header>String Formatting</header>
+      <article>
       
+        <p>We previously learned how to use .printf() to display formatted output.
+          Sometimes programs need to create Strings that are formatted a certain way, 
+          but not display them immediately, or ever.</p>
+
+          <p>In Java, the <b>String.format()</b> method returns a formatted string using the given locale, specified format string, and arguments. 
+            We can concatenate the Strings using this method and at the same time, we can format the output concatenated string.</p>
+            
+          <p><b>String.format()</b> takes the same arguments as <b>System.out.printf()</b>: 
+            a format specifier followed by a sequence of values. <br><br>The main difference is that while
+            <b>System.out.printf() displays the result on the screen</b>, <b>String.format() creates
+            a new String, but does not display anything</b>.</p>
+      
+            
+            </article>
+
+            <br />
+      <header>Wrapper Classes</header>
+      <article>
+      
+        <p>Primitive values (like ints, doubles, and chars) do not provide methods. For
+          example, you can’t call equals on an int:</p>
+
+          <pre><code class="language-java">int i = 5;
+System.out.println(i.equals(5)); // compiler error</code></pre>
+
+          <p>But for each primitive type, <b>there is a corresponding class in the Java library,
+            called a wrapper class</b>. We already spoke a bit about the wrapper class for char, <b>Character</b>. <br><br>For
+            int it is called <b>Integer</b>. Other wrapper classes include Boolean, Long, and
+            Double. They are in the java.lang package, so <b>you can use them without
+            importing them</b>.</p>
+            
+          <p>Each wrapper class defines constants MIN_VALUE and MAX_VALUE. For example,
+            Integer.MIN_VALUE is -2147483648, and Integer.MAX_VALUE is 2147483647.
+            <b>Because these constants are available in wrapper classes, you don't have to
+            remember them, and you don't have to include them in your programs</b>.</p>
+
+          
+            <p>Wrapper classes provide methods for converting Strings to other types. For
+              example, <b>Integer.parseInt()</b> converts a String to (you guessed it) an integer:
+              </p>
+
+            <pre><code class="language-java">String str = "12345";
+int num = Integer.parseInt(str);</code></pre>
+      
+            <p>In this context, parse means something like “read and translate”. <br><br>
+              The other wrapper classes provide similar methods, like <b>Double.parseDouble()</b>
+              and <b>Boolean.parseBoolean()</b>. They also provide .toString(), which returns a
+              String representation of a value:</p>
+
+              <pre><code class="language-java">int num = 12345;
+String str = Integer.toString(num);</code></pre>
+
+                <p>The result is the string "12345".</p>
+            
+            </article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       <br />
       <hr />
     </section>
