@@ -40,39 +40,6 @@ public static void main(String [] args) {
    System.out.println(message);
 }
 
-----------------------------------------------------------------------------------------
 
-REVIEW
-
-a) 
-
-1. Answer: 32
-2. Answer: e
-3. Answer: hannah.charAt(15)
-
-----------------------------------------------------------------------------------------
-
-3) 
-
-a. Answer: AB-1X
-b. Answer: Denver
-c. Answer: false
-
-4) 
-
-int count = 0;
-if(Character.isUpperCase(sentence.charAt(0))) { //if the first letter is upper case
-   count++;//count it!
-}
-
-int loc = sentence.indexOf(" ");//finds the index of the first space
-while (loc != -1) {//as long as there are spaces in the sentence
-   if(Character.isUpperCase(sentence.charAt(loc + 1))) { //if the first letter of the next word (after the space) is upper case
-      count++;//count it too!
-   }
-   loc = sentence.indexOf(" ", loc + 1);//continue updating the value for loc based on the next location of a space
-}
-
-System.out.println("There are " + count + " words that start with an uppercase letter.");
 
 
