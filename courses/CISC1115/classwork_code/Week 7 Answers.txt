@@ -16,7 +16,7 @@ for (int k=1; k<=200; k++) {
 
 import java.util.Scanner;
 public class Initials {
-    public static void main(String []args) {
+    public static void main(String [] args) {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter your name: ");
         String first = sc.next();
@@ -29,11 +29,16 @@ public class Initials {
 
 2) 
 
-public static void main(String []args) {
-    String s = "Iqqf\"Lqd#\"[qw\"hkiwtgf\"kv\"qwv#";
-    String message="";
-    for(int i = 0; i < s.length(); i++) {
-        message += (char) (s.charAt(i) - 2);
-    }
-    System.out.println(message); //Good Job! You figured it out!
+public static void main(String [] args) {
+   String s = "Iqqf\"Lqd#\"[qw\"hkiwtgf\"kv\"qwv#";
+   String message="";
+   for(int i = 0; i < s.length(); i++) {
+       char c = s.charAt(i); //get current char
+       c -= 2; //shift down by 2
+       message += c; //append to String
+   }
+   System.out.println(message);
 }
+
+
+
