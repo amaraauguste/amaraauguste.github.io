@@ -1,0 +1,4 @@
+4. 
+- If you wrote ANYTHING AT ALL (2 PTS)
+- If you wrote code that doesn't work exactly like it is supposed to (slight errors) (5 to 10 PTS)
+- If you wrote code that works perfectly but (20 PTS)
