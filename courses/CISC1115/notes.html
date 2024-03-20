@@ -212,6 +212,7 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
     <a class="nav-link" href="#Characters" style="font-size: 22px">Characters</a>
     <a class="nav-link" href="#The_Character_Class" style="font-size: 22px">The Character Class</a>
     <a class="nav-link" href="#Strings" style="font-size: 22px">Strings</a>
+    <a class="nav-link" href="#Methods" style="font-size: 22px">Methods</a>
     <!--
       
     
@@ -1033,8 +1034,8 @@ double result = 10.0 / 3;//Regular division, result is approximately 3.3333</cod
       <li><b>print(String s)</b></li>
       <ul>
         <li>Used to print on the console.</li>
-        <li>Accepts a string as a parameter (we can concatenate parts to 
-          the string if necessary, i.e. “Hello” + “ World”, etc. 
+        <li>Accepts a String as a parameter (we can concatenate parts to 
+          the String if necessary, i.e. “Hello” + “ World”, etc. 
           however, it is typical convention to include all string literals 
           in the same pair of quotations if they are consecutive) </li>
         <li>After printing the statement, <b>the cursor remains on the same line.</b></li>
@@ -3084,8 +3085,8 @@ if (diff == 0) {
           Sometimes programs need to create Strings that are formatted a certain way, 
           but not display them immediately, or ever.</p>
 
-          <p>In Java, the <b>String.format()</b> method returns a formatted string using the given locale, specified format string, and arguments. 
-            We can concatenate the Strings using this method and at the same time, we can format the output concatenated string.</p>
+          <p>In Java, the <b>String.format()</b> method returns a formatted string using the given locale, specified format String, and arguments. 
+            We can concatenate the Strings using this method and at the same time, we can format the output concatenated String.</p>
             
           <p><b>String.format()</b> takes the same arguments as <b>System.out.printf()</b>: 
             a format specifier followed by a sequence of values. <br><br>The main difference is that while
@@ -3100,7 +3101,7 @@ if (diff == 0) {
       <article>
       
         <p>Primitive values (like ints, doubles, and chars) do not provide methods. For
-          example, you can’t call equals on an int:</p>
+          example, you can't call equals on an int:</p>
 
           <pre><code class="language-java">int i = 5;
 System.out.println(i.equals(5)); // compiler error</code></pre>
@@ -3132,54 +3133,9 @@ int num = Integer.parseInt(str);</code></pre>
               <pre><code class="language-java">int num = 12345;
 String str = Integer.toString(num);</code></pre>
 
-                <p>The result is the string "12345".</p>
+                <p>The result is the String "12345".</p>
             
             </article>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
       <br />
       <hr />
@@ -3187,7 +3143,301 @@ String str = Integer.toString(num);</code></pre>
 
 
 
+    <section class="main-section" id="Methods">
+      <br />
+      <header><b>Methods</b></header>
+      <article>
+        <p>So far we have only written short programs that have a single class and a <b>single
+          method (main)</b>. </p>
 
+        <p>Now, we will expand our programs to utilize more than one method. But first, what is a method anyway?</p>
+
+        <p>A <b>method</b> in Java is <b>a block of code that, when called, performs specific actions mentioned in it.</b>
+          <br><br>For instance, if you have written instructions to draw a circle in the method, it will do that task. 
+          <b>You can insert values or parameters into methods, and they will only be executed when called.</b> 
+          They are also referred to as functions. <br><br>The primary uses of methods in Java are:</p>
+          <ul>
+            <li>It allows code <b>reusability</b> (define once and use multiple times)</li>
+            <li>It <b></b>breaks a complex program into smaller chunks of code</b></li>
+            <li>It increases code <b>readability</b></li>
+          </ul>
+
+          <p>We have seen methods before through our use of class objects. Classes such as Math, Character, and Scanner all have methods that help 
+            us simplify the work we need to do as programmers.</p>
+            
+          <p>In mathematics, you have probably seen functions like sin and log, and you
+            have learned to evaluate expressions like sin(π/2) and log(1/x).First, you
+            evaluate the expression in parentheses, which is called the argument of the
+            function. Then you can evaluate the function itself, maybe by punching it into
+            a calculator.</p>
+
+          <p>Remember, we can use, or <b>invoke</b>, Math methods like this:</p>
+
+          <pre><code class="language-java">double root = Math.sqrt(17.0);
+double angle = 1.5;
+double height = Math.sin(angle);</code></pre>
+
+            <p>The first line sets root to the square root of 17. The third line finds the sine
+              of 1.5 (the value of angle).</p>
+
+            <p>We can change the values passed as arguments to these methods and they will use the same approach to compute the result based on this 
+              new value. That reusability is one of the main benefits of methods.</p>
+
+      
+</article>
+<br />
+<header>Composition</header>
+<article>
+
+  <p>Just as with mathematical functions, Java methods can be <b><i>composed</i></b>. That
+    means <b>you can use one expression as part of another</b>. For example, you can
+    use any expression as an argument to a method:</p>
+
+    <pre><code class="language-java">double x = Math.cos(angle + Math.PI / 2.0);</code></pre>
+
+    <p>This statement divides Math.PI by two, adds the result to angle, and computes the cosine of the sum. 
+      You can also take the result of one method and pass it as an argument to another:</p>
+
+      <pre><code class="language-java">double y = Math.exp(Math.log(10.0));</code></pre>  
+
+    <p>In Java, the log method always uses base e. So this statement finds the log
+      base e of 10, and then raises e to that power. The result gets assigned to y.</p>
+
+      <p>Some Math methods take more than one argument. For example, Math.pow()
+        takes two arguments and raises the first to the power of the second. This line
+        of code assigns the value 1024.0 to the variable z:
+        </p>
+
+        <pre><code class="language-java">double z = Math.pow(2.0, 10.0);</code></pre>
+
+        <p>When using Math methods, it is a common error to forget the Math. For
+          example, if you try to invoke pow(2.0, 10.0), you get an error message like:</p>
+
+          <img style="width:100%; height:100%" src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC1115/images/Math%20class%20error.png?raw=true" alt="Math class error"/>
+
+        <p>The message "cannot find symbol" is confusing, but the last line provides a
+          useful hint. The compiler is looking for pow in the same class where it is used,
+          which is Test. <b>If you don't specify a class name, the compiler looks in the
+          current class</b>.</p>
+
+      </article>
+
+      <br />
+<header>Adding New Methods</header>
+<article>
+
+  <p>You have probably guessed by now that we can define more than one method
+    in a class, meaning that we can define our own methods for functionality.</p>
+
+    <p>There are a total of six components included in a method declaration. The components provide various information about the method:</p>
+
+    <ol>
+      <li><b>Access Specifier</b></li>
+      <ul>
+        <br>
+        <li>This is used to define the access type of the method. Every method we write in this course will be <b>public</b>, however, Java provides four different specifiers, 
+          which are: </li>
+          <ul>
+            <br>
+            <li><b>public</b>: You can access it from any class</li>
+            <li><b>private</b>: You can access it within the class where it is defined</li>
+            <li><b>protected</b>: Accessible only in the same package or other subclasses in another package</li>
+            <li><b>default</b>: It is the default access specifier used by the Java compiler if we don't mention any other specifiers. 
+              It is accessible only from the package where it is declared</li>
+          </ul>
+      </ul>
+      <br>
+      <li><b>Return Type</b></li>
+      <ul>
+        <br>
+        <li>This defines the return type of the method. We can declare the return type as void if the method returns no value.</li>
+      </ul>
+      <br>
+      <li><b>Method Name</b></li>
+      <ul>
+        <br>
+        <li>This is used to give a unique name to the method. It will be referred by this name when we invoke it.</li>
+      </ul>
+      <br>
+      <li><b>Parameter List</b></li>
+      <ul>
+        <br>
+        <li>This is a list of arguments (data type and variable name) that will be used in the method. 
+          It can also be kept blank if we don't want to use any parameters in the method.</li>
+      </ul>
+      <br>
+      <li><b>Method Signature</b></li>
+      <ul>
+        <br>
+        <li>The method signature is just a combination of the method name and parameter list.</li>
+      </ul>
+      <br>
+      <li><b>Method Body</b></li>
+        <ul>
+          <br>
+          <li>This is the set of instructions enclosed within curly brackets that the method will perform.</li>
+        </ul>
+    </ol>
+
+    <p>Here's an example:</p>
+
+    <pre><code class="language-java">public class NewLine {
+    public static void newLine() {
+        System.out.println();
+    }
+
+    public static void main(String [] args) {
+        System.out.println("First line.");
+        newLine(); //this is a method call 
+        System.out.println("Second line.");
+    }
+}</code></pre>
+
+    <p>The name of the class is NewLine. By convention, <b>class names begin with a
+      capital letter</b>. NewLine contains two methods, <b>newLine</b> and <b>main</b>. Remember
+      that Java is case-sensitive, so NewLine and newLine are not the same.</p>
+
+    <p><b>Method names should begin with a lowercase letter and use "camel case"</b>,
+      which is a cute name for jammingWordsTogetherLikeThis. <b>You can use any
+      name you want for methods, except main or any of the Java keywords</b>.
+      </p>
+
+      <p><b>newLine</b> and <b>main</b> are public, which means they can be invoked from other
+        classes. They are both <b>static</b>. <br><br> When you declare a variable or a method as static, 
+        <b>it belongs to the class</b>, rather than a specific instance. This means that only one instance of a static member exists, 
+        even if you create multiple objects of the class, or if you don't create any. 
+        <b>It will be shared by all objects</b>.<br><br>
+        And they are both <b>void</b>, which means that they don't yield a result (unlike
+        the Math methods, for example).</p>
+
+        <p>The parentheses after the method name contain a list of variables, called <b>parameters</b>, where <b>the method stores its arguments</b>. 
+          The main method has a single parameter, called <b>args</b>, which has type <b>String[]</b>. That means that whoever invokes
+          main must provide an <b>array of Strings</b> (we'll get to arrays in a later chapter).
+          </p>
+
+          <p>Since newLine has no parameters, it requires no arguments, as shown when
+            it is invoked in main. And because newLine is in the same class as main, we
+            don't have to specify the class name.</p>
+
+          <p>What is the output of this program?</p>
+
+          <p> If we wanted more space between
+            the two lines, we could invoke the same method repeatedly:</p>
+
+          <pre><code class="language-java">public static void main(String [] args) {
+    System.out.println("First line.");
+    newLine(); //call 1
+    newLine(); //call 2
+    newLine(); //call 3
+    System.out.println("Second line.");
+}</code></pre>
+
+        <p>Or we could write a new method that displays three blank lines:</p>
+
+        <pre><code class="language-java">public static void threeLine() {
+    newLine();
+    newLine();
+    newLine();
+}
+public static void main(String [] args) {
+    System.out.println("First line.");
+    threeLine();
+    System.out.println("Second line.");
+}</code></pre>
+
+      <p>You can invoke the same method more than once, and you can have one method
+        invoke another. In this example, <b>main invokes threeLine</b>, and <b>threeLine
+        invokes newLine()</b>.</p>
+
+        <p>Beginners often wonder why it is worth the trouble to create new methods.
+          There are many reasons, but this example demonstrates a few of them:</p>
+
+          <ul>
+            <li>Creating a new method gives you an opportunity to give a name to a
+              group of statements, which <b>makes code easier to read and understand</b>.</li>
+            <li>Introducing new methods can <b>make a program smaller by eliminating
+              repetitive code</b>. For example, to display nine consecutive new lines, you
+              could invoke threeLine three times.</li>
+            <li>A common problem solving technique is to break tasks down into subproblems. 
+              Methods allow us to <b>focus on each sub-problem in isolation,
+              and then compose them into a complete solution</b>.</li>
+          </ul>
+
+      </article>
+
+      <br />
+<header>Flow of Execution</header>
+<article>
+
+        <p>Pulling together the code from the previous section, the complete program
+          looks like this:</p>
+
+          <pre><code class="language-java">public class NewLine {
+    public static void newLine() {
+        System.out.println();//4, 6, 8
+    }
+
+    public static void threeLine() {
+        newLine();//3
+        newLine();//5
+        newLine();//7
+    }
+
+    public static void main(String[] args) {
+        System.out.println("First line."); //1
+        threeLine(); //2
+        System.out.println("Second line."); //9
+    }
+}</code></pre>
+
+      <p>When you look at a class definition that contains several methods, it is tempting to read it from top to bottom. 
+        But that is likely to be confusing, because
+        that is not the <b>flow of execution</b> of the program.</p>
+
+      <p><b>Execution always begins at the first statement of main, regardless of where it
+        is in the source file</b>. Statements are executed one at a time, in order, until you
+        reach a method invocation, which you can think of as a detour. <b>Instead of
+        going to the next statement, you jump to the first line of the invoked method,
+        execute all the statements there, and then come back and pick up exactly
+        where you left off</b>.</p>
+
+      <p>That sounds simple enough, but remember that one method can invoke another one. 
+        In the middle of <b>main</b>, we go off to execute the statements in
+        threeLine. While we are executing <b>threeLine</b>, we go off to execute <b>newLine</b>.
+        Then newLine invokes println, which causes yet another detour.</p>
+
+        <p>Fortunately, Java is good at keeping track of which methods are running.
+          So <b>when println() completes, it picks up where it left off in newLine; when
+          newLine completes, it goes back to threeLine, and when threeLine completes, it gets back to main</b>.</p>
+
+          <p>In summary, when you read a program, don't read from top to bottom. Instead, <b>follow the flow of execution</b>.</p>
+
+      </article>
+
+      <!--<br />
+<header>String Comparison</header>
+<article>
+
+
+ 
+      </article>
+
+      <br />
+      <header>String Formatting</header>
+      <article>
+    
+            </article>
+
+            <br />
+      <header>Wrapper Classes</header>
+      <article>
+      
+            
+            </article>-->
+
+      <br />
+      <hr />
+    </section>
 
 
 
