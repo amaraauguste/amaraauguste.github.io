@@ -1,0 +1,23 @@
+REVIEW
+
+a) first = (name2.compareTo(name1)>0)? name2:name1;
+
+b)
+
+String word, prev;
+boolean isdup=false;
+n=0;
+prev=stdin.next();
+word=stdin.next();
+while (!word.equals("xxxxx")) {
+	if (word.equals(prev))
+		isdup=true;
+	else {
+		if (!isdup) n++;
+		isdup=false;
+	}
+	prev = word;
+	word=stdin.next();
+}
+if (!isdup) n++;
+
