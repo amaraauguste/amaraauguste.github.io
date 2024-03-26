@@ -444,7 +444,7 @@ b += 2 * 3 - 1;</code></pre>
                 <li>and <b>use printf methods to format the output</b> (limit any decimal places 
                   to two) </li>
               </ul>
-              <p>Submit <b>both the .java and .txt file to Lab Work under Class Labs on Blackboard by end of day</b>. 
+              <p>Submit <b>both the .java and .txt file to Lab Work under Class Labs on Blackboard before next class</b>. 
                 <b>(This lab will count as part of your CodeLab grade)</b>
               </p>
               
@@ -892,7 +892,85 @@ System.out.println(source.substring(pos3+1,pos2));</code></pre></li>
         </ul>
       </p>
 
-      
+      <hr />
+
+      <h2>Review</h2>
+
+      <p>a) Using the text file: <a href="/courses/CISC1115/classwork_code/Week9Emails.txt">Week9Emails.txt</a>, write a Java program that <b>reads in the data</b> (first name, last name, email address) 
+        <b>from the text file</b>, <b>extract the domain names from the email addresses</b>, 
+        and <b>display a unique list of domain names on the console</b>.
+        <br><br>
+        Sample Output:
+        <br><br>
+        <b>Unique Domain Names:</b>
+        <br><br>
+        <b>gmail.com</b>
+        <br>
+        <b>yahoo.com</b>
+        <br>
+        <b>hotmail.com</b>
+        <br>
+        <b>outlook.com</b>
+        <br>
+        <b>aol.com</b>
+        <br></p>
+
+      <p>b) Write a complete Java program that has the following:</p>
+
+      <ul>
+        <li>A <b>main</b> method that should:</li>
+        <ul style="list-style-type: circle">
+          <li>prompt the user to enter values for the following variables: <b>day, date, month, and year</b></li>
+          <ul style="list-style-type: square;">
+            <li>The variable <b>day</b> will contain the <b>day of the week</b> (like Friday)</li>
+            <li><b>date</b> will contain the <b>day of the month</b> (like the 13th)</li>
+            <li><b>month</b> should be from <b>January to December</b></li>
+            <li><b>year</b> should be <b>any sequence of 4 digits</b> (like 2024)
+            </li>
+          </ul>
+          <li>call the method <b>printAmerican()</b> to display the date in the American format</li>
+          <li>call the method <b>printEuropean()</b> to display the date in the European format</li>
+        </ul>
+        <br>
+        <li>A method called <b>printAmerican()</b> that:</li>
+        <ul style="list-style-type: circle">
+          <li>takes the day, date, month and year as parameters</li>
+          <li>displays them in standard American format, for example: </li>
+          <ul style="list-style-type: square;">
+            <li><b>Thursday, July 16, 2015</b></li>
+          </ul>
+          <li>returns nothing</li>
+        </ul>
+        <br>
+        <li>A method called <b>printEuropean()</b> that:</li>
+        <ul style="list-style-type: circle">
+          <li>takes the day, date, month and year as parameters</li>
+          <li>displays them in standard European format, for example: </li>
+          <ul style="list-style-type: square;">
+            <li><b>Thursday 16 July 2015</b></li>
+          </ul>
+          <li>returns nothing</li>
+        </ul>
+        </ul>
+      </ul>
+
+
+        <p>c) Modify Lab 1 (MY11Lab1.java on BlackBoard under Course Documents) 
+          so that <b>each question (2, 5, 7, and 8) is computed and printed by a respective method</b>.</p>
+
+        <p>The <b>main</b> method should <b>prompt the user for which question that they want to choose</b>, 
+          then <b>use the conditional logic of your choice</b> (if statements, switch statements, etc.) 
+          to perform the necessary requirements for the question (ex. <b>if the user chooses question 2 
+          the main method should prompt the user for the two numbers and then call a method, 
+          questionTwo() with the two numbers as parameters</b>) </p>
+
+          <p>Each respective method (<b>questionTwo(), questionFive(), questionSeven(), and questionEight()</b>) 
+            should take the <b>necessary parameters </b>(this is determined by the nature of the question itself, 
+            read over the code and determine the behavior of each question), 
+            <b>compute any necessary operations, print the results</b>, and <b>return nothing</b> (what should the return type of these methods be?) </p>
+
+            <p><b>Submit the .java file to Lab Work under Class Labs on Blackboard before next class. 
+              (This lab will count as part of your CodeLab grade)</b></p>
 
   <!--<p>
     <a href="/courses/CISC1115/classwork_code/Week 9 Answers.txt"
