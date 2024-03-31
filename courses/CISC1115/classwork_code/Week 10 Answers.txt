@@ -5,6 +5,13 @@
 
 2) 
 
-a. 
-b. 
+a. public static int method(int b, int a)
+b. c = method(a, b); AND a = method(b, a);
 c. 
+
+public static int method(int b, int a) {
+        int d;
+
+        d = a * b - b * b;
+        return d + b;
+}
