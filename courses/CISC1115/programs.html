@@ -152,6 +152,7 @@
       <a class="nav-link" href="#Week7" style="font-size: 22px">Week 7</a>
       <a class="nav-link" href="#Week8" style="font-size: 22px">Week 8</a>
       <a class="nav-link" href="#Week9" style="font-size: 22px">Week 9</a>
+      <a class="nav-link" href="#Week10" style="font-size: 22px">Week 10</a>
       <!--
       
       
@@ -972,6 +973,71 @@ System.out.println(source.substring(pos3+1,pos2));</code></pre></li>
             <p><b>Submit the .java file to Lab Work under Class Labs on Blackboard before next class. 
               (This lab will count as part of your CodeLab grade)</b></p>
 
+ <p>
+    <a href="/courses/CISC1115/classwork_code/Week 9 Answers.txt"
+      >Answers to Week 9 found here</a
+    >
+  </p>
+  <hr />
+</section>
+<!-- WEEK 10 EXERCISES -->
+<section class="main-section" id="Week10">
+      <h2>Week 10</h2>
+        <p>1) What will be printed by the following: </p>
+
+        <pre><code class="language-java">public static void main(String [] args){
+    int a, b, c;
+    
+    a = 1;
+    b = 8;
+    c = method(a, b);
+    System.out.printf("%d  %d  %d\n", a, b, c);
+    a = method(b, a);
+    System.out.printf("%d  %d  %d\n", a, b, c);
+}
+
+public static int method(int b, int a){
+    int d;
+    
+    d = a * b - b * b;
+    return d + b;
+}</code></pre>
+
+    <p>2) Identify the following items in the program of Question 1:</p>
+    <ol style="list-style: lower-alpha;">
+        <li>method header/signature</li>
+        <li>method invocation</li>
+        <li>method definition</li>
+    </ol>
+
+    <p>3) Write a method <b>biggest()</b> that receives <b>three int parameters</b>. It will determine which value is the largest and
+      <b>return that value</b> to the calling method.</p>
+
+    <p>4) Use the following formulas to write a Java program that has three methods:</p>
+
+    <img style="width: 60%; height: 60%; display: block; margin-left: auto;
+    margin-right: auto;" src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC1115/images/surface-area-sphere.png?raw=true" alt = "sphere dimensions"/>
+      
+    <ul>
+      <li><b>calculateVolumeOfSphere(double radius)</b> that calculates and returns the volume of a sphere (in cubic units)</li>
+      <li><b>calculateSurfaceAreaOfSphere(double radius)</b> that calculates and returns the surface area of a sphere (in cubic units)</li>
+      <li><b>isSphereLarge(double radius)</b> that checks if a sphere with a given radius is considered large (volume greater than 1000 cubic units) 
+        and returns <text style="color:blue"><b>true</b></text> if it is, <text style="color:blue"><b>false</b></text> otherwise.</li>
+    </ul>
+
+    <p>The main method should print out the volume, surface area, and whether or not the sphere is large.</p>
+  
+    
+    
+    
+    <!--<hr/>
+
+      <h2>Review</h2>-->
+
+      
+
+      
+
   <!--<p>
     <a href="/courses/CISC1115/classwork_code/Week 9 Answers.txt"
       >Answers to Week 9 found here</a
@@ -979,7 +1045,6 @@ System.out.println(source.substring(pos3+1,pos2));</code></pre></li>
   </p>
   <hr />-->
 </section>
-
 
 
 
