@@ -15,3 +15,14 @@ public static int method(int b, int a) {
         d = a * b - b * b;
         return d + b;
 }
+
+3) 
+
+public static int biggest(int x, int y, int z) {
+    if (x > y && x > z) {
+        return x;
+    } else if (y > z) {
+        return y;
+    } 
+    return z;
+}
