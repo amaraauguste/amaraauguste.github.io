@@ -3610,14 +3610,328 @@ public class Goodbye {
           in the future, and appreciate good documentation, is you</b>.</p>
 
       </article>
-      <!--<br />
+      <br />
       <header>Value Methods</header>
+      <article>
+        <p>Some of the methods we have used, like the Math methods, return values. But
+          all the methods we have written so far have been <b>void</b>; that is, <b>they don't
+          return values</b>. Now, we will begin discuss how to write methods that return values, which
+          we call value methods.</p>
+        
+      </article>
+      <br />
+      <header>Return Values</header>
+      <article>
+       <p>When you invoke a void method, the invocation is usually on a line all by
+        itself.</p>
+
+        <p>For example, here is a recursive method called countDown():</p>
+
+        <pre><code class="language-java">public static void countDown(int n) {
+    if (n == 0) {
+        System.out.println("Blastoff!");
+    } else {
+        System.out.println(n);
+        countup(n - 1);
+    }
+}</code></pre>
+
+        <p>And here is how it is invoked:</p>
+
+        <pre><code class="language-java">countDown(3);</code></pre>
+
+        <p>On the other hand, <b>when you invoke a value method, you have to do something
+          with the return value.</b> We usually <b>assign it to a variable or use it as part of
+          an expression</b>, like this:</p>
+
+        <pre><code class="language-java">double error = Math.abs(expected - actual);
+double height = radius * Math.sin(angle);</code></pre>
+
+        <p>Compared to void methods, value methods differ in two ways:</p>
+          <ul>
+            <li>They declare the type of the return value (the return type);</li>
+            <li>They use at least one return statement to provide a <b>return value</b>.</li>
+          </ul>
+
+        <p>Here's an example: <b>calculateArea()</b> takes a double as a parameter and returns
+          the area of a circle with that radius:</p>
+
+        <pre><code class="language-java">public static double calculateArea(double radius) {
+    double result = Math.PI * radius * radius;
+    return result;
+}</code></pre>
+
+      <p>As usual, this method is <b>public</b> and <b>static</b>. But in the place where we are
+        used to seeing <b>void</b>, we see <b>double</b>, which means that <b>the return value from
+        this method is a double</b>.</p>
+
+        <p>The last line is a new form of the return statement that <b>includes a return
+          value</b>. <b>This statement means, "return immediately from this method and use
+          the following expression as the return value."</b><br><br>The expression you provide can
+          be arbitrarily complex, so we could have written this method more concisely:</p>
+
+        <pre><code class="language-java">public static double calculateArea(double radius) {
+    return Math.PI * radius * radius;
+}</code></pre>
+            
+      <p>On the other hand, temporary variables like result often make debugging
+        easier, especially when you are stepping through code using an interactive
+        debugger.</p>
+
+      <p>The type of the expression in the return statement <b>must match the return
+        type of the method</b>. When you declare that the return type is double, you are
+        making a promise that this method will eventually produce a double value.</p>
+
+       <p>If you try to return with no expression, or an expression with the wrong type,
+        the compiler will generate an error.</p>
+
+      <p>Sometimes it is useful to have multiple return statements, for example, one in
+        each branch of a conditional:</p>
+
+      <pre><code class="language-java">public static double absoluteValue(double x) {
+    if (x < 0) {
+        return -x;
+    } else {
+        return x;
+    }
+}</code></pre>
+
+    <p>Since these return statements are in a conditional statement, only one will be
+      executed. As soon as either of them executes, the method terminates without
+      executing any more statements.</p>
+
+    <p>Code that appears after a return statement (in the same block), or any place
+      else where it can never be executed, is called <b>dead code</b>. The compiler will
+      give you an "unreachable statement" error if part of your code is dead. <br><br>For
+      example, this method contains dead code:</p>
+
+    <pre><code class="language-java">public static double absoluteValue(double x) {
+    if (x < 0) {
+        return -x;
+    } else {
+        return x;
+    }
+    System.out.println("This line is dead.");
+}</code></pre>
+
+    <p><b>If you put return statements inside a conditional statement, you have to
+      make sure that <i>every possible path</i> through the program reaches a return
+      statement</b>. The compiler will let you know if that's not the case. <br><br>For example,
+      the following method is incomplete:</p>
+
+      <pre><code class="language-java">public static double absoluteValue(double x) {
+    if (x < 0) {
+        return -x;
+    } else if (x > 0) {
+        return x;
+    }
+    // syntax error
+}</code></pre>
+
+    <p>When x is 0, neither condition is true, so the method ends without hitting
+      a return statement. <b>The error message in this case might be something like
+      "missing return statement", which is confusing since there are already two of
+      them. But hopefully you will know what it means.</b></p>
+
+      </article>
+      <br />
+      <header>Writing Methods</header>
+      <article>
+        <p>Beginners often make the mistake of writing a lot of code before they try to
+          compile and run it. Then they spend way too much time debugging. A better
+          approach is what we call <b>incremental development</b>. <br><br>The key aspects of
+          incremental development are:</p>
+          <ul>
+            <li>Start with a working program and make small, incremental changes. At
+              any point, if there is an error, you will know where to look.</li>
+            <li>Use variables to hold intermediate values so you can check them, either
+              with print statements or by using a debugger.</li>
+            <li>Once the program is working, you can consolidate multiple statements
+              into compound expressions (but only if it does not make the program
+              more difficult to read).</li>
+          </ul>
+
+          <p>As an example, suppose you want to find the distance between two points,
+            given by the coordinates (x1, y1) and (x2, y2). By the usual definition:</p>
+
+            <img style="width: 100%; height: 80%" src="https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/ea3c4bf85e0d3dc97218c229ad9e719bddb778c2/courses/CISC1115/images/distance_formula.svg" alt="distance formula"/>
+
+          <p>The first step is to consider what a distance method should look like in Java.
+            In other words, what are the inputs (parameters) and what is the output (return value)? 
+            In this case, <b>the two points are the parameters, and it is
+            natural to represent them using four double values</b>. <b>The return value is the
+            distance, which should also have type double</b>.</p>
+
+          <p>Already we can write an outline for the method, which is sometimes called a
+            stub. The stub includes the method signature and a return statement:</p>
+
+          <pre><code style="font-size: 23.5px" class="language-java">public static double distance(double x1, double y1, double x2, double y2) {
+    return 0.0;
+}</code></pre>
+
+          <p>The return statement is <b>a placeholder that is necessary for the program to
+            compile</b>. At this stage the program doesn't do anything useful, but it is good
+            to compile it so we can find any syntax errors before we add more code.</p>
+
+          <p>It's usually a good idea to think about testing <i>before</i> you develop new methods;
+            doing so can help you figure out how to implement them. To test the method,
+            we can invoke it from main using sample values:</p>
+
+          <pre><code class="language-java">double dist = distance(1.0, 2.0, 4.0, 6.0);</code></pre>
+
+          <p>With these values, the horizontal distance is 3.0 and the vertical distance is
+            4.0. So the result should be 5.0, the hypotenuse of a 3-4-5 triangle. <b>When you
+            are testing a method, it is helpful to know the right answer</b>.</p>
+
+          <p>Once we have compiled the stub, we can start adding lines of code one at a
+            time. After each incremental change, we recompile and run the program. If
+            there is an error at any point, we have a good idea where to look: the last line
+            we added.</p>
+
+          <p>The next step is to find the differences <b>x2 − x1</b> and <b>y2 − y1</b>. We store those
+            values in temporary variables named <b>dx</b> and <b>dy</b>.</p>
+
+          <pre><code style="font-size: 23.5px" class="language-java">public static double distance(double x1, double y1, double x2, double y2) {
+    double dx = x2 - x1;
+    double dy = y2 - y1;
+    System.out.println("dx is " + dx);
+    System.out.println("dy is " + dy);
+    return 0.0;
+}</code></pre>
+
+          <p>The print statements allows us to check the intermediate values before proceeding. 
+            They should be 3.0 and 4.0. We will remove the print statements
+            when the method is finished. Code like that is called <b>scaffolding</b>, because it
+            is helpful for building the program, but it is not part of the final product.</p>
+
+          <p>The next step is to square dx and dy. We could use the Math.pow method,
+          but it is simpler to multiply each term by itself.</p>
+
+          <pre><code style="font-size: 23.5px" class="language-java">public static double distance(double x1, double y1, double x2, double y2) {
+    double dx = x2 - x1;
+    double dy = y2 - y1;
+    double dsquared = dx * dx + dy * dy;
+    System.out.println("dsquared is " + dsquared);
+    return 0.0;
+}</code></pre>
+
+        <p>Again, you should compile and run the program at this stage and check the
+          intermediate value, which should be 25.0. Finally, we can use Math.sqrt to
+          compute and return the result.</p>
+
+        <pre><code style="font-size: 23.5px" class="language-java">public static double distance(double x1, double y1, double x2, double y2) {
+    double dx = x2 - x1;
+    double dy = y2 - y1;
+    double dsquared = dx * dx + dy * dy;
+    double result = Math.sqrt(dsquared);
+    return result;
+}</code></pre>
+
+        <p>As you gain more experience programming, you might write and debug more
+          than one line at a time. Nevertheless, incremental development can save you
+          a lot of time.</p>
+
+      </article>
+      <br />
+      <header>Method Composition</header>
+      <article>
+        <p>Once you define a new method, you can use it as part of an expression, or
+          build new methods using existing methods. <br><br>For example, suppose someone
+          gave you two points, the <b>center of the circle</b> and <b>a point on the perimeter</b>,
+          and asked for the <b>area</b> of the circle. Let's say the center point is stored in the
+          variables <b>xc and yc</b>, and the perimeter point is in <b>xp and yp</b>.</p>
+
+        <p>The first step is to find the radius of the circle, which is the distance between
+          the two points. Fortunately, we have just written a method that does just that (distance).</p>
+      
+        <pre><code class="language-java">double radius = distance(xc, yc, xp, yp);</code></pre>
+
+        <p>The second step is to find the area of a circle with that radius. We have a written a method 
+          for that computation too (calculateArea).</p>
+
+        <pre><code class="language-java">double area = calculateArea(radius);
+return area;</code></pre>
+
+          <p>Putting everything together in a new method, we get:</p>
+
+          <pre><code style="font-size: 22px" class="language-java">public static double circleArea(double xc, double yc, double xp, double yp) {
+    double radius = distance(xc, yc, xp, yp);
+    double area = calculateArea(radius);
+    return area;
+}</code></pre>
+
+        <p>The temporary variables radius and area are useful for development and
+          debugging, but once the program is working we can make it more concise by
+          composing the method calls:</p>
+
+        <pre><code style="font-size: 22px" class="language-java">public static double circleArea(double xc, double yc, double xp, double yp) {
+    return calculateArea(distance(xc, yc, xp, yp));
+}</code></pre>
+ 
+      <p>This example demonstrates a process called <b>functional decomposition</b>; that
+        is, breaking a complex computation into simple methods, testing the methods
+        in isolation, and then composing the methods to perform the computation.
+        This process reduces debugging time and yields code that is more likely to be
+        correct and easier to maintain.</p>
+
+      </article>
+      <br />
+      <header>Overloading</header>
+      <article>
+        <p>You might have noticed that circleArea and calculateArea perform similar
+          functions. They both find the area of a circle, but they take different parameters. 
+          For <b>calculateArea, we have to provide the radius</b>; for <b>circleArea we
+          provide two points</b>.</p>
+
+        <p>If two methods do the same thing, it is natural to give them the same name.
+          Having more than one method with the same name is called <b>overloading</b>,
+          and it is legal in Java <b>as long as each version takes different parameters</b>. So
+          we could rename circleArea to calculateArea:</p>
+
+          <pre><code style="font-size: 22px" class="language-java">public static double calculateArea(double xc, double yc, double xp, double yp) {
+    return calculateArea(distance(xc, yc, xp, yp));
+}</code></pre>
+
+        <p>Note that this new calculateArea method is <b>not recursive</b>. <b>When you invoke
+          an overloaded method, Java knows which version you want by looking at the
+          arguments that you provide</b>. If you write:</p>
+
+        <pre><code class="language-java">double x = calculateArea(3.0);</code></pre>
+
+        <p>Java looks for <b>a method named calculateArea that takes one double as an
+          argument</b>, and so it uses the first version, which <b>interprets the argument as a
+          radius</b>. If you write:</p>
+
+        <pre><code class="language-java">double y = calculateArea(1.0, 2.0, 4.0, 6.0);</code></pre>
+
+        <p>Java uses <b>the second version of calculateArea, which interprets the arguments as two points</b>. 
+          In this example, the second version actually invokes the first version.</p>
+
+        <p><b>Many Java methods are overloaded, meaning that there are different versions
+          that accept different numbers or types of parameters</b>. For example, there are
+          versions of print and println that accept a single parameter of any data
+          type. In the Math class, there is a version of abs that works on doubles, and
+          there is also a version for ints.</p>
+
+        <p>Although overloading is a useful feature, <b>it should be used with caution</b>. You
+          might get yourself nicely confused if you are trying to debug one version of a
+          method while accidentally invoking a different one.</p>
+            
+      </article>
+      <!--<br />
+      <header>Writing Methods</header>
       <article>
       
             
       </article>
       <br />
-      <header>Return Values</header>
+      <header>Writing Methods</header>
+      <article>
+      
+            
+      </article>
+      <br />
+      <header>Writing Methods</header>
       <article>
       
             
