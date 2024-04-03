@@ -26,3 +26,23 @@ public static int biggest(int x, int y, int z) {
     } 
     return z;
 }
+
+
+
+
+
+
+
+5) 
+
+/**
+ * Checks if the given three sides form a valid triangle.
+ * @param side1 the length of the first side of the triangle
+ * @param side2 the length of the second side of the triangle
+ * @param side3 the length of the third side of the triangle
+ * @return true if the sides can form a valid triangle, false otherwise 
+ */
+public static boolean isTriangle(int side1, int side2, int side3) {
+    boolean isPositive = (side1 > 0) && (side2 > 0) && (side3 > 0);
+    return (isPositive && (side1 + side2 > side3) && (side1 + side3 > side2) && (side2 + side3 > side1));
+}
