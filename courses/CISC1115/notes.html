@@ -213,6 +213,7 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
     <a class="nav-link" href="#The_Character_Class" style="font-size: 22px">The Character Class</a>
     <a class="nav-link" href="#Strings" style="font-size: 22px">Strings</a>
     <a class="nav-link" href="#Methods" style="font-size: 22px">Methods</a>
+    <a class="nav-link" href="#Arrays" style="font-size: 22px">Arrays</a>
     <!--
       
     
@@ -4003,6 +4004,798 @@ public static boolean isSingleDigit(int x) {</code></pre>
       <br />
       <hr />
     </section>
+
+
+    <section class="main-section" id="Arrays">
+      <br />
+      <header><b>Arrays</b></header>
+      <article>
+        
+        <p>An <b>array</b> is <b>a sequence of values</b>; <b>the values in the array are called elements</b>.</p>
+
+        <p>Conceptually this might sound familiar, <b>internally Strings are 
+          represented by a char array</b> with an offset and length (this allows to create lightweight substrings, using the same char arrays).</p>
+
+      <p>However, Strings are actually immutable objects representing a character sequence (CharSequence is one of the interfaces implemented by String). 
+        The main difference to char arrays and collections of chars is that <b>Strings cannot be modified, 
+        so it's not possible (ignoring reflection) to add/remove/replace characters</b>.</p>
+
+      <p><b>You can make an array of ints, doubles, or any other type, but all the values
+        in an array must have the same type</b>.</p>
+
+</article>
+<br />
+<header>Creating Arrays</header>
+<article>
+
+  <p>To create an array, we have to <b>declare a variable with an <i>array type</i> and then
+    create the array itself</b>. Array types look like other Java types, except <b>they are
+    followed by square brackets ([])</b>. <br><br>For example, the following lines declare that
+    <b>counts</b> is an "integer array" and <b>values</b> is a "double array":</p>
+
+    <pre><code class="language-java">int [] counts;
+double [] values;</code></pre>
+
+      <p>To create the array itself, <b>we have to use the new operator</b>, which we have seen with Scanner and PrintWriter:</p>
+
+      <pre><code class="language-java">counts = new int [4];
+values = new double [size];</code></pre>
+
+      <p>The first assignment <b>makes count refer to an array of four integers</b>. The second
+        <b>makes values refer to an array of double, where the number of elements in
+        values depends on the value of size</b>.</p>
+
+        <p>Of course, we can also declare the variable and create the array in a single
+          line of code:</p>
+
+        <pre><code class="language-java">int [] counts = new int [4];
+double [] values = new double [size];</code></pre>
+
+          <p><b>You can use any integer expression for the size of an array, as long as the value
+            is nonnegative</b>. If you try to create an array with -4 elements, for example,
+            you will get a NegativeArraySizeException. <b>An array with zero elements is
+            allowed, and there are special uses for such arrays that we'll see later on</b>.</p>
+
+      </article>
+
+      <br />
+<header> Accessing Elements</header>
+<article>
+
+  <p>When you create an array of ints, <b>the elements are initialized to zero</b>. 
+    The following is a state diagram of the counts array so far:</p>
+
+    <img style="width: 100%; height: 100%" src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC1115/images/array%20stack%201.png?raw=true" alt="array initial state diagram"/>
+
+    <p>The arrow indicates that the value of counts is a <b>reference</b> to the array.
+You should think of the array and the variable that refers to it as two different
+things. As we’ll soon see, <b>we can assign a different variable to refer to the same
+array, and we can change the value of counts to refer to a different array</b>.</p>
+
+
+    <p>The large numbers inside the boxes are the elements of the array. The small
+numbers outside the boxes are the <b>indexes</b> (or indices) used to identify each
+location in the array. <b>Notice that the index of the first element is 0, not 1, as
+you might have expected. (We should remember this from Strings!)</b></p>
+
+  <p>The [] operator selects elements from an array:</p>
+
+
+    <pre><code class="language-java">System.out.println("The zeroth element is " + counts[0]);</code></pre>
+
+    <p>You can use the [] operator anywhere in an expression:</p>
+
+          <pre><code class="language-java">counts[0] = 7;
+counts[1] = counts[0] * 2;
+counts[2]++;
+counts[3] -= 60;</code></pre>
+
+        <p>The following shows the result of these statements:</p>
+
+        <img style="width: 100%; height: 100%" src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC1115/images/array%20stack%202.png?raw=true" alt="array update state diagram"/>
+
+        <p><b>You can use any expression as an index, as long as it has type int</b>. <br><br>One of the
+most common ways to index an array is with a loop variable. <br><br>For example:</p>
+
+        <pre><code class="language-java">int i = 0;
+while (i < 4) {
+    System.out.println(counts[i]);
+    i++;
+}</code></pre>
+
+      <p>This while loop counts from 0 up to 4. When i is 4, the condition fails and
+the loop terminates. So the body of the loop is only executed when i is 0, 1,
+2, and 3.</p>
+
+        <p>Each time through the loop we use i as an index into the array, displaying the
+ith element. This type of array processing is often written using a for loop</p>
+
+          <pre><code class="language-java">for (int i = 0; i < 4; i++) {
+    System.out.println(counts[i]);
+}</code></pre>
+
+      <p>For the counts array, the only legal indexes are 0, 1, 2, and 3. <b>If the index is
+negative or greater than 3, the result is an ArrayIndexOutOfBoundsException</b>.</p>
+
+      </article>
+
+      <br />
+<header>Displaying Arrays</header>
+<article>
+
+        <p>You can use println to display an array, but it probably doesn’t do what you
+would like. <br><br>For example, the following fragment:</p>
+
+          <ol>
+            <li>declares an array variable,</li>
+            <li>makes it refer to an array of four elements, and</li>
+            <li>attempts to display the contents of the array using println:</li>
+          </ol>
+
+          <pre><code class="language-java">int[] a = {1, 2, 3, 4};
+System.out.println(a);</code></pre>
+
+      <p>Unfortunately, the output is something like: <b>[I@bf3f7e0</b></p>
+
+      <p>The bracket indicates that the value is an array, I stands for “integer”, and
+the rest represents the address of the array. <br><br><b>If we want to display the elements
+of the array, we can do it ourselves:</b></p>
+
+      <pre><code class="language-java">public static void printArray(int [] a) {
+    System.out.print("{" + a[0]);
+    for (int i = 1; i < a.length; i++) {
+        System.out.print(", " + a[i]);
+    }
+    System.out.println("}");
+}</code></pre>
+
+      <p>Given the previous array, the output of this method is: <b>{1, 2, 3, 4}</b></p>
+
+      <p>The Java library provides a utility class <b>java.util.Arrays</b> that provides
+        methods for working with arrays. One of them, <b>toString()</b>, <b>returns a String
+        representation of an array</b>. We can invoke it like this:</p>
+
+      <pre><code class="language-java">System.out.println(Arrays.toString(a));</code></pre>
+
+      <p>And the output is: <b>[1, 2, 3, 4]</b></p>
+
+      <p>As usual, <b>we have to import java.util.Arrays before we can use it</b>. Notice
+        that the String format is slightly different: it uses square brackets instead of
+        curly braces. <b>However, sometimes it is beneficial for us to write our own printArray() method</b>, if we want our output formatted
+        in a particular way.</p>
+
+      </article>
+
+      <!--<br />
+<header>Parameters and Arguments</header>
+<article>
+      <p>Some of the methods we have used require arguments, which are the values
+        you provide when you invoke the method. For example, to find the square root of
+        a number, you have to provide the number, so Math.sqrt() takes a double as an
+        argument. <br><br>To display a message, you have to provide the message, so println
+        takes a String.</p>
+
+        <p><b>When you use a method, you provide the arguments. When you write a
+          method, you name the parameters.</b> The parameter list indicates what arguments are required. 
+          <br><br>The following shows an example:</p>
+
+        <pre><code class="language-java">public static void printTwice(String s) {
+    System.out.println(s);
+    System.out.println(s);
+}
+public static void main(String [] args) {
+    printTwice("Don't make me say this twice!");
+}</code></pre>
+
+
+  <p><b>printTwice</b> has a parameter named s with type String. When we invoke
+    <b>printTwice</b>, we have to <b>provide an argument with type String</b>.</p>
+
+    <p>Before the method executes, the argument gets assigned to the parameter.
+      In this example, <b>the argument "Don't make me say this twice!" gets assigned to the parameter s</b>.</p>
+
+    <p>This process is called <b>parameter passing</b> because the value gets passed from
+      outside the method to the inside. An argument can be any kind of expression,
+      so if you have a String variable, you can use it as an argument:</p>
+
+    <pre><code class="language-java">String argument = "Never say never.";
+printTwice(argument);</code></pre>
+
+      <p>The value you provide as an argument <b>must have the same type as the parameter</b>. For example, if you try:</p>
+
+      <pre><code class = "language-java">printTwice(17); // syntax error</code></pre>
+
+      <p>You will get an error message.</p>
+
+      <p>Sometimes Java can convert an argument from one type to another automatically. 
+        <br><br>For example, <b>Math.sqrt()</b> requires a double, but if you invoke
+        Math.sqrt(25), the integer value 25 is automatically converted to the floating point value 25.0. 
+        But in the case of printTwice, Java can't (or won't) convert
+        the integer 17 to a String.</p>
+
+        <p><b>Parameters and other variables only exist inside their own methods</b>. Inside
+          main, there is no such thing as s. If you try to use it there, you'll get a compiler
+          error. Similarly, inside printTwice there is no such thing as argument. That
+          variable belongs to main.</p>
+
+          <p>Because variables only exist inside the methods where they are defined, they
+            are often called <b>local variables</b>.</p>
+
+      </article>
+
+      <br />
+      <header>Multiple parameters</header>
+      <article>
+        <p>Here is an example of a method that takes two parameters:</p>
+
+        <pre><code class="language-java">public static void printTime(int hour, int minute) {
+    System.out.print(hour);
+    System.out.print(":");
+    System.out.println(minute);
+}</code></pre>
+    
+        <p>In the parameter list, it may be tempting to write:</p>
+
+        <pre><code class="language-java">public static void printTime(int hour, minute) {</code></pre>
+
+        <p>But that format (without the second int) is only legal for variable declarations.
+          In parameter lists, you need to specify the type of each variable separately.</p>
+
+        <p>To invoke this method, we have to provide two integers as arguments:</p>
+
+        <pre><code class="language-java">int hour = 11;
+int minute = 59;
+printTime(hour, minute);</code></pre>
+
+          <p>A common error is to declare the types of the arguments, like this:</p>
+
+          <pre><code class="language-java">int hour = 11;
+int minute = 59;
+printTime(int hour, int minute); // syntax error</code></pre>
+
+          <p>That's a syntax error; the compiler sees int hour and int minute as variable
+            declarations, not expressions. You wouldn't declare the types of the arguments
+            if they were simply integers:</p>
+
+            <pre><code class="language-java">printTime(int 11, int 59); // syntax error</code></pre>
+
+            </article>
+
+            <br />
+      <header>Stack Diagrams</header>
+      <article>
+      <p>Pulling together the code fragments from the previous section, here is a complete class definition:</p>
+
+      <pre><code class="language-java">public class PrintTime {
+    public static void printTime(int hour, int minute) {
+        System.out.print(hour);
+        System.out.print(":");
+        System.out.println(minute);
+    }
+    public static void main(String[] args) {
+        int hour = 11;
+        int minute = 59;
+        printTime(hour, minute);
+    }
+}</code></pre>
+
+      <p><b>printTime</b> has two parameters, named <b>hour</b> and <b>minute</b>. And <b>main</b> has two
+        variables, <b>also named hour and minute</b>. <br><br><b>Although they have the same names,
+        these variables are not the same</b>. hour in printTime and hour in main refer
+        to <b>different storage locations</b>, and <b>they can have different values</b>.</p>
+
+        <p>For example, you could invoke printTime like this:</p>
+
+        <pre><code class="language-java">int hour = 11;
+int minute = 59;
+printTime(hour + 1, 0);</code></pre>
+
+          <p>Before the method is invoked, Java evaluates the arguments; in this example,
+            the results are 12 and 0. Then it assigns those values to the parameters. Inside
+            printTime, the value of hour is 12, not 11, and the value of minute is 0, not
+            59. <br><br>Furthermore, if printTime modifies one of its parameters, <b>that change
+            has no effect on the variables in main</b>.</p>
+
+          <p>One way to keep track of everything is to draw a <b>stack diagram</b>, which is
+            a state diagram that shows method invocations. <br><br>For each
+            method there is a box called a frame that contains the method's parameters and variables. 
+            The name of the method appears outside the frame; the
+            variables and parameters appear inside.</p>
+
+          <p>As with state diagrams, stack diagrams show variables and methods at a particular point in time. 
+            The following is a stack diagram at the beginning of the
+            printTime method.</p>
+
+          <img style="width: 80%; height: 80%" src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC1115/images/stack%20diagram.png?raw=true" alt="stack diagram"/>
+  
+            </article>
+      <br />
+      <header>Writing Documentation</header>
+      <article>
+          <p> A nice feature of the Java language is the
+            <b>ability to embed documentation in your source code</b>. That way, you can write
+            it as you go, and as things change, it is easier to keep the documentation
+            consistent with the code.</p>
+
+          <p>If you include documentation in your source code, you can extract it automatically, 
+            and generate well-formatted HTML, using a tool called <b>Javadoc</b></p>
+
+          <p>This tool is included in standard Java development environments, and it is widely used. 
+            In fact, the online documentation of the Java libraries is generated by
+            Javadoc.</p>
+
+          <p>Javadoc scans your source files looking for specially-formatted <b>documentation comments</b>, also known as “Javadoc comments”. 
+            They begin with <b>/**</b> (two stars) and end with <b>*/</b> (one star). Anything in between is considered
+            part of the documentation.</p>
+
+          <p>Here's a class definition with two Javadoc comments, one for the class and one
+            for the main method:</p>
+
+          <pre><code class="language-java">/**
+ * Example program that demonstrates print vs println.
+ */
+public class Goodbye {
+    /**
+     * Prints a greeting.
+     */
+    public static void main(String [] args) {
+        System.out.print("Goodbye, "); // note the space
+        System.out.println("cruel world");
+    } 
+}</code></pre>
+
+      <p>The <b>class comment explains the purpose of the class</b>. The <b>method comment
+        explains what the method does</b>.</p>
+
+        <p>Notice that this example also includes an <b>inline comment</b>, <b>beginning with
+          //</b>. In general, <b>inline comments are short phrases that help explain complex
+          parts of a program</b>. They are intended for other programmers reading and
+          maintaining the source code.</p>
+
+        <p>In contrast, <b>Javadoc comments are longer, usually complete sentences</b>. They
+          <b>explain what each method does, but they omit details about how the method
+          works</b>. And they are <b>intended for people who will use the methods without
+          looking at the source code</b>.</p>
+
+        <p>Appropriate comments and documentation are essential for making source
+          code readable. And remember that <b>the person most likely to read your code
+          in the future, and appreciate good documentation, is you</b>.</p>
+
+      </article>
+      <br />
+      <header>Value Methods</header>
+      <article>
+        <p>Some of the methods we have used, like the Math methods, return values. But
+          all the methods we have written so far have been <b>void</b>; that is, <b>they don't
+          return values</b>. Now, we will begin discuss how to write methods that return values, which
+          we call value methods.</p>
+        
+      </article>
+      <br />
+      <header>Return Values</header>
+      <article>
+       <p>When you invoke a void method, the invocation is usually on a line all by
+        itself.</p>
+
+        <p>For example, here is a recursive method called countDown():</p>
+
+        <pre><code class="language-java">public static void countDown(int n) {
+    if (n == 0) {
+        System.out.println("Blastoff!");
+    } else {
+        System.out.println(n);
+        countDown(n - 1);
+    }
+}</code></pre>
+
+        <p>And here is how it is invoked:</p>
+
+        <pre><code class="language-java">countDown(3);</code></pre>
+
+        <p>On the other hand, <b>when you invoke a value method, you have to do something
+          with the return value.</b> We usually <b>assign it to a variable or use it as part of
+          an expression</b>, like this:</p>
+
+        <pre><code class="language-java">double error = Math.abs(expected - actual);
+double height = radius * Math.sin(angle);</code></pre>
+
+        <p>Compared to void methods, value methods differ in two ways:</p>
+          <ul>
+            <li>They declare the type of the return value (the return type);</li>
+            <li>They use at least one return statement to provide a <b>return value</b>.</li>
+          </ul>
+
+        <p>Here's an example: <b>calculateArea()</b> takes a double as a parameter and returns
+          the area of a circle with that radius:</p>
+
+        <pre><code class="language-java">public static double calculateArea(double radius) {
+    double result = Math.PI * radius * radius;
+    return result;
+}</code></pre>
+
+      <p>As usual, this method is <b>public</b> and <b>static</b>. But in the place where we are
+        used to seeing <b>void</b>, we see <b>double</b>, which means that <b>the return value from
+        this method is a double</b>.</p>
+
+        <p>The last line is a new form of the return statement that <b>includes a return
+          value</b>. <b>This statement means, "return immediately from this method and use
+          the following expression as the return value."</b><br><br>The expression you provide can
+          be arbitrarily complex, so we could have written this method more concisely:</p>
+
+        <pre><code class="language-java">public static double calculateArea(double radius) {
+    return Math.PI * radius * radius;
+}</code></pre>
+            
+      <p>On the other hand, temporary variables like result often make debugging
+        easier, especially when you are stepping through code using an interactive
+        debugger.</p>
+
+      <p>The type of the expression in the return statement <b>must match the return
+        type of the method</b>. When you declare that the return type is double, you are
+        making a promise that this method will eventually produce a double value.</p>
+
+       <p>If you try to return with no expression, or an expression with the wrong type,
+        the compiler will generate an error.</p>
+
+      <p>Sometimes it is useful to have multiple return statements, for example, one in
+        each branch of a conditional:</p>
+
+      <pre><code class="language-java">public static double absoluteValue(double x) {
+    if (x < 0) {
+        return -x;
+    } else {
+        return x;
+    }
+}</code></pre>
+
+    <p>Since these return statements are in a conditional statement, only one will be
+      executed. As soon as either of them executes, the method terminates without
+      executing any more statements.</p>
+
+    <p>Code that appears after a return statement (in the same block), or any place
+      else where it can never be executed, is called <b>dead code</b>. The compiler will
+      give you an "unreachable statement" error if part of your code is dead. <br><br>For
+      example, this method contains dead code:</p>
+
+    <pre><code class="language-java">public static double absoluteValue(double x) {
+    if (x < 0) {
+        return -x;
+    } else {
+        return x;
+    }
+    System.out.println("This line is dead.");
+}</code></pre>
+
+    <p><b>If you put return statements inside a conditional statement, you have to
+      make sure that <i>every possible path</i> through the program reaches a return
+      statement</b>. The compiler will let you know if that's not the case. <br><br>For example,
+      the following method is incomplete:</p>
+
+      <pre><code class="language-java">public static double absoluteValue(double x) {
+    if (x < 0) {
+        return -x;
+    } else if (x > 0) {
+        return x;
+    }
+    // syntax error
+}</code></pre>
+
+    <p>When x is 0, neither condition is true, so the method ends without hitting
+      a return statement. <b>The error message in this case might be something like
+      "missing return statement", which is confusing since there are already two of
+      them. But hopefully you will know what it means.</b></p>
+
+      </article>
+      <br />
+      <header>Writing Methods</header>
+      <article>
+        <p>Beginners often make the mistake of writing a lot of code before they try to
+          compile and run it. Then they spend way too much time debugging. A better
+          approach is what we call <b>incremental development</b>. <br><br>The key aspects of
+          incremental development are:</p>
+          <ul>
+            <li>Start with a working program and make small, incremental changes. At
+              any point, if there is an error, you will know where to look.</li>
+            <li>Use variables to hold intermediate values so you can check them, either
+              with print statements or by using a debugger.</li>
+            <li>Once the program is working, you can consolidate multiple statements
+              into compound expressions (but only if it does not make the program
+              more difficult to read).</li>
+          </ul>
+
+          <p>As an example, suppose you want to find the distance between two points,
+            given by the coordinates (x1, y1) and (x2, y2). By the usual definition:</p>
+
+            <img style="width: 100%; height: 80%" src="https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/ea3c4bf85e0d3dc97218c229ad9e719bddb778c2/courses/CISC1115/images/distance_formula.svg" alt="distance formula"/>
+
+          <p>The first step is to consider what a distance method should look like in Java.
+            In other words, what are the inputs (parameters) and what is the output (return value)? 
+            In this case, <b>the two points are the parameters, and it is
+            natural to represent them using four double values</b>. <b>The return value is the
+            distance, which should also have type double</b>.</p>
+
+          <p>Already we can write an outline for the method, which is sometimes called a
+            stub. The stub includes the method signature and a return statement:</p>
+
+          <pre><code style="font-size: 23.5px" class="language-java">public static double distance(double x1, double y1, double x2, double y2) {
+    return 0.0;
+}</code></pre>
+
+          <p>The return statement is <b>a placeholder that is necessary for the program to
+            compile</b>. At this stage the program doesn't do anything useful, but it is good
+            to compile it so we can find any syntax errors before we add more code.</p>
+
+          <p>It's usually a good idea to think about testing <i>before</i> you develop new methods;
+            doing so can help you figure out how to implement them. To test the method,
+            we can invoke it from main using sample values:</p>
+
+          <pre><code class="language-java">double dist = distance(1.0, 2.0, 4.0, 6.0);</code></pre>
+
+          <p>With these values, the horizontal distance is 3.0 and the vertical distance is
+            4.0. So the result should be 5.0, the hypotenuse of a 3-4-5 triangle. <b>When you
+            are testing a method, it is helpful to know the right answer</b>.</p>
+
+          <p>Once we have compiled the stub, we can start adding lines of code one at a
+            time. After each incremental change, we recompile and run the program. If
+            there is an error at any point, we have a good idea where to look: the last line
+            we added.</p>
+
+          <p>The next step is to find the differences <b>x2 − x1</b> and <b>y2 − y1</b>. We store those
+            values in temporary variables named <b>dx</b> and <b>dy</b>.</p>
+
+          <pre><code style="font-size: 23.5px" class="language-java">public static double distance(double x1, double y1, double x2, double y2) {
+    double dx = x2 - x1;
+    double dy = y2 - y1;
+    System.out.println("dx is " + dx);
+    System.out.println("dy is " + dy);
+    return 0.0;
+}</code></pre>
+
+          <p>The print statements allows us to check the intermediate values before proceeding. 
+            They should be 3.0 and 4.0. We will remove the print statements
+            when the method is finished. Code like that is called <b>scaffolding</b>, because it
+            is helpful for building the program, but it is not part of the final product.</p>
+
+          <p>The next step is to square dx and dy. We could use the Math.pow method,
+          but it is simpler to multiply each term by itself.</p>
+
+          <pre><code style="font-size: 23.5px" class="language-java">public static double distance(double x1, double y1, double x2, double y2) {
+    double dx = x2 - x1;
+    double dy = y2 - y1;
+    double dsquared = dx * dx + dy * dy;
+    System.out.println("dsquared is " + dsquared);
+    return 0.0;
+}</code></pre>
+
+        <p>Again, you should compile and run the program at this stage and check the
+          intermediate value, which should be 25.0. Finally, we can use Math.sqrt to
+          compute and return the result.</p>
+
+        <pre><code style="font-size: 23.5px" class="language-java">public static double distance(double x1, double y1, double x2, double y2) {
+    double dx = x2 - x1;
+    double dy = y2 - y1;
+    double dsquared = dx * dx + dy * dy;
+    double result = Math.sqrt(dsquared);
+    return result;
+}</code></pre>
+
+        <p>As you gain more experience programming, you might write and debug more
+          than one line at a time. Nevertheless, incremental development can save you
+          a lot of time.</p>
+
+      </article>
+      <br />
+      <header>Method Composition</header>
+      <article>
+        <p>Once you define a new method, you can use it as part of an expression, or
+          build new methods using existing methods. <br><br>For example, suppose someone
+          gave you two points, the <b>center of the circle</b> and <b>a point on the perimeter</b>,
+          and asked for the <b>area</b> of the circle. Let's say the center point is stored in the
+          variables <b>xc and yc</b>, and the perimeter point is in <b>xp and yp</b>.</p>
+
+        <p>The first step is to find the radius of the circle, which is the distance between
+          the two points. Fortunately, we have just written a method that does just that (distance).</p>
+      
+        <pre><code class="language-java">double radius = distance(xc, yc, xp, yp);</code></pre>
+
+        <p>The second step is to find the area of a circle with that radius. We have a written a method 
+          for that computation too (calculateArea).</p>
+
+        <pre><code class="language-java">double area = calculateArea(radius);
+return area;</code></pre>
+
+          <p>Putting everything together in a new method, we get:</p>
+
+          <pre><code style="font-size: 22px" class="language-java">public static double circleArea(double xc, double yc, double xp, double yp) {
+    double radius = distance(xc, yc, xp, yp);
+    double area = calculateArea(radius);
+    return area;
+}</code></pre>
+
+        <p>The temporary variables radius and area are useful for development and
+          debugging, but once the program is working we can make it more concise by
+          composing the method calls:</p>
+
+        <pre><code style="font-size: 22px" class="language-java">public static double circleArea(double xc, double yc, double xp, double yp) {
+    return calculateArea(distance(xc, yc, xp, yp));
+}</code></pre>
+ 
+      <p>This example demonstrates a process called <b>functional decomposition</b>; that
+        is, breaking a complex computation into simple methods, testing the methods
+        in isolation, and then composing the methods to perform the computation.
+        This process reduces debugging time and yields code that is more likely to be
+        correct and easier to maintain.</p>
+
+      </article>
+      <br />
+      <header>Overloading</header>
+      <article>
+        <p>You might have noticed that circleArea and calculateArea perform similar
+          functions. They both find the area of a circle, but they take different parameters. 
+          For <b>calculateArea, we have to provide the radius</b>; for <b>circleArea we
+          provide two points</b>.</p>
+
+        <p>If two methods do the same thing, it is natural to give them the same name.
+          Having more than one method with the same name is called <b>overloading</b>,
+          and it is legal in Java <b>as long as each version takes different parameters</b>. So
+          we could rename circleArea to calculateArea:</p>
+
+          <pre><code style="font-size: 22px" class="language-java">public static double calculateArea(double xc, double yc, double xp, double yp) {
+    return calculateArea(distance(xc, yc, xp, yp));
+}</code></pre>
+
+        <p>Note that this new calculateArea method is <b>not recursive</b>. <b>When you invoke
+          an overloaded method, Java knows which version you want by looking at the
+          arguments that you provide</b>. If you write:</p>
+
+        <pre><code class="language-java">double x = calculateArea(3.0);</code></pre>
+
+        <p>Java looks for <b>a method named calculateArea that takes one double as an
+          argument</b>, and so it uses the first version, which <b>interprets the argument as a
+          radius</b>. If you write:</p>
+
+        <pre><code class="language-java">double y = calculateArea(1.0, 2.0, 4.0, 6.0);</code></pre>
+
+        <p>Java uses <b>the second version of calculateArea, which interprets the arguments as two points</b>. 
+          In this example, the second version actually invokes the first version.</p>
+
+        <p><b>Many Java methods are overloaded, meaning that there are different versions
+          that accept different numbers or types of parameters</b>. For example, there are
+          versions of print and println that accept a single parameter of any data
+          type. In the Math class, there is a version of abs that works on doubles, and
+          there is also a version for ints.</p>
+
+        <p>Although overloading is a useful feature, <b>it should be used with caution</b>. You
+          might get yourself nicely confused if you are trying to debug one version of a
+          method while accidentally invoking a different one.</p>
+            
+      </article>
+      <br />
+      <header>Boolean Methods</header>
+      <article>
+        <p>Methods can return <text style="color:blue"><b>boolean</b></text> values, just like any other type, which is often
+          convenient for hiding tests inside methods. <br><br>For example:</p>
+
+        <pre><code class="language-java">public static boolean isSingleDigit(int x) {
+    if (x > -10 && x < 10) {
+        return true;
+    } else {
+        return false;
+    }
+}</code></pre>
+
+      <p>The name of this method is <b>isSingleDigit()</b>. It is common to give <text style="color:blue"><b>boolean</b></text> 
+        methods names that <b>sound like yes/no questions</b>. Since the return type is
+        <text style="color:blue"><b>boolean</b></text> , 
+        <b>the return statement has to provide a <text style="color:blue"><b>boolean</b></text> expression</b>.</p>
+
+      <p>The code itself is straightforward, although it is longer than it needs to be.
+        Remember that the expression <b>x > -10 && x < 10</b> has type <text style="color:blue"><b>boolean</b></text>, so there
+        is nothing wrong with <b>returning it directly</b> (without the if statement):</p>
+
+      <pre><code class="language-java">public static boolean isSingleDigit(int x) {
+    return x > -10 && x < 10;
+}</code></pre>
+
+    <p>In main, you can invoke the method in the usual ways:</p>
+
+    <pre><code class="language-java">System.out.println(isSingleDigit(2));
+boolean bigFlag = !isSingleDigit(17);</code></pre>
+
+      <p>The first line displays <text style="color:blue"><b>true</b></text> because 2 is a single-digit number. The second
+        line sets bigFlag to <text style="color:blue"><b>true</b></text>, because 17 is not a single-digit number.</p>
+
+      <p>Conditional statements often invoke <text style="color:blue"><b>boolean</b></text> methods and use the result as
+        the condition:</p>
+
+    <pre><code class="language-java">if (isSingleDigit(z)) {
+    System.out.println("z is small");
+} else {
+    System.out.println("z is big");
+}</code></pre>
+
+    <p>Examples like this one almost read like English: "If is single digit z, print ...
+      else print ...".</p>
+     
+      </article>
+      <br />
+      <header>Javadoc Tags</header>
+      <article>
+        <p>We discussed how to write documentation comments using /**.
+          It's generally a good idea to document each class and method, so that other
+          programmers can understand what they do without having to read the code.</p>
+
+
+          <p>To organize the documentation into sections, Javadoc supports optional tags
+            that begin with the at sign (@). For example, we can use @param and @return
+            to provide additional information about parameters and return values.
+            </p>
+
+          <pre><code class="language-java">/**
+  * Tests whether x is a single digit integer.
+  *
+  * @param x the integer to test
+  * @return true if x has one digit, false otherwise
+  */
+public static boolean isSingleDigit(int x) {</code></pre>
+
+        <p>The following shows part of the resulting HTML page generated by Javadoc.
+          Notice the relationship between the source code and the documentation:</p>
+
+        <img style="width: 100%; height: 100%" src = "https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC1115/images/javadoc.png?raw=true" alt="Javadoc"/>
+      
+        <p>Methods with multiple parameters should have <b>separate @param tags that
+          describe each one</b>. <b>Void methods should have no @return tag</b>, since they do
+          not return a value.</p>
+
+        
+            
+      </article>-->
+    
+      <br />
+      <hr />
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
