@@ -1011,36 +1011,95 @@ public static int method(int b, int a){
     </ol>
 
     <p>3) Write a method <b>biggest()</b> that receives <b>three int parameters</b>. It will determine which value is the largest and
-      <b>return that value</b> to the calling method.</p>
+      <b>return that value</b> to the calling method.</p>    
+    
+    <hr/>
 
-    <p>4) Use the following formulas to write a Java program that has three methods:</p>
+      <h2>Review</h2>
 
-    <img style="width: 60%; height: 60%; display: block; margin-left: auto;
-    margin-right: auto;" src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC1115/images/surface-area-sphere.png?raw=true" alt = "sphere dimensions"/>
-      
-    <ul>
-      <li><b>calculateVolumeOfSphere(double radius)</b> that calculates and returns the volume of a sphere (in cubic units)</li>
-      <li><b>calculateSurfaceAreaOfSphere(double radius)</b> that calculates and returns the surface area of a sphere (in cubic units)</li>
-      <li><b>isSphereLarge(double radius)</b> that checks if a sphere with a given radius is considered large (volume greater than 1000 cubic units) 
-        and returns <text style="color:blue"><b>true</b></text> if it is, <text style="color:blue"><b>false</b></text> otherwise.</li>
-    </ul>
+      <p>a) Use the following formulas to write THREE overloaded <b>calcPerimeter()</b> methods, one for each shape. 
+        Each method should <b>take the necessary parameters and return the perimeter as a double</b>.</p>
 
-    <p>The main method should print out the volume, surface area, and whether or not the sphere is large.</p>
+      <img style="width: 60%; height: 60%; display: block; margin-left: auto;
+      margin-right: auto;" src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC1115/images/perimeter%20formulas.jpg?raw=true" alt="formulas"/>
+         
+
+  <hr/>
+
+  <p>4) Write a method named <b>isDivisible()</b> that takes <b>two double parameters</b>,
+    n and m, and that <b>returns <text style="color:blue"><b>true</b></text> if n is divisible by m, 
+    and <text style="color:blue"><b>false</b></text> otherwise</b>.</p>
+
+    <p>5) If you are given three sticks, you may or may not be able to
+      arrange them in a triangle. For example, if one of the sticks is 12 inches long
+      and the other two are one inch long, you will not be able to get the short sticks
+      to meet in the middle. For any three lengths, there is a simple test to see if it
+      is possible to form a triangle:<br><br>
+      <b>If any of the three lengths is greater than the sum of the other two,
+      you cannot form a triangle</b>.<br><br>
+      Write a method named <b>isTriangle()</b> that <b>takes three integers as arguments</b>
+      and <b>returns either <text style="color:blue"><b>true</b></text> or <text style="color:blue"><b>false</b></text>, depending on whether you can or cannot
+      form a triangle from sticks with the given lengths</b>. <b>(Remember to also check that all the sides are positive!)</b> 
+      </p>
+
+    <p>6) What is the output of the following program?</p>
+
+    <pre><code class="language-java">public static void main(String [] args) {
+    boolean flag1 = isHoopy(202);
+    boolean flag2 = isFrabjuous(202);
+    System.out.println(flag1);
+    System.out.println(flag2);
+    if (flag1 && flag2) {
+        System.out.println("ping!");
+    }
+    if (flag1 || flag2) {
+        System.out.println("pong!");
+    }
+}
+
+public static boolean isHoopy(int x) {
+    boolean hoopyFlag;
+    if (x % 2 == 0) {
+        hoopyFlag = true;
+    } else {
+        hoopyFlag = false;
+    }
+    return hoopyFlag;
+}
+
+public static boolean isFrabjuous(int x) {
+    boolean frabjuousFlag;
+    if (x > 0) {
+        frabjuousFlag = true;
+    } else {
+        frabjuousFlag = false;
+    }
+    return frabjuousFlag;
+}</code></pre>
+
+
+
+
+  <p>7) Use the following formulas to write a Java program that has three methods:</p>
+
+  <img style="width: 60%; height: 60%; display: block; margin-left: auto;
+  margin-right: auto;" src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC1115/images/surface-area-sphere.png?raw=true" alt = "sphere dimensions"/>
+    
+  <ul>
+    <li><b>calculateVolumeOfSphere(double radius)</b> that calculates and returns the volume of a sphere (in cubic units)</li>
+    <li><b>calculateSurfaceAreaOfSphere(double radius)</b> that calculates and returns the surface area of a sphere (in cubic units)</li>
+    <li><b>isSphereLarge(double radius)</b> that checks if a sphere with a given radius is considered large (volume greater than 1000 cubic units) 
+      and returns <text style="color:blue"><b>true</b></text> if it is, <text style="color:blue"><b>false</b></text> otherwise.</li>
+  </ul>
+
+  <p>The main method should print out the volume, surface area, and whether or not the sphere is large.</p>
+
+
   
-    
-    
-    
-    <!--<hr/>
-
-      <h2>Review</h2>-->
-
-      
-
-      
 
   <!--<p>
-    <a href="/courses/CISC1115/classwork_code/Week 9 Answers.txt"
-      >Answers to Week 9 found here</a
+    <a href="/courses/CISC1115/classwork_code/Week 10 Answers.txt"
+      >Answers to Week 10 found here</a
     >
   </p>
   <hr />-->
