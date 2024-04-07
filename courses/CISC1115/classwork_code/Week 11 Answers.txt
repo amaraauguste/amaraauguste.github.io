@@ -1,0 +1,29 @@
+Review
+
+a) 
+
+import java.util.Scanner;//Scanner
+public class CountOccurrences {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a String: ");
+        String temp = sc.nextLine();
+        int count = 0;
+        for(char c='a'; c<='z'; c++) {// iterate for each lower case letter
+            count = countOccurrences(temp, c);// count number of times lower case letter appears
+            if(count>0) System.out.println(c + " appears " + count + " times");// if it appears, output how many times
+        }
+    }
+
+    // iterate through the String and compare each lower case version of the letter at that indext to c, returning the count
+    public static int countOccurrences(String temp, char c) {
+        int count = 0;
+        for(int i=0; i<temp.length(); i++) {
+            if(c==temp.toLowerCase().charAt(i)) count++;
+        }
+        return count;
+    }
+}
+
+b) 
+
