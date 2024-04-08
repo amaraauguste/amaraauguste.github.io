@@ -4092,7 +4092,7 @@ counts[3] -= 60;</code></pre>
 
         <p>The following shows the result of these statements:</p>
 
-        <img style="width: 100%; height: 100%" src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC1115/images/array%20stack%202.png?raw=true" alt="array update state diagram"/>
+        <img style="width: 80%; height: 80%" src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC1115/images/array%20stack%202.png?raw=true" alt="array update state diagram"/>
 
         <p><b>You can use any expression as an index, as long as it has type int</b>. <br><br>One of the
 most common ways to index an array is with a loop variable. <br><br>For example:</p>
@@ -4132,7 +4132,7 @@ would like. <br><br>For example, the following fragment:</p>
             <li>attempts to display the contents of the array using println:</li>
           </ol>
 
-          <pre><code class="language-java">int [] a = {1, 2, 3, 4};
+          <pre><code class="language-java">int[] a = {1, 2, 3, 4};
 System.out.println(a);</code></pre>
 
       <p>Unfortunately, the output is something like: <b>[I@bf3f7e0</b></p>
@@ -4166,150 +4166,111 @@ of the array, we can do it ourselves:</b></p>
 
       </article>
 
-      <!--<br />
-<header>Parameters and Arguments</header>
+      <br />
+<header>Copying Arrays</header>
 <article>
-      <p>Some of the methods we have used require arguments, which are the values
-        you provide when you invoke the method. For example, to find the square root of
-        a number, you have to provide the number, so Math.sqrt() takes a double as an
-        argument. <br><br>To display a message, you have to provide the message, so println
-        takes a String.</p>
+      <p>As previously explained, array variables contain <b>references to arrays</b>. When
+        you make an assignment to an array variable, it simply <b>copies the reference</b>.
+        <b>But it doesn't copy the array itself!</b> <br><br>For example:</p>
 
-        <p><b>When you use a method, you provide the arguments. When you write a
-          method, you name the parameters.</b> The parameter list indicates what arguments are required. 
-          <br><br>The following shows an example:</p>
+        <pre><code class="language-java">double [] a = new double [3];
+double [] b = a;</code></pre>
 
-        <pre><code class="language-java">public static void printTwice(String s) {
-    System.out.println(s);
-    System.out.println(s);
-}
-public static void main(String [] args) {
-    printTwice("Don't make me say this twice!");
+        <p>These statements create an array of three <b>doubles</b> and make two different
+          variables refer to it, as shown below:</p>
+
+        <img style="width: 100%; height: 100%" src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC1115/images/array%20reference.png?raw=true" alt="array ref">
+
+        <p>Any changes made through either variable will be seen by the other. For
+          example, <b>if we set a[0] = 17.0, and then display b[0], the result is 17.0</b>.
+          Because a and b are different names for the same thing, they are sometimes
+          called <b>aliases</b>.</p>
+
+        <p>If you actually want to copy the array, not just a reference, you have to <b>create
+          a new array and copy the elements from the old to the new</b>, like this:</p>
+
+        <pre><code class="language-java">double[] b = new double[3];
+for (int i = 0; i < 3; i++) {
+    b[i] = a[i];
 }</code></pre>
 
-
-  <p><b>printTwice</b> has a parameter named s with type String. When we invoke
-    <b>printTwice</b>, we have to <b>provide an argument with type String</b>.</p>
-
-    <p>Before the method executes, the argument gets assigned to the parameter.
-      In this example, <b>the argument "Don't make me say this twice!" gets assigned to the parameter s</b>.</p>
-
-    <p>This process is called <b>parameter passing</b> because the value gets passed from
-      outside the method to the inside. An argument can be any kind of expression,
-      so if you have a String variable, you can use it as an argument:</p>
-
-    <pre><code class="language-java">String argument = "Never say never.";
-printTwice(argument);</code></pre>
-
-      <p>The value you provide as an argument <b>must have the same type as the parameter</b>. For example, if you try:</p>
-
-      <pre><code class = "language-java">printTwice(17); // syntax error</code></pre>
-
-      <p>You will get an error message.</p>
-
-      <p>Sometimes Java can convert an argument from one type to another automatically. 
-        <br><br>For example, <b>Math.sqrt()</b> requires a double, but if you invoke
-        Math.sqrt(25), the integer value 25 is automatically converted to the floating point value 25.0. 
-        But in the case of printTwice, Java can't (or won't) convert
-        the integer 17 to a String.</p>
-
-        <p><b>Parameters and other variables only exist inside their own methods</b>. Inside
-          main, there is no such thing as s. If you try to use it there, you'll get a compiler
-          error. Similarly, inside printTwice there is no such thing as argument. That
-          variable belongs to main.</p>
-
-          <p>Because variables only exist inside the methods where they are defined, they
-            are often called <b>local variables</b>.</p>
 
       </article>
 
       <br />
-      <header>Multiple parameters</header>
+      <header>Array Length</header>
       <article>
-        <p>Here is an example of a method that takes two parameters:</p>
+        <p>The examples in the previous section only work if the array has three elements.
+          It would be better to <b>generalize the code to work with arrays of any size</b>. We
+          can do that by replacing the magic number, 3, with a.length:</p>
 
-        <pre><code class="language-java">public static void printTime(int hour, int minute) {
-    System.out.print(hour);
-    System.out.print(":");
-    System.out.println(minute);
+        <pre><code class="language-java">double [] b = new double [a.length];
+for (int i = 0; i < a.length; i++) {
+    b[i] = a[i];
 }</code></pre>
     
-        <p>In the parameter list, it may be tempting to write:</p>
+        <p>All arrays have a built-in constant, <b>length</b>, that stores the number of elements.
+          The expression a.length may look like a method invocation, but there are no
+          parentheses and no arguments.</p>
 
-        <pre><code class="language-java">public static void printTime(int hour, minute) {</code></pre>
-
-        <p>But that format (without the second int) is only legal for variable declarations.
-          In parameter lists, you need to specify the type of each variable separately.</p>
-
-        <p>To invoke this method, we have to provide two integers as arguments:</p>
-
-        <pre><code class="language-java">int hour = 11;
-int minute = 59;
-printTime(hour, minute);</code></pre>
-
-          <p>A common error is to declare the types of the arguments, like this:</p>
-
-          <pre><code class="language-java">int hour = 11;
-int minute = 59;
-printTime(int hour, int minute); // syntax error</code></pre>
-
-          <p>That's a syntax error; the compiler sees int hour and int minute as variable
-            declarations, not expressions. You wouldn't declare the types of the arguments
-            if they were simply integers:</p>
-
-            <pre><code class="language-java">printTime(int 11, int 59); // syntax error</code></pre>
+          <p>The last time this loop gets executed, i is <b>a.length - 1</b>, which is the index
+            of the <b>last element</b>. When i is equal to a.length, the condition fails and
+            the body is not executed - which is a good thing, because trying to access
+            a[a.length] would throw an exception.</p>
 
             </article>
 
             <br />
-      <header>Stack Diagrams</header>
+      <header>Array Traversal</header>
       <article>
-      <p>Pulling together the code fragments from the previous section, here is a complete class definition:</p>
+      <p>Many computations can be implemented by looping through the elements of
+        an array and performing an operation on each element. <br><br>For example, the
+        following loop squares the elements of a double array:</p>
 
-      <pre><code class="language-java">public class PrintTime {
-    public static void printTime(int hour, int minute) {
-        System.out.print(hour);
-        System.out.print(":");
-        System.out.println(minute);
+      <pre><code class="language-java">for (int i = 0; i < a.length; i++) {
+    a[i] = Math.pow(a[i], 2.0);
+}</code></pre>
+     
+          <p>Looping through the elements of an array is called a <b>traversal</b>.</p>
+
+          <p>Another common pattern is a <b>search</b>, which involves <b>traversing an array looking for
+            a particular element</b>. <br><br>For example, the following method takes an int array
+            and an integer value, and it <b>returns the index where the value appears</b>:</p> 
+
+          <pre><code class="language-java">public static int search(double [] a, double target) {
+    for (int i = 0; i < a.length; i++) {
+        if (a[i] == target) {
+            return i;
+        }
     }
-    public static void main(String[] args) {
-        int hour = 11;
-        int minute = 59;
-        printTime(hour, minute);
-    }
+    return -1;
 }</code></pre>
 
-      <p><b>printTime</b> has two parameters, named <b>hour</b> and <b>minute</b>. And <b>main</b> has two
-        variables, <b>also named hour and minute</b>. <br><br><b>Although they have the same names,
-        these variables are not the same</b>. hour in printTime and hour in main refer
-        to <b>different storage locations</b>, and <b>they can have different values</b>.</p>
+        <p>If we find the target value in the array, we return its index immediately. If the
+          loop exits without finding the target, it returns -1, a special value chosen to
+          indicate a failed search.</p>
 
-        <p>For example, you could invoke printTime like this:</p>
+          <p>Another common traversal is a <b>reduce</b> operation, which <b>"reduces" an array
+            of values down to a single value</b>. Examples include the sum or product of the
+            elements, the minimum, and the maximum. <br><br>The following method takes a
+            double array and returns the sum of the elements:</p>
 
-        <pre><code class="language-java">int hour = 11;
-int minute = 59;
-printTime(hour + 1, 0);</code></pre>
+          <pre><code class="language-java">public static double sum(double [] a) {
+    double total = 0.0;
+    for (int i = 0; i < a.length; i++) {
+        total += a[i];
+    }
+    return total;
+}</code></pre>
 
-          <p>Before the method is invoked, Java evaluates the arguments; in this example,
-            the results are 12 and 0. Then it assigns those values to the parameters. Inside
-            printTime, the value of hour is 12, not 11, and the value of minute is 0, not
-            59. <br><br>Furthermore, if printTime modifies one of its parameters, <b>that change
-            has no effect on the variables in main</b>.</p>
+      <p>Before the loop, we initialize total to zero. Each time through the loop, we
+        update total by adding one element from the array. At the end of the loop,
+        total contains the sum of the elements. A variable used this way is sometimes
+        called an <b>accumulator</b>.</p>
 
-          <p>One way to keep track of everything is to draw a <b>stack diagram</b>, which is
-            a state diagram that shows method invocations. <br><br>For each
-            method there is a box called a frame that contains the method's parameters and variables. 
-            The name of the method appears outside the frame; the
-            variables and parameters appear inside.</p>
-
-          <p>As with state diagrams, stack diagrams show variables and methods at a particular point in time. 
-            The following is a stack diagram at the beginning of the
-            printTime method.</p>
-
-          <img style="width: 80%; height: 80%" src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC1115/images/stack%20diagram.png?raw=true" alt="stack diagram"/>
   
             </article>
-      <br />
+      <!--<br />
       <header>Writing Documentation</header>
       <article>
           <p> A nice feature of the Java language is the
