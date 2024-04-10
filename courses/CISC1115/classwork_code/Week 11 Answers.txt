@@ -7,7 +7,7 @@ public class CountOccurrences {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter a String: ");
-        String temp = sc.nextLine();
+        String temp = sc.nextLine().toLowerCase();
         int count = 0;
         for(char c='a'; c<='z'; c++) {// iterate for each lower case letter
             count = countOccurrences(temp, c);// count number of times lower case letter appears
@@ -19,7 +19,7 @@ public class CountOccurrences {
     public static int countOccurrences(String temp, char c) {
         int count = 0;
         for(int i=0; i<temp.length(); i++) {
-            if(c==temp.toLowerCase().charAt(i)) count++;
+            if(c==temp.charAt(i)) count++;
         }
         return count;
     }
@@ -43,4 +43,63 @@ Value: 10
 5 : 12.5
 
 3) 
+
+public class RandomIntegersCounter {
+    public static void main(String [] args) {
+        final int SIZE = 20;
+        int max = 100;
+        int min = 1;
+        int[] randomNumbers = new int[SIZE];
+
+        for (int i = 0; i < SIZE; i++) {
+            int rand = (int) (Math.random() * (max - min) + min);
+            randomNumbers[i] = rand;
+        }
+
+        System.out.println("Generated random numbers:");
+        System.out.print("{");
+        for (int i = 0; i < randomNumbers.length; i++) {
+            System.out.print(randomNumbers[i]);
+            if(i < randomNumbers.length - 1)
+                System.out.print(", ");
+        }
+        System.out.println("}");
+        System.out.println();
+
+        System.out.println("Even numbers count: " + countEvenNumbers(randomNumbers));
+        System.out.println("Odd numbers count: " + countOddNumbers(randomNumbers));
+        System.out.println("Multiples of 5 count: " + countMultiplesOf5(randomNumbers));
+    }
+
+
+    public static int countEvenNumbers(int [] arr) {
+        int count = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] % 2 == 0) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public static int countOddNumbers(int [] arr) {
+        int count = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] % 2 != 0) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public static int countMultiplesOf5(int [] arr) {
+        int count = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] % 5 == 0) {
+                count++;
+            }
+        }
+        return count;
+    }
+}
 
