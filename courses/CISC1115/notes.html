@@ -4509,14 +4509,14 @@ int sum = add(x);</code></pre>
         <pre><code class="language-java">public static void main(String [] args) {
     int [] num = {1, 2, 3};
     for(int i = 0; i < num.length; i++){
-        System.out.println("num[i] = " + num[i]);
+        System.out.println("num[" + i + "] = " + num[i]);
     }
     
     System.out.println("Now, call the method.");
 
     testArray(num);// Method call
     for(int j = 0; j < num.length; j++){
-      System.out.println("num[j] = " + num[j]);
+      System.out.println("num[" + j + "] = " + num[j]);
   }
 }
 
@@ -4694,47 +4694,66 @@ public static void testArray(int [] value){
 
       </article>
       <!--<br />
-      <header>Overloading</header>
+      <header>Parallel Arrays</header>
       <article>
-        <p>You might have noticed that circleArea and calculateArea perform similar
-          functions. They both find the area of a circle, but they take different parameters. 
-          For <b>calculateArea, we have to provide the radius</b>; for <b>circleArea we
-          provide two points</b>.</p>
+        <p>Sometimes we need multiple types of data that all apply to the same particular record. 
+          Think of a spreadsheet containing names and phone numbers.</p>
 
-        <p>If two methods do the same thing, it is natural to give them the same name.
-          Having more than one method with the same name is called <b>overloading</b>,
-          and it is legal in Java <b>as long as each version takes different parameters</b>. So
-          we could rename circleArea to calculateArea:</p>
+        <p>Despite being separate data (names and phone numbers respectively), a set of them can both be attributed to the same person (they are not independent of one another)</p>
 
-          <pre><code style="font-size: 22px" class="language-java">public static double calculateArea(double xc, double yc, double xp, double yp) {
-    return calculateArea(distance(xc, yc, xp, yp));
+        <p>Or even simpler let's look at the following arrays representing the data from a dog show:</p>
+          <pre><code style="font-size: 24px" class="language-java">String [] dogName = {"Wally", "Skeeter", "Corky", "Jessie", "Sadie"};
+int [] round1 = {18,22,12,17,15};
+int [] round2 = {20,25,16,18,17};</code></pre>
+
+        <p>In the data represented above, the first array is the dog's name, 
+          the second array is the dog's score in round 1 of the competition, 
+          and the third array is the dog's score in round 2 of the competition.  
+          The dog in the first element of the first array 
+          has the scores represented in the first elements of the second and third arrays.
+          Notice that the arrays do not all contain the same "type" of data
+          Such data, can be stored using <b>parallel arrays</b>.</p>  
+          
+          <p><b>Parallel arrays are several arrays with the same number of elements that work in 
+            tandem to organize data</b>.</p>
+
+          <p>Parallel arrays come in handy <b>when data regarding different characteristics of the 
+            same subject of interest needs to be stored and accessed efficiently</b>.</p>
+        
+          <p>Now we can print out the arrays:</p>
+
+          <pre><code style="font-size: 22px" class="language-java">//Printing the dog competition information:
+for(int index = 0; index < dogname.length; index++){
+    System.out.print("Contestant #" + (index+1) + ": " + dogName[index] + " ");
+    System.out.print("Round 1: " + round1[index] + " ");
+    System.out.print("Round 2: " + round2[index] + " ");
+    System.out.println("Total score: " + (round1[index]+round2[index]));
+}</code></pre>
+            
+      <p>Another example: The program below implements <b>four parallel arrays</b>. 
+        The <b>first, second, third, and fourth arrays</b> store the <b>names, ages, grades, 
+        and the subjects of five students</b>, respectively.</p>
+
+        <p>Due to the semantics of parallel arrays, <b>each array is of the same size</b>, 
+          and <b>each array element at the same index in all four arrays corresponds to the same student</b>, 
+          who will be our subject of interest.</p>
+
+        <p>Using one for loop, all characteristics of each student are accessed and printed:</p>
+
+        <pre><code style="font-size: 22px" class="language-java">String [] fname = {"John", "Michael", "Sara", "Zubair", "Sadia"};
+int [] age = {18,19,18,19,19};
+char [] grade = {'B','A','B','A','A'};
+String [] subject =  {"English", "Math", "History", "Physics", "Chemistry"};
+for (int i = 0; i < fname.length; i++) {
+  System.out.print("My name is " + fname[i] + ". I am " + age[i]);
+  System.out.print(" years old. I have a grade of " + grade[i]); 
+  System.out.println(" in my favorite subject: " + subject[i] + "!");
 }</code></pre>
 
-        <p>Note that this new calculateArea method is <b>not recursive</b>. <b>When you invoke
-          an overloaded method, Java knows which version you want by looking at the
-          arguments that you provide</b>. If you write:</p>
 
-        <pre><code class="language-java">double x = calculateArea(3.0);</code></pre>
 
-        <p>Java looks for <b>a method named calculateArea that takes one double as an
-          argument</b>, and so it uses the first version, which <b>interprets the argument as a
-          radius</b>. If you write:</p>
 
-        <pre><code class="language-java">double y = calculateArea(1.0, 2.0, 4.0, 6.0);</code></pre>
 
-        <p>Java uses <b>the second version of calculateArea, which interprets the arguments as two points</b>. 
-          In this example, the second version actually invokes the first version.</p>
-
-        <p><b>Many Java methods are overloaded, meaning that there are different versions
-          that accept different numbers or types of parameters</b>. For example, there are
-          versions of print and println that accept a single parameter of any data
-          type. In the Math class, there is a version of abs that works on doubles, and
-          there is also a version for ints.</p>
-
-        <p>Although overloading is a useful feature, <b>it should be used with caution</b>. You
-          might get yourself nicely confused if you are trying to debug one version of a
-          method while accidentally invoking a different one.</p>
-            
       </article>
       <br />
       <header>Boolean Methods</header>
