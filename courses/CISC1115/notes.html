@@ -4056,6 +4056,15 @@ double [] values = new double [size];</code></pre>
             you will get a NegativeArraySizeException. <b>An array with zero elements is
             allowed, and there are special uses for such arrays that we'll see later on</b>.</p>
 
+
+          <p>Another way to create an array is to use an <b>initializer list</b>. 
+            You can initialize (set) the values in the array to a list of values in curly brackets { } 
+            when you create it, like below. In this case <b>you don't specify the size of the array, 
+            it will be determined from the number of values that you specify</b>.</p>
+
+            <p>For example:</p>
+
+            <pre><code class="language-java">int [] counts = {0, 0, 0, 0};</code></pre>
       </article>
 
       <br />
@@ -4408,263 +4417,283 @@ for (int i = 0; i < scores.length; i++) {
 
         
       </article>
-      <!--<br />
-      <header>Return Values</header>
-      <article>
-       <p>When you invoke a void method, the invocation is usually on a line all by
-        itself.</p>
-
-        <p>For example, here is a recursive method called countDown():</p>
-
-        <pre><code class="language-java">public static void countDown(int n) {
-    if (n == 0) {
-        System.out.println("Blastoff!");
-    } else {
-        System.out.println(n);
-        countDown(n - 1);
-    }
-}</code></pre>
-
-        <p>And here is how it is invoked:</p>
-
-        <pre><code class="language-java">countDown(3);</code></pre>
-
-        <p>On the other hand, <b>when you invoke a value method, you have to do something
-          with the return value.</b> We usually <b>assign it to a variable or use it as part of
-          an expression</b>, like this:</p>
-
-        <pre><code class="language-java">double error = Math.abs(expected - actual);
-double height = radius * Math.sin(angle);</code></pre>
-
-        <p>Compared to void methods, value methods differ in two ways:</p>
-          <ul>
-            <li>They declare the type of the return value (the return type);</li>
-            <li>They use at least one return statement to provide a <b>return value</b>.</li>
-          </ul>
-
-        <p>Here's an example: <b>calculateArea()</b> takes a double as a parameter and returns
-          the area of a circle with that radius:</p>
-
-        <pre><code class="language-java">public static double calculateArea(double radius) {
-    double result = Math.PI * radius * radius;
-    return result;
-}</code></pre>
-
-      <p>As usual, this method is <b>public</b> and <b>static</b>. But in the place where we are
-        used to seeing <b>void</b>, we see <b>double</b>, which means that <b>the return value from
-        this method is a double</b>.</p>
-
-        <p>The last line is a new form of the return statement that <b>includes a return
-          value</b>. <b>This statement means, "return immediately from this method and use
-          the following expression as the return value."</b><br><br>The expression you provide can
-          be arbitrarily complex, so we could have written this method more concisely:</p>
-
-        <pre><code class="language-java">public static double calculateArea(double radius) {
-    return Math.PI * radius * radius;
-}</code></pre>
-            
-      <p>On the other hand, temporary variables like result often make debugging
-        easier, especially when you are stepping through code using an interactive
-        debugger.</p>
-
-      <p>The type of the expression in the return statement <b>must match the return
-        type of the method</b>. When you declare that the return type is double, you are
-        making a promise that this method will eventually produce a double value.</p>
-
-       <p>If you try to return with no expression, or an expression with the wrong type,
-        the compiler will generate an error.</p>
-
-      <p>Sometimes it is useful to have multiple return statements, for example, one in
-        each branch of a conditional:</p>
-
-      <pre><code class="language-java">public static double absoluteValue(double x) {
-    if (x < 0) {
-        return -x;
-    } else {
-        return x;
-    }
-}</code></pre>
-
-    <p>Since these return statements are in a conditional statement, only one will be
-      executed. As soon as either of them executes, the method terminates without
-      executing any more statements.</p>
-
-    <p>Code that appears after a return statement (in the same block), or any place
-      else where it can never be executed, is called <b>dead code</b>. The compiler will
-      give you an "unreachable statement" error if part of your code is dead. <br><br>For
-      example, this method contains dead code:</p>
-
-    <pre><code class="language-java">public static double absoluteValue(double x) {
-    if (x < 0) {
-        return -x;
-    } else {
-        return x;
-    }
-    System.out.println("This line is dead.");
-}</code></pre>
-
-    <p><b>If you put return statements inside a conditional statement, you have to
-      make sure that <i>every possible path</i> through the program reaches a return
-      statement</b>. The compiler will let you know if that's not the case. <br><br>For example,
-      the following method is incomplete:</p>
-
-      <pre><code class="language-java">public static double absoluteValue(double x) {
-    if (x < 0) {
-        return -x;
-    } else if (x > 0) {
-        return x;
-    }
-    // syntax error
-}</code></pre>
-
-    <p>When x is 0, neither condition is true, so the method ends without hitting
-      a return statement. <b>The error message in this case might be something like
-      "missing return statement", which is confusing since there are already two of
-      them. But hopefully you will know what it means.</b></p>
-
-      </article>
       <br />
-      <header>Writing Methods</header>
+      <header>The Enhanced For Loop</header>
       <article>
-        <p>Beginners often make the mistake of writing a lot of code before they try to
-          compile and run it. Then they spend way too much time debugging. A better
-          approach is what we call <b>incremental development</b>. <br><br>The key aspects of
-          incremental development are:</p>
-          <ul>
-            <li>Start with a working program and make small, incremental changes. At
-              any point, if there is an error, you will know where to look.</li>
-            <li>Use variables to hold intermediate values so you can check them, either
-              with print statements or by using a debugger.</li>
-            <li>Once the program is working, you can consolidate multiple statements
-              into compound expressions (but only if it does not make the program
-              more difficult to read).</li>
-          </ul>
+       <p>Since traversing arrays is so common, <b>Java provides an alternative syntax that
+        makes the code more compact</b>. <br><br>For example, consider a for loop that displays
+        the elements of an array on separate lines:
+        </p>
 
-          <p>As an example, suppose you want to find the distance between two points,
-            given by the coordinates (x1, y1) and (x2, y2). By the usual definition:</p>
-
-            <img style="width: 100%; height: 80%" src="https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/ea3c4bf85e0d3dc97218c229ad9e719bddb778c2/courses/CISC1115/images/distance_formula.svg" alt="distance formula"/>
-
-          <p>The first step is to consider what a distance method should look like in Java.
-            In other words, what are the inputs (parameters) and what is the output (return value)? 
-            In this case, <b>the two points are the parameters, and it is
-            natural to represent them using four double values</b>. <b>The return value is the
-            distance, which should also have type double</b>.</p>
-
-          <p>Already we can write an outline for the method, which is sometimes called a
-            stub. The stub includes the method signature and a return statement:</p>
-
-          <pre><code style="font-size: 23.5px" class="language-java">public static double distance(double x1, double y1, double x2, double y2) {
-    return 0.0;
+        <pre><code class="language-java">for (int i = 0; i < values.length; i++) {
+    int value = values[i];
+    System.out.println(value);
 }</code></pre>
 
-          <p>The return statement is <b>a placeholder that is necessary for the program to
-            compile</b>. At this stage the program doesn't do anything useful, but it is good
-            to compile it so we can find any syntax errors before we add more code.</p>
+        <p>We could rewrite the loop like this:</p>
 
-          <p>It's usually a good idea to think about testing <i>before</i> you develop new methods;
-            doing so can help you figure out how to implement them. To test the method,
-            we can invoke it from main using sample values:</p>
-
-          <pre><code class="language-java">double dist = distance(1.0, 2.0, 4.0, 6.0);</code></pre>
-
-          <p>With these values, the horizontal distance is 3.0 and the vertical distance is
-            4.0. So the result should be 5.0, the hypotenuse of a 3-4-5 triangle. <b>When you
-            are testing a method, it is helpful to know the right answer</b>.</p>
-
-          <p>Once we have compiled the stub, we can start adding lines of code one at a
-            time. After each incremental change, we recompile and run the program. If
-            there is an error at any point, we have a good idea where to look: the last line
-            we added.</p>
-
-          <p>The next step is to find the differences <b>x2 − x1</b> and <b>y2 − y1</b>. We store those
-            values in temporary variables named <b>dx</b> and <b>dy</b>.</p>
-
-          <pre><code style="font-size: 23.5px" class="language-java">public static double distance(double x1, double y1, double x2, double y2) {
-    double dx = x2 - x1;
-    double dy = y2 - y1;
-    System.out.println("dx is " + dx);
-    System.out.println("dy is " + dy);
-    return 0.0;
+        <pre><code class="language-java">for (int value : values) {
+    System.out.println(value);
 }</code></pre>
 
-          <p>The print statements allows us to check the intermediate values before proceeding. 
-            They should be 3.0 and 4.0. We will remove the print statements
-            when the method is finished. Code like that is called <b>scaffolding</b>, because it
-            is helpful for building the program, but it is not part of the final product.</p>
+      <p>This statement is called <b>an enhanced for loop</b> or a <b>for-each loop</b>. <i>You can read it as, "for each
+        value in values"</i>. It is conventional to use plural nouns for array variables
+        and singular nouns for element variables.</p>
 
-          <p>The next step is to square dx and dy. We could use the Math.pow method,
-          but it is simpler to multiply each term by itself.</p>
+      <p>Notice how the single line <b>for (int value : values)</b>replaces the first two
+        lines of the standard for loop. It hides the details of iterating each index of
+        the array, and instead, focuses on the values themselves.</p>
 
-          <pre><code style="font-size: 23.5px" class="language-java">public static double distance(double x1, double y1, double x2, double y2) {
-    double dx = x2 - x1;
-    double dy = y2 - y1;
-    double dsquared = dx * dx + dy * dy;
-    System.out.println("dsquared is " + dsquared);
-    return 0.0;
+      <p>Using the enhanced for loop, and removing the temporary variable, we can
+        write the histogram code from the previous section more concisely:</p>
+
+        <pre><code class="language-java">int [] counts = new int[100];
+for (int score : scores) {
+    counts[score]++;
 }</code></pre>
 
-        <p>Again, you should compile and run the program at this stage and check the
-          intermediate value, which should be 25.0. Finally, we can use Math.sqrt to
-          compute and return the result.</p>
+        <p>Enhanced for loops often make the code more readable, especially for accumulating values. 
+          <b>But they are not helpful when you need to refer to the index,
+          as in search operations</b>.</p>
 
-        <pre><code style="font-size: 23.5px" class="language-java">public static double distance(double x1, double y1, double x2, double y2) {
-    double dx = x2 - x1;
-    double dy = y2 - y1;
-    double dsquared = dx * dx + dy * dy;
-    double result = Math.sqrt(dsquared);
-    return result;
+          <pre><code class="language-java">for (double d : array) {
+    if (d == target) {
+        // array contains d, but we don't know the index
+    }
 }</code></pre>
-
-        <p>As you gain more experience programming, you might write and debug more
-          than one line at a time. Nevertheless, incremental development can save you
-          a lot of time.</p>
-
-      </article>
-      <br />
-      <header>Method Composition</header>
-      <article>
-        <p>Once you define a new method, you can use it as part of an expression, or
-          build new methods using existing methods. <br><br>For example, suppose someone
-          gave you two points, the <b>center of the circle</b> and <b>a point on the perimeter</b>,
-          and asked for the <b>area</b> of the circle. Let's say the center point is stored in the
-          variables <b>xc and yc</b>, and the perimeter point is in <b>xp and yp</b>.</p>
-
-        <p>The first step is to find the radius of the circle, which is the distance between
-          the two points. Fortunately, we have just written a method that does just that (distance).</p>
       
-        <pre><code class="language-java">double radius = distance(xc, yc, xp, yp);</code></pre>
-
-        <p>The second step is to find the area of a circle with that radius. We have a written a method 
-          for that computation too (calculateArea).</p>
-
-        <pre><code class="language-java">double area = calculateArea(radius);
-return area;</code></pre>
-
-          <p>Putting everything together in a new method, we get:</p>
-
-          <pre><code style="font-size: 22px" class="language-java">public static double circleArea(double xc, double yc, double xp, double yp) {
-    double radius = distance(xc, yc, xp, yp);
-    double area = calculateArea(radius);
-    return area;
-}</code></pre>
-
-        <p>The temporary variables radius and area are useful for development and
-          debugging, but once the program is working we can make it more concise by
-          composing the method calls:</p>
-
-        <pre><code style="font-size: 22px" class="language-java">public static double circleArea(double xc, double yc, double xp, double yp) {
-    return calculateArea(distance(xc, yc, xp, yp));
-}</code></pre>
- 
-      <p>This example demonstrates a process called <b>functional decomposition</b>; that
-        is, breaking a complex computation into simple methods, testing the methods
-        in isolation, and then composing the methods to perform the computation.
-        This process reduces debugging time and yields code that is more likely to be
-        correct and easier to maintain.</p>
-
       </article>
       <br />
+      <header>Passing Arrays as Method Parameters</header>
+      <article>
+        <p>Passing arrays to methods is similar to passing primitive data types. 
+          However, there is one key difference that needs to be kept in mind. <b>Primitive data types
+          are considered "pass-by-value"</b> while <b>arrays mimic a concept called "pass-by-reference", 
+          meaning that when an array is passed as an argument, its memory address location (its "reference") 
+          is used</b>.
+          <br><br>When <b>passing a primitive data type as a parameter, you are passing a copy of the data</b>. 
+          Therefore, changes made to the data are lost when the method returns unless the data is returned, 
+          i.e. the caller and callee have two independent variables with the same value. 
+          If the callee modifies the parameter value, the effect is not visible to the caller. 
+          <br><br>When <b>passing an array as a parameter you are passing a pointer to the arrays memory location</b>. 
+          Therefore, <b>changes made to the array in the method are kept even when the method returns.</b>
+          In this way, the contents of an array CAN be changed inside of a method, 
+          since we are <b>dealing directly with the actual array and not with a copy of the array</b>.</p>
+
+          <p>⚠️<b>You will need to be careful when sending an array to a method.  Remember that any changes made to the array in the method will change the data in the original array.  
+            Be sure that your intention is to change the original data (thus losing the original data)</b>.⚠️</p>
+
+          <p>To pass an array of variables it is identical to passing a single variable with the 
+            exception of placing a "[]" between your Variable type and your variable name like so:
+            </p>
+
+          <pre><code class="language-java">public static int add(int [] x){}</code></pre>
+
+        <p>The following is a method named add that passes an array as a parameter, calculates the sum of the array elements and returns the sum:</p>
+
+        <pre><code class="language-java">public static int add(int [] x){
+    int sum = 0;
+    for(int i = 0; i < x.length; i++)
+        sum = sum + x[i];
+              
+    return sum;
+} </code></pre>
+
+      <p>Calling the method is exactly the same as if you were sending a single value variable:</p>
+
+      <pre><code class="language-java">int [] x = {1, 2};
+int sum = add(x);</code></pre>
+
+        <p>Another example:</p>
+
+        <pre><code class="language-java">public static void main(String [] args) {
+    int [] num = {1, 2, 3};
+    for(int i = 0; i < num.length; i++){
+        System.out.println("num[i] = " + num[i]);
+    }
+    
+    System.out.println("Now, call the method.");
+
+    testArray(num);// Method call
+    for(int j = 0; j < num.length; j++){
+      System.out.println("num[j] = " + num[j]);
+  }
+}
+
+public static void testArray(int [] value){
+    value[0] = 4;
+    value[1] = 5;
+    value[2] = 6;
+}</code></pre>
+
+        <p>What do we expect this code to print?</p>
+            
+      </article>
+    
+      <br />
+      <header>Partially Filled Arrays</header>
+      <article>
+        <p>When working with arrays, we will come across situations where some array indexes contain a value, while others do not. 
+          These arrays are said to be <b>'partially filled'</b>.</p>
+          
+
+          <p>A <b>partially filled array</b> is an array that <b>has indexes that aren't being used to store data</b>. 
+            The size of an array is set when it is initialized and cannot be changed afterwards. 
+            So, we <b>initialize an array with a size large enough to hold the maximum amount of data that needs to be stored</b>. 
+            <br><br>The following image displays what a typical partially filled array looks like. 
+            Notice that indexes 4,5,6 and 7 have not been populated by any data. 
+            The lack of data in these indexes is what makes this a partially filled array.</p>
+
+            <img style="width: 100%; height: 80%" src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC1115/images/Partially.Filled.Arrays.png?raw=true" alt="distance formula"/>
+
+          <p>Partially filled arrays are normally instantiated using a constant variable that defines the maximum array size (capacity).
+             A size variable is created to keep track of the current size of your partially filled array. 
+             The size variable also allows you to ensure that you are not exceeding the maximum size. 
+            <br><br>For example:</p>
+
+            <pre><code style="font-size: 25px" class="language-java">public static void main(String [] args){
+    final int CAPACITY = 100; //determines total size of array
+    int [] partialArray = new int[CAPACITY]; 
+    int size = 0; //keeps track of the size of partialArray
+}</code></pre>
+
+          <p>Handling partially filled arrays is very similar to handling full arrays. 
+            The difference is that you must include a size variable and update it when you add and remove data from the array.</p>
+
+          <b><p>To deal with this added complexity, it is important to know how to do two things:</p>
+          <ol>
+            <li>Define an array index as empty</li>
+            <li>Use a Size variable to keep track of the size of your array</li>
+          </ol></b>
+
+
+          <p>The obvious value to choose when determining if an index is empty is the default value that a variable is assigned when the variable is created. 
+            Recall that <b>when you create a String variable, its default value is null</b>. 
+            Meanwhile, <b>for ints, doubles, and chars, their default values are 0</b>. 
+            Lastly, <b>the default value for a boolean variable is false</b>.</p>
+
+          <p>While using the default value may work well in some cases (using the default works well for Strings), 
+            <b>the default value will not work for all cases</b>. 
+            In particular, using the default value to define the empty index in an array of ints or doubles can usually lead to problems.</p>
+
+          <p>For example, suppose you have a program which stores an assignment mark out of 10 for a group of students in an array of type int. 
+            Each index in the array corresponds to one students mark. <b>If you use the default value to define an empty index, 
+            it will be impossible to tell the difference between students whose assignments have not been marked, and students who got a mark of 0</b>.</p>
+
+          <p>In order to avoid cases where the default value conflicts with possible array values, <b>you need to initialize the array to something different</b>. 
+            <br><br>In the above scenario, the problem of 0 being both an empty index and an input value can be solved by initializing the array index values to -1. 
+            The code snippet below shows some example code as to what the initialization code might look like:</p>
+
+          <pre><code style="font-size: 23.5px" class="language-java"> public static void main(String [] args){
+    final int TOTAL_STUDENTS = 30;
+    int [] gradeArray = new int[TOTAL_STUDENTS];
+            
+    for(int i = 0; i < gradeArray.length; i++) { //go through all indexes
+        gradeArray[i] = -1; //set each index to -1
+    }
+} </code></pre>
+
+          <p>While initializing the array index values to -1 works well in the assignment mark example, 
+            it obviously wouldn't work if -1 was a valid input value. 
+            However, in the above example, we are following a more general rule: 
+            <b>always define your empty index such that it can not be mistaken for a valid input value</b>.</p>
+
+            <p>Most programs will have a separate method for adding and deleting data from a partially filled array. You will need to pass the size variable anytime you need to access the contents of partialArray. When working with a partially filled array where array values are added and removed, your array may fill up to maximum capacity. 
+              By comparing the size and CAPACITY variables, you can quickly determine if new values can be added to the array.</p>
+
+              <p>For example, we can insert data by first checking whether or not we have met the capacity of the array:</p>
+
+              <pre><code style="font-size: 21.5px" class="language-java">public static void insert(int [] partialArray, int size){
+    if (size < partialArray.length) { //check to ensure size is less than capacity
+        partialArray[size] = 50; //or whatever value needs to be added here
+        size++; //increase the # of values in array
+    }
+}</code></pre>
+
+    <p>The same logic can be applied to removing something from the END of the data list:</p>
+
+<pre><code style="font-size: 21.5px" class="language-java">public static void delete(int [] partialArray, int size){
+    if (size > 0){
+        partialArray[size-1] = 0;  // size-1 is the last index containing data
+        size--;
+    }
+}</code></pre>
+      </article>
+
+      <br />
+      <header>Removing an Element from the Array</header>
+      <article>
+        <p>We just talked about removing an element from the end of our data list, but what if we needed to 
+          remove an element from the middle of the array?</p>
+
+        <p>What does it mean to <i>remove</i> an element from an array? 
+          The problem with Java arrays (and arrays in many languages) is the array <b>is fixed in length</b>. 
+          This means you can't easily remove elements from an array.</p>
+
+        <p>However we can shift elements, which for our purposes is almost the same.</p>
+
+        <p><b>To remove an array element at index i, you shift elements with index greater than i left 
+          (or down) by one element</b>. For example, if you want to remove element 3, 
+          you copy element 4 to element 3, element 5 to element 4, element 6 to element 5, ... etc.</p>
+
+        <p>In other words, you copy element j + 1 to element j, where j ranges from i 
+          (which is the element we want to remove) up to the length of the array minus 2. 
+          (Minus 2? Why 2? We'll see soon).</p>
+
+          <p>This way we preserve the "order" of the array. <br><br>For example, think of the array as a line of students waiting to get tickets to an event.
+            Suppose one student leaves the line. We can think of the student being "removed" from the line. 
+            When this student is removed, all of the students behind should move up one step. 
+            For example, if the student standing 3rd in line leaves, then the student that's 4th in line becomes 3rd. The one that's 5th in line becomes 4th, and so forth.</p>
+
+        <p>Let's say we have a roster of students waitlisted for a particular class and we want to remove a specific student from the middle of the roster (let's say they are no longer interested).
+           <b>We can achieve this by first finding the index of the student we want to remove and then using that index to remove the student from the roster</b>.</p>
+      
+        <pre><code class="language-java">String [] roster = {"Alice", "Bob", "Charlie", "David", "Eve"};</code></pre>
+
+        <p>We can treat <b>index 0 as the front of the line and the index, 
+          length - 1, as the end of the line</b>. Once we identify the student who has left the waitlist, let's say Charlie, 
+          we can find their location using a searching algorithm (in this case, Charlie is located at index 2)</p>
+
+          <p>We can now start shifting up from that index (not from the beginning as indexes 0 and 1 are not affected by this modification):</p>
+
+        <pre><code class="language-java">public static void removeElt(int [] arr, int remIndex){
+    for(int i = remIndex; i < arr.length - 1; i++){
+        arr[i] = arr[i + 1] ; 
+    }
+}</code></pre>
+
+        <p>Notice that we used <b>arr.length - 1</b> instead of arr.length. Why?<br><br>
+          What's the maximum value that i reaches, but where the condition still evaluates to true? 
+          <br><br><b>Answer: the maximum value of i where we still enter the loop body is arr.length - 2</b>.</p>
+
+
+          <p>Let's plug in <b>arr.length - 2</b> for <b>i</b> and see what happens. This is basically what happens on the last iteration of the loop:</p>
+
+          <pre><code class="language-java">arr[arr.length - 2] = arr[(arr.length - 2) + 1];</code></pre>
+
+        <p>which is just:</p>
+
+        <pre><code class="language-java">arr[arr.length - 2] = arr[arr.length - 1];</code></pre>
+
+        <p>This is a valid assignment. We are copying the <b>last element of the array (i.e., element arr.length - 1)</b> 
+          to the <b>next to last element (i.e., element arr.length - 2)</b>.</p>
+
+ 
+        <p>You'll notice that the students each get shifted to the left by 1 starting from "David" replacing "Charlie". 
+          However, the last element is still "Eve" (there are now two "Eve"s!).
+          <br><br>
+          This kind of removing leaves the last element (i.e., the element at the maximum index) unchanged.
+          <br><br>
+          Is that OK? Usually, it's fine. 
+          You might be tempted to set it to <b>0</b> (if numerical) or <b>null</b> (in our case, Strings)
+           or some other value, but if there's no compelling reason to do so, you can leave it alone.
+          <br><br>
+          However, for this case, to avoid duplicate students <b>we should set the last element to null 
+          and keep track of how many students are actually on the list (making it a partially filled array)</b>.
+          </p>
+
+      </article>
+      <!--<br />
       <header>Overloading</header>
       <article>
         <p>You might have noticed that circleArea and calculateArea perform similar
