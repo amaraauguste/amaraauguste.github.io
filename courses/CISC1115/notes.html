@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/felipec.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
   
@@ -10,6 +14,19 @@
   <script>hljs.highlightAll();</script>
   <title>CISC 1115</title>
   <style>
+  code {
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      font-size: 1em; /* Set the initial font size based on the default size */
+      width: 92%; /* Set a width for the code block */
+      max-width: 100%; /* Ensure the code block does not exceed the screen width */
+    }
+
+    @media only screen and (max-width: 600px) {
+      code {
+        font-size: 0.8em; /* Change font size for smaller screens */
+      }
+    }
     table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
@@ -4693,15 +4710,33 @@ public static void testArray(int [] value){
           </p>
 
       </article>
-      <!--<br />
+      <br />
       <header>Parallel Arrays</header>
       <article>
         <p>Sometimes we need multiple types of data that all apply to the same particular record. 
-          Think of a spreadsheet containing names and phone numbers.</p>
+          Think of a spreadsheet containing student names and test scores.</p>
 
-        <p>Despite being separate data (names and phone numbers respectively), a set of them can both be attributed to the same person (they are not independent of one another)</p>
+        <p>Despite being separate data (student names and numerical test scores respectively), 
+          a pair of them can both be attributed to the same person (they are not independent of one another)</p>
 
-        <p>Or even simpler let's look at the following arrays representing the data from a dog show:</p>
+          <pre><code class="language-java">int [] highScores = {99,98,98,88,68};
+String [] names = {"Jamal", "Emily", "Destiny", "Mateo", "Sofia"};</code></pre>
+
+          <img style="width: 100%; height: 100%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC1115/images/intAndStringArrays.png?raw=true"
+          alt="Parallel Arrays">
+
+          <p>The data type of the arrays themselves do not need to match (as one is String and one is int)
+            However, to be <b>parallel</b> they do <b>need to be both of the same size</b> (every student has a corresponding grade)
+          </p>
+
+          <p><b>Parallel arrays are several arrays with the same number of elements that work in 
+            tandem to organize data</b>.</p>
+
+          <p>Parallel arrays come in handy <b>when data regarding different characteristics of the 
+            same subject of interest needs to be stored and accessed efficiently</b>.</p>
+
+        <p>Let's look at the following arrays representing the data from a dog show:</p>
           <pre><code style="font-size: 24px" class="language-java">String [] dogName = {"Wally", "Skeeter", "Corky", "Jessie", "Sadie"};
 int [] round1 = {18,22,12,17,15};
 int [] round2 = {20,25,16,18,17};</code></pre>
@@ -4713,12 +4748,6 @@ int [] round2 = {20,25,16,18,17};</code></pre>
           has the scores represented in the first elements of the second and third arrays.
           Notice that the arrays do not all contain the same "type" of data
           Such data, can be stored using <b>parallel arrays</b>.</p>  
-          
-          <p><b>Parallel arrays are several arrays with the same number of elements that work in 
-            tandem to organize data</b>.</p>
-
-          <p>Parallel arrays come in handy <b>when data regarding different characteristics of the 
-            same subject of interest needs to be stored and accessed efficiently</b>.</p>
         
           <p>Now we can print out the arrays:</p>
 
@@ -4756,54 +4785,182 @@ for (int i = 0; i < fname.length; i++) {
 
       </article>
       <br />
-      <header>Boolean Methods</header>
+      <header>Searching Arrays</header>
       <article>
-        <p>Methods can return <text style="color:blue"><b>boolean</b></text> values, just like any other type, which is often
-          convenient for hiding tests inside methods. <br><br>For example:</p>
+        <p>We spoke a bit about searching arrays so far, and we have always done it like this:</p>
 
-        <pre><code class="language-java">public static boolean isSingleDigit(int x) {
-    if (x > -10 && x < 10) {
-        return true;
-    } else {
-        return false;
+        <pre><code class="language-java">public static int search(String [] roster, String student) {
+    for (int i = 0; i < roster.length; i++) {
+        if (roster[i].equals(student)) {
+            return i;
+        }
     }
+    return -1;
 }</code></pre>
 
-      <p>The name of this method is <b>isSingleDigit()</b>. It is common to give <text style="color:blue"><b>boolean</b></text> 
-        methods names that <b>sound like yes/no questions</b>. Since the return type is
-        <text style="color:blue"><b>boolean</b></text> , 
-        <b>the return statement has to provide a <text style="color:blue"><b>boolean</b></text> expression</b>.</p>
+      <p> This version of search uses the algorithm we are most familiar with, 
+        which is called <b>linear (sequential) search</b></p>
 
-      <p>The code itself is straightforward, although it is longer than it needs to be.
-        Remember that the expression <b>x > -10 && x < 10</b> has type <text style="color:blue"><b>boolean</b></text>, so there
-        is nothing wrong with <b>returning it directly</b> (without the if statement):</p>
+        <p><b>Linear Search</b> is defined as a <b>sequential search algorithm</b> that <b>starts at one end 
+          and goes through each element of a list until the desired element is found, 
+          otherwise the search continues till the end of the data set</b>.</p>
 
-      <pre><code class="language-java">public static boolean isSingleDigit(int x) {
-    return x > -10 && x < 10;
+        <p>In the Linear Search Algorithm:</p>
+        <ul>
+          <li>Every element is considered as a potential match for the key and checked for the same</li>
+          <li>If any element is found equal to the key, the search is successful and the index of that element is returned</li>
+          <li>If no element is found equal to the key, the search yields “No match found”</li>
+        </ul>
+
+        <p>We can define the algorithm with four main steps:</p>
+        <b><ol>
+          <li>Traverse the array</li>
+          <li>Match the key element with array element</li>
+          <li>If key element is found, return the index position of the array element</li>
+          <li>If key element is not found, return -1</li>
+        </ol></b>
+
+        <p>For example: Consider the array <b>int [] arr = {10, 50, 30, 70, 80, 20, 90, 40}</b> 
+          and <b>key (the element we are searching for) = 30</b></p>
+
+          <p>We will start searching from the first element (index 0) and compare the key with each element (arr[i])</p>
+
+          <img style="width: 100%; height: 100%"
+            src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC1115/images/Linear-search-algorithm-1.png?raw=true"
+            alt="Linear Search 1">
+
+          <p>Comparing the key with first element arr[0]. 
+            Since they are not equal, the iterator moves to the next element as a potential match.</p>
+
+            <img style="width: 100%; height: 100%"
+            src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC1115/images/Linear-search-algorithm-2.png?raw=true"
+            alt="Linear Search 2">
+
+          <p>Comparing key with next element arr[1]. 
+            Since they are also not equal, the iterator moves to the next element as a potential match.</p>
+
+            <img style="width: 100%; height: 100%"
+            src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC1115/images/Linear-search-algorithm-3.png?raw=true"
+            alt="Linear Search 3">
+
+          <p>Now when comparing arr[2] with key, the value matches.<br><br>
+            So the Linear Search Algorithm will yield a successful message and 
+            return the index of the element when key is found (here 2).</p>
+
+
+      <p><b>If the array elements are not in order, there is no way to search faster than 
+        linear/sequential search</b>. We have to look at every element, because otherwise we cannot
+        be certain the element we want is not there. But if the elements are in order, we can
+        use better algorithms!</p>
+
+        <p>When we look for a word in a dictionary, we don't just search page by page
+          from front to back. <br><br>Since the words are in alphabetical order, you probably want to
+          use a <b>binary search algorithm</b>:
+          </p>
+          <ol>
+            <li>Start on a page near the middle of the dictionary.</li>
+            <li>Compare a word on the page to the word you are looking for. If you find
+              it, stop.</li>
+            <li>If the word on the page comes before the word you are looking for, flip
+              to somewhere later in the dictionary and go to step 2.</li>
+            <li>If the word on the page comes after the word you are looking for, flip to
+              somewhere earlier in the dictionary and go to step 2.</li>
+          </ol>
+
+          <p>If you find two adjacent words on the page and your word comes between
+            them, you can conclude that your word is not in the dictionary.</p>
+
+            <p><b>Binary Search</b> is defined as a searching algorithm 
+              <b>used in a sorted array by repeatedly dividing the search interval in half</b>.</p>
+
+            <p>Getting back to our previous example of a roster of students, we can write a faster version of search if
+              we know the students are in order (and they usually are!):</p>
+
+              <pre><code class="language-java">public static int binarySearch(String [] roster, String student) {
+    int low = 0;
+    int high = roster.length - 1;
+    while (low <= high) {
+        int mid = (low + high) / 2; // step 1
+        int comp = roster[mid].compareTo(student);
+        if (comp == 0) { // step 2
+            return mid;
+        } else if (comp < 0) { // step 3
+            low = mid + 1;
+        } else { // step 4
+            high = mid - 1;
+        }
+    }
+    return -1;
+}</code></pre>
+     
+<p>This version is called iterative as the approach iterates through the array.</p>
+
+    <p>First, we declare <b>low</b> and <b>high</b> variables to represent the range we are searching. 
+      Initially we search the entire array, from 0 to length - 1.</p>
+
+    <p>Inside the <b>while</b> loop, we repeat the four steps of binary search:</p>
+
+    <b><ol>
+      <li>Choose an index between low and high – call it mid – and compare the
+        student name at mid to the target.</li>
+      <li>If you found the target, return the index.</li>
+      <li>If the name at mid is lower than the target (lexicographically before), search the range from mid + 1
+        to high</li>
+      <li>If the name at mid is higher than the target (lexicographically after), search the range from low
+        to mid - 1.</li>
+    </ol></b>
+
+    <p><b>If low exceeds high, there are no Strings in the range, so we break out of the
+      loop and return -1</b>. Notice that this algorithm depends on the String .compareTo()
+      method.</p>
+
+    <p>We can also write this algorithm recursively (the technique of making a method/function call itself):</p>
+
+    <pre><code style="font-size: 20px" class="language-java">public static int binarySearch(String [] roster, int low, int high, String student) {
+    if (high >= low) {
+        int mid = low + (high - low) / 2;
+  
+        int comp = roster[mid].compareTo(student);
+        if (comp == 0)
+            return mid;
+  
+        if (comp < 0)
+            return binarySearch(arr, mid + 1, high, x);
+        
+        return binarySearch(arr, low, mid - 1, x);
+      }
+  
+    return -1;
 }</code></pre>
 
-    <p>In main, you can invoke the method in the usual ways:</p>
+      <p>Let's look at another example:</p>
 
-    <pre><code class="language-java">System.out.println(isSingleDigit(2));
-boolean bigFlag = !isSingleDigit(17);</code></pre>
+      <p>Consider an array <b>int [] arr2 = {2, 5, 8, 12, 16, 23, 38, 56, 72, 91}</b>, and the <b>key/target = 23</b>.</p>
 
-      <p>The first line displays <text style="color:blue"><b>true</b></text> because 2 is a single-digit number. The second
-        line sets bigFlag to <text style="color:blue"><b>true</b></text>, because 17 is not a single-digit number.</p>
+      <p>The first step: <b>Calculate the mid and compare the mid element with the key. If the key is less than mid element, 
+        move to left and if it is greater than the mid then move search space to the right</b>.</p>
 
-      <p>Conditional statements often invoke <text style="color:blue"><b>boolean</b></text> methods and use the result as
-        the condition:</p>
+        <img style="width: 100%; height: 100%"
+            src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC1115/images/binary-search-1.png?raw=true"
+            alt="Binary Search 1">
 
-    <pre><code class="language-java">if (isSingleDigit(z)) {
-    System.out.println("z is small");
-} else {
-    System.out.println("z is big");
-}</code></pre>
+        <p>Key (i.e., 23) is greater than current mid element (i.e., 16). The search space moves to the right.</p>
+          
+        <img style="width: 100%; height: 100%"
+        src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC1115/images/binary-search-2.png?raw=true"
+        alt="Binary Search 2">
 
-    <p>Examples like this one almost read like English: "If is single digit z, print ...
-      else print ...".</p>
+        <p>Key is less than the current mid 56. The search space moves to the left.</p>
+
+       <p>The second step: <b>If the key matches the value of the mid element, 
+        the element is found and stop search</b>.</p>
+
+            <img style="width: 100%; height: 100%"
+            src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC1115/images/binary-search-3.png?raw=true"
+            alt="Binary Search 3">
      
       </article>
-      <br />
+     <!--<br />
       <header>Javadoc Tags</header>
       <article>
         <p>We discussed how to write documentation comments using /**.
@@ -4948,4 +5105,6 @@ public static boolean isSingleDigit(int x) {</code></pre>
     </section>
   </main>
 </body>
+</html>
+
 </html>
