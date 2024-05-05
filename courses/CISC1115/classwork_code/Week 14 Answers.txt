@@ -2,6 +2,44 @@ REVIEW
 
 a) 
 
+import java.util.Scanner;
+public class CountriesAndCapitals {
+    public static void main(String [] args) {
+        String [] countries = {"China", "Egypt", "France", "Germany", "India", "Japan", "Kenya", "Mexico", "United Kingdom", "United States"};
+        String [] capitals = {"Beijing", "Cairo", "Paris", "Berlin", "New Delhi", "Tokyo", "Nairobi", "Mexico City", "London", "Washington D.C."};
+        printMenu(countries);
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("\n\nPlease enter a country from the list above: ");
+        String selectedCountry = scanner.nextLine();
+        getCapital(countries, capitals, selectedCountry);
+    }
+
+    public static void printMenu(String [] countries) {
+        System.out.println("List of Countries:");
+        for (String country : countries) {
+            System.out.println(country);
+        }
+    }
+
+
+    public static void getCapital(String [] countries, String [] capitals, String country) {
+        int index = findIndex(countries, country);
+        if (index == -1) {
+            System.out.println("Error: Country not found in the list.");
+        } else {
+            System.out.println("The capital of " + country + " is " + capitals[index] + ".");
+        }
+    }
+
+    public static int findIndex(String [] countries, String country) {
+        for (int i = 0; i < countries.length; i++) {
+            if (countries[i].equalsIgnoreCase(country)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+}
 
 --------------------------
 
