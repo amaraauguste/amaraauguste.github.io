@@ -155,6 +155,7 @@
       <a class="nav-link" href="#Week10" style="font-size: 22px">Week 10</a>
       <a class="nav-link" href="#Week11" style="font-size: 22px">Week 11</a>
       <a class="nav-link" href="#Week12" style="font-size: 22px">Week 12</a>
+      <a class="nav-link" href="#Week14" style="font-size: 22px">Week 14</a>
       <!--
       
       
@@ -1277,26 +1278,59 @@ public static String season(int month){
     }
 }</code></pre>
 
-<hr>
-
-<p>2) Write a complete Java program that creates 2 parallel arrays and 
-  intialize them using initialization lists that represent the data below. 
-  Remember that the order of these arrays has to match so that you can use 
-  the same index and get corresponding values out.
-<ul>
-  <li><b>Countries:</b> China, Egypt, France, Germany, India, Japan, Kenya, Mexico, United Kingdom, United States</li>
-  <li><b>Capitals:</b> Beijing, Cairo, Paris, Berlin, New Delhi, Tokyo, Nairobi, Mexico City, London, Washington D.C.</li>
-</ul>
-In <b>main</b>(): <br><br>
-First, call a method, <b>printMenu</b>() to print a menu of the countries listed to screen and then prompt the user to enter a particular country.<br><br>
-Once you have read in the user's selected country, call a method, <b>getCapital</b>() to print out the country's corresponding capital.
-<br><br>This method should first call another method, <b>findIndex</b>() to find and return the specific index that the country is located at 
-in the countries array. 
-<ul>
-  <li>If findIndex() returns a -1, getCapital() should print out an error that the country is not found in the list. </li>
-  <li>Otherwise, it should print out the corresponding capital (Hint: it should be located at the same index in the capitals array as the country in the countries array)</li>
-</ul>
+<p>
+<a href="/courses/CISC1115/classwork_code/Week 12 Answers.txt"
+  >Answers to Week 12 found here</a
+>
 </p>
+
+</section>
+        <hr />
+   <!-- WEEK 14 EXERCISES -->
+<section class="main-section" id="Week14">
+  <h2>Review</h2>
+  <p>a) Write a complete Java program that creates 2 parallel arrays and 
+    intialize them using initialization lists that represent the data below. 
+    Remember that the order of these arrays has to match so that you can use 
+    the same index and get corresponding values out.
+  <ul>
+    <li><b>Countries:</b> China, Egypt, France, Germany, India, Japan, Kenya, Mexico, United Kingdom, United States</li>
+    <li><b>Capitals:</b> Beijing, Cairo, Paris, Berlin, New Delhi, Tokyo, Nairobi, Mexico City, London, Washington D.C.</li>
+  </ul>
+  In <b>main</b>(): <br><br>
+  First, call a method, <b>printMenu</b>() to print a menu of the countries listed to screen and then prompt the user to enter a particular country.<br><br>
+  Once you have read in the user's selected country, call a method, <b>getCapital</b>() to print out the country's corresponding capital.
+  <br><br>This method should first call another method, <b>findIndex</b>() to find and return the specific index that the country is located at 
+  in the countries array. 
+  <ul>
+    <li>If findIndex() returns a -1, getCapital() should print out an error that the country is not found in the list. </li>
+    <li>Otherwise, it should print out the corresponding capital (Hint: it should be located at the same index in the capitals array as the country in the countries array)</li>
+  </ul>
+  </p>
+ 
+
+
+<hr/>
+
+<h2>Week 14</h2>
+
+<p>1) Write a complete Java program called, WordCounter, your program should:</p>
+<ul>
+  <li>Prompt the user to enter a sentence</li>
+  <li>Read in the sentence using the Scanner class</li>
+  <li>Use the .split() method to split the sentence into an array of words based on spaces</li>
+  <li>Print out the number of words in the sentence to the console.</li>
+</ul>
+
+<p>2) Given a random set of numbers, complete the method <b>sortArr()</b> which takes the array of integers and the size n as inputs 
+  and modifies the array in ascending sorted order. In the main method, print the numbers.</p>
+<p>For example: if <b>n = 4</b> and <b>arr[] = {1, 5, 3, 2}</b><br>
+  <b>Output: {1, 2, 3, 5}</b></p>
+
+
+
+
+
 
 
 
