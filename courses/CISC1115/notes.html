@@ -231,6 +231,7 @@ tr:nth-child(4), tr:nth-child(6), tr:nth-child(8), tr:nth-child(9) {
     <a class="nav-link" href="#Strings" style="font-size: 22px">Strings</a>
     <a class="nav-link" href="#Methods" style="font-size: 22px">Methods</a>
     <a class="nav-link" href="#Arrays" style="font-size: 22px">Arrays</a>
+    <a class ="nav-link" href="#Number_Systems" style="font-size: 22px">Number Systems</a>
     <!--
       
     
@@ -5265,6 +5266,291 @@ grade[2] = temp;</code></pre>
       <hr />
     </section>
 
+    <section class="main-section" id="Number_Systems">
+      <br />
+      <header><b>Number Systems</b></header>
+      <article>
+        <p><b>A number system is simply a system to represent or express numbers</b>. 
+          There are various types of number systems and the most commonly used ones are <b>decimal</b> number system, 
+          <b>binary</b> number system, <b>octal</b> number system, and <b>hexadecimal</b> number system.</p>     
+      </article>
+      <header>Decimal Number System</header>
+      <article>
+        <p>The decimal number system is widely used in our day to day life. It can represent any numeric
+          value.</p>  
+          <ul>
+            <li>This number system <b>has ten digits (0, 1, 2, 3, 4, 5, 6, 7, 8, 9) so its base is 10</b>.</li>
+            <li>In this number system, the maximum value of a digit is 9 and the minimum value of a
+              digit is 0.</li>
+            <li>The position of each digit in decimal numbers <b>represents a specific power of the base
+              (10) of the number system</b>.</li>
+          </ul>    
+      </article>
+      <header>Binary Number System</header>
+      <article>
+        <p>The binary number system, there are only two types of electronic pulses;
+          <b>absence of electronic pulse which represents '0'and presence of electronic pulse
+          which represents '1'</b>. Since it has only two digits '0' and '1', <b>its base is 2</b>.
+        </p>  
+          <ul>
+            <li>Each digit is called a bit.</li>
+            <li>A group of four bits (e.g. 1101) is called a nibble.</li>
+            <li>A group of eight bits (e.g. 11001010) is called a byte.</li>
+            <li>The position of each digit in a binary number represents a specific power of the
+              base (2) of the number system.</li>
+          </ul>    
+      </article>
+      <header>Hexadecimal Number System</header>
+      <article>
+        <p>The hexadecimal number system has <b>16 digits that ranges from 0 to 9 and A to F, so its base is 16</b>.</p>  
+          <ul>
+            <li>The A to F alphabets represent 10 to 15 decimal numbers.</li>
+            <li>The position of each digit in a hexadecimal number represents a specific power
+              of base (16) of the number system.</li>
+            <li>As there are only sixteen digits, four bits (24=16) of binary number system can
+              convert any hexadecimal number into binary number.</li>
+            <li>It is also known as an <b>alphanumeric number system </b>as it uses both numeric
+              digits and alphabets.</li>
+          </ul>    
+      </article>
+      <img src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC1115/images/numbersystems.jpg?raw=true" alt="Number Systems Table"
+          class="center" />
+          <br>
+          <header>Converting from Decimal to Binary:</header>
+          <article>
+            <p>To convert from a decimal integer number to binary:</p>  
+              <ul>
+                <b><li>Take the decimal number as dividend.</li>
+                <li>Divide this number by 2 (2 is base of binary so divisor here).</li>
+                <li>Store the remainder in an array (it will be either 0 or 1 because of divisor
+                  2).</li>
+                <li>Repeat the above two steps until the number is greater than zero.</li>
+                <li>Print the array in reverse order (which will be equivalent to the binary
+                  number of the given decimal number).</li>
+              </ul></b>  
+              
+              <p>Example: let's convert the decimal integer <b>112</b> into binary</p>
+              <ul style="column-count: 2;">
+                <li>112 / 2 = 56</li>
+                <li>56 / 2 = 28</li>
+                <li>28 / 2 = 14</li>
+                <li>14 / 2 = 7</li>
+                <li>7 / 2 = 3</li>
+                <li>3 / 2 = 1</li>
+                <li>1 / 2 = 0</li>
+                <li>Remainder: <b>0</b></li>
+                <li>Remainder: <b>0</b></li>
+                <li>Remainder: <b>0</b></li>
+                <li>Remainder: <b>0</b></li>
+                <li>Remainder: <b>1</b></li>
+                <li>Remainder: <b>1</b></li>
+                <li>Remainder: <b>1</b></li>
+              </ul>
+              <p>The result is <b>1110000</b> (or <b>0111 0000</b> in byte format), which is the equivalent binary number of
+                decimal integer 112</p>
+          </article>
+          <header>Converting a Decimal Fractional to Binary:</header>
+          <article>
+            <p>To convert from a decimal fractional number to binary:</p>  
+              <ul>
+                <b><li>Take the decimal number as multiplicand.</li>
+                <li>Multiply this number by 2 (2 is base of binary so multiplier here).</li>
+                <li>Store the value of the resulting integer in an array (it will be either 0 or
+                  1 because of multiplier 2).</li>
+                <li>Repeat the above two steps until the number became zero.</li>
+                <li>Print the array (which will be equivalent to a fractional binary number of
+                  the given decimal fractional number). *Note: it will have a decimal point
+                  before the first digit just like the decimal fractional</li>
+              </ul></b>  
+              
+              <p>Example: let's convert the decimal fractional <b>0.8125</b> into binary</p>
+              <ul style="column-count: 2;">
+                <li>0.81252 x 2= 1.625</li>
+                <li>0.6252 x 2= 1.25</li>
+                <li>0.252 x 2= 0.50</li>
+                <li>0.52 x 2= 1.0</li>
+                <li>0 x 2 = 0</li>
+                <li>Resulting integer: <b>1</b></li>
+                <li>Resulting integer: <b>1</b></li>
+                <li>Resulting integer: <b>0</b></li>
+                <li>Resulting integer: <b>1</b></li>
+                <li>Resulting integer: <b>0</b></li>
+              </ul>
+              <p>The result is <b>0.11010</b>, which is the equivalent binary number of
+                decimal fractional 0.8125</p>
+          </article>
+          <header>Converting from Binary to Decimal:</header>
+          <article>
+            <br>
+            <img style="width: 100%; height: 100%"
+            src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC1115/images/binaryToDecimal.png?raw=true"
+            alt="binary">
+            <p>We have to <b>multiply the positional value of the binary with their digit and get the
+              sum of these steps</b>.</p>
+
+              <p>Example: let's convert the binary number <b>11001010</b> into decimal</p>
+              <ul>
+                <li>(11001010) //base 2</li>
+                <li>(1 * 2^7 + 1 * 2^6 + 0 * 2^5 + 0 * 2^4 + 1 * 2^3 + 0 * 2^2 + 1 * 2^1 + 0 *
+                  2^0)</li>
+                <li>(128 + 64 + 0 + 0 + 8 + 0 + 2 + 0)</li>
+                <li>(202) //base 10</li>
+              </ul>
+              <p>The result is <b>202</b>, which is the equivalent decimal number of binary
+                number 11001010</p>
+
+              <p>Example: let's convert the binary number <b>1010.1011</b> into decimal</p>
+              <ul>
+                <li>(1010.1011) //base 2</li>
+                <li>(1 * 2^3 + 0 * 2^2 + 1 * 2^1 + 0 * 2^0 + 1 * 2^-1 + 0 * 2^-2 + 1 * 2^-3 + 1 *
+                  2^-4)</li>
+                <li>(8 + 0 + 2 + 0 + 0.5 + 0 + 0.125 + 0.0625)</li>
+                <li>(10.6875) //base 10</li>
+              </ul>
+              <p>The result is <b>10.6875</b>, which is the equivalent decimal number of binary
+                number 1010.1011</p>
+          </article>
+          <header>Converting from Binary to Hexadecimal:</header>
+          <article>
+            <p>To convert from a binary number to hexadecimal:</p>  
+            <b><ul>
+              <li>Take binary number.</li>
+              <li>Divide the binary digits into groups of four (starting from right) for integer part and
+                start from left for fraction part.</li>
+              <li>Convert each group of four binary digits to one hexadecimal digit.</li>
+            </ul></b>
+
+              <p>Example: let's convert the binary number <b>1010101101001</b> into hexadecimal</p>
+              <ul>
+                <li>(1010101101001) //base 2</li>
+                <li>(1 0101 0110 1001) //base 2 <b>*note: add three zeros in front of 1 to
+                  complete group of 4 bits</b></li>
+                <li> (0001 0101 0110 1001) //base 2</li>
+                <li>0001 = <b>1</b></li>
+                <li>0101 = <b>5</b></li>
+                <li>0110 = <b>6</b></li>
+                <li>1001 = <b>9</b></li>
+              </ul>
+              <p>The result is <b>1569</b>, which is the equivalent hexadecimal number of binary
+                number 1010101101001</p>
+          </article>
+          <header>Converting from Hexadecimal to Binary:</header>
+          <article>
+            <p>To convert from a hexadecimal number to binary:</p>  
+            <b><ul>
+              <li>Write down the hex number and represent each hex digit by its binary equivalent
+                number from the table above.</li>
+              <li>Use 4 digits and add insignificant leading zeros if the binary number has less
+                than 4 digits, i.e. Write 10 //base 2 (2 decimal) as 0010 //base 2.</li>
+              <li>Then concatenate or string all the digits together.</li>
+              <li>Discard any leading zeros at the left of the binary number.</li>
+            </ul></b>
+
+              <p>Example: let's convert the hexadecimal number <b>3AB2</b> to binary</p>
+              <ul>
+                <li>3 = <b>0011</b></li>
+                <li>A = <b>1010</b></li>
+                <li>B = <b>1011</b></li>
+                <li>2 = <b>0010</b></li>
+              </ul>
+              <p>The result is <b>0011101010110010</b>, which is the binary equivalent of
+                hexadecimal number 3AB2</p>
+          </article>
+          <header>Converting a Decimal Integer to Hexadecimal:</header>
+          <article>
+            <p>To convert from a decimal integer number to hexadecimal:</p>  
+              <b><ul>
+                <li>Take the decimal number as dividend.</li>
+                <li>Divide this number by 16 (16 is the base of hexadecimal so divisor here).</li>
+                <li>Store the <b>remainder</b> in an array (it will be: 0 to 15 because of divisor 16,
+                  replace 10, 11, 12, 13, 14, 15 by A, B, C, D, E, F respectively).</li>
+                <li>Repeat the above two steps until the number is greater than zero.</li>
+                <li>Print the array in <b>reverse order</b> (which will be equivalent to the
+                  hexadecimal number of the given decimal number).</li>
+              </ul></b>  
+              
+              <p>Example: let's convert decimal integer <b>540</b> into hexadecimal</p>
+              <ul style="column-count: 2;">
+                <li>540 / 16 = 33</li>
+                <li>33 / 16 = 2</li>
+                <li>2 / 16 = 0</li>
+                <li>0 / 16 = 0</li>
+                <li>Remainder: <b>12 = C</b></li>
+                <li>Remainder: <b>1</b></li>
+                <li>Remainder: <b>2</b></li>
+                <li>Remainder: <b>0</b></li>
+              </ul>
+              <p>The result is 021C or just <b>21C</b>, which is the hexadecimal
+                equivalent of decimal integer number 540</p>
+          </article>
+          <header>Converting a Decimal Fractional to Hexadecimal:</header>
+          <article>
+            <p>To convert from a decimal fractional number to hexadecimal:</p>  
+              <b><ul>
+                <li>Take the decimal number as multiplicand.</li>
+                <li>Multiply this number by 16 (16 is the base of hexadecimal so multiplier
+                  here).</li>
+                <li>Store the <b>value of the resulting integer</b> in an array (it will be: 0 to 15,
+                  because of multiplier 16, replace 10, 11, 12, 13, 14, 15 by A, B, C, D, E, F
+                  respectively).</li>
+                <li>Repeat the above two steps until the number became zero.</li>
+                <li>Print the array (which will be equivalent to a fractional hexadecimal
+                  number of the given decimal fractional number).</li>
+              </ul></b>  
+              
+              <p>Example: let's convert decimal fractional <b>0.06640625</b> into hexadecimal</p>
+              <ul style="column-count: 2;">
+                <li>0.06640625 x 16 = <b>1</b>.0625</li>
+                <li>0.0625 x 16 = <b>1</b>.0</li>
+                <li>0 x 16 = <b>0</b>.0</li>
+                <li>Resulting integer: <b>1</b></li>
+                <li>Resulting integer: <b>1</b></li>
+                <li>Resulting integer: <b>0</b></li>
+              </ul>
+              <p>The result is <b>0.110</b>, which is the hexadecimal equivalent of
+                decimal fractional number 0.06640625</p>
+          </article>
+          <header>Converting Hexadecimal to Decimal:</header>
+          <article>
+            <p>We can directly convert a hexadecimal number into a decimal number using the
+              reverse method of decimal to hexadecimal conversion.</p>  
+
+            <p>Assume any unsigned hexadecimal number is hnh(n-1) ... h1h0.h-1h-2 ...
+              h(m-1)hm. Then the decimal number is equal to the sum of hexadecimal digits
+              (hn) times their power of 16 (16n), i.e.:</p>
+
+              <img style="width: 100%; height: 100%"
+              src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC1115/images/hexadecimal.png?raw=true"
+              alt="hexadecimal">
+
+              <p>Example: let's convert the hexadecimal number <b>ABCDEF</b> into decimal</p>
+              <ul>
+                <li>The values of Symbols − A, B, C, D, E, F are 10, 11, 12, 13, 14, 15
+                  respectively.</li>
+                <li>(ABCDEF) //base 16</li>
+                <li>(10 * 16^5 + 11 * 16^4 + 12 * 16^3 + 13 * 16^2 + 14 * 16^1 + 15 * 16^0) //
+                  base 10</li>
+                <li>(10485760 + 720896 + 49152 + 3328 + 224 + 15) //base 10</li>
+                <li>(11259375) // base 10</li>
+              </ul>  
+              
+              <p>The result is <b>11259375</b>, which is the decimal integer equivalent of
+                hexadecimal number ABCDEF</p>
+
+                <p>Example 2: let's convert the hexadecimal number <b>1F.01B</b> into decimal</p>
+              <ul>
+                <li>The values of Symbols − B and F are 11 and 15 respectively.</li>
+                <li>(1F.01B) //base 16</li>
+                <li>(1 * 16^1 + 15 * 16^0 + 0 * 16^-1 + 1 * 16^-2 + 11 * 16^-3) //base 10</li>
+                <li>(31.0065918) //base 10</li>
+              </ul>  
+              
+              <p>The result is <b>31.0065918</b>, which is the decimal integer equivalent of
+                hexadecimal number 1F.01B</p>
+          </article>
+      
+      <hr />
+    </section>
 
 
 
