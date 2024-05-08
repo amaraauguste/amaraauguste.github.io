@@ -3115,6 +3115,88 @@ if (diff == 0) {
             </article>
 
             <br />
+            <header>The .split() Method</header>
+            <article>
+              <p>The String <b>.split()</b> method breaks a String around matches of the given regular expression (regex). 
+                After splitting against the given regular expression, this method returns a String array.</p>
+
+
+
+                <p>Regex characters are either metacharacters or regular characters. 
+                  Metacharacters have a specific meaning.<br><br><b>In regex, the period "." is a metacharacter that stands in 
+                  for any character.</b> We can use ".." in regex to represent a pattern of any two characters. 
+                  It could be "aa", "!2", "y)" or any other combination. 
+                  <br><br>If we want to search specifically for let's say a filename that ends in “.rb” we could use "r" and "b" as is because they are regular characters which have a literal meaning. 
+                  <br><br><b>To get the period we have to use a backslash in front to make it an escaped character. 
+                    Since regexes in Java are normal Java strings, we need to escape the backslash itself, so we need two backslashes e.g. \\.</b></p>
+
+
+                    <p>Example:</p>
+                    <pre><code class="language-java">public static void main(String [] args) {
+    String text = "Java is a fun programming language";   
+    // split string from space
+    String [] result = text.split(" ");
+                                
+    System.out.print("result = ");
+    for (String str : result) {
+        System.out.print(str + ", ");
+    }
+}</code></pre>
+
+              <p>Another Example:</p>
+              <pre><code class="language-java">public static void main(String [] args) {
+    String str = "Let's:split:another:String";
+    String [] arrOfStr = str.split(":");
+    for (String a : arrOfStr) { //enhanced for loop
+        System.out.println(a);
+    }
+}</code></pre>
+
+            <p>In the example above, we use : as the delimiter, so the original String is split into an array of individual Strings separated by the colon (:).</p>
+
+
+      <p>Let's split on a period:</p>
+    
+      <pre><code class="language-java">public static void main(String [] args) {
+    String str = "Let's.try.to.split.this.String";
+    String [] arrOfStr = str.split("\\.");
+    for (String a : arrOfStr) {
+        System.out.println(a);
+    }
+}</code></pre>
+    
+<p>If the String consists of only the split character, the output will be an empty array.</p>
+<pre><code class="language-java">public static void main(String [] args) {
+    String str = "::::";
+    String [] arrOfStr = str.split(":");
+    System.out.println(arrOfStr.length);
+}</code></pre>
+
+<p>The output will be 0.</p>
+    
+  <p>Similarly, if you split an array on everything, the output will be nothing.</p>  
+
+  <pre><code class="language-java">public static void main(String [] args) {
+    String str = "java";
+    String [] arrOfStr = str.split(".");
+    System.out.println(arrOfStr.length);
+}</code></pre>
+
+  <p>The output will be output 0.</p>
+
+  <p>If you split an array on nothing, the output will be everything.</p>
+
+  <pre><code class="language-java">public static void main(String [] args) {
+    String str = "java";
+    String [] arrOfStr = str.split("");
+    for (String a : arrOfStr) {
+        System.out.println(a);
+    }
+}</code></pre>
+    
+    
+    </article>
+            <br />
       <header>Wrapper Classes</header>
       <article>
       
