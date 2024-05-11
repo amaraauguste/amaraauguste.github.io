@@ -5548,6 +5548,82 @@ grade[2] = temp;</code></pre>
               <p>The result is <b>31.0065918</b>, which is the decimal integer equivalent of
                 hexadecimal number 1F.01B</p>
           </article>
+          <header>Binary Arithmetic:</header>
+          <article>
+            <p>Binary arithmetic is quite simple. There are only four addition facts to learn (versus 100
+              for decimal arithmetic -- up to 9+9).</p>
+              <img src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC1115/images/binaryAddition.jpg?raw=true" alt="Binary Artithemtic"
+              class="center">
+              <p>From a computer's point of view, this simplicity means that the circuitry for addition is
+                incredibly simplified in base 2 vs base 10.</p>
+          </article>
+          <header>Binary Addition:</header>
+          <article>
+            <p>Here are some examples of binary addition. In decimal, this first one is <b>5 plus 3</b>:</p>
+            <pre class="center"><code class="language-html"style="font-size: 30px; width: 500px;"> 101
++ 11
+-----</code></pre>
+              <p>First use rule 1+1 = 10. Put down the 0 and carry the 1.</p>
+              <pre class="center"><code class="language-html"style="font-size: 30px; width: 500px;">  1
+ 101
++ 11
+-----
+   0</code></pre>
+              <p>The second column is done in two steps: 1+0 = 1 and 1+1 is 10. Again put down the 0 and carry
+                the 1.</p>
+                <pre class="center"><code class="language-html"style="font-size: 30px; width: 500px;"> 11
+ 101
++ 11
+-----
+  00</code></pre>
+              <p>1+1 is 10. Again put down the 0 and carry the 1. This time, the carry doesn't have to be added to
+                anything, so we just bring it down to the result, writing down 10:</p>
+                <pre class="center"><code class="language-html"style="font-size: 30px; width: 500px;">11
+ 101
++ 11
+-----
+1000</code></pre>
+              <p><b>The answer is 1000, which in decimal is 8</b>. Our answer checks, since 5 + 3 = 8.
+              <br><br><b>*Note: we could also manually convert each binary number to decimal directly and add and then 
+            convert back to the result's binary counterpart (8 (base 10) = 1000 (base 2)), some people consider this 
+          to be easier</b></p>
+              
+              <p>The next example is about as hard as addition in binary gets (in decimal, this <b>adds 7 + 3</b>):</p>
+              <pre class="center"><code class="language-html"style="font-size: 30px; width: 500px;"> 111
++ 11
+-----</code></pre>
+                <p>We apply the rule 1+1 = 10, writing down the 0 and carrying the 1.</p>
+                <pre class="center"><code class="language-html"style="font-size: 30px; width: 500px;">  1
+ 111
++ 11
+-----
+   0</code></pre>
+                <p>Now we have 1+1+1, but this is done two at a time, so it is just 1+ 1 = 10 and then 10 + 1 = 11
+                  (write down the 1 and carry the 1):</p>
+                  <pre class="center"><code class="language-html"style="font-size: 30px; width: 500px;"> 11
+ 111
++ 11
+-----
+  10</code></pre>
+                <p>We again have 1+1 = 10 (write down the 0 and carry the 1, but since there are no more digits, we
+                  bring down the last 1):</p>
+                  <pre class="center"><code class="language-html"style="font-size: 30px; width: 500px;">11
+ 111
++ 11
+-----
+1010</code></pre>
+
+  <p>In decimal, we <b>added 7 + 3 and got 10</b>.</p>
+
+
+
+
+
+
+
+
+
+          </article>
       
       <hr />
     </section>
@@ -5658,6 +5734,4 @@ grade[2] = temp;</code></pre>
     </section>
   </main>
 </body>
-</html>
-
 </html>
