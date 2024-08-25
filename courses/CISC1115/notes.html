@@ -5,8 +5,15 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/felipec.css" />
-  <link rel="stylesheet" href="../1115style.css" />
+  <!-- Default CSS style for light mode -->
+  <link id="light-mode" rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/gradient-dark.css" />
+
+<!-- CSS style for dark mode -->
+<link id="dark-mode" rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/felipec.css" disabled />
+
+  <link rel="stylesheet" href="1115style.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 
   <!-- and it's easy to individually load additional languages -->
@@ -18,12 +25,12 @@
   <title>CISC 1115</title>
 </head>
 
-<body>
+<body class="dark-mode">
   <nav id="navbar">
     <header style="font-size: 25px">CISC 1115</header>
     <div class="mode">
             Dark mode: 
-            <span class="change">OFF</span>
+            <span class="change" onclick="toggleMode()">OFF</span>
         </div>
     <hr />
 
@@ -6605,6 +6612,28 @@ grade[2] = temp;</code></pre>
         }
     });
 
+</script>
+<script>
+  function toggleMode() {
+      const lightModeLink = document.getElementById('light-mode');
+      const darkModeLink = document.getElementById('dark-mode');
+      const modeText = document.querySelector('.change');
+
+      if (lightModeLink.disabled) {
+          lightModeLink.disabled = false;
+          darkModeLink.disabled = true;
+          modeText.textContent = "OFF"; // Update the mode text to show Dark mode is off
+      } else {
+          lightModeLink.disabled = true;
+          darkModeLink.disabled = false;
+          modeText.textContent = "ON"; // Update the mode text to show Dark mode is on
+      }
+  }
+
+  // Call highlight.js to apply syntax highlighting
+  document.addEventListener('DOMContentLoaded', () => {
+      hljs.highlightAll();
+  });
 </script>
 </body>
 
