@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/felipec.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <!-- Default CSS style for light mode -->
+  <link id="light-mode" rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/gradient-dark.css" />
 
+<!-- CSS style for dark mode -->
+<link id="dark-mode" rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/felipec.css" disabled />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<link rel="stylesheet" href="../1115style.css" />
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 
     <title>CISC 1115</title>
-    <style>
+    <!--<style>
 
       /* width */
       ::-webkit-scrollbar {
@@ -137,15 +143,19 @@
           font-size: 18px;
         }
       }
-    </style>
+    </style>-->
   </head>
 
   <body>
     <nav id="navbar">
       <header>CISC 1115</header>
+      <div class="mode">
+        Dark mode: 
+        <span class="change" onclick="toggleMode()">OFF</span>
+    </div>
       <hr />
       <a class="nav-link" href="#Week1" style="font-size: 22px">Week 1</a>
-      <a class="nav-link" href="#Week2" style="font-size: 22px">Week 2</a>
+      <!--<a class="nav-link" href="#Week2" style="font-size: 22px">Week 2</a>
       <a class="nav-link" href="#Week4" style="font-size: 22px">Week 4</a>
       <a class="nav-link" href="#Week5" style="font-size: 22px">Week 5</a>
       <a class="nav-link" href="#Week6" style="font-size: 22px">Week 6</a>
@@ -155,7 +165,7 @@
       <a class="nav-link" href="#Week10" style="font-size: 22px">Week 10</a>
       <a class="nav-link" href="#Week11" style="font-size: 22px">Week 11</a>
       <a class="nav-link" href="#Week12" style="font-size: 22px">Week 12</a>
-      <a class="nav-link" href="#Week14" style="font-size: 22px">Week 14</a>
+      <a class="nav-link" href="#Week14" style="font-size: 22px">Week 14</a>-->
       <!--
       
       
@@ -334,16 +344,16 @@ b += 2 * 3 - 1;</code></pre>
           alt="equation"
         />
 
-        <p>
+        <!--<p>
           <a href="/courses/CISC1115/classwork_code/Week 1 Answers.txt"
             >Answers to Week 1 found here</a
           >
-        </p>
+        </p>-->
         <br />
         <hr />
       </section>
       
-      <section class="main-section" id="Week2">
+      <!--<section class="main-section" id="Week2">
         <h2>Review</h2>
 
         <p>a) What will be printed by the following program?</p>
@@ -356,7 +366,7 @@ b += 2 * 3 - 1;</code></pre>
     y = Math.sqrt(x);
 
     System.out.printf("%d %d %.2f%n", w,x,y);
-}</code><!--code Tag ends here --></pre>
+}</code></pre>
 
         <p>b) Is the following <b>assignment</b> legal? If not why?</p>
         <text style="margin: 100px; font-size: 50px">sqrt = Math.sqrt(x);</text>
@@ -553,7 +563,7 @@ b += 2 * 3 - 1;</code></pre>
 
 
 
-              <!-- WEEK 5 EXERCISES -->
+               WEEK 5 EXERCISES 
       <section class="main-section" id="Week5">
         <h2>Review</h2>
 
@@ -574,7 +584,7 @@ b += 2 * 3 - 1;</code></pre>
 
         <p>1) For the following program:</p>
            
-        <pre><!--code Tag starts here --><code class="language-java">public static void main(String [] args) {
+        <pre><code class="language-java">public static void main(String [] args) {
     int i = 10;
     while (i > 1) {
         System.out.println(i);
@@ -585,7 +595,7 @@ b += 2 * 3 - 1;</code></pre>
         }
     }
 }
-</code><!--code Tag ends here --></pre>
+</code></pre>
 <ol style="list-style: lower-alpha;">
   <li>Trace the program.</li>
     <br>
@@ -660,7 +670,7 @@ Multiplying reverseNum by 10 makes room in the ones place where we can place the
         <hr />
       </section>
 
-      <!-- WEEK 6 EXERCISES -->
+       WEEK 6 EXERCISES 
       <section class="main-section" id="Week6">
         <h2>Review</h2>
 
@@ -711,7 +721,7 @@ Multiplying reverseNum by 10 makes room in the ones place where we can place the
         <hr />
         </section>
         
-         <!-- WEEK 7 EXERCISES -->
+          WEEK 7 EXERCISES 
       <section class="main-section" id="Week7">
         <h2>Review</h2>
         <p>a) Write a for loop  that prints in ascending order <b>all the positive integers less than 
@@ -766,7 +776,7 @@ Multiplying reverseNum by 10 makes room in the ones place where we can place the
         </p>
         <hr />
         </section>
-         <!-- WEEK 8 EXERCISES -->
+          WEEK 8 EXERCISES 
       <section class="main-section" id="Week8">
         <h2>Review</h2>
             <p>a) Consider the following String:</p>
@@ -836,7 +846,7 @@ System.out.println(source.substring(pos3+1,pos2));</code></pre></li>
         </p>
         <hr />
       </section>
-<!-- WEEK 9 EXERCISES -->
+ WEEK 9 EXERCISES 
 <section class="main-section" id="Week9">
   <h2>Review</h2>
   <p>a) Given the <b>String variables name1 and name2</b>, 
@@ -983,7 +993,7 @@ System.out.println(source.substring(pos3+1,pos2));</code></pre></li>
   </p>
   <hr />
 </section>
-<!-- WEEK 10 EXERCISES -->
+ WEEK 10 EXERCISES 
 <section class="main-section" id="Week10">
       <h2>Week 10</h2>
         <p>1) What will be printed by the following: </p>
@@ -1104,7 +1114,7 @@ public static boolean isFrabjuous(int x) {
   </p>
   <hr />
 </section>
-<!-- WEEK 11 EXERCISES -->
+ WEEK 11 EXERCISES 
 <section class="main-section" id="Week11">
   <h2>Review</h2>
 
@@ -1198,7 +1208,7 @@ Multiples of 5 count: 1</b>
 </p>
 <hr />
 </section>
-<!-- WEEK 12 EXERCISES -->
+ WEEK 12 EXERCISES 
 <section class="main-section" id="Week12">
   <h2>Review</h2>
 
@@ -1286,7 +1296,7 @@ public static String season(int month){
 
 </section>
         <hr />
-   <!-- WEEK 14 EXERCISES -->
+    WEEK 14 EXERCISES 
 <section class="main-section" id="Week14">
   <h2>Review</h2>
   <p>a) Write a complete Java program that creates 2 parallel arrays and 
@@ -1385,7 +1395,7 @@ public static String season(int month){
     <li><a href="/courses/CISC1115/2018FallCISC1115SampleFinal.pdf">Fall 2018</a></li>
     <li><a href="/courses/CISC1115/SampleExamFall2020.pdf">Fall 2020</a></li>
   </ul>
-</section>
+</section>-->
 
 
 
@@ -1410,5 +1420,52 @@ public static String season(int month){
 
     
     </main>
+    <script>
+      // Check for saved dark mode preference
+      if (localStorage.getItem('darkMode') === 'enabled') {
+          document.body.classList.add('dark-mode');
+          document.querySelector('.change').textContent = 'ON';
+      }
+  
+      // Dark mode toggle functionality
+      document.querySelector('.mode').addEventListener('click', function() {
+          document.body.classList.toggle('dark-mode');
+  
+          // Get the change element
+          const changeModeText = document.querySelector('.change');
+  
+          // Update the text based on dark mode status
+          if (document.body.classList.contains('dark-mode')) {
+              changeModeText.textContent = 'ON'; // Change the text to 'ON'
+              localStorage.setItem('darkMode', 'enabled'); // Save preference
+          } else {
+              changeModeText.textContent = 'OFF'; // Change the text to 'OFF'
+              localStorage.setItem('darkMode', 'disabled'); // Save preference
+          }
+      });
+  
+  </script>
+  <script>
+    function toggleMode() {
+        const lightModeLink = document.getElementById('light-mode');
+        const darkModeLink = document.getElementById('dark-mode');
+        const modeText = document.querySelector('.change');
+  
+        if (lightModeLink.disabled) {
+            lightModeLink.disabled = false;
+            darkModeLink.disabled = true;
+            modeText.textContent = "OFF"; // Update the mode text to show Dark mode is off
+        } else {
+            lightModeLink.disabled = true;
+            darkModeLink.disabled = false;
+            modeText.textContent = "ON"; // Update the mode text to show Dark mode is on
+        }
+    }
+  
+    // Call highlight.js to apply syntax highlighting
+    document.addEventListener('DOMContentLoaded', () => {
+        hljs.highlightAll();
+    });
+  </script>
   </body>
 </html>
