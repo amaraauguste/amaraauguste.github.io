@@ -210,6 +210,17 @@ body {
   color: white; /* Light text */
 }
 
+/* Handle */
+.dark-mode::-webkit-scrollbar-thumb {
+  background: #486c0e;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+.dark-mode::-webkit-scrollbar-thumb:hover {
+  background: #304809;
+}
+
 .dark-mode #navbar {
   background-color: #0b3c1a; /* Darker navbar */
 }
