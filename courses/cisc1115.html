@@ -1,424 +1,312 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
+    <link rel="stylesheet" href="1115style.css" />
     <title>CISC 1115</title>
-    <style>
-      .dropdown-btn {
-        padding: 6px 8px 6px 16px;
-        text-decoration: none;
-        display: block;
-        border: none;
-        font-size: 25px;
-        background: none;
-        width: 100%;
-        text-align: left;
-        cursor: pointer;
-        outline: none;
-      }
-      .dropdown-container {
-        display: none;
-        padding-left: 8px;
-      }
+    <!--<style>
+        .dropdown-btn {
+            padding: 6px 8px 6px 16px;
+            text-decoration: none;
+            display: block;
+            border: none;
+            font-size: 25px;
+            background: none;
+            width: 100%;
+            text-align: left;
+            cursor: pointer;
+            outline: none;
+        }
 
-      /* width */
-      ::-webkit-scrollbar {
-        width: 10px;
-      }
+        .dropdown-container {
+            display: none;
+            padding-left: 8px;
+        }
 
-      /* Track */
-      ::-webkit-scrollbar-track {
-        box-shadow: inset 0 0 5px grey;
-        border-radius: 10px;
-      }
+        /* width */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
 
-      /* Handle */
-      ::-webkit-scrollbar-thumb {
-        background: rgb(183, 147, 241);
-        border-radius: 10px;
-      }
+        /* Track */
+        ::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 5px grey;
+            border-radius: 10px;
+        }
 
-      /* Handle on hover */
-      ::-webkit-scrollbar-thumb:hover {
-        background: rgb(140, 111, 186);
-      }
-      .center {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        width: 80%;
-      }
-      header {
-        color: black;
-        margin: 10px;
-        text-align: center;
-        font-size: 1.8em;
-        font-weight: thin;
-      }
-      #main-doc header {
-        text-align: left;
-        margin: 0px;
-      }
-      code {
-        display: block;
-        text-align: left;
-        white-space: pre-line;
-        position: relative;
-        word-break: normal;
-        word-wrap: normal;
-        line-height: 2;
-        background-color: black;
-        color: white;
-        padding: 15px;
-        margin: 10px;
-        border-radius: 5px;
-      }
-      @media only screen and (max-width: 400px) {
-        #main-doc {
-          margin-left: -10px;
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: rgb(183, 147, 241);
+            border-radius: 10px;
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgb(140, 111, 186);
+        }
+
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 80%;
+        }
+
+        header {
+            color: black;
+            margin: 10px;
+            text-align: center;
+            font-size: 1.8em;
+            font-weight: thin;
+        }
+
+        #main-doc header {
+            text-align: left;
+            margin: 0px;
         }
 
         code {
-          margin-left: -20px;
-          width: 100%;
-          padding: 15px;
-          padding-left: 10px;
-          padding-right: 45px;
-          min-width: 233px;
+            display: block;
+            text-align: left;
+            white-space: pre-line;
+            position: relative;
+            word-break: normal;
+            word-wrap: normal;
+            line-height: 2;
+            background-color: black;
+            color: white;
+            padding: 15px;
+            margin: 10px;
+            border-radius: 5px;
         }
-      }
-      body {
-        font-family: "Lato", sans-serif;
-      }
 
-      #navbar {
-        height: 100%;
-        width: 160px;
-        position: fixed;
-        z-index: 1;
-        top: 0;
-        left: 0;
-        background-color: #f4c3e5;
-        overflow-x: hidden;
-        padding-top: 20px;
-      }
+        @media only screen and (max-width: 400px) {
+            #main-doc {
+                margin-left: -10px;
+            }
 
-      #navbar a {
-        padding: 6px 8px 6px 16px;
-        text-decoration: none;
-        font-size: 20px;
-        color: #000000;
-        display: block;
-      }
+            code {
+                margin-left: -20px;
+                width: 100%;
+                padding: 15px;
+                padding-left: 10px;
+                padding-right: 45px;
+                min-width: 233px;
+            }
+        }
 
-      #navbar a:hover {
-        color: #f1f1f1;
-      }
+        body {
+            font-family: "Lato", sans-serif;
+            transition: background-color 0.3s, color 0.3s; /* Smooth transition for bg and text colors */
+        }
 
-      #main-doc {
-        margin-left: 160px; /* Same as the width of the sidenav */
-        font-size: 28px; /* Increased text to enable scrolling */
-        padding: 0px 10px;
-      }
-
-      @media screen and (max-height: 450px) {
         #navbar {
-          padding-top: 15px;
+            height: 100%;
+            width: 160px;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #f4c3e5;
+            overflow-x: hidden;
+            padding-top: 20px;
+            transition: background-color 0.3s; /* Smooth transition for navbar */
         }
+
         #navbar a {
-          font-size: 18px;
+            padding: 6px 8px 6px 16px;
+            text-decoration: none;
+            font-size: 20px;
+            color: #000000;
+            display: block;
         }
-      }
-    </style>
-  </head>
 
-  <body>
+        #navbar a:hover {
+            color: #f1f1f1;
+        }
+
+        #main-doc {
+            margin-left: 160px; /* Same as the width of the sidenav */
+            font-size: 28px; /* Increased text to enable scrolling */
+            padding: 0px 10px;
+        }
+
+        .dark-mode {
+            background-color: #000000; /* Dark background */
+            color: white; /* Light text */
+        }
+
+        .dark-mode #navbar {
+            background-color: #0b3c1a; /* Darker navbar */
+        }
+
+        .dark-mode #navbar a {
+            color: white; /* Light links */
+        }
+
+        .dark-mode header {
+            color: white; /* Light links */
+        }
+
+        .mode {
+            margin: 10px; /* Add margin to the mode toggle */
+        }
+
+        .change {
+            font-weight: bold;
+            cursor: pointer;
+            color: #007BFF; /* Color for the toggle status text */
+        }
+
+        @media screen and (max-height: 450px) {
+            #navbar {
+                padding-top: 15px;
+            }
+
+            #navbar a {
+                font-size: 18px;
+            }
+        }
+    </style>-->
+</head>
+<body>
+
     <nav id="navbar">
-      <header style="font-size: 25px">CISC 1115</header>
-      <hr />
-      <a class="nav-link" href="#Introduction" style="font-size: 22px">Introduction</a>
-      <a class="nav-link" href="CISC1115/CISC_1115_SP24_MY11_Syllabus.pdf" style="font-size: 22px"
-        >Syllabus</a
-      >
-      <a class="nav-link" href="CISC1115/calendar.html" style="font-size: 22px">Calendar</a>
-      <a class="nav-link" href="#CodeLab" style="font-size: 22px">CodeLab</a>
-      <a class="nav-link" href="#Homework" style="font-size: 22px">Homework</a>
-      <a class="nav-link" href="CISC1115/notes.html" style="font-size: 22px">Class Notes</a>
-      <a class="nav-link" href="CISC1115/programs.html" style="font-size: 22px">Programs From Class</a>
-      <a class="nav-link" href="#Examples" style="font-size: 22px">Examples</a>
-      <button class="dropdown-btn" style="color: #000000;" style="font-size: 22px">
-        <text style="font-size: 22px">Past Exams</text>
-        <i class="fa fa-caret-down"></i>
-      </button>
-      <div class="dropdown-container">
-        <a
-          href="CISC1115/exams/CISC%201115%20(MY11)%20SP'24%20EXAM%201%20%20(FINAL).pdf"
-          >Exam 1</a
-        >
-        <a
-          href="CISC1115/exams/CISC%201115%20(MY11)%20SP'24%20EXAM%202%20(FINAL).pdf"
-          >Exam 2</a
-        >
-        
-      </div>
-      
-      
-      
-      <a class="nav-link" href="CISC1115/CISC 1115 (MY11) Exam 2 Review.pdf" style="font-size: 22px"
-      >Review Sheet</a
-    >
-    <button class="dropdown-btn" style="color: #000000;" style="font-size: 22px">
-      <text style="font-size: 22px">Sample Finals</text>
-      <i class="fa fa-caret-down"></i>
-    </button>
-    <div class="dropdown-container">
-      <a
-        href="/courses/CISC1115/CISC 1115 Sample Final Spring 2023.pdf"
-        >Spring 2023</a
-      >
-      <a
-        href="/courses/CISC1115/SampleExamFall2020.pdf"
-        >Fall 2020</a
-      >
-      <a
-        href="/courses/CISC1115/2018FallCISC1115SampleFinal.pdf"
-        >Fall 2018</a
-      >
-      <a
-        href="/courses/CISC1115/2017FallCISC1115SampleFinal.pdf"
-        >Fall 2017</a
-      >
-      
-    </div>
-    <button class="dropdown-btn" style="color: #000000;" style="font-size: 22px">
-      <text style="font-size: 22px">Answer Keys</text>
-      <i class="fa fa-caret-down"></i>
-    </button>
-    <div class="dropdown-container">
-      <a
-         href="/courses/CISC1115/sample final answers/CISC 1115 Sample Final Fall 2020 - Completed and Annotated.pdf"
-        >Fall 2020</a
-      >
-      <a
-        href="/courses/CISC1115/sample final answers/CISC 1115 Sample Final Fall 2018 - Completed and Annotated.pdf"
-        >Fall 2018</a
-      >
-      <a
-        href="/courses/CISC1115/sample final answers/CISC 1115 Sample Final Fall 2017 - Completed and Annotated.pdf"
-        >Fall 2017</a
-      >
-      
-    </div>
-    <br><br><br><br><br><br>
-    <br><br><br><br><br><br>
-    <br><br><br><br><br><br>
-    <br><br><br><br><br><br>
-    <br><br><br><br><br><br>
-    
-      <!--<a class="nav-link" href="CISC1115/Exam_Review.pdf">Exam Review</a>-->
+        <header style="font-size: 25px">CISC 1115</header>
+        <div class="mode">
+            Dark mode: 
+            <span class="change">OFF</span>
+        </div>
+        <hr />
+        <a class="nav-link" href="#Introduction" style="font-size: 22px">Introduction</a>
+        <a class="nav-link" href="CISC1115/CISC_1115_SP24_MY11_Syllabus.pdf" style="font-size: 22px">Syllabus</a>
+        <a class="nav-link" href="CISC1115/calendar.html" style="font-size: 22px">Calendar</a>
+        <a class="nav-link" href="#CodeLab" style="font-size: 22px">CodeLab</a>
+        <a class="nav-link" href="#Homework" style="font-size: 22px">Homework</a>
+        <a class="nav-link" href="CISC1115/notes.html" style="font-size: 22px">Class Notes</a>
+        <a class="nav-link" href="CISC1115/programs.html" style="font-size: 22px">Programs From Class</a>
+        <!--<a class="nav-link" href="#Examples" style="font-size: 22px">Examples</a>-->
     </nav>
+    
     <main id="main-doc">
-      <section class="main-section" id="Introduction">
-        <br />
-        <header><b>Introduction</b></header>
-        <article>
-          <p>Welcome to CISC 1115 - Introduction to Java Programming!</p>
-          <p>
-            This web-site will provide a basic course outline, syllabus, and
-            anything else that is important for the class. Feel free to email
-            any questions, suggestions, thoughts, etc.
-          </p>
-          <p></p>
-        </article>
-        <br />
-        <hr />
-      </section>
-      <section class="main-section" id="CodeLab">
-        <br />
-        <header><b>CodeLab</b></header>
-        <article>
-          <p>
-            For this course we will use CodeLab — an online, interactive
-            programming exercise system — for short practice problems that
-            typically consist of a few lines of code that are very narrowly
-            focused on a topic covered in class and are completed and submitted
-            directly in CodeLab.
-          </p>
-          <p>To Register:</p>
-          <ul>
-            <li>
-              Go to <a href="https://www.turingscraft.com/">turingscraft.com</a>
-            </li>
-            <li>Click "Register" and follow the instructions</li>
-            <li style="margin-left: 40px">
-              When you fill out the forms, use your Best Email Address and
-              Actual Name
-            </li>
-            <li style="margin-left: 40px">
-              When asked for a Section Access Code, enter the following:
-              <br /><br />
-              <b style="margin-left: 60px">CUNY-31259-KTQH-59</b>
-            </li>
+        <section class="main-section" id="Introduction">
             <br />
-            <li>
-              To Login: Same URL, click "Login" and use your username (email)
-              and password
-            </li>
-          </ul>
-          <p></p>
-          <p></p>
-        </article>
-        <br />
-        <hr />
-      </section>
-      <section class="main-section" id="Homework">
-        <br />
-        <header><b>Homework</b></header>
-        <article>
-          <p>
-            As previously mentioned, homework/projects are larger, often
-            complete programs incorporating several topics, and give you a
-            better taste of 'real' programming.
-          </p>
-          <p>
-            These should be coded and tested in the IDE of your choice (e.g.
-            NetBeans, Eclipse, IntelliJ, etc.) and submitted to Blackboard by
-            the due date provided.
-          </p>
-          <p>
-            Each homework will be due about a week and a half (two or three
-            class meetings) after it is assigned unless specified otherwise.
-            e.g., homework assigned on a Monday, will be due on the Wednesday of
-            the following week, etc.
-          </p>
-          <p>
-            There will be a penalty for lateness – 5% off per class late and
-            <b
-              >will no longer be accepted after 25 points of penalty have been
-              accumulated (five class sessions later)</b
-            >
-          </p>
+            <header><b>Introduction</b></header>
+            <article>
+                <p>Welcome to CISC 1115 - Introduction to Java Programming!</p>
+                <p>This web-site will provide a basic course outline, syllabus, and anything else that is important for the class. Feel free to email any questions, suggestions, thoughts, etc.</p>
+            </article>
+            <br />
+            <hr />
+        </section>
 
-          <p>
-            Homework will be listed both here and on Blackboard and
-            <b>MUST</b> be submitted via Blackboard.
-          </p>
+        <section class="main-section" id="CodeLab">
+            <br />
+            <header><b>CodeLab</b></header>
+            <article>
+                <p>For this course we will use CodeLab — an online, interactive programming exercise system — for short practice problems that typically consist of a few lines of code that are very narrowly focused on a topic covered in class and are completed and submitted directly in CodeLab.</p>
+                <p>To Register:</p>
+                <ul>
+                    <li>Go to <a href="https://www.turingscraft.com/">turingscraft.com</a></li>
+                    <li>Click "Register" and follow the instructions</li>
+                    <li style="margin-left: 40px">When you fill out the forms, use your Best Email Address and Actual Name</li>
+                    <li style="margin-left: 40px">When asked for a Section Access Code, enter the following:<br /><br />
+                        <b style="margin-left: 60px">CUNY-31733-EQWK-62</b>
+                    </li><br />
+                    <li>To Login: Same URL, click "Login" and use your username (email) and password</li>
+                </ul>
+            </article>
+            <br />
+            <hr />
+        </section>
 
-          <p>Homework:</p>
-          <ul>
-            <li>
-              <p>
-                <b><u>Homework 0</u>:</b> If I do not have it already, please
-                email me your preferred email address to ensure that you receive
-                any class messages that will be sent out. Also, install Java +
-                the IDE of your choice, and sign into our Codelab course.
-              </p>
-            </li>
-          </ul>
-          <ul style="column-count: 6; font-size: 24.6px">
-            <li>
-              <a href="CISC1115/homeworks/CISC 1115 MY11 - Homework 1.pdf"
-                >Homework 1</a
-              >
-            </li>
-            <li>
-              <a href="CISC1115/homeworks/CISC 1115 MY11 - Homework 6.pdf"
-                >Homework 6</a
-              >
-            </li>
+        <section class="main-section" id="Homework">
+            <br />
+            <header><b>Homework</b></header>
+            <article>
+                <p>As previously mentioned, homework/projects are larger, often complete programs incorporating several topics, and give you a better taste of 'real' programming.</p>
+                <p>These should be coded and tested in the IDE of your choice (e.g. NetBeans, Eclipse, IntelliJ, etc.) and submitted to Blackboard by the due date provided.</p>
+                <p>Each homework will be due about a week and a half (two or three class meetings) after it is assigned unless specified otherwise.</p>
+                <p>Homework will be listed both here and on Blackboard and <b>MUST</b> be submitted via Blackboard.</p>
+                <p>Homework:</p>
+                <ul>
+                    <li>
+                        <p>
+                            <b><u>Homework 0</u>:</b> If I do not have it already, please email me your preferred email address to ensure that you receive any class messages that will be sent out. Also, install Java + the IDE of your choice, and sign into our Codelab course.
+                        </p>
+                    </li>
+                </ul>
+                <ul style="column-count: 6; font-size: 24.6px">
+                    <!--<li><a href="CISC1115/homeworks/CISC 1115 MY11 - Homework 1.pdf">Homework 1</a></li>
+                    <li><a href="CISC1115/homeworks/CISC 1115 MY11 - Homework 6.pdf">Homework 6</a></li>
+                    <li><a href="CISC1115/homeworks/CISC 1115 MY11 - Homework 2.pdf">Homework 2</a></li>
+                    <li><a href="CISC1115/homeworks/CISC 1115 MY11 - Homework 7.pdf">Homework 7</a></li>
+                    <li><a href="CISC1115/homeworks/CISC 1115 MY11 - Homework 3.pdf">Homework 3</a></li>
+                    <li><a href="CISC1115/homeworks/CISC 1115 MY11 - Homework 8.pdf">Homework 8</a></li>
+                    <li><a href="CISC1115/homeworks/CISC 1115 MY11 - Homework 4.pdf">Homework 4</a></li>
+                    <li><a href="CISC1115/homeworks/CISC 1115 MY11 - Homework 9.pdf">Homework 9</a></li>
+                    <li><a href="CISC1115/homeworks/CISC 1115 MY11 - Homework 5.pdf">Homework 5</a></li>
+                    <li><a href="CISC1115/homeworks/CISC 1115 MY11 - Homework 10 (FINAL).pdf">Homework 10</a> </li>-->
+                </ul>
+            </article>
+            <br />
+            <hr />
+        </section>
 
-            <li>
-              <a href="CISC1115/homeworks/CISC 1115 MY11 - Homework 2.pdf"
-                >Homework 2</a
-              >
-            </li>
-            <li>
-              <a href="CISC1115/homeworks/CISC 1115 MY11 - Homework 7.pdf"
-                >Homework 7</a
-              >
-            </li>
-            
-
-            <li>
-              <a href="CISC1115/homeworks/CISC 1115 MY11 - Homework 3.pdf"
-                >Homework 3</a>
-            </li>
-            <li>
-              <a href="CISC1115/homeworks/CISC 1115 MY11 - Homework 8.pdf">Homework 8</a>
-             </li>
-
-           
-            <li>
-              <a href="CISC1115/homeworks/CISC 1115 MY11 - Homework 4.pdf"
-                >Homework 4</a
-              >
-            </li>
-            <li>
-              <a href="CISC1115/homeworks/CISC 1115 MY11 - Homework 9.pdf">Homework 9</a>
-             </li>
-             
-            
-             <li>
-              <a href="CISC1115/homeworks/CISC 1115 MY11 - Homework 5.pdf"
-                >Homework 5</a
-              >
-            </li>
-             
-             <li>
-              <a href="CISC1115/homeworks/CISC 1115 MY11 - Homework 10 (FINAL).pdf">Homework 10</a> 
-              <br>
-             </li>
-             
-          </ul>
-        </article>
-        <br />
-        <hr />
-      </section>
-      <section class="main-section" id="Examples">
-        <br />
-        <header><b>Program Examples</b></header>
-        <article>
-          <p>
-            The following are some examples of pages made by adding some
-            front-end code (HTML, CSS, and JavaScript) to the logic of our Java
-            code, either using a Java Applet (small application written in Java
-            that can be embedded in a webpage) or converting our code to
-            JavaScript.
-          </p>
-
-          <p>Examples:</p>
-
-          <ul>
-            <li>
-              <a href="CISC1115/homeworks/examples/HW4_Calculator.html"
-                >Homework 4: Simple Calculator</a
-              >
-            </li>
-            <li>
-              <a href="CISC1115/homeworks/examples/HW5_GuessingGame.html"
-                >Homework 5: Number Guessing Game</a
-              >
-            </li>
-          </ul>
-        </article>
-        <br />
-        <hr />
-      </section>
+        <!--<section class="main-section" id="Examples">
+            <br />
+            <header><b>Program Examples</b></header>
+            <article>
+                <p>The following are some examples of pages made by adding some front-end code (HTML, CSS, and JavaScript) to the logic of our Java code, either using a Java Applet or converting our code to JavaScript.</p>
+                <p>Examples:</p>
+                <ul>
+                    <li><a href="CISC1115/homeworks/examples/HW4_Calculator.html">Homework 4: Simple Calculator</a></li>
+                    <li><a href="CISC1115/homeworks/examples/HW5_GuessingGame.html">Homework 5: Number Guessing Game</a></li>
+                </ul>
+            </article>
+            <br />
+            <hr />
+        </section>-->
     </main>
-    <script>
-      var dropdown = document.getElementsByClassName("dropdown-btn");
-      var i;
 
-      for (i = 0; i < dropdown.length; i++) {
-        dropdown[i].addEventListener("click", function () {
-          this.classList.toggle("active");
-          var dropdownContent = this.nextElementSibling;
-          if (dropdownContent.style.display === "block") {
-            dropdownContent.style.display = "none";
-          } else {
-            dropdownContent.style.display = "block";
-          }
+    <script>
+        // Check for saved dark mode preference
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            document.body.classList.add('dark-mode');
+            document.querySelector('.change').textContent = 'ON';
+        }
+
+        // Dark mode toggle functionality
+        document.querySelector('.mode').addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+
+            // Get the change element
+            const changeModeText = document.querySelector('.change');
+
+            // Update the text based on dark mode status
+            if (document.body.classList.contains('dark-mode')) {
+                changeModeText.textContent = 'ON'; // Change the text to 'ON'
+                localStorage.setItem('darkMode', 'enabled'); // Save preference
+            } else {
+                changeModeText.textContent = 'OFF'; // Change the text to 'OFF'
+                localStorage.setItem('darkMode', 'disabled'); // Save preference
+            }
         });
-      }
+
+        // Dropdown functionality (if any use it)
+        var dropdown = document.getElementsByClassName("dropdown-btn");
+        var i;
+
+        for (i = 0; i < dropdown.length; i++) {
+            dropdown[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var dropdownContent = this.nextElementSibling;
+                if (dropdownContent.style.display === "block") {
+                    dropdownContent.style.display = "none";
+                } else {
+                    dropdownContent.style.display = "block";
+                }
+            });
+        }
     </script>
-  </body>
+</body>
 </html>
