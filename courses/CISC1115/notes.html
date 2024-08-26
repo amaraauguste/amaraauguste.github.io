@@ -7,11 +7,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <!-- Default CSS style for light mode -->
   <link id="light-mode" rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/gradient-dark.css" />
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/base16/dark-violet.css" />
 
-<!-- CSS style for dark mode -->
-<link id="dark-mode" rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/felipec.css" disabled />
+  <!-- CSS style for dark mode -->
+  <link id="dark-mode" rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/felipec.css" disabled />
 
   <link rel="stylesheet" href="../1115style.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
@@ -29,9 +29,9 @@
   <nav id="navbar">
     <header style="font-size: 25px">CISC 1115</header>
     <div class="mode">
-            Dark mode: 
-            <span class="change" onclick="toggleMode()">OFF</span>
-        </div>
+      Dark mode:
+      <span class="change" onclick="toggleMode()">OFF</span>
+    </div>
     <hr />
 
     <ul>
@@ -6591,50 +6591,50 @@ grade[2] = temp;</code></pre>
   <script>
     // Check for saved dark mode preference
     if (localStorage.getItem('darkMode') === 'enabled') {
-        document.body.classList.add('dark-mode');
-        document.querySelector('.change').textContent = 'ON';
+      document.body.classList.add('dark-mode');
+      document.querySelector('.change').textContent = 'ON';
     }
 
     // Dark mode toggle functionality
-    document.querySelector('.mode').addEventListener('click', function() {
-        document.body.classList.toggle('dark-mode');
+    document.querySelector('.mode').addEventListener('click', function () {
+      document.body.classList.toggle('dark-mode');
 
-        // Get the change element
-        const changeModeText = document.querySelector('.change');
+      // Get the change element
+      const changeModeText = document.querySelector('.change');
 
-        // Update the text based on dark mode status
-        if (document.body.classList.contains('dark-mode')) {
-            changeModeText.textContent = 'ON'; // Change the text to 'ON'
-            localStorage.setItem('darkMode', 'enabled'); // Save preference
-        } else {
-            changeModeText.textContent = 'OFF'; // Change the text to 'OFF'
-            localStorage.setItem('darkMode', 'disabled'); // Save preference
-        }
+      // Update the text based on dark mode status
+      if (document.body.classList.contains('dark-mode')) {
+        changeModeText.textContent = 'ON'; // Change the text to 'ON'
+        localStorage.setItem('darkMode', 'enabled'); // Save preference
+      } else {
+        changeModeText.textContent = 'OFF'; // Change the text to 'OFF'
+        localStorage.setItem('darkMode', 'disabled'); // Save preference
+      }
     });
 
-</script>
-<script>
-  function toggleMode() {
+  </script>
+  <script>
+    function toggleMode() {
       const lightModeLink = document.getElementById('light-mode');
       const darkModeLink = document.getElementById('dark-mode');
       const modeText = document.querySelector('.change');
 
       if (lightModeLink.disabled) {
-          lightModeLink.disabled = false;
-          darkModeLink.disabled = true;
-          modeText.textContent = "OFF"; // Update the mode text to show Dark mode is off
+        lightModeLink.disabled = false;
+        darkModeLink.disabled = true;
+        modeText.textContent = "OFF"; // Update the mode text to show Dark mode is off
       } else {
-          lightModeLink.disabled = true;
-          darkModeLink.disabled = false;
-          modeText.textContent = "ON"; // Update the mode text to show Dark mode is on
+        lightModeLink.disabled = true;
+        darkModeLink.disabled = false;
+        modeText.textContent = "ON"; // Update the mode text to show Dark mode is on
       }
-  }
+    }
 
-  // Call highlight.js to apply syntax highlighting
-  document.addEventListener('DOMContentLoaded', () => {
+    // Call highlight.js to apply syntax highlighting
+    document.addEventListener('DOMContentLoaded', () => {
       hljs.highlightAll();
-  });
-</script>
+    });
+  </script>
 </body>
 
 </html>
