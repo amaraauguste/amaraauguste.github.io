@@ -64,19 +64,19 @@
       </li>
 
       <!--Chapter 3 Dropdown-->
-      <!--<li>
+      <li>
         <a class="dropdown-btn" href="#Input_and_Output" style="font-size: 20px">Input and Output</a>
         <div class="dropdown-container container3">
           <a href="#System_Class" onclick="closeDropdown3()">System Class</a>
           <a href="#Data_Types" onclick="closeDropdown3()">Data Types</a>
           <a href="#Reading_Input" onclick="closeDropdown3()">Reading Input</a>
-          <a href="#Literals_and_Constants" onclick="closeDropdown3()">Literals and Constants</a>
+          <!--<a href="#Literals_and_Constants" onclick="closeDropdown3()">Literals and Constants</a>
           <a href="#Putting_it_all_Together" onclick="closeDropdown3()">Putting it all Together</a>
           <a href="#Program_Structure" onclick="closeDropdown3()">Program Structure</a>
-          <a href="#Using_Files" onclick="closeDropdown3()">Using Files</a>
+          <a href="#Using_Files" onclick="closeDropdown3()">Using Files</a>-->
         </div>
       </li>
-      Chapter 5 Dropdown
+      <!--Chapter 5 Dropdown
       <li>
         <a class="dropdown-btn" href="#Conditionals_and_Logic" style="font-size: 20px">Conditionals and Logic</a>
         <div class="dropdown-container container5">
@@ -987,7 +987,7 @@ double result = 10.0 / 3;//Regular division, result is approximately 3.3333</cod
       <hr />
     </section>
 
-    <!--Chapter 3
+    <!--Chapter 3-->
     <section class="main-section" id="System_Class">
       <br />
       <header><b>The System class</b></header>
@@ -1187,7 +1187,7 @@ double result = 10.0 / 3;//Regular division, result is approximately 3.3333</cod
 
         <p>What do we expect the following code to print?</p>
         <pre><code class="language-java">String s = "Hello";
-    System.out.println(1 + 2 + s);</code></pre>
+System.out.println(1 + 2 + s);</code></pre>
 
         <p>How about this one?</p>
         <pre><code class="language-java">System.out.println(s + 1 + 2);</code></pre>
@@ -1267,10 +1267,10 @@ double result = 10.0 / 3;//Regular division, result is approximately 3.3333</cod
         <p>When you read a String followed by an int, everything works just fine.But
           when you read an int followed by a String, something strange happens.</p>
         <pre><code class="language-java">System.out.print("What is your age? ");
-    age = in.nextInt();
-    System.out.print("What is your name? ");
-    name = in.nextLine();
-    System.out.printf("Hello %s, age %d\n", name, age);</code></pre>
+age = in.nextInt();
+System.out.print("What is your name? ");
+name = in.nextLine();
+System.out.printf("Hello %s, age %d\n", name, age);</code></pre>
 
         <p>Try running this example code. It doesn't let you input your name, and it
           immediately displays the output:</p>
@@ -1283,11 +1283,11 @@ double result = 10.0 / 3;//Regular division, result is approximately 3.3333</cod
         </p>
         <p>To solve this problem, you need an extra nextLine() after nextInt()</p>
         <pre><code class="language-java">System.out.print("What is your age? ");
-    age = in.nextInt();
-    in.nextLine();// read the newline
-    System.out.print("What is your name? ");
-    name = in.nextLine();
-    System.out.printf("Hello %s, age %d\n", name, age);</code></pre>
+age = in.nextInt();
+in.nextLine();// read the newline
+System.out.print("What is your name? ");
+name = in.nextLine();
+System.out.printf("Hello %s, age %d\n", name, age);</code></pre>
         <p>This technique is common when reading int or double values that appear on
           their own line. <br><br><b>First you read the number, and then you read the rest of the
             line, which is just a newline character.</b></p>
@@ -1301,8 +1301,8 @@ double result = 10.0 / 3;//Regular division, result is approximately 3.3333</cod
 
         <p>First let's declare the variables and create the Scanner object that we will call <b>input</b></p>
         <pre><code class="language-java">int inches;
-    double cm;
-    Scanner input = new Scanner(System.in);</code></pre>
+double cm;
+Scanner input = new Scanner(System.in);</code></pre>
 
         <p>Next, let's <b>prompt</b> the user for the input (prompts are important because they let the user know HOW
           they should interact with the program)</p>
@@ -1311,14 +1311,14 @@ double result = 10.0 / 3;//Regular division, result is approximately 3.3333</cod
           and use the Scanner method nextInt(), which reads input from the keyboard
           and <b>converts it to an integer</b></p>
         <pre><code class="language-java">System.out.print("Enter # of inches: ");
-    inches = input.nextInt();</code></pre>
+inches = input.nextInt();</code></pre>
 
         <p>Now we can multiply the number of inches entered by <b>2.54</b> (the number of centimeters there are per
           inch)
           and display the results</p>
         <pre><code class="language-java">cm = inches * 2.54;
-    System.out.print(inches + " inches = ");
-    System.out.printf("%.2f cm%n", cm);</code></pre>
+System.out.print(inches + " inches = ");
+System.out.printf("%.2f cm%n", cm);</code></pre>
 
         <p>This code works but it does have a minor flaw. If another programmer
           reads this code, they might wonder where 2.54 comes from.</p>
@@ -1328,7 +1328,7 @@ double result = 10.0 / 3;//Regular division, result is approximately 3.3333</cod
       <br />
       <hr>
     </section>
-    <section class="main-section" id="Literals_and_Constants">
+    <!--<section class="main-section" id="Literals_and_Constants">
       <br />
       <header><b>Literals and Constants</b></header>
       <article>
