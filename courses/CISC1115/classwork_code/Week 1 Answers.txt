@@ -1,3 +1,18 @@
+REVIEW:
+
+a) It allows us to express an algorithm.
+
+b) int 123; //invalid (sequence of numbers)
+   int $50; //valid (but not conventional)
+   int 50dollars; //invalid (starts with a number)
+   int abs; //valid
+   int hunter; //valid
+   int @60cents; //invalid (illegal character AND starts with a number)
+   int a_b; //valid
+   int #define; //invalid (illegal character)
+
+----------------------------------------------------------------------------------------
+
 1)
 
 public class Hello {
@@ -11,8 +26,8 @@ public class Hello {
  
 public class Arithmetic {
     public static void main(String [] args) {
-        int a = 12;
-        int b = 10;
+        int a = 12; //arbitrary 
+        int b = 10; //can be whatever values you want
         System.out.println("When a is " + a + " and b is " + b);
         System.out.println("The sum of a and b is " + (a + b));
         System.out.println("The difference between a and b is " + (a - b));
@@ -23,11 +38,11 @@ public class Arithmetic {
 
 3) 
 
-1. Answer: 13
-2. First compute: 3 * 4 = 12
-   Next: 2 + 12 = 14
-   Then: 14 - 5 = 9
-   Answer: 9
+1. Answer: 23
+2. First compute: 5 * 2 = 10
+   Next: 4 + 10 = 14
+   Then: 14 - 3 = 11
+   Answer: 11
 3. Answer: 16
 4. Result: 13
 5. ((8 - ((2 * 4) / 2)) + 3) = 7
@@ -57,8 +72,8 @@ b%10 is 7
 
 public class Rectangle {
     public static void main(String [] args) {
-        int length = 22;
-        int width = 18;
+        int length = 22; //arbitrary
+        int width = 18; //can be anything
         int area = length * width; //(l * w)
         int perimeter = 2 * (length + width); //2(l + w)
         System.out.println("Rectangle: length = " + length + " and width = " + width);
@@ -67,37 +82,7 @@ public class Rectangle {
     }
 }
 
-----------------------------------------------------------------------------------------
-
-REVIEW:
-
-a) It allows us to express an algorithm.
-
-b) It can run on different kinds of computers with few or no modifications.
-
-c) int 123; //invalid (sequence of numbers)
-   int $50; //valid (but not conventional)
-   int 50dollars; //invalid (starts with a number)
-   int abs; //valid
-   int hunter; //valid
-   int @60cents; //invalid (illegal character AND starts with a number)
-   int a_b; //valid
-   int #define; //invalid (illegal character)
-
-----------------------------------------------------------------------------------------
-
 6)
-
-public class Division {
-    public static void main(String[] args) {
-        System.out.println(1 / 2);
-        System.out.println(1.0 / 2);
-        System.out.println(1 / 2.0);
-        System.out.println(1.0 / 2.0);
-    }
-}
-
-7)
 
 public class TemperatureConverter {
     public static void main(String [] args) {
@@ -111,7 +96,7 @@ public class TemperatureConverter {
     }
 }
 
-8)
+7)
 
 public class Circle {
     public static void main(String [] args) {
@@ -127,5 +112,5 @@ public class Circle {
     }
 }
 
-9) (Math.pow(x, 2) - (1 / (y + 3))) / ((1 / z) + Math.sqrt(x))
+8) (Math.pow(x, 2) - (1 / (y + 3))) / ((1 / z) + Math.sqrt(x))
 
