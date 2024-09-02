@@ -255,6 +255,18 @@ body {
   background-color: #04170a; /* Darker navbar */
 }
 
+.dark-mode tr:nth-child(1) {
+  background-color: #222222;
+}
+
+.dark-mode tr:nth-child(4),
+.dark-mode tr:nth-child(6),
+.dark-mode tr:nth-child(8),
+.dark-mode tr:nth-child(9) {
+  background-color: #02025c;
+}
+
+
 .change {
   font-weight: bold;
   cursor: pointer;
