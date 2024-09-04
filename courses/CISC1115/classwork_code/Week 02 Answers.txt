@@ -96,7 +96,12 @@ public class TemperatureConverter {
     }
 }
 
-7)
+7) -9 4 2.00
+
+8) This is a perfectly legal statement because the class name Math allows Java to distinguish between the variable sqrt and the method sqrt. 
+However, we should avoid having multiple aspects of a program with the same name as it may cause confusion.
+
+9) 
 
 public class Circle {
     public static void main(String [] args) {
@@ -112,5 +117,5 @@ public class Circle {
     }
 }
 
-8) (Math.pow(x, 2) - (1 / (y + 3))) / ((1 / z) + Math.sqrt(x))
+10) (Math.pow(x, 2) - (1 / (y + 3))) / ((1 / z) + Math.sqrt(x))
 
