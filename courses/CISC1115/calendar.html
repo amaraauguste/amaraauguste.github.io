@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>CISC 1115 Calendar</title>
-    <!-- CSS for full calendar -->
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.css"
-      rel="stylesheet"
-    />
-    <!-- JS for jQuery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!-- JS for full calendar -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js"></script>
-    <style>
+
+<head>
+  <title>CISC 1115 Calendar</title>
+  <!-- CSS for full calendar -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.css" rel="stylesheet" />
+  <!-- JS for jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- JS for full calendar -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js"></script>
+  <style>
     /* width */
     ::-webkit-scrollbar {
       width: 10px;
@@ -20,357 +18,380 @@
 
     /* Track */
     ::-webkit-scrollbar-track {
-      box-shadow: inset 0 0 5px grey; 
+      box-shadow: inset 0 0 5px grey;
       border-radius: 10px;
     }
- 
+
     /* Handle */
     ::-webkit-scrollbar-thumb {
-      background: rgb(183, 147, 241); 
+      background: rgb(183, 147, 241);
       border-radius: 10px;
     }
 
     /* Handle on hover */
     ::-webkit-scrollbar-thumb:hover {
-      background: rgb(140, 111, 186); 
+      background: rgb(140, 111, 186);
     }
-      html,
-      body {
-        background-color: #ffedfd;
-        font-family: "Copperplate";
-      }
-    </style>
-  </head>
 
-  <body>
-    <div id="calendar"></div>
-  </body>
-  <script>
-    $(document).ready(function () {
-      $("#calendar").fullCalendar({
-        defaultView: "month",
-        events: [
-          {
-            title: "Start of Spring 2024 Semester",
-            start: "2024-01-25",
-            color: "#FF0000",
-          },
-          {
-            title: "First Day of MY11 Class",
-            start: "2024-01-29",
-            color: "#D186FF",
-          },
-          {
-            title: "HW 1 Assigned",
-            start: "2024-01-31",
-            color: "Orange",
-          },
-          {
-            title: "No Class - College Closed",
-            start: "2024-02-12", // Lincoln's Birthday
-            color: "#FF0000",
-          },
-          {
-            title: "HW 1 Due",
-            start: "2024-02-12",
-            color: "Blue",
-          },
-          {
-            title: "HW 2 Assigned",
-            start: "2024-02-07",
-            color: "Orange",
-          },
-          {
-            title: "Lab 1 Assigned",
-            start: "2024-02-07",
-            color: "#FF69B4",
-          },
-          {
-            title: "Lab 1 Due",
-            start: "2024-02-14",
-            color: "#581845",
-          },
-          {
-            title: "No Class - College Closed",
-            start: "2024-02-19", // Washington's Birthday
-            color: "#FF0000",
-          },
-          
-          {
-            title: "Class Meets - Monday Schedule",
-            start: "2024-02-22", //Conversion Day - Monday Schedule
-            color: "#D186FF",
-          },
-          {
-            title: "HW 2 Due",
-            start: "2024-02-19",
-            color: "Blue",
-          },
-          {
-            title: "HW 3 Assigned",
-            start: "2024-02-21",
-            color: "Orange",
-          },
-          {
-            title: "Class Meets - Monday Schedule",
-            start: "2024-02-28", //Conversion Day - Monday Schedule
-            color: "#D186FF",
-          },
-         {
-            title: "HW 3 Due",
-            start: "2024-03-04",
-            color: "Blue",
-          },
-          {
-            title: "HW 4 Assigned",
-            start: "2024-02-22",
-            color: "Orange",
-          },
-          {
-            title: "HW 4 Due",
-            start: "2024-03-06",
-            color: "Blue",
-          },
-          {
-            title: "HW 1 No Longer Accepted",
-            start: "2024-02-28",
-            color: "#AD0A00",
-          },
-          {
-            title: "HW 2 No Longer Accepted",
-            start: "2024-03-04",
-            color: "#AD0A00",
-          },
-          {
-            title: "HW 5 Assigned",
-            start: "2024-02-28",
-            color: "Orange",
-          },
-          {
-            title: "HW 5 Due",
-            start: "2024-03-12",
-            color: "Blue",
-          },
-          {
-            title: "HW 6 Assigned",
-            start: "2024-03-04",
-            color: "Orange",
-          },
-          {
-            title: "Review for Exam 1",
-            start: "2024-03-06",
-            color: "#3DA547",
-          },
-          {
-            title: "HW 6 Due",
-            start: "2024-03-18",
-            color: "Blue",
-          },
-          {
-            title: "Exam 1",
-            start: "2024-03-11",
-            color: "#00CD14 ",
-          },
-          {
-            title: "Spring Break - No Classes",
-            start: "2024-04-22",
-            end: "2024-05-01",
-            color: "#FF0000",
-          },
-          {
-            title: "HW 3 No Longer Accepted",
-            start: "2024-03-20",
-            color: "#AD0A00",
-          },
-          {
-            title: "HW 4 No Longer Accepted",
-            start: "2024-03-25",
-            color: "#AD0A00",
-          },
-          {
-            title: "HW 7 Assigned",
-            start: "2024-03-18",
-            color: "Orange",
-          },
-          {
-            title: "HW 7 Due",
-            start: "2024-03-27",
-            color: "Blue",
-          },
-          {
-            title: "HW 5 No Longer Accepted",
-            start: "2024-03-27",
-            color: "#AD0A00",
-          },
-          {
-            title: "Lab 2 Assigned",
-            start: "2024-03-27",
-            color: "#FF69B4",
-          },
-          {
-            title: "Lab 2 Due",
-            start: "2024-04-01",
-            color: "#581845",
-          },
-          {
-            title: "HW 8 Assigned",
-            start: "2024-04-01",
-            color: "Orange",
-          },
-          {
-            title: "HW 6 No Longer Accepted",
-            start: "2024-04-03",
-            color: "#AD0A00",
-          },
-          {
-            title: "Lab 3 Assigned",
-            start: "2024-04-08",
-            color: "#FF69B4",
-          },
-          {
-            title: "Lab 3 Due",
-            start: "2024-04-15",
-            color: "#581845",
-          },
-          {
-            title: "Lab 4 Assigned",
-            start: "2024-04-15",
-            color: "#FF69B4",
-          },
-          {
-            title: "Lab 4 Due",
-            start: "2024-04-17",
-            color: "#581845",
-          },
-          {
-            title: "HW 8 Due",
-            start: "2024-04-15",
-            color: "Blue",
-          },
-          {
-            title: "HW 7 No Longer Accepted",
-            start: "2024-04-15",
-            color: "#AD0A00",
-          },
-          {
-            title: "Exam 2",
-            start: "2024-05-01",
-            color: "#00CD14 ",
-          },
-          {
-            title: "HW 9 Assigned",
-            start: "2024-04-17",
-            color: "Orange",
-          },
-          {
-            title: "HW 9 Due",
-            start: "2024-05-01",
-            color: "Blue",
-          },
-          {
-            title: "HW 8 No Longer Accepted",
-            start: "2024-05-13",
-            color: "#AD0A00",
-          },
-          {
-            title: "HW 10 Assigned",
-            start: "2024-05-06",
-            color: "Orange",
-          },
-          {
-            title: "HW 10 Due",
-            start: "2024-05-15",
-            color: "Blue",
-          },
-          {
-            title: "Withdrawal Deadline",
-            start: "2024-05-15",
-            color: "#FF0000",
-          },
-          {
-            title: "End of Spring 2024 Semester",
-            start: "2024-05-15",
-            color: "#FF0000",
-          },
-          {
-            title: "HW 9 No Longer Accepted",
-            start: "2024-05-20",
-            color: "#AD0A00",
-          },
-          {
-            title: "Lab 5 Assigned",
-            start: "2024-05-15",
-            color: "#FF69B4",
-          },
-          {
-            title: "Lab 5 Due",
-            start: "2024-05-21",
-            color: "#581845",
-          },
-          {
-            title: "HW 10 No Longer Accepted",
-            start: "2024-05-21",
-            color: "#AD0A00",
-          },
-          {
-            title: "Final Exam",
-            start: "2024-05-21",
-            color: "#00CD14 ",
-          },
-          {
-            title: "Start of Fall 2024 Semester",
-            start: "2024-08-28",
-            color: "#FF0000",
-          },
-          {
-            title: "First Day of TY8 Class",
-            start: "2024-08-29",
-            color: "#D186FF",
-          },
-          {
-            title: "College Closed",
-            start: "2024-09-02", // Labor Day
-            color: "#FF0000",
-          },
-          {
-            title: "HW 1 Assigned",
-            start: "2024-09-03",
-            color: "Orange",
-          },
-          {
-            title: "HW 1 Due",
-            start: "2024-09-12",
-            color: "Blue",
-          },
-          {
-            title: "No Classes Scheduled",
-            start: "2024-10-02", // 
-            end: "2024-10-04",
-            color: "#FF0000",
-          },
-          {
-            title: "No Classes Scheduled",
-            start: "2024-10-11", // 
-            end: "2024-10-13",
-            color: "#FF0000",
-          },
-          {
-            title: "College Closed",
-            start: "2024-10-14", // indigenous peoples day
-            color: "#FF0000",
-          },
-          {
-            title: "No Class - Monday Schedule",
-            start: "2024-10-15", // Conversion Day - Monday Schedule
-            color: "#FF0000",
-          },
-          
-        ],
-        eventRender: function (event, element) {
-          element.css("background-color", event.color); // set background color
-          element.css("border-color", event.color); // set border color
+    html,
+    body {
+      background-color: #ffedfd;
+      font-family: "Copperplate";
+    }
+  </style>
+</head>
+
+<body>
+  <div id="calendar"></div>
+</body>
+<script>
+  $(document).ready(function () {
+    $("#calendar").fullCalendar({
+      defaultView: "month",
+      events: [
+        {
+          title: "Start of Spring 2024 Semester",
+          start: "2024-01-25",
+          color: "#FF0000",
         },
-      });
+        {
+          title: "First Day of MY11 Class",
+          start: "2024-01-29",
+          color: "#D186FF",
+        },
+        {
+          title: "HW 1 Assigned",
+          start: "2024-01-31",
+          color: "Orange",
+        },
+        {
+          title: "No Class - College Closed",
+          start: "2024-02-12", // Lincoln's Birthday
+          color: "#FF0000",
+        },
+        {
+          title: "HW 1 Due",
+          start: "2024-02-12",
+          color: "Blue",
+        },
+        {
+          title: "HW 2 Assigned",
+          start: "2024-02-07",
+          color: "Orange",
+        },
+        {
+          title: "Lab 1 Assigned",
+          start: "2024-02-07",
+          color: "#FF69B4",
+        },
+        {
+          title: "Lab 1 Due",
+          start: "2024-02-14",
+          color: "#581845",
+        },
+        {
+          title: "No Class - College Closed",
+          start: "2024-02-19", // Washington's Birthday
+          color: "#FF0000",
+        },
+
+        {
+          title: "Class Meets - Monday Schedule",
+          start: "2024-02-22", //Conversion Day - Monday Schedule
+          color: "#D186FF",
+        },
+        {
+          title: "HW 2 Due",
+          start: "2024-02-19",
+          color: "Blue",
+        },
+        {
+          title: "HW 3 Assigned",
+          start: "2024-02-21",
+          color: "Orange",
+        },
+        {
+          title: "Class Meets - Monday Schedule",
+          start: "2024-02-28", //Conversion Day - Monday Schedule
+          color: "#D186FF",
+        },
+        {
+          title: "HW 3 Due",
+          start: "2024-03-04",
+          color: "Blue",
+        },
+        {
+          title: "HW 4 Assigned",
+          start: "2024-02-22",
+          color: "Orange",
+        },
+        {
+          title: "HW 4 Due",
+          start: "2024-03-06",
+          color: "Blue",
+        },
+        {
+          title: "HW 1 No Longer Accepted",
+          start: "2024-02-28",
+          color: "#AD0A00",
+        },
+        {
+          title: "HW 2 No Longer Accepted",
+          start: "2024-03-04",
+          color: "#AD0A00",
+        },
+        {
+          title: "HW 5 Assigned",
+          start: "2024-02-28",
+          color: "Orange",
+        },
+        {
+          title: "HW 5 Due",
+          start: "2024-03-12",
+          color: "Blue",
+        },
+        {
+          title: "HW 6 Assigned",
+          start: "2024-03-04",
+          color: "Orange",
+        },
+        {
+          title: "Review for Exam 1",
+          start: "2024-03-06",
+          color: "#3DA547",
+        },
+        {
+          title: "HW 6 Due",
+          start: "2024-03-18",
+          color: "Blue",
+        },
+        {
+          title: "Exam 1",
+          start: "2024-03-11",
+          color: "#00CD14 ",
+        },
+        {
+          title: "Spring Break - No Classes",
+          start: "2024-04-22",
+          end: "2024-05-01",
+          color: "#FF0000",
+        },
+        {
+          title: "HW 3 No Longer Accepted",
+          start: "2024-03-20",
+          color: "#AD0A00",
+        },
+        {
+          title: "HW 4 No Longer Accepted",
+          start: "2024-03-25",
+          color: "#AD0A00",
+        },
+        {
+          title: "HW 7 Assigned",
+          start: "2024-03-18",
+          color: "Orange",
+        },
+        {
+          title: "HW 7 Due",
+          start: "2024-03-27",
+          color: "Blue",
+        },
+        {
+          title: "HW 5 No Longer Accepted",
+          start: "2024-03-27",
+          color: "#AD0A00",
+        },
+        {
+          title: "Lab 2 Assigned",
+          start: "2024-03-27",
+          color: "#FF69B4",
+        },
+        {
+          title: "Lab 2 Due",
+          start: "2024-04-01",
+          color: "#581845",
+        },
+        {
+          title: "HW 8 Assigned",
+          start: "2024-04-01",
+          color: "Orange",
+        },
+        {
+          title: "HW 6 No Longer Accepted",
+          start: "2024-04-03",
+          color: "#AD0A00",
+        },
+        {
+          title: "Lab 3 Assigned",
+          start: "2024-04-08",
+          color: "#FF69B4",
+        },
+        {
+          title: "Lab 3 Due",
+          start: "2024-04-15",
+          color: "#581845",
+        },
+        {
+          title: "Lab 4 Assigned",
+          start: "2024-04-15",
+          color: "#FF69B4",
+        },
+        {
+          title: "Lab 4 Due",
+          start: "2024-04-17",
+          color: "#581845",
+        },
+        {
+          title: "HW 8 Due",
+          start: "2024-04-15",
+          color: "Blue",
+        },
+        {
+          title: "HW 7 No Longer Accepted",
+          start: "2024-04-15",
+          color: "#AD0A00",
+        },
+        {
+          title: "Exam 2",
+          start: "2024-05-01",
+          color: "#00CD14 ",
+        },
+        {
+          title: "HW 9 Assigned",
+          start: "2024-04-17",
+          color: "Orange",
+        },
+        {
+          title: "HW 9 Due",
+          start: "2024-05-01",
+          color: "Blue",
+        },
+        {
+          title: "HW 8 No Longer Accepted",
+          start: "2024-05-13",
+          color: "#AD0A00",
+        },
+        {
+          title: "HW 10 Assigned",
+          start: "2024-05-06",
+          color: "Orange",
+        },
+        {
+          title: "HW 10 Due",
+          start: "2024-05-15",
+          color: "Blue",
+        },
+        {
+          title: "Withdrawal Deadline",
+          start: "2024-05-15",
+          color: "#FF0000",
+        },
+        {
+          title: "End of Spring 2024 Semester",
+          start: "2024-05-15",
+          color: "#FF0000",
+        },
+        {
+          title: "HW 9 No Longer Accepted",
+          start: "2024-05-20",
+          color: "#AD0A00",
+        },
+        {
+          title: "Lab 5 Assigned",
+          start: "2024-05-15",
+          color: "#FF69B4",
+        },
+        {
+          title: "Lab 5 Due",
+          start: "2024-05-21",
+          color: "#581845",
+        },
+        {
+          title: "HW 10 No Longer Accepted",
+          start: "2024-05-21",
+          color: "#AD0A00",
+        },
+        {
+          title: "Final Exam",
+          start: "2024-05-21",
+          color: "#00CD14 ",
+        },
+        {
+          title: "Start of Fall 2024 Semester",
+          start: "2024-08-28",
+          color: "#FF0000",
+        },
+        {
+          title: "First Day of TY8 Class",
+          start: "2024-08-29",
+          color: "#D186FF",
+        },
+        {
+          title: "College Closed",
+          start: "2024-09-02", // Labor Day
+          color: "#FF0000",
+        },
+        {
+          title: "HW 1 Assigned",
+          start: "2024-09-03",
+          color: "Orange",
+        },
+        {
+          title: "HW 1 Due",
+          start: "2024-09-12",
+          color: "Blue",
+        },
+        {
+          title: "No Classes Scheduled",
+          start: "2024-10-02", // 
+          end: "2024-10-04",
+          color: "#FF0000",
+        },
+        {
+          title: "No Classes Scheduled",
+          start: "2024-10-11", // 
+          end: "2024-10-13",
+          color: "#FF0000",
+        },
+        {
+          title: "College Closed",
+          start: "2024-10-14", // indigenous peoples day
+          color: "#FF0000",
+        },
+        {
+          title: "No Class - Monday Schedule",
+          start: "2024-10-15", // Conversion Day - Monday Schedule
+          color: "#FF0000",
+        },
+        {
+          title: "Withdrawal Deadline",
+          start: "2024-11-06", //Last day to withdraw from course
+          color: "#FF0000",
+        },
+        {
+          title: "Conversion Day - Friday Schedule",
+          start: "2024-11-27", //Conversion Day - Friday Schedule
+          color: "#FF0000",
+        },
+        {
+          title: "No Class - Thanksgiving Holiday",
+          start: "2024-11-28", 
+          end: "2024-11-30",
+          color: "#FF0000",
+        },
+        {
+          title: "Last Day of Class",
+          start: "2024-12-12",
+          color: "#FF0000",
+        },
+
+      ],
+      eventRender: function (event, element) {
+        element.css("background-color", event.color); // set background color
+        element.css("border-color", event.color); // set border color
+      },
     });
-  </script>
+  });
+</script>
+
 </html>
