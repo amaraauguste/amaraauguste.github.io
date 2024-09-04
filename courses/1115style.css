@@ -266,6 +266,18 @@ body {
   background-color: #02025c;
 }
 
+.dark-mode tr{
+  background-color: #0b0b31;
+ }
+
+.dark-mode .structure tr:nth-child(1) {
+  background-color: #222222;
+}
+
+.dark-mode .structure tr{
+ background-color: #0b0b31;
+}
+
 
 .change {
   font-weight: bold;
