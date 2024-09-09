@@ -10,7 +10,7 @@
   <link id="light-mode" rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/felipec.css" disabled />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-  <link rel="stylesheet" href="../1115style.css" />
+  <link rel="stylesheet" href="1115style.css" />
   <!-- and it's easy to individually load additional languages -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
 
@@ -156,8 +156,8 @@
     </div>
     <hr />
     <a class="nav-link" href="#Week2" style="font-size: 22px">Week 2</a>
-    <!--<a class="nav-link" href="#Week2" style="font-size: 22px">Week 2</a>
-      <a class="nav-link" href="#Week4" style="font-size: 22px">Week 4</a>
+    <a class="nav-link" href="#Week3" style="font-size: 22px">Week 3</a>
+      <!--<a class="nav-link" href="#Week4" style="font-size: 22px">Week 4</a>
       <a class="nav-link" href="#Week5" style="font-size: 22px">Week 5</a>
       <a class="nav-link" href="#Week6" style="font-size: 22px">Week 6</a>
       <a class="nav-link" href="#Week7" style="font-size: 22px">Week 7</a>
@@ -182,7 +182,6 @@
   <main id="main-doc">
     <!-- WEEK 1/2 EXERCISES -->
     <section class="main-section" id="Week2">
-      
       <h2>Review</h2>
       <p>a) What best defines a <b>"programming language"</b>?</p>
       <ol>
@@ -350,46 +349,51 @@ b += 2 * 3 - 1;</code></pre>
 
        
 
-      <!--<p>
+      <p>
           <a href="/courses/CISC1115/classwork_code/Week 02 Answers.txt"
             >Answers to Week 2 found here</a
           >
-        </p>-->
-      <br />
+        </p>
+      <hr />
       <!--<hr />-->
     </section>
+    
+    <section class="main-section" id="Week3">
+      
+      <h2>Review</h2>
+      <p>a) Write a <b>statement</b> that reads an integer value from <b>standard input</b> into val. 
+        Assume that val has already been declared as an int variable. 
+        Assume also that stdin is a variable that references a <b>Scanner object</b> 
+        associated with standard input.</p>
+      
+      <p>b) Assume the availability of a <b>class named Arithmetic</b> that provides a static method, 
+        <b>add</b>, that accepts two int arguments and returns their sum.
+        <br><br>
+        Two <b>int</b> variables, <b>euroSales</b> and <b>asiaSales</b>, have already been declared 
+        and initialized. Another int variable, <b>eurasiaSales</b>, has already been declared.
+        <br><br>
+        Write a <b>statement</b> that <b>calls add</b> to compute the sum of euroSales and asiaSales
+         and that <b>stores this value in eurasiaSales</b>.</p>
+    
 
-    <!--<section class="main-section" id="Week2">
-        <h2>Review</h2>
+      <p>c) Given the variable <b>pricePerCase</b>, write an <b>expression</b> corresponding to 
+        the price of a <b>dozen</b> cases.</p>
 
-        <p>a) What will be printed by the following program?</p>
-        <pre><code class="language-java">public static void main(String [] args) {
-    int w, x;
-    double y;
-
-    w = -9;
-    x = Math.abs(w + 5);
-    y = Math.sqrt(x);
-
-    System.out.printf("%d %d %.2f%n", w,x,y);
-}</code></pre>
-
-        <p>b) Is the following <b>assignment</b> legal? If not why?</p>
-        <text style="margin: 100px; font-size: 50px">sqrt = Math.sqrt(x);</text>
-
-        <p>
-          c) Write a Java program that generates a random <b>INTEGER</b> number
-          between 1 and 10 (<b>inclusive</b>)
-        </p>
-
-        <p>
-          d) Why is the cast (int) necessary when converting from double to int
-          and not when converting from int to double?
-        </p>
-
-        <hr />
-        <br />
-        <header><b>Week 2</b></header>
+      <p>e) Write a Java <b><i>expression</i></b> that would compute the following:</p>
+  <img
+    style="
+      width: 80%;
+      height: 80%;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    "
+    src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC1115/images/week%202%20equation.png?raw=true"
+    alt="equation"
+  />
+      <hr />
+      <br />
+        <header><b>Week 3</b></header>
         <p>1) Write a Java program that computes the cost of traveling between two cities. <br><br>
           Prompt for and read in the name of each city (two separate prompts), 
           the distance (in miles) between the two cities, and the cost of travel per mile. </p>
@@ -414,49 +418,10 @@ b += 2 * 3 - 1;</code></pre>
             and 20 seconds".</b> <br><br> (Hint: Use the modulus operator)
             </p>
 
-            <hr />
-            <h2>Review</h2>
-            <p>a) Write a <b>statement</b> that reads an integer value from <b>standard input</b> into val. 
-              Assume that val has already been declared as an int variable. 
-              Assume also that stdin is a variable that references a <b>Scanner object</b> 
-              associated with standard input.</p>
             
-            <p>b) Assume the availability of a <b>class named Arithmetic</b> that provides a static method, 
-              <b>add</b>, that accepts two int arguments and returns their sum.
-              <br><br>
-              Two <b>int</b> variables, <b>euroSales</b> and <b>asiaSales</b>, have already been declared 
-              and initialized. Another int variable, <b>eurasiaSales</b>, has already been declared.
-              <br><br>
-              Write a <b>statement</b> that <b>calls add</b> to compute the sum of euroSales and asiaSales
-               and that <b>stores this value in eurasiaSales</b>.</p>
-            <p>
-              c) Declare and initialize the following variables:
-            </p>
-            <ul>
-              <li><b>monthOfYear</b>, initialized to the value <b>11</b></li>
-              <li><b>companyRevenue</b>, initialized to the value <b>5666777888999</b></li>
-              <li><b>firstClassTicketPrice</b>, initialized to the value <b>6000</b></li>
-              <li><b>totalPopulation</b>, initialized to the value <b>111222333444</b></li>
-            </ul>
+            
 
-            <p>d) Given the variable <b>pricePerCase</b>, write an <b>expression</b> corresponding to 
-              the price of a <b>dozen</b> cases.</p>
-
-            <p>e) Write a Java <b><i>expression</i></b> that would compute the following:</p>
-        <img
-          style="
-            width: 80%;
-            height: 80%;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-          "
-          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC1115/images/week%202%20equation.png?raw=true"
-          alt="equation"
-        />
-            <hr />
-
-            <p>3) Modify questions: <b>2, 5, 7, and 8 from Week 1</b> (you can merge all of these into one main method, just use proper labels) 
+            <!--<p>3) Modify questions: <b>2, 5, 7, and 8 from Week 1</b> (you can merge all of these into one main method, just use proper labels) 
               to:</p>
               <ul>
                 <li>use a <b>Scanner to read in data</b></li>
@@ -466,18 +431,18 @@ b += 2 * 3 - 1;</code></pre>
               </ul>
               <p>Submit <b>both the .java and .txt file to Lab Work under Class Labs on Blackboard before next class</b>. 
                 <b>(This lab will count as part of your CodeLab grade)</b>
-              </p>
+              </p>-->
               
-              <p>
+              <!--<p>
                 <a href="/courses/CISC1115/classwork_code/Week 2 Answers.txt"
                   >Answers to Week 2 found here</a
                 >
-              </p>    
-        <br />
-        <hr />
+              </p>    -->
+        <!--<br />-->
+        <!--<hr />-->
       </section>
 
-      <section class="main-section" id="Week4">
+      <!--<section class="main-section" id="Week4">
         <h2>Review</h2>
 
         <p>a) Two variables, <b>num</b> and <b>cost</b> have been declared and given values: num is an integer and cost is a double. 
