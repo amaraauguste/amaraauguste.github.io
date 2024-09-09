@@ -1093,44 +1093,44 @@ double result = 10.0 / 3;//Regular division, result is approximately 3.3333</cod
             <th>Description</th>
           </tr>
           <tr>
-            <td style="color: blue">byte</td>
+            <td class="label">byte</td>
             <td>1 byte</td>
             <td>Stores whole numbers from <b>-128</b> to <b>127</b></td>
           </tr>
           <tr>
-            <td style="color: blue">short</td>
+            <td class="label">short</td>
             <td>2 bytes</td>
             <td>Stores whole numbers from <b>-32,768</b> to <b>32,767</b></td>
           </tr>
           <tr>
-            <td style="color: blue"><b>int</b></td>
+            <td class="label"><b>int</b></td>
             <td>4 bytes</td>
             <td>Stores whole numbers from <b>-2,147,483,648</b> to <b>2,147,483,647</b></td>
           </tr>
           <tr>
-            <td style="color: blue">long</td>
+            <td class="label">long</td>
             <td>8 bytes</td>
             <td>Stores whole numbers from <b>-9,223,372,036,854,775,808</b> to <b>9,223,372,036,854,775,807</b></td>
           </tr>
           <tr>
-            <td style="color: blue"><b>char</b></td>
+            <td class="label"><b>char</b></td>
             <td>2 bytes</td>
             <td>Stores a <b>single character/letter</b> or <b>ASCII values</b></td>
           </tr>
           <tr>
-            <td style="color: blue">float</td>
+            <td class="label">float</td>
             <td>4 bytes</td>
             <td>Stores fractional numbers. Sufficient for storing <b>6</b> to <b>7</b> decimal digits</td>
           </tr>
           <tr>
-            <td style="color: blue"><b>double</b></td>
+            <td class="label"><b>double</b></td>
             <td>8 bytes</td>
             <td>Stores fractional numbers. Sufficient for storing <b>15</b> decimal digits</td>
           </tr>
           <tr>
-            <td style="color: blue"><b>boolean</b></td>
+            <td class="label"><b>boolean</b></td>
             <td>1 bit</td>
-            <td>Stores <text style="color:blue"><b>true</b></text> or <text style="color:blue"><b>false</b></text>
+            <td>Stores <text class="label"><b>true</b></text> or <text class="label"><b>false</b></text>
               values</td>
           </tr>
         </table>
@@ -1405,19 +1405,19 @@ cm = inches * cmPerInch;</code></pre>
             <th>Definition</th>
           </tr>
           <tr>
-            <td style="color: blue"><b>Package</b></td>
+            <td class="label"><b>Package</b></td>
             <td>A collection of <i>classes</i>, which define <i>methods</i>.</td>
 
           </tr>
           <tr>
-            <td style="color: blue"><b>Class</b></td>
+            <td class="label"><b>Class</b></td>
             <td>In object-oriented programming, a class is a <b>basic building block</b>.
               It can be defined as template that describes the data and behaviour
               associated with the class instantiation.</td>
 
           </tr>
           <tr>
-            <td style="color: blue"><b>Method</b></td>
+            <td class="label"><b>Method</b></td>
             <td>A method in Java is <b>a block of code that, when called,
                 performs specific actions mentioned in it</b>. When you execute a class with the
               Java interpreter, the runtime system <b>starts by calling the class's main() method</b>.
@@ -1428,20 +1428,20 @@ cm = inches * cmPerInch;</code></pre>
 
           </tr>
           <tr>
-            <td style="color: blue"><b>Statement</b></td>
+            <td class="label"><b>Statement</b></td>
             <td>A statement is roughly equivalent to sentences in natural languages.
               A statement forms a <b>complete unit of execution and almost always ends in a semicolon (;)</b></td>
 
           </tr>
           <tr>
-            <td style="color: blue"><b>Expression</b></td>
+            <td class="label"><b>Expression</b></td>
             <td>An expression is a construct <b>made up of variables, operators, and method invocations</b>,
               which are constructed according to the syntax of the language, that <b>evaluates to a single value</b>
             </td>
 
           </tr>
           <tr>
-            <td style="color: blue"><b>Token</b></td>
+            <td class="label"><b>Token</b></td>
             <td>Tokens are the <b>basic building blocks</b> of a program.
               They are the <b>smallest individual units of a program
                 that have meaning to the compiler</b> and are used to represent the various elements
@@ -1639,14 +1639,14 @@ cm = inches * cmPerInch;</code></pre>
           in English.</p>
         <p>For example:</p>
         <ul>
-          <li><b>(x > 0 && x < 10)</b> is <text style="color: blue"><b>true</b></text> when <text
+          <li><b>(x > 0 && x < 10)</b> is <text class="label"><b>true</b></text> when <text
                   style="font-size: 35px;">x is <b>both</b> greater than zero <b>and</b>
                   less than 10</text></li>
-          <li>The expression <b>(evenFlag || n % 3 == 0)</b> is <text style="color: blue"><b>true</b></text> if <text
+          <li>The expression <b>(evenFlag || n % 3 == 0)</b> is <text class="label"><b>true</b></text> if <text
               style="font-size: 35px;"><b>either</b> condition
               is true, that is, if evenFlag is true <b>or</b> the number n is divisible by 3</text></li>
           <li>And the ! operator inverts a boolean expression, so <b>!evenFlag</b> is <text
-              style="color: blue"><b>true</b></text>
+              class="label"><b>true</b></text>
             <text style="font-size: 35px;">if evenFlag is <b>not true (false)</b></text>
           </li>
         </ul>
@@ -1654,11 +1654,11 @@ cm = inches * cmPerInch;</code></pre>
         <p>Logical operators evaluate the second expression only when necessary. For
           example:</p>
         <ul>
-          <li><b>(<text style="color: blue">true</text> || anything)</b> is always <text
-              style="color: blue"><b>true</b></text>,
+          <li><b>(<text class="label">true</text> || anything)</b> is always <text
+              class="label"><b>true</b></text>,
             so Java does not need to evaluate the expression <b>anything</b></li>
-          <li>and <b>(<text style="color: blue">false</text> && anything)</b> is <b>always <text
-                style="color: blue">false</text></b></li>
+          <li>and <b>(<text class="label">false</text> && anything)</b> is <b>always <text
+                class="label">false</text></b></li>
         </ul>
         <p>Ignoring the second operand, when possible, is called <b>short circuit evaluation</b>, by analogy with an
           electrical circuit.</p>
