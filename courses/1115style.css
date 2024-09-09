@@ -117,6 +117,15 @@ tr:nth-child(9) {
   width: 80%;
 }
 
+
+.label {
+  color: blue;
+}
+
+.dark-mode .label{
+  color: yellow;
+}
+
 header {
   color: black;
   margin: 10px;
