@@ -1,24 +1,12 @@
-REVIEW
+REVIEW:
 
-a) -9 4 2.00
+a) val = stdin.nextInt();
 
+b) eurasiaSales = Arithmetic.add(euroSales,asiaSales);
 
-b) If there is a variable x and a variable sqrt that was declared as a double before this line occurs then YES, this is a perfectly legal statement because the class name Math allows Java to distinguish between the variable sqrt and the method sqrt. However, we should avoid having multiple aspects of a program with the same name as it may cause confusion.
+c) pricePerCase * 12
 
-
-c)
-
-public class RandomNumbers {
-    public static void main(String [] args) {
-        int min = 1;
-        int max = 11;
-        int rand = (int) (Math.random() * (max - min) + min);//Generate random number
-        System.out.println("Random Number: " + rand);//different each run
-    }
-}
-
-
-d) Converting from double to int may cause a loss of precision, so you must explicitly apply the cast. However, converting from int to double will never lead to a loss of precision so Java automatically performs the conversion.
+d) y = ((9 * Math.pow(x,3)) - (27 * Math.pow(x,2)) - (4 * x) + 12)/(Math.sqrt((3 * Math.pow(x,2)) + 1) + (Math.abs(5 - Math.pow(x,4))))
 
 ----------------------------------------------------------------------------------------
 
@@ -67,33 +55,7 @@ public class Time {
 
 ----------------------------------------------------------------------------------------
 
-REVIEW:
 
-a) val = stdin.nextInt();
-
-b) eurasiaSales = Arithmetic.add(euroSales,asiaSales);
-
-c) 
-
-short monthOfYear = 11;
-long companyRevenue = 5666777888999L;
-short firstClassTicketPrice = 6000;
-long totalPopulation = 111222333444L;
-
-OR 
-
-int monthOfYear = 11;
-long companyRevenue = 5666777888999L;
-int firstClassTicketPrice = 6000;
-long totalPopulation = 111222333444L;
-
-Any variation of short/int works for monthOfYear or firstClassTicketPrice. However, companyRevenue and totalPopulation MUST be long.
-
-d) pricePerCase * 12
-
-e) y = ((9 * Math.pow(x,3)) - (27 * Math.pow(x,2)) - (4 * x) + 12)/(Math.sqrt((3 * Math.pow(x,2)) + 1) + (Math.abs(5 - Math.pow(x,4))))
-
-----------------------------------------------------------------------------------------
 
 3)
 
