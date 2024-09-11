@@ -287,6 +287,21 @@ body {
  background-color: #0b0b31;
 }
 
+.dark-mode .relation tr:nth-child(odd) {
+  background-color: #0b0b31;
+ }
+
+ .dark-mode .relation tr:nth-child(even) {
+  background-color: #141456;
+ }
+
+ .dark-mode .truth tr:nth-child(odd) {
+  background-color: #0b0b31;
+ }
+
+ .dark-mode .truth tr:nth-child(even) {
+  background-color: #141456;
+ }
 
 .change {
   font-weight: bold;
