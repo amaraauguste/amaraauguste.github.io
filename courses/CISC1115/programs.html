@@ -17,7 +17,134 @@
   <script>hljs.highlightAll();</script>
 
   <title>CISC 1115</title>
- 
+  <!--<style>
+
+      /* width */
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+
+      /* Track */
+      ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px grey;
+        border-radius: 10px;
+      }
+
+      /* Handle */
+      ::-webkit-scrollbar-thumb {
+        background: rgb(183, 147, 241);
+        border-radius: 10px;
+      }
+
+      /* Handle on hover */
+      ::-webkit-scrollbar-thumb:hover {
+        background: rgb(140, 111, 186);
+      }
+      .backbutton {
+        text-decoration: none;
+        display: inline-block;
+        padding: 8px 16px;
+      }
+
+      .backbutton:hover {
+        background-color: #f678d0;
+      }
+
+      .previous {
+        background-color: #f4c3e5;
+        color: black;
+      }
+
+      .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 80%;
+      }
+
+      header {
+        color: black;
+        margin: 10px;
+        text-align: center;
+        font-size: 1.8em;
+        font-weight: thin;
+      }
+
+      #main-doc header {
+        text-align: left;
+        margin: 0px;
+      }
+
+      code {
+        display: block;
+        line-height: 2;
+        padding: 15px;
+        font-size: 27px;
+        margin: 10px;
+        border-radius: 5px;
+      }
+
+      @media only screen and (max-width: 400px) {
+        #main-doc {
+          margin-left: -10px;
+        }
+
+        code {
+          margin-left: -20px;
+          width: 100%;
+          padding: 15px;
+          padding-left: 10px;
+          padding-right: 45px;
+          min-width: 233px;
+        }
+      }
+
+      body {
+        font-family: "Lato", sans-serif;
+      }
+
+      #navbar {
+        height: 100%;
+        width: 160px;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #f4c3e5;
+        overflow-x: hidden;
+        padding-top: 20px;
+      }
+
+      #navbar a {
+        padding: 6px 8px 6px 16px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #000000;
+        display: block;
+      }
+
+      #navbar a:hover {
+        color: #f1f1f1;
+      }
+
+      #main-doc {
+        margin-left: 160px;
+        /* Same as the width of the sidenav */
+        font-size: 28px;
+        /* Increased text to enable scrolling */
+        padding: 0px 10px;
+      }
+
+      @media screen and (max-height: 450px) {
+        #navbar {
+          padding-top: 15px;
+        }
+
+        #navbar a {
+          font-size: 18px;
+        }
+      }
+    </style>-->
 </head>
 
 <body>
@@ -278,18 +405,6 @@ b += 2 * 3 - 1;</code></pre>
         <ul>
           <li><b>The cost of traveling from Cincinnati to Columbus is $57.50</b></li>
         </ul>
-        <p>2) Write a Java program that converts a total number of seconds to
-          hours, minutes, and seconds. </p>
-          <p>It should: </p>
-          <ol>
-            <li>prompt the user for input</li>
-            <li>read an integer from the keyboard</li>
-            <li>calculate the result</li>
-            <li>and use printf to display the output</li>
-          </ol>
-          <p>For example: <br><br> <b>"5000 seconds = 1 hours, 23 minutes, 
-            and 20 seconds".</b> <br><br> (Hint: Use the modulus operator)
-            </p>
 
             <hr/>
           
@@ -316,8 +431,42 @@ b += 2 * 3 - 1;</code></pre>
               <p>Submit <b>both the .java and .txt file to <b>EC Lab Submissions</b> under Class Labs on Blackboard before next class</b>. 
                 <b>(This lab will count as part of your CodeLab grade)</b>
               </p>
-              <!--<hr/>-->
               
+              <hr/>
+
+              <p>2) Three business partners are forming a company whose name will be of the form "Name1, Name2, and Name3". 
+                However, they can't agree whose name should be first, second or last. <br><br>Help them out by writing code that reads in their 
+                three names and prints each possible combination exactly once, on a line by itself (that is, each possible combination is 
+                terminated with a newline character). <br><br><b>Assume that name1, name2, and name3 have already been declared and use them in your code</b>. 
+                Assume also that <b>stdin is a variable that references a Scanner object associated with standard input</b>. <br><br>For example, <b>if your code read 
+                in Larry, Curly, and Moe it would print out "Larry, Curly, and Moe", "Curly, Larry, and Moe", etc., each on a separate line</b>. 
+                <br><br><b>(CodeLab: Chapter 3: Input and output > 3.2: The Scanner class > #20966)</b>
+              </p>
+
+
+              <p>3) Write a Java program to prompt the user to enter their first and last name, then generate a random integer between 1000 - 9999 (inclusive)
+                and write it to a file as follows: 
+                <br/><br/>
+                <b>'[last name]_[first_name]_Info.txt'</b>
+                <br/><br/>
+                Then read from the newly created file and print out the contents (it should be the same as you just entered, plus the ID number)
+              </p>
+
+              <p>4) Write a Java program that converts a total number of seconds to
+                hours, minutes, and seconds. </p>
+                <p>It should: </p>
+                <ol>
+                  <li>prompt the user for input</li>
+                  <li>read an integer from the keyboard</li>
+                  <li>calculate the result</li>
+                  <li>and use printf to display the output</li>
+                </ol>
+                <p>For example: <br><br> <b>"5000 seconds = 1 hours, 23 minutes, 
+                  and 20 seconds".</b> <br><br> (Hint: Use the modulus operator)
+                  </p>
+
+                
+
               <!--<p>
                 <a href="/courses/CISC1115/classwork_code/Week 2 Answers.txt"
                   >Answers to Week 2 found here</a
@@ -335,14 +484,7 @@ b += 2 * 3 - 1;</code></pre>
           separated by a space on a single line that is terminated with a newline character</b>. Do not output any thing else.
           <br><br><b>(CodeLab: Chapter 2: Variables and operators > 2.4: Printing variables > #20979)</b></p>
         
-        <p>b) Three business partners are forming a company whose name will be of the form "Name1, Name2, and Name3". 
-          However, they can't agree whose name should be first, second or last. <br><br>Help them out by writing code that reads in their 
-          three names and prints each possible combination exactly once, on a line by itself (that is, each possible combination is 
-          terminated with a newline character). <br><br><b>Assume that name1, name2, and name3 have already been declared and use them in your code</b>. 
-          Assume also that <b>stdin is a variable that references a Scanner object associated with standard input</b>. <br><br>For example, <b>if your code read 
-          in Larry, Curly, and Moe it would print out "Larry, Curly, and Moe", "Curly, Larry, and Moe", etc., each on a separate line</b>. 
-          <br><br><b>(CodeLab: Chapter 3: Input and output > 3.2: The Scanner class > #20966)</b>
-        </p>
+        
         
         <hr />
         <br />
