@@ -35,13 +35,32 @@ public class TravelCost {
     }
 }
 
-2) 
+----------------------------------------------------------------------------------------
+
+LAB 1 TO BE DISCUSSED IN CLASS
+
+----------------------------------------------------------------------------------------
+
+2) In Permutations the order matters. So ABC would be one permutation and ACB would be another, for example. Now, there are 6 (3 factorial) permutations of ABC.
+
+name1 = stdin.next();
+name2 = stdin.next();
+name3 = stdin.next();
+
+System.out.println(name1 + ", " + name2 + ", and " + name3);
+System.out.println(name1 + ", " + name3 + ", and " + name2);
+System.out.println(name2 + ", " + name1 + ", and " + name3);
+System.out.println(name2 + ", " + name3 + ", and " + name1);
+System.out.println(name3 + ", " + name2 + ", and " + name1);
+System.out.println(name3 + ", " + name1 + ", and " + name2);
+
+3) 
 
 import java.util.Scanner;
 
 public class Time {
     public static void main(String [] args) {
-	      Scanner sc = new Scanner(System.in);
+	Scanner sc = new Scanner(System.in);
         int totalSecs = sc.nextInt();
 
         int hours = totalSecs / 3600;
@@ -53,83 +72,4 @@ public class Time {
     }
 }
 
-----------------------------------------------------------------------------------------
-
-
-
-3)
-
-package my11lab1;
-
-//import to use
-import java.io.PrintWriter;
-import java.util.Scanner;
-
-public class MY11Lab1 {
-    public static void main(String[] args) throws Exception { //MUST throw Exception when working with files
-        System.out.println("Question 2:");
-        int a , b; //declaration
-       
-        Scanner sc = new Scanner(System.in); //create Scanner obj
-        PrintWriter pw = new PrintWriter ("question2.txt");
-        pw.println("Question 2:");
-        System.out.print("Enter first number: "); //prompts DO NOT go to files
-        a = sc.nextInt(); //hardcoded value -- does NOT allow user interaction
-        System.out.print("Enter second number: ");
-        b = sc.nextInt();
-        
-        //rewritten as printf()
-        pw.printf("The values are %d and %d%n", a, b);
-        pw.printf("The sum of %d" + " and %d" + " is %d%n",a, b, (a+b));
-        pw.printf("The difference between %d and %d is %d%n",a,b, (a-b));
-        pw.printf("The quotient of %d and %d is %.2f%n", a,b,(((double)a)/b));
-        pw.printf("The product of %d and %d  is  %d%n",a,b,(a*b));
-
-        System.out.println();
-        pw.println();
-        System.out.println("Question 5");
-        pw.println("Question 5");
-        System.out.print("Enter rectangle length: ");
-        int length = sc.nextInt();
-        System.out.print("Enter rectangle width: ");
-        int width = sc.nextInt();
-        int area = length * width; //(l * w)
-        int perimeter = 2 * (length + width); //2(l + w)
-        pw.printf("Rectangle: length = %d and width = %d%n", length, width);
-        pw.printf("Area = %d%n", area);
-        pw.printf("Perimeter = %d%n", perimeter);
-
-        System.out.println();
-        pw.println();
-        System.out.println("Question 7");
-        pw.println("Question 7");
-        System.out.print("Enter temperature in fahrenheit: ");
-        double f = sc.nextDouble(); 
-        
-        // Convert Fahrenheit to Celsius
-        double c = (f - 32) * 5 / 9;
-
-        // Print temperature in Celsius 
-        pw.printf("%.2f degree(s) Fahrenheit is equal to %.2f degree(s) Celsius.%n", f, c);
-        
-        
-        System.out.println();
-        pw.println();
-        System.out.println("Question 8");
-        pw.println("Question 8");
-        System.out.print("Enter circle radius: ");
-        double radius = sc.nextDouble(); //arbitrary radius, value can be changed
-
-        double circleArea = Math.PI * radius * radius; //(Ï€r^2) OR Math.PI * Math.pow(radius,2)
-
-        double circumference = 2 * Math.PI * radius; //(2Ï€r) 
-
-        pw.printf("Radius: %.3f%n", radius);
-        pw.printf("Area: %.3f%n", circleArea);
-        pw.printf("Circumference: %.3f\n", circumference);
-        
-        
-        pw.close(); //MUST be closed or program thinks file is still being written to
-        sc.close(); //close to avoid memory leak
-    }
-}
+4) 
