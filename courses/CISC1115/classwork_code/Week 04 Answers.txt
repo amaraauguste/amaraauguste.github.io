@@ -1,33 +1,4 @@
-REVIEW
-
-a) System.out.println(num + " " + cost); OR System.out.print(num + " " + cost + "\n");
-
-
-b) In Permutations the order matters. So ABC would be one permutation and ACB would be another, for example. Now, there are 6 (3 factorial) permutations of ABC.
-
-name1 = stdin.next();
-name2 = stdin.next();
-name3 = stdin.next();
-
-System.out.println(name1 + ", " + name2 + ", and " + name3);
-System.out.println(name1 + ", " + name3 + ", and " + name2);
-System.out.println(name2 + ", " + name1 + ", and " + name3);
-System.out.println(name2 + ", " + name3 + ", and " + name1);
-System.out.println(name3 + ", " + name2 + ", and " + name1);
-System.out.println(name3 + ", " + name1 + ", and " + name2);
-
-----------------------------------------------------------------------------------------
-1) 
-
-a. if (v < 0) 
-	q = Math.sqrt(15);
-
-b. if (count % 10 == 0) 
-	h = 3;
-
-c. i = (x > 0) ? 7 : 8;
-
-2)
+1)
 
 import java.util.Scanner;
 
@@ -44,6 +15,15 @@ public class Week4_Exercise2 {
         }
     }
 }
+
+2) 
+
+a. if (v < 0) q = Math.sqrt(15);
+
+b. if (count % 10 == 0) h = 3;
+
+c. i = (x > 0) ? 7 : 8;
+
 
 3) 
 
