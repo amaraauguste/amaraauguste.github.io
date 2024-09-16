@@ -82,8 +82,8 @@
         <div class="dropdown-container container5">
           <a href="#Relational_Operators" onclick="closeDropdown5()">Relational Operators</a>
           <a href="#Logical_Operators" onclick="closeDropdown5()">Logical Operators</a>
-         <!-- <a href="#Conditional_Statements" onclick="closeDropdown5()">Conditional Statements</a>
-          <a href="#Chaining_and_Nesting" onclick="closeDropdown5()">Chaining and Nesting</a>
+          <a href="#Conditional_Statements" onclick="closeDropdown5()">Conditional Statements</a>
+          <!--<a href="#Chaining_and_Nesting" onclick="closeDropdown5()">Chaining and Nesting</a>
           <a href="#Flag_Variables" onclick="closeDropdown5()">Flag Variables</a>
           <a href="#Validating_Input" onclick="closeDropdown5()">Validating Input</a>
           <a href="#Switch_Statements" onclick="closeDropdown5()">Switch Statements</a>
@@ -692,8 +692,8 @@ System.out.println(score);</code></pre>
             <li>
               Relational/Comparison operators are used to compare two values
               (or variables). The values returned from comparison are known as
-              boolean values and will either be <text style="color:blue"><b>true</b></text> or <text
-                style="color:blue"><b>false</b></text>.
+              boolean values and will either be <text class="label"><b>true</b></text> or <text
+                class="label"><b>false</b></text>.
             </li>
             <li>
               A few relational/comparison operators available in Java include:
@@ -716,20 +716,20 @@ System.out.println(score);</code></pre>
           <ul>
             <li>
               Logical operators are used to determine the logic (whether a
-              statement is <text style="color:blue"><b>true</b></text> or <text style="color:blue"><b>false</b></text>)
+              statement is <text class="label"><b>true</b></text> or <text class="label"><b>false</b></text>)
               between
               variables or values.
             </li>
             <li>A few logical operators available in Java include:</li>
             <ul style="list-style-type: none">
               <li>
-                && (Logical and - returns <text style="color:blue"><b>true</b></text> if both statements are true,
+                && (Logical and - returns <text class="label"><b>true</b></text> if both statements are true,
                 e.g. a < 5 && b < 5) </li>
               <li>
-                || (Logical or - returns <text style="color:blue"><b>true</b></text> if one of the statements is
+                || (Logical or - returns <text class="label"><b>true</b></text> if one of the statements is
                 true, e.g. a < 5 || b < 5) </li>
               <li>
-                ! (Logical not - reverses the result, returns <text style="color:blue"><b>false</b></text> if the
+                ! (Logical not - reverses the result, returns <text class="label"><b>false</b></text> if the
                 result is true, e.g. !(a < 5 && b < 5))) </li>
             </ul>
           </ul>
@@ -1781,7 +1781,7 @@ cm = inches * cmPerInch;</code></pre>
       <br />
       <hr />
     </section>
-    <!--<section class="main-section" id="Conditional_Statements">
+    <section class="main-section" id="Conditional_Statements">
       <br />
       <header><b>Conditional Statements</b></header>
       <article>
@@ -1802,8 +1802,8 @@ cm = inches * cmPerInch;</code></pre>
             true</b></p>
         <p>The expression in parentheses is called the <b>condition</b>.</p>
         <ul>
-          <li>If it is <text style="color: blue;"><b>true</b></text>, the <b>statements in braces get executed</b>.</li>
-          <li>If the condition is <text style="color: blue;"><b>false</b></text>, execution <b>skips over that block of
+          <li>If it is <text class="label"><b>true</b></text>, the <b>statements in braces get executed</b>.</li>
+          <li>If the condition is <text class="label"><b>false</b></text>, execution <b>skips over that block of
               code</b>.</li>
         </ul>
         <p>The condition in parentheses can be any boolean expression.</p>
@@ -1821,7 +1821,7 @@ cm = inches * cmPerInch;</code></pre>
         <p>If the value of x is greated than zero, we know that x is positive, and this code fragment displays a message
           to that effect.</p>
         <p>If the condition is false, the second print statement is executed instead. Since the condition must be <text
-            style="color:blue"><b>true</b></text> or <text style="color:blue"><b>false</b></text>,
+            class="label"><b>true</b></text> or <text class="label"><b>false</b></text>,
           exactly one of the branches will run.</p>
         <p>The <b>braces are optional for branches that have only one statement</b>. So we could have written the
           previous example this way:</p>
@@ -1865,7 +1865,7 @@ System.out.println(result);</code></pre>
       <br />
       <hr />
     </section>
-    <section class="main-section" id="Chaining_and_Nesting">
+     <!--<section class="main-section" id="Chaining_and_Nesting">
       <br />
       <header><b>Chaining and Nesting</b></header>
       <article>
@@ -1925,8 +1925,8 @@ System.out.println(result);</code></pre>
       <br />
       <header><b>Flag Variables</b></header>
       <article>
-        <p>To store a <text style="color:blue"><b>true</b></text> or <text style="color:blue"><b>false</b></text> value,
-          you need a <text style="color:blue"><b>boolean</b></text> variable.
+        <p>To store a <text class="label"><b>true</b></text> or <text class="label"><b>false</b></text> value,
+          you need a <text class="label"><b>boolean</b></text> variable.
           <br><br>You can create one like this:
         </p>
         <pre><code class="language-java">boolean flag;//variable declaration
@@ -1944,10 +1944,10 @@ boolean zeroFlag =  (x == 0);//true if x is zero</code></pre>
         <pre><code class="language-java">if (positiveFlag){
     System.out.println("x is positive");
 }</code></pre>
-        <p>Notice that you don't have to write if (evenFlag == <text style="color:blue"><b>true</b></text>). Since
+        <p>Notice that you don't have to write if (evenFlag == <text class="label"><b>true</b></text>). Since
           evenFlag
-          is a <text style="color:blue"><b>boolean</b></text>, it's already a condition. Likewise, to check if a flag is
-          <text style="color:blue"><b>false</b></text>:</p>
+          is a <text class="label"><b>boolean</b></text>, it's already a condition. Likewise, to check if a flag is
+          <text class="label"><b>false</b></text>:</p>
         <pre><code class="language-java">if (!positiveFlag){
     System.out.println("x is NOT positive");
 }</code></pre>
@@ -1968,11 +1968,11 @@ boolean zeroFlag =  (x == 0);//true if x is zero</code></pre>
             throws
             an InputMismatchException.</b></p>
         <p>We can prevent this error by checking the input before parsing it.
-          <br><br>The Scanner class has <text style="color:blue"><b>boolean</b></text> methods that can validate whether
+          <br><br>The Scanner class has <text class="label"><b>boolean</b></text> methods that can validate whether
           the input is of a particular type, in our case we can use
-          <b>.hasNextInt()</b> which will return <text style="color:blue"><b>true</b></text> if the <b>next token in
+          <b>.hasNextInt()</b> which will return <text class="label"><b>true</b></text> if the <b>next token in
             this Scanner's input can be interpreted as an int value</b>
-          and <text style="color:blue"><b>false</b></text> otherwise.
+          and <text class="label"><b>false</b></text> otherwise.
         </p>
 
 
@@ -1984,7 +1984,7 @@ boolean zeroFlag =  (x == 0);//true if x is zero</code></pre>
 
 
 
-    <section class="main-section" id="Switch_Statements">
+   <section class="main-section" id="Switch_Statements">
       <br />
       <header><b>Switch Statements</b></header>
       <article>
@@ -2149,16 +2149,16 @@ System.out.println(third);</code></pre>
       <header>The while Loop</header>
       <article>
         <p>A while loop is a control flow statement that allows code to be executed repeatedly based on a given <text
-            style="color:blue"><b>boolean</b></text> condition.</p>
+            class="label"><b>boolean</b></text> condition.</p>
         <p>The while loop can be thought of as a <b>repeating if statement</b>.</p>
         <p>The expression in parentheses is called the <b>condition</b>. The statements in braces
           are called the <b>body</b>. The flow of execution for a while statement is:</p>
         <ol>
-          <li>Evaluate the condition, yielding <text style="color:blue"><b>true</b></text> or <text
-              style="color:blue"><b>false</b></text>.</li>
-          <li>If the condition is <text style="color:blue"><b>false</b></text>, skip the body and go to the next
+          <li>Evaluate the condition, yielding <text class="label"><b>true</b></text> or <text
+              class="label"><b>false</b></text>.</li>
+          <li>If the condition is <text class="label"><b>false</b></text>, skip the body and go to the next
             statement.</li>
-          <li>If the condition is <text style="color:blue"><b>true</b></text>, execute the body and go back to step 1.
+          <li>If the condition is <text class="label"><b>true</b></text>, execute the body and go back to step 1.
           </li>
         </ol>
         <p>This type of flow is called a loop, <b>because the last step loops back around to
@@ -2172,11 +2172,11 @@ System.out.println(third);</code></pre>
           And you would be right! <br><br>There are similarities in the structure of both concepts, however, there are a
           significant differences as well.
         </p>
-        <p>An <b>if statement</b>, when <text style="color:blue"><b>true</b></text>, will only <b>execute the inner
+        <p>An <b>if statement</b>, when <text class="label"><b>true</b></text>, will only <b>execute the inner
             block of code once</b>.</p>
         <p>In contrast, a <b>while loop</b> will continue to <b>execute the inner block of code as long as the condition
-            is <text style="color:blue"><b>true</b></text></b>.</p>
-        <p>If the condition is initially <text style="color:blue"><b>false</b></text> (in either case), the inner block
+            is <text class="label"><b>true</b></text></b>.</p>
+        <p>If the condition is initially <text class="label"><b>false</b></text> (in either case), the inner block
           of code will never execute.</p>
         <p><b>The body of the loop should change the value of one or more variables so that,
             eventually, the condition becomes false and the loop terminates.</b></p>
@@ -2367,16 +2367,16 @@ while (count <= 10) {// count is tested
           So let's discuss the specific behavior that separates them from each other:</p>
         <ul style="list-style: none;">
           <li>As previously discussed, the <b>while loop checks the condition first</b>, and if it returns <text
-              style="color:blue"><b>true</b></text>, the code within it runs.
-            The loop continues until the condition provided returns <text style="color:blue"><b>false</b></text>, then
+              class="label"><b>true</b></text>, the code within it runs.
+            The loop continues until the condition provided returns <text class="label"><b>false</b></text>, then
             stops.</li>
           <img style="width: 90%; height: 90%"
             src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC1115/images/Java-while-loop.png?raw=true"
             alt="while flowchart" />
           <br><br>
           <li>Alternatively, the <b>do-while loop runs its code once before checking the condition</b> and runs again
-            <b>only</b> if the condition is <text style="color:blue"><b>true</b></text>.
-            This continues until the condition check returns <text style="color:blue"><b>false</b></text>, then it stops
+            <b>only</b> if the condition is <text class="label"><b>true</b></text>.
+            This continues until the condition check returns <text class="label"><b>false</b></text>, then it stops
             before the next loop starts.
           </li>
           <img style="width: 90%; height: 90%"
@@ -2398,8 +2398,8 @@ while (count <= 10) {// count is tested
           <li>The flow jumps to Condition</li>
           <li>The Condition is tested</li>
           <ol style="list-style: lower-alpha;">
-            <li>If Condition yields <text style="color:blue"><b>true</b></text>, go to Step 6</li>
-            <li>If Condition yields <text style="color:blue"><b>false</b></text>, the flow goes outside the loop</li>
+            <li>If Condition yields <text class="label"><b>true</b></text>, go to Step 6</li>
+            <li>If Condition yields <text class="label"><b>false</b></text>, the flow goes outside the loop</li>
           </ol>
           <li>The flow goes back to Step 2</li>
         </ol>
@@ -2516,10 +2516,10 @@ System.out.println("\nYou entered the number: " + x);</code></pre>
           <li>Read the input</li>
         </ol>
         <p>The code uses a <b>flag variable, okay</b>, to indicate whether we need to repeat the
-          loop body. <br><br>If <b>.hasNextDouble()</b> returns <text style="color:blue"><b>false</b></text>, we consume
+          loop body. <br><br>If <b>.hasNextDouble()</b> returns <text class="label"><b>false</b></text>, we consume
           the invalid input
           by calling <b>.next()</b>. We then display an error message. <br><br>The
-          loop terminates when <b>.hasNextDouble()</b> returns <text style="color:blue"><b>true</b></text>.</p>
+          loop terminates when <b>.hasNextDouble()</b> returns <text class="label"><b>true</b></text>.</p>
 
         <p>A simpler way to solve this problem is to use a <b>break statement</b>.</p>
 
@@ -2536,7 +2536,7 @@ while (true) {
 double x = in.nextDouble();
 System.out.println("\nYou entered the number: " + x);</code></pre>
 
-        <p>Using <text style="color:blue"><b>true</b></text> as a conditional in a while loop is an idiom that means
+        <p>Using <text class="label"><b>true</b></text> as a conditional in a while loop is an idiom that means
           <b>"loop
             forever"</b>, or in this case <b>"loop until you get to a break statement"</b>.</p>
 
@@ -2572,7 +2572,7 @@ System.out.println("\nYou entered the number: " + x);</code></pre>
           <li>The initializer runs once at the very beginning of the loop</li>
           <li>The condition is checked each time through the loop</li>
           <ul>
-            <li>If it is <text style="color:blue"><b>false</b></text>, the loop ends</li>
+            <li>If it is <text class="label"><b>false</b></text>, the loop ends</li>
             <li>Otherwise, the body of the loop is executed (again)</li>
           </ul>
           <li>At the end of each iteration, the update runs, and we go back to step 2</li>
@@ -2586,15 +2586,15 @@ System.out.println("\nYou entered the number: " + x);</code></pre>
           <li>The flow jumps to the Condition</li>
           <li>Condition is tested</li>
           <ul>
-            <li>If the Condition is <text style="color:blue"><b>true</b></text>, the flow goes into the body of the loop
+            <li>If the Condition is <text class="label"><b>true</b></text>, the flow goes into the body of the loop
             </li>
-            <li>If the Condition is <text style="color:blue"><b>false</b></text>, the flow goes outside the loop</li>
+            <li>If the Condition is <text class="label"><b>false</b></text>, the flow goes outside the loop</li>
           </ul>
-          <li>(If <text style="color:blue"><b>true</b></text>) The statements inside the body of the loop get executed.
+          <li>(If <text class="label"><b>true</b></text>) The statements inside the body of the loop get executed.
           </li>
           <li>The flow goes to the Updation</li>
           <li>Updation (the variable is updated) takes place and the flow goes to Step 3 again</li>
-          <li>(If <text style="color:blue"><b>false</b></text>) The for loop has ended and the flow has gone outside of
+          <li>(If <text class="label"><b>false</b></text>) The for loop has ended and the flow has gone outside of
             the loop</li>
         </ol>
         <img style="width: 90%; height: 90%"
@@ -2610,8 +2610,8 @@ System.out.println("\nYou entered the number: " + x);</code></pre>
           </li>
           <li>The second defines the condition for the loop to run <b>(i must be less than 5)</b></li>
           <ul>
-            <li>If the condition is <text style="color:blue"><b>true</b></text>, the loop will start over again</li>
-            <li>If it is <text style="color:blue"><b>false</b></text>, the loop will end</li>
+            <li>If the condition is <text class="label"><b>true</b></text>, the loop will start over again</li>
+            <li>If it is <text class="label"><b>false</b></text>, the loop will end</li>
           </ul>
           <li>The last part enclosed in the parentheses increases a value <b>(i++)</b> each time the code block in the
             loop has been executed</li>
@@ -2879,7 +2879,7 @@ char secondLetter = 'B';
 System.out.println(firstLetter < secondLetter); //(T or F)</code></pre>
         <p>In this code snippet, we compare two chars 'A' and 'B'. Since 'A' comes before 'B' in the Unicode character
           set,
-          the expression 'firstLetter < secondLetter' returns <text style="color:blue"><b>true</b></text>.</p>
+          the expression 'firstLetter < secondLetter' returns <text class="label"><b>true</b></text>.</p>
         <p>Since, we can use relational operators with chars we can also use them in boolean conditions such as the
           following:</p>
 
@@ -3203,7 +3203,7 @@ if (name1 == name2) { // wrong!
           <b>But it is not correct, and sometimes it gets the answer wrong</b>. <br><br>The problem is
           that the == operator checks whether the two variables refer to the same object (by comparing the references).
           If you give it two different Strings that contain the same letters, it yields <text
-            style="color:blue"><b>false</b></text>.
+            class="label"><b>false</b></text>.
         </p>
 
         <p>The right way to compare Strings is with the equals method, like this:</p>
@@ -3213,9 +3213,9 @@ if (name1 == name2) { // wrong!
 }</code></pre>
 
         <p>This example invokes equals on name1 and passes name2 as an argument.
-          <b>The equals method returns <text style="color:blue"><b>true</b></text> if the strings contain the same
+          <b>The equals method returns <text class="label"><b>true</b></text> if the strings contain the same
             characters;
-            otherwise it returns <text style="color:blue"><b>false</b></text></b>.
+            otherwise it returns <text class="label"><b>false</b></text></b>.
         </p>
 
         <p>If the Strings differ, we can use the .compareTo() method to see which comes first in alphabetical order:</p>
@@ -3247,8 +3247,8 @@ if (diff == 0) {
 
         <p>The <b>.equalsIgnoreCase()</b> method compares two Strings, ignoring lower case and upper case differences.
 
-          This method returns <text style="color:blue"><b>true</b></text> if the Strings are equal, and <text
-            style="color:blue"><b>false</b></text> if not.
+          This method returns <text class="label"><b>true</b></text> if the Strings are equal, and <text
+            class="label"><b>false</b></text> if not.
           <br><br>
           Use the <b>.compareToIgnoreCase()</b> method to compare two Strings lexicographically, ignoring case
           differences.
@@ -4284,7 +4284,7 @@ return area;</code></pre>
       <br />
       <header>Boolean Methods</header>
       <article>
-        <p>Methods can return <text style="color:blue"><b>boolean</b></text> values, just like any other type, which is
+        <p>Methods can return <text class="label"><b>boolean</b></text> values, just like any other type, which is
           often
           convenient for hiding tests inside methods. <br><br>For example:</p>
 
@@ -4297,14 +4297,14 @@ return area;</code></pre>
 }</code></pre>
 
         <p>The name of this method is <b>isSingleDigit()</b>. It is common to give <text
-            style="color:blue"><b>boolean</b></text>
+            class="label"><b>boolean</b></text>
           methods names that <b>sound like yes/no questions</b>. Since the return type is
-          <text style="color:blue"><b>boolean</b></text> ,
-          <b>the return statement has to provide a <text style="color:blue"><b>boolean</b></text> expression</b>.
+          <text class="label"><b>boolean</b></text> ,
+          <b>the return statement has to provide a <text class="label"><b>boolean</b></text> expression</b>.
         </p>
 
         <p>The code itself is straightforward, although it is longer than it needs to be.
-          Remember that the expression <b>x > -10 && x < 10</b> has type <text style="color:blue"><b>boolean</b></text>,
+          Remember that the expression <b>x > -10 && x < 10</b> has type <text class="label"><b>boolean</b></text>,
               so there
               is nothing wrong with <b>returning it directly</b> (without the if statement):</p>
 
@@ -4317,11 +4317,11 @@ return area;</code></pre>
         <pre><code class="language-java">System.out.println(isSingleDigit(2));
 boolean bigFlag = !isSingleDigit(17);</code></pre>
 
-        <p>The first line displays <text style="color:blue"><b>true</b></text> because 2 is a single-digit number. The
+        <p>The first line displays <text class="label"><b>true</b></text> because 2 is a single-digit number. The
           second
-          line sets bigFlag to <text style="color:blue"><b>true</b></text>, because 17 is not a single-digit number.</p>
+          line sets bigFlag to <text class="label"><b>true</b></text>, because 17 is not a single-digit number.</p>
 
-        <p>Conditional statements often invoke <text style="color:blue"><b>boolean</b></text> methods and use the result
+        <p>Conditional statements often invoke <text class="label"><b>boolean</b></text> methods and use the result
           as
           the condition:</p>
 
