@@ -14,7 +14,7 @@ d) y = ((9 * Math.pow(x,3)) - (27 * Math.pow(x,2)) - (4 * x) + 12)/(Math.sqrt((3
 
 import java.util.Scanner;
 
-public class TravelCost {
+public class Question2 {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         String city1, city2;
