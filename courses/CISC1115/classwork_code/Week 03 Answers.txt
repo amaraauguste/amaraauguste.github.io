@@ -58,18 +58,68 @@ System.out.println(name3 + ", " + name1 + ", and " + name2);
 
 import java.util.Scanner;
 
-public class Time {
-    public static void main(String [] args) {
-	Scanner sc = new Scanner(System.in);
-        int totalSecs = sc.nextInt();
+public class Question3 {
+    public static void main (String [] args){
+        //prompt the user for input
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter number of seconds: ");
+        int totalSeconds = sc.nextInt();
+       
+        //measurement constants
+        final int SEC_PER_MIN = 60;
+        final int MIN_PER_HR = 60;
+        final int SEC_PER_HR = SEC_PER_MIN * MIN_PER_HR; //3600
+       
+        //convert
+        int hours = totalSeconds / SEC_PER_HR;
+        int remSeconds = totalSeconds % SEC_PER_HR; //not enough to make a full hr
+        int minutes = remSeconds / 60;
+        int seconds = remSeconds % 60; //not enough to make a full min
+       
+        System.out.print(totalSeconds + " seconds = ");
+        System.out.printf("%d hours, %d minutes, %d seconds%n", hours, minutes, seconds);
 
-        int hours = totalSecs / 3600;
-        int minutes = (totalSecs % 3600) / 60;
-        int seconds = totalSecs % 60;
-
-        System.out.print(totalSecs + " seconds = ");
-        System.out.printf("%d hours, %d minutes and %d seconds%n", hours, minutes, seconds);
+				sc.close();
     }
 }
 
 4) 
+
+public class Question4 {
+    public static void main(String[] args) throws Exception{
+        //read in user's name
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter first name: ");
+        String firstName = input.next();
+        System.out.print("Enter last name: ");
+        String lastName = input.next();
+        String filename = lastName+"_"+firstName+"_Info.txt";
+       
+       
+        //generate ID number
+        int min = 1000; //inclusive
+        int max = 10000; //exclusive
+        int id = (int) (Math.random() * (max - min) + min);
+       
+        //write info to file
+       
+        PrintWriter pw = new PrintWriter (filename);
+        pw.print(id);
+        pw.close();
+       
+        //read file content to the console
+       
+        System.out.print("Enter first name to search for: ");
+        String firstName2 = input.next();
+        System.out.print("Enter last name to search for: ");
+        String lastName2 = input.next();
+        input.close();
+        String filename2 = lastName2+"_"+firstName2+"_Info.txt";
+        File f = new File(filename2);
+        Scanner sc = new Scanner(f);
+        System.out.println("User: " + firstName2 + ", " + lastName2);
+        int userID = sc.nextInt();
+        System.out.println("ID Number: " + userID);
+        sc.close();
+    }
+}
