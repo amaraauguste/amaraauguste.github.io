@@ -86,11 +86,11 @@
           <a href="#Chaining_and_Nesting" onclick="closeDropdown5()">Chaining and Nesting</a>
           <a href="#Flag_Variables" onclick="closeDropdown5()">Flag Variables</a>
           <a href="#Validating_Input" onclick="closeDropdown5()">Validating Input</a>
-          <!--<a href="#Switch_Statements" onclick="closeDropdown5()">Switch Statements</a>
+          <a href="#Switch_Statements" onclick="closeDropdown5()">Switch Statements</a>
           <a href="#The_char_Data_Type" onclick="closeDropdown5()">The char Data Type</a>
         </div>
       </li>
-      Chapter 7 Dropdown
+      <!--Chapter 7 Dropdown
       <li>
         <a class="dropdown-btn" style="font-size: 20px">Loops</a>
         <div class="dropdown-container container7">
@@ -1984,7 +1984,7 @@ boolean zeroFlag =  (x == 0);//true if x is zero</code></pre>
 
 
 
-   <!--<section class="main-section" id="Switch_Statements">
+   <section class="main-section" id="Switch_Statements">
       <br />
       <header><b>Switch Statements</b></header>
       <article>
@@ -2062,7 +2062,79 @@ int day = sc.nextInt();</code></pre>
 
 
       </article>
-      <br />
+      
+      
+      <article>
+      <br/><br/>
+      <header>Arrow Notation</header>
+
+      <p>In modern Java (14+), the switch statement got a significant upgrade with the introduction of <b>arrow notation</b> (->)</p>
+
+        <pre><code class="language-java">switch (day) {
+    case 1 -> System.out.println("Monday");
+    case 2 -> System.out.println("Tuesday");
+    case 3 -> System.out.println("Wednesday");
+    case 4 -> System.out.println("Thursday");
+    case 5 -> System.out.println("Friday");
+    case 6 -> System.out.println("Saturday");
+    case 7 -> System.out.println("Sunday");
+    default -> System.out.println("Invalid input! Please enter a number between 1 and 7.");
+};</code></pre>
+
+      <p>The following rules apply:</p>
+      <ul>
+        <li>Before the arrow, you may list several cases separated by commas</li>
+        <li>The arrow may be followed by either a single code statement or a code block in curly braces</li>
+        <li>break statements are omitted in this notation</li>
+      </ul>
+
+      <p>For example, if we need to determine if the day happened to be a weekday or a weekend:</p>
+
+      <pre><code class="language-java">switch (day) {
+    case 1, 2, 3, 4, 5 -> System.out.println("Weekday");
+    case 6, 7 -> System.out.println("Weekend");
+    default -> System.out.println("Invalid input! Please enter a number between 1 and 7."); 
+};</code></pre>
+      
+
+    <p>Let's say we needed to save the String literal in a variable (maybe we need it for something later), we can use switch to assign a case-specific value to a variable. 
+      In the following example, instead of printing the actual day represented by the integer, we store it in the dayOfTheWeek variable:</p>
+
+
+      <pre><code class="language-java">String dayOfTheWeek; 
+switch (day) {
+    case 1 -> dayOfTheWeek = "Monday";
+    case 2 -> dayOfTheWeek = "Tuesday";
+    case 3 -> dayOfTheWeek = "Wednesday";
+    case 4 -> dayOfTheWeek = "Thursday";
+    case 5 -> dayOfTheWeek = "Friday";
+    case 6 -> dayOfTheWeek = "Saturday";
+    case 7 -> dayOfTheWeek = "Sunday";
+    default -> System.out.println("Invalid input! Please enter a number between 1 and 7.");
+};</code></pre>
+
+    <p>To use the variable, dayOfTheWeek, afterward, this conventional notation – even though we've covered every weekday – requires us to initialize the variable beforehand. 
+      Otherwise, the compiler would abort with the error message "Variable 'dayOfTheWeek' might not have been initialized".</p>
+
+<pre><code class="language-java">String dayOfTheWeek = "N/A"; //initialize to default</code></pre>
+
+      <p>then we should be able to print out the day (however we have not done any error prevention this particular example ... yet):</p>
+
+<pre><code class="language-java">String dayOfTheWeek = "N/A"; //initialize to default
+switch (day) {
+    case 1 -> dayOfTheWeek = "Monday";
+    case 2 -> dayOfTheWeek = "Tuesday";
+    case 3 -> dayOfTheWeek = "Wednesday";
+    case 4 -> dayOfTheWeek = "Thursday";
+    case 5 -> dayOfTheWeek = "Friday";
+    case 6 -> dayOfTheWeek = "Saturday";
+    case 7 -> dayOfTheWeek = "Sunday";
+    default -> System.out.println("Invalid input! Please enter a number between 1 and 7.");
+};
+System.out.printf("The day of the week is %s%n", dayOfTheWeek);</code></pre>
+
+    <br/>
+      </article>
       <hr />
     </section>
 
@@ -2109,7 +2181,7 @@ System.out.println(third);</code></pre>
     </section>
 
 
-    Chapter 7
+    <!--Chapter 7
 
   
     <section class="main-section" id="Loops">
