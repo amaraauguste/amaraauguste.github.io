@@ -1,6 +1,6 @@
 REVIEW
 
-1)
+a)
 
 import java.util.Scanner;
 public class VoterEligibility {
@@ -32,11 +32,59 @@ public class VoterEligibility {
    4
    2
 
-----------------------------------------------------------------------------------------
 
-REVIEW 
+2)
 
-2) 
+import java.util.Scanner;
+
+public class NumberSeries {
+    public static void main(String[] args) {
+
+        //Initialize Scanner class for user input
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a starting number: ");
+        int start = sc.nextInt();
+
+        System.out.print("Enter an ending number: ");
+        int end = sc.nextInt();
+
+        //Perform a while loop to display numbers between start and end numbers
+        int i = start;
+        while (i <= end) {
+            System.out.print(i + " ");
+            i++;
+        }
+        sc.close();
+    }
+}
+
+
+3) 
+
+import java.util.Scanner;
+
+public class AverageValue {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter an integer value, (0 to end and get average): ");
+        int num = sc.nextInt();
+        double sum = num;
+        int cnt = 1;
+        while (num != 0) {
+            System.out.print("Add another integer value, (0 to end and get average): ");
+            num = sc.nextInt();
+            sum = sum + num;
+            cnt++;
+        }
+        System.out.printf("The average is: %.2f", sum/(cnt-1));
+        sc.close();
+    }
+
+}
+
+
+4) 
 
 Here is what num and reverseNum look like after ONE iteration:
 
