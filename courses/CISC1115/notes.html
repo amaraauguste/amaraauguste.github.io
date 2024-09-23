@@ -13,7 +13,7 @@
   <link id="light-mode" rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/felipec.css" disabled />
 
-  <link rel="stylesheet" href="../1115style.css" />
+  <link rel="stylesheet" href="1115style.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 
   <!-- and it's easy to individually load additional languages -->
@@ -90,7 +90,7 @@
           <a href="#The_char_Data_Type" onclick="closeDropdown5()">The char Data Type</a>
         </div>
       </li>
-      <!--Chapter 7 Dropdown
+      <!--Chapter 7 Dropdown-->
       <li>
         <a class="dropdown-btn" style="font-size: 20px">Loops</a>
         <div class="dropdown-container container7">
@@ -98,11 +98,11 @@
           <a href="#The_while_Loop" onclick="closeDropdown7()">The while Loop</a>
           <a href="#Pretest_vs_Posttest" onclick="closeDropdown7()">Pretest vs Posttest Loops</a>
           <a href="#The_do-while_Loop" onclick="closeDropdown7()">The do-while Loop</a>
-          <a href="#The_for_Loop" onclick="closeDropdown7()">The for Loop</a>
-          <a href="#Nested_Loops" onclick="closeDropdown7()">Nested Loops</a>
+          <!--<a href="#The_for_Loop" onclick="closeDropdown7()">The for Loop</a>
+          <a href="#Nested_Loops" onclick="closeDropdown7()">Nested Loops</a>-->
         </div>
       </li>
-      Chapter 9 Dropdown
+      <!--Chapter 9 Dropdown
       <li>
         <a class="dropdown-btn" href="#Strings_and_Things" style="font-size: 20px">Strings and Things</a>
         <div class="dropdown-container container9">
@@ -1536,6 +1536,8 @@ cm = inches * cmPerInch;</code></pre>
           to the file <b>after we close</b> the PrintWriter, so if we forget to close
           the PrintWriter the file may appear empty.
         </p>
+        <p>Importantly, <b>.close() automatically flushes the stream</b> before closing it, 
+          meaning any data remaining in the buffer will be written to the output.</p>
       </article>
       <br />
       <hr />
@@ -2046,8 +2048,8 @@ int day = sc.nextInt();</code></pre>
         <p>Note that if the default statement is <b>used as the last statement in a switch block, it does not need a
             break</b>.</p>
         <br>
-        <p>How can we modify our <a href="/courses/CISC1115/classwork_code/MY11Lab1Modified.java">previous lab</a> to
-          utilize switch statements instead of the if/else-if/else block we used previously?</p>
+        <!--<p>How can we modify our <a href="/courses/CISC1115/classwork_code/MY11Lab1Modified.java">previous lab</a> to
+          utilize switch statements instead of the if/else-if/else block we used previously?</p>-->
       </article>
       <br />
       <header>Combining Cases</header>
@@ -2181,7 +2183,7 @@ System.out.println(third);</code></pre>
     </section>
 
 
-    <!--Chapter 7
+    <!--Chapter 7-->
 
   
     <section class="main-section" id="Loops">
@@ -2619,7 +2621,7 @@ System.out.println("\nYou entered the number: " + x);</code></pre>
       </article>
       <br />
     </section>
-    <section class="main-section" id="The_for_Loop">
+   <!-- <section class="main-section" id="The_for_Loop">
       <br />
       <header>The for Loop</header>
       <article>
