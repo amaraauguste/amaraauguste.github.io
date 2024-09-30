@@ -3,8 +3,8 @@ REVIEW
 a)
 
 import java.util.Scanner;
-public class VoterEligibility {
 
+public class VoterEligibility {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         System.out.print("Enter your age : ");
@@ -25,21 +25,12 @@ public class VoterEligibility {
 
 ----------------------------------------------------------------------------------------
 
-1) 10
-   5
-   6
-   3
-   4
-   2
-
-
-2)
+1)
 
 import java.util.Scanner;
 
 public class NumberSeries {
     public static void main(String[] args) {
-
         //Initialize Scanner class for user input
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter a starting number: ");
@@ -59,32 +50,31 @@ public class NumberSeries {
 }
 
 
-3) 
+2) 
 
 import java.util.Scanner;
 
 public class AverageValue {
     public static void main(String[] args) {
-
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter an integer value, (0 to end and get average): ");
         int num = sc.nextInt();
-        double sum = num;
-        int cnt = 1;
+        int sum = 0;
+        int count = 0;
         while (num != 0) {
+            sum += num;
+            count++;
             System.out.print("Add another integer value, (0 to end and get average): ");
             num = sc.nextInt();
-            sum = sum + num;
-            cnt++;
         }
-        System.out.printf("The average is: %.2f", sum/(cnt-1));
+        System.out.printf("The average is: %.2f", sum/((double)count));
         sc.close();
     }
 
 }
 
 
-4)  
+3)  
 
 total = 0; //important to make sure total is 0
 k = 1;
@@ -94,78 +84,3 @@ do {
 } while (k <= 50);
 
 
-5)
-
-Steps: 
-
-- Declare a variable (int fact) and initialize it with 1.
-- Read a number whose factorial is to be found. Store it in a variable (int num).
-- Set the while loop to the condition (i <= num) where the initial value of i = 1.
-- Inside the while loop, multiply the variable fact and variable i, and store the result in variable fact. - Increment the loop variable i by 1 (i++).
-- Print the factorial.
-
-public static void main(String []args) {
-        //declaring and initializing variables
-        int fact = 1;
-        int i = 1;
-
-        //creating object of Scanner class
-        Scanner sc = new Scanner(System.in);
-
-        //accepting a number from the user
-        System.out.print("Enter a number whose factorial is to be found: ");
-        int num = sc.nextInt();
-
-        //counting the factorial using while loop
-        while( i <= num ) {
-            fact = fact * i;
-            i++; //increment i by 1
-        }
-
-        //printing the result
-        System.out.println("\nFactorial of " + num + " is: " + fact);
-    }
-
-
-6) 
-
-Here is what num and reverseNum look like after ONE iteration:
-
-num => 1234
-
-reverseNum => 0 * 10 
-           => 0
-
-rem => 1234 % 10 
-    => 4
-
-num => 1234 - rem 
-    => 1230 / 10
-    => 123
-
-reverseNum => 0 + 4
-           => 4
-
-
-import java.util.Scanner;
-
-public class ReverseNumber {
-    public static void main(String [] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter number to reverse: ");
-        int num = sc.nextInt();
-
-        int reverseNum = 0; 
-        int rem = 0; //temp variable
-
-        while( num != 0 ) {
-            reverseNum *= 10;
-            rem = num % 10;
-            num = (num - rem) / 10;
-
-            reverseNum += rem;  // <-- 'push' remainder onto end of reversedInteger
-        }
-
-        System.out.println("Reverse of input number is: "+ reverseNum);
-    }
-}
