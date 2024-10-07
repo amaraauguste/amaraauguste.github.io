@@ -1,0 +1,86 @@
+a) 
+
+1. compiler error - incompatible types int and String
+
+int x = 5;
+int y = 10; 
+
+int sum = x + y;
+
+System.out.println("Sum: " + sum);
+
+2. logical error - sum is reset on every iteration of the loop
+
+Scanner stdin = new Scanner(System.in);
+int n = stdin.nextInt();
+int sum = 0;
+for (int i = 1; i <= n; i++) {
+    sum = sum + i;
+}
+
+System.out.println("sum = " + sum);
+
+b) 
+
+import java.util.Scanner;
+
+public class BookInfo {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter Book ID (-1 to exit): ");
+        int bookID = scanner.nextInt();
+        while (bookID != -1) { // Exit the loop if Book ID is -1
+
+            scanner.nextLine(); // Input Buffer
+
+            System.out.print("Enter Title: ");
+            String title = scanner.nextLine();
+
+
+            System.out.print("Enter Author: ");
+            String author = scanner.nextLine();
+
+            System.out.print("Enter Genre (as int): ");
+            int genreInt = scanner.nextInt();
+
+            String genre = "";
+            String recommendedAge = "";
+
+            switch (genreInt) {
+            case 1:
+                genre = "Fiction";
+                recommendedAge = "7+";
+                break;
+            case 2:
+                genre = "Non-Fiction";
+                recommendedAge = "10+";
+                break;
+            case 3:
+                genre = "Sci-Fi";
+                recommendedAge = "13+";
+                break;
+            case 4:
+                genre = "Mystery";
+                recommendedAge = "15+";
+                break;
+            case 5:
+                genre = "Romance";
+                recommendedAge = "16+";
+                break;
+            default:
+                genre = "Unknown";
+                recommendedAge = "N/A";
+                break;
+            }
+
+            System.out.println("Book ID: " + bookID);
+            System.out.println("Title: " + title);
+            System.out.println("Author: " + author);
+            System.out.println("Genre: " + genre);
+            System.out.println("Recommended Age Group: " + recommendedAge);
+            System.out.println("\n\n\n");
+        }
+
+        scanner.close();
+    }
+}
