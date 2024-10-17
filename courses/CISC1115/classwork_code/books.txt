@@ -1,0 +1,44 @@
+1001
+The Great Gatsby
+F. Scott Fitzgerald
+1
+1002
+Sapiens: A Brief History of Humankind
+Yuval Noah Harari
+2
+1003
+Dune
+Frank Herbert
+3
+1004
+The Girl with the Dragon Tattoo
+Stieg Larsson
+4
+1005
+Pride and Prejudice
+Jane Austen
+5
+1006
+1984
+George Orwell
+1
+1007
+Educated
+Tara Westover
+2
+1008
+Neuromancer
+William Gibson
+3
+1009
+Gone Girl
+Gillian Flynn
+4
+1010
+The Notebook
+Nicholas Sparks
+5
+1011
+A Brief History of Time
+Stephen Hawking
+2
