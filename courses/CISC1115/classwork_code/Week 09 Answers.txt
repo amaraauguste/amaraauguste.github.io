@@ -8,7 +8,6 @@ for (int k=1; k<=200; k++) {
 	}
 }
 
-
 ----------------------------------------------------------------------------------------
 
 
@@ -27,7 +26,13 @@ public class Initials {
 }
 
 
-2) 
+2)
+
+1. Answer: 32
+2. Answer: e
+3. Answer: hannah.charAt(15)
+
+3) 
 
 public class Decode {
     public static void main(String [] args) {
