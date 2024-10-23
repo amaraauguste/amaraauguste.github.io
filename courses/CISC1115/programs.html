@@ -1047,9 +1047,50 @@ System.out.println("sum = " + sum);
           What does the message say after it is decoded?
           </p>
         
-          
-            
+          <p>4) What is printed by the following sections of code? </p>
 
+            <ol style="list-style: lower-alpha;">
+              <li><pre><code class="language-java">String source = "ID is 12-AB-1X ";
+int pos = source.indexOf('-'); 
+int pos1 = source.indexOf(' ',pos+1); 
+String str1 = source.substring(pos+1,pos1);
+System.out.println(str1);</code></pre></li>
+              <li><pre><code class="language-java">source = "from Denver,CO.";
+int pos2 = source.lastIndexOf(',');
+int pos3 = source.lastIndexOf(' ',pos2);
+String str2 = source.substring(pos3+1,pos2);
+System.out.println(source.substring(pos3+1,pos2));</code></pre></li>
+              <li><pre><code class="language-java">System.out.println(str1.compareTo(str2)>0);</code></pre></li>
+            </ol>
+
+            <p>5) A String variable sentence <b>consists of words separated by single spaces</b>.<br><br>
+              Write the Java code needed to <b>print the number of words that start with an upper case letter</b>. <br><br>
+              So for "The deed is done", your code would print 1 but for "The name is Bond, JAMES Bond", your code would print 4. </p>
+
+            
+              <p>6) Write a Java Program that <b>prompts the user to enter a String</b> and <b>counts the number of vowels</b> (a, e, i, o, u) in the String. 
+                Print out the total count to the console.
+                <br><br>
+                Sample Input:
+                <br>
+                <b>Enter a String:</b> Hello World
+                <br><br>
+                Sample Output:
+                <br>
+                <b>Number of vowels: 3</b></p>
+
+                <p>7) Write a Java Program that <b>prompts the user to enter a String </b>and <b>checks if the String is a palindrome</b> (reads the same forward and backward). 
+                  Print out a message to the console indicating whether the String is a palindrome or not.
+                  <br><br>
+                  Sample Input:
+                  <br>
+                  <b>Enter a String:</b> Wow
+                  <br><br>
+                  Sample Output:
+                  <br>
+                  <b>String reversed: woW</b>
+                  <br>
+                  <b>This String is a palindrome.</b></p>
 
 
 
@@ -1077,52 +1118,11 @@ System.out.println("sum = " + sum);
             <hr />
 
             <h2>Week 8</h2>
-            <p>1) What is printed by the following sections of code? </p>
-
-            <ol style="list-style: lower-alpha;">
-              <li><pre><code class="language-java">String source = "ID is 12-AB-1X ";
-int pos = source.indexOf('-'); 
-int pos1 = source.indexOf(' ',pos+1); 
-String str1 = source.substring(pos+1,pos1);
-System.out.println(str1);</code></pre></li>
-              <li><pre><code class="language-java">source = "from Denver,CO.";
-int pos2 = source.lastIndexOf(',');
-int pos3 = source.lastIndexOf(' ',pos2);
-String str2 = source.substring(pos3+1,pos2);
-System.out.println(source.substring(pos3+1,pos2));</code></pre></li>
-              <li><pre><code class="language-java">System.out.println(str1.compareTo(str2)>0);</code></pre></li>
-            </ol>
-
-            <p>2) A String variable sentence <b>consists of words separated by single spaces</b>.<br><br>
-              Write the Java code needed to <b>print the number of words that start with an upper case letter</b>. <br><br>
-              So for "The deed is done", your code would print 1 but for "The name is Bond, JAMES Bond", your code would print 4. </p>
-
+            
               <hr />
 
               <h2>Review</h2>
-              <p>a) Write a Java Program that <b>prompts the user to enter a String</b> and <b>counts the number of vowels</b> (a, e, i, o, u) in the String. 
-                Print out the total count to the console.
-                <br><br>
-                Sample Input:
-                <br>
-                <b>Enter a String:</b> Hello World
-                <br><br>
-                Sample Output:
-                <br>
-                <b>Number of vowels: 3</b></p>
-
-                <p>b) Write a Java Program that <b>prompts the user to enter a String </b>and <b>checks if the String is a palindrome</b> (reads the same forward and backward). 
-                  Print out a message to the console indicating whether the String is a palindrome or not.
-                  <br><br>
-                  Sample Input:
-                  <br>
-                  <b>Enter a String:</b> Wow
-                  <br><br>
-                  Sample Output:
-                  <br>
-                  <b>String reversed: woW</b>
-                  <br>
-                  <b>This String is a palindrome.</b></p>
+             
 
         <p>
           <a href="/courses/CISC1115/classwork_code/Week 8 Answers.txt"
