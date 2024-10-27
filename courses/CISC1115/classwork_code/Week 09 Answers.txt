@@ -60,62 +60,12 @@ if(Character.isUpperCase(sentence.charAt(0))) { //if the first letter is upper c
    count++;//count it!
 }
 
-int loc = sentence.indexOf(" ");//finds the index of the first space
-while (loc != -1) {//as long as there are spaces in the sentence
-   if(Character.isUpperCase(sentence.charAt(loc + 1))) { //if the first letter of the next word (after the space) is upper case
+int space = sentence.indexOf(" ");//finds the index of the first space
+while (space != -1) {//as long as there are spaces in the sentence
+   if(Character.isUpperCase(sentence.charAt(space + 1))) { //if the first letter of the next word (after the space) is upper case
       count++;//count it too!
    }
-   loc = sentence.indexOf(" ", loc + 1);//continue updating the value for loc based on the next location of a space
+   space = sentence.indexOf(" ", space + 1);//continue updating the value for loc based on the next location of a space
 }
 
 System.out.println("There are " + count + " words that start with an uppercase letter.");
-
-6)
-
-import java.util.Scanner;
-public class CountVowels {
-    public static void main(String [] args) {
-        Scanner sc = new Scanner (System.in);
-        System.out.print("Enter a String: ");
-        String s = sc.nextLine();
-
-        int countVowels = 0;
-
-        for(int i = 0; i < s.length(); i++) {
-            char c = s.charAt(i);
-            if(c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U' || c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u') {
-                countVowels++;
-            }
-        }
-
-        System.out.println("Number of vowels: " + countVowels);
-
-    }
-}
-
-
-7) 
-
-import java.util.Scanner;
-public class IsPalindrome {
-    public static void main(String [] args) {
-        Scanner sc = new Scanner (System.in);
-        System.out.print("Enter a String: ");
-        String s = sc.next();
-
-        String revS = "";
-        for(int i = s.length()-1; i >= 0; i--) {
-            revS += s.charAt(i);
-        }
-
-        System.out.println("String reversed: " + revS);
-
-        if(s.equalsIgnoreCase(revS)) {
-            System.out.println("This String is a palindrome.");
-        } else {
-            System.out.println("This String is nota palindrome.");
-        }
-    }
-}
-
-
