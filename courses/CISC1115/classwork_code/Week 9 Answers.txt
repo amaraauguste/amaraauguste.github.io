@@ -51,23 +51,7 @@ public static void printPattern(int n) {
 
 REVIEW
 
-a) 
 
-public static void main(String[] args) throws Exception {
-    File file = new File("Week9Emails.txt");
-    Scanner scanner = new Scanner(file);
-
-    System.out.println("Unique Domain Names:");
-
-    while (scanner.hasNext()) {
-         String first = scanner.next();
-         String last = scanner.next();
-         String email = scanner.next();
-         String domain = email.substring(email.indexOf('@') + 1);
-         System.out.println(domain);
-    }
-    scanner.close();
-}
 
 b) 
 
