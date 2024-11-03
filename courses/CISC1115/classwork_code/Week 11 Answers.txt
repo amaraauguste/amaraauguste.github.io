@@ -1,5 +1,157 @@
 Review
 
+a)
+
+public static void calcAverage() {
+    Scanner scanner = new Scanner(System.in);
+
+    System.out.print("Input the first number: ");
+    double num1 = scanner.nextDouble();
+
+    System.out.print("Input the second number: ");
+    double num2 = scanner.nextDouble();
+
+    System.out.print("Input the third number: ");
+    double num3 = scanner.nextDouble();
+
+    double average = (num1 + num2 + num3) / 3;
+
+    System.out.printf("The average value is %.1f\n", average);
+
+    scanner.close();
+}
+
+b)
+
+public static void printPattern(int n) {
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= i; j++) {
+            System.out.print("*");
+        }
+        System.out.println();
+    }
+}
+
+c)
+
+import java.util.Scanner;
+public class W11_Q1 {
+    public static void main(String [] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter the day of the week:");
+        String day = scanner.next();
+
+        System.out.println("Enter the date:");
+        int date = scanner.nextInt();
+
+        System.out.println("Enter the month (January to December):");
+        String month = scanner.next();
+
+        System.out.println("Enter the year:");
+        int year = scanner.nextInt();
+
+        printAmerican(day, date, month, year);
+        printEuropean(day, date, month, year);
+
+        scanner.close();
+    }
+
+    public static void printAmerican(String day, int date, String month, int year) {
+        System.out.println(day + ", " + month + " " + date + ", " + year);
+    }
+
+    public static void printEuropean(String day, int date, String month, int year) {
+        System.out.println(day + " " + date + " " + month + " " + year);
+    }
+}
+
+----------------------------------------------------------------------------------------
+
+1) 
+
+1  8  8
+-48  8  8
+
+2) 
+
+a. public static int method(int b, int a)
+
+b. c = method(a, b); AND a = method(b, a);
+
+c. 
+
+public static int method(int b, int a) {
+    int d;
+
+    d = a * b - b * b;
+    return d + b;
+}
+
+3) 
+
+public static int biggest(int x, int y, int z) {
+    if (x > y && x > z) {
+        return x;
+    } else if (y > z) {
+        return y;
+    } 
+    return z;
+}
+
+4)
+
+public static boolean isDivisible(double n, double m) {
+    return (n % m == 0);
+}
+
+5) 
+
+/**
+ * Checks if the given three sides form a valid triangle.
+ * @param side1 the length of the first side of the triangle
+ * @param side2 the length of the second side of the triangle
+ * @param side3 the length of the third side of the triangle
+ * @return true if the sides can form a valid triangle, false otherwise 
+ */
+public static boolean isTriangle(int side1, int side2, int side3) {
+    boolean isPositive = (side1 > 0) && (side2 > 0) && (side3 > 0);
+    return (isPositive && (side1 + side2 > side3) && (side1 + side3 > side2) && (side2 + side3 > side1));
+}
+
+6) 
+
+true
+true
+ping!
+pong!
+
+7) 
+
+public static double calculateVolumeOfSphere(double radius) {
+    return (4.0/3.0) * Math.PI * Math.pow(radius, 3);
+}
+
+public static double calculateSurfaceAreaOfSphere(double radius) {
+    return 4 * Math.PI * Math.pow(radius, 2);
+}
+
+public static boolean isSphereLarge(double radius) {
+    return calculateVolumeOfSphere(radius) > 1000;
+}
+
+public static void main(String [] args) {
+    double radius = 5.0;
+    double volume = calculateVolumeOfSphere(radius);
+    double surfaceArea = calculateSurfaceAreaOfSphere(radius);
+    boolean isLarge = isSphereLarge(radius);
+
+    System.out.println("Volume of the sphere: " + volume + " cubic units");
+    System.out.println("Surface area of the sphere: " + surfaceArea + " square units");
+    System.out.println("Is the sphere large: " + isLarge);
+}
+
+
 a) 
 
 import java.util.Scanner;//Scanner
