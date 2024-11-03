@@ -178,6 +178,23 @@ body {
   overflow-x: hidden;
   padding-top: 20px;
 }
+.header-link {
+  font-size: 30px; /* Desired font size */
+  white-space: nowrap; /* Prevent wrapping */
+  margin: 0; /* Reset margin if necessary */
+}
+
+.header-text {
+  color: inherit; /* Make sure to inherit color from parent */
+  text-decoration: none; /* Remove underline */
+  font-weight: normal; /* Optional: Adjust weight */
+  font-size: inherit; /* If you want to inherit the font size */
+}
+
+.header-link a {
+  font-size: 25px !important; /* Use !important to ensure it gets applied */
+  white-space: nowrap; /* Prevent wrapping */
+}
 
 #navbar a {
   padding: 6px 8px 6px 16px; /* adjust the padding to your liking */
