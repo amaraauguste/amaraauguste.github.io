@@ -13,6 +13,20 @@
   display: none;
   padding-left: 8px;
 }
+
+ .svgcontainer {
+  background-color: rgb(255, 255, 255);
+  padding: 20px;
+}
+
+.dark-mode .svgcontainer {
+  background-color: black;
+  padding: 20px;
+}
+
+.dark-mode .icon {
+  filter: brightness(0) invert(1); /* Change SVG color to white */
+}
 code {
   white-space: pre-wrap;
   word-wrap: break-word;
