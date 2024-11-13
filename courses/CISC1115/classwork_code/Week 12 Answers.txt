@@ -75,19 +75,15 @@ public class RandomIntegersCounter {
     }
 }
 
-
-
-REVIEW
-
-a)
+4)
 
 for (int i = 0; i < (arr.length+1) / 2; i++) {
 	  int temp = arr[i];
-    arr[i] = arr[arr.length-i-1];
-    arr[arr.length-i-1] = temp;
+    	  arr[i] = arr[arr.length-i-1];
+    	  arr[arr.length-i-1] = temp;
 }
 
-b) 
+5) 
 
 for (numberOfIncompletes=0,k=0; k<incompletes.length; k++) {
     if (incompletes[k] == studentID) {
@@ -95,15 +91,7 @@ for (numberOfIncompletes=0,k=0; k<incompletes.length; k++) {
     }
 }
 
-------------------------------------------------------------------------------
-
-1) LAB ON BLACKBOARD
-
-------------------------------------------------------------------------------
-
-REVIEW
-
-a) 
+6) 
 
 Enter any number: 3
 3 spring
