@@ -168,6 +168,7 @@
     <a class="nav-link" href="#Week10" style="font-size: 22px">Week 10</a>
     <a class="nav-link" href="#Week11" style="font-size: 22px">Week 11</a>
     <a class="nav-link" href="#Week12" style="font-size: 22px">Week 12</a>
+    <a class="nav-link" href="#Week13" style="font-size: 22px">Week 13</a>
     <!--<a class="nav-link" href="#Week7" style="font-size: 22px">Week 7</a>
       <a class="nav-link" href="#Week8" style="font-size: 22px">Week 8</a>
       <a class="nav-link" href="#Week9" style="font-size: 22px">Week 9</a>
@@ -1460,97 +1461,135 @@ Multiples of 5 count: 1</b>
    <br><br><b>(CodeLab: Chapter 8: Arrays > 8.6: Array traversal > #20767)</b>
   </p>
 
-<p>5) Given:
-  <ul>
-    <b><li>an int variable k,</li>
-    <li>an int array incompletes that has been declared and initialized,</li>
-    <li>an int variable studentID that has been initialized, and</li>
-    <li>an int variable numberOfIncompletes,</li></b>
-  </ul>
-  write code that <b>counts the number of times the value of studentID appears in incompletes and assigns this value to numberOfIncompletes</b>.
-  <br><br>
-  You may use <b>only k, incompletes, studentID, and numberOfIncompletes</b>.
-  <br><br>
-  Additional Notes: studentID and incompletes should not be modified
-  <br><br><b>(CodeLab: Chapter 8: Arrays > 8.8: Traverse and count > #20716)</b>  
-</p>
 
-<p>6) Show what is printed by the following program: <br><br>
-  The data values to be used are as follows: <b>3 6 9 12 0 15 2 5 8 11</b></p>
   
-  <pre><code style ="font-size: 25px;" class="language-java">public static void main(String [] args){
-      String x;
-      int month;
-      Scanner sc = new Scanner (System.in);
       
-      do {
-          System.out.print("Enter any number: ");
-          month = sc.nextInt();
-          x = season(month);
-          System.out.println(month + " " + x);
-      } while (month != 8);
-  
-  }
-  
-  public static String season(int month){
-      String [] choices = {"winter", "spring", "summer", "fall", "error"};
-  
-      if (month == 1 || month == 2 || month ==  12) {
-          return choices[0];
-      } else if (month >= 3 && month <= 5) {
-          return choices[1];
-      } else if (month >= 6 && month <= 8) {
-          return choices[2];
-      } else if (month >= 9 && month <= 11) {
-          return choices[3];
-      } else {
-          return choices[4];
-      }
-  }</code></pre>
   
   <p>
-      
-    
-  <!--  <hr/>
-
-      <h2>Review</h2>
-
-      
-         
-
-  <hr/>
-
-  
-  
-  <p>
-    <a href="/courses/CISC1115/classwork_code/Week 10 Answers.txt"
-      >Answers to Week 10 found here</a
+    <a href="/courses/CISC1115/classwork_code/Week 12 Answers.txt"
+      >Answers to Week 12 found here</a
     >
   </p>
   <hr />
 </section>
- WEEK 11 EXERCISES 
-<section class="main-section" id="Week11">
+ <!--WEEK 13 EXERCISES -->
+<section class="main-section" id="Week13">
   <h2>Review</h2>
 
+  <p>a) Given:
+    <ul>
+      <b><li>an int variable k,</li>
+      <li>an int array incompletes that has been declared and initialized,</li>
+      <li>an int variable studentID that has been initialized, and</li>
+      <li>an int variable numberOfIncompletes,</li></b>
+    </ul>
+    write code that <b>counts the number of times the value of studentID appears in incompletes and assigns this value to numberOfIncompletes</b>.
+    <br><br>
+    You may use <b>only k, incompletes, studentID, and numberOfIncompletes</b>.
+    <br><br>
+    Additional Notes: studentID and incompletes should not be modified
+    <br><br><b>(CodeLab: Chapter 8: Arrays > 8.8: Traverse and count > #20716)</b>  
+  </p>
   
+  <p>b) Show what is printed by the following program: <br><br>
+    The data values to be used are as follows: <b>3 6 9 12 0 15 2 5 8 11</b></p>
+    
+    <pre><code style ="font-size: 25px;" class="language-java">public static void main(String [] args){
+        String x;
+        int month;
+        Scanner sc = new Scanner (System.in);
+        
+        do {
+            System.out.print("Enter any number: ");
+            month = sc.nextInt();
+            x = season(month);
+            System.out.println(month + " " + x);
+        } while (month != 8);
+    
+    }
+    
+    public static String season(int month){
+        String [] choices = {"winter", "spring", "summer", "fall", "error"};
+    
+        if (month == 1 || month == 2 || month ==  12) {
+            return choices[0];
+        } else if (month >= 3 && month <= 5) {
+            return choices[1];
+        } else if (month >= 6 && month <= 8) {
+            return choices[2];
+        } else if (month >= 9 && month <= 11) {
+            return choices[3];
+        } else {
+            return choices[4];
+        }
+    }</code></pre>
 
  
 
 
 <hr/>
 
-<h2>Week 11</h2>
+<h2>Week 13</h2>
 
-
-<p>
-<a href="/courses/CISC1115/classwork_code/Week 11 Answers.txt"
-  >Answers to Week 11 found here</a
->
+<p>1) Write a complete Java program that creates 2 parallel arrays and 
+  intialize them using initialization lists that represent the data below. 
+  Remember that the order of these arrays has to match so that you can use 
+  the same index and get corresponding values out.
+<ul>
+  <li><b>Countries:</b> China, Egypt, France, Germany, India, Japan, Kenya, Mexico, United Kingdom, United States</li>
+  <li><b>Capitals:</b> Beijing, Cairo, Paris, Berlin, New Delhi, Tokyo, Nairobi, Mexico City, London, Washington D.C.</li>
+</ul>
+In <b>main</b>(): <br><br>
+First, call a method, <b>printMenu</b>() to print a menu of the countries listed to screen and then prompt the user to enter a particular country.<br><br>
+Once you have read in the user's selected country, call a method, <b>getCapital</b>() to print out the country's corresponding capital.
+<br><br>This method should first call another method, <b>findIndex</b>() to find and return the specific index that the country is located at 
+in the countries array. 
+<ul>
+  <li>If findIndex() returns a -1, getCapital() should print out an error that the country is not found in the list. </li>
+  <li>Otherwise, it should print out the corresponding capital (Hint: it should be located at the same index in the capitals array as the country in the countries array)</li>
+</ul>
 </p>
-<hr />
+
+<p>2) Using the following array: </p>
+
+<img
+style="
+  width: 90%;
+  height: 90%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+"
+src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC1115/images/Binary-Search-1.png?raw=true"
+alt="array"
+/>
+
+<p>a) Show the process of performing a <b>sequential (linear) search</b> to find element: <b>23</b></p>
+
+<p>b) Then, show the process of performing a <b>binary search</b> to find element: <b>23</b></p>
+
+<p>3)  Consider an array of 10 integers that contains the following values in increasing sequence:
+  <br><br> <b>3	15	25	43	50	76	88	102	110	120</b>
+  <br><br>Assume you wish to find the location of the element with <b>value 43</b>.
+  <ul>
+    <li>Show the sequence of numbers that you would encounter in this search if you used a <b>sequential search</b>.</li>
+    <li>Show the sequence of numbers that you would encounter in this search if you used a <b>binary search</b>.</li>
+  </ul>
+</p>
+
+<p>4) Given the array of numbers below, show all the steps as you perform a <b>binary
+  search</b>, looking for the <b>key of 17</b>:
+  <br><br><b>int [] nums = {9, 15, 23, 67, 78, 85, 111, 117, 135, 225, 829, 1000};</b>
+</p>
+
+<!--<p>
+<a href="/courses/CISC1115/classwork_code/Week 13 Answers.txt"
+  >Answers to Week 13 found here</a
+>
+</p>-->
+
 </section>
- WEEK 12 EXERCISES 
+ <!--WEEK 12 EXERCISES 
 <section class="main-section" id="Week12">
  
   
@@ -1589,24 +1628,7 @@ Multiples of 5 count: 1</b>
     WEEK 14 EXERCISES 
 <section class="main-section" id="Week14">
   <h2>Review</h2>
-  <p>a) Write a complete Java program that creates 2 parallel arrays and 
-    intialize them using initialization lists that represent the data below. 
-    Remember that the order of these arrays has to match so that you can use 
-    the same index and get corresponding values out.
-  <ul>
-    <li><b>Countries:</b> China, Egypt, France, Germany, India, Japan, Kenya, Mexico, United Kingdom, United States</li>
-    <li><b>Capitals:</b> Beijing, Cairo, Paris, Berlin, New Delhi, Tokyo, Nairobi, Mexico City, London, Washington D.C.</li>
-  </ul>
-  In <b>main</b>(): <br><br>
-  First, call a method, <b>printMenu</b>() to print a menu of the countries listed to screen and then prompt the user to enter a particular country.<br><br>
-  Once you have read in the user's selected country, call a method, <b>getCapital</b>() to print out the country's corresponding capital.
-  <br><br>This method should first call another method, <b>findIndex</b>() to find and return the specific index that the country is located at 
-  in the countries array. 
-  <ul>
-    <li>If findIndex() returns a -1, getCapital() should print out an error that the country is not found in the list. </li>
-    <li>Otherwise, it should print out the corresponding capital (Hint: it should be located at the same index in the capitals array as the country in the countries array)</li>
-  </ul>
-  </p>
+ 
  
 
 
@@ -1647,19 +1669,7 @@ Multiples of 5 count: 1</b>
     alt="equation"
   />
 
-  <p>b)  Consider an array of 10 integers that contains the following values in increasing sequence:
-    <br><br> <b>3	15	25	43	50	76	88	102	110	120</b>
-    <br><br>Assume you wish to find the location of the element with <b>value 43</b>.
-    <ul>
-      <li>Show the sequence of numbers that you would encounter in this search if you used a <b>sequential search</b>.</li>
-      <li>Show the sequence of numbers that you would encounter in this search if you used a <b>binary search</b>.</li>
-    </ul>
-  </p>
-
-  <p>c) Given the array of numbers below, show all the steps as you perform a <b>binary
-    search</b>, looking for the <b>key of 15</b>:
-    <br><br><b>int [] nums = {9, 15, 23, 67, 78, 85, 111, 117, 135, 225, 829, 1000};</b>
-  </p>
+  
 
   
 
