@@ -4881,14 +4881,14 @@ for (int i = 0; i < a.length; i++) {
 
         <p>
           The following code creates an <b>int</b> array and fills it with
-          random numbers between 0 and 99, then displays it using the
+          random numbers between 0 and 100 (inclusive), then displays it using the
           printArray() we just discussed:
         </p>
 
         <pre><code class="language-java">public static void main (String [] args) {
     final int SIZE = 10;
-    int max = 100;
-    int min = 1;
+    int max = 101;
+    int min = 0;
     int [] a = new int [SIZE];
     for (int i = 0; i < a.length; i++) {
         int rand = (int) (Math.random() * (max - min) + min);
