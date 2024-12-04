@@ -1,0 +1,100 @@
+2020,Jujutsu Kaisen,JP,ONGOING
+2021,Arcane,US,2024
+2011,The Amazing World of Gumball,UK,ONGOING
+2014,Haikyu!!,JP,2020
+1999,SpongeBob SquarePants,US,ONGOING
+2019,Demon Slayer,JP,ONGOING
+2011,Impractical Jokers,US,ONGOING
+1999,SpongeBob SquarePants,US,ONGOING
+2007,iCarly,US,2012
+2014,Henry Danger,US,2020
+2010,Victorious ,US,2013
+2004,Drake & Josh,US,2007
+2014,The Flash,US,2023
+2018,All American,US,ONGOING
+2009,Big Time Rush,US,2013
+2013,The Thundermans,US,2018
+2007,iCarly,US,2012
+2021,Squid Game,KR,ONGOING
+2008,Breaking Bad,US,2013
+2021,Squid Game,KR,ONGOING
+1999,One Piece,JP,ONGOING
+2012,Jojo's Bizarre Adventure,JP,ONGOING
+2021,Arcane,US,2024
+2013,Attack On Titan,JP,2023
+1999,Futurama ,US,ONGOING
+2005,The Boondocks,US,2014
+2005,Everybody Hates Chris ,US,2009
+1990,The Fresh Prince of Bel-Air,US,1996
+1999,SpongeBob SquarePants,US,ONGOING
+1999,Courage the Cowardly Dog,US,2002
+2022,House Of The Dragon,US,ONGOING
+2011,Game of Thrones,US,2019
+2022,The Lord of the Rings: The Rings of Power,US,ONGOING
+2008,Breaking Bad,US,2013
+2015,We Bare Bears,US,2019
+1999,SpongeBob SquarePants,US,ONGOING
+2011,Suits,US,2019
+2002,Naruto,JP,2007
+2014,The Flash,US,2023
+2012,Lab Rats,US,2016
+1999,SpongeBob SquarePants,US,ONGOING
+1999,Family Guy,US,ONGOING
+2019,Chernobyl,US,2019
+2021,Tokyo Revengers,JP,ONGOING
+2021,Squid Game,KR,ONGOING
+2012,Sword Art Online,JP,ONGOING
+2020,Jujutsu Kaisen,JP,ONGOING
+2011,Shameless,US,2021
+2015,Superstore ,US,2021
+2021,Abbott Elementary,US,ONGOING
+2011,The Amazing World of Gumball,UK,ONGOING
+1999,SpongeBob SquarePants,US,ONGOING
+2005,The Office,US,2013
+2009,Modern Family,US,2020
+2017,Ultraman Geed,JP,2017
+2019,Ultraman (Netflix),JP,2023
+2006,Code Geass,JP,2008
+2022,Star Wars: Obi-Wan Kenobi,US,2022
+2023,Ultraman Blazar,JP,2024
+2006,Ultraman Mebius,JP,2007
+2005,Prison Break,US,2017
+2020,Outer Banks ,US,ONGOING
+2023,The Diplomat,US,ONGOING
+2008,Breaking Bad,US,2013
+2009,White Collar ,US,2014
+2017,Young Sheldon,US,2024
+2009,Dinosaur Train,US,2021
+2002,CyberChase,US,ONGOING
+2011,Wild Kratts,US,ONGOING
+2007,WordGirl,US,2015
+2006,Curious George,US,2022
+2013,Peg + Cat,US,2018
+2024,The Judge from Hell,KR,2024
+2021,Squid Game,KR,ONGOING
+2020,Alice in Borderland,JP,ONGOING
+2005,Criminal Minds,US,ONGOING
+2005,Prison Break,US,2017
+2015,Run BTS!,KR,ONGOING
+2010,The Walking Dead,US,2022
+2021,Maid,US,2021
+2018,Good Girls,US,2021
+2013,Peaky Blinders,UK,2022
+2000,Gilmore Girls,US,2007
+2016,Gilmore Girls: A Year In The Life,US,2016
+2018,Lost In Space,US,2021
+2021,WandaVision,US,2021
+2015,The Seven Deadly Sins,JP,2021
+2016,Lucifer,US,2021
+2017,The Good Doctor,US,2024
+2017,Young Sheldon,US,2024
+2021,WandaVision,US,2021
+2021,The Falcon and the Winter Soldier,US,2021
+2018,The Rookie,US,ONGOING
+2011,Suits,US,2019
+2016,Dil Lagi,PK,2016
+2023,Ishq Murshid,PK,2024
+2016,Guardian: The Lonely and Great God,KR,2017
+2016,Descendants of the Sun,KR,2016
+2009,The Vampire Diaries,US,2017
+2017,Strong Girl Bong-soon,KR,2017
