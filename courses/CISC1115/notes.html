@@ -66,7 +66,7 @@
       </li>
 
       <!--Chapter 3 Dropdown-->
-      <li>
+      <!--<li>
         <a class="dropdown-btn" href="#Input_and_Output" style="font-size: 20px">Input and Output</a>
         <div class="dropdown-container container3">
           <a href="#System_Class" onclick="closeDropdown3()">System Class</a>
@@ -77,9 +77,9 @@
           <a href="#Program_Structure" onclick="closeDropdown3()">Program Structure</a>
           <a href="#Using_Files" onclick="closeDropdown3()">Using Files</a>
         </div>
-      </li>
+      </li>-->
       <!--Chapter 5 Dropdown-->
-      <li>
+      <!--<li>
         <a class="dropdown-btn" href="#Conditionals_and_Logic" style="font-size: 20px">Conditionals and Logic</a>
         <div class="dropdown-container container5">
           <a href="#Relational_Operators" onclick="closeDropdown5()">Relational Operators</a>
@@ -91,9 +91,9 @@
           <a href="#Switch_Statements" onclick="closeDropdown5()">Switch Statements</a>
           <a href="#The_char_Data_Type" onclick="closeDropdown5()">The char Data Type</a>
         </div>
-      </li>
+      </li>-->
       <!--Chapter 7 Dropdown-->
-      <li>
+      <!--<li>
         <a class="dropdown-btn" style="font-size: 20px">Loops</a>
         <div class="dropdown-container container7">
           <a href="#Loops" onclick="closeDropdown7()">What are Loops?</a>
@@ -103,9 +103,9 @@
           <a href="#The_for_Loop" onclick="closeDropdown7()">The for Loop</a>
           <a href="#Nested_Loops" onclick="closeDropdown7()">Nested Loops</a>
         </div>
-      </li>
+      </li>-->
       <!--Chapter 9 Dropdown-->
-      <li>
+      <!--<li>
         <a class="dropdown-btn" href="#Strings_and_Things" style="font-size: 20px">Strings and Things</a>
         <div class="dropdown-container container9">
           <a href="#Characters" onclick="closeDropdown9()">Characters</a>
@@ -119,9 +119,9 @@
           <a href="#The_.split()_Method" onclick="closeDropdown9()">The .split() Method</a>
           <a href="#Wrapper_Classes" onclick="closeDropdown9()">Wrapper Classes</a>
         </div>
-      </li>
+      </li>-->
      <!-- Chapter 4 and 6 Dropdown-->
-      <li>
+      <!--<li>
         <a class="dropdown-btn" href="#Methods" style="font-size: 20px">Methods</a>
         <div class="dropdown-container container46">
           <a href="#Composition" onclick="closeDropdown46()">Composition</a>
@@ -137,9 +137,9 @@
           <a href="#Boolean_Methods" onclick="closeDropdown46()">Boolean Methods</a>
           <a href="#Javadoc_Tags" onclick="closeDropdown46()">Javadoc Tags</a>
         </div>
-      </li>
+      </li>-->
       <!--Chapter 8 Dropdown-->
-      <li>
+      <!--<li>
         <a class="dropdown-btn" href="#Arrays" style="font-size: 20px">Arrays</a>
         <div class="dropdown-container container8">
           <a href="#Creating_Arrays" onclick="closeDropdown8()">Creating Arrays</a>
@@ -157,9 +157,9 @@
           <a href="#Searching_Arrays" onclick="closeDropdown8()">Searching Arrays</a>
           <a href="#Sorting_Arrays" onclick="closeDropdown8()">Sorting Arrays</a> 
         </div>
-      </li>
+      </li>-->
       <!--Number Systems Dropdown-->
-      <li>
+      <!--<li>
         <a class="dropdown-btn" href="#Number_Systems" style="font-size: 20px">Number Systems</a>
         <div class="dropdown-container containerNS">
           <a href="#Decimal/Binary" onclick="closeDropdownNS()">Decimal / Binary Conversion</a>
@@ -167,7 +167,7 @@
           <a href="#Decimal/Hexadecimal" onclick="closeDropdownNS()">Decimal / Hexadecimal Conversion</a>
           <a href="#Binary_Arithmetic" onclick="closeDropdownNS()">Binary Arithmetic</a>
         </div>
-      </li>
+      </li>-->
       <li><a href="#Reference" style="font-size: 20px">Reference</a></li>
       <!-- add more links here -->
       <a href="https://amaraauguste.github.io/courses/cisc1115.html" class="previous backbutton"
@@ -990,8 +990,8 @@ double result = 10.0 / 3;//Regular division, result is approximately 3.3333</cod
       <br />
       <hr />
     </section>
-
-    <!--Chapter 3-->
+    
+    <!--Chapter 3
     <section class="main-section" id="System_Class">
       <br />
       <header><b>The System class</b></header>
@@ -1545,7 +1545,7 @@ cm = inches * cmPerInch;</code></pre>
       <hr />
     </section>
 
-    <!--Chapter 5-->
+    Chapter 5
     <section class="main-section" id="Relational_Operators">
       <br />
       <header><b>Relational Operators</b></header>
@@ -2050,8 +2050,7 @@ int day = sc.nextInt();</code></pre>
         <p>Note that if the default statement is <b>used as the last statement in a switch block, it does not need a
             break</b>.</p>
         <br>
-        <!--<p>How can we modify our <a href="/courses/CISC1115/classwork_code/MY11Lab1Modified.java">previous lab</a> to
-          utilize switch statements instead of the if/else-if/else block we used previously?</p>-->
+      
       </article>
       <br />
       <header>Combining Cases</header>
@@ -2185,7 +2184,7 @@ System.out.println(third);</code></pre>
     </section>
 
 
-    <!--Chapter 7-->
+    Chapter 7
 
   
     <section class="main-section" id="Loops">
@@ -3053,10 +3052,18 @@ System.out.println(uppercaseLetter);</code></pre>
           A String class object acts the same as an <b>array of characters in Java</b>. <br><br>In Java, objects of the
           String class
           are <b>immutable</b> which means that they are constant and <b>cannot be changed once created</b>.</p>
-        <p>A String variable contains a collection of characters surrounded by double quotes:</p>
-        <pre><code class="language-java">String greeting = "Hello!";</code></pre>
+        <p>A String variable contains a collection of characters surrounded by double quotes.</p>
+        <p>There are two ways to create a String in Java:</p>
+        <ol>
+          <li>By String literal: </li>
+        
+        <pre><code class="language-java">String greeting1 = "Hello!";</code></pre>
 
+        <li>By new keyword: </li>
 
+        <pre><code class="language-java">String greeting2 = new String("Hello!");</code></pre>
+
+      </ol>
 
         <p>A String in Java is actually an object, which means that it contains methods that can perform certain
           operations on Strings. </p>
@@ -6574,7 +6581,7 @@ grade[2] = temp;</code></pre>
 
 
 
-    <hr/>
+    <hr/>-->
     <section class="main-section" id="Reference">
       <br />
       <header><b>Reference</b></header>
