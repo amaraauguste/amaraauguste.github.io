@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>CISC 1115 Calendar</title>
+  <!-- CSS for full calendar -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.css" rel="stylesheet" />
+  <!-- JS for jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- JS for full calendar -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js"></script>
+  <style>
+    /* width */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 5px grey;
+      border-radius: 10px;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      background: rgb(183, 147, 241);
+      border-radius: 10px;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgb(140, 111, 186);
+    }
+
+    html,
+    body {
+      background-color: #ffedfd;
+      font-family: "Copperplate";
+    }
+  </style>
+</head>
+
+<body>
+  <div id="calendar"></div>
+</body>
+<script>
+  $(document).ready(function () {
+    $("#calendar").fullCalendar({
+      defaultView: "month",
+      events: [
+        {
+          title: "Start of Spring 2025 Semester",
+          start: "2025-01-25",
+          color: "#FF0000",
+        },
+        {
+          title: "First Day of TY8 Class",
+          start: "2025-01-28",
+          color: "#D186FF",
+        },
+        {
+          title: "No Classes Scheduled",
+          start: "2025-01-29", 
+          color: "#FF0000",
+        },
+        {
+          title: "College Closed - No Classes Scheduled",
+          start: "2025-02-12", 
+          color: "#FF0000",
+        },
+        {
+          title: "College Closed - No Classes Scheduled",
+          start: "2025-02-17", // Presidents' Day,
+          color: "#FF0000",
+        },
+        {
+          title: "No Class - Monday Schedule",
+          start: "2025-02-18", //Conversion Day - Monday Schedule
+          color: "#FF0000",
+        },
+        {
+          title: "No Class - Wednesday Schedule",
+          start: "2025-03-06", //Conversion Day - Wednesday Schedule
+          color: "#FF0000",
+        },
+        {
+          title: "No Classes Scheduled",
+          start: "2025-03-31", 
+          color: "#FF0000",
+        },
+        {
+          title: "Withdrawal Deadline",
+          start: "2025-04-01",
+          color: "#FF0000",
+        },
+        {
+          title: "Spring Break - No Classes",
+          start: "2025-04-12",
+          end: "2025-04-21",
+          color: "#FF0000",
+        },
+        {
+          title: "Last Day of Class",
+          start: "2025-05-15",
+          color: "#FF0000",
+        },
+
+
+      ],
+      eventRender: function (event, element) {
+        element.css("background-color", event.color); // set background color
+        element.css("border-color", event.color); // set border color
+      },
+    });
+  });
+</script>
+
+</html>
