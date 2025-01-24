@@ -310,6 +310,10 @@ body {
   background-color: #0b0b31;
  }
 
+ .dark-mode a {
+  color: yellow; /* Light links */
+}
+
 .dark-mode .structure tr:nth-child(1) {
   background-color: #222222;
 }
