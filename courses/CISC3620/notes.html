@@ -1,0 +1,1454 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Default CSS style for dark mode -->
+  <link id="dark-mode" rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/base16/bright.css" />
+
+  <!-- CSS style for light mode -->
+  <link id="light-mode" rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/felipec.css" disabled />
+
+  <link rel="stylesheet" href="../3620style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+  <!-- and it's easy to individually load additional languages -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+
+  <script>
+    hljs.highlightAll();
+  </script>
+  <title>CISC 3620</title>
+</head>
+
+<body>
+  <nav id="navbar">
+    <header class="header-link">
+      <a href="https://amaraauguste.github.io/courses/cisc3620.html" style="color: inherit; text-decoration: none;"
+        class="header-text">CISC 3620</a>
+    </header>
+    <div class="mode">
+      Dark mode:
+      <span class="change" onclick="toggleMode()">OFF</span>
+    </div>
+    <hr />
+
+    <ul>
+      <!--Chapter 1 Dropdown-->
+      <li>
+        <a class="dropdown-btn" style="font-size: 20px">Introduction</a>
+        <div class="dropdown-container">
+          <a href="#What_is_Computer_Graphics?" onclick="closeDropdown()">What is Computer Graphics?</a>
+          <a href="#Types_of_Computer_Graphics" onclick="closeDropdown()">Types of Computer Graphics</a>
+          <a href="#Applications_of_Computer_Graphics" onclick="closeDropdown()">Applications of Computer Graphics</a>
+          <a href="#The_Computer_Graphics_System" onclick="closeDropdown()">The Computer Graphics System</a>
+        </div>
+      </li>
+      <!--Chapter 2 Dropdown-->
+      <li>
+        <a class="dropdown-btn" style="font-size: 20px">2D Computer Graphics</a>
+        <div class="dropdown-container container2">
+          <a href="#Types_of_2D_Graphics" onclick="closeDropdown2()">Types of 2D Graphics</a>
+          <a href="#Pixels_and_Coordinate_Systems" onclick="closeDropdown2()">Pixels and Coordinate Systems</a>
+          <a href="#Color_Models" onclick="closeDropdown2()">Color Models</a>
+          <!--<a href="#Variable_Scope" onclick="closeDropdown2()">Variable Scope</a>
+          <a href="#Global_Variables" onclick="closeDropdown2()">Global Variables</a>
+          <a href="#Operators" onclick="closeDropdown2()">Operators</a>
+          <a href="#Floating-Point_Numbers" onclick="closeDropdown2()">Floating-Point Numbers</a>
+          <a href="#Math_Methods" onclick="closeDropdown2()">Math Methods</a>
+          <a href="#Error_Types" onclick="closeDropdown2()">Error Types</a>-->
+        </div>
+      </li>
+
+      <!--Chapter 3 Dropdown-->
+      <!--<li>
+        <a class="dropdown-btn" href="#Input_and_Output" style="font-size: 20px">Input and Output</a>
+        <div class="dropdown-container container3">
+          <a href="#System_Class" onclick="closeDropdown3()">System Class</a>
+          <a href="#Data_Types" onclick="closeDropdown3()">Data Types</a>
+          <a href="#Reading_Input" onclick="closeDropdown3()">Reading Input</a>
+          <a href="#Literals_and_Constants" onclick="closeDropdown3()">Literals and Constants</a>
+          <a href="#Putting_it_all_Together" onclick="closeDropdown3()">Putting it all Together</a>
+          <a href="#Program_Structure" onclick="closeDropdown3()">Program Structure</a>
+          <a href="#Using_Files" onclick="closeDropdown3()">Using Files</a>
+        </div>
+      </li>-->
+
+      <li><a href="#Reference" style="font-size: 20px">Reference</a></li>
+      <!-- add more links here -->
+      <a href="https://amaraauguste.github.io/courses/cisc3620.html" class="previous backbutton"
+        style="font-size: 20px;">&laquo; Back</a>
+      <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    </ul>
+  </nav>
+
+  <main id="main-doc">
+    <!-- WEEK 1 NOTES -->
+    <!-- WEEK 1 DAY 1-->
+
+
+    <section class="main-section" id="What_is_Computer_Graphics?">
+      <br />
+      <header><b>What is Computer Graphics?</b></header>
+      <article>
+        <p>The term "Computer Graphics" is concerned with all aspects of producing pictures or images using a computer.
+        </p>
+        <p>It encompasses the <b>creation</b>, <b>manipulation</b>, and <b>representation of images and animations</b>
+          on computers.</p>
+      </article>
+      <br />
+    </section>
+    <hr />
+    <section class="main-section" id="Types_of_Computer_Graphics">
+      <br />
+      <header><b>Types of Computer Graphics</b></header>
+      <article>
+        <p>Computer graphics can be broadly classified into two types: two-dimensional (2D) and three-dimensional (3D)
+          graphics.</p>
+        <p><b>2D Graphics:</b> are digital images that are computer-based. </p>
+        <p>They include 2D geometric models, such as image compositions,
+          pixel art, digital art, photographs, and text.</p>
+        <p>2D graphics or computer generated images are used everyday on traditional printing and drawing. </p>
+        <p><b>3D Graphics:</b> are graphics that use 3D representation of geometric data.</p>
+        <p>This geometric data is then manipulated by computers via 3D computer graphics software in order to customize
+          their display,
+          movements, and appearance.</p>
+        <p>3D computer graphics are often referred to as 3d models. A 3d model is a mathematical representation of
+          geometric data that is contained in a data file. 3D models, can be used for real-time 3D viewing in
+          animations, videos,
+          movies, training, simulations, architectural visualizations or for display as 2D rendered images (2D renders)
+        </p>
+      </article>
+      <br />
+    </section>
+    <section class="main-section" id="Applications_of_Computer_Graphics">
+      <br />
+      <header><b>Applications of Computer Graphics</b></header>
+      <article>
+        <p>The development of computer graphics has been driven both by the needs of the user
+          community and by advances in hardware and software. The applications of computer
+          graphics are many and varied; we can, however, divide them into <b>four</b> major areas:</p>
+        <ol>
+          <li>Display of information</li>
+          <li>Design</li>
+          <li>Simulation and animation</li>
+          <li>User interfaces</li>
+        </ol>
+        <p>Although many applications span two or more of these areas, the development of the
+          field was based on separate work in each.</p>
+        <h2>1. Display of Information:</h2>
+        <p>One of the most common uses of computer graphics is to display information in a
+          pictorial or graphical form. This includes the generation of charts, graphs, and maps,
+          as well as the visualization of scientific data. For example, medical imaging techniques
+          such as MRI and CT scans use computer graphics to create detailed images of the human
+          body.</p>
+        <h2>2. Design:</h2>
+        <p>Computer graphics is widely used in design and modeling applications, such as
+          computer-aided design (CAD) for engineering and architectural design. It allows
+          designers to create and manipulate 3D models of objects and structures, visualize
+          designs from different angles, and simulate how they will look and function in the real
+          world.</p>
+        <h2>3. Simulation and Animation:</h2>
+        <p>Computer graphics is also used to create realistic simulations and animations for
+          various purposes, including entertainment, training, and scientific visualization. This
+          includes the creation of 3D animations for movies and video games, as well as
+          simulations for training pilots, surgeons, and other professionals.</p>
+        <h2>4. User Interfaces:</h2>
+        <p>Computer graphics plays a crucial role in the design of user interfaces for
+          software applications. It allows developers to create visually appealing and intuitive
+          interfaces that enhance the user experience. This includes the design of icons, buttons,
+          menus, and other graphical elements that users interact with.</p>
+
+
+      </article>
+      <br />
+    </section>
+    <section class="main-section" id="The_Computer_Graphics_System">
+      <br />
+      <header><b>The Computer Graphics System</b></header>
+      <article>
+        <p>A computer graphics system is a computer system; as such, it must have all the
+          components of a general-purpose computer system. There are six major elements in our system:</p>
+        <ol>
+          <li>Input devices</li>
+          <li>Central Processing Unit</li>
+          <li>Graphics Processing Unit</li>
+          <li>Memory</li>
+          <li>Frame buffer</li>
+          <li>Output devices</li>
+        </ol>
+
+        <p>These components are shown in the figure below:</p>
+
+        <img style="width: 100%; height: 100%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/the%20computer%20graphics%20system.png?raw=true"
+          alt="The computer graphics system">
+
+        <p>This model is general enough to include workstations and personal computers,
+          interactive game systems, mobile phones, GPS systems, and sophisticated imagegeneration systems.
+          Although most of the components are present in a standard computer, it is the way each element is specialized
+          for
+          computer graphics that characterizes this diagram as a portrait of a graphics system.</p>
+
+        <h2>Input Devices</h2>
+
+        <p>Input devices are used to capture data (and images) from the real world and convert them into a form that can
+          be processed by the computer.</p>
+
+        <p>Most graphics systems provide a keyboard and at least one other input device. The
+          most common input devices are the mouse, the joystick, and the data tablet. Each
+          provides positional information to the system, and each usually is equipped with one
+          or more buttons to provide signals to the processor. Often called pointing devices,
+          these devices allow a user to indicate a particular location on the display.</p>
+
+        <p>Modern systems, such as game consoles, provide a much richer set of input
+          devices, with new devices appearing almost weekly. In addition, there are devices
+          which provide three- (and more) dimensional input. Consequently, we want to provide a
+          flexible model for incorporating the input from such devices into our graphics
+          programs</p>
+
+        <p>We can think about input devices in two distinct ways. The obvious one is to look
+          at them as <b>physical devices</b>, such as a keyboard or a mouse, and to discuss how they
+          work. Certainly, we need to know something about the physical properties of our input devices,
+          so such a discussion is necessary if we are to obtain a full understanding
+          of input. However, from the perspective of an application programmer, we should not
+          need to know the details of a particular physical device to write an application program.</p>
+
+        <p>Rather, we prefer to treat input devices as <b>logical devices</b> whose properties are
+          specified in terms of what they do from the perspective of the application program. A
+          logical device is characterized by its high-level interface with the user program rather
+          than by its physical characteristics. </p>
+
+        <p>Logical devices are familiar to all writers of highlevel programs.
+          For example, data input and output in Java are done through classes
+          such as System.out for output, PrintWriter for writing to files, and Scanner for input, whose methods use the
+          standard Java data types. When we output a string using System.out.println or PrintWriter.println, the
+          physical device
+          on which the output appears could be a printer, a terminal, or a disk file. This output could even be the
+          input to another
+          program. The details of the format required by the destination device are of minor
+          concern to the writer of the application program.</p>
+
+        <p>In computer graphics, the use of logical devices is slightly more complex because
+          the forms that input can take are more varied than the strings of bits or characters
+          to which we are usually restricted in nongraphical applications. For example, we can
+          use the mouse—a physical device—either to select a location on the screen of our
+          CRT or to indicate which item in a menu we wish to select. In the first case, an x, y
+          pair (in some coordinate system) is returned to the user program; in the second, the
+          application program may receive an integer as the identifier of an entry in the menu.
+          The separation of physical from logical devices allows us to use the same physical
+          devices in multiple markedly different logical ways. It also allows the same program
+          to work, without modification, if the mouse is replaced by another physical device,
+          such as a data tablet or trackball.</p>
+
+        <h3>Physical Input Devices</h3>
+
+        <p>From the physical perspective, each input device has properties that make it more
+          suitable for certain tasks than for others. We take the view used in most of the workstation
+          literature that there are <b>two</b> primary types of physical devices: <b>pointing devices</b>
+          and <b>keyboard devices</b></p>
+
+        <p>The pointing device allows the user to indicate a position on
+          the screen and almost always incorporates one or more buttons to allow the user to
+          send signals or interrupts to the computer.</p>
+
+        <p>The keyboard device is almost always a physical keyboard but can be generalized to include any device that
+          returns character
+          codes. We use the American Standard Code for Information Interchange (ASCII) in
+          our examples. ASCII assigns a single unsigned byte to each character. Nothing we do
+          restricts us to this particular choice, other than that ASCII is the prevailing code used.
+          Note, however, that other codes, especially those used for Internet applications, use
+          multiple bytes for each character, thus allowing for a much richer set of supported
+          characters.</p>
+
+        <p>The mouse and trackball are similar in use and often
+          in construction as well. A typical mechanical mouse when turned over looks like a
+          trackball. In both devices, the motion of the ball is converted to signals sent back to
+          the computer by pairs of encoders inside the device that are turned by the motion of
+          the ball. The encoders measure motion in two orthogonal directions</p>
+
+        <p>There are many variants of these devices. Some use optical detectors rather than
+          mechanical detectors to measure motion. Small trackballs are popular with portable
+          computers because they can be incorporated directly into the keyboard. There are
+          also various pressure-sensitive devices used in keyboards that perform similar functions
+          to the mouse and trackball but that do not move; their encoders measure the
+          pressure exerted on a small knob that often is located between two keys in the middle
+          of the keyboard</p>
+
+        <p>We can view the output of the mouse or trackball as two independent values
+          provided by the device. These values can be considered as positions and converted—
+          either within the graphics system or by the user program—to a two-dimensional
+          location in a convenient coordinate system. If it is configured in this manner, we can
+          use the device to position a marker (cursor) automatically on the display; however,
+          we rarely use these devices in this direct manner.</p>
+
+        <p>It is not necessary that the output of the mouse or trackball encoders be interpreted as a position.
+          Instead, either the device driver or a user program can interpret
+          the information from the encoder as two independent velocities. The computer can
+          then integrate these values to obtain a two-dimensional position.</p>
+
+        <p>Thus, as a mouse moves across a surface, the integrals of the velocities yield x, y
+          values that can be converted to indicate the position for a cursor on the screen, as shown below:</p>
+
+        <img style="width: 100%; height: 100%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/cursor%20positioning.png?raw=true"
+          alt="cursor positioning">
+
+        <p>By interpreting the distance traveled by the ball as a velocity, we can use the device
+          as a variable-sensitivity input device. Small deviations from rest cause slow or small
+          changes; large deviations cause rapid large changes.</p>
+
+        <p>With either device, if the ball does not rotate, then there is no change in the integrals and a cursor
+          tracking the position of the mouse will not move. </p>
+
+        <p>In this mode, these devices are <b>relative-positioning</b> devices because changes in the position of
+          the ball yield a position in the user program; the absolute location of the ball (or the mouse) is not used by
+          the application
+          program.</p>
+
+        <p>Relative positioning, as provided by a mouse or trackball, is <b>not always desirable</b>.</p>
+
+        <p>In particular, these devices are not suitable for an operation such as tracing a diagram.
+          If, while the user is attempting to follow a curve on the screen with a mouse, she
+          lifts and moves the mouse, the absolute position on the curve being traced is lost.
+        </p>
+
+        <p><b>Data tablets</b> provide <b>absolute positioning</b>. A typical data tablet has rows
+          and columns of wires embedded under its surface. The position of the stylus is
+          determined through electromagnetic interactions between signals traveling through
+          the wires and sensors in the stylus. Touch-sensitive transparent screens that can be
+          placed over the face of a CRT have many of the same properties as the data tablet.
+          Small, rectangular, pressure-sensitive touchpads are embedded in the keyboards of
+          many portable computers. These touchpads can be configured as either relative- or
+          absolute-positioning devices.</p>
+
+        <h3>Logical Devices</h3>
+
+        <p>Two major characteristics describe the logical behavior
+          of an input device: (1) the measurements that the device returns to the user program
+          and (2) the time when the device returns those measurements.</p>
+
+        <p>The logical <b>string</b> device in Java is similar to using character input through Scanner or
+          BufferedReader.
+          A physical keyboard will return a string of characters to an application program; the same string might be
+          provided from a file, or the user may see a virtual keyboard displayed on the output and use a pointing device
+          to generate the
+          string of characters. Logically, all three methods are examples of a string device, and application code for
+          using such input can be
+          the same regardless of which physical device is used.</p>
+
+        <p>The physical pointing device can be used in a variety of logical ways. As a <b>locator</b>
+          it can provide a position to the application in either a device-independent coordinate
+          system, such as world coordinates, as in OpenGL, or in screen coordinates, which the
+          application can then transform to another coordinate system. A logical <b>pick</b> device
+          returns the identifier of an object on the display to the application program. It is
+          usually implemented with the same physical device as a locator but has a separate
+          software interface to the user program.</p>
+
+        <p>A <b>widget</b> is a graphical interactive device, provided by either the window system
+          or a toolkit. Typical widgets include menus, scrollbars, and graphical buttons. Most
+          widgets are implemented as special types of windows. Widgets can be used to provide
+          additional types of logical devices. For example, a menu provides one of a number of
+          <b>choices</b> as may a row of graphical buttons. A logical <b>valuator</b> provides analog input
+          to the user program, usually through a widget such as a slidebar, although the same
+          logical input could be provided by a user typing numbers into a physical keyboard.
+        </p>
+
+        <h2>The CPU and The GPU</h2>
+        <p>In a simple system, there may be only one processor, the central processing unit
+          (CPU) of the system, which must do both the normal processing and the graphical processing.
+          The main graphical function of the processor is to take specifications of graphical primitives (such as lines,
+          circles, and polygons)
+          generated by application programs and to assign values to the pixels in the frame buffer that best represent
+          these entities.</p>
+
+        <p> For example, a triangle is specified by its three vertices, but to display
+          its outline by the three line segments connecting the vertices, the graphics system
+          must generate a set of pixels that appear as line segments to the viewer.
+          The conversion of geometric entities to pixel colors and locations in the frame buffer is known
+          as <b>rasterization</b>, or <b>scan conversion</b>.</p>
+
+        <p> In early graphics systems, the frame buffer was
+          part of the standard memory that could be directly addressed by the CPU. Today,
+          virtually all graphics systems are characterized by special-purpose <b>graphics processing
+            units (GPUs)</b>, custom-tailored to carry out specific graphics functions. The GPU can
+          be either on the mother board of the system or on a graphics card. The frame buffer
+          is accessed through the graphics processing unit and usually is on the same circuit
+          board as the GPU.</p>
+
+        <p>GPUs have evolved to where they are as complex or even more complex than
+          CPUs. They are characterized by both special-purpose modules geared toward graphical operations
+          and a high degree of parallelism—recent GPUs contain over 100 processing units, each of which is user
+          programmable. GPUs are so powerful that they can often be used as mini supercomputers for general purpose
+          computing.</p>
+
+
+        <h2>Output Devices</h2>
+        <p>Until recently, the dominant type of display (or monitor) was the <b>cathode-ray tube
+            (CRT)</b>. A simplified picture of a CRT is shown below:</p>
+
+        <img style="width: 100%; height: 100%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/the%20cathode%20ray%20tube.png?raw=true"
+          alt="the cathode-ray tube">
+
+        <p>When electrons strike the phosphor coating on the tube, light is emitted. The direction of the beam is
+          controlled
+          by two pairs of deflection plates. The output of the computer is converted, by digitalto-analog converters,
+          to voltages across the x and y deflection plates. Light appears
+          on the surface of the CRT when a sufficiently intense beam of electrons is directed at
+          the phosphor.</p>
+
+        <p>If the voltages steering the beam change at a constant rate, the beam will trace
+          a straight line, visible to a viewer. Such a device is known as the <b>random-scan</b>,
+          <b>calligraphic</b>, or <b>vector</b> CRT, because the beam can be moved directly from any
+          position to any other position. If intensity of the beam is turned off, the beam can
+          be moved to a new position without changing any visible display. This configuration
+          was the basis of early graphics systems that predated the present raster technology
+        </p>
+
+        <p>A typical CRT will emit light for only a short time—usually, a few milliseconds—
+          after the phosphor is excited by the electron beam. For a human to see a steady,
+          flicker-free image on most CRT displays, the same path must be retraced, or <b>refreshed</b>,
+          by the beam at a sufficiently high rate, the <b>refresh rate</b>. In older systems,
+          the refresh rate is determined by the frequency of the power system, 60 cycles per
+          second or 60 Hertz (Hz) in the United States and 50 Hz in much of the rest of the world.
+          Modern displays are no longer coupled to these low frequencies and operate at rates
+          up to about 85 Hz.</p>
+
+        <p>In a raster system, the graphics system takes pixels from the frame buffer and
+          displays them as points on the surface of the display in one of two fundamental
+          ways.</p>
+
+        <p>In a <b>noninterlaced</b> system, the pixels are displayed row by row, or scan line
+          by scan line, at the refresh rate.</p>
+
+        <p>In an <b>interlaced</b> display, odd rows and even rows are refreshed alternately.
+          Interlaced displays are used in commercial television. In an interlaced display operating at 60 Hz,
+          the screen is redrawn in its entirety only 30 times per second, although the visual system is tricked
+          into thinking the refresh rate is 60 Hz rather than 30 Hz. Viewers located near the screen, however, can tell
+          the difference between the interlaced and noninterlaced displays. Noninterlaced displays
+          are becoming more widespread, even though these displays process pixels at twice the
+          rate of the interlaced display</p>
+
+        <p>Color CRTs have three different colored phosphors (red, green, and blue), arranged in small groups.
+          One common style arranges the phosphors in triangular groups called <b>triads</b>, each triad consisting of
+          three phosphors,
+          one of each primary. Most color CRTs have three electron beams, corresponding to the three types of phosphors.
+        </p>
+        <p>In the shadow-mask CRT, a metal screen with small holes—the
+          shadow mask—ensures that an electron beam excites only phosphors of the proper
+          color:</p>
+
+        <img style="width: 100%; height: 100%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/shadowmask%20CRT.png?raw=true"
+          alt="Shadowmask CRT">
+
+        <p>Although CRTs are still common display devices, they are rapidly being replaced
+          by flat-screen technologies. Flat-panel monitors are inherently raster based. Although
+          there are multiple technologies available, including light-emitting diodes (LEDs),
+          liquid-crystal displays (LCDs), and plasma panels, all use a two-dimensional grid
+          to address individual light-emitting elements.</p>
+
+        <p>The following shows a generic flat-panel monitor:</p>
+
+        <img style="width: 100%; height: 100%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/flat%20panel%20display.png?raw=true"
+          alt="Flat panel display">
+
+        <p>The two outside plates each contain parallel grids of wires that are oriented
+          perpendicular to each other. By sending electrical signals to the proper wire in each
+          grid, the electrical field at a location, determined by the intersection of two wires, can
+          be made strong enough to control the corresponding element in the middle plate.
+          The middle plate in an LED panel contains light-emitting diodes that can be turned
+          on and off by the electrical signals sent to the grid. In an LCD display, the electrical
+          field controls the polarization of the liquid crystals in the middle panel, thus turning
+          on and off the light passing through the panel. A plasma panel uses the voltages on the
+          grids to energize gases embedded between the glass panels holding the grids. The
+          energized gas becomes a glowing plasma.</p>
+
+        <p>Most projection systems are also raster devices. These systems use a variety of
+          technologies, including CRTs and digital light projection (DLP). From a user perspective,
+          they act as standard monitors with similar resolutions and precisions. Hard-copy
+          devices, such as printers and plotters, are also raster based but cannot be refreshed.</p>
+
+
+        <h2></h2>
+
+      </article>
+      <br />
+    </section>
+
+    <section class="main-section" id="Types_of_2D_Graphics">
+      <br />
+      <header><b>Types of 2D Graphics</b></header>
+      <article>
+
+        <p>There are two kinds of 2D computer graphics: raster graphics and vector graphics.</p>
+
+        <h2>1. Raster Graphics</h2>
+
+        <p><b>Raster graphics</b>, also known as <b>bitmap graphics</b>, are images that are made up of a grid of
+          <b>pixels</b>.
+        </p>
+
+        <p>The pixels are small enough that they are not easy to see individually. In fact, for many very
+          high-resolution displays, they
+          become essentially invisible. Each pixel in the grid has a specific color value, and together they form the
+          complete image.</p>
+
+        <p>Modern screens typically use <b>24-bit color</b>, where each color is defined by three 8-bit numbers
+          representing the levels of red, green, and blue. These three primary colors combine to create any color
+          displayed on the
+          screen. Such systems are known as <b>true-color</b>, <b>RGB-color</b>, or <b>full-color systems</b> because
+          each
+          pixel's color is determined by the combination of red, green, and blue values.</p>
+
+        <p> Other formats are possible, such as <b>grayscale</b>, where each pixel is some shade of gray and the pixel
+          color is given by one number that specifies the level of gray on a black-to-white scale. Typically, 256 shades
+          of gray are used.</p>
+
+        <p>Early computer screens used <b>indexed color</b>, where only a small set of colors, usually 16 or
+          256, could be displayed. For an indexed color display, there is a numbered list of possible colors,
+          and the color of a pixel is specified by an integer giving the position of the color in the list.</p>
+
+        <p>In any case, the color values for all the pixels on the screen are stored in a large block of
+          memory known as a <b>frame buffer</b>. Changing the image on the screen requires changing color
+          values that are stored in the frame buffer. The screen is redrawn many times per second, so
+          that almost immediately after the color values are changed in the frame buffer, the colors of
+          the pixels on the screen will be changed to match, and the displayed image will change.</p>
+
+        <p>In a very simple system, the frame buffer holds only the colored pixels that are
+          displayed on the screen. In most systems, the frame buffer holds far more information,
+          such as depth information needed for creating images from three-dimensional
+          data. In these systems, the frame buffer comprises multiple buffers, one or more of
+          which are color buffers that hold the colored pixels that are displayed. For now, we
+          can use the terms frame buffer and color buffer synonymously without confusion.</p>
+
+        <p>A computer screen used in this way is the basic model of <b>raster graphics</b>. The term
+          "raster" technically refers to the mechanism used on older vacuum tube computer monitors:
+          An electron beam would move along the rows of pixels, making them glow. The beam was
+          moved across the screen by powerful magnets that would deflect the path of the electrons. The
+          stronger the beam, the brighter the glow of the pixel, so the brightness of the pixels could be
+          controlled by modulating the intensity of the electron beam. The color values stored in the
+          frame buffer were used to determine the intensity of the electron beam. (For a color screen,
+          each pixel had a red dot, a green dot, and a blue dot, which were separately illuminated by the
+          beam.)</p>
+
+        <p>Virtually all modern graphics systems are raster based. The image we see on the output device is an array—the
+          <b>raster</b>—of
+          picture elements, or pixels, produced by the graphics system.
+        </p>
+
+        <p>Raster graphics are best suited for representing complex images with many colors and gradients, such as
+          photographs and detailed
+          illustrations.</p>
+
+        <h2>2. Vector Graphics</h2>
+
+        <p>Although images on the computer screen are represented using pixels, specifying individual
+          pixel colors is not always the best way to create an image. Another way is to specify the basic
+          geometric objects that it contains, shapes such as lines, circles, triangles, and rectangles. This
+          is the idea that defines <b>vector graphics</b>: Represent an image as a list of the geometric shapes
+          that it contains.</p>
+
+        <p>To make things more interesting, the shapes can have attributes, such as
+          the thickness of a line or the color that fills a rectangle. Of course, not every image can be
+          composed from simple geometric shapes. This approach certainly wouldn't work for a picture
+          of a beautiful sunset (or for most any other photographic image). However, it works well for
+          many types of images, such as architectural blueprints and scientific illustrations.</p>
+
+        <p>In fact, early in the history of computing, vector graphics was even used directly on computer
+          screens. When the first graphical computer displays were developed, raster displays were too
+          slow and expensive to be practical. Fortunately, it was possible to use vacuum tube technology
+          in another way: The electron beam could be made to directly draw a line on the screen, simply
+          by sweeping the beam along that line. A vector graphics display would store a display list
+          of lines that should appear on the screen. Since a point on the screen would glow only very
+          briefly after being illuminated by the electron beam, the graphics display would go through the
+          display list over and over, continually redrawing all the lines on the list. To change the image,
+          it would only be necessary to change the contents of the display list. Of course, if the display
+          list became too long, the image would start to flicker because a line would have a chance to
+          visibly fade before its next turn to be redrawn</p>
+
+        <p>But here is the point: For an image that can be specified as a reasonably small number of
+          geometric shapes, the amount of information needed to represent the image is much smaller
+          using a vector representation than using a raster representation. Consider an image made up
+          of one thousand line segments. For a vector representation of the image, you only need to store
+          the coordinates of two thousand points, the endpoints of the lines. <b>This would take up only a
+            few kilobytes of memory. To store the image in a frame buffer for a raster display would require
+            much more memory.</b> Similarly, a vector display could draw the lines on the screen more quickly
+          than a raster display could copy the same image from the frame buffer to the screen. (As soon
+          as raster displays became fast and inexpensive, however, they quickly displaced vector displays
+          because of their ability to display all types of images reasonably well.)
+        </p>
+
+        <p>Unlike raster graphics, vector graphics are resolution-independent, meaning that they can be scaled to any
+          size without losing quality.
+          This is because instead of pixels, vector graphics use points, lines, and curves to represent elements.
+          This allows for scalable graphics that can be resized without loss of quality. </p>
+
+        <p>Vector graphics are best suited for representing simple images with solid colors and sharp edges, such as
+          logos and icons, and
+          widely used in graphic design, architectural design, and illustration industries.</p>
+
+        <p>In summary, raster graphics are made up of pixels and are best suited for complex images with many colors,
+          while vector graphics
+          are made up of lines and curves and are best suited for simple images with solid colors.</p>
+
+        <h2>So What's The Difference?</h2>
+
+        <p>The divide between raster graphics and vector graphics persists in several areas of computer
+          graphics.</p>
+
+        <p> For example, it can be seen in a division between two categories of programs that
+          can be used to create images: <b>painting programs</b> and <b>drawing programs</b></p>
+
+        <h2>Painting Programs</h2>
+
+        <p>In a painting program, the image is represented as a grid of pixels, and the user creates an image by
+          assigning colors to pixels. This might be done by using a "drawing tool" that acts like a painter's brush,
+          or even by tools that draw geometric shapes such as lines or rectangles. But the point in a
+          painting program is to color the individual pixels, and it is only the pixel colors that are saved.
+          To make this clearer, suppose that you use a painting program to draw a house, then draw a
+          tree in front of the house. If you then erase the tree, you'll only reveal a blank background, not
+          a house. In fact, the image never really contained a "house" at all—only individually colored
+          pixels that the viewer might perceive as making up a picture of a house</p>
+
+        <h2>Drawing Programs</h2>
+
+        <p>In a drawing program, the user creates an image by adding geometric shapes, and the image
+          is represented as a list of those shapes. If you place a house shape (or collection of shapes making
+          up a house) in the image, and you then place a tree shape on top of the house, the house is
+          still there, since it is stored in the list of shapes that the image contains. If you delete the tree,
+          the house will still be in the image, just as it was before you added the tree. Furthermore, you
+          should be able to select one of the shapes in the image and move it or change its size, so drawing
+          programs offer a rich set of editing operations that are not possible in painting programs. (The
+          reverse, however, is also true.)</p>
+
+        <p>A practical program for image creation and editing might <b>combine elements of painting and
+            drawing</b>, although one or the other is usually dominant.</p>
+
+        <p>For example, a drawing program might allow the user to include a raster-type image, treating it as one shape.
+          A painting program
+          might let the user create “layers,” which are separate images that can be layered one on top of
+          another to create the final image. The layers can then be manipulated much like the shapes in
+          a drawing program (so that you could keep both your house and your tree in separate layers,
+          even if in the image of the house is in back of the tree).</p>
+
+        <p>Two well-known graphics programs are <b>Adobe Photoshop</b> and <b>Adobe Illustrator</b>. Photoshop
+          is in the category of painting programs, while Illustrator is more of a drawing program. In
+          the world of free software, the GNU image-processing program, Gimp, is a good alternative to
+          Photoshop, while Inkscape is a reasonably capable free drawing program</p>
+
+        <h2>File Formats</h2>
+
+        <p>The divide between raster and vector graphics also appears in the field of graphics file
+          formats. There are many ways to represent an image as data stored in a file. If the original
+          image is to be recovered from the bits stored in the file, the representation must follow some
+          exact, known specification.</p>
+        <p>Such a specification is called a <b>graphics file format</b>.</p>
+        <p>Some popular graphics file formats include GIF, PNG, JPEG, WebP, and SVG. Most images used on the
+          Web are GIF, PNG, or JPEG, but most browsers also have support for SVG images and for
+          the newer WebP format</p>
+
+        <img class="center" style="width: 65%; height: 65%; top: 50%; left: 50%;"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/raster%20vs%20vector.png?raw=true"
+          alt="raster vs vector">
+
+        <p><b>GIF, PNG, JPEG, and WebP are basically raster graphics formats; an image is specified
+            by storing a color value for each pixel.</b></p>
+        <p>GIF is an older file format, which has largely been superseded by PNG, but you can still find GIF images on
+          the web.
+          (The GIF format supports animated images, so GIFs are often used for simple animations on Web pages.) <b>GIF
+            uses an
+            indexed color model with a maximum of 256 colors. PNG can use either indexed or full 24-bit
+            color, while JPEG is meant for full color images.</b></p>
+
+        <p>The amount of data necessary to represent a raster image can be quite large.</p>
+
+        <p>However, the data usually contains a lot of redundancy, and the data can be "compressed" to reduce its
+          size. GIF and PNG use lossless data compression, which means that the original image
+          can be recovered perfectly from the compressed data. JPEG uses a lossy data compression
+          algorithm, which means that the image that is recovered from a JPEG file is not exactly the
+          same as the original image; some information has been lost. This might not sound like a good
+          idea, but in fact the difference is often not very noticeable, and using lossy compression usually
+          permits a greater reduction in the size of the compressed data. JPEG generally works well for
+          photographic images, but not as well for images that have sharp edges between different colors.
+          It is especially bad for line drawings and images that contain text; PNG is the preferred format
+          for such images. WebP can use both lossless and lossy compression</p>
+
+        <p><b>SVG, on the other hand, is fundamentally a vector graphics format (although SVG images
+            can include raster images).</b> SVG is actually an XML-based language for describing twodimensional vector
+          graphics images.</p>
+        <p>"SVG" stands for "Scalable Vector Graphics" and the term "scalable" indicates one of the advantages of vector
+          graphics: There is no loss of quality when the size of the image is increased. A line between two points can
+          be
+          represented at any scale, and it is still the same perfect geometric line. If you try to greatly increase the
+          size of
+          a raster image, on the other hand, you will find that you don't have enough color values for
+          all the pixels in the new image; each pixel from the original image will be expanded to cover a
+          rectangle of pixels in the scaled image, and you will get multi-pixel blocks of uniform color. The
+          scalable nature of SVG images make them a good choice for web browsers and for graphical
+          elements on your computer's desktop. And indeed, some desktop environments are now using
+          SVG images for their desktop icons.
+        </p>
+
+        <p>A digital image, no matter what its format, is specified using a coordinate system. A
+          coordinate system sets up a correspondence between numbers and geometric points. In two
+          dimensions, each point is assigned a pair of numbers, which are called the coordinates of the
+          point. The two coordinates of a point are often called its x -coordinate and y-coordinate,
+          although the names "x" and "y" are arbitrary.</p>
+
+        <p>A raster image is a two-dimensional grid of pixels arranged into rows and columns. As
+          such, it has a natural coordinate system in which each pixel corresponds to a pair of integers
+          giving the number of the row and the number of the column that contain the pixel. (Even in
+          this simple case, there is some disagreement as to whether the rows should be numbered from
+          top-to-bottom or from bottom-to-top.)</p>
+
+        <p>For a vector image, it is natural to use real-number coordinates. The coordinate system for
+          an image is arbitrary to some degree; that is, the same image can be specified using different
+          coordinate systems.</p>
+
+      </article>
+      <br />
+    </section>
+
+    <section class="main-section" id="Pixels_and_Coordinate_Systems">
+      <br />
+      <header><b>Pixels and Coordinate Systems</b></header>
+      <article>
+
+        <p>As previously mentioned, most images viewed online are raster-based. Raster images are created with
+          pixel-based
+          software or captured with a camera or scanner. They are more common in general such as jpg, gif, png, and are
+          widely
+          used on the web.</p>
+
+        <p>To create these two-dimensional images, each point in the image is assigned a color.</p>
+
+        <p> A point in 2D can be identified by a pair of numerical coordinates. Colors can also be specified
+          numerically. </p>
+
+        <p>However, the assignment of numbers to points or colors is somewhat arbitrary.
+          So we need to spend some time studying coordinate systems, which associate numbers to
+          points, and color models, which associate numbers to colors.</p>
+
+        <p>A digital image is made up of rows and columns of pixels. A pixel in such an image can be
+          specified by saying which column and which row contains it. In terms of coordinates, a pixel
+          can be identified by a pair of integers giving the column number and the row number.</p>
+
+        <p> For example, the pixel with coordinates (3,5) would lie in column number 3 and row number 5.</p>
+
+        <p>Conventionally, columns are numbered from left to right, starting with zero. Most graphics
+          systems, including the ones we will study in this chapter, number rows from top to bottom,
+          starting from zero. </p>
+
+        <p>Some, including OpenGL, number the rows from bottom to top instead.</p>
+
+        <img style="width: 100%; height: 100%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/pixel%20grids.png?raw=true"
+          alt="Pixel grids">
+
+        <p>Note in particular that the pixel that is identified by a pair of coordinates (x,y) depends on the
+          choice of coordinate system. You always need to know what coordinate system is in use before
+          you know what point you are talking about.</p>
+
+        <p>Row and column numbers identify a pixel, not a point. A pixel contains many points;
+          mathematically, it contains an infinite number of points. The goal of computer graphics is not
+          really to color pixels—it is to create and manipulate images. In some ideal sense, an image
+          should be defined by specifying a color for each point, not just for each pixel. Pixels are an
+          approximation. If we imagine that there is a true, ideal image that we want to display, then
+          any image that we display by coloring pixels is an approximation. This has many implications.</p>
+
+        <p>Suppose, for example, that we want to draw a line segment. A mathematical line has no
+          thickness and would be invisible. So we really want to draw a thick line segment, with some
+          specified width. Let's say that the line should be one pixel wide. The problem is that, unless
+          the line is horizontal or vertical, we can't actually draw the line by coloring pixels. A diagonal
+          geometric line will cover some pixels only partially. It is not possible to make part of a pixel
+          black and part of it white. When you try to draw a line with black and white pixels only,
+          the result is a jagged staircase effect. </p>
+
+        <p>This effect is an example of something called <b>"aliasing"</b>.
+          Aliasing can also be seen in the outlines of characters drawn on the screen and in diagonal or
+          curved boundaries between any two regions of different color. (The term aliasing likely comes
+          from the fact that ideal images are naturally described in real-number coordinates. When you
+          try to represent the image using pixels, many real-number coordinates will map to the same
+          integer pixel coordinates; they can all be considered as different names or “aliases” for the same
+          pixel.)
+        </p>
+
+        <p><b>Antialiasing</b> is a term for techniques that are designed to mitigate the effects of aliasing.
+          The idea is that when a pixel is only partially covered by a shape, the color of the pixel should be
+          a mixture of the color of the shape and the color of the background. When drawing a black line
+          on a white background, the color of a partially covered pixel would be gray, with the shade of
+          gray depending on the fraction of the pixel that is covered by the line. (In practice, calculating
+          this area exactly for each pixel would be too difficult, so some approximate method is used.)
+        </p>
+
+        <p>Here, for example, is a geometric line, shown on the left, along with two approximations of that
+          line made by coloring pixels. The lines are greatly magnified so that you can see the individual
+          pixels. The line on the right is drawn using antialiasing, while the one in the middle is not:</p>
+
+        <img class="center" style="width: 50%; height: 50%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/antialiasing%201.png?raw=true"
+          alt="Antialiasing 1">
+
+        <p>Note that antialiasing does not give a perfect image, but it can reduce the "jaggies" that are
+          caused by aliasing (at least when it is viewed on a normal scale).</p>
+
+        <p>There are other issues involved in mapping real-number coordinates to pixels. For example,
+          which point in a pixel should correspond to integer-valued coordinates such as (3,5)? The center
+          of the pixel? One of the corners of the pixel? In general, we think of the numbers as referring
+          to the top-left corner of the pixel.</p>
+        <p>Another way of thinking about this is to say that integer coordinates refer to the lines between pixels,
+          rather than to the pixels themselves. But that still doesn't determine exactly which pixels are affected when
+          a geometric shape is drawn.</p>
+
+        <p>For example, here are two lines drawn using HTML canvas graphics, shown greatly magnified. The
+          lines were specified to be colored black with a one-pixel line width:</p>
+
+        <img class="center" style="width: 50%; height: 50%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/antialiasing%202.png?raw=true"
+          alt="Antialiasing 2">
+
+        <p>The top line was drawn from the point (100,100) to the point (120,100).</p>
+
+        <p>In canvas graphics, integer coordinates correspond to the lines between pixels, but when a one-pixel line is
+          drawn,
+          it extends one-half pixel on either side of the infinitely thin geometric line.</p>
+
+        <p>So for the top line, the line as it is drawn lies half in one row of pixels and half in another row. The
+          graphics
+          system, which uses antialiasing, rendered the line by coloring both rows of pixels gray.</p>
+
+        <p>The bottom line was drawn from the point (100.5,100.5) to (120.5,100.5). In this case, the line lies
+          exactly along one line of pixels, which gets colored black. The gray pixels at the ends of the
+          bottom line have to do with the fact that the line only extends halfway into the pixels at its
+          endpoints. Other graphics systems might render the same lines differently</p>
+
+        <p>All this is complicated further by the fact that pixels aren't what they used to be. Pixels
+          today are smaller! The resolution of a display device can be measured in terms of the number
+          of pixels per inch on the display, a quantity referred to as PPI (pixels per inch) or sometimes
+          DPI (dots per inch). Early screens tended to have resolutions of somewhere close to 72 PPI.
+          At that resolution, and at a typical viewing distance, individual pixels are clearly visible. For a
+          while, it seemed like most displays had about 100 pixels per inch, but high resolution displays
+          today can have 200, 300 or even 400 pixels per inch. At the highest resolutions, individual
+          pixels can no longer be distinguished.
+        </p>
+
+        <p>The fact that pixels come in such a range of sizes is a problem if we use coordinate systems
+          based on pixels. An image created assuming that there are 100 pixels per inch will look tiny on a
+          400 PPI display. A one-pixel-wide line looks good at 100 PPI, but at 400 PPI, a one-pixel-wide
+          line is probably too thin</p>
+
+        <p>In fact, in many graphics systems, "pixel" doesn't really refer to the size of a physical
+          pixel. Instead, it is just <b>another unit of measure</b>, which is set by the system to be something
+          appropriate. (On a desktop system, a pixel is usually about one one-hundredth of an inch. On
+          a smart phone, which is usually viewed from a closer distance, the value might be closer to
+          1/160 inch. Furthermore, the meaning of a pixel as a unit of measure can change when, for
+          example, the user applies a magnification to a web page.)
+        </p>
+
+        <p>Pixels cause problems that have not been completely solved. Fortunately, they are less of a
+          problem for vector graphics.</p>
+        <p>For vector graphics, pixels only become an issue during rasterization, the step in which a vector image is
+          converted into pixels for display. The vector image itself can be created using any convenient coordinate
+          system. It represents an idealized, resolution-independent image.</p>
+        <p>A rasterized image is an approximation of that ideal image, but how to do the approximation can be left to
+          the display
+          hardware.
+        </p>
+
+        <h2>Real-number Coordinate Systems</h2>
+
+        <p>When doing 2D graphics, you are given a rectangle in which you want to draw some graphics
+          primitives. Primitives are specified using some coordinate system on the rectangle. It should
+          be possible to select a coordinate system that is appropriate for the application. For example, if
+          the rectangle represents a floor plan for a 15 foot by 12 foot room, then you might want to use
+          a coordinate system in which the unit of measure is one foot and the coordinates range from 0
+          to 15 in the horizontal direction and 0 to 12 in the vertical direction. The unit of measure in
+          this case is feet rather than pixels, and one foot can correspond to many pixels in the image.
+          The coordinates for a pixel will, in general, be real numbers rather than integers. In fact, it's
+          better to forget about pixels and just think about points in the image. A point will have a pair
+          of coordinates given by real numbers.</p>
+
+        <p>To specify the coordinate system on a rectangle, you just have to specify the horizontal
+          coordinates for the left and right edges of the rectangle and the vertical coordinates for the top
+          and bottom. Let's call these values left, right, top, and bottom. Often, they are thought of as
+          xmin, xmax, ymin, and ymax, but there is no reason to assume that, for example, top is less
+          than bottom. We might want a coordinate system in which the vertical coordinate increases
+          from bottom to top instead of from top to bottom. In that case, top will correspond to the
+          maximum y-value instead of the minimum value.</p>
+
+        <p>To allow programmers to specify the coordinate system that they would like to use, it would
+          be good to have a subroutine such as:</p>
+
+        <p class="center"><b>setCoordinateSystem(left,right,bottom,top)</b></p>
+
+        <p>The graphics system would then be responsible for automatically transforming the coordinates
+          from the specified coordinate system into pixel coordinates. Such a subroutine might not be
+          available, so it's useful to see how the transformation is done by hand. Let's consider the general
+          case. Given coordinates for a point in one coordinate system, we want to find the coordinates
+          for the same point in a second coordinate system. (Remember that a coordinate system is just
+          a way of assigning numbers to points. It's the points that are real!)</p>
+
+        <p>Suppose that the horizontal and vertical limits are oldLeft, oldRight, oldTop, and oldBottom for the first
+          coordinate system,
+          and are newLeft, newRight, newTop, and newBottom for the second. Suppose that a point
+          has coordinates (oldX,oldY ) in the first coordinate system. We want to find the coordinates
+          (newX,newY ) of the point in the second coordinate system</p>
+
+        <img class="center" style="width: 100%; height: 100%; top: 50%; left: 50%;"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/coordinates.png?raw=true"
+          alt="coordinates">
+
+        <p>Formulas for newX and newY are then given by: </p>
+
+        <p class="center"><b>newX = newLeft + ((oldX - oldLeft) / (oldRight - oldLeft)) * (newRight - newLeft)</b></p>
+        <p class="center"><b>newY = newTop + ((oldY - oldTop) / (oldBottom - oldTop)) * (newBottom - newTop)</b></p>
+
+        <p>The logic here is that oldX is located at a certain fraction of the distance from oldLeft to
+          oldRight. That fraction is given by:</p>
+
+        <p class="center"><b>(oldX - oldLeft) / (oldRight - oldLeft)</b></p>
+
+        <p>The formula for newX just says that newX should lie at the same fraction of the distance from
+          newLeft to newRight. You can also check the formulas by testing that they work when oldX is
+          equal to oldLeft or to oldRight, and when oldY is equal to oldBottom or to oldTop.</p>
+
+        <p>As an example, suppose that we want to transform some real-number coordinate system
+          with limits left, right, top, and bottom into pixel coordinates that range from 0 at left to 800 at
+          the right and from 0 at the top 600 at the bottom. In that case, newLeft and newTop are zero,
+          and the formulas become simply:</p>
+
+        <p class="center"><b>newX = ((oldX - left) / (right - left)) * 800</b></p>
+        <p class="center"><b>newY = ((oldY - top) / (bottom - top)) * 600</b></p>
+
+        <p>Of course, this gives newX and newY as real numbers, and they will have to be rounded
+          or truncated to integer values if we need integer coordinates for pixels. The reverse
+          transformation—going from pixel coordinates to real number coordinates—is also useful.</p>
+
+        <p>For example, if the image is displayed on a computer screen, and you want to react to mouse clicks
+          on the image, you will probably get the mouse coordinates in terms of integer pixel coordinates,
+          but you will want to transform those pixel coordinates into your own chosen coordinate system.</p>
+
+        <p>In practice, though, you won't usually have to do the transformations yourself, since most
+          graphics APIs provide some higher level way to specify transforms.</p>
+
+        <h2>Aspect Ratio</h2>
+
+        <p>The <b>aspect ratio</b> of a rectangle is the ratio of its width to its height. For example an aspect
+          ratio of 2:1 means that a rectangle is twice as wide as it is tall, and an aspect ratio of 4:3 means
+          that the width is 4/3 times the height. Although aspect ratios are often written in the form
+          width:height, I will use the term to refer to the fraction width/height. A square has aspect ratio
+          equal to 1. A rectangle with aspect ratio 5/4 and height 600 has a width equal to 600*(5/4),
+          or 750.</p>
+
+        <p>A coordinate system also has an aspect ratio. If the horizontal and vertical limits for the
+          coordinate system are left, right, bottom, and top, as above, then the aspect ratio is the absolute
+          value of:</p>
+
+        <p class="center"><b>(right - left) / (top - bottom)</b></p>
+
+        <p>If the coordinate system is used on a rectangle with the same aspect ratio, then when viewed in
+          that rectangle, one unit in the horizontal direction will have the same apparent length as a unit
+          in the vertical direction. If the aspect ratios don't match, then there will be some distortion.</p>
+
+        <p>For example, the shape defined by the equation x^2 + y^2 = 9 should be a circle, but that will
+          only be true if the aspect ratio of the (x,y) coordinate system matches the aspect ratio of the
+          drawing area.</p>
+
+        <img class="center" style="width: 100%; height: 100%; top: 50%; left: 50%;"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/aspect%20ratio%201.png?raw=true"
+          alt="aspect ratio 1">
+
+        <p>It is not always a bad thing to use different units of length in the vertical and horizontal
+          directions. However, suppose that you want to use coordinates with limits left, right, bottom,
+          and top, and that you do want to preserve the aspect ratio.</p>
+
+        <p>In that case, depending on the shape of the display rectangle, you might have to adjust the values either of
+          left and right or
+          of bottom and top to make the aspect ratios match:</p>
+
+        <img class="center" style="width: 100%; height: 100%; top: 50%; left: 50%;"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/aspect%20ratio%202.png?raw=true"
+          alt="aspect ratio 2">
+
+      </article>
+      <br />
+    </section>
+
+    <section class="main-section" id="Color_Models">
+      <br />
+      <header><b>Color Models</b></header>
+      <article>
+
+        <p>We are talking about the most basic foundations of computer graphics. One of those is
+          coordinate systems. The other is color.</p>
+
+        <p>Red, Yellow, and Blue — Primary colors. Or at least, that's what we have been told since kindergarten, isn't
+          it?
+          But there is more to it.</p>
+
+        <p>The colors on a computer screen are produced as combinations of <b>red, green, and blue light</b>.</p>
+
+        <p>Now the question is — if RYB is the primary color set then why do computers use RGB instead?</p>
+
+        <p>Going deep into the line, we first need to understand the color theory.</p>
+        <p>There are two different theories: </p>
+        <ol>
+          <li>Additive</li>
+          <li>Subtractive</li>
+        </ol>
+
+        <h2>Additive</h2>
+
+        <p>Different colors are produced by varying the intensity of each type of light. A color can be
+          specified by three numbers giving the intensity of red, green, and blue in the color. Intensity
+          can be specified as a number in the range zero, for minimum intensity, to one, for maximum
+          intensity.</p>
+
+        <p>The additive is the case of the projection of one or more colored lights (wavelengths). These are the colors
+          when mixed produce more light.</p>
+
+        <p>This method of specifying color is called the <b>RGB color model</b>, where RGB stands
+          for Red/Green/Blue. For example, in the RGB color model, the number triple (1, 0.5, 0.5)
+          represents the color obtained by setting red to full intensity, while green and blue are set to
+          half intensity.</p>
+
+        <p>The red, green, and blue values for a color are called the color components of
+          that color in the RGB color model and when mixed produces lighter colors, resulting in white light at the end.
+          That's how our computer, TV, and other light-emitting screen works.</p>
+
+        <p>In the RGB color model, the color black is represented by (0, 0, 0), and white is
+          represented by (1, 1, 1). The color red is represented by (1, 0, 0), green by (0, 1, 0), and blue
+          by (0, 0, 1). The color yellow is represented by (1, 1, 0), cyan by (0, 1, 1), and magenta by
+          (1, 0, 1).</p>
+
+        <p>Light is made up of waves with a variety of wavelengths. A pure color is one for which
+          all the light has the same wavelength, but in general, a color can contain many wavelengths—
+          mathematically, an infinite number. How then can we represent all colors by combining just
+          red, green, and blue light? In fact, we can't quite do that.</p>
+
+        <p>You might have heard that combinations of the three basic, or "primary" colors are sufficient
+          to represent all colors, because the human eye has three kinds of color sensors that detect red,
+          green, and blue light. However, that is only an approximation. The eye does contain three
+          kinds of color sensors. The sensors are called "cone cells."</p>
+
+        <p>However, cone cells do not respond exclusively to red, green, and blue light. Each kind of cone cell
+          responds, to a varying degree,
+          to wavelengths of light in a wide range. A given mix of wavelengths will stimulate each type
+          of cell to a certain degree, and the intensity of stimulation determines the color that we see. A
+          different mixture of wavelengths that stimulates each type of cone cell to the same extent will
+          be perceived as the same color.</p>
+
+        <p>So a perceived color can, in fact, be specified by three numbers
+          giving the intensity of stimulation of the three types of cone cell. However, it is not possible
+          to produce all possible patterns of stimulation by combining just three basic colors, no matter how those
+          colors are chosen.
+          This is just a fact about the way our eyes actually work; it might have been different. </p>
+
+        <p>Three basic colors can produce a reasonably large fraction of the set of
+          perceivable colors, but there are colors that you can see in the world that you will never see on
+          your computer screen. (This whole discussion only applies to people who actually have three
+          kinds of cone cell. Color blindness, where someone is missing one or more kinds of cone cell, is
+          surprisingly common.)
+        </p>
+
+        <p>The range of colors that can be produced by a device such as a computer screen is called
+          the <b>color gamut</b> of that device. Different computer screens can have different color gamuts,
+          and the same RGB values can produce somewhat different colors on different screens. The color
+          gamut of a color printer is noticeably different—and probably smaller—than the color gamut
+          of a screen, which explains why a printed image probably doesn't look exactly the same as it
+          did on the screen. (Printers, by the way, make colors differently from the way a screen does it.
+          Whereas a screen combines light to make a color, a printer combines inks or dyes. Because of
+          this difference, colors meant for printers are often expressed using a different set of basic colors.
+          A common color model for printer colors is CMYK, using the colors cyan, magenta, yellow, and
+          black.)
+        </p>
+
+        <h2>Subtractive</h2>
+
+        <p>When we mix paints or inks, subtractive mixing results. Paints or inks are non-emissive objects here. They
+          reflect when light falls on them.
+          Molecules of paint absorb some of the wavelengths of light and reflect rest. That's how we see such objects.
+        </p>
+
+        <p>The primary colors of the subtractive mix are CMYK — Cyan, Magenta, Yellow, and K which stands for black ( To
+          distinguish it from B for Blue.
+          Just a convention.)</p>
+
+        <p>When the CMY (not K) gets mixed, it produces brownish color — a bit muddy. To get the more blackish color,
+          the additional K for black is used.
+          CMYK — the model used by printers & publishing houses.</p>
+
+        <img class="center" style="width: 75%; height: 75%; top: 50%; left: 50%;"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/additive%20and%20subtractive.png?raw=true"
+          alt="additive and subtractive color">
+
+        <p>In any case, the most common color model for computer graphics is RGB. RGB colors are
+          most often represented using 8 bits per color component, a total of 24 bits to represent a color.
+          This representation is sometimes called "24-bit color."" An 8-bit number can represent 28, or
+          256, different values, which we can take to be the positive integers from 0 to 255. A color is
+          then specified as a triple of integers (r,g,b) in that range.</p>
+
+        <p>This representation works well because 256 shades of red, green, and blue are about as many
+          as the eye can distinguish. In applications where images are processed by computing with color
+          components, it is common to use additional bits per color component to avoid visual effects
+          that might occur due to rounding errors in the computations. Such applications might use a
+          16-bit integer or even a 32-bit floating point value for each color component. On the other
+          hand, sometimes fewer bits are used.</p>
+
+        <p> For example, one common color scheme uses 5 bits for
+          the red and blue components and 6 bits for the green component, for a total of 16 bits for a
+          color. (Green gets an extra bit because the eye is more sensitive to green light than to red or
+          blue.) This “16-bit color” saves memory compared to 24-bit color and was more common when
+          memory was more expensive.
+        </p>
+
+        <p>There are many other color models besides RGB. RGB is sometimes criticized as being
+          unintuitive. For example, it's not obvious to most people that yellow is made of a combination
+          of red and green.</p>
+
+        <h2>Hues, Saturation, and Values (Lightness)</h2>
+
+        <p> The closely related color models <b>HSV</b> and <b>HSL</b> describe the same set of
+          colors as RGB, but attempt to do it in a more intuitive way. (HSV is sometimes called HSB,
+          with the "B" standing for "brightness" HSV and HSB are exactly the same model.)
+        </p>
+
+        <p>The "H" in these models stands for <b>"hue", a basic spectral color</b>. As H increases, the color
+          changes from red to yellow to green to cyan to blue to magenta, and then back to red. The
+          value of H is often taken to range from 0 to 360, since the colors can be thought of as arranged
+          around a circle with red at both 0 and 360 degrees.</p>
+
+        <p>The "S" in HSV and HSL stands for <b>"saturation"</b> and is taken to <b>range from 0 to 1</b>. A
+          saturation of 0 gives a shade of gray (the shade depending on the value of V or L). A saturation
+          of 1 gives a "pure color" and decreasing the saturation is like adding more gray to the color.</p>
+
+        <p>"V" stands for <b>"value"</b> and "L" stands for <b>"lightness"</b>. They determine how bright or dark the
+          color is. The main difference is that in the HSV model, the pure spectral colors occur for V=1,
+          while in HSL, they occur for L=0.5.
+        </p>
+
+        <img class="center" style="width: 50%; height: 50%; top: 50%; left: 50%;"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/HSV.png?raw=true"
+          alt="HSV explained">
+
+        <p>Let's look at some colors in the HSV color model. The illustration below shows colors with
+          a full range of H-values, for S and V equal to 1 and to 0.5. Note that for S=V=1, you get
+          bright, pure colors. S=0.5 gives paler, less saturated colors. V=0.5 gives darker colors.
+        </p>
+
+        <img style="width: 100%; height: 100%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/HSV%20color%20model.png?raw=true"
+          alt="HSV color model">
+
+        <p> In the simple scale diagrams below, the first model indicates amount of black, white, or grey pigment added
+          to the hue.
+          The second model illustrates the same scale but explains the phenomenon based on light [spectral] properties.
+        </p>
+
+        <img class="center" style="width: 75%; height: 75%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/pigment%20and%20light%20scale.png?raw=true"
+          alt="pigment and light scale">
+
+        <p>Regardless of the two Additive and Subtractive color models, all color is a result of how our eyes physically
+          process light waves.
+          So let's start with the light Additive model to see how it filters into the Subtractive model and to see how
+          hues,
+          values and saturation interact to produce unique colors.</p>
+
+        <h3>Hues</h3>
+
+        <p>The three primary hues in light are red, green, and blue. Thus, that is why televisions, computer monitors,
+          and other full-range,
+          electronic color visual displays use a triad of red, green, and blue phosphors to produce all electronically
+          communicated color.</p>
+
+        <img class="center" style="width: 50%; height: 50%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/hues%201.png?raw=true"
+          alt="hues 1">
+
+        <p>As we mentioned before, in light, all three of these wavelengths added together at full strength produces
+          pure white light.
+          The absence of all three of these colors produces complete darkness, or black.</p>
+
+        <h3>Mixing Adjacent Primaries = Secondary Hues</h3>
+
+        <h4>Making Cyan, Magenta, and Yellow</h4>
+
+        <p>Although additive and subtractive color models are considered their own unique entities for screen vs. print
+          purposes,
+          the hues CMY do not exist in a vacuum.</p>
+
+        <p>They are produced as secondary colors when RGB light hues are mixed, as follows:</p>
+
+        <ul>
+          <li>Green + Red light → Yellow</li>
+          <li>Red + Blue light → Magenta</li>
+          <li>Blue + Green light → Cyan</li>
+        </ul>
+
+        <img class="center" style="width: 50%; height: 50%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/hues%202.png?raw=true"
+          alt="hues 2">
+
+        <h3>Overview of Hues</h3>
+
+        <p>The colors on the outermost perimeter of the color circle are the "hues", which are colors in their purest
+          form. This process can continue
+          filling in colors around the wheel. The next level colors, the tertiary colors, are those colors between the
+          secondary and primary colors.</p>
+
+        <img class="center" style="width: 50%; height: 50%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/hues%203.png?raw=true"
+          alt="hues 3">
+
+        <h3>Saturation</h3>
+
+        <p>Saturation is also referred to as "intensity" and "chroma". It refers to the dominance of hue in the color.
+          On the outer edge of the hue wheel are the 'pure' hues.
+          As you move into the center of the wheel, the hue we are using to describe the color dominates less and less.
+          When you reach the center of the wheel, no hue dominates. These colors directly on the central axis are
+          considered <b>desaturated</b>.</p>
+
+        <img class="center" style="width: 50%; height: 50%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/saturation%201.png?raw=true"
+          alt="saturation 1">
+
+        <p>Naturally, the opposite of the image above is to saturate color.</p>
+        <p>The first example below describes the general direction color must
+          move on the color circle to become more saturated (towards the outside). The second example depicts how a
+          single color looks completely
+          saturated, having no other hues present in the color.</p>
+
+        <img class="center" style="width: 100%; height: 100%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/saturation%2002.png?raw=true"
+          alt="saturation 2">
+
+
+        <h3>Value</h3>
+
+        <p>Now let's add "value" to the HSV scale. Value is the dimension of lightness/darkness. In terms of a spectral
+          definition of color,
+          value describes the overall intensity or strength of the light. If hue can be thought of as a dimension going
+          around a wheel,
+          then value is a linear axis running through the middle of the wheel, as seen below:</p>
+
+        <img class="center" style="width: 50%; height: 50%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/value%201.png?raw=true"
+          alt="value 1">
+
+        <p>To better visualize even more, look at the example below showing a full color range for a single hue:</p>
+
+        <img class="center" style="width: 50%; height: 50%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/value%202.png?raw=true"
+          alt="value 2">
+
+        <p>Now, if you imagine that each hue was also represented as a slice like the one above, we would have a solid,
+          upside-down cone of colors.
+          The example above can be considered a slice of the cone. Notice how the right-most edge of this cone slice
+          shows the greatest amount of the
+          dominant red hue (least amount of other competing hues), and how as you go down vertically, it gets darker in
+          "value".</p>
+        <p>Also notice that as we travel from right to left in the cone, the hue becomes less dominant and eventually
+          becomes completely desaturated
+          along the vertical center of the cone. This vertical center axis of complete desaturation is referred to as
+          <b>grayscale</b>.
+        </p>
+        <p>See how this slice below translates into some isolated color swatches:</p>
+
+        <img class="center" style="width: 50%; height: 50%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/value%203.png?raw=true"
+          alt="value 3">
+
+
+        <p>
+          Often, a fourth component is added to color models. The fourth component is called <b>alpha</b>,
+          and color models that use it are referred to by names such as <b>RGBA</b> and <b>HSLA</b>. Alpha is not a
+          color as such. It is usually used to represent transparency.</p>
+
+        <p>A color with maximal alpha value is
+          fully opaque; that is, it is not at all transparent. A color with alpha equal to zero is completely
+          transparent and therefore invisible. Intermediate values give translucent, or partly transparent, colors.
+        </p>
+
+        <p>Transparency determines what happens when you draw with one color (the foreground
+          color) on top of another color (the background color). If the foreground color is fully opaque,
+          it simply replaces the background color. If the foreground color is partly transparent, then it
+          is blended with the background color.</p>
+
+        <p>Assuming that the alpha component ranges from 0 to 1,
+          the color that you get can be computed as: </p>
+
+        <p class="center"><b>new_color = (alpha)*(foreground_color) + (1 - alpha)*(background_color)</b></p>
+
+        <p>This computation is done separately for the red, blue, and green color components. This is
+          called <b>alpha blending</b>. The effect is like viewing the background through colored glass; the
+          color of the glass adds a tint to the background color. This type of blending is not the only
+          possible use of the alpha component, but it is the most common.</p>
+
+        <p>An RGBA color model with 8 bits per component uses a total of 32 bits to represent a color.
+          This is a convenient number because integer values are often represented using 32-bit values. A
+          32-bit integer value can be interpreted as a 32-bit RGBA color.</p>
+
+        <p>How the color components are arranged within a 32-bit integer is somewhat arbitrary.</p>
+
+        <p>The most common layout is to store the alpha component in the eight high-order bits,
+          followed by red, green, and blue. (This should probably be called ARGB color.) However, other layouts are also
+          in use.</p>
+
+      </article>
+      <br />
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+    <hr />
+    <section class="main-section" id="Reference">
+      <br />
+      <header><b>Reference</b></header>
+      <article>
+        <p>Documentation on this page is taken from the following:</p>
+        <ul>
+          <li>
+            <a href="https://www.tutorialspoint.com/computer_graphics/index.htm" target="_blank">Tutorials Point</a>
+          </li>
+          <li>
+            <a href="https://learn.leighcotnoir.com/artspeak/elements-color/hue-value-saturation/"
+              target="_blank">Learn. (Leigh Cotnoir's art and design courses)</a>
+          </li>
+          <br />
+
+        </ul>
+      </article>
+    </section>
+  </main>
+  <script>
+    var dropdown = document.getElementsByClassName("dropdown-btn");
+    var i;
+
+    for (i = 0; i < dropdown.length; i++) {
+      dropdown[i].addEventListener("click", function () {
+        this.classList.toggle("active");
+        var dropdownContent = this.nextElementSibling;
+        if (dropdownContent.style.display === "block") {
+          dropdownContent.style.display = "none";
+        } else {
+          dropdownContent.style.display = "block";
+        }
+      });
+    }
+  </script>
+  <script>
+    // Function to close the dropdown menu
+    function closeDropdown() {
+      var dropdown = document.querySelector(".dropdown-container");
+      dropdown.style.display = "none";
+    }
+    // Function to close the chapter 2 dropdown menu
+    function closeDropdown2() {
+      var dropdown = document.querySelector(".container2");
+      dropdown.style.display = "none";
+    }
+    // Function to close the chapter 3 dropdown menu
+    function closeDropdown3() {
+      var dropdown = document.querySelector(".container3");
+      dropdown.style.display = "none";
+    }
+    // Function to close the chapter 7 dropdown menu
+    function closeDropdown5() {
+      var dropdown = document.querySelector(".container5");
+      dropdown.style.display = "none";
+    }
+    // Function to close the chapter 7 dropdown menu
+    function closeDropdown7() {
+      var dropdown = document.querySelector(".container7");
+      dropdown.style.display = "none";
+    }
+    // Function to close the chapter 9 dropdown menu
+    function closeDropdown9() {
+      var dropdown = document.querySelector(".container9");
+      dropdown.style.display = "none";
+    }
+    // Function to close the chapter 4 and chapter 6 dropdown menu
+    function closeDropdown46() {
+      var dropdown = document.querySelector(".container46");
+      dropdown.style.display = "none";
+    }
+
+    // Function to close the chapter 8 dropdown menu
+    function closeDropdown8() {
+      var dropdown = document.querySelector(".container8");
+      dropdown.style.display = "none";
+    }
+
+    // Function to close the Number Systems dropdown menu
+    function closeDropdownNS() {
+      var dropdown = document.querySelector(".containerNS");
+      dropdown.style.display = "none";
+    }
+  </script>
+  <script>
+    // Check for saved dark mode preference
+    if (localStorage.getItem('darkMode') === 'enabled') {
+      document.body.classList.add('dark-mode');
+      document.querySelector('.change').textContent = 'ON';
+    }
+
+    // Dark mode toggle functionality
+    document.querySelector('.mode').addEventListener('click', function () {
+      document.body.classList.toggle('dark-mode');
+
+      // Get the change element
+      const changeModeText = document.querySelector('.change');
+
+      // Update the text based on dark mode status
+      if (document.body.classList.contains('dark-mode')) {
+        changeModeText.textContent = 'ON'; // Change the text to 'ON'
+        localStorage.setItem('darkMode', 'enabled'); // Save preference
+      } else {
+        changeModeText.textContent = 'OFF'; // Change the text to 'OFF'
+        localStorage.setItem('darkMode', 'disabled'); // Save preference
+      }
+    });
+
+  </script>
+  <script>
+    function toggleMode() {
+      const lightModeLink = document.getElementById('light-mode');
+      const darkModeLink = document.getElementById('dark-mode');
+      const modeText = document.querySelector('.change');
+
+      if (lightModeLink.disabled) {
+        lightModeLink.disabled = false;
+        darkModeLink.disabled = true;
+        modeText.textContent = "OFF"; // Update the mode text to show Dark mode is off
+      } else {
+        lightModeLink.disabled = true;
+        darkModeLink.disabled = false;
+        modeText.textContent = "ON"; // Update the mode text to show Dark mode is on
+      }
+    }
+
+    // Call highlight.js to apply syntax highlighting
+    document.addEventListener('DOMContentLoaded', () => {
+      hljs.highlightAll();
+    });
+  </script>
+</body>
+
+</html>

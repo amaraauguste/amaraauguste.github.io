@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Default CSS style for dark mode -->
+  <link id="dark-mode" rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/base16/bright.css" />
+
+  <!-- CSS style for light mode -->
+  <link id="light-mode" rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/felipec.css" disabled />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <link rel="stylesheet" href="../3620style.css" />
+  <!-- and it's easy to individually load additional languages -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+
+  <script>hljs.highlightAll();</script>
+
+  <title>CISC 3620</title>
+  
+</head>
+
+<body>
+  <nav id="navbar">
+    <header class="header-link">
+      <a href="https://amaraauguste.github.io/courses/cisc3620.html" style="color: inherit; text-decoration: none;" class="header-text">CISC 3620</a>
+  </header>
+    <div class="mode">
+      Dark mode:
+      <span class="change" onclick="toggleMode()">OFF</span>
+    </div>
+    <hr />
+    <a class="nav-link" href="#Color_Models" style="font-size: 22px">Color Models</a>
+    <!--<a class="nav-link" href="#Week2" style="font-size: 22px">Week 2</a>
+    <a class="nav-link" href="#Week3" style="font-size: 22px">Week 3</a>
+    <a class="nav-link" href="#Week4" style="font-size: 22px">Week 4</a>
+    <a class="nav-link" href="#Week5" style="font-size: 22px">Week 5</a>
+    <a class="nav-link" href="#Week6" style="font-size: 22px">Week 6</a>
+    <a class="nav-link" href="#Exam1" style="font-size: 22px">Exam 1 Review</a>
+    <a class="nav-link" href="#Week8" style="font-size: 22px">Week 8</a>
+    <a class="nav-link" href="#Week9" style="font-size: 22px">Week 9</a>
+    <a class="nav-link" href="#Week10" style="font-size: 22px">Week 10</a>
+    <a class="nav-link" href="#Week11" style="font-size: 22px">Week 11</a>
+    <a class="nav-link" href="#Week12" style="font-size: 22px">Week 12</a>
+    <a class="nav-link" href="#Week13" style="font-size: 22px">Week 13</a>
+    <a class="nav-link" href="#Week14" style="font-size: 22px">Week 14</a>-->
+   
+    <!--add more later-->
+
+    <a href="https://amaraauguste.github.io/courses/cisc3620.html" class="previous backbutton"
+      style="font-size: 22px">&laquo; Back</a>
+  </nav>
+  <main id="main-doc">
+    <!-- WEEK 1/2 EXERCISES -->
+    <section class="main-section" id="Color_Models">
+        <h2>Color Models</h2>
+        <p class="codepen" data-height="500" data-theme-id="dark" data-default-tab="result" data-slug-hash="XJroKOj" data-pen-title="RGB and HSV Color Models" data-user="amaraauguste" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+            <span>See the Pen <a href="https://codepen.io/amaraauguste/pen/XJroKOj">
+            RGB and HSV Color Models</a> by Amara (<a href="https://codepen.io/amaraauguste">@amaraauguste</a>)
+            on <a href="https://codepen.io">CodePen</a>.</span>
+          </p>
+          <script async src="https://public.codepenassets.com/embed/index.js"></script>
+    </section>
+
+
+
+
+    <br />
+    <hr />
+
+
+
+
+
+
+
+  </main>
+  <script>
+    // Check for saved dark mode preference
+    if (localStorage.getItem('darkMode') === 'enabled') {
+      document.body.classList.add('dark-mode');
+      document.querySelector('.change').textContent = 'ON';
+    }
+
+    // Dark mode toggle functionality
+    document.querySelector('.mode').addEventListener('click', function () {
+      document.body.classList.toggle('dark-mode');
+
+      // Get the change element
+      const changeModeText = document.querySelector('.change');
+
+      // Update the text based on dark mode status
+      if (document.body.classList.contains('dark-mode')) {
+        changeModeText.textContent = 'ON'; // Change the text to 'ON'
+        localStorage.setItem('darkMode', 'enabled'); // Save preference
+      } else {
+        changeModeText.textContent = 'OFF'; // Change the text to 'OFF'
+        localStorage.setItem('darkMode', 'disabled'); // Save preference
+      }
+    });
+
+  </script>
+  <script>
+    function toggleMode() {
+      const lightModeLink = document.getElementById('light-mode');
+      const darkModeLink = document.getElementById('dark-mode');
+      const modeText = document.querySelector('.change');
+
+      if (lightModeLink.disabled) {
+        lightModeLink.disabled = false;
+        darkModeLink.disabled = true;
+        modeText.textContent = "OFF"; // Update the mode text to show Dark mode is off
+      } else {
+        lightModeLink.disabled = true;
+        darkModeLink.disabled = false;
+        modeText.textContent = "ON"; // Update the mode text to show Dark mode is on
+      }
+    }
+
+    // Call highlight.js to apply syntax highlighting
+    document.addEventListener('DOMContentLoaded', () => {
+      hljs.highlightAll();
+    });
+  </script>
+</body>
+
+</html>
