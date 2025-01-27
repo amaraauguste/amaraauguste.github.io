@@ -1,0 +1,355 @@
+.dropdown-btn {
+  text-decoration: none;
+  display: block;
+  border: none;
+  font-size: 25px;
+  background: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+}
+.dropdown-container {
+  display: none;
+  padding-left: 8px;
+}
+
+ .svgcontainer {
+  background-color: rgb(255, 255, 255);
+  padding: 20px;
+}
+
+.dark-mode .svgcontainer {
+  background-color: black;
+  padding: 20px;
+}
+
+.dark-mode .icon {
+  filter: brightness(0) invert(1); /* Change SVG color to white */
+}
+code {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-size: 1em; /* Set the initial font size based on the default size */
+  width: 92%; /* Set a width for the code block */
+  max-width: 100%; /* Ensure the code block does not exceed the screen width */
+}
+
+
+@media only screen and (max-width: 600px) {
+  code {
+    font-size: 0.8em; /* Change font size for smaller screens */
+  }
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+th {
+  border: 1px solid black;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(1) {
+  background-color: #dddddd;
+}
+
+tr:nth-child(4),
+tr:nth-child(6),
+tr:nth-child(8),
+tr:nth-child(9) {
+  background-color: lightyellow;
+}
+
+.structure tr:nth-child(even) {
+  background-color: rgb(241, 252, 255);
+}
+.structure tr:nth-child(odd) {
+  background-color: rgb(212, 244, 255);
+}
+
+.relation tr:nth-child(even) {
+  background-color: rgb(224, 235, 220);
+}
+
+.relation tr:nth-child(odd) {
+  background-color: rgb(245, 247, 244);
+}
+
+.truth tr:nth-child(even) {
+  background-color: rgb(247, 246, 244);
+}
+
+.truth tr:nth-child(odd) {
+  background-color: rgb(235, 225, 220);
+}
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(183, 147, 241);
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(140, 111, 186);
+}
+
+.backbutton {
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+}
+
+.backbutton:hover {
+  background-color: #a854db;
+}
+
+.previous {
+  background-color: #c59cde;
+  color: black;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
+
+
+.label {
+  color: blue;
+}
+
+.dark-mode .label{
+  color: yellow;
+}
+
+header {
+  color: black;
+  margin: 10px;
+  text-align: center;
+  font-size: 1.8em;
+  font-weight: thin;
+}
+
+#main-doc header {
+  text-align: left;
+  margin: 0px;
+}
+
+code {
+  display: block;
+  line-height: 2;
+  padding: 15px;
+  font-size: 26.5px;
+  margin: 10px;
+  border-radius: 5px;
+}
+
+@media only screen and (max-width: 400px) {
+  #main-doc {
+    margin-left: -10px;
+  }
+
+  code {
+    margin-left: -20px;
+    width: 100%;
+    padding: 15px;
+    padding-left: 10px;
+    padding-right: 45px;
+    min-width: 233px;
+  }
+}
+
+body {
+  font-family: "Lato", sans-serif;
+}
+
+#navbar {
+  height: 100%;
+  width: 160px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #c59cde;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+.header-link {
+  font-size: 30px; /* Desired font size */
+  white-space: nowrap; /* Prevent wrapping */
+  margin: 0; /* Reset margin if necessary */
+}
+
+.header-text {
+  color: inherit; /* Make sure to inherit color from parent */
+  text-decoration: none; /* Remove underline */
+  font-weight: normal; /* Optional: Adjust weight */
+  font-size: inherit; /* If you want to inherit the font size */
+}
+
+.header-link a {
+  font-size: 25px !important; /* Use !important to ensure it gets applied */
+  white-space: nowrap; /* Prevent wrapping */
+}
+
+#navbar a {
+  padding: 6px 8px 6px 16px; /* adjust the padding to your liking */
+  text-decoration: none;
+  font-size: 20px;
+  color: #000000;
+  display: block;
+}
+
+#navbar a:hover {
+  color: #f1f1f1;
+}
+
+#navbar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#navbar li {
+  margin-bottom: 2px;
+}
+
+#navbar .dropdown-btn {
+  width: fit-content; /* adjust the width of each link to fit its content */
+}
+#main-doc {
+  margin-left: 160px;
+  /* Same as the width of the sidenav */
+  font-size: 28px;
+  /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+.dropdown-container {
+  display: none; /* hide the dropdown container by default */
+}
+.dark-mode {
+  background-color: #000000; /* Dark background */
+  color: white; /* Light text */
+}
+
+/* Handle */
+.dark-mode::-webkit-scrollbar-thumb {
+  background: #486c0e; /* Green color for the scrollbar handle */
+}
+
+/* Handle on hover */
+.dark-mode::-webkit-scrollbar-thumb:hover {
+  background: #304809; /* Darker green on hover */
+}
+
+/* Handle */
+.dark-mode #navbar::-webkit-scrollbar-thumb {
+  background: #3a6321; /* Green color for the scrollbar handle */
+}
+
+/* Handle on hover */
+.dark-mode #navbar::-webkit-scrollbar-thumb:hover {
+  background: #304809; /* Darker green on hover */
+}
+
+.dark-mode #navbar {
+  background-color: #0b3c1a; /* Darker navbar */
+}
+
+.dark-mode #navbar a {
+  color: white; /* Light links */
+}
+
+.dark-mode header {
+  color: white; /* Light links */
+}
+
+.dark-mode a {
+    color: yellow; /* Light links */
+  }
+
+.mode {
+  margin: 10px; /* Add margin to the mode toggle */
+}
+
+.dark-mode .backbutton {
+  background-color: #0b3c1a; /* Darker navbar */
+}
+
+.dark-mode .backbutton:hover {
+  background-color: #04170a; /* Darker navbar */
+}
+
+.dark-mode tr:nth-child(1) {
+  background-color: #222222;
+}
+
+.dark-mode tr:nth-child(4),
+.dark-mode tr:nth-child(6),
+.dark-mode tr:nth-child(8),
+.dark-mode tr:nth-child(9) {
+  background-color: #02025c;
+}
+
+.dark-mode tr{
+  background-color: #0b0b31;
+ }
+
+.dark-mode .structure tr:nth-child(1) {
+  background-color: #222222;
+}
+
+.dark-mode .structure tr{
+ background-color: #0b0b31;
+}
+
+.dark-mode .relation tr:nth-child(odd) {
+  background-color: #0b0b31;
+ }
+
+ .dark-mode .relation tr:nth-child(even) {
+  background-color: #141456;
+ }
+
+ .dark-mode .truth tr:nth-child(odd) {
+  background-color: #0b0b31;
+ }
+
+ .dark-mode .truth tr:nth-child(even) {
+  background-color: #141456;
+ }
+
+.change {
+  font-weight: bold;
+  cursor: pointer;
+  color: #007BFF; /* Color for the toggle status text */
+}
+
+@media screen and (max-height: 450px) {
+  #navbar {
+      padding-top: 15px;
+  }
+
+  #navbar a {
+      font-size: 18px;
+  }
+}
