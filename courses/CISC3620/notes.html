@@ -659,27 +659,39 @@
           src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/raster%20vs%20vector.png?raw=true"
           alt="raster vs vector">
 
-        <p><b>GIF, PNG, JPEG, and WebP are basically raster graphics formats; an image is specified
+        <p><b>GIF, PNG, JPEG, and WebP are raster graphics formats; an image is specified
             by storing a color value for each pixel.</b></p>
-        <p>GIF is an older file format, which has largely been superseded by PNG, but you can still find GIF images on
-          the web.
-          (The GIF format supports animated images, so GIFs are often used for simple animations on Web pages.) <b>GIF
-            uses an
-            indexed color model with a maximum of 256 colors. PNG can use either indexed or full 24-bit
-            color, while JPEG is meant for full color images.</b></p>
 
-        <p>The amount of data necessary to represent a raster image can be quite large.</p>
+        <p><b>JPEG (Joint Photographic Experts Group)</b> allows <b>up to 16 million colors</b> and is <b>best for
+            images with many
+            colors or color gradations</b>, especially photographs. JPEG is a <b>"lossy" format, meaning each time the
+            image is
+            saved and compressed, some image information is lost, degrading quality</b>. JPEG images allow for various
+          levels of compression.</p>
+        <p>Low compression means high image quality, but large file size.
+          High compression means lower image quality, but smaller file size.</p>
 
-        <p>However, the data usually contains a lot of redundancy, and the data can be "compressed" to reduce its
-          size. GIF and PNG use lossless data compression, which means that the original image
-          can be recovered perfectly from the compressed data. JPEG uses a lossy data compression
-          algorithm, which means that the image that is recovered from a JPEG file is not exactly the
-          same as the original image; some information has been lost. This might not sound like a good
-          idea, but in fact the difference is often not very noticeable, and using lossy compression usually
-          permits a greater reduction in the size of the compressed data. JPEG generally works well for
-          photographic images, but not as well for images that have sharp edges between different colors.
-          It is especially bad for line drawings and images that contain text; PNG is the preferred format
-          for such images. WebP can use both lossless and lossy compression</p>
+        <p><b>GIF (Graphics Interchange Format)</b> is a <b>"lossless"</b> format, meaning <b>image quality is not
+            degraded through
+            compression</b>. However, GIFs are <b>limited to a 256-color palette</b>, making them suitable for
+          <b>simpler graphics with
+            fewer colors</b>. GIFs also <b>support transparent backgrounds and simple animations</b>.
+        </p>
+
+        <p><b>PNG (Portable Network Graphics)</b> combines features of <b>both JPEG and GIF</b>. PNG <b>supports
+            millions of colors and
+            transparent backgrounds</b>. It uses <b>lossless compression, ensuring no quality loss</b>. However, PNGs
+          may not be
+          supported by older web browsers.</p>
+
+        <p>WebP is a modern format that supports both lossless and lossy compression, providing a balance between image
+          quality and file size.</p>
+
+        <p>The amount of data necessary to represent a raster image can be quite large. However, the data usually
+          contains a lot of redundancy and can be compressed to reduce its size. GIF and PNG use lossless compression,
+          meaning the original image can be perfectly recovered. JPEG uses lossy compression, which allows for greater
+          reduction in file size but at the cost of some image quality. WebP supports both types of compression.</p>
+
 
         <p><b>SVG, on the other hand, is fundamentally a vector graphics format (although SVG images
             can include raster images).</b> SVG is actually an XML-based language for describing twodimensional vector
@@ -744,8 +756,7 @@
         <p> For example, the pixel with coordinates (3,5) would lie in column number 3 and row number 5.</p>
 
         <p>Conventionally, columns are numbered from left to right, starting with zero. Most graphics
-          systems, including the ones we will study in this chapter, number rows from top to bottom,
-          starting from zero. </p>
+          systems (like HTML Canvas), number rows from top to bottom starting from zero. </p>
 
         <p>Some, including OpenGL, number the rows from bottom to top instead.</p>
 
@@ -766,41 +777,218 @@
 
         <p>Suppose, for example, that we want to draw a line segment. A mathematical line has no
           thickness and would be invisible. So we really want to draw a thick line segment, with some
-          specified width. Let's say that the line should be one pixel wide. The problem is that, unless
-          the line is horizontal or vertical, we can't actually draw the line by coloring pixels. A diagonal
+          specified width.</p>
+          <p>Let's say that the line should be one pixel wide.</p> 
+          <p>The problem is that, <b>unless
+          the line is horizontal or vertical, we can't actually draw the line by coloring pixels</b>. A diagonal
           geometric line will cover some pixels only partially. It is not possible to make part of a pixel
           black and part of it white. When you try to draw a line with black and white pixels only,
-          the result is a jagged staircase effect. </p>
+          the result is a jagged staircase effect.</p>
 
-        <p>This effect is an example of something called <b>"aliasing"</b>.
-          Aliasing can also be seen in the outlines of characters drawn on the screen and in diagonal or
+        <p>This effect is an example of something called <b>"aliasing"</b>.</p>
+       <p>Aliasing can also be seen in the outlines of characters drawn on the screen and in diagonal or
           curved boundaries between any two regions of different color. (The term aliasing likely comes
           from the fact that ideal images are naturally described in real-number coordinates. When you
           try to represent the image using pixels, many real-number coordinates will map to the same
-          integer pixel coordinates; they can all be considered as different names or “aliases” for the same
+          integer pixel coordinates; they can all be considered as different names or "aliases" for the same
           pixel.)
         </p>
 
-        <p><b>Antialiasing</b> is a term for techniques that are designed to mitigate the effects of aliasing.
-          The idea is that when a pixel is only partially covered by a shape, the color of the pixel should be
+        <h3>Anti-Aliasing</h3>
+
+        <p>Anti-aliasing is a fundamental technique employed in graphics production that allows for smoother and more
+          realistic images.
+          This technology is used to reduce the jagged edges or "jaggies" that are commonly seen in computer-generated
+          images,
+          allowing them to appear as they would in real life.</p>
+        <p>It was presented by the Architecture Machine Group team, which later became known as the Media Lab,
+          a laboratory engaged in research and development in the field of technology, science, art, design, and
+          medicine,
+          in 1972 at the Massachusetts Institute of Technology.</p>
+        <p>The idea is that when a pixel is only partially covered by a shape, the color of the pixel should be
           a mixture of the color of the shape and the color of the background. When drawing a black line
           on a white background, the color of a partially covered pixel would be gray, with the shade of
           gray depending on the fraction of the pixel that is covered by the line. (In practice, calculating
           this area exactly for each pixel would be too difficult, so some approximate method is used.)
         </p>
+        <p>At its core, <b>anti-aliasing (also known as AA) is a method of manipulating pixels so that they appear smoother
+          than they actually are</b>.
+          To achieve this effect, the software or hardware being used will <b>sample adjacent pixels and create an average
+          color value
+          between them</b>. This helps the image appear more natural and realistic since it blends together sharp pixel
+          lines into one
+          continuous line instead of several distinct pixelated lines.</p>
+
+        <p>So why does the "jagged" effect occur? Modern monitors and screens of mobile devices consist of quadrangular
+          elements - pixels.
+          This means that, in fact, only horizontal or vertical lines can be displayed in straight lines with clear
+          boundaries.
+          Angled curves are displayed as "steps". For example, the line in the picture below appears straight, but as
+          you zoom in,
+          it becomes clear that it is not.</p>
 
         <p>Here, for example, is a geometric line, shown on the left, along with two approximations of that
           line made by coloring pixels. The lines are greatly magnified so that you can see the individual
-          pixels. The line on the right is drawn using antialiasing, while the one in the middle is not:</p>
+          pixels. The line on the right is drawn using anti-aliasing, while the one in the middle is not:</p>
 
         <img class="center" style="width: 50%; height: 50%"
           src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/antialiasing%201.png?raw=true"
           alt="Antialiasing 1">
 
-        <p>Note that antialiasing does not give a perfect image, but it can reduce the "jaggies" that are
+        <p>Note that anti-aliasing does not give a perfect image, but it can reduce the "jaggies" that are
           caused by aliasing (at least when it is viewed on a normal scale).</p>
 
-        <p>There are other issues involved in mapping real-number coordinates to pixels. For example,
+        <p>Anyone who has played older games is familiar with the distinctive pixelated and blocky aesthetic.
+          "Jaggedness" occurs due to the lack of smooth transitions between colors, and anti-aliasing helps to mitigate
+          this issue.</p>
+
+        <p>Jagged edges, or aliasing, occur when real-world objects with smooth, continuous curves are rasterized using
+          pixels.
+          This problem arises from <b>undersampling</b>, which happens when the sampling frequency is lower than the
+          <a
+            href="https://www.gatan.com/nyquist-frequency#:~:text=The%20Nyquist%2DShannon%20sampling%20theorem,shown%20in%20the%20figures%20below.">Nyquist
+            Sampling Frequency</a>,
+          leading to a loss of information about the image.
+        </p>
+
+        <p>Anti-aliasing works by sampling multiple points within and around each pixel, then calculating an average
+          color value.
+          This process effectively blurs the edges of objects, creating the illusion of smoother lines and reducing
+          visible pixelation.</p>
+
+        <p>While anti-aliasing improves image quality, it also increases the load on the processor and graphics card,
+          as they need to render additional shades and expend more power resources.</p>
+
+        <p>One way to reduce jagged edges is to increase the resolution, as higher resolution images have smaller
+          pixels,
+          making the blocky appearance less noticeable. However, resolution alone is not always sufficient,
+          and software developers use various anti-aliasing techniques to further improve image quality.</p>
+
+        <h3>Methods of Anti-Aliasing (AA)</h3>
+
+        <p>There are essentially four methods of Anti-Aliasing:</p>
+        <ol>
+          <li>High-Resolution Display</li>
+          <li>Post-Filtering (Supersampling)</li>
+          <li>Pre-Filtering (Area Sampling)</li>
+          <li>Pixel Phasing</li>
+        </ol>
+
+        <h4>High-Resolution Display</h4>
+
+        <p>Using a high-resolution display is one of the simplest methods of anti-aliasing.
+          By increasing the resolution, more pixels can be used to represent the image, reducing the appearance of
+          jagged edges.
+          However, this method is limited by the physical resolution of the display and may not be practical for all
+          applications.</p>
+
+        <h4>Post-Filtering (Supersampling)</h4>
+
+        <p>Post-filtering, also known as supersampling, involves treating the screen as if it has a finer grid,
+          effectively reducing the pixel size.
+          The average intensity of each pixel is calculated from the intensities of subpixels, and the image is
+          displayed at the screen resolution.
+          This method is called post-filtering because it is done after generating the rasterized image.</p>
+
+        <h4>Pre-Filtering (Area Sampling)</h4>
+
+        <p>Pre-filtering, or area sampling, calculates pixel intensities based on the areas of overlap between each
+          pixel and the objects to be displayed.
+          The final pixel color is an average of the colors of the overlapping areas. This method is called
+          pre-filtering because it is done before generating the rasterized image.</p>
+
+        <h4>Pixel Phasing</h4>
+
+        <p>Pixel phasing involves shifting pixel positions to approximate the positions near object geometry.
+          Some systems allow the size of individual pixels to be adjusted to distribute intensities, which helps in
+          pixel phasing.</p>
+
+        <h3>Types of Anti-Aliasing (AA)</h3>
+
+        <p>Generally all anti-aliasing methods can be classified into two classifications:</p>
+        <ol>
+          <li>Spatial Anti-Aliasing</li>
+          <li>Post Process Anti-Aliasing</li>
+        </ol>
+
+        <h4>1. Spatial Anti-Aliasing</h4>
+
+        <p>Spatial anti-aliasing techniques work by sampling multiple points within each pixel and averaging the colors
+          to reduce jagged edges.</p>
+
+        <h4>Supersampling Anti-Aliasing (SSAA)</h4>
+
+        <p><b>Supersampling Anti-Aliasing (SSAA)</b>, also called full-scene anti-aliasing (FSAA), works by <b>rendering
+            the
+            image at a higher resolution and then downsampling it to the display resolution</b>.
+          This method reduces jagged edges by averaging colors near the edges.</p>
+        <p> In this approach, a 512x512 image is first computed at higher resolution, such as 2048x2048, for example.
+          It is then reduced through averaging or filtering to produce a 512x512 image.</p>
+        <p>While effective, SSAA is <b>computationally
+            intensive and can heavily load the GPU</b>.</p>
+
+        <h4>Multi-Sample Anti-Aliasing (MSAA)</h4>
+
+        <p><b>Multi-Sample Anti-Aliasing (MSAA)</b> improves performance compared to SSAA by <b>sampling multiple points
+            within
+            each pixel only at the edges of polygons</b>.</p>
+        <p> Images are computed for 4 (or 8) subpixel sample points, followed by averaging. It is slow, since the frame
+          rate is
+          reduced by a factor of 4 (or 8). It works well for horizontal and vertical triangle edges.
+          For other edge angles, the gaps between subpixels can cause narrow face breakups.</p>
+        <p>This method <b>reduces the computational load while still providing good anti-aliasing quality</b>.</p>
+
+        <h4>Coverage Sampling Anti-Aliasing (CSAA)</h4>
+
+        <p><b>Coverage Sampling Anti-Aliasing (CSAA)</b> is an Nvidia-specific technique that improves upon MSAA by
+          increasing
+          the number of coverage samples
+          without significantly increasing the number of color/depth samples. This method <b>provides better edge
+            quality
+            with less performance impact</b>.</p>
+
+        <h4>2. Post-Processing Anti-Aliasing</h4>
+
+        <p>Post-processing anti-aliasing techniques are applied after the image has been rendered to smooth out jagged
+          edges.</p>
+
+        <h4>Fast Approximate Anti-Aliasing (FXAA)</h4>
+
+        <p>Fast Approximate Anti-Aliasing (FXAA) is a post-processing technique, created by Timothy Lottes at Nvidia,
+          that smooths edges by <b>analyzing the final image and blending colors at the edges</b>.</p>
+        <p>This is the <b>cheapest and simplest smoothing algorithm</b>.</p>
+        <p>In layman's terms, FXAA is applied to your final rendered image and works based on pixel data, not geometry.
+          GPU's are particularly fast at executing these shader algorithms in parallel, thus it's very quick to render.
+        </p>
+        <p>FXAA is less computationally intensive than SSAA and MSAA, making it <b>suitable for real-time applications
+            like
+            video games</b>.</p>
+
+        <h4>Enhanced Subpixel Morphological Anti-Aliasing (SMAA)</h4>
+
+        <p><b>Enhanced Subpixel Morphological Anti-Aliasing (SMAA)</b> is a logical development of the FXAA algorithm.
+          This post effect is used in post-processing the final image that combines edge
+          detection and blending to reduce aliasing.
+          SMAA provides <b>high-quality anti-aliasing with a lower performance cost compared to SSAA and MSAA</b>.</p>
+
+        <h4>Temporal Anti-Aliasing (TAA) </h4>
+
+        <p>Temporal anti-aliasing techniques use information from previous frames to reduce aliasing in the current
+          frame.</p>
+
+        <p><b>Temporal Anti-Aliasing (TAA)</b> reduces aliasing by <b>using information from previous frames to smooth edges in
+          the current frame.</b>
+          TAA is effective at reducing flickering and shimmering in moving images, but it <b>can introduce ghosting
+          artifacts</b> (visual distortions that appear in images due to a variety of factors, including movement, refraction, and sampling errors) 
+          if not implemented correctly.</p>
+
+
+
+
+
+
+        <p>There are other issues involved in mapping real-number coordinates to pixels.</p> 
+        <p>For example,
           which point in a pixel should correspond to integer-valued coordinates such as (3,5)? The center
           of the pixel? One of the corners of the pixel? In general, we think of the numbers as referring
           to the top-left corner of the pixel.</p>
@@ -823,7 +1011,7 @@
 
         <p>So for the top line, the line as it is drawn lies half in one row of pixels and half in another row. The
           graphics
-          system, which uses antialiasing, rendered the line by coloring both rows of pixels gray.</p>
+          system, which uses anti-aliasing, rendered the line by coloring both rows of pixels gray.</p>
 
         <p>The bottom line was drawn from the point (100.5,100.5) to (120.5,100.5). In this case, the line lies
           exactly along one line of pixels, which gets colored black. The gray pixels at the ends of the
@@ -831,9 +1019,41 @@
           endpoints. Other graphics systems might render the same lines differently</p>
 
         <p>All this is complicated further by the fact that pixels aren't what they used to be. Pixels
-          today are smaller! The resolution of a display device can be measured in terms of the number
-          of pixels per inch on the display, a quantity referred to as PPI (pixels per inch) or sometimes
-          DPI (dots per inch). Early screens tended to have resolutions of somewhere close to 72 PPI.
+          today are smaller!</p>
+
+        <h3>Understanding Resolution</h3>
+
+        <p>The <b>resolution</b> of a display device can be measured in terms of the number
+          of pixels per inch on the display, a quantity referred to as <b>PPI (pixels per inch)</b> or sometimes
+          <b>DPI (dots per inch)</b>.</p>
+
+        <h4>PPI vs DPI</h4>
+
+        <p>While PPI (Pixels Per Inch) and DPI (Dots Per Inch) are often used interchangeably, they refer to different
+          concepts and are used in different contexts.</p>
+
+        <h4>Pixels Per Inch (PPI)</h4>
+
+        <p>PPI is a measure of the <b>pixel density of a digital display</b>, such as a computer monitor, smartphone screen, or
+          television. It indicates the number of pixels present in one inch of the display. <b>Higher PPI values mean more
+          pixels are packed into each inch, resulting in sharper and more detailed images</b>.</p>
+
+        <p>For example, a display with a resolution of 1920x1080 pixels and a diagonal size of 15.6 inches has a PPI of
+          approximately 141. This means there are 141 pixels in each inch of the display.</p>
+
+        <h4>Dots Per Inch (DPI)</h4>
+
+        <p>DPI is a measure of the <b>resolution of a printed image</b>, indicating the number of individual dots of ink or
+          toner that a printer can produce within one inch. <b>Higher DPI values result in finer detail and smoother
+          gradients in printed images</b>.</p>
+
+        <p>For example, a printer with a resolution of 300 DPI can produce 300 dots of ink per inch, resulting in
+          high-quality prints suitable for photographs and detailed graphics.</p>
+
+        <p>Both measures are important for ensuring high-quality visuals, but they apply to different
+          mediums.</p>
+
+        <p>Early screens tended to have resolutions of somewhere close to 72 PPI.
           At that resolution, and at a typical viewing distance, individual pixels are clearly visible. For a
           while, it seemed like most displays had about 100 pixels per inch, but high resolution displays
           today can have 200, 300 or even 400 pixels per inch. At the highest resolutions, individual
@@ -1016,18 +1236,33 @@
           when mixed produce more light.</p>
 
         <p>This method of specifying color is called the <b>RGB color model</b>, where RGB stands
-          for Red/Green/Blue. For example, in the RGB color model, the number triple (1, 0.5, 0.5)
-          represents the color obtained by setting red to full intensity, while green and blue are set to
-          half intensity.</p>
+          for Red/Green/Blue.</p>
+
 
         <p>The red, green, and blue values for a color are called the color components of
           that color in the RGB color model and when mixed produces lighter colors, resulting in white light at the end.
           That's how our computer, TV, and other light-emitting screen works.</p>
 
-        <p>In the RGB color model, the color black is represented by (0, 0, 0), and white is
-          represented by (1, 1, 1). The color red is represented by (1, 0, 0), green by (0, 1, 0), and blue
-          by (0, 0, 1). The color yellow is represented by (1, 1, 0), cyan by (0, 1, 1), and magenta by
-          (1, 0, 1).</p>
+        <p>Each parameter (red, green, and blue) defines the intensity of the color with a value <b>between 0 and
+            255</b>.</p>
+
+        <p>This means that there are 256 x 256 x 256 = 16777216 possible colors!</p>
+
+        <p>For example, rgb(255, 0, 0) is displayed as red, because red is set to its highest value (255), and the other
+          two (green and blue) are set to 0.</p>
+
+        <p>Another example, rgb(0, 255, 0) is displayed as green, because green is set to its highest value (255), and
+          the other two (red and blue) are set to 0.</p>
+
+        <p>To display black, set all color parameters to 0, like this: rgb(0, 0, 0).</p>
+
+        <p>To display white, set all color parameters to 255, like this: rgb(255, 255, 255).</p>
+
+        <h3>Shades of Gray</h3>
+
+        <p>Shades of gray are often defined using equal values for all three parameters:</p>
+
+        <!--ADD IMAGE HERE-->
 
         <p>Light is made up of waves with a variety of wavelengths. A pure color is one for which
           all the light has the same wavelength, but in general, a color can contain many wavelengths—
@@ -1064,11 +1299,7 @@
           and the same RGB values can produce somewhat different colors on different screens. The color
           gamut of a color printer is noticeably different—and probably smaller—than the color gamut
           of a screen, which explains why a printed image probably doesn't look exactly the same as it
-          did on the screen. (Printers, by the way, make colors differently from the way a screen does it.
-          Whereas a screen combines light to make a color, a printer combines inks or dyes. Because of
-          this difference, colors meant for printers are often expressed using a different set of basic colors.
-          A common color model for printer colors is CMYK, using the colors cyan, magenta, yellow, and
-          black.)
+          did on the screen.
         </p>
 
         <h2>Subtractive</h2>
@@ -1077,6 +1308,10 @@
           reflect when light falls on them.
           Molecules of paint absorb some of the wavelengths of light and reflect rest. That's how we see such objects.
         </p>
+
+        <p>Printers, by the way, make colors differently from the way a screen does it.
+          Whereas a screen combines light to make a color, a printer combines inks or dyes. Because of
+          this difference, colors meant for printers are often expressed using a different set of basic colors.</p>
 
         <p>The primary colors of the subtractive mix are CMYK — Cyan, Magenta, Yellow, and K which stands for black ( To
           distinguish it from B for Blue.
