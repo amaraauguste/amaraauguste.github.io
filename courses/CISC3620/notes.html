@@ -56,6 +56,8 @@
           <a href="#Types_of_2D_Graphics" onclick="closeDropdown2()">Types of 2D Graphics</a>
           <a href="#Pixels_and_Coordinate_Systems" onclick="closeDropdown2()">Pixels and Coordinate Systems</a>
           <a href="#Color_Models" onclick="closeDropdown2()">Color Models</a>
+          <a href="#Shapes" onclick="closeDropdown2()">Shapes</a>
+          <a href="#Intro_to_HTML5_Canvas" onclick="closeDropdown2()">Intro to HTML5 Canvas</a>
           <!--<a href="#Variable_Scope" onclick="closeDropdown2()">Variable Scope</a>
           <a href="#Global_Variables" onclick="closeDropdown2()">Global Variables</a>
           <a href="#Operators" onclick="closeDropdown2()">Operators</a>
@@ -577,7 +579,7 @@
         <p>But here is the point: For an image that can be specified as a reasonably small number of
           geometric shapes, the amount of information needed to represent the image is much smaller
           using a vector representation than using a raster representation. Consider an image made up
-          of one thousand line segments. For a vector representation of the image, you only need to store
+          of one thousand line segments. For a vector representation of the image, We only need to store
           the coordinates of two thousand points, the endpoints of the lines. <b>This would take up only a
             few kilobytes of memory. To store the image in a frame buffer for a raster display would require
             much more memory.</b> Similarly, a vector display could draw the lines on the screen more quickly
@@ -613,18 +615,18 @@
           assigning colors to pixels. This might be done by using a "drawing tool" that acts like a painter's brush,
           or even by tools that draw geometric shapes such as lines or rectangles. But the point in a
           painting program is to color the individual pixels, and it is only the pixel colors that are saved.
-          To make this clearer, suppose that you use a painting program to draw a house, then draw a
-          tree in front of the house. If you then erase the tree, you'll only reveal a blank background, not
+          To make this clearer, suppose that We use a painting program to draw a house, then draw a
+          tree in front of the house. If We then erase the tree, We'll only reveal a blank background, not
           a house. In fact, the image never really contained a "house" at all—only individually colored
           pixels that the viewer might perceive as making up a picture of a house</p>
 
         <h2>Drawing Programs</h2>
 
         <p>In a drawing program, the user creates an image by adding geometric shapes, and the image
-          is represented as a list of those shapes. If you place a house shape (or collection of shapes making
-          up a house) in the image, and you then place a tree shape on top of the house, the house is
-          still there, since it is stored in the list of shapes that the image contains. If you delete the tree,
-          the house will still be in the image, just as it was before you added the tree. Furthermore, you
+          is represented as a list of those shapes. If We place a house shape (or collection of shapes making
+          up a house) in the image, and We then place a tree shape on top of the house, the house is
+          still there, since it is stored in the list of shapes that the image contains. If We delete the tree,
+          the house will still be in the image, just as it was before We added the tree. Furthermore, We
           should be able to select one of the shapes in the image and move it or change its size, so drawing
           programs offer a rich set of editing operations that are not possible in painting programs. (The
           reverse, however, is also true.)</p>
@@ -636,7 +638,7 @@
           A painting program
           might let the user create “layers,” which are separate images that can be layered one on top of
           another to create the final image. The layers can then be manipulated much like the shapes in
-          a drawing program (so that you could keep both your house and your tree in separate layers,
+          a drawing program (so that We could keep both Wer house and Wer tree in separate layers,
           even if in the image of the house is in back of the tree).</p>
 
         <p>Two well-known graphics programs are <b>Adobe Photoshop</b> and <b>Adobe Illustrator</b>. Photoshop
@@ -699,13 +701,13 @@
         <p>"SVG" stands for "Scalable Vector Graphics" and the term "scalable" indicates one of the advantages of vector
           graphics: There is no loss of quality when the size of the image is increased. A line between two points can
           be
-          represented at any scale, and it is still the same perfect geometric line. If you try to greatly increase the
+          represented at any scale, and it is still the same perfect geometric line. If We try to greatly increase the
           size of
-          a raster image, on the other hand, you will find that you don't have enough color values for
+          a raster image, on the other hand, We will find that We don't have enough color values for
           all the pixels in the new image; each pixel from the original image will be expanded to cover a
-          rectangle of pixels in the scaled image, and you will get multi-pixel blocks of uniform color. The
+          rectangle of pixels in the scaled image, and We will get multi-pixel blocks of uniform color. The
           scalable nature of SVG images make them a good choice for web browsers and for graphical
-          elements on your computer's desktop. And indeed, some desktop environments are now using
+          elements on Wer computer's desktop. And indeed, some desktop environments are now using
           SVG images for their desktop icons.
         </p>
 
@@ -765,8 +767,8 @@
           alt="Pixel grids">
 
         <p>Note in particular that the pixel that is identified by a pair of coordinates (x,y) depends on the
-          choice of coordinate system. You always need to know what coordinate system is in use before
-          you know what point you are talking about.</p>
+          choice of coordinate system. We always need to know what coordinate system is in use before
+          We know what point We are talking about.</p>
 
         <p>Row and column numbers identify a pixel, not a point. A pixel contains many points;
           mathematically, it contains an infinite number of points. The goal of computer graphics is not
@@ -778,17 +780,17 @@
         <p>Suppose, for example, that we want to draw a line segment. A mathematical line has no
           thickness and would be invisible. So we really want to draw a thick line segment, with some
           specified width.</p>
-          <p>Let's say that the line should be one pixel wide.</p> 
-          <p>The problem is that, <b>unless
-          the line is horizontal or vertical, we can't actually draw the line by coloring pixels</b>. A diagonal
+        <p>Let's say that the line should be one pixel wide.</p>
+        <p>The problem is that, <b>unless
+            the line is horizontal or vertical, we can't actually draw the line by coloring pixels</b>. A diagonal
           geometric line will cover some pixels only partially. It is not possible to make part of a pixel
-          black and part of it white. When you try to draw a line with black and white pixels only,
+          black and part of it white. When We try to draw a line with black and white pixels only,
           the result is a jagged staircase effect.</p>
 
         <p>This effect is an example of something called <b>"aliasing"</b>.</p>
-       <p>Aliasing can also be seen in the outlines of characters drawn on the screen and in diagonal or
+        <p>Aliasing can also be seen in the outlines of characters drawn on the screen and in diagonal or
           curved boundaries between any two regions of different color. (The term aliasing likely comes
-          from the fact that ideal images are naturally described in real-number coordinates. When you
+          from the fact that ideal images are naturally described in real-number coordinates. When We
           try to represent the image using pixels, many real-number coordinates will map to the same
           integer pixel coordinates; they can all be considered as different names or "aliases" for the same
           pixel.)
@@ -811,11 +813,14 @@
           gray depending on the fraction of the pixel that is covered by the line. (In practice, calculating
           this area exactly for each pixel would be too difficult, so some approximate method is used.)
         </p>
-        <p>At its core, <b>anti-aliasing (also known as AA) is a method of manipulating pixels so that they appear smoother
-          than they actually are</b>.
-          To achieve this effect, the software or hardware being used will <b>sample adjacent pixels and create an average
-          color value
-          between them</b>. This helps the image appear more natural and realistic since it blends together sharp pixel
+        <p>At its core, <b>anti-aliasing (also known as AA) is a method of manipulating pixels so that they appear
+            smoother
+            than they actually are</b>.
+          To achieve this effect, the software or hardware being used will <b>sample adjacent pixels and create an
+            average
+            color value
+            between them</b>. This helps the image appear more natural and realistic since it blends together sharp
+          pixel
           lines into one
           continuous line instead of several distinct pixelated lines.</p>
 
@@ -824,11 +829,11 @@
           This means that, in fact, only horizontal or vertical lines can be displayed in straight lines with clear
           boundaries.
           Angled curves are displayed as "steps". For example, the line in the picture below appears straight, but as
-          you zoom in,
+          We zoom in,
           it becomes clear that it is not.</p>
 
         <p>Here, for example, is a geometric line, shown on the left, along with two approximations of that
-          line made by coloring pixels. The lines are greatly magnified so that you can see the individual
+          line made by coloring pixels. The lines are greatly magnified so that We can see the individual
           pixels. The line on the right is drawn using anti-aliasing, while the one in the middle is not:</p>
 
         <img class="center" style="width: 50%; height: 50%"
@@ -957,7 +962,7 @@
         <p>Fast Approximate Anti-Aliasing (FXAA) is a post-processing technique, created by Timothy Lottes at Nvidia,
           that smooths edges by <b>analyzing the final image and blending colors at the edges</b>.</p>
         <p>This is the <b>cheapest and simplest smoothing algorithm</b>.</p>
-        <p>In layman's terms, FXAA is applied to your final rendered image and works based on pixel data, not geometry.
+        <p>In layman's terms, FXAA is applied to Wer final rendered image and works based on pixel data, not geometry.
           GPU's are particularly fast at executing these shader algorithms in parallel, thus it's very quick to render.
         </p>
         <p>FXAA is less computationally intensive than SSAA and MSAA, making it <b>suitable for real-time applications
@@ -976,10 +981,12 @@
         <p>Temporal anti-aliasing techniques use information from previous frames to reduce aliasing in the current
           frame.</p>
 
-        <p><b>Temporal Anti-Aliasing (TAA)</b> reduces aliasing by <b>using information from previous frames to smooth edges in
-          the current frame.</b>
+        <p><b>Temporal Anti-Aliasing (TAA)</b> reduces aliasing by <b>using information from previous frames to smooth
+            edges in
+            the current frame.</b>
           TAA is effective at reducing flickering and shimmering in moving images, but it <b>can introduce ghosting
-          artifacts</b> (visual distortions that appear in images due to a variety of factors, including movement, refraction, and sampling errors) 
+            artifacts</b> (visual distortions that appear in images due to a variety of factors, including movement,
+          refraction, and sampling errors)
           if not implemented correctly.</p>
 
 
@@ -987,7 +994,7 @@
 
 
 
-        <p>There are other issues involved in mapping real-number coordinates to pixels.</p> 
+        <p>There are other issues involved in mapping real-number coordinates to pixels.</p>
         <p>For example,
           which point in a pixel should correspond to integer-valued coordinates such as (3,5)? The center
           of the pixel? One of the corners of the pixel? In general, we think of the numbers as referring
@@ -1025,7 +1032,8 @@
 
         <p>The <b>resolution</b> of a display device can be measured in terms of the number
           of pixels per inch on the display, a quantity referred to as <b>PPI (pixels per inch)</b> or sometimes
-          <b>DPI (dots per inch)</b>.</p>
+          <b>DPI (dots per inch)</b>.
+        </p>
 
         <h4>PPI vs DPI</h4>
 
@@ -1034,18 +1042,21 @@
 
         <h4>Pixels Per Inch (PPI)</h4>
 
-        <p>PPI is a measure of the <b>pixel density of a digital display</b>, such as a computer monitor, smartphone screen, or
-          television. It indicates the number of pixels present in one inch of the display. <b>Higher PPI values mean more
-          pixels are packed into each inch, resulting in sharper and more detailed images</b>.</p>
+        <p>PPI is a measure of the <b>pixel density of a digital display</b>, such as a computer monitor, smartphone
+          screen, or
+          television. It indicates the number of pixels present in one inch of the display. <b>Higher PPI values mean
+            more
+            pixels are packed into each inch, resulting in sharper and more detailed images</b>.</p>
 
         <p>For example, a display with a resolution of 1920x1080 pixels and a diagonal size of 15.6 inches has a PPI of
           approximately 141. This means there are 141 pixels in each inch of the display.</p>
 
         <h4>Dots Per Inch (DPI)</h4>
 
-        <p>DPI is a measure of the <b>resolution of a printed image</b>, indicating the number of individual dots of ink or
+        <p>DPI is a measure of the <b>resolution of a printed image</b>, indicating the number of individual dots of ink
+          or
           toner that a printer can produce within one inch. <b>Higher DPI values result in finer detail and smoother
-          gradients in printed images</b>.</p>
+            gradients in printed images</b>.</p>
 
         <p>For example, a printer with a resolution of 300 DPI can produce 300 dots of ink per inch, resulting in
           high-quality prints suitable for photographs and detailed graphics.</p>
@@ -1085,10 +1096,10 @@
 
         <h2>Real-number Coordinate Systems</h2>
 
-        <p>When doing 2D graphics, you are given a rectangle in which you want to draw some graphics
+        <p>When doing 2D graphics, We are given a rectangle in which We want to draw some graphics
           primitives. Primitives are specified using some coordinate system on the rectangle. It should
           be possible to select a coordinate system that is appropriate for the application. For example, if
-          the rectangle represents a floor plan for a 15 foot by 12 foot room, then you might want to use
+          the rectangle represents a floor plan for a 15 foot by 12 foot room, then We might want to use
           a coordinate system in which the unit of measure is one foot and the coordinates range from 0
           to 15 in the horizontal direction and 0 to 12 in the vertical direction. The unit of measure in
           this case is feet rather than pixels, and one foot can correspond to many pixels in the image.
@@ -1096,7 +1107,7 @@
           better to forget about pixels and just think about points in the image. A point will have a pair
           of coordinates given by real numbers.</p>
 
-        <p>To specify the coordinate system on a rectangle, you just have to specify the horizontal
+        <p>To specify the coordinate system on a rectangle, We just have to specify the horizontal
           coordinates for the left and right edges of the rectangle and the vertical coordinates for the top
           and bottom. Let's call these values left, right, top, and bottom. Often, they are thought of as
           xmin, xmax, ymin, and ymax, but there is no reason to assume that, for example, top is less
@@ -1137,7 +1148,7 @@
         <p class="center"><b>(oldX - oldLeft) / (oldRight - oldLeft)</b></p>
 
         <p>The formula for newX just says that newX should lie at the same fraction of the distance from
-          newLeft to newRight. You can also check the formulas by testing that they work when oldX is
+          newLeft to newRight. We can also check the formulas by testing that they work when oldX is
           equal to oldLeft or to oldRight, and when oldY is equal to oldBottom or to oldTop.</p>
 
         <p>As an example, suppose that we want to transform some real-number coordinate system
@@ -1152,11 +1163,11 @@
           or truncated to integer values if we need integer coordinates for pixels. The reverse
           transformation—going from pixel coordinates to real number coordinates—is also useful.</p>
 
-        <p>For example, if the image is displayed on a computer screen, and you want to react to mouse clicks
-          on the image, you will probably get the mouse coordinates in terms of integer pixel coordinates,
-          but you will want to transform those pixel coordinates into your own chosen coordinate system.</p>
+        <p>For example, if the image is displayed on a computer screen, and We want to react to mouse clicks
+          on the image, We will probably get the mouse coordinates in terms of integer pixel coordinates,
+          but We will want to transform those pixel coordinates into Wer own chosen coordinate system.</p>
 
-        <p>In practice, though, you won't usually have to do the transformations yourself, since most
+        <p>In practice, though, We won't usually have to do the transformations Werself, since most
           graphics APIs provide some higher level way to specify transforms.</p>
 
         <h2>Aspect Ratio</h2>
@@ -1187,10 +1198,10 @@
           alt="aspect ratio 1">
 
         <p>It is not always a bad thing to use different units of length in the vertical and horizontal
-          directions. However, suppose that you want to use coordinates with limits left, right, bottom,
-          and top, and that you do want to preserve the aspect ratio.</p>
+          directions. However, suppose that We want to use coordinates with limits left, right, bottom,
+          and top, and that We do want to preserve the aspect ratio.</p>
 
-        <p>In that case, depending on the shape of the display rectangle, you might have to adjust the values either of
+        <p>In that case, depending on the shape of the display rectangle, We might have to adjust the values either of
           left and right or
           of bottom and top to make the aspect ratios match:</p>
 
@@ -1269,7 +1280,7 @@
           mathematically, an infinite number. How then can we represent all colors by combining just
           red, green, and blue light? In fact, we can't quite do that.</p>
 
-        <p>You might have heard that combinations of the three basic, or "primary" colors are sufficient
+        <p>We might have heard that combinations of the three basic, or "primary" colors are sufficient
           to represent all colors, because the human eye has three kinds of color sensors that detect red,
           green, and blue light. However, that is only an approximation. The eye does contain three
           kinds of color sensors. The sensors are called "cone cells."</p>
@@ -1288,8 +1299,8 @@
           This is just a fact about the way our eyes actually work; it might have been different. </p>
 
         <p>Three basic colors can produce a reasonably large fraction of the set of
-          perceivable colors, but there are colors that you can see in the world that you will never see on
-          your computer screen. (This whole discussion only applies to people who actually have three
+          perceivable colors, but there are colors that We can see in the world that We will never see on
+          Wer computer screen. (This whole discussion only applies to people who actually have three
           kinds of cone cell. Color blindness, where someone is missing one or more kinds of cone cell, is
           surprisingly common.)
         </p>
@@ -1375,7 +1386,7 @@
           alt="HSV explained">
 
         <p>Let's look at some colors in the HSV color model. The illustration below shows colors with
-          a full range of H-values, for S and V equal to 1 and to 0.5. Note that for S=V=1, you get
+          a full range of H-values, for S and V equal to 1 and to 0.5. Note that for S=V=1, We get
           bright, pure colors. S=0.5 gives paler, less saturated colors. V=0.5 gives darker colors.
         </p>
 
@@ -1448,8 +1459,8 @@
 
         <p>Saturation is also referred to as "intensity" and "chroma". It refers to the dominance of hue in the color.
           On the outer edge of the hue wheel are the 'pure' hues.
-          As you move into the center of the wheel, the hue we are using to describe the color dominates less and less.
-          When you reach the center of the wheel, no hue dominates. These colors directly on the central axis are
+          As We move into the center of the wheel, the hue we are using to describe the color dominates less and less.
+          When We reach the center of the wheel, no hue dominates. These colors directly on the central axis are
           considered <b>desaturated</b>.</p>
 
         <img class="center" style="width: 50%; height: 50%"
@@ -1485,11 +1496,11 @@
           src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/value%202.png?raw=true"
           alt="value 2">
 
-        <p>Now, if you imagine that each hue was also represented as a slice like the one above, we would have a solid,
+        <p>Now, if We imagine that each hue was also represented as a slice like the one above, we would have a solid,
           upside-down cone of colors.
           The example above can be considered a slice of the cone. Notice how the right-most edge of this cone slice
           shows the greatest amount of the
-          dominant red hue (least amount of other competing hues), and how as you go down vertically, it gets darker in
+          dominant red hue (least amount of other competing hues), and how as We go down vertically, it gets darker in
           "value".</p>
         <p>Also notice that as we travel from right to left in the cone, the hue becomes less dominant and eventually
           becomes completely desaturated
@@ -1513,13 +1524,13 @@
           transparent and therefore invisible. Intermediate values give translucent, or partly transparent, colors.
         </p>
 
-        <p>Transparency determines what happens when you draw with one color (the foreground
+        <p>Transparency determines what happens when We draw with one color (the foreground
           color) on top of another color (the background color). If the foreground color is fully opaque,
           it simply replaces the background color. If the foreground color is partly transparent, then it
           is blended with the background color.</p>
 
         <p>Assuming that the alpha component ranges from 0 to 1,
-          the color that you get can be computed as: </p>
+          the color that We get can be computed as: </p>
 
         <p class="center"><b>new_color = (alpha)*(foreground_color) + (1 - alpha)*(background_color)</b></p>
 
@@ -1534,9 +1545,867 @@
 
         <p>How the color components are arranged within a 32-bit integer is somewhat arbitrary.</p>
 
-        <p>The most common layout is to store the alpha component in the eight high-order bits,
-          followed by red, green, and blue. (This should probably be called ARGB color.) However, other layouts are also
+        <p>The most common laWet is to store the alpha component in the eight high-order bits,
+          followed by red, green, and blue. (This should probably be called ARGB color.) However, other laWets are also
           in use.</p>
+
+      </article>
+      <br />
+    </section>
+    <hr />
+
+    <section class="main-section" id="Shapes">
+      <br />
+      <header><b>Shapes</b></header>
+      <article>
+        
+        <p>We have been talking about low-level graphics concepts like pixels and coordinates, but
+          fortunately we don't usually have to work on the lowest levels. Most graphics systems let We
+          work with higher-level shapes, such as triangles and circles, rather than individual pixels.</p>
+
+          <p>In a graphics API, there will be certain basic shapes that can be drawn with one command,
+          whereas more complex shapes will require multiple commands. Exactly what qualifies as a
+          basic shape varies from one API to another.</p>
+
+          <p>For example, the HTML5 canvas API provides commands to draw rectangles, circles, and
+          lines, but not triangles. To draw a triangle, We have to draw three lines.</p>
+
+          <p>By "line", we really mean line segment, that is a straight line segment connecting two given
+            points in the plane. <b>A simple one-pixel-wide line segment, without anti-aliasing, is the most
+            basic shape</b>. It can be drawn by coloring pixels that lie along the infinitely thin geometric line
+            segment.</p>
+
+          <p>An algorithm for drawing the line has to decide exactly which pixels to color. One of
+            the first computer graphics algorithms, Bresenham's algorithm for line drawing, implements
+            a very efficient procedure for doing so.</p>
+
+          <p>In any case, lines are typically more complicated. Anti-aliasing is one
+            complication. Line width is another. A wide line might actually be drawn as a rectangle.</p>
+
+          <p>Lines can have other attributes, or properties, that affect their appearance. One question
+            is, what should happen at the end of a wide line?</p>
+
+          <p>Appearance might be improved by adding
+            a rounded "cap" on the ends of the line. A square cap—that is, extending the line by half of
+            the line width—might also make sense.</p>
+
+          <p>Another question is, when two lines meet as part of a
+            larger shape, how should the lines be joined? And many graphics systems support lines that
+            are patterns of dashes and dots.</p>
+
+          <p>This illustration shows some of the possibilities:</p>
+
+          <img class="center" style="width: 75%; height: 75%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/types%20of%20lines.png?raw=true"
+          alt="Types of Lines">
+
+          <p>On the left are three wide lines with no cap, a round cap, and a square cap. The geometric line
+            segment is shown as a dotted line. (The no-cap style is called “butt.”) To the right are four
+            lines with different patterns of dots and dashes. In the middle are three different styles of line
+            joins: mitered, rounded, and beveled.</p>
+
+          <p>The basic rectangular shape has sides that are vertical and horizontal. (A tilted rectangle
+            generally has to be made by applying a rotation.) Such a rectangle can be specified with two
+            points, (x1,y1) and (x2,y2), that give the endpoints of one of the diagonals of the rectangle.
+            Alternatively, the width and the height can be given, along with a single base point, (x,y). In
+            that case, the width and height have to be positive, or the rectangle is empty. The base point
+            (x,y) will be the upper left corner of the rectangle if y increases from top to bottom, and it will
+            be the lower left corner of the rectangle if y increases from bottom to top.</p>
+
+            <img class="center" style="width: 75%; height: 75%"
+            src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/types%20of%20rectangles.png?raw=true"
+            alt="Types of Rectangles">
+
+          <p>Suppose that We are given points (x1,y1) and (x2,y2), and that We want to draw the rectangle
+            that they determine. And suppose that the only rectangle-drawing command that We have
+            available is one that requires a point (x,y), a width, and a height. For that command, x must
+            be the smaller of x1 and x2, and the width can be computed as the absolute value of x1 minus
+            x2. And similarly for y and the height.</p>
+
+            <p>In pseudocode,</p>
+
+            <img class="center" style="width: 75%; height: 75%"
+            src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/rectangle%20pseudocode.png?raw=true"
+            alt="Rectangle Pseudocode">
+
+            <p>A common variation on rectangles is to allow rounded corners. For a “round rect,” the
+              corners are replaced by elliptical arcs. The degree of rounding can be specified by giving the
+              horizontal radius and vertical radius of the ellipse.</p>
+
+              <p> Here are some examples of round rects. For
+                the shape at the right, the two radii of the ellipse are shown:</p>
+
+                <img class="center" style="width: 75%; height: 75%"
+                src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/rounded%20rectangles.png?raw=true"
+                alt="Rounded Rectangles">
+
+              <p>Our final basic shape is the oval. (An oval is also called an ellipse.) An oval is a closed curve
+                that has two radii. For a basic oval, we assume that the radii are vertical and horizontal. An
+                oval with this property can be specified by giving the rectangle that just contains it. Or it can
+                be specified by giving its center point and the lengths of its vertical radius and its horizontal
+                radius. </p>
+
+              <p>In this illustration, the oval on the left is shown with its containing rectangle and with
+                its center point and radii:</p>
+
+                <img class="center" style="width: 75%; height: 75%"
+                src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/types%20of%20ovals.png?raw=true"
+                alt="Types of Ovals">
+
+                <p>The oval on the right is a circle. A circle is just an oval in which the two radii have the same
+                  length.</p>
+
+                <p>If ovals are not available as basic shapes, they can be approximated by drawing a large
+                  number of line segments. The number of lines that is needed for a good approximation depends
+                  on the size of the oval. It's useful to know how to do this. Suppose that an oval has center
+                  point (x,y), horizontal radius r1, and vertical radius r2. Mathematically, the points on the oval
+                  are given by:</p>
+
+                <text class="center"><b>( x + r1*cos(angle), y + r2*sin(angle) )</b></text>
+
+                <p>where angle takes on values from 0 to 360 if angles are measured in degrees or from 0 to 2π if
+                  they are measured in radians. Here sin and cos are the standard sine and cosine functions. To
+                  get an approximation for an oval, we can use this formula to generate some number of points
+                  and then connect those points with line segments.</p>
+
+                <p>In pseudocode, assuming that angles are
+                  measured in radians and that pi represents the mathematical constant π,</p>
+
+                  <img class="center" style="width: 100%; height: 100%"
+                  src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/oval%20pseudocode.png?raw=true"
+                  alt="Oval Pseudocode">
+
+                <p>For a circle, of course, We would just have r1 = r2. This is the first time we have used the
+                  sine and cosine functions, but it won't be the last. These functions play an important role in
+                  computer graphics because of their association with circles, circular motion, and rotation. We
+                  will meet them again when we talk about transforms later.</p>
+
+                <h2>Stroke and Fill</h2>
+
+                  <p>There are two ways to make a shape visible in a drawing.</p>
+
+                  <p>We can <b>stroke</b> it. Or, if it is a closed
+                    shape such as a rectangle or an oval, We can <b>fill</b> it.</p>
+
+                  <p>Stroking a line is like dragging a pen along
+                    the line. Stroking a rectangle or oval is like dragging a pen along its boundary.</p>
+
+                  <p>Filling a shape
+                    means coloring all the points that are contained inside that shape.</p>
+
+                  <p>It's possible to both stroke
+                    and fill the same shape; in that case, the interior of the shape and the outline of the shape can
+                    have a different appearance.
+                    </p>
+
+                    <p>When a shape intersects itself, like the two shapes in the illustration below, it's not entirely
+                      clear what should count as the interior of the shape. In fact, there are at least two different
+                      rules for filling such a shape.</p>
+
+                    <p> In fact, there are at least two different
+                      rules for filling such a shape. Both are based on something called the <b>winding number</b>. The
+                      winding number of a shape about a point is, roughly, <b>how many times the shape winds around
+                      the point in the positive direction</b>, which we'll take here to be counterclockwise.</p>
+
+                    <p>Winding number
+                      can be negative when the winding is in the opposite direction.</p>
+
+                    <p>In the illustration, the shapes on
+                      the left are traced in the direction shown, and the winding number about each region is shown
+                      as a number inside the region.</p>
+
+                      <img class="center" style="width: 75%; height: 75%"
+                      src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/understanding%20winding%20number.png?raw=true"
+                      alt="Understanding Winding Number">
+
+                    <p>The shapes are also shown filled using the two fill rules.</p>
+
+                    <p>For the shapes in the center, the fill
+                      rule is to color any region that has a non-zero winding number.</p>
+
+                    <p>For the shapes shown on the
+                      right, the rule is to color any region whose winding number is odd; regions with even winding
+                      number are not filled.
+                      </p>
+
+                    <p>There is still the question of what a shape should be filled with. Of course, it can be filled
+                      with a color, but other types of fill are possible, including <b>patterns</b> and <b>gradients</b>.</p>
+
+                    <p> A pattern
+                      is an image, usually a small image. When used to fill a shape, a pattern can be repeated
+                      horizontally and vertically as necessary to cover the entire shape.</p>
+
+                    <p>A gradient is similar in that
+                      it is a way for color to vary from point to point, but instead of taking the colors from an image,
+                      they are computed. There are a lot of variations to the basic idea, but there is always a line
+                      segment along which the color varies. The color is specified at the endpoints of the line segment,
+                      and possibly at additional points; between those points, the color is interpolated. The color
+                      can also be extrapolated to other points on the line that contains the line segment but lying
+                      outside the line segment; this can be done either by repeating the pattern from the line segment
+                      or by simply extending the color from the nearest endpoint.</p>
+
+                    <p>For a <b>linear gradient</b>, the color
+                      is constant along lines perpendicular to the basic line segment, so you get lines of solid color
+                      going in that direction.</p>
+
+                    <p>In a radial gradient, the color is constant along circles centered at
+                      one of the endpoints of the line segment.</p>
+
+                    <p>And that doesn't exhaust the possibilities. To give
+                      you an idea what patterns and gradients can look like, here is a shape, filled with two gradients
+                      and two patterns:</p>
+
+                      <img class="center" style="width: 75%; height: 75%"
+                      src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/patterns%20and%20gradients.png?raw=true"
+                      alt="Patterns and Gradients">
+
+                    <p>The first shape is filled with a simple linear gradient defined by just two colors, while the second
+                      shape uses a radial gradient.</p>
+
+                    <p>Patterns and gradients are not necessarily restricted to filling shapes. Stroking a shape is,
+                      after all, the same as filling a band of pixels along the boundary of the shape, and that can be
+                      done with a gradient or a pattern, instead of with a solid color.</p>
+
+                    <p>Finally, a string of text can be considered to be a shape for the purpose
+                      of drawing it. The boundary of the shape is the outline of the characters. The text is drawn
+                      by filling that shape. </p>
+
+                    <p>In some graphics systems, it is also possible to stroke the outline of the
+                      shape that defines the text.</p>
+
+                    <p>In the following illustration, the string "Graphics" is shown, on
+                      top, filled with a pattern and, below that, filled with a gradient and stroked with solid black:</p>
+
+
+                      <img class="center" style="width: 75%; height: 75%"
+                      src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/stroke%20and%20fill%20text.png?raw=true"
+                      alt="Stroke and Fill Text">
+
+
+
+
+
+
+
+      </article>
+      <br />
+    </section>
+
+
+
+
+
+
+
+
+    <section class="main-section" id="Intro_to_HTML5_Canvas">
+      <br />
+      <header><b>HTML5 Canvas</b></header>
+      <article>
+        <p>HTML5 (Hypertext Markup Language 5) is a markup language used for structuring and presenting hypertext
+          documents on
+          the World Wide Web. It was the <b>fifth and final major HTML version</b> that is now a retired World Wide Web
+          Consortium (W3C)
+          recommendation.
+          The current specification is known as the <b>HTML Living Standard</b>.</p>
+
+        <p>Canvas is a new element in HTML5, which provides APIs used to draw raster graphics on a web application.
+          The presence of the Canvas API for HTML5, strengthens the HTML5 platform by providing two drawing contexts: 2D
+          and 3D.
+          These capabilities are supported on most modern operating systems and browsers.</p>
+
+        <p>However, we will begin with 2D graphics.</p>
+
+        <p>The <b>HTML5 canvas element</b> is used to draw graphics, on the fly, via JavaScript. The canvas element is
+          only a container
+          for graphics. We must use a <b>script</b> to actually draw the graphics.</p>
+
+        <p>Canvas has several methods for drawing paths, boxes, circles, text, and adding images.</p>
+
+        <p>HTML Canvas can:</p>
+
+        <ul>
+          <li><b>draw colorful text</b>, with or without animation</li>
+          <li><b>draw graphics</b> using great features for graphical data presentation with an imagery of graphs and charts
+          </li>
+          <li><b>be animated</b> - everything is possible: from simple bouncing balls to complex animations</li>
+          <li><b>be interactive</b> - canvas can respond to JavaScript events to any user action (key clicks, mouse clicks,
+            button clicks, finger movement)</li>
+          <li><b>be used in games</b> - canvas' methods for animations, offer a lot of possibilities for HTML gaming
+            applications</li>
+        </ul>
+
+        <p>Here is an example of a canvas element:</p>
+
+        <pre><code class="html">&lt;canvas id="myCanvas" width="500" height="400"&gt;&lt;/canvas&gt;</code></pre>
+
+        <ul>
+          <li>The <b>id attribute is required</b> (so it can be referred to by JavaScript)</li>
+          <li>The width and height attribute defines the size of the canvas (the default size of the canvas is 300px
+            (width) x 150px (height))</li>
+          <li>The canvas element requires the closing tag</li>
+          <p>Unlike the &lt;img&gt; element, The &lt;canvas&gt; element requires the closing tag &lt;/canvas&gt;. Any
+            content between the
+            opening and closing tags is fallback content that will display only if the browser doesn't support the
+            &lt;canvas&gt; element.</p>
+          <p>For example:</p>
+          <pre><code class="html">&lt;canvas id="myCanvas" width="500" height="400"&gt;The browser doesn't support the canvas element&lt;/canvas&gt;</code></pre>
+          <p>However, nowadays, most modern web browsers support the &lt;canvas&gt; element.</p>
+          <li>We can have multiple &lt;canvas&gt; elements on one HTML page.</li>
+          <li>By default, the &lt;canvas&gt; element has no border and no content.</li>
+        </ul>
+
+        <p>Dimensions of canvas element can either be set statically in HTML, or dynamically using JavaScript, or a
+          combination of both.</p>
+
+        <p>To add a border, use a style attribute:</p>
+
+        <pre><code class="html">&lt;canvas id="myCanvas" width="500" height="400" style="border:1px solid rgb(255,0,0);"&gt;&lt;/canvas&gt;</code></pre>
+
+        <p>Canvas consists of a drawable region defined in HTML code with height and width attributes.
+          JavaScript code may access the area through a full set of drawing functions, allowing for dynamically
+          generated graphics.</p>
+
+        <p>The drawing on the canvas is done with JavaScript.</p>
+
+        <p>The canvas is initially blank. To display something, a script is needed to access the rendering context and
+          draw on it.</p>
+
+        <p>The following example draws a red rectangle on the canvas, from position (0,0) with a width of 150 and a
+          height of 75:</p>
+
+        <h3>Step 1: Find the Canvas Element</h3>
+
+        <p>Initially, the canvas is blank. To draw something, We need to access the rendering context and use it to
+          draw on the canvas.</p>
+
+        <p>First, we need to find the &lt;canvas&gt; element.</p>
+
+        <p>We access a &lt;canvas&gt; element with the HTML DOM method getElementById():</p>
+
+        <pre><code class="javascript">const canvas = document.getElementById("myCanvas");</code></pre>
+
+        <p>The getElementById() method of the Document interface returns an Element object representing the element
+          whose id property matches the specified string.</p>
+
+        <p>To set the dimensions dynamically with JavaScript, we can access the width and height as follows: </p>
+
+        <pre><code class="javascript">//To set width and height of current viewport
+canvas.width = window.innerWidth; //or to set a specific width i.e 200
+canvas.height = window.innerHeight; //or to set a specific height i.e 300</code></pre>
+
+        <h3>Step 2: Create a Drawing Object</h3>
+
+        <p>Secondly, we need a drawing object for the canvas.</p>
+
+        <p>The getContext() method returns an object with tools (properties and methods) for drawing:</p>
+
+        <pre><code class="javascript">const ctx = canvas.getContext("2d");</code></pre>
+
+        <h3>Step 3: Draw on the Canvas</h3>
+
+        <p>Finally, we can draw on the canvas.</p>
+
+        <p>Set the fill-color to red with the fillStyle property:</p>
+
+        <pre><code class="javascript">ctx.fillStyle = "rgb(255 0 0)";</code></pre>
+
+        <p>The fillStyle property can be a color, a gradient, or a pattern. The default fillStyle is black.</p>
+
+        <p>The fillRect(x, y, width, height) method draws the rectangle, filled with the fill style color, on the
+          canvas:</p>
+
+        <pre><code class="javascript">ctx.fillRect(0, 0, 150, 75);</code></pre>
+
+        <h2>Canvas Fill and Stroke</h2>
+
+        <p>To define fill-color and outline-color for shapes/objects in canvas, we use the following properties:</p>
+        <ul>
+          <li>fillStyle - Defines the color, gradient, or pattern used to fill shapes</li>
+          <li>strokeStyle - Defines the color, gradient, or pattern used for strokes</li>
+        </ul>
+
+        <h3>The fillStyle Property</h3>
+
+        <p>The fillStyle property defines the fill-color of the object.</p>
+        <p>The fillStyle property value can be a color (colorname, RGB, HEX, HSL), a gradient or a pattern.</p>
+
+        <pre><code class="javascript">const canvas = document.getElementById("myCanvas");
+const ctx = canvas.getContext("2d");
+          
+//How can we set the fill-color to blue? 
+ctx.fillRect(10,10, 100,100);</code></pre>
+
+        <h3>The strokeStyle Property</h3>
+
+        <p>The strokeStyle property defines the color of the outline.</p>
+
+        <p>The strokeStyle property value can be a color (colorname, RGB, HEX, HSL), a gradient or a pattern.</p>
+
+        <pre><code class="javascript">const canvas = document.getElementById("myCanvas");
+const ctx = canvas.getContext("2d");
+                      
+//How can we set the stroke-color to yellow? 
+ctx.fillRect(10,10, 100,100);</code></pre>
+
+        <h3>Combining fillStyle and strokeStyle</h3>
+
+        <p>It is perfectly legal to combine the previous two rectangles: </p>
+
+        <pre><code class="javascript">const canvas = document.getElementById("myCanvas");
+const ctx = canvas.getContext("2d");
+
+// the filled rectangle
+ctx.fillStyle = "rgb(0 0 255)";
+ctx.fillRect(10,10, 100,100);
+
+// the outline rectangle
+ctx.strokeStyle = "rgb(255 255 0)";
+ctx.strokeRect(10,10, 100,100);</code></pre>
+
+          <h3>Gradients</h3>
+
+          <p>Gradients let you display smooth transitions between two or more specified colors.</p>
+
+          <p>Gradients can be used to fill rectangles, circles, lines, text, etc.</p>
+
+          <p>There are two methods used for creating gradients:</p>
+
+          <ul>
+            <li>createLinearGradient() - creates a linear gradient</li>
+            <li>createRadialGradient() - creates a radial/circular gradient</li>
+          </ul>
+
+          <h3>Linear Gradient</h3>
+
+          <p>The createLinearGradient() method is used to define a linear gradient.</p>
+
+          <p>A linear gradient changes color along a linear pattern (horizontally/vertically/diagonally).</p>
+
+          <p>The createLinearGradient() method has the following parameters:</p>
+
+          <ul>
+            <li>x0 - The x-coordinate of the starting point</li>
+            <li>y0 - The y-coordinate of the starting point</li>
+            <li>x1 - The x-coordinate of the ending point</li>
+            <li>y1 - The y-coordinate of the ending point</li>
+          </ul>
+
+          <p>The gradient object requires two or more color stops.</p>
+
+          <p>The addColorStop() method specifies the color stops, and its position along the gradient. The positions can be anywhere between 0 and 1.</p>
+
+          <p>To use the gradient, assign it to the fillStyle or strokeStyle property, then draw the shape (rectangle, circle, shape, or text).</p>
+
+          <p>Here is an example of a linear gradient:</p>
+
+          <pre><code class="javascript">const canvas = document.getElementById("myCanvas");
+const ctx = canvas.getContext("2d");
+
+// Create gradient
+const grd = ctx.createLinearGradient(0, 0, 200, 0);
+grd.addColorStop(0, "red");
+grd.addColorStop(1, "white");
+
+// Fill with gradient
+ctx.fillStyle = grd;
+ctx.fillRect(10, 10, 150, 80);</code></pre>
+
+          <h3>Radial Gradient</h3>
+
+          <p>The createRadialGradient() method is used to create a radial/circular gradient.</p>
+
+          <p>A radial gradient is defined by two circles, one smaller and one larger.</p>
+
+          <p>The createRadialGradient() method has the following parameters:</p>
+
+          <ul>
+            <li>x0 - The x-coordinate of the starting circle</li>
+            <li>y0 - The y-coordinate of the starting circle</li>
+            <li>r0 - The radius of the starting circle</li>
+            <li>x1 - The x-coordinate of the ending circle</li>
+            <li>y1 - The y-coordinate of the ending circle</li>
+            <li>r1 - The radius of the ending circle</li>
+          </ul>
+
+          <p>Here is an example of a radial gradient:</p>
+
+          <pre><code class="javascript">const canvas = document.getElementById("myCanvas");
+
+const ctx = canvas.getContext("2d");
+
+// Create gradient
+const grd2 = ctx.createRadialGradient(85, 140, 0, 85, 140, 100);
+
+// Add color stops
+grd2.addColorStop(0, "red");
+grd2.addColorStop(1, "white");
+
+// Fill with gradient
+ctx.fillStyle = grd2;
+ctx.fillRect(10, 100, 150, 80);</code></pre>
+
+          <h3>Patterns</h3>
+
+          <p>Patterns are used to fill shapes with images (instead of colors).</p>
+
+          <p>There are two methods used for creating patterns:</p>
+
+          <ul>
+            <li>createPattern(image, type) - creates a pattern from an image</li>
+            <li>createPattern(canvas, type) - creates a pattern from another canvas</li>
+          </ul>
+
+          <p>The createPattern() method has the following parameters:</p>
+
+          <ul>
+            <li>image - Specifies the image to use</li>
+            <li>type - Repeat the pattern (repeat, repeat-x, repeat-y, no-repeat)</li>
+          </ul>
+
+          <p>Here is an example of a pattern:</p>
+
+          <pre><code class="javascript">const canvas = document.getElementById("myCanvas");
+const ctx = canvas.getContext("2d");
+
+// Create a pattern
+const img = new Image();
+img.src = "https://www.w3schools.com/tags/img_the_scream.jpg";
+img.onload = function() {
+  const pat = ctx.createPattern(img, "repeat");
+  ctx.fillStyle = pat;
+  ctx.fillRect(10, 10, 150, 80);
+};</code></pre>
+
+          <h3>The clearRect() Method</h3>
+
+          <p>The clearRect() method is used to clear a rectangular area of the canvas. The cleared rectangle is transparent.</p>
+
+          <p>The clearRect() method has the following parameters:</p>
+
+          <ul>
+            <li>x - The x-coordinate of the upper-left corner of the rectangle to clear</li>
+            <li>y - The y-coordinate of the upper-left corner of the rectangle to clear</li>
+            <li>width - The width of the rectangle to clear (in pixels)</li>
+            <li>height - The height of the rectangle to clear (in pixels)</li>
+          </ul>
+
+
+          <p>Here we use fillRect() to draw a filled 150*100 pixels rectangle, starting in position (10,10). Then use clearRect() to clear a rectangular area in the canvas:</p>
+
+          <pre><code class="javascript">const canvas = document.getElementById("myCanvas");
+const ctx = canvas.getContext("2d");
+
+ctx.fillStyle = "pink";
+ctx.fillRect(10,10,150,100);
+            
+ctx.clearRect(60,35,50,50);</code></pre>
+
+          <p>And here is an example of clearing the entire canvas:</p>
+
+          <pre><code class="javascript">const canvas = document.getElementById("myCanvas"); 
+const ctx = canvas.getContext("2d");
+
+// Clear the canvas
+ctx.clearRect(0, 0, canvas.width, canvas.height);</code></pre>
+
+
+
+<p></p>
+
+        <h2>Canvas Coordinates</h2>
+
+        <p>As previously mentioned, The HTML canvas is a two-dimensional grid.</p>
+
+
+        <p>It is important to understand the coordinate space of canvas, if We want elements to be positioned as
+          desired. Top left of canvas represents (0,0) or origin coordinate.</p>
+
+        <p>All the elements on canvas are placed with reference to this origin.</p>
+
+        <img class="center" style="width: 50%; height: 50%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/coordinate%20grid%20space.png?raw=true"
+          alt="The Grid or Coordinate Space 1">
+
+        <p>1 point on grid is roughly equivalent to 1px.</p>
+
+        <p>At the example above further elaborates: we have red border around our canvas and we have drawn a rectangle
+          of 100px width and height with a stroke of blue.</p>
+
+        <p>This can be achieved by the following code: </p>
+
+        <h3>HTML</h3>
+
+        <pre><code class="html">&lt;canvas id="myCanvas" width="320" height="320" style="border:1px solid rgb(255,0,0);"&gt;&lt;/canvas&gt;</code></pre>
+
+        <h3>JavaScript</h3>
+
+        <pre><code class="javascript">const canvas = document.getElementById("myCanvas");
+const ctx = canvas.getContext("2d");
+ctx.strokeStyle = "rgb(0 0 255)"; //blue color for stroke
+ctx.strokeRect(0, 0, 100, 100); //draws a rectangle with a blue stroke, starting at (0,0) with a width and height of 100 pixels</code></pre>
+
+        <p>Providing x and y coordinates would translate the element relative to the canvas' origin coordinates.</p>
+        <p>As shown in the image below, our rectangle has moved 20 pixels to the right and bottom as we have provided
+          the values of x and y as 20.</p>
+
+
+        <img class="center" style="width: 50%; height: 50%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/coordinate%20grid%20space%202.png?raw=true"
+          alt="The Grid or Coordinate Space 2">
+
+        <h3>Let's Look and Real Time Coordinates</h3>
+
+        <p class="codepen" data-height="600" data-theme-id="dark" data-default-tab="result" data-slug-hash="emOoLbp" data-pen-title="Understanding Coordinates" data-user="amaraauguste" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+          <span>See the Pen <a href="https://codepen.io/amaraauguste/pen/emOoLbp">
+          Understanding Coordinates</a> by Amara (<a href="https://codepen.io/amaraauguste">@amaraauguste</a>)
+          on <a href="https://codepen.io">CodePen</a>.</span>
+        </p>
+        <script async src="https://public.codepenassets.com/embed/index.js"></script>
+
+        <h2>Shapes</h2>
+
+        <p>It is easy to draw basic shapes like rectangle, triangle, square, circle, polygon or a just a simple line
+          between two points. But by default Canvas provides a method only to draw rectangle.</p>
+
+        <p>However, rest of shapes can be created by joining points using path API, and a combination of line and arc
+          APIs.</p>
+
+        <h3>Rectangle</h3>
+
+        <p>The three most used methods for drawing rectangles in canvas are:</p>
+
+        <ul>
+          <li>The rect(x, y, width, height) method</li>
+          <li>The fillRect(x, y, width, height) method</li>
+          <li>The strokeRect(x, y, width, height) method</li>
+        </ul>
+
+        <p>The rect() method defines a rectangle. Note: the rect() method does not draw the rectangle (it just defines it). So, in addition, We have to use the stroke() method (or the fill() method) to actually draw it.</p>
+     
+
+        <p>fill and stroke are ink methods and each case it means to draw a rectangle with a filled color, or to draw a
+          rectangular outline of a color. The default color is black.</p>
+
+        <pre><code class="javascript">ctx.fillStyle = "rgb(255 0 0)"; //red color for fill
+ctx.fillRect(20, 20, 150, 100);</code></pre>
+
+        <p>Here, we have drawn a red rectangle with a top-left corner at (20, 20) and a width and height of 150 and 100
+          pixels respectively.</p>
+
+        <p>Similarly, we can draw a rectangle with a stroke:</p>
+
+        <pre><code class="javascript">ctx.strokeStyle = "rgb(0 0 255)"; //blue color for stroke
+ctx.strokeRect(20, 20, 150, 100);</code></pre>
+
+        <p>Here, we have drawn a blue rectangle with a top-left corner at (20, 20) and a width and height of 150 and 100
+          pixels respectively.</p>
+
+        <h3>Circle</h3>
+
+        <p>As we mentioned earlier there is no straight forward method to create a circle, but we can use a combination
+          of path APIs and arc method to draw our circle. Let's understand a little more about path:</p>
+
+        <p>"A path is list of points connected to form different shapes."</p>
+
+        <p>This means a path can be formed between two given points on screen. It can be a straight line or curved arc
+          or can be any shape or color.</p>
+
+        <p>There are three steps to follow to create a shape using path:</p>
+
+        <ol>
+          <li>Invoke beingPath() method on context a create a new path. Once a path is created all future commands to
+            draw are applied on
+            this path.</li>
+          <li>Next create a path using drawing methods, like lineTo, moveTo, arc, rect, etc.
+            <a href="https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D#paths">Refer MDN</a> for
+            list of all
+            available methods that used with path.
+          </li>
+          <li>Once path has been created it needs to actually be rendered on canvas; we can do that using ink methods
+            fill and stroke.</li>
+        </ol>
+
+        <p>Let's draw a circle:</p>
+
+        <p>We have to use arc(x, y, radius, startAngle, endAngle) method on context to draw our circle.</p>
+
+        <p> If we try to recollect basic geometry, to draw a circle using a protractor we need a radius, and a start &
+          end angle. A semi-circle starts at angle 0 and ends at 180 degree or PI radians. So a full-circle extends
+          further and just ends at 2*PI or 360 degrees.</p>
+
+        <p>This exact concept can be used to draw a circle using arc method.</p>
+
+        <pre><code class="javascript">ctx.beginPath(); //start a new path
+ctx.arc(100, 75, 50, 0, 2 * Math.PI);
+ctx.stroke();</code></pre>
+
+        <p>Here, we have drawn a circle with a center at (100, 75) and a radius of 50 pixels.</p>
+
+        <h3>Draw a Half Circle</h3>
+
+        <p>To draw a half circle, we change the endAngle to PI (not 2 * PI):</p>
+
+        <pre><code class="javascript">ctx.beginPath(); //start a new path
+ctx.arc(100, 75, 50, 0, Math.PI);
+ctx.fill();</code></pre>
+
+        <h3>More About the Angles of an Arc</h3>
+
+        <p>The following image shows some of the angles in an arc:</p>
+
+        <img class="center" style="width: 50%; height: 50%"
+        src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/angles%20of%20an%20arc.png?raw=true"
+        alt="Angles of an Arc">
+
+        <ul>
+          <li>Center: arc(<text style="color: rgb(0, 223, 0)">100, 75</text>, 50, 0 * Math.PI, 1.5 * Math.PI)</li>
+          <li>Start angle: arc(100, 75, 50, <text style="color: red">0</text>, 1.5 * Math.PI)</li>
+          <li>End angle: arc(100, 75, 50, 0 * Math.PI, <text style="color: blue">1.5 * Math.PI</text>)</li>
+          <li>Circle : arc(100, 75, 50, 0, 2 * Math.PI)</li>
+        </ul>
+
+        <h3>Line</h3>
+
+        <p>To draw a line between two points we use moveTo(x, y)and lineTo(x, y)methods.</p>
+
+        <p>If we consider two points A & B with x and y coordinates respectively,
+          then moveTo acts as a position of A on canvas, while lineTo as position of point B.</p>
+
+        <pre><code class="javascript">ctx.beginPath();
+ctx.moveTo(250, 50); //start point
+ctx.lineTo(200, 100); //end point
+ctx.strokeStyle = "rgb(255 105 180)"; //color of line
+ctx.stroke();</code></pre>
+
+        <h3>The lineWidth Property</h3>
+
+        <p>The lineWidth property defines the width of the line.</p>
+
+        <p>It must be set before calling the stroke() method.</p>
+
+        <pre><code class="javascript">ctx.beginPath();
+ctx.moveTo(250, 50); //start point
+ctx.lineTo(200, 100); //end point
+ctx.strokeStyle = "rgb(255 105 180)"; //color of line 
+ctx.lineWidth = 10; //width of line
+ctx.stroke();</code></pre>
+
+
+        <h3>Triangle</h3>
+
+        <p>A triangle is simply three lines connected together.</p>
+
+        <p>So, to draw a triangle we can use lineTo method to connect three points.</p>
+
+        <p>We are going to use a special path method called as closePath() to complete our triangle. closePath basically
+          adds a straight line from end coordinate to the start coordinate inside a path.</p>
+
+        <p>If we assume a triangle is made of three points A, B & C, then we can draw our triangle like:</p>
+
+        <pre><code class="javascript">ctx.beginPath();
+ctx.moveTo(235, 114); // Point A
+ctx.lineTo(135, 349); // Point B
+ctx.lineTo(335, 349); // Point C
+            
+ctx.closePath(); // Join C & A
+ctx.strokeStyle = "rgb(31 24 88)";
+ctx.stroke();</code></pre>
+
+        <h3>To Summarize Basic Shape Drawing</h3>
+
+        <p>Apart from drawing specific rectangles and circles, drawing must be broken down into four distinct steps:</p>
+
+        <ol>
+          <li>ctx.beginPath(), to let the computer know We're beginning a new line/path</li>
+          <li>ctx.moveTo(x, y), to move the 'cursor' to a specific point on the canvas without 'drawing' anything or
+            recording any path</li>
+          <li>ctx.lineTo(x, y), tells the computer to record a path from the current context position, in this case the
+            point described by the ctx.moveTo(x, y) function—to the new coordinates provided</li>
+          <li>ctx.stroke(), to then fill the described path. This is the step that actually 'draws' something onto the
+            canvas</li>
+        </ol>
+
+        <p>In essence, We move the cursor to a starting position, tell the computer We're about to draw, record a path
+          to a declared location, and then finally fill that path in.</p>
+
+        <h2>Drawing Text</h2>
+
+        <p>To draw text on the canvas, the most important property and methods are:</p>
+
+        <ul>
+          <li>font - defines the font properties for the text</li>
+          <li>fillText(text, x, y) - fills a given text at the given (x, y) position</li>
+          <li>strokeText(text, x, y) - strokes a given text at the given (x, y) position</li>
+        </ul>
+
+        <p>The font property defines the font to be used and the size of the font. The default value for this property is "10px sans serif".</p>
+
+        <p>Both methods include an optional fourth parameter: maxwidth, which represents the maximum width of the text-string.</p>
+
+        <p>Here is an example of drawing text on a canvas:</p>
+
+        <pre><code class="javascript
+">const canvas = document.getElementById("myCanvas");
+const ctx = canvas.getContext("2d");
+
+ctx.font = "30px Arial";
+ctx.fillText("Hello World", 10, 50);</code></pre>
+
+        <p>The fillText() method draws filled text on the canvas. The default color of the text is black.</p>
+
+        <p>The strokeText() method draws text on the canvas (no fill). The default color of the text is black.</p>
+
+
+        <p><a href="https://codepen.io/amaraauguste/pen/KwPYByQ" target="_blank">Let's take a look at some example code</a></p>
+
+         <!-- <h2>Curves</h2>
+
+          <p>The three most used methods for drawing curves in canvas are:</p>
+
+          <ul>
+            <li>The arc() method (which we learned to use to draw circles)</li>
+            <li>The quadraticCurveTo() method</li>
+            <li>The bezierCurveTo() method</li>
+          </ul>
+
+          <h3>The quadraticCurveTo() Method</h3>
+
+          <p>The quadraticCurveTo() method is used to define a quadratic Bezier curve.</p>
+
+          <p>The quadraticCurveTo() method has the following parameters:</p>
+
+
+
+        <h2>Event Listeners</h2>
+
+        <p>Okay, so we can draw a some shapes, lines, text, and curves. That's great and all, but how do we get from that to actually drawing on the
+          screen with our mouse?</p>
+
+        <p>We need a listener that responds to the canvas being clicked, and another listener that responds to mouse
+          movement, but only when the mouse button is pressed down.</p> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
       </article>
       <br />
