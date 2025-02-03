@@ -1558,228 +1558,228 @@
       <br />
       <header><b>Shapes</b></header>
       <article>
-        
+
         <p>We have been talking about low-level graphics concepts like pixels and coordinates, but
           fortunately we don't usually have to work on the lowest levels. Most graphics systems let We
           work with higher-level shapes, such as triangles and circles, rather than individual pixels.</p>
 
-          <p>In a graphics API, there will be certain basic shapes that can be drawn with one command,
+        <p>In a graphics API, there will be certain basic shapes that can be drawn with one command,
           whereas more complex shapes will require multiple commands. Exactly what qualifies as a
           basic shape varies from one API to another.</p>
 
-          <p>For example, the HTML5 canvas API provides commands to draw rectangles, circles, and
+        <p>For example, the HTML5 canvas API provides commands to draw rectangles, circles, and
           lines, but not triangles. To draw a triangle, We have to draw three lines.</p>
 
-          <p>By "line", we really mean line segment, that is a straight line segment connecting two given
-            points in the plane. <b>A simple one-pixel-wide line segment, without anti-aliasing, is the most
+        <p>By "line", we really mean line segment, that is a straight line segment connecting two given
+          points in the plane. <b>A simple one-pixel-wide line segment, without anti-aliasing, is the most
             basic shape</b>. It can be drawn by coloring pixels that lie along the infinitely thin geometric line
-            segment.</p>
+          segment.</p>
 
-          <p>An algorithm for drawing the line has to decide exactly which pixels to color. One of
-            the first computer graphics algorithms, Bresenham's algorithm for line drawing, implements
-            a very efficient procedure for doing so.</p>
+        <p>An algorithm for drawing the line has to decide exactly which pixels to color. One of
+          the first computer graphics algorithms, Bresenham's algorithm for line drawing, implements
+          a very efficient procedure for doing so.</p>
 
-          <p>In any case, lines are typically more complicated. Anti-aliasing is one
-            complication. Line width is another. A wide line might actually be drawn as a rectangle.</p>
+        <p>In any case, lines are typically more complicated. Anti-aliasing is one
+          complication. Line width is another. A wide line might actually be drawn as a rectangle.</p>
 
-          <p>Lines can have other attributes, or properties, that affect their appearance. One question
-            is, what should happen at the end of a wide line?</p>
+        <p>Lines can have other attributes, or properties, that affect their appearance. One question
+          is, what should happen at the end of a wide line?</p>
 
-          <p>Appearance might be improved by adding
-            a rounded "cap" on the ends of the line. A square cap—that is, extending the line by half of
-            the line width—might also make sense.</p>
+        <p>Appearance might be improved by adding
+          a rounded "cap" on the ends of the line. A square cap—that is, extending the line by half of
+          the line width—might also make sense.</p>
 
-          <p>Another question is, when two lines meet as part of a
-            larger shape, how should the lines be joined? And many graphics systems support lines that
-            are patterns of dashes and dots.</p>
+        <p>Another question is, when two lines meet as part of a
+          larger shape, how should the lines be joined? And many graphics systems support lines that
+          are patterns of dashes and dots.</p>
 
-          <p>This illustration shows some of the possibilities:</p>
+        <p>This illustration shows some of the possibilities:</p>
 
-          <img class="center" style="width: 75%; height: 75%"
+        <img class="center" style="width: 75%; height: 75%"
           src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/types%20of%20lines.png?raw=true"
           alt="Types of Lines">
 
-          <p>On the left are three wide lines with no cap, a round cap, and a square cap. The geometric line
-            segment is shown as a dotted line. (The no-cap style is called “butt.”) To the right are four
-            lines with different patterns of dots and dashes. In the middle are three different styles of line
-            joins: mitered, rounded, and beveled.</p>
+        <p>On the left are three wide lines with no cap, a round cap, and a square cap. The geometric line
+          segment is shown as a dotted line. (The no-cap style is called “butt.”) To the right are four
+          lines with different patterns of dots and dashes. In the middle are three different styles of line
+          joins: mitered, rounded, and beveled.</p>
 
-          <p>The basic rectangular shape has sides that are vertical and horizontal. (A tilted rectangle
-            generally has to be made by applying a rotation.) Such a rectangle can be specified with two
-            points, (x1,y1) and (x2,y2), that give the endpoints of one of the diagonals of the rectangle.
-            Alternatively, the width and the height can be given, along with a single base point, (x,y). In
-            that case, the width and height have to be positive, or the rectangle is empty. The base point
-            (x,y) will be the upper left corner of the rectangle if y increases from top to bottom, and it will
-            be the lower left corner of the rectangle if y increases from bottom to top.</p>
+        <p>The basic rectangular shape has sides that are vertical and horizontal. (A tilted rectangle
+          generally has to be made by applying a rotation.) Such a rectangle can be specified with two
+          points, (x1,y1) and (x2,y2), that give the endpoints of one of the diagonals of the rectangle.
+          Alternatively, the width and the height can be given, along with a single base point, (x,y). In
+          that case, the width and height have to be positive, or the rectangle is empty. The base point
+          (x,y) will be the upper left corner of the rectangle if y increases from top to bottom, and it will
+          be the lower left corner of the rectangle if y increases from bottom to top.</p>
 
-            <img class="center" style="width: 75%; height: 75%"
-            src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/types%20of%20rectangles.png?raw=true"
-            alt="Types of Rectangles">
+        <img class="center" style="width: 75%; height: 75%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/types%20of%20rectangles.png?raw=true"
+          alt="Types of Rectangles">
 
-          <p>Suppose that We are given points (x1,y1) and (x2,y2), and that We want to draw the rectangle
-            that they determine. And suppose that the only rectangle-drawing command that We have
-            available is one that requires a point (x,y), a width, and a height. For that command, x must
-            be the smaller of x1 and x2, and the width can be computed as the absolute value of x1 minus
-            x2. And similarly for y and the height.</p>
+        <p>Suppose that We are given points (x1,y1) and (x2,y2), and that We want to draw the rectangle
+          that they determine. And suppose that the only rectangle-drawing command that We have
+          available is one that requires a point (x,y), a width, and a height. For that command, x must
+          be the smaller of x1 and x2, and the width can be computed as the absolute value of x1 minus
+          x2. And similarly for y and the height.</p>
 
-            <p>In pseudocode,</p>
+        <p>In pseudocode,</p>
 
-            <img class="center" style="width: 75%; height: 75%"
-            src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/rectangle%20pseudocode.png?raw=true"
-            alt="Rectangle Pseudocode">
+        <img class="center" style="width: 75%; height: 75%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/rectangle%20pseudocode.png?raw=true"
+          alt="Rectangle Pseudocode">
 
-            <p>A common variation on rectangles is to allow rounded corners. For a “round rect,” the
-              corners are replaced by elliptical arcs. The degree of rounding can be specified by giving the
-              horizontal radius and vertical radius of the ellipse.</p>
+        <p>A common variation on rectangles is to allow rounded corners. For a “round rect,” the
+          corners are replaced by elliptical arcs. The degree of rounding can be specified by giving the
+          horizontal radius and vertical radius of the ellipse.</p>
 
-              <p> Here are some examples of round rects. For
-                the shape at the right, the two radii of the ellipse are shown:</p>
+        <p> Here are some examples of round rects. For
+          the shape at the right, the two radii of the ellipse are shown:</p>
 
-                <img class="center" style="width: 75%; height: 75%"
-                src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/rounded%20rectangles.png?raw=true"
-                alt="Rounded Rectangles">
+        <img class="center" style="width: 75%; height: 75%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/rounded%20rectangles.png?raw=true"
+          alt="Rounded Rectangles">
 
-              <p>Our final basic shape is the oval. (An oval is also called an ellipse.) An oval is a closed curve
-                that has two radii. For a basic oval, we assume that the radii are vertical and horizontal. An
-                oval with this property can be specified by giving the rectangle that just contains it. Or it can
-                be specified by giving its center point and the lengths of its vertical radius and its horizontal
-                radius. </p>
+        <p>Our final basic shape is the oval. (An oval is also called an ellipse.) An oval is a closed curve
+          that has two radii. For a basic oval, we assume that the radii are vertical and horizontal. An
+          oval with this property can be specified by giving the rectangle that just contains it. Or it can
+          be specified by giving its center point and the lengths of its vertical radius and its horizontal
+          radius. </p>
 
-              <p>In this illustration, the oval on the left is shown with its containing rectangle and with
-                its center point and radii:</p>
+        <p>In this illustration, the oval on the left is shown with its containing rectangle and with
+          its center point and radii:</p>
 
-                <img class="center" style="width: 75%; height: 75%"
-                src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/types%20of%20ovals.png?raw=true"
-                alt="Types of Ovals">
+        <img class="center" style="width: 75%; height: 75%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/types%20of%20ovals.png?raw=true"
+          alt="Types of Ovals">
 
-                <p>The oval on the right is a circle. A circle is just an oval in which the two radii have the same
-                  length.</p>
+        <p>The oval on the right is a circle. A circle is just an oval in which the two radii have the same
+          length.</p>
 
-                <p>If ovals are not available as basic shapes, they can be approximated by drawing a large
-                  number of line segments. The number of lines that is needed for a good approximation depends
-                  on the size of the oval. It's useful to know how to do this. Suppose that an oval has center
-                  point (x,y), horizontal radius r1, and vertical radius r2. Mathematically, the points on the oval
-                  are given by:</p>
+        <p>If ovals are not available as basic shapes, they can be approximated by drawing a large
+          number of line segments. The number of lines that is needed for a good approximation depends
+          on the size of the oval. It's useful to know how to do this. Suppose that an oval has center
+          point (x,y), horizontal radius r1, and vertical radius r2. Mathematically, the points on the oval
+          are given by:</p>
 
-                <text class="center"><b>( x + r1*cos(angle), y + r2*sin(angle) )</b></text>
+        <text class="center"><b>( x + r1*cos(angle), y + r2*sin(angle) )</b></text>
 
-                <p>where angle takes on values from 0 to 360 if angles are measured in degrees or from 0 to 2π if
-                  they are measured in radians. Here sin and cos are the standard sine and cosine functions. To
-                  get an approximation for an oval, we can use this formula to generate some number of points
-                  and then connect those points with line segments.</p>
+        <p>where angle takes on values from 0 to 360 if angles are measured in degrees or from 0 to 2π if
+          they are measured in radians. Here sin and cos are the standard sine and cosine functions. To
+          get an approximation for an oval, we can use this formula to generate some number of points
+          and then connect those points with line segments.</p>
 
-                <p>In pseudocode, assuming that angles are
-                  measured in radians and that pi represents the mathematical constant π,</p>
+        <p>In pseudocode, assuming that angles are
+          measured in radians and that pi represents the mathematical constant π,</p>
 
-                  <img class="center" style="width: 100%; height: 100%"
-                  src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/oval%20pseudocode.png?raw=true"
-                  alt="Oval Pseudocode">
+        <img class="center" style="width: 100%; height: 100%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/oval%20pseudocode.png?raw=true"
+          alt="Oval Pseudocode">
 
-                <p>For a circle, of course, We would just have r1 = r2. This is the first time we have used the
-                  sine and cosine functions, but it won't be the last. These functions play an important role in
-                  computer graphics because of their association with circles, circular motion, and rotation. We
-                  will meet them again when we talk about transforms later.</p>
+        <p>For a circle, of course, We would just have r1 = r2. This is the first time we have used the
+          sine and cosine functions, but it won't be the last. These functions play an important role in
+          computer graphics because of their association with circles, circular motion, and rotation. We
+          will meet them again when we talk about transforms later.</p>
 
-                <h2>Stroke and Fill</h2>
+        <h2>Stroke and Fill</h2>
 
-                  <p>There are two ways to make a shape visible in a drawing.</p>
+        <p>There are two ways to make a shape visible in a drawing.</p>
 
-                  <p>We can <b>stroke</b> it. Or, if it is a closed
-                    shape such as a rectangle or an oval, We can <b>fill</b> it.</p>
+        <p>We can <b>stroke</b> it. Or, if it is a closed
+          shape such as a rectangle or an oval, We can <b>fill</b> it.</p>
 
-                  <p>Stroking a line is like dragging a pen along
-                    the line. Stroking a rectangle or oval is like dragging a pen along its boundary.</p>
+        <p>Stroking a line is like dragging a pen along
+          the line. Stroking a rectangle or oval is like dragging a pen along its boundary.</p>
 
-                  <p>Filling a shape
-                    means coloring all the points that are contained inside that shape.</p>
+        <p>Filling a shape
+          means coloring all the points that are contained inside that shape.</p>
 
-                  <p>It's possible to both stroke
-                    and fill the same shape; in that case, the interior of the shape and the outline of the shape can
-                    have a different appearance.
-                    </p>
+        <p>It's possible to both stroke
+          and fill the same shape; in that case, the interior of the shape and the outline of the shape can
+          have a different appearance.
+        </p>
 
-                    <p>When a shape intersects itself, like the two shapes in the illustration below, it's not entirely
-                      clear what should count as the interior of the shape. In fact, there are at least two different
-                      rules for filling such a shape.</p>
+        <p>When a shape intersects itself, like the two shapes in the illustration below, it's not entirely
+          clear what should count as the interior of the shape. In fact, there are at least two different
+          rules for filling such a shape.</p>
 
-                    <p> In fact, there are at least two different
-                      rules for filling such a shape. Both are based on something called the <b>winding number</b>. The
-                      winding number of a shape about a point is, roughly, <b>how many times the shape winds around
-                      the point in the positive direction</b>, which we'll take here to be counterclockwise.</p>
+        <p> In fact, there are at least two different
+          rules for filling such a shape. Both are based on something called the <b>winding number</b>. The
+          winding number of a shape about a point is, roughly, <b>how many times the shape winds around
+            the point in the positive direction</b>, which we'll take here to be counterclockwise.</p>
 
-                    <p>Winding number
-                      can be negative when the winding is in the opposite direction.</p>
+        <p>Winding number
+          can be negative when the winding is in the opposite direction.</p>
 
-                    <p>In the illustration, the shapes on
-                      the left are traced in the direction shown, and the winding number about each region is shown
-                      as a number inside the region.</p>
+        <p>In the illustration, the shapes on
+          the left are traced in the direction shown, and the winding number about each region is shown
+          as a number inside the region.</p>
 
-                      <img class="center" style="width: 75%; height: 75%"
-                      src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/understanding%20winding%20number.png?raw=true"
-                      alt="Understanding Winding Number">
+        <img class="center" style="width: 75%; height: 75%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/understanding%20winding%20number.png?raw=true"
+          alt="Understanding Winding Number">
 
-                    <p>The shapes are also shown filled using the two fill rules.</p>
+        <p>The shapes are also shown filled using the two fill rules.</p>
 
-                    <p>For the shapes in the center, the fill
-                      rule is to color any region that has a non-zero winding number.</p>
+        <p>For the shapes in the center, the fill
+          rule is to color any region that has a non-zero winding number.</p>
 
-                    <p>For the shapes shown on the
-                      right, the rule is to color any region whose winding number is odd; regions with even winding
-                      number are not filled.
-                      </p>
+        <p>For the shapes shown on the
+          right, the rule is to color any region whose winding number is odd; regions with even winding
+          number are not filled.
+        </p>
 
-                    <p>There is still the question of what a shape should be filled with. Of course, it can be filled
-                      with a color, but other types of fill are possible, including <b>patterns</b> and <b>gradients</b>.</p>
+        <p>There is still the question of what a shape should be filled with. Of course, it can be filled
+          with a color, but other types of fill are possible, including <b>patterns</b> and <b>gradients</b>.</p>
 
-                    <p> A pattern
-                      is an image, usually a small image. When used to fill a shape, a pattern can be repeated
-                      horizontally and vertically as necessary to cover the entire shape.</p>
+        <p> A pattern
+          is an image, usually a small image. When used to fill a shape, a pattern can be repeated
+          horizontally and vertically as necessary to cover the entire shape.</p>
 
-                    <p>A gradient is similar in that
-                      it is a way for color to vary from point to point, but instead of taking the colors from an image,
-                      they are computed. There are a lot of variations to the basic idea, but there is always a line
-                      segment along which the color varies. The color is specified at the endpoints of the line segment,
-                      and possibly at additional points; between those points, the color is interpolated. The color
-                      can also be extrapolated to other points on the line that contains the line segment but lying
-                      outside the line segment; this can be done either by repeating the pattern from the line segment
-                      or by simply extending the color from the nearest endpoint.</p>
+        <p>A gradient is similar in that
+          it is a way for color to vary from point to point, but instead of taking the colors from an image,
+          they are computed. There are a lot of variations to the basic idea, but there is always a line
+          segment along which the color varies. The color is specified at the endpoints of the line segment,
+          and possibly at additional points; between those points, the color is interpolated. The color
+          can also be extrapolated to other points on the line that contains the line segment but lying
+          outside the line segment; this can be done either by repeating the pattern from the line segment
+          or by simply extending the color from the nearest endpoint.</p>
 
-                    <p>For a <b>linear gradient</b>, the color
-                      is constant along lines perpendicular to the basic line segment, so you get lines of solid color
-                      going in that direction.</p>
+        <p>For a <b>linear gradient</b>, the color
+          is constant along lines perpendicular to the basic line segment, so you get lines of solid color
+          going in that direction.</p>
 
-                    <p>In a radial gradient, the color is constant along circles centered at
-                      one of the endpoints of the line segment.</p>
+        <p>In a radial gradient, the color is constant along circles centered at
+          one of the endpoints of the line segment.</p>
 
-                    <p>And that doesn't exhaust the possibilities. To give
-                      you an idea what patterns and gradients can look like, here is a shape, filled with two gradients
-                      and two patterns:</p>
+        <p>And that doesn't exhaust the possibilities. To give
+          you an idea what patterns and gradients can look like, here is a shape, filled with two gradients
+          and two patterns:</p>
 
-                      <img class="center" style="width: 75%; height: 75%"
-                      src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/patterns%20and%20gradients.png?raw=true"
-                      alt="Patterns and Gradients">
+        <img class="center" style="width: 75%; height: 75%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/patterns%20and%20gradients.png?raw=true"
+          alt="Patterns and Gradients">
 
-                    <p>The first shape is filled with a simple linear gradient defined by just two colors, while the second
-                      shape uses a radial gradient.</p>
+        <p>The first shape is filled with a simple linear gradient defined by just two colors, while the second
+          shape uses a radial gradient.</p>
 
-                    <p>Patterns and gradients are not necessarily restricted to filling shapes. Stroking a shape is,
-                      after all, the same as filling a band of pixels along the boundary of the shape, and that can be
-                      done with a gradient or a pattern, instead of with a solid color.</p>
+        <p>Patterns and gradients are not necessarily restricted to filling shapes. Stroking a shape is,
+          after all, the same as filling a band of pixels along the boundary of the shape, and that can be
+          done with a gradient or a pattern, instead of with a solid color.</p>
 
-                    <p>Finally, a string of text can be considered to be a shape for the purpose
-                      of drawing it. The boundary of the shape is the outline of the characters. The text is drawn
-                      by filling that shape. </p>
+        <p>Finally, a string of text can be considered to be a shape for the purpose
+          of drawing it. The boundary of the shape is the outline of the characters. The text is drawn
+          by filling that shape. </p>
 
-                    <p>In some graphics systems, it is also possible to stroke the outline of the
-                      shape that defines the text.</p>
+        <p>In some graphics systems, it is also possible to stroke the outline of the
+          shape that defines the text.</p>
 
-                    <p>In the following illustration, the string "Graphics" is shown, on
-                      top, filled with a pattern and, below that, filled with a gradient and stroked with solid black:</p>
+        <p>In the following illustration, the string "Graphics" is shown, on
+          top, filled with a pattern and, below that, filled with a gradient and stroked with solid black:</p>
 
 
-                      <img class="center" style="width: 75%; height: 75%"
-                      src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/stroke%20and%20fill%20text.png?raw=true"
-                      alt="Stroke and Fill Text">
+        <img class="center" style="width: 75%; height: 75%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/stroke%20and%20fill%20text.png?raw=true"
+          alt="Stroke and Fill Text">
 
 
 
@@ -1826,10 +1826,12 @@
 
         <ul>
           <li><b>draw colorful text</b>, with or without animation</li>
-          <li><b>draw graphics</b> using great features for graphical data presentation with an imagery of graphs and charts
+          <li><b>draw graphics</b> using great features for graphical data presentation with an imagery of graphs and
+            charts
           </li>
           <li><b>be animated</b> - everything is possible: from simple bouncing balls to complex animations</li>
-          <li><b>be interactive</b> - canvas can respond to JavaScript events to any user action (key clicks, mouse clicks,
+          <li><b>be interactive</b> - canvas can respond to JavaScript events to any user action (key clicks, mouse
+            clicks,
             button clicks, finger movement)</li>
           <li><b>be used in games</b> - canvas' methods for animations, offer a lot of possibilities for HTML gaming
             applications</li>
@@ -1963,43 +1965,45 @@ ctx.fillRect(10,10, 100,100);
 ctx.strokeStyle = "rgb(255 255 0)";
 ctx.strokeRect(10,10, 100,100);</code></pre>
 
-          <h3>Gradients</h3>
+        <h3>Gradients</h3>
 
-          <p>Gradients let you display smooth transitions between two or more specified colors.</p>
+        <p>Gradients let you display smooth transitions between two or more specified colors.</p>
 
-          <p>Gradients can be used to fill rectangles, circles, lines, text, etc.</p>
+        <p>Gradients can be used to fill rectangles, circles, lines, text, etc.</p>
 
-          <p>There are two methods used for creating gradients:</p>
+        <p>There are two methods used for creating gradients:</p>
 
-          <ul>
-            <li>createLinearGradient() - creates a linear gradient</li>
-            <li>createRadialGradient() - creates a radial/circular gradient</li>
-          </ul>
+        <ul>
+          <li>createLinearGradient() - creates a linear gradient</li>
+          <li>createRadialGradient() - creates a radial/circular gradient</li>
+        </ul>
 
-          <h3>Linear Gradient</h3>
+        <h3>Linear Gradient</h3>
 
-          <p>The createLinearGradient() method is used to define a linear gradient.</p>
+        <p>The createLinearGradient() method is used to define a linear gradient.</p>
 
-          <p>A linear gradient changes color along a linear pattern (horizontally/vertically/diagonally).</p>
+        <p>A linear gradient changes color along a linear pattern (horizontally/vertically/diagonally).</p>
 
-          <p>The createLinearGradient() method has the following parameters:</p>
+        <p>The createLinearGradient() method has the following parameters:</p>
 
-          <ul>
-            <li>x0 - The x-coordinate of the starting point</li>
-            <li>y0 - The y-coordinate of the starting point</li>
-            <li>x1 - The x-coordinate of the ending point</li>
-            <li>y1 - The y-coordinate of the ending point</li>
-          </ul>
+        <ul>
+          <li>x0 - The x-coordinate of the starting point</li>
+          <li>y0 - The y-coordinate of the starting point</li>
+          <li>x1 - The x-coordinate of the ending point</li>
+          <li>y1 - The y-coordinate of the ending point</li>
+        </ul>
 
-          <p>The gradient object requires two or more color stops.</p>
+        <p>The gradient object requires two or more color stops.</p>
 
-          <p>The addColorStop() method specifies the color stops, and its position along the gradient. The positions can be anywhere between 0 and 1.</p>
+        <p>The addColorStop() method specifies the color stops, and its position along the gradient. The positions can
+          be anywhere between 0 and 1.</p>
 
-          <p>To use the gradient, assign it to the fillStyle or strokeStyle property, then draw the shape (rectangle, circle, shape, or text).</p>
+        <p>To use the gradient, assign it to the fillStyle or strokeStyle property, then draw the shape (rectangle,
+          circle, shape, or text).</p>
 
-          <p>Here is an example of a linear gradient:</p>
+        <p>Here is an example of a linear gradient:</p>
 
-          <pre><code class="javascript">const canvas = document.getElementById("myCanvas");
+        <pre><code class="javascript">const canvas = document.getElementById("myCanvas");
 const ctx = canvas.getContext("2d");
 
 // Create gradient
@@ -2011,26 +2015,26 @@ grd.addColorStop(1, "white");
 ctx.fillStyle = grd;
 ctx.fillRect(10, 10, 150, 80);</code></pre>
 
-          <h3>Radial Gradient</h3>
+        <h3>Radial Gradient</h3>
 
-          <p>The createRadialGradient() method is used to create a radial/circular gradient.</p>
+        <p>The createRadialGradient() method is used to create a radial/circular gradient.</p>
 
-          <p>A radial gradient is defined by two circles, one smaller and one larger.</p>
+        <p>A radial gradient is defined by two circles, one smaller and one larger.</p>
 
-          <p>The createRadialGradient() method has the following parameters:</p>
+        <p>The createRadialGradient() method has the following parameters:</p>
 
-          <ul>
-            <li>x0 - The x-coordinate of the starting circle</li>
-            <li>y0 - The y-coordinate of the starting circle</li>
-            <li>r0 - The radius of the starting circle</li>
-            <li>x1 - The x-coordinate of the ending circle</li>
-            <li>y1 - The y-coordinate of the ending circle</li>
-            <li>r1 - The radius of the ending circle</li>
-          </ul>
+        <ul>
+          <li>x0 - The x-coordinate of the starting circle</li>
+          <li>y0 - The y-coordinate of the starting circle</li>
+          <li>r0 - The radius of the starting circle</li>
+          <li>x1 - The x-coordinate of the ending circle</li>
+          <li>y1 - The y-coordinate of the ending circle</li>
+          <li>r1 - The radius of the ending circle</li>
+        </ul>
 
-          <p>Here is an example of a radial gradient:</p>
+        <p>Here is an example of a radial gradient:</p>
 
-          <pre><code class="javascript">const canvas = document.getElementById("myCanvas");
+        <pre><code class="javascript">const canvas = document.getElementById("myCanvas");
 
 const ctx = canvas.getContext("2d");
 
@@ -2045,27 +2049,27 @@ grd2.addColorStop(1, "white");
 ctx.fillStyle = grd2;
 ctx.fillRect(10, 100, 150, 80);</code></pre>
 
-          <h3>Patterns</h3>
+        <h3>Patterns</h3>
 
-          <p>Patterns are used to fill shapes with images (instead of colors).</p>
+        <p>Patterns are used to fill shapes with images (instead of colors).</p>
 
-          <p>There are two methods used for creating patterns:</p>
+        <p>There are two methods used for creating patterns:</p>
 
-          <ul>
-            <li>createPattern(image, type) - creates a pattern from an image</li>
-            <li>createPattern(canvas, type) - creates a pattern from another canvas</li>
-          </ul>
+        <ul>
+          <li>createPattern(image, type) - creates a pattern from an image</li>
+          <li>createPattern(canvas, type) - creates a pattern from another canvas</li>
+        </ul>
 
-          <p>The createPattern() method has the following parameters:</p>
+        <p>The createPattern() method has the following parameters:</p>
 
-          <ul>
-            <li>image - Specifies the image to use</li>
-            <li>type - Repeat the pattern (repeat, repeat-x, repeat-y, no-repeat)</li>
-          </ul>
+        <ul>
+          <li>image - Specifies the image to use</li>
+          <li>type - Repeat the pattern (repeat, repeat-x, repeat-y, no-repeat)</li>
+        </ul>
 
-          <p>Here is an example of a pattern:</p>
+        <p>Here is an example of a pattern:</p>
 
-          <pre><code class="javascript">const canvas = document.getElementById("myCanvas");
+        <pre><code class="javascript">const canvas = document.getElementById("myCanvas");
 const ctx = canvas.getContext("2d");
 
 // Create a pattern
@@ -2077,23 +2081,25 @@ img.onload = function() {
   ctx.fillRect(10, 10, 150, 80);
 };</code></pre>
 
-          <h3>The clearRect() Method</h3>
+        <h3>The clearRect() Method</h3>
 
-          <p>The clearRect() method is used to clear a rectangular area of the canvas. The cleared rectangle is transparent.</p>
+        <p>The clearRect() method is used to clear a rectangular area of the canvas. The cleared rectangle is
+          transparent.</p>
 
-          <p>The clearRect() method has the following parameters:</p>
+        <p>The clearRect() method has the following parameters:</p>
 
-          <ul>
-            <li>x - The x-coordinate of the upper-left corner of the rectangle to clear</li>
-            <li>y - The y-coordinate of the upper-left corner of the rectangle to clear</li>
-            <li>width - The width of the rectangle to clear (in pixels)</li>
-            <li>height - The height of the rectangle to clear (in pixels)</li>
-          </ul>
+        <ul>
+          <li>x - The x-coordinate of the upper-left corner of the rectangle to clear</li>
+          <li>y - The y-coordinate of the upper-left corner of the rectangle to clear</li>
+          <li>width - The width of the rectangle to clear (in pixels)</li>
+          <li>height - The height of the rectangle to clear (in pixels)</li>
+        </ul>
 
 
-          <p>Here we use fillRect() to draw a filled 150*100 pixels rectangle, starting in position (10,10). Then use clearRect() to clear a rectangular area in the canvas:</p>
+        <p>Here we use fillRect() to draw a filled 150*100 pixels rectangle, starting in position (10,10). Then use
+          clearRect() to clear a rectangular area in the canvas:</p>
 
-          <pre><code class="javascript">const canvas = document.getElementById("myCanvas");
+        <pre><code class="javascript">const canvas = document.getElementById("myCanvas");
 const ctx = canvas.getContext("2d");
 
 ctx.fillStyle = "pink";
@@ -2101,9 +2107,9 @@ ctx.fillRect(10,10,150,100);
             
 ctx.clearRect(60,35,50,50);</code></pre>
 
-          <p>And here is an example of clearing the entire canvas:</p>
+        <p>And here is an example of clearing the entire canvas:</p>
 
-          <pre><code class="javascript">const canvas = document.getElementById("myCanvas"); 
+        <pre><code class="javascript">const canvas = document.getElementById("myCanvas"); 
 const ctx = canvas.getContext("2d");
 
 // Clear the canvas
@@ -2111,7 +2117,7 @@ ctx.clearRect(0, 0, canvas.width, canvas.height);</code></pre>
 
 
 
-<p></p>
+        <p></p>
 
         <h2>Canvas Coordinates</h2>
 
@@ -2156,10 +2162,12 @@ ctx.strokeRect(0, 0, 100, 100); //draws a rectangle with a blue stroke, starting
 
         <h3>Let's Look and Real Time Coordinates</h3>
 
-        <p class="codepen" data-height="600" data-theme-id="dark" data-default-tab="result" data-slug-hash="emOoLbp" data-pen-title="Understanding Coordinates" data-user="amaraauguste" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+        <p class="codepen" data-height="600" data-theme-id="dark" data-default-tab="result" data-slug-hash="emOoLbp"
+          data-pen-title="Understanding Coordinates" data-user="amaraauguste"
+          style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
           <span>See the Pen <a href="https://codepen.io/amaraauguste/pen/emOoLbp">
-          Understanding Coordinates</a> by Amara (<a href="https://codepen.io/amaraauguste">@amaraauguste</a>)
-          on <a href="https://codepen.io">CodePen</a>.</span>
+              Understanding Coordinates</a> by Amara (<a href="https://codepen.io/amaraauguste">@amaraauguste</a>)
+            on <a href="https://codepen.io">CodePen</a>.</span>
         </p>
         <script async src="https://public.codepenassets.com/embed/index.js"></script>
 
@@ -2181,8 +2189,9 @@ ctx.strokeRect(0, 0, 100, 100); //draws a rectangle with a blue stroke, starting
           <li>The strokeRect(x, y, width, height) method</li>
         </ul>
 
-        <p>The rect() method defines a rectangle. Note: the rect() method does not draw the rectangle (it just defines it). So, in addition, We have to use the stroke() method (or the fill() method) to actually draw it.</p>
-     
+        <p>The rect() method defines a rectangle. Note: the rect() method does not draw the rectangle (it just defines
+          it). So, in addition, We have to use the stroke() method (or the fill() method) to actually draw it.</p>
+
 
         <p>fill and stroke are ink methods and each case it means to draw a rectangle with a filled color, or to draw a
           rectangular outline of a color. The default color is black.</p>
@@ -2255,8 +2264,8 @@ ctx.fill();</code></pre>
         <p>The following image shows some of the angles in an arc:</p>
 
         <img class="center" style="width: 50%; height: 50%"
-        src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/angles%20of%20an%20arc.png?raw=true"
-        alt="Angles of an Arc">
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/angles%20of%20an%20arc.png?raw=true"
+          alt="Angles of an Arc">
 
         <ul>
           <li>Center: arc(<text style="color: rgb(0, 223, 0)">100, 75</text>, 50, 0 * Math.PI, 1.5 * Math.PI)</li>
@@ -2339,9 +2348,11 @@ ctx.stroke();</code></pre>
           <li>strokeText(text, x, y) - strokes a given text at the given (x, y) position</li>
         </ul>
 
-        <p>The font property defines the font to be used and the size of the font. The default value for this property is "10px sans serif".</p>
+        <p>The font property defines the font to be used and the size of the font. The default value for this property
+          is "10px sans serif".</p>
 
-        <p>Both methods include an optional fourth parameter: maxwidth, which represents the maximum width of the text-string.</p>
+        <p>Both methods include an optional fourth parameter: maxwidth, which represents the maximum width of the
+          text-string.</p>
 
         <p>Here is an example of drawing text on a canvas:</p>
 
@@ -2357,9 +2368,29 @@ ctx.fillText("Hello World", 10, 50);</code></pre>
         <p>The strokeText() method draws text on the canvas (no fill). The default color of the text is black.</p>
 
 
-        <p><a href="https://codepen.io/amaraauguste/pen/KwPYByQ" target="_blank">Let's take a look at some example code</a></p>
+        <p><a href="https://codepen.io/amaraauguste/pen/KwPYByQ" target="_blank">Let's take a look at some example
+            code</a></p>
 
-         <!-- <h2>Curves</h2>
+        <hr />
+
+        <h2>Exercise: Smiley Face</h2>
+
+        <p>Knowing what we know now about drawing shapes in Canvas</p>
+
+        <p>and given a canvas sized 350x350 ... </p>
+
+        <pre><code class="html">&lt;canvas id="myCanvas" width="350" height="350" style="border:1px solid rgb(0,0,0);"&gt;&lt;/canvas&gt;</code></pre>
+
+
+        <p>How can we can create this smiley face in the center of the canvas?</p>
+
+        <!--ADD IMAGE HERE-->
+
+        <img class="center" style="width: 50%; height: 50%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/smiley%20face%20canvas%20example.png?raw=true"
+          alt="Smiley Face">
+
+        <!-- <h2>Curves</h2>
 
           <p>The three most used methods for drawing curves in canvas are:</p>
 
