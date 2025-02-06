@@ -59,6 +59,9 @@
           <a href="#Shapes" onclick="closeDropdown2()">Shapes</a>
           <a href="#JavaScript" onclick="closeDropdown2()">Basic JavaScript</a>
           <a href="#Intro_to_HTML5_Canvas" onclick="closeDropdown2()">Intro to HTML5 Canvas</a>
+          <a href="#Polygons_and_Curves" onclick="closeDropdown2()">Polygons and Curves</a>
+          <a href="#Mouse_Events" onclick="closeDropdown2()">Mouse Events</a>
+          <!--<a href="#Transforms" onclick="closeDropdown2()">Transforms</a>-->
           <!--<a href="#Variable_Scope" onclick="closeDropdown2()">Variable Scope</a>
           <a href="#Global_Variables" onclick="closeDropdown2()">Global Variables</a>
           <a href="#Operators" onclick="closeDropdown2()">Operators</a>
@@ -1792,35 +1795,44 @@
       <br />
     </section>
 
-    <hr/>
+    <hr />
 
 
     <section class="main-section" id="JavaScript">
       <br />
       <header><b>JavaScript</b></header>
       <article>
-        <p>JavaScript is a dynamic programming language that's used for web development, in web applications, for game development, and lots more. It allows we to implement dynamic features on web pages that cannot be done with only HTML and CSS.</p>
+        <p>JavaScript is a dynamic programming language that's used for web development, in web applications, for game
+          development, and lots more. It allows we to implement dynamic features on web pages that cannot be done with
+          only HTML and CSS.</p>
 
-        <p>Many browsers use JavaScript as a scripting language for doing dynamic things on the web. Any time we see a click-to-show dropdown menu, extra content added to a page, and dynamically changing element colors on a page, to name a few features, we're seeing the effects of JavaScript.</p>
+        <p>Many browsers use JavaScript as a scripting language for doing dynamic things on the web. Any time we see a
+          click-to-show dropdown menu, extra content added to a page, and dynamically changing element colors on a page,
+          to name a few features, we're seeing the effects of JavaScript.</p>
 
         <h2>How JavaScript Makes Things Dynamic</h2>
-        <p>HTML defines the structure of our web document and the content therein. CSS declares various styles for the contents provided on the web document.</p>
+        <p>HTML defines the structure of our web document and the content therein. CSS declares various styles for the
+          contents provided on the web document.</p>
 
-        <p>HTML and CSS are often called markup languages rather than programming languages, because they, at their core, provide markups for documents with very little dynamism.</p>
+        <p>HTML and CSS are often called markup languages rather than programming languages, because they, at their
+          core, provide markups for documents with very little dynamism.</p>
 
-        <p>JavaScript, on the other hand, is a dynamic programming language that supports Math calculations, allows we to dynamically add HTML contents to the DOM, creates dynamic style declarations, fetches contents from another website, and lots more.</p>
+        <p>JavaScript, on the other hand, is a dynamic programming language that supports Math calculations, allows we
+          to dynamically add HTML contents to the DOM, creates dynamic style declarations, fetches contents from another
+          website, and lots more.</p>
 
         <p>Here's a basic breakdown of JavaScript fundamentals:</p>
 
         <img class="center" style="width: 75%; height: 75%"
-          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/javascript%20cheat%20sheet.png?raw=true" alt="JavaScript Cheat Sheet"/>
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/javascript%20cheat%20sheet.png?raw=true"
+          alt="JavaScript Cheat Sheet" />
 
 
       </article>
       <br />
     </section>
 
-    <hr/>
+    <hr />
 
 
 
@@ -2411,56 +2423,638 @@ ctx.fillText("Hello World", 10, 50);</code></pre>
 
         <p>How can we can create this smiley face in the center of the canvas?</p>
 
-        <!--ADD IMAGE HERE-->
+        
 
         <img class="center" style="width: 50%; height: 50%"
           src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/smiley%20face%20canvas%20example.png?raw=true"
           alt="Smiley Face">
 
-        <!-- <h2>Curves</h2>
 
-          <p>The three most used methods for drawing curves in canvas are:</p>
-
-          <ul>
-            <li>The arc() method (which we learned to use to draw circles)</li>
-            <li>The quadraticCurveTo() method</li>
-            <li>The bezierCurveTo() method</li>
-          </ul>
-
-          <h3>The quadraticCurveTo() Method</h3>
-
-          <p>The quadraticCurveTo() method is used to define a quadratic Bezier curve.</p>
-
-          <p>The quadraticCurveTo() method has the following parameters:</p>
+      </article>
+      <br />
+    </section>
 
 
+    <hr />
+    <section class="main-section" id="Polygons_and_Curves">
+      <br />
+      <header><b>Polygons and Curves</b></header>
+      <article>
+        <p>It is impossible for a graphics API to include every possible shape as a basic shape, but there is
+          usually some way to create more complex shapes.</p>
+
+        <p>For example, consider polygons. A <b>polygon</b>
+          is a closed shape consisting of a sequence of line segments.</p>
+
+        <p>Each line segment is joined to the
+          next at its endpoint, and the last line segment connects back to the first. The endpoints are
+          called the vertices of the polygon, and a polygon can be defined by listing its vertices.</p>
+
+        <p>In a <b>regular polygon</b>, all the sides are the same length and all the angles between sides are
+          equal. Squares and equilateral triangles are examples of regular polygons.</p>
+
+        <p> A <b>convex polygon</b>
+          has the property that whenever two points are inside or on the polygon, then the entire line
+          segment between those points is also inside or on the polygon. Intuitively, a convex polygon
+          has no "indentations" along its boundary. (Concavity can be a property of any shape, not just
+          of polygons.)
+        </p>
+
+        <img class="center" style="width: 100%; height: 100%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/convex%20polygons.png?raw=true" alt="Convex Polygons">
+       
+
+        <p>Sometimes, polygons are required to be "simple", meaning that the polygon has no selfintersections. That is,
+          all the vertices are different, and a side can only intersect another
+          side at its endpoints.</p>
+
+        <p>And polygons are usually required to be "planar", meaning that all the
+          vertices lie in the same plane. (Of course, in 2D graphics, everything lies in the same plane, so
+          this is not an issue. However, it does become an issue in 3D.)
+        </p>
+
+
+        <p>How then should we draw polygons? That is, what capabilities would we like to have in a
+          graphics API for drawing them</p>
+
+        <p>One possibility is to have commands for stroking and for filling
+          polygons, where the vertices of the polygon are given as an array of points or as an array of
+          x-coordinates plus an array of y-coordinates.</p>
+
+        <p>In fact, that is sometimes done; for example, the
+          Java graphics API includes such commands. </p>
+
+        <p>Another, more flexible, approach is to introduce
+          the idea of a "path."</p>
+
+        <p>Java, SVG, and the HTML canvas API all support this idea. A path is
+          a general shape that can include both line segments and curved segments. Segments can, but
+          don't have to be, connected to other segments at their endpoints. </p>
+
+        <p>A path is created by giving a series of commands that tell, essentially, how a pen would be moved to draw the
+          path.</p>
+
+        <p>While
+          a path is being created, there is a point that represents the pen’s current location. There will
+          be a command for moving the pen without drawing, and commands for drawing various kinds
+          of segments</p>
+
+        <p>For drawing polygons, we need commands such as: </p>
+
+        <ul>
+          <li><b>beginPath()</b> — start a new, empty path</li>
+          <li><b>moveTo(x,y)</b> — move the pen to the point (x,y), without adding a segment to the path;
+            that is, without drawing anything</li>
+          <li><b>lineTo(x,y)</b> — add a line segment to the path that starts at the current pen location
+            and ends at the point (x,y), and move the pen to (x,y)</li>
+          <li><b>closePath()</b> — add a line segment from the current pen location back to the starting
+            point, unless the pen is already there, producing a closed path.</li>
+        </ul>
+
+        <p>(For closePath, I need to define “starting point.” A path can be made up of “subpaths” A
+          subpath consists of a series of connected segments. A moveTo always starts a new subpath.
+          A closePath ends the current segment and implicitly starts a new one. So “starting point”
+          means the position of the pen after the most recent moveTo or closePath.)
+        </p>
+
+        <p>Suppose that we want a path that represents a five sided polygon (a pentagon!).</p>
+
+        <p>First of all, let's consider the unit circle.  This is a circle centred at (0, 0) with radius of 1 unit.</p>
+
+        <!--ADD IMAGE HERE-->
+        <img class="center" style="width: 50%; height: 50%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/pentagon%201.png?raw=true" alt="Pentagon 1">
+
+        <p>A regular polygon, such as a pentagon, can be drawn inside the unit circle as follows:</p>
+
+        <!--ADD IMAGE HERE-->
+
+        <img class="center" style="width: 50%; height: 50%"
+        src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/pentagon%202.png?raw=true" alt="Pentagon 2">
+
+        <p>In order to draw the pentagon we need to be able to identify the 5 points on the unit circle and rotate and draw lines between them.</p>
+
+        <p>This is where some understanding of trigonometry comes in useful.</p>
+
+        <p>Let's consider some point, (a, b) on the unit circle as follows:</p>
+
+        <!--ADD IMAGE HERE-->
+
+        <img class="center" style="width: 50%; height: 50%"
+        src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/pentagon%203.png?raw=true" alt="Pentagon 3">
+
+        <p>We know the radius (r), in this case it is 1 because it is the unit circle. However, it could be any length we choose.</p>
+
+        <p>The point (a, b) can be written in terms of trigonometric ratios as follows:</p>
+
+        <p>The x-ordinate is given by a = <b>r cos 𝛳</b></p>
+
+        <p>The y-ordinate is given by b = <b>r sin 𝛳</b></p>
+
+        <p>In Javascript we can identify the first point as:</p>
+
+        <text class="center"><b>(x + radius * Math.cos(angle), y + radius * Math.sin(angle))</b></text>
+
+        <p>Note that we add the (x, y) ordinate values since we will not necessarily be centering the circle at (0, 0).</p>
+
+        <p>Since we are drawing a pentagon we know that the angle we will need to rotate through will be 360o / 5.  However, all angles must be given in radians.  So the angle will be 2*Pi / 5.  In Javascript this is written as:</p>
+
+        <text class="center"><b>angle = 2*Math.PI/numberOfSides</b></text>
+
+        <p>We can now declare some variables:</p>
+
+        <ul>
+          <li>Since we are drawing a pentagon we set the number of sides to 5</li>
+          <li>We define a radius for our circle. The pentagon will be drawn inside the circle, each vertex of the pentagon will be on the circumference of the circle.</li>
+          <li>We set the x-ordinate of the centre of the circle</li>
+          <li>We set the y-ordinate of the centre of the circle</li>
+          <li>We calculate the size of the external angle of the pentagon. This is the angle we will need to rotate through after each line is drawn</li>
+        </ul>
+
+        <p>We can now begin the path and set up a loop to draw each line of the polygon:</p>
+
+        <p>We move to the first point which is directly across from the centre of the circle (indicated in red below):</p>
+
+        <!--ADD IMAGE HERE-->
+
+        <img class="center" style="width: 50%; height: 50%"
+        src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/pentagon%204.png?raw=true" alt="Pentagon 4">
+
+        <p>We set up a loop to draw each line and finally stroke the path when we are done.</p>
+
+        <pre><code class="javascript">ctx.beginPath(); // start a new path
+let numberOfSides = 5; // a pentagon
+let radius=100; // radius of the circle
+let x = 125; // center (x) of the circle
+let y = 125; // center (y)  of the circle
+let angle = 2*Math.PI/numberOfSides; // angle between sides
+ctx.beginPath(); // start a new path
+ctx.moveTo (x + radius*Math.cos(0), y + radius*Math.sin(0)); // first vertex      
+for (let i = 1; i <= numberOfSides; i++) { // loop through each vertex
+  ctx.lineTo (x + radius*Math.cos(i * angle), y + radius*Math.sin(i * angle)); // draw line to next vertex
+}
+ctx.stroke();</code></pre>
+
+        <h2>Curves</h2>
+
+        <p>As noted above, a path can contain other kinds of segments besides lines.</p>
+
+        <p>For example,
+          it might be possible to include an arc of a circle as a segment. </p>
+
+        <p>Another type of curve is a
+          <b>Bezier curve</b>. Bezier curves can be used to create very general curved shapes. They are fairly
+          intuitive, so that they are often used in programs that allow users to design curves interactively.
+        </p>
+
+        <p>Mathematically, Bezier curves are defined by parametric polynomial equations, but you don’t
+          need to understand what that means to use them.</p>
+
+        <p>There are two kinds of Bezier curve in
+          common use, cubic Bezier curves and quadratic Bezier curves; they are defined by cubic and
+          quadratic polynomials respectively.</p>
+
+        <p>When the general term "Bezier curve" is used, it usually
+          refers to cubic Bezier curves.</p>
+
+        <p>A cubic Bezier curve segment is defined by the two endpoints of the segment together with
+          two control points. To understand how it works, it's best to think about how a pen would
+          draw the curve segment.</p>
+
+        <p>The pen starts at the first endpoint, headed in the direction of the
+          first control point. The distance of the control point from the endpoint controls the speed of
+          the pen as it starts drawing the curve. The second control point controls the direction and
+          speed of the pen as it gets to the second endpoint of the curve. There is a unique cubic curve
+          that satisfies these conditions.</p>
+
+          <img class="center" style="width: 100%; height: 100%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/curves.png?raw=true" alt="Bezier Curves">
+        <!--ADD IMAGE HERE-->
+
+        <p>The illustration above shows three cubic Bezier curve segments.</p>
+
+        <p>The two curve segments on
+          the right are connected at an endpoint to form a longer curve. The curves are drawn as thick
+          black lines. The endpoints are shown as black dots and the control points as blue squares, with
+          a thin red line connecting each control point to the corresponding endpoint. (Ordinarily, only
+          the curve would be drawn, except in an interface that lets the user edit the curve by hand.)</p>
+
+        <p>Note that at an endpoint, the curve segment is tangent to the line that connects the endpoint
+          to the control point. Note also that there can be a sharp point or corner where two curve
+          segments meet. However, one segment will merge smoothly into the next if control points are
+          properly chosen.
+        </p>
+
+        <!--ADD EXAMPLE -->
+
+        <p><b>Quadratic Bezier</b> curve segments are similar to the cubic version, but in the quadratic case,
+          there is only one control point for the segment. The curve leaves the first endpoint heading
+          in the direction of the control point, and it arrives at the second endpoint coming from the
+          direction of the control point. The curve in this case will be an arc of a parabola.</p>
+
+        <p>The three most used methods for drawing curves in canvas are:</p>
+
+        <ul>
+          <li>The arc() method (which we learned to use to draw circles)</li>
+          <li>The quadraticCurveTo() method</li>
+          <li>The bezierCurveTo() method</li>
+        </ul>
+
+        <h3>The quadraticCurveTo() Method</h3>
+
+        <p>The quadraticCurveTo() method is used to define a quadratic Bezier curve.</p>
+
+        <p>The quadraticCurveTo() method has the following parameters:</p>
+
+        <ul>
+          <li>cpx - The x-coordinate of the control point</li>
+          <li>cpy - The y-coordinate of the control point</li>
+          <li>x - The x-coordinate of the end point</li>
+          <li>y - The y-coordinate of the end point</li>
+        </ul>
+
+        <p>Here is an example of drawing a quadratic Bezier curve:</p>
+
+        <pre><code class="javascript"
+>const canvas = document.getElementById("myCanvas");  
+const ctx = canvas.getContext("2d");
+
+ctx.beginPath();
+ctx.moveTo(20, 100);
+ctx.quadraticCurveTo(60, 10, 100, 100);
+ctx.stroke();</code></pre>
+
+        <h3>The bezierCurveTo() Method</h3>
+
+        <p>The bezierCurveTo() method is used to define a cubic Bezier curve.</p>
+
+        <p>The bezierCurveTo() method has the following parameters:</p>
+
+        <ul>
+          <li>cpx1 - The x-coordinate of the first control point</li>
+          <li>cpy1 - The y-coordinate of the first control point</li>
+          <li>cpx2 - The x-coordinate of the second control point</li>
+          <li>cpy2 - The y-coordinate of the second control point</li>
+          <li>x - The x-coordinate of the end point</li>
+          <li>y - The y-coordinate of the end point</li>
+        </ul>
+
+        <p>Here is an example of drawing a cubic Bezier curve:</p>
+
+        <pre><code class="javascript
+">const canvas = document.getElementById("myCanvas");
+const ctx = canvas.getContext("2d");
+
+ctx.beginPath();
+ctx.moveTo(20, 100);
+ctx.bezierCurveTo(20, 10, 100, 10, 100, 100);
+ctx.stroke();</code></pre>
+
+        <p></p>
+
+        <!--<h2>Event Listeners</h2>
+
+         
+
+          <p>Let's take a look at some example code:</p>
+
+          <p><a href="https://codepen.io/amaraauguste/pen/KwPYByQ" target="_blank">Event Listeners Example</a></p>
+
+          <p>Here is a simple example of how to draw on a canvas using event listeners:</p>
+
+          <pre><code class="javascript
+">const canvas = document.getElementById("myCanvas"); 
+const ctx = canvas.getContext("2d");
+
+let painting = false;
+
+canvas.addEventListener('mousedown', (e) => {
+  painting = true;
+  draw(e);
+});
+
+canvas.addEventListener('mouseup', () => {
+  painting = false;
+});
+
+canvas.addEventListener('mousemove', (e) => {
+  if (painting) {
+    draw(e);
+  }
+});
+
+function draw(e) {
+  ctx.beginPath();
+  ctx.arc(e.clientX, e.clientY, 10,
+    0, Math.PI * 2);
+  ctx.fill();
+
+  ctx.beginPath();
+  ctx.moveTo(e.clientX, e.clientY);
+
+  ctx.lineTo(e.clientX, e.clientY);
+  ctx.stroke();
+
+  ctx.closePath();
+}</code></pre>
+
+          <p>Here, we have created a simple drawing application that allows the user to draw on the canvas by clicking and dragging the mouse.</p>
+
+          <p>When the mouse is pressed down, the painting variable is set to true, and the draw function is called. The draw function creates a new path, draws a circle at the current mouse position, and then draws a line from the previous mouse position to the current mouse position.</p>
+
+          <p>When the mouse is released, the painting variable is set to false, and the drawing stops.</p>
+
+          <p>By combining event listeners with the canvas API, we can create interactive drawing applications that respond to user input.</p>
+
+-->
+
+
+
+
+      </article>
+      <br />
+    </section>
+
+    <hr />
+
+
+    <section class="main-section" id="Mouse_Events">
+      <br />
+      <header><b>Mouse Events</b></header>
+      <article>
+
+        <p>Okay, so we can draw a some shapes, lines, text, and curves. That's great and all, but how do we get from
+          that to actually drawing on the
+          screen with our mouse?</p>
+
+        <p>Since our use of Canvas is beginning to get more complex, it might help to start using functions.</p>
+
+        <h2>JavaScript Functions</h2>
+
+        <p>Functions are a way to group together a set of instructions that perform a specific task. They allow us to
+          reuse code, make our code more organized, and easier to read and maintain.</p>
+
+        <p>Let's start by creating a function that will draw a line on the canvas. We'll call this function drawLine.
+        </p>
+
+        <pre><code class="javascript">function drawLine(x1, y1, x2, y2) {
+  ctx.beginPath(); // Start a new path
+  ctx.moveTo(x1, y1); // Move the pen to the starting point
+  ctx.lineTo(x2, y2); // Draw a line to the ending point
+  ctx.stroke(); // Stroke the path
+}</code></pre>
+
+        <p>In this function, we take four arguments: x1, y1, x2, and y2, which represent the starting and ending points
+          of
+          the line. We then use the canvas API to draw a line between these two points.</p>
+
+        <p>Now that we have our drawLine function, we can use it to draw lines on the canvas. For example:</p>
+
+        <pre><code class="javascript">drawLine(100, 100, 200, 200); // Draw a line from (100, 100) to (200, 200)</code></pre>
+
+        <p>Now, let's create a function that will draw a circle on the canvas. We'll call this function drawCircle.</p>
+
+        <pre><code class="javascript">function drawCircle(x, y, radius) {
+  ctx.beginPath(); // Start a new path
+  ctx.arc(x, y, radius, 0, Math.PI * 2); // Draw a circle
+  ctx.stroke(); // Stroke the path
+}</code></pre>
+
+        <p>In this function, we take three arguments: x, y, and radius, which represent the center of the circle and its
+          radius. We then use the canvas API to draw a circle at the specified location.</p>
+
+        <p>Now that we have our drawCircle function, we can use it to draw circles on the canvas. For example:</p>
+
+        <pre><code class="javascript">drawCircle(150, 150, 50); // Draw a circle with center at (150, 150) and radius of 50</code></pre>
+
+        <p>By creating functions like drawLine and drawCircle, we can easily draw shapes on the canvas and reuse our
+          code
+          to create more complex drawings.</p>
+
+        <p>Now that we know the structure of a basic JavaScript function, let's talk about event listeners.</p>
 
         <h2>Event Listeners</h2>
 
-        <p>Okay, so we can draw a some shapes, lines, text, and curves. That's great and all, but how do we get from that to actually drawing on the
-          screen with our mouse?</p>
+        <p>Event listeners are a way to listen for and respond to events that occur in the browser. They allow us to
+          create interactive web applications that respond to user actions such as clicks, key presses, and mouse
+          movements.</p>
+
+        <p>When an event occurs, the browser triggers the event listener, which calls a function that performs a
+          specific
+          action. This allows us to create dynamic and interactive web pages that respond to user input.</p>
+
+        <p>There are many different types of events that can be listened for, such as:</p>
+
+        <ul>
+          <li>Click events - Triggered when an element is clicked</li>
+          <li>Mouseover events - Triggered when the mouse pointer enters an element</li>
+          <li>Keydown events - Triggered when a key is pressed down</li>
+          <li>Submit events - Triggered when a form is submitted</li>
+          <li>Scroll events - Triggered when the user scrolls the page</li>
+        </ul>
+
+        <p>Event listeners are added to elements in the DOM using the addEventListener method. This method takes two
+          arguments: the name of the event to listen for, and the function to call when the event occurs.</p>
+
+        <p>For example, to listen for a click event on a button element, we can use the following code:</p>
+
+        <pre><code class="javascript">const button = document.getElementById('myButton'); // Get the button element   
+button.addEventListener('click', () => { // Listen for click event
+  console.log('Button clicked!'); // Log a message to the console
+});</code></pre>
+
+        <p>Let's add a button to clear the canvas: </p>
+
+        <p>First, let's create a new canvas and a button:</p>
+
+        <pre><code class="html">&lt;canvas id="myCanvas" width="500" height="400" style="border:1px solid #000000;"&gt;&lt;/canvas&gt;
+&lt;button id="clearButton"&gt;Clear Canvas&lt;/button&gt;</code></pre>
+
+        <p>Next, let's add an event listener to the button that clears the canvas:</p>
+
+        <pre><code class="javascript">const canvas = document.getElementById('myCanvas'); // Get the canvas element
+const ctx = canvas.getContext('2d'); // Get the 2D drawing context
+
+const clearButton = document.getElementById('clearButton'); // Get the clear button element
+
+clearButton.addEventListener('click', () => { // Listen for click event on clear button
+  ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
+});</code></pre>
+
+        <p>In this example, we get the canvas element and its 2D drawing context, as well as the clear button element.
+          We
+          then add an event listener to the clear button that calls the clearRect method on the canvas context to clear
+          the
+          canvas when the button is clicked.</p>
+
+        <p>So let's draw some shapes on the canvas: </p>
+
+        <pre><code class="javascript">drawLine(100, 100, 200, 200); // Draw a line from (100, 100) to (200, 200)
+drawCircle(150, 150, 50); // Draw a circle with center at (150, 150) and radius of 50</code></pre>
+
+        <p>And now we can clear the canvas!</p>
+
+        <h2>Drawing with the Mouse</h2>
+
+        <p>So far, we've used JavaScript to draw shapes on the canvas and an event listener to add button functionalty
+          to clear the canvas, but that's not really how we draw, is it?</p>
+
+        <p>A good drawing application has to respond to the mouse. We need to be able to draw lines and shapes by
+          clicking and dragging the mouse.</p>
 
         <p>We need a listener that responds to the canvas being clicked, and another listener that responds to mouse
-          movement, but only when the mouse button is pressed down.</p> -->
+          movement, but only when the mouse button is pressed down.</p>
 
+        <p>Mouse events in JavaScript allow us to create interactive and dynamic web applications. By capturing mouse
+          events, we can respond to user actions such as clicks, movements, and drags. This is particularly useful when
+          working with the HTML5 canvas element, as it enables us to create drawing applications, games, and other
+          interactive graphics.</p>
 
+        <p>JavaScript provides several mouse events that we can listen for:</p>
 
+        <ul>
+          <li><b>mousedown</b> - Triggered when the mouse button is pressed down.</li>
+          <li><b>mouseup</b> - Triggered when the mouse button is released.</li>
+          <li><b>mousemove</b> - Triggered when the mouse is moved.</li>
+          <li><b>click</b> - Triggered when the mouse button is clicked (pressed and released).</li>
+          <li><b>dblclick</b> - Triggered when the mouse button is double-clicked.</li>
+        </ul>
 
+        <h2>Using Mouse Events with HTML Canvas</h2>
 
+        <p>To use mouse events with the HTML5 canvas, we need to add event listeners to the canvas element. These event
+          listeners will call functions that handle the events and perform actions such as drawing on the canvas.</p>
 
+        <h3>Determining Mouse Position</h3>
 
+        <p>To determine the mouse position within the canvas, we need to account for the canvas's position relative to
+          the viewport. This can be done using the <b>getBoundingClientRect()</b> method, which returns the size of an
+          element and its position relative to the viewport.</p>
 
+        <p>Here is an example of how to determine the mouse position within the canvas:</p>
 
+        <pre><code class="javascript">function getMousePos(canvas, event) {
+const rect = canvas.getBoundingClientRect(); // Get the size and position of the canvas
+  return {
+    x: event.clientX - rect.left, // X coordinate of mouse relative to canvas
+    y: event.clientY - rect.top // Y coordinate of mouse relative to canvas
+  };
+}
 
+// Example usage
+canvas.addEventListener('mousemove', (event) => { // Listen for mousemove event
+  const mousePos = getMousePos(canvas, event); // Get the mouse position
+  console.log('Mouse position: ' + mousePos.x + ',' + mousePos.y); // Log the mouse position
+});</code></pre>
 
+        <p>In this example:</p>
 
+        <ul>
+          <li>The <b>getMousePos</b> function takes the canvas element and the mouse event as arguments.</li>
+          <li>It uses <b>getBoundingClientRect()</b> to get the position of the canvas relative to the viewport.</li>
+          <li>It calculates the mouse position by subtracting the canvas's top-left corner coordinates from the mouse's
+            <b>clientX</b> and <b>clientY</b> coordinates. The <b>clientX</b> and <b>clientY</b> properties of the mouse
+            event provide the horizontal and vertical coordinates of the mouse pointer, respectively, relative to the
+            viewport (the visible area of the browser window).
+          </li>
+          <li>The mouse position is logged to the console whenever the mouse is moved over the canvas.</li>
+        </ul>
 
+        <h3>Example: Drawing on Canvas with Mouse</h3>
 
+        <p>Now let's try using the mouse to draw.</p>
 
+        <h4>HTML</h4>
+        <pre><code class="html">&lt;canvas id="myCanvas" width="500" height="400" style="border:1px solid #000000;"&gt;&lt;/canvas&gt;</code></pre>
 
+        <h4>JavaScript</h4>
+        <pre><code class="javascript">const canvas = document.getElementById('myCanvas');
+const ctx = canvas.getContext('2d');
+let painting = false; // Flag to indicate if the user is drawing
 
+function startPosition(e) {
+  painting = true;
+  draw(e);
+}
 
+function endPosition() {
+  painting = false;
+  ctx.beginPath(); // Begin a new path to avoid connecting lines
+}
 
+function draw(e) {
+  if (!painting) return; // Exit the function if the user is not drawing
+
+  ctx.lineWidth = 5; // Set the line width
+  ctx.strokeStyle = 'black'; // Set the line color
+
+  ctx.lineTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop); // Draw a line to the current mouse position
+  ctx.stroke(); // Stroke the line
+  ctx.beginPath(); // Begin a new path
+  ctx.moveTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop); // Move to the new starting point
+}
+
+canvas.addEventListener('mousedown', startPosition); // Listen for mousedown event
+canvas.addEventListener('mouseup', endPosition); // Listen for mouseup event
+canvas.addEventListener('mousemove', draw);</code></pre>
+
+        <p>In this example:</p>
+
+        <ul>
+          <li>We get the canvas element and its 2D drawing context.</li>
+          <li>We define three functions: <b>startPosition</b>, <b>endPosition</b>, and <b>draw</b>.</li>
+          <li>The <b>startPosition</b> function is called when the mouse button is pressed down. It sets the
+            <b>painting</b>
+            flag to true and calls the <b>draw</b> function.</li>
+          <li>The <b>endPosition</b> function is called when the mouse button is released. It sets the <b>painting</b>
+            flag to
+            false and begins a new path to avoid connecting lines.</li>
+          <li>The <b>draw</b> function is called when the mouse is moved. It checks if the user is drawing, sets the
+            line
+            width and color, draws a line to the current mouse position, and moves to the new starting point.</li>
+          <li>We add event listeners for the <b>mousedown</b>, <b>mouseup</b>, and <b>mousemove</b> events to the canvas
+            element. These event listeners call the <b>startPosition</b>, <b>endPosition</b>, and <b>draw</b> functions
+            respectively.</li>
+        </ul>
+
+        <p>In another example we can use our mouse to draw circles on the canvas: </p>
+
+        <pre><code class="javascript">const canvas = document.getElementById('myCanvas');
+const ctx = canvas.getContext('2d');
+let painting = false; // Flag to indicate if the user is drawing
+
+function drawCircle(e) {
+  if (!painting) return; // Exit the function if the user is not drawing
+
+  ctx.beginPath(); // Start a new path
+  ctx.arc(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop, 10, 0, Math.PI * 2); // Draw a circle
+  ctx.fill(); // Fill the circle
+}
+
+canvas.addEventListener('mousedown', (e) => { // Listen for mousedown event
+  painting = true; // Set the painting flag to true
+  drawCircle(e); // Draw a circle
+});
+
+canvas.addEventListener('mouseup', () => { // Listen for mouseup event
+  painting = false; // Set the painting flag to false
+});
+
+canvas.addEventListener('mousemove', drawCircle); // Listen for mousemove event</code></pre>
+
+        <p>In this example:</p>
+
+        <ul>
+          <li>We get the canvas element and its 2D drawing context.</li>
+          <li>We define a <b>drawCircle</b> function that draws a circle at the current mouse position.</li>
+          <li>We add event listeners for the <b>mousedown</b>, <b>mouseup</b>, and <b>mousemove</b> events to the canvas
+            element. These event listeners call the <b>drawCircle</b> function
+            when the mouse button is pressed down, released, and moved respectively.</li>
+        </ul>
+
+        <p>By combining mouse events with the canvas API, we can create interactive drawing applications that respond to
+          user
+          input.</p>
 
 
 
@@ -2478,6 +3072,102 @@ ctx.fillText("Hello World", 10, 50);</code></pre>
 
 
 
+    <br />
+    <!--  <header><b>Transforms</b></header>
+      <article>
+        <p>It is possible to transform
+          coordinates from one coordinate system to another. Let's look at how geometric transformations can be used to
+          place graphics
+          objects into a coordinate system.</p>
+
+        <h2>Viewing and Modeling</h2>
+
+        <p>In a typical application, we have a rectangle made of pixels, with its natural pixel coordinates,
+          where an image will be displayed. This rectangle will be called the <b>viewport</b>.</p>
+
+        <p>We also have
+          a set of geometric objects that are defined in a possibly different coordinate system, generally
+          one that uses real-number coordinates rather than integers. These objects make up the “scene”
+          or "world" that we want to view, and the coordinates that we use to define the scene are called
+          <b>world coordinates</b>.
+        </p>
+
+        <p>For 2D graphics, the world lies in a plane. It's not possible to show a picture of the entire
+          infinite plane. We need to pick some rectangular area in the plane to display in the image.
+          Let's call that rectangular area the <b>window</b>, or view window.</p>
+
+        <p>A coordinate transform is used
+          to map the window to the viewport.</p>
+
+        //ADD IMAGE HERE
+
+        <p>In this illustration, T represents the coordinate transformation. T is a function that takes world
+          coordinates (x,y) in some window and maps them to pixel coordinates T(x,y) in the viewport</p>
+
+        <p>In this example, as you can
+          check,</p>
+
+        <text class="center">T(x,y) = ( 800*(x+4)/8, 600*(3-y)/6 )</text>
+
+        <p>Look at the rectangle with corners at (-1,2) and (3,-1) in the window. When this rectangle is
+          displayed in the viewport, it is displayed as the rectangle with corners T(-1,2) and T(3,-1). In
+          this example, T(-1,2) = (300,100) and T(3,-1) = (700,400).</p>
+
+        <p>We use coordinate transformations in this way because it allows us to choose a world
+          coordinate system that is natural for describing the scene that we want to display, and it is easier to do
+          that than to work directly with viewport coordinates. Along the same lines,
+          suppose that we want to define some complex object, and suppose that there will be several
+          copies of that object in our scene. Or maybe we are making an animation, and we would like the
+          object to have different positions in different frames.</p>
+
+          <p>We would like to choose some convenient
+            coordinate system and use it to define the object once and for all.</p>
+
+          <p>The coordinates that we
+            use to define an object are called <b>object coordinates</b> for the object. </p>
+
+          <p>When we want to place
+            the object into a scene, we need to transform the object coordinates that we used to define the
+            object into the world coordinate system that we are using for the scene. The transformation that
+            we need is called a <b>modeling transformation</b>. </p>
+
+          <p>This picture illustrates an object defined in
+            its own object coordinate system and then mapped by three different modeling transformations
+            into the world coordinate system:</p>
+
+            //ADD IMAGE HERE
+
+            <p>Remember that in order to view the scene, there will be another transformation that maps the
+              object from a view window in world coordinates into the viewport.</p>
+
+            <p>Now, keep in mind that the choice of a view window tells which part of the scene is shown
+              in the image. Moving, resizing, or even rotating the window will give a different view of the
+              scene. Suppose we make several images of the same car:</p>
+
+              //ADD IMAGE HERE
+
+            <p>What happened between making the top image in this illustration and making the image on
+              the bottom left?</p>
+
+            <p>In fact, there are two possibilities: Either the car was moved to the right, or
+              the view window that defines the scene was moved to the left.</p>
+
+            <p></p>
+            -->
+
+
+
+    </article>
+    <br />
+    </section>
+
+
+
+
+
+
+
+
 
     <hr />
     <section class="main-section" id="Reference">
@@ -2487,7 +3177,8 @@ ctx.fillText("Hello World", 10, 50);</code></pre>
         <p>Documentation on this page is taken from the following:</p>
         <ul>
           <li>
-            Eck, D. J. (2023). Introduction to computer graphics (Version 1.4). Hobart and William Smith Colleges. Retrieved from https://math.hws.edu/graphicsbook/
+            Eck, D. J. (2023). Introduction to computer graphics (Version 1.4). Hobart and William Smith Colleges.
+            Retrieved from https://math.hws.edu/graphicsbook/
           </li>
           <li>
             <a href="https://www.tutorialspoint.com/computer_graphics/index.htm" target="_blank">Tutorials Point</a>
