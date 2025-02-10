@@ -61,8 +61,10 @@
           <a href="#Intro_to_HTML5_Canvas" onclick="closeDropdown2()">Intro to HTML5 Canvas</a>
           <a href="#Polygons_and_Curves" onclick="closeDropdown2()">Polygons and Curves</a>
           <a href="#Mouse_Events" onclick="closeDropdown2()">Mouse Events</a>
-          <!--<a href="#Transforms" onclick="closeDropdown2()">Transforms</a>-->
-          <!--<a href="#Variable_Scope" onclick="closeDropdown2()">Variable Scope</a>
+          <a href="#Additional_Events" onclick="closeDropdown2()">Additional Events</a>
+          <a href="#Transforms" onclick="closeDropdown2()">Transforms</a>
+          <!--<a href="#Linear_Algebra" onclick="closeDropdown2()">Linear Algebra</a>
+          <a href="#Variable_Scope" onclick="closeDropdown2()">Variable Scope</a>
           <a href="#Global_Variables" onclick="closeDropdown2()">Global Variables</a>
           <a href="#Operators" onclick="closeDropdown2()">Operators</a>
           <a href="#Floating-Point_Numbers" onclick="closeDropdown2()">Floating-Point Numbers</a>
@@ -1277,7 +1279,9 @@
 
         <p>Shades of gray are often defined using equal values for all three parameters:</p>
 
-        <!--ADD IMAGE HERE-->
+        <img class="center" style="width: 100%; height: 100%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/shades%20of%20gray.png?raw=true"
+          alt="shades of gray">
 
         <p>Light is made up of waves with a variety of wavelengths. A pure color is one for which
           all the light has the same wavelength, but in general, a color can contain many wavelengths—
@@ -2423,7 +2427,7 @@ ctx.fillText("Hello World", 10, 50);</code></pre>
 
         <p>How can we can create this smiley face in the center of the canvas?</p>
 
-        
+
 
         <img class="center" style="width: 50%; height: 50%"
           src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/smiley%20face%20canvas%20example.png?raw=true"
@@ -2461,8 +2465,9 @@ ctx.fillText("Hello World", 10, 50);</code></pre>
         </p>
 
         <img class="center" style="width: 100%; height: 100%"
-          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/convex%20polygons.png?raw=true" alt="Convex Polygons">
-       
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/convex%20polygons.png?raw=true"
+          alt="Convex Polygons">
+
 
         <p>Sometimes, polygons are required to be "simple", meaning that the polygon has no selfintersections. That is,
           all the vertices are different, and a side can only intersect another
@@ -2519,31 +2524,36 @@ ctx.fillText("Hello World", 10, 50);</code></pre>
 
         <p>Suppose that we want a path that represents a five sided polygon (a pentagon!).</p>
 
-        <p>First of all, let's consider the unit circle.  This is a circle centred at (0, 0) with radius of 1 unit.</p>
+        <p>First of all, let's consider the unit circle. This is a circle centred at (0, 0) with radius of 1 unit.</p>
 
-        <!--ADD IMAGE HERE-->
+
         <img class="center" style="width: 50%; height: 50%"
-          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/pentagon%201.png?raw=true" alt="Pentagon 1">
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/pentagon%201.png?raw=true"
+          alt="Pentagon 1">
 
         <p>A regular polygon, such as a pentagon, can be drawn inside the unit circle as follows:</p>
 
-        <!--ADD IMAGE HERE-->
+
 
         <img class="center" style="width: 50%; height: 50%"
-        src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/pentagon%202.png?raw=true" alt="Pentagon 2">
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/pentagon%202.png?raw=true"
+          alt="Pentagon 2">
 
-        <p>In order to draw the pentagon we need to be able to identify the 5 points on the unit circle and rotate and draw lines between them.</p>
+        <p>In order to draw the pentagon we need to be able to identify the 5 points on the unit circle and rotate and
+          draw lines between them.</p>
 
         <p>This is where some understanding of trigonometry comes in useful.</p>
 
         <p>Let's consider some point, (a, b) on the unit circle as follows:</p>
 
-        <!--ADD IMAGE HERE-->
+
 
         <img class="center" style="width: 50%; height: 50%"
-        src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/pentagon%203.png?raw=true" alt="Pentagon 3">
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/pentagon%203.png?raw=true"
+          alt="Pentagon 3">
 
-        <p>We know the radius (r), in this case it is 1 because it is the unit circle. However, it could be any length we choose.</p>
+        <p>We know the radius (r), in this case it is 1 because it is the unit circle. However, it could be any length
+          we choose.</p>
 
         <p>The point (a, b) can be written in terms of trigonometric ratios as follows:</p>
 
@@ -2555,9 +2565,12 @@ ctx.fillText("Hello World", 10, 50);</code></pre>
 
         <text class="center"><b>(x + radius * Math.cos(angle), y + radius * Math.sin(angle))</b></text>
 
-        <p>Note that we add the (x, y) ordinate values since we will not necessarily be centering the circle at (0, 0).</p>
+        <p>Note that we add the (x, y) ordinate values since we will not necessarily be centering the circle at (0, 0).
+        </p>
 
-        <p>Since we are drawing a pentagon we know that the angle we will need to rotate through will be 360o / 5.  However, all angles must be given in radians.  So the angle will be 2*Pi / 5.  In Javascript this is written as:</p>
+        <p>Since we are drawing a pentagon we know that the angle we will need to rotate through will be 360o / 5.
+          However, all angles must be given in radians. So the angle will be 2*Pi / 5. In Javascript this is written as:
+        </p>
 
         <text class="center"><b>angle = 2*Math.PI/numberOfSides</b></text>
 
@@ -2565,20 +2578,24 @@ ctx.fillText("Hello World", 10, 50);</code></pre>
 
         <ul>
           <li>Since we are drawing a pentagon we set the number of sides to 5</li>
-          <li>We define a radius for our circle. The pentagon will be drawn inside the circle, each vertex of the pentagon will be on the circumference of the circle.</li>
+          <li>We define a radius for our circle. The pentagon will be drawn inside the circle, each vertex of the
+            pentagon will be on the circumference of the circle.</li>
           <li>We set the x-ordinate of the centre of the circle</li>
           <li>We set the y-ordinate of the centre of the circle</li>
-          <li>We calculate the size of the external angle of the pentagon. This is the angle we will need to rotate through after each line is drawn</li>
+          <li>We calculate the size of the external angle of the pentagon. This is the angle we will need to rotate
+            through after each line is drawn</li>
         </ul>
 
         <p>We can now begin the path and set up a loop to draw each line of the polygon:</p>
 
-        <p>We move to the first point which is directly across from the centre of the circle (indicated in red below):</p>
+        <p>We move to the first point which is directly across from the centre of the circle (indicated in red below):
+        </p>
 
-        <!--ADD IMAGE HERE-->
+
 
         <img class="center" style="width: 50%; height: 50%"
-        src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/pentagon%204.png?raw=true" alt="Pentagon 4">
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/pentagon%204.png?raw=true"
+          alt="Pentagon 4">
 
         <p>We set up a loop to draw each line and finally stroke the path when we are done.</p>
 
@@ -2627,9 +2644,10 @@ ctx.stroke();</code></pre>
           speed of the pen as it gets to the second endpoint of the curve. There is a unique cubic curve
           that satisfies these conditions.</p>
 
-          <img class="center" style="width: 100%; height: 100%"
-          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/curves.png?raw=true" alt="Bezier Curves">
-        <!--ADD IMAGE HERE-->
+        <img class="center" style="width: 100%; height: 100%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/curves.png?raw=true"
+          alt="Bezier Curves">
+
 
         <p>The illustration above shows three cubic Bezier curve segments.</p>
 
@@ -2711,62 +2729,6 @@ ctx.bezierCurveTo(20, 10, 100, 10, 100, 100);
 ctx.stroke();</code></pre>
 
         <p></p>
-
-        <!--<h2>Event Listeners</h2>
-
-         
-
-          <p>Let's take a look at some example code:</p>
-
-          <p><a href="https://codepen.io/amaraauguste/pen/KwPYByQ" target="_blank">Event Listeners Example</a></p>
-
-          <p>Here is a simple example of how to draw on a canvas using event listeners:</p>
-
-          <pre><code class="javascript
-">const canvas = document.getElementById("myCanvas"); 
-const ctx = canvas.getContext("2d");
-
-let painting = false;
-
-canvas.addEventListener('mousedown', (e) => {
-  painting = true;
-  draw(e);
-});
-
-canvas.addEventListener('mouseup', () => {
-  painting = false;
-});
-
-canvas.addEventListener('mousemove', (e) => {
-  if (painting) {
-    draw(e);
-  }
-});
-
-function draw(e) {
-  ctx.beginPath();
-  ctx.arc(e.clientX, e.clientY, 10,
-    0, Math.PI * 2);
-  ctx.fill();
-
-  ctx.beginPath();
-  ctx.moveTo(e.clientX, e.clientY);
-
-  ctx.lineTo(e.clientX, e.clientY);
-  ctx.stroke();
-
-  ctx.closePath();
-}</code></pre>
-
-          <p>Here, we have created a simple drawing application that allows the user to draw on the canvas by clicking and dragging the mouse.</p>
-
-          <p>When the mouse is pressed down, the painting variable is set to true, and the draw function is called. The draw function creates a new path, draws a circle at the current mouse position, and then draws a line from the previous mouse position to the current mouse position.</p>
-
-          <p>When the mouse is released, the painting variable is set to false, and the drawing stops.</p>
-
-          <p>By combining event listeners with the canvas API, we can create interactive drawing applications that respond to user input.</p>
-
--->
 
 
 
@@ -3005,7 +2967,8 @@ canvas.addEventListener('mousemove', draw);</code></pre>
           <li>We define three functions: <b>startPosition</b>, <b>endPosition</b>, and <b>draw</b>.</li>
           <li>The <b>startPosition</b> function is called when the mouse button is pressed down. It sets the
             <b>painting</b>
-            flag to true and calls the <b>draw</b> function.</li>
+            flag to true and calls the <b>draw</b> function.
+          </li>
           <li>The <b>endPosition</b> function is called when the mouse button is released. It sets the <b>painting</b>
             flag to
             false and begins a new path to avoid connecting lines.</li>
@@ -3063,17 +3026,263 @@ canvas.addEventListener('mousemove', drawCircle); // Listen for mousemove event<
       <br />
     </section>
 
+    <hr />
 
 
+    <section class="main-section" id="Additional_Events">
+      <br />
+      <header><b>Additional Events</b></header>
+      <article>
+        <p>In addition to our mouse down events, there are also a few others that may come in handy (for both 2D and 3D
+          graphics)</p>
+
+        <h2>Keyboard Events</h2>
+
+        <p>Keyboard events are triggered when a key is pressed or released on the keyboard. They allow us to respond to
+          user input and create interactive web applications that respond to key presses.</p>
+
+        <p>There are several keyboard events that we can listen for:</p>
+
+        <ul>
+          <li><b>keydown</b> - Triggered when a key is pressed down.</li>
+          <li><b>keyup</b> - Triggered when a key is released.</li>
+          <li><b>keypress</b> - Triggered when a key is pressed down and released.</li>
+        </ul>
+
+        <p>Keyboard events provide information about the key that was pressed, such as the key code and the key value.
+          This information can be used to perform specific actions based on the key that was pressed.</p>
+
+        <p>Here is an example of how to listen for keyboard events:</p>
+
+        <pre><code class="javascript">document.addEventListener('keydown', (event) => { // Listen for keydown event
+  console.log('Key pressed: ' + event.key); // Log the key that was pressed
+
+  if (event.key == 'ArrowUp') {
+    console.log('Up arrow key pressed'); // Log a message if the up arrow key was pressed
+  }
+
+  if (event.key == 'ArrowDown') {
+    console.log('Down arrow key pressed'); // Log a message if the down arrow key was pressed
+  }
+
+  // Add more key press conditions as needed
+});</code></pre>
+
+        <p>Each key on the keyboard has a unique key code and key value. The key code is a numerical value that
+          represents
+          the key, while the key value is a string that represents the key.</p>
+
+        <p>For example, the key code for the up arrow key is 38, and the key value is 'ArrowUp'.</p>
+
+        <p>Standard key codes are as follows: </p>
+
+        <img class="center" style="width: 100%; height: 100%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/keycodes.png?raw=true"
+          alt="Key Codes">
 
 
+        <p>Keyboard events can be used to create keyboard shortcuts, control game characters, and more.</p>
+
+        <p>For example, let's write some code to create a rectangle that we will be able to move with the WASD and
+          directional arrow keys: </p>
+
+        <pre><code class="javascript">const canvas = document.getElementById('myCanvas');
+const ctx = canvas.getContext('2d');
+let x = 100; // Initial x position of the rectangle
+let y = 100; // Initial y position of the rectangle
+let speed = 5; // Speed of the rectangle
+
+function drawRectangle() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
+    ctx.fillStyle = 'blue'; // Set rectangle color
+    ctx.fillRect(x, y, 50, 50); // Draw the rectangle
+}
+
+document.addEventListener('keydown', (event) => { // Listen for keydown event
+    switch (event.key) {
+        case 'ArrowUp':
+        case 'w':
+            y -= speed; // Move the rectangle up
+            break;
+        case 'ArrowDown':
+        case 's':
+            y += speed; // Move the rectangle down
+            break;
+        case 'ArrowLeft':
+        case 'a':
+            x -= speed; // Move the rectangle left
+            break;
+        case 'ArrowRight':
+        case 'd':
+            x += speed; // Move the rectangle right
+            break;
+    }
+
+    drawRectangle(); // Redraw the rectangle
+});
+
+// Initial call to draw the rectangle when the page loads
+drawRectangle();</code></pre>
+
+        <p>In this example:</p>
+
+        <ul>
+          <li>We get the canvas element and its 2D drawing context.</li>
+          <li>We define the initial x and y positions of the rectangle, as well as the speed at which it will move.</li>
+          <li>We define a <b>drawRectangle</b> function that clears the canvas and draws a rectangle at the current
+            position.</li>
+          <li>We add an event listener for the <b>keydown</b> event that moves the rectangle based on the key that was
+            pressed.
+          </li>
+          <li>We use a <b>switch</b> statement to check which key was pressed and update the x and y positions of the
+            rectangle
+            accordingly.</li>
+          <li>We call the <b>drawRectangle</b> function to redraw the rectangle after it has been moved.</li>
+        </ul>
 
 
+        <h2>Touch Events</h2>
+
+        <p>In the early days of touch-enabled devices, touch events were often interpreted and essentially "translated"
+          into mouse events for compatibility with existing web applications, meaning that a touch interaction would
+          trigger a corresponding mouse event like a click or hover, although this approach had limitations when dealing
+          with multi-touch gesture.</p>
+
+        <p>With the widespread adoption of touchscreen devices, such as a smartphone or tablet, HTML5 brings to the
+          table, among many other things, a set of touch-based interaction events. </p>
+
+        <p>Mouse-based events such as hover, mouse in, mouse out etc. aren't able to adequately capture the range of
+          interactions possible via touchscreen, so touch events are a welcome and necessary addition to the web
+          developer's toolbox.</p>
+
+        <p>They allow us to create web applications that respond to touch gestures, such as tapping, swiping, and
+          pinching.</p>
+
+        <p>Use cases for the touch events API include gesture recognition, multi-touch, drag and drop, and any other
+          touch-based interfaces.</p>
+
+        <h2>The Touch Events API</h2>
+
+        <p>We'll get some of the technical details of the API out of the way first, before moving on to some real
+          examples. The API is
+          defined in terms of Touches, TouchEvents, and TouchLists.</p>
+
+        <p>Each Touch describes a touch point, and has the following attributes:</p>
+
+        <ul>
+          <li><b>clientX</b> - The x-coordinate of the touch point relative to the viewport.</li>
+          <li><b>clientY</b> - The y-coordinate of the touch point relative to the viewport.</li>
+          <li><b>screenX</b> - The x-coordinate of the touch point relative to the screen.</li>
+          <li><b>screenY</b> - The y-coordinate of the touch point relative to the screen.</li>
+          <li><b>pageX</b> - The x-coordinate of the touch point relative to the document.</li>
+          <li><b>pageY</b> - The y-coordinate of the touch point relative to the document.</li>
+          <li><b>target</b> - The element that the touch point started in.</li>
+          <li><b>identifier</b> - A unique identifier for the touch point.</li>
+        </ul>
+
+        <p>There are several touch events that we can listen for:</p>
+
+        <ul>
+          <li><b>touchstart</b> - Triggered when a touch point is placed on the touch surface.</li>
+          <li><b>touchmove</b> - Triggered when a touch point is moved along the touch surface.</li>
+          <li><b>touchend</b> - Triggered when a touch point is removed from the touch surface.</li>
+          <li><b>touchcancel</b> - Triggered when a touch point is disrupted in some way.</li>
+        </ul>
+
+        <p>Touch events provide information about the touch points, such as the touch coordinates and the touch
+          identifier. This information can be used to perform specific actions based on the touch gestures.</p>
+
+        <p>Here is an example of how to listen for touch events:</p>
+
+        <pre><code class="javascript">document.addEventListener('touchstart', (event) => { // Listen for touchstart event
+  console.log('Touch started at: ' + event.touches[0].clientX + ',' + event.touches[0].clientY); // Log the touch
+  coordinates
+});</code></pre>
+
+        <p>Let's go one step further and display the touch position information visually, by displaying a dot on the
+          canvas at the point where it was touched.</p>
+
+        <pre><code class="javascript">const canvas = document.getElementById('myCanvas');
+const ctx = canvas.getContext('2d');
+
+canvas.addEventListener('touchstart', (event) => { // Listen for touchstart event
+  const touch = event.touches[0]; // Get the first touch point
+  const x = touch.clientX - canvas.offsetLeft; // Calculate the x-coordinate relative to the canvas
+  const y = touch.clientY - canvas.offsetTop; // Calculate the y-coordinate relative to the canvas
+
+  ctx.beginPath(); // Start a new path
+  ctx.arc(x, y, 5, 0, Math.PI * 2); // Draw a circle at the touch point
+  ctx.fill(); // Fill the circle
+});</code></pre>
+
+        <p>In this example:</p>
+        <ul>
+          <li>We get the canvas element and its 2D drawing context.</li>
+          <li>We add an event listener for the <b>touchstart</b> event to the canvas element.</li>
+          <li>We get the first touch point from the <b>touches</b> property of the event.</li>
+          <li>We calculate the x and y coordinates of the touch point relative to the canvas.</li>
+          <li>We draw a circle at the touch point using the <b>arc</b> method and fill it using the <b>fill</b> method.
+          </li>
+        </ul>
+
+        <h2>Browser Support and Fallbacks</h2>
+
+        <p>Touch events are widely supported among mobile devices.</p>
+
+        <p>However, unless specifically targeting touch devices, a fallback should be implemented when touchevents are
+          not supported. In these cases, the traditional click etc. events can be bound to, but as discussed below, care
+          is needed when deciding which events to support instead of the touch events.</p>
+
+        <h2>Touch and Mouse Events</h2>
+
+        <p>Since touch events may not be supported on a user's device - indeed, the user may not even be accessing your
+          app on a touchscreen device - this contingency should be planned for. </p>
+
+        <p>You may want to enable your app to support particular mouse events instead. Care should be taken here as
+          there is not a one-to-one correspondance between mouse events and touch events, and the behaviour differences
+          can be subtle.</p>
 
 
+        <p>So for our code we should also enable mouse events:</p>
 
-    <br />
-    <!--  <header><b>Transforms</b></header>
+        <pre><code class="javascript">canvas.addEventListener('mousedown', (event) => { // Listen for mousedown event
+const x = event.clientX - canvas.offsetLeft; // Calculate the x-coordinate relative to the canvas
+const y = event.clientY - canvas.offsetTop; // Calculate the y-coordinate relative to the canvas
+
+ctx.beginPath(); // Start a new path
+ctx.arc(x, y, 5, 0, Math.PI * 2); // Draw a circle at the mouse point
+ctx.fill(); // Fill the circle
+});</code></pre>
+
+        <h2>Best Practices</h2>
+
+        <p>Care should also be taken implementing touch events that the events don't interfere with typical browser
+          behaviours such as scrolling and zooming - thus there is an argument for disabling these default browser
+          behaviours if you are making use of touch events.</p>
+
+        <p>It is also important to remember that touch events are not the same as mouse events.</p>
+
+        <p>For example, a touchstart event is not the same as a mousedown event. The former is triggered when a touch
+          point is placed on the touch surface, while the latter is triggered when a mouse button is pressed down. </p>
+
+        <p>Therefore, it is important to consider the differences between touch and mouse events when designing
+          touch-based interfaces.</p>
+
+        <p>Finally, it is important to test touch events on a variety of devices to ensure that they work as expected
+          and provide a good user experience.</p>
+
+        <p>In addition, there are also scroll events, resize events, and more. These can all be used to create more
+          interactive and dynamic web applications.</p>
+
+      </article>
+      <br />
+    </section>
+
+    <hr />
+    <section class="main-section" id="Transforms">
+      <br />
+
+      <header><b>Transforms</b></header>
       <article>
         <p>It is possible to transform
           coordinates from one coordinate system to another. Let's look at how geometric transformations can be used to
@@ -3099,7 +3308,9 @@ canvas.addEventListener('mousemove', drawCircle); // Listen for mousemove event<
         <p>A coordinate transform is used
           to map the window to the viewport.</p>
 
-        //ADD IMAGE HERE
+        <img class="center" style="width: 100%; height: 100%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/window%20and%20viewport.png?raw=true"
+          alt="Coordinate Transformation">
 
         <p>In this illustration, T represents the coordinate transformation. T is a function that takes world
           coordinates (x,y) in some window and maps them to pixel coordinates T(x,y) in the viewport</p>
@@ -3120,49 +3331,665 @@ canvas.addEventListener('mousemove', drawCircle); // Listen for mousemove event<
           copies of that object in our scene. Or maybe we are making an animation, and we would like the
           object to have different positions in different frames.</p>
 
-          <p>We would like to choose some convenient
-            coordinate system and use it to define the object once and for all.</p>
+        <p>We would like to choose some convenient
+          coordinate system and use it to define the object once and for all.</p>
 
-          <p>The coordinates that we
-            use to define an object are called <b>object coordinates</b> for the object. </p>
+        <p>The coordinates that we
+          use to define an object are called <b>object coordinates</b> for the object. </p>
 
-          <p>When we want to place
-            the object into a scene, we need to transform the object coordinates that we used to define the
-            object into the world coordinate system that we are using for the scene. The transformation that
-            we need is called a <b>modeling transformation</b>. </p>
+        <p>When we want to place
+          the object into a scene, we need to transform the object coordinates that we used to define the
+          object into the world coordinate system that we are using for the scene. The transformation that
+          we need is called a <b>modeling transformation</b>. </p>
 
-          <p>This picture illustrates an object defined in
-            its own object coordinate system and then mapped by three different modeling transformations
-            into the world coordinate system:</p>
+        <p>This picture illustrates an object defined in
+          its own object coordinate system and then mapped by three different modeling transformations
+          into the world coordinate system:</p>
 
-            //ADD IMAGE HERE
+        <img class="center" style="width: 100%; height: 100%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/modeling%20transformation.png?raw=true"
+          alt="Modeling Transformation">
 
-            <p>Remember that in order to view the scene, there will be another transformation that maps the
-              object from a view window in world coordinates into the viewport.</p>
+        <p>Remember that in order to view the scene, there will be another transformation that maps the
+          object from a view window in world coordinates into the viewport.</p>
 
-            <p>Now, keep in mind that the choice of a view window tells which part of the scene is shown
-              in the image. Moving, resizing, or even rotating the window will give a different view of the
-              scene. Suppose we make several images of the same car:</p>
+        <p>Now, keep in mind that the choice of a view window tells which part of the scene is shown
+          in the image. Moving, resizing, or even rotating the window will give a different view of the
+          scene. Suppose we make several images of the same car:</p>
 
-              //ADD IMAGE HERE
+        <img class="center" style="width: 75%; height: 75%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/modeling%20transformation%202.png?raw=true"
+          alt="Modeling Transformation 2">
 
-            <p>What happened between making the top image in this illustration and making the image on
-              the bottom left?</p>
+        <p>What happened between making the top image in this illustration and making the image on
+          the bottom left?</p>
 
-            <p>In fact, there are two possibilities: Either the car was moved to the right, or
-              the view window that defines the scene was moved to the left.</p>
+        <p>In fact, there are two possibilities: Either the car was moved to the right, or
+          the view window that defines the scene was moved to the left.</p>
 
-            <p></p>
-            -->
+        <p>This is important, so be sure
+          you understand it. (Try it with your cell phone camera. Aim it at some objects, take a step
+          to the left, and notice what happens to the objects in the camera's viewfinder: They move to the right in the
+          picture!)</p>
+
+        <p>Similarly, what happens between the top picture and the middle
+          picture on the bottom? Either the car rotated counterclockwise, or the window was rotated
+          clockwise. (Again, try it with a camera—you might want to take two actual photos so that you
+          can compare them.)</p>
+
+        <p>Finally, the change from the top picture to the one on the bottom right
+          could happen because the car got smaller or because the window got larger. (On your camera,
+          a bigger window means that you are seeing a larger field of view, and you can get that by
+          applying a zoom to the camera or by backing up away from the objects that you are viewing.)</p>
+
+        <p>There is an important general idea here. When we modify the view window, we change
+          the coordinate system that is applied to the viewport. But in fact, this is the same as leaving
+          that coordinate system in place and moving the objects in the scene instead. Except that to
+          get the same effect in the final image, you have to apply the opposite transformation to the
+          objects (for example, moving the window to the left is equivalent to moving the objects to the
+          right).</p>
+
+        <p>So, there is no essential distinction between transforming the window and transforming
+          the object. Mathematically, you specify a geometric primitive by giving coordinates in some
+          natural coordinate system, and the computer applies a sequence of transformations to those
+          coordinates to produce, in the end, the coordinates that are used to actually draw the primitive
+          in the image.</p>
+
+        <p>You will think of some of those transformations as modeling transforms and some
+          as coordinate transforms, but to the computer, it's all the same.</p>
+
+        <p>We will return to this idea several times later throughout this class, but in any case, you can see that
+          geometric transforms are a central concept in computer graphics. Let's look at some basic types
+          of transformation in more detail.</p>
+
+        <p>The transforms we will use in 2D graphics can be written in
+          the form:</p>
+
+        <text class="center"><b>x1 = a*x + b*y + e</b></text>
+
+        <text class="center"><b>y1 = c*x + d*y + f</b></text>
+
+        <p>where (x,y) represents the coordinates of some point before the transformation is applied, and
+          (x1,y1 ) are the transformed coordinates.</p>
+
+        <p>The transform is defined by the six constants a, b, c,
+          d, e, and f. Note that this can be written as a function T, where</p>
+
+        <text class="center">T(x,y) = (a*x + b*y + c, d*x + e*y + f)</text>
+
+        <p>A transformation of this form is called an <b>affine transform</b>.</p>
+        <p>An affine transform has the
+          property that, when it is applied to two parallel lines, the transformed lines will also be parallel.
+          Also, if you follow one affine transform by another affine transform, the result is again an affine
+          transform.</p>
+
+        <p>There are four basic types of affine transforms that are commonly used in computer graphics:</p>
+
+        <ul>
+          <li><b>Translation</b> - Moves an object by a specified distance along the x and y axes.</li>
+          <li><b>Rotation</b> - Rotates an object by a specified angle around a specified point.</li>
+          <li><b>Scaling</b> - Increases or decreases the size of an object by a specified factor along the x and y
+            axes.</li>
+          <li><b>Shearing</b> - Skews an object by a specified angle along the x or y axis.</li>
+        </ul>
+
+        <h2>Translation</h2>
+
+        <p>A translation transform simply moves every point by a certain amount horizontally and a
+          certain amount vertically.</p>
+
+        <p>If (x,y) is the original point and (x1,y1) is the transformed point,
+          then the formula for a translation is:</p>
+
+        <text class="center">x1 = x + e</text>
+
+        <text class="center">y1 = y + f</text>
+
+        <p>where e is the number of units by which the point is moved horizontally and f is the amount by
+          which it is moved vertically. (Thus for a translation, a = d = 1, and b = c = 0 in the general
+          formula for an affine transform.)</p>
+
+        <p>A 2D graphics system will typically have a function such as:</p>
+
+        <text class="center"><b>translate(e, f)</b></text>
+
+        <p>to apply a translate transformation. The translation would apply to everything that is drawn
+          <b>after</b> the command is given. That is, for all subsequent drawing operations, e would be added
+          to the x-coordinate and f would be added to the y-coordinate.
+        </p>
+
+        <p>Let's look at an example: Suppose that you draw an "F" using coordinates in which the "F" is centered at
+          (0,0).</p>
+
+        <p>If you say translate(4,2) before drawing the "F", then every point of the "F" will be moved
+          horizontally by 4 units and vertically by 2 units before the coordinates are actually used, so
+          that after the translation, the "F" will be centered at (4,2):</p>
+
+        <img class="center" style="width: 50%; height: 50%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/translation.png?raw=true"
+          alt="Translation Transformation">
+
+        <p>The light gray "F" in this picture shows what would be drawn without the translation; the dark
+          red "F" shows the same "F" drawn after applying a translation by (4,2).</p>
+
+        <p>The top arrow shows
+          that the upper left corner of the "F" has been moved over 4 units and up 2 units. Every point
+          in the "F" is subjected to the same displacement.</p>
+
+        <p>Note that in these examples, we are assuming
+          that the y-coordinate increases from bottom to top. That is, the y-axis points up.</p>
+
+        <p>Remember that when you give the command translate(e,f), the translation applies to <b>all</b> the
+          drawing that you do after that, not just to the next shape that you draw.</p>
+
+        <p>If you apply another
+          transformation after the translation, the second transform will not replace the translation.
+          It will be combined with the translation, so that subsequent drawing will be affected by the
+          combined transformation.</p>
+
+        <p>For example, if you combine translate(4,2) with translate(-1,5), the
+          result is the same as a single translation, translate(3,7). This is an important point, and there
+          will be a lot more to say about it later.
+        </p>
+
+        <p>Also remember that you don't compute coordinate transformations yourself. You just
+          specify the original coordinates for the object (that is, the object coordinates), and you specify
+          the transform or transforms that are to be applied. The computer takes care of applying the
+          transformation to the coordinates.</p>
+
+        <p>You don't even need to know the exact equations that are used
+          for the transformation; <b>you just need to understand what it does geometrically</b>.</p>
+
+        <p>For example, here is how you might use the translate function in HTML5 Canvas:</p>
+
+        <p>First, draw one rectangle in position (10,10), then set translate() to (70,70) (This will be the new start
+          point). Then draw another rectangle in position (10,10). Notice that the second rectangle now starts in
+          position (80,80):</p>
+
+        <pre><code class="javascript">const canvas = document.getElementById("myCanvas");
+const ctx = canvas.getContext("2d");
+
+ctx.fillStyle = "red";
+ctx.fillRect(10, 10, 100, 50);
+
+ctx.translate(70, 70);
+
+ctx.fillStyle = "blue";
+ctx.fillRect(10, 10, 100, 50);</code></pre>
+
+        <h2>Rotation</h2>
+
+        <p>A rotation transform, for our purposes here, rotates each point about the origin, (0,0). Every
+          point is rotated through the same angle, called the angle of rotation.</p>
+
+        <p>For this purpose, angles can be measured either in degrees or in radians.</p>
+
+        <p>A rotation with a positive angle rotates objects in the direction from the positive x-axis towards
+          the positive y-axis.</p>
+
+        <p>This is counterclockwise in a coordinate system (cartesian) where the y-axis points up,
+          as it does in my examples here, but it is clockwise in the usual pixel coordinates, where the
+          y-axis points down rather than up.</p>
+
+        <p>Although it is not obvious, when rotation through an angle of r radians about the origin is applied to the
+          point (x,y), then the resulting point (x1,y1 ) is
+          given by: </p>
+
+        <text class="center">x1 = cos(r) * x - sin(r) * y</text>
+        <text class="center">y1 = sin(r) * x + cos(r) * y</text>
+
+        <p>That is, in the general formula for an affine transform, e = f = 0, a = d = cos(r), b = -sin(r),
+          and c = sin(r).</p>
+
+        <p>Here is a picture that illustrates a rotation about the origin by the angle
+          negative 135 degrees:</p>
+
+        <img class="center" style="width: 50%; height: 50%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/rotation.png?raw=true"
+          alt="Rotation Transformation">
+
+
+        <p>Again, the light gray "F" is the original shape, and the dark red "F" is the shape that results
+          if you apply the rotation. The arrow shows how the upper left corner of the original “F” has
+          been moved.</p>
+
+        <p>A 2D graphics API would typically have a command rotate(r) to apply a rotation. The
+          command is used before drawing the objects to which the rotation applies.</p>
+
+        <p>For example, HTML5 Canvas
+          has a rotate method that takes an angle in radians as a parameter. The rotation is applied to all
+          subsequent drawing operations.</p>
+
+        <p>Let's rotate a rectangle in canvas:</p>
+
+        <pre><code class="javascript">const canvas = document.getElementById("myCanvas");
+const ctx = canvas.getContext("2d");
+
+ctx.fillStyle = "red";
+ctx.fillRect(50, 10, 100, 50);
+
+ctx.rotate((Math.PI/180)*20); // Rotate 20 degrees
+
+ctx.strokeStyle = "blue";
+ctx.strokeRect(70, 30, 100, 50);</code></pre>
+
+        <p>Remember that the rotation is applied to all subsequent drawing operations, so we need to
+          translate to the center of the rectangle to rotate it around its center.</p>
+
+        <h2>Scaling</h2>
+
+        <p>A scaling transform can be used to make objects bigger or smaller.</p>
+
+        <p>Mathematically, a scaling
+          transform simply multiplies each x-coordinate by a given amount and each y-coordinate by a
+          given amount.</p>
+
+        <p>That is, if a point (x,y) is scaled by a factor of a in the x direction and by a
+          factor of d in the y direction, then the resulting point (x1,y1 ) is given by:</p>
+
+        <text class="center">x1 = a*x</text>
+        <text class="center">y1 = d*y</text>
+
+        <p>If you apply this transform to a shape that is centered at the origin, it will stretch the shape
+          by a factor of a horizontally and d vertically.</p>
+
+        <p>Here is an example, in which the original light
+          gray "F" is scaled by a factor of 3 horizontally and 2 vertically to give the final dark red "F":</p>
+
+        <img class="center" style="width: 50%; height: 50%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/scaling.png?raw=true"
+          alt="Scaling Transformation">
+
+
+        <p>The common case where the horizontal and vertical scaling factors are the same is called
+          <b>uniform scaling</b>. Uniform scaling stretches or shrinks a shape without distorting it.
+        </p>
+
+        <p>When scaling is applied to a shape that is not centered at (0,0), then in addition to being
+          stretched or shrunk, the shape will be moved away from 0 or towards 0. In fact, the true
+          description of a scaling operation is that it pushes every point away from (0,0) or pulls every
+          point towards (0,0). If you want to scale about a point other than (0,0), you can use a sequence
+          of three transforms, similar to what was done in the case of rotation.</p>
+
+        <p>A 2D graphics API can provide a function scale(a,d) for applying scaling transformations.
+          As usual, the transform applies to all x and y coordinates in subsequent drawing operations.</p>
+
+        <p>One unit on the canvas is one pixel. If we set the scaling factor to 2, one unit becomes two pixels, and
+          shapes will be drawn twice as large. If we set a scaling factor to 0.5, one unit becomes 0.5 pixels, and
+          shapes will be drawn at half size.</p>
+
+        <p>Note that negative scaling factors are allowed and will result in reflecting the shape as well
+          as possibly stretching or shrinking it. For example, scale(1,-1) will reflect objects vertically,
+          through the x -axis.</p>
+
+        <p>As with the other transformations, a scaling transform is applied to all subsequent drawing
+          operations. In HTML5 Canvas, you can use the scale method to apply a scaling transform:</p>
+
+        <pre><code class="javascript">const canvas = document.getElementById("myCanvas");
+const ctx = canvas.getContext("2d");
+
+ctx.strokeRect(5, 5, 100, 75);
+
+ctx.scale(2, 2);
+
+ctx.strokeStyle = "blue";
+ctx.strokeRect(5, 5, 100, 75);</code></pre>
+
+        <p>It is a fact that every affine transform can be created by combining translations,
+          rotations about the origin, and scalings about the origin. </p>
+
+        <p>Also note that a transform that is made from translations and rotations, with no scaling,
+          will preserve length and angles in the objects to which it is applied. It will also preserve aspect
+          ratios of rectangles.</p>
+
+        <p>Transforms with this property are called <b>"Euclidean"</b>. If you also allow
+          uniform scaling, the resulting transformation will preserve angles and aspect ratio, but not
+          lengths.
+        </p>
+
+        <h2>Shearing</h2>
+
+        <p>We will look at one more type of basic transform, a <b>shearing transform</b>.</p>
+
+        <p>Although shears
+          can in fact be built up out of rotations and scalings if necessary, it is not really obvious how
+          to do so.</p>
+
+        <p>A shear will "tilt" objects. A horizontal shear will tilt things towards the left (for
+          negative shear) or right (for positive shear). A vertical shear tilts them up or down. </p>
+
+        <p>Here is an
+          example of horizontal shear:</p>
+
+        <img class="center" style="width: 50%; height: 50%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/shearing.png?raw=true"
+          alt="Shearing Transformation">
+
+
+        <p>A horizontal shear does not move the x-axis. Every other horizontal line is moved to the left or
+          to the right by an amount that is proportional to the y-value along that line.</p>
+
+        <p>When a horizontal shear is applied to a point (x,y), the resulting point (x1,y1) is given by:
+        </p>
+
+        <text class="center">x1 = x + b * y</text>
+        <text class="center">y1 = y</text>
+
+        <p>for some constant shearing factor b. Similarly, a vertical shear with shearing factor c is given
+          by the equations:</p>
+
+        <text class="center">x1 = x</text>
+        <text class="center">y1 = c * x + y</text>
+
+        <p>Shear is occasionally called "skew", but skew is usually specified as an angle rather than as a
+          shear factor.</p>
 
 
 
-    </article>
-    <br />
+
+
+
+
+
+
+
+
+
+
+
+
+        <h2>Combining Transformations</h2>
+
+        <p>As we just saw, we are now in a position to see what can happen when you combine two transformations.
+          Suppose that before drawing some object, you say:</p>
+
+        <text class="center"><b>translate(4,0)</b></text>
+        <text class="center"><b>rotate(90)</b></text>
+
+        <p>Assume that angles are measured in degrees.</p>
+
+        <p>The translation will then apply to all subsequent
+          drawing. But, because of the rotation command, the things that you draw after the translation
+          are <b>rotated</b> objects.</p>
+
+        <p>That is, the translation applies to objects that have <b>already</b> been rotated.</p>
+
+        <p>An example is shown on the left in the illustration below, where the light gray "F" is the original
+          shape, and red "F" shows the result of applying the two transforms to the original.</p>
+
+        <p>The original "F" was first rotated through a 90 degree angle, and then moved 4 units to the right.</p>
+
+        <img class="center" style="width: 100%; height: 100%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/combining%20transforms.png?raw=true"
+          alt="Combining Transformations">
+
+
+        <p>Note that transforms are applied to objects in the reverse of the order in which they are given
+          in the code (because the first transform in the code is applied to an object that has already
+          been affected by the second transform). And note that the order in which the transforms are
+          applied is important.</p>
+
+        <p>If we reverse the order in which the two transforms are applied in this
+          example, by saying: </p>
+
+        <text class="center"><b>rotate(90)</b></text>
+        <text class="center"><b>translate(4,0)</b></text>
+
+        <p>then the result is as shown on the right in the above illustration. In that picture, the original
+          "F" is first moved 4 units to the right and the resulting shape is then rotated through an angle
+          of 90 degrees about the origin to give the shape that actually appears on the screen.</p>
+
+        <p>For another example of applying several transformations, suppose that we want to rotate
+          a shape through an angle r about a point (p,q) instead of about the point (0,0).</p>
+
+        <p>We can do
+          this by first moving the point (p,q) to the origin, using translate(-p,-q). Then we can do a
+          standard rotation about the origin by calling rotate(r). Finally, we can move the origin back
+          to the point (p,q) by applying translate(p,q).</p>
+
+        <p>Keeping in mind that we have to write the code
+          for the transformations in the reverse order, we need to say: </p>
+
+        <text class="center"><b>translate(p,q)</b></text>
+        <text class="center"><b>rotate(r)</b></text>
+        <text class="center"><b>translate(-p,-q)</b></text>
+
+        <p>before drawing the shape. (In fact, some graphics APIs let us accomplish this transform with a
+          single command such as rotate(r,p,q). This would apply a rotation through the angle r about
+          the point (p,q).)
+        </p>
+
+        <p>In HTML5 Canvas, we have a method called transform().</p>
+
+        <p>The transform() method replaces the current transformation matrix with the matrix described by the
+          arguments of this method. The transform() method multiplies the current transformation matrix with the
+          matrix described by the arguments of this method. This is useful for applying multiple transformations to
+          the same shape.</p>
+
+        <p>The transform method takes the following parameters: </p>
+
+        <ul>
+          <li><b>a</b> - Horizontal scaling. 1 is no scaling.</li>
+          <li><b>b</b> - Horizontal skewing.</li>
+          <li><b>c</b> - Vertical skewing.</li>
+          <li><b>d</b> - Vertical scaling. 1 is no scaling.</li>
+          <li><b>e</b> - Horizontal moving.</li>
+          <li><b>f</b> - Vertical moving.</li>
+        </ul>
+        <p>Here is an example of how to use the transform() method in HTML5 Canvas:</p>
+
+        <pre><code class="javascript">const canvas = document.getElementById("myCanvas");
+const ctx = canvas.getContext("2d");
+
+ctx.strokeRect(5, 5, 100, 75);
+
+ctx.transform(2, 0, 0, 2, 40, 40); // Scale by 2 and move 40 units
+ctx.strokeStyle = "blue";
+ctx.strokeRect(5, 5, 100, 75);</code></pre>
+
+        <p>We can scale, rotate, and translate using a mixture of these methods as well:</p>
+
+        <pre><code class="javascript">const canvas = document.getElementById("myCanvas");
+const ctx = canvas.getContext("2d");
+
+ctx.strokeRect(5, 5, 100, 75);
+
+ctx.translate(200, 40); // Move 200 units to the right and 40 units down
+ctx.rotate((Math.PI/180)*45); // Rotate 45 degrees
+ctx.scale(2, 2); // Scale by 2
+
+ctx.strokeStyle = "blue";
+ctx.strokeRect(5, 5, 100, 75);</code></pre>
+
+
+        <p>Note that we will talk again about transformations in the context of 3D graphics,
+          where they
+          become even more important.</p>
+
+
+      </article>
+      <br />
     </section>
 
 
+    <!-- <section class="main-section" id="Linear_Algebra">
+      <br />
+      <header><b>Linear Algebra</b></header>
+      <article>
+        <p>Linear algebra is a branch of mathematics that deals with vectors and matrices. It is a fundamental tool in
+          computer graphics, as it allows us to perform transformations on objects in 2D and 3D space.</p>
 
+        <h2>Vectors</h2>
+
+        <p>A vector is a mathematical object that has both magnitude and direction. It is often represented as an arrow
+          in space, with the length of the arrow representing the magnitude of the vector and the direction of the arrow
+          representing the direction of the vector.</p>
+
+        <p>Vectors can be represented in different ways, such as:</p>
+
+        <ul>
+          <li>As a list of numbers, such as [x, y, z] for a 3D vector.</li>
+          <li>As a column matrix, such as [x y z].</li>
+          <li>As a row matrix, such as [x y z].</li>
+        </ul>
+
+        <p>Vectors can be added, subtracted, multiplied by a scalar, and normalized. They can also be used to represent
+          points in space, directions, velocities, and forces.</p>
+
+        <h2>Matrices</h2>
+
+        <p>A matrix is a two-dimensional array of numbers arranged in rows and columns. It is often used to represent
+          linear
+          transformations, such as rotations, translations, and scaling.</p>
+
+        <p>Matrices can be multiplied together to combine transformations, and they can be inverted to undo
+          transformations. They can also be used to solve systems of linear equations and find eigenvectors and
+          eigenvalues.</p>
+
+        <h2>Transformations</h2>
+
+        <p>Transformations are operations that change the position, orientation, or size of an object in space. They can
+          be represented as matrices that act on vectors to produce new vectors.</p>
+
+        <p>There are several types of transformations that are commonly used in computer graphics:</p>
+
+        <ul>
+          <li>Translation - Moves an object from one position to another.</li>
+          <li>Rotation - Rotates an object around a point or axis.</li>
+          <li>Scaling - Changes the size of an object.</li>
+          <li>Shearing - Skews an object along one axis.</li>
+          <li>Reflection - Flips an object across a line or plane.</li>
+        </ul>
+
+        <p>These transformations can be combined to create more complex transformations, such as scaling and rotating an
+          object, or translating and reflecting an object.</p>
+
+        <p>The transforms that are used in computer graphics can be represented as matrices, and the
+          points on which they operate are represented as vectors.</p>
+
+        <p>Recall that a <b>matrix</b>, from the point
+          of view of a computer scientist, is a <b>two-dimensional array of numbers</b>, while a <b>vector</b> is a
+          <b>one-dimensional array</b>.</p>
+
+        <p>Matrix and vector math
+          is built into GPUs. You won't need to know a great deal about linear algebra for this class,
+          but a few basic ideas are essential.
+        </p>
+
+        <p>The vectors that we need are lists of two, three, or four numbers. They are often written
+          as (x,y), (x,y,z ), and (x,y,z,w).</p>
+
+        <p>A matrix with N rows and M columns is called an "N-by-M
+          matrix". For the most part, the matrices that we need are N-by-N matrices, where N is 2, 3,
+          or 4. That is, they have 2, 3, or 4 rows and columns, and the number of rows is equal to the
+          number of columns.</p>
+
+        <p>If A and B are two N-by-N matrices, then they can be multiplied to give a product matrix
+          C = AB.</p>
+
+        <p>If A is an N-by-N matrix, and v is a vector of length N, then v can be multiplied
+          by A to give another vector w = Av</p>
+
+        <p>The function that takes v to Av is a transformation; it
+          transforms any given vector of size N into another vector of size N.</p>
+
+        <p>A transformation of this
+          form is called a <b>linear transformation</b>.</p>
+
+        <p>Now, suppose that A and B are N-by-N matrices and v is a vector of length N. Then, we can
+          form two different products: A(Bv) and (AB)v</p>
+
+        <p> It is a central fact that these two operations
+          have the same effect. That is, we can multiply v by B and then multiply the result by A, or
+          we can multiply the matrices A and B to get the matrix product AB and then multiply v by
+          AB. The result is the same.
+        </p>
+
+        <p><b>Rotation and scaling, as it turns out, are linear transformations</b>. That is, the operation of
+          rotating (x,y) through an angle d about the origin can be done by multiplying (x,y) by a 2-by-2
+          matrix. Let's call that matrix Rd.</p>
+
+        <p>Similarly, scaling by a factor a in the horizontal direction
+          and b in the vertical direction can be given as a matrix Sa,b.</p>
+
+        <p>If we want to apply a scaling
+          followed by a rotation to the point v = (x,y), <b>we can compute either Rd(Sa,bv) or (RdSa,b)v</b>.</p>
+
+        <p>So what? Well, suppose that we want to apply the same two operations, scale then rotate, to
+          thousands of points, as we typically do when transforming objects for computer graphics.</p>
+
+        <p>The point is that we could compute the product matrix RdSa,b once and for all, and then apply the
+          combined transform to each point with a single multiplication.</p>
+
+        <p>This means that if a program
+          says:</p>
+
+        <pre><code class="javascript">rotate(d)
+scale(a,b)
+.
+. // draw a complex object
+. </code></pre>
+
+        <p>the computer doesn't have to keep track of two separate operations.</p>
+
+        <p>It combines the operations
+          into a single matrix and just keeps track of that. Even if you apply, say, 50 transformations to
+          the object, the computer can just combine them all into one matrix. By using matrix algebra,
+          multiple transformations can be handled as efficiently as a single transformation!</p>
+
+        <p>This is really nice, but there is a gaping problem: <b>Translation is not a linear
+            transformation</b>.</p>
+
+        <p>To bring translation into this framework, we do something that looks a
+          little strange at first: Instead of representing a point in 2D as a pair of numbers (x,y), we
+          represent it as the triple of numbers (x,y,1).</p>
+
+        <p>That is, we add a one as the third coordinate. It
+          then turns out that we can then represent rotation, scaling, and translation—and hence any
+          affine transformation—on 2D space as multiplication by a 3-by-3 matrix.</p>
+
+        <p>The matrices that we
+          need have a bottom row containing (0,0,1). Multiplying (x,y,1) by such a matrix gives a new
+          vector (x1,y1,1). We ignore the extra coordinate and consider this to be a transformation of
+          (x,y) into (x1,y1 ). </p>
+
+        ADD IMAGE HERE
+
+        <p>You can compare multiplication by these matrices to the formulas given above for translation,
+          scaling, and rotation.</p>
+
+        <p>But when doing graphics programming, you won't need to do the
+          multiplication yourself. For now, the important idea that you should take away from this
+          discussion is that a sequence of transformations can be combined into a single transformation.</p>
+
+        <p>The computer only needs to keep track of a single matrix, which we can call the "current
+          matrix" or "current transformation". To implement transform commands such as translate(a,b)
+          or rotate(d), the computer simply multiplies the current matrix by the matrix that represents
+          the transform.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </article>
+      <br />
+    </section>-->
 
 
 
