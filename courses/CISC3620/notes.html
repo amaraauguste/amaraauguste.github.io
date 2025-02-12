@@ -3015,18 +3015,62 @@ canvas.addEventListener('mousemove', drawCircle); // Listen for mousemove event<
             when the mouse button is pressed down, released, and moved respectively.</li>
         </ul>
 
+        <p>We can simplify the code a bit by using boundingClientRect which gives the size of an element and its
+          position
+          relative to the viewport:</p>
+
+        <pre><code class="javascript
+">const canvas = document.getElementById('myCanvas');
+const ctx = canvas.getContext('2d');
+
+  ctx.beginPath(); // Start a new path
+  ctx.arc(e.clientX - canvas.getBoundingClientRect().left, e.clientY - canvas.getBoundingClientRect().top, 10, 0, Math.PI * 2); // Draw a circle
+  ctx.fill(); // Fill the circle
+  </code></pre>
+
+        <p>Although this works, we can achieve the same result a bit simpler with offsetX and offsetY:</p>
+
+        <pre><code class="javascript">const canvas = document.getElementById('myCanvas');
+const ctx = canvas.getContext('2d');
+
+canvas.addEventListener('mousedown', (e) => { // Listen for mousedown event
+  ctx.beginPath(); // Start a new path
+  ctx.arc(e.offsetX, e.offsetY, 10, 0, Math.PI * 2); // Draw a circle
+  ctx.fill(); // Fill the circle
+});</code></pre>
+
+        <p>This works because offsetX and offsetY give the position of the mouse <b>relative to the target element</b>, in this
+          case the canvas.</p>
+
+        <p>So to rewrite our draw function:</p>
+
+        <pre><code class="javascript">function draw(e) {
+  if (!painting) return; // Exit the function if the user is not drawing
+
+  ctx.lineWidth = 5; // Set the line width
+  ctx.strokeStyle = 'black'; // Set the line color
+
+  ctx.lineTo(e.offsetX, e.offsetY); // Draw a line to the current mouse position
+  ctx.stroke(); // Stroke the line
+  ctx.beginPath(); // Begin a new path
+  ctx.moveTo(e.offsetX, e.offsetY); // Move to the new starting point
+}</code></pre>
+
+        <p>And that's it! We can now draw on the canvas with our mouse.</p>
+
         <p>By combining mouse events with the canvas API, we can create interactive drawing applications that respond to
           user
           input.</p>
 
-          <hr/>
+        <hr />
 
         <h2>Exercise: Drawing More Figures in HTML5 Canvas</h2>
 
         <p>How can we draw the following graphics on a 400 x 400 canvas?</p>
 
         <img class="center" style="width: 50%; height: 50%"
-          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/Exercise%202.png?raw=true" alt="Drawing Exercise">
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/Exercise%202.png?raw=true"
+          alt="Drawing Exercise">
 
 
       </article>
