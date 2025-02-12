@@ -3493,9 +3493,9 @@ ctx.fill(); // Fill the circle
         <p>If (x,y) is the original point and (x1,y1) is the transformed point,
           then the formula for a translation is:</p>
 
-        <text class="center">x1 = x + e</text>
+        <text class="center"><b>x1 = x + e</b></text>
 
-        <text class="center">y1 = y + f</text>
+        <text class="center"><b>y1 = y + f</b></text>
 
         <p>where e is the number of units by which the point is moved horizontally and f is the amount by
           which it is moved vertically. (Thus for a translation, a = d = 1, and b = c = 0 in the general
@@ -3552,6 +3552,13 @@ ctx.fill(); // Fill the circle
         <p>You don't even need to know the exact equations that are used
           for the transformation; <b>you just need to understand what it does geometrically</b>.</p>
 
+        <p>HTML5 Canvas has a built in translate() method - used to move an object by x and y, where:</p>
+
+        <ul>
+          <li>x is the amount to move the object horizontally.</li>
+          <li>y is the amount to move the object vertically.</li>
+        </ul>
+
         <p>For example, here is how you might use the translate function in HTML5 Canvas:</p>
 
         <p>First, draw one rectangle in position (10,10), then set translate() to (70,70) (This will be the new start
@@ -3568,6 +3575,12 @@ ctx.translate(70, 70);
 
 ctx.fillStyle = "blue";
 ctx.fillRect(10, 10, 100, 50);</code></pre>
+
+        <p>Our first rectangle is placed at position (10, 10) but when we use translate(70,70), even though our next
+          drawn rectangle is also placed
+          at position (10, 10), it is actually placed at position (80, 80) because our x-position is now (70 + 10) and
+          y-position is now (70 + 10).</p>
+        </p>
 
         <h2>Rotation</h2>
 
@@ -3611,6 +3624,9 @@ ctx.fillRect(10, 10, 100, 50);</code></pre>
         <p>For example, HTML5 Canvas
           has a rotate method that takes an angle in radians as a parameter. The rotation is applied to all
           subsequent drawing operations.</p>
+
+        <p>As a reminder, angles are in radians, as opposed to degrees. So we use <b>(Math.PI/180)*[degree]</b> to
+          convert.</p>
 
         <p>Let's rotate a rectangle in canvas:</p>
 
@@ -3676,6 +3692,19 @@ ctx.strokeRect(70, 30, 100, 50);</code></pre>
 
         <p>As with the other transformations, a scaling transform is applied to all subsequent drawing
           operations. In HTML5 Canvas, you can use the scale method to apply a scaling transform:</p>
+
+        <p>The scale() method has the following parameters: </p>
+
+        <ul>
+          <li><b>x</b> - The scaling factor for the x-axis (1 is the original size).</li>
+          <li><b>y</b> - The scaling factor for the y-axis (1 is the original size).</li>
+        </ul>
+
+        <p>One unit on the canvas is one pixel.</p>
+        
+        <p>So, if we set the scaling factor to 2, one unit becomes two pixels, and
+          shapes will be drawn twice as large. If we set a scaling factor to 0.5, one unit becomes 0.5 pixels, and
+          shapes will be drawn at half size.</p>
 
         <pre><code class="javascript">const canvas = document.getElementById("myCanvas");
 const ctx = canvas.getContext("2d");
