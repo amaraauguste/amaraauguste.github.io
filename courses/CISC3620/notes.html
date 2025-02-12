@@ -3025,8 +3025,7 @@ const ctx = canvas.getContext('2d');
 
 ctx.beginPath(); // Start a new path
 ctx.arc(e.clientX - canvas.getBoundingClientRect().left, e.clientY - canvas.getBoundingClientRect().top, 10, 0, Math.PI * 2); // Draw a circle
-ctx.fill(); // Fill the circle
-  </code></pre>
+ctx.fill(); // Fill the circle</code></pre>
 
         <p>Although this works, we can achieve the same result a bit simpler with offsetX and offsetY:</p>
 
@@ -3046,15 +3045,15 @@ ctx.fill(); // Fill the circle
         <p>So to rewrite our draw function:</p>
 
         <pre><code class="javascript">function draw(e) {
-if (!painting) return; // Exit the function if the user is not drawing
+    if (!painting) return; // Exit the function if the user is not drawing
 
-ctx.lineWidth = 5; // Set the line width
-ctx.strokeStyle = 'black'; // Set the line color
+    ctx.lineWidth = 5; // Set the line width
+    ctx.strokeStyle = 'black'; // Set the line color
 
-ctx.lineTo(e.offsetX, e.offsetY); // Draw a line to the current mouse position
-ctx.stroke(); // Stroke the line
-ctx.beginPath(); // Begin a new path
-ctx.moveTo(e.offsetX, e.offsetY); // Move to the new starting point
+    ctx.lineTo(e.offsetX, e.offsetY); // Draw a line to the current mouse position
+    ctx.stroke(); // Stroke the line
+    ctx.beginPath(); // Begin a new path
+    ctx.moveTo(e.offsetX, e.offsetY); // Move to the new starting point
 }</code></pre>
 
         <p>And that's it! We can now draw on the canvas with our mouse.</p>
