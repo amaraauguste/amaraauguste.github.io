@@ -147,3 +147,25 @@ public class Question5 {
         }
     }
 }
+
+6)
+
+import java.util.Scanner;
+
+public class VoterEligibility {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter your age : ");
+        int age = input.nextInt();
+        int res = (age >= 18) ? 1 : 0;
+        switch (res) {
+        case 0:
+            System.out.println("Sorry, you are not eligible to vote.");
+            break;
+
+        case 1:
+            System.out.printf("Congratulations! You are eligible to vote!");
+            break;
+        }
+    }
+}
