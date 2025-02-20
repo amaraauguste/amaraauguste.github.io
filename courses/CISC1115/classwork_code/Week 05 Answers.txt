@@ -1,31 +1,23 @@
 REVIEW
 
-a)
+a) 
 
-import java.util.Scanner;
-
-public class VoterEligibility {
-    public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-        System.out.print("Enter your age : ");
-        int age = input.nextInt();
-        int res = (age >= 18) ? 1 : 0;
-        switch (res) {
-        case 0:
-            System.out.println("Sorry, you are not eligible to vote.");
-            break;
-
-        case 1:
-            System.out.printf("Congratulations! You are eligible to vote!");
-            break;
-        }
-    }
+switch(response) {
+		case 'y': System.out.print("Your request is being processed"); break;
+		case 'n': System.out.print("Thank you anyway for your consideration"); break;
+		case 'h': System.out.print("Sorry, no help is currently available"); break;
+		default: System.out.print("Invalid entry; please try again"); break;
 }
+System.out.println();
 
+b)
 
-----------------------------------------------------------------------------------------
-
-LAB 2 DISCUSSED IN CLASS
+switch(status) {
+	case 200: System.out.print("OK (fulfilled)"); break;
+	case 403: System.out.print("forbidden"); break;
+	case 404: System.out.print("not found"); break;
+	case 500: System.out.print("server error"); break;
+}
 
 ----------------------------------------------------------------------------------------
 
