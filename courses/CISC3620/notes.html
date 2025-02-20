@@ -73,6 +73,23 @@
         </div>
       </li>
 
+      <li>
+        <a class="dropdown-btn" style="font-size: 20px">3D Computer Graphics</a>
+        <div class="dropdown-container container2">
+          <a href="#Linear_Algebra" onclick="closeDropdown3()">Linear Algebra</a>
+          <a href="#Intro_to_3D_Graphics" onclick="closeDropdown3()">Intro to 3D Graphics</a>
+          <a href="#Graphic_APIs" onclick="closeDropdown3()">Graphic APIs</a>
+
+          <!--<a href="#Linear_Algebra" onclick="closeDropdown2()">Linear Algebra</a>
+          <a href="#Variable_Scope" onclick="closeDropdown2()">Variable Scope</a>
+          <a href="#Global_Variables" onclick="closeDropdown2()">Global Variables</a>
+          <a href="#Operators" onclick="closeDropdown2()">Operators</a>
+          <a href="#Floating-Point_Numbers" onclick="closeDropdown2()">Floating-Point Numbers</a>
+          <a href="#Math_Methods" onclick="closeDropdown2()">Math Methods</a>
+          <a href="#Error_Types" onclick="closeDropdown2()">Error Types</a>-->
+        </div>
+      </li>
+
       <!--Chapter 3 Dropdown-->
       <!--<li>
         <a class="dropdown-btn" href="#Input_and_Output" style="font-size: 20px">Input and Output</a>
@@ -3701,7 +3718,7 @@ ctx.strokeRect(70, 30, 100, 50);</code></pre>
         </ul>
 
         <p>One unit on the canvas is one pixel.</p>
-        
+
         <p>So, if we set the scaling factor to 2, one unit becomes two pixels, and
           shapes will be drawn twice as large. If we set a scaling factor to 0.5, one unit becomes 0.5 pixels, and
           shapes will be drawn at half size.</p>
@@ -3890,10 +3907,11 @@ ctx.strokeRect(5, 5, 100, 75);</code></pre>
 
       </article>
       <br />
+      <hr />
     </section>
 
 
-    <!-- <section class="main-section" id="Linear_Algebra">
+    <section class="main-section" id="Linear_Algebra">
       <br />
       <header><b>Linear Algebra</b></header>
       <article>
@@ -3902,152 +3920,325 @@ ctx.strokeRect(5, 5, 100, 75);</code></pre>
 
         <h2>Vectors</h2>
 
-        <p>A vector is a mathematical object that has both magnitude and direction. It is often represented as an arrow
-          in space, with the length of the arrow representing the magnitude of the vector and the direction of the arrow
-          representing the direction of the vector.</p>
+        <p>A vector is a quantity that has a length and a direction.</p>
 
-        <p>Vectors can be represented in different ways, such as:</p>
-
-        <ul>
-          <li>As a list of numbers, such as [x, y, z] for a 3D vector.</li>
-          <li>As a column matrix, such as [x y z].</li>
-          <li>As a row matrix, such as [x y z].</li>
-        </ul>
-
-        <p>Vectors can be added, subtracted, multiplied by a scalar, and normalized. They can also be used to represent
-          points in space, directions, velocities, and forces.</p>
-
-        <h2>Matrices</h2>
-
-        <p>A matrix is a two-dimensional array of numbers arranged in rows and columns. It is often used to represent
-          linear
-          transformations, such as rotations, translations, and scaling.</p>
-
-        <p>Matrices can be multiplied together to combine transformations, and they can be inverted to undo
-          transformations. They can also be used to solve systems of linear equations and find eigenvectors and
-          eigenvalues.</p>
-
-        <h2>Transformations</h2>
-
-        <p>Transformations are operations that change the position, orientation, or size of an object in space. They can
-          be represented as matrices that act on vectors to produce new vectors.</p>
-
-        <p>There are several types of transformations that are commonly used in computer graphics:</p>
-
-        <ul>
-          <li>Translation - Moves an object from one position to another.</li>
-          <li>Rotation - Rotates an object around a point or axis.</li>
-          <li>Scaling - Changes the size of an object.</li>
-          <li>Shearing - Skews an object along one axis.</li>
-          <li>Reflection - Flips an object across a line or plane.</li>
-        </ul>
-
-        <p>These transformations can be combined to create more complex transformations, such as scaling and rotating an
-          object, or translating and reflecting an object.</p>
-
-        <p>The transforms that are used in computer graphics can be represented as matrices, and the
-          points on which they operate are represented as vectors.</p>
-
-        <p>Recall that a <b>matrix</b>, from the point
-          of view of a computer scientist, is a <b>two-dimensional array of numbers</b>, while a <b>vector</b> is a
-          <b>one-dimensional array</b>.</p>
-
-        <p>Matrix and vector math
-          is built into GPUs. You won't need to know a great deal about linear algebra for this class,
-          but a few basic ideas are essential.
+        <p>A vector can be visualized as an arrow,
+          as long as you remember that it is the length and direction of the arrow that are relevant, and
+          that its specific location is irrelevant.</p>
+        <p>Vectors are often used in computer graphics to represent
+          directions, such as the direction from an object to a light source or the direction in which a
+          surface faces. In those cases, we are more interested in the direction of a vector than in its
+          length.
         </p>
 
-        <p>The vectors that we need are lists of two, three, or four numbers. They are often written
-          as (x,y), (x,y,z ), and (x,y,z,w).</p>
+        <p>If we visualize a 3D vector V as an arrow starting at the origin, (0,0,0), and ending at a
+          point P, then we can, to a certain extent, identify V with P—at least as long as we remember
+          that an arrow starting at any other point could also be used to represent V. If P has coordinates
+          (a,b,c), we can use the same coordinates for V.</p>
 
-        <p>A matrix with N rows and M columns is called an "N-by-M
-          matrix". For the most part, the matrices that we need are N-by-N matrices, where N is 2, 3,
-          or 4. That is, they have 2, 3, or 4 rows and columns, and the number of rows is equal to the
-          number of columns.</p>
+        <p>When we think of (a,b,c) as a vector, the value
+          of a represents the change in the x -coordinate between the starting point of the arrow and its
+          ending point, b is the change in the y-coordinate, and c is the change in the z -coordinate. For
+          example, the 3D point (x,y,z ) = (3,4,5) has the same coordinates as the vector (dx,dy,dz ) =
+          (3,4,5). </p>
 
-        <p>If A and B are two N-by-N matrices, then they can be multiplied to give a product matrix
-          C = AB.</p>
+        <p>For the point, the coordinates (3,4,5) specify a position in space in the xyz coordinate
+          system.</p>
 
-        <p>If A is an N-by-N matrix, and v is a vector of length N, then v can be multiplied
-          by A to give another vector w = Av</p>
+        <p>For the vector, the coordinates (3,4,5) specify the change in the x, y, and z coordinates
+          along the vector.</p>
 
-        <p>The function that takes v to Av is a transformation; it
-          transforms any given vector of size N into another vector of size N.</p>
+        <p>If we represent the vector with an arrow that starts at the origin (0,0,0), then
+          the head of the arrow will be at (3,4,5). But we could just as well visualize the vector as an
+          arrow that starts at the point (1,1,1), and in that case the head of the arrow would be at the
+          point (4,5,6).</p>
 
-        <p>A transformation of this
-          form is called a <b>linear transformation</b>.</p>
+        <p>The distinction between a point and a vector is subtle. For some purposes, the distinction
+          can be ignored; for other purposes, it is important. Often, all that we have is a sequence of
+          numbers, which we can treat as the coordinates of either a vector or a point, whichever is more
+          appropriate in the context.</p>
 
-        <p>Now, suppose that A and B are N-by-N matrices and v is a vector of length N. Then, we can
-          form two different products: A(Bv) and (AB)v</p>
+        <p>One of the basic properties of a vector is its length. In terms of its coordinates, the length
+          of a 3D vector (x,y,z) is given by sqrt(x^2+y^2+z^2). (This is just the Pythagorean theorem in
+          three dimensions.) If v is a vector, its length is denoted by |v|. </p>
 
-        <p> It is a central fact that these two operations
-          have the same effect. That is, we can multiply v by B and then multiply the result by A, or
-          we can multiply the matrices A and B to get the matrix product AB and then multiply v by
-          AB. The result is the same.
+        <p>The length of a vector is also
+          called its norm. (We are considering 3D vectors here, but concepts and formulas are similar
+          for other dimensions.)
         </p>
 
-        <p><b>Rotation and scaling, as it turns out, are linear transformations</b>. That is, the operation of
-          rotating (x,y) through an angle d about the origin can be done by multiplying (x,y) by a 2-by-2
-          matrix. Let's call that matrix Rd.</p>
+        <p>Vectors of length 1 are particularly important. They are called <b>unit vectors</b>. If v = (x,y,z )
+          is any vector other than (0,0,0), then there is exactly one unit vector that points in the same
+          direction as v.</p>
 
-        <p>Similarly, scaling by a factor a in the horizontal direction
-          and b in the vertical direction can be given as a matrix Sa,b.</p>
+        <p>That vector is given by:</p>
 
-        <p>If we want to apply a scaling
-          followed by a rotation to the point v = (x,y), <b>we can compute either Rd(Sa,bv) or (RdSa,b)v</b>.</p>
+        <text class="center"><b>( x/length, y/length, z/length )</b></text>
 
-        <p>So what? Well, suppose that we want to apply the same two operations, scale then rotate, to
-          thousands of points, as we typically do when transforming objects for computer graphics.</p>
+        <p>where length is the length of v. Dividing a vector by its length is said to normalize the vector:
+          The result is a unit vector that points in the same direction as the original vector.</p>
 
-        <p>The point is that we could compute the product matrix RdSa,b once and for all, and then apply the
-          combined transform to each point with a single multiplication.</p>
+        <p>Two vectors can be added. Given two vectors v1 = (x1,y1,z1) and v2 = (x2,y2,z2), their
+          sum is defined as:</p>
 
-        <p>This means that if a program
-          says:</p>
+        <text class="center"><b>v1 + v2 = ( x1+x2, y1+y2, z1+z2 );</b></text>
 
-        <pre><code class="javascript">rotate(d)
-scale(a,b)
-.
-. // draw a complex object
-. </code></pre>
+        <p>The sum has a geometric meaning:</p>
 
-        <p>the computer doesn't have to keep track of two separate operations.</p>
+        <img class="center" style="width: 100%; height: 100%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/Vectors%201.png?raw=true"
+          alt="Vectors 1" />
 
-        <p>It combines the operations
-          into a single matrix and just keeps track of that. Even if you apply, say, 50 transformations to
-          the object, the computer can just combine them all into one matrix. By using matrix algebra,
-          multiple transformations can be handled as efficiently as a single transformation!</p>
+        <p>Multiplication is more complicated. The obvious definition of the product of two vectors,
+          similar to the definition of the sum, does not have geometric meaning and is rarely used.</p>
 
-        <p>This is really nice, but there is a gaping problem: <b>Translation is not a linear
-            transformation</b>.</p>
+        <p>However, there are three kinds of vector multiplication that are used: the <b>scalar product</b>, the
+          <b>dot product</b>, and the <b>cross product</b>.
+        </p>
 
-        <p>To bring translation into this framework, we do something that looks a
-          little strange at first: Instead of representing a point in 2D as a pair of numbers (x,y), we
-          represent it as the triple of numbers (x,y,1).</p>
+        <p>If v = (x,y,z ) is a vector and a is a number, then the <b>scalar product</b> of a and v is defined
+          as:</p>
 
-        <p>That is, we add a one as the third coordinate. It
-          then turns out that we can then represent rotation, scaling, and translation—and hence any
-          affine transformation—on 2D space as multiplication by a 3-by-3 matrix.</p>
+        <text class="center"><b>av = ( a*x, a*y, a*z );</b></text>
 
-        <p>The matrices that we
-          need have a bottom row containing (0,0,1). Multiplying (x,y,1) by such a matrix gives a new
-          vector (x1,y1,1). We ignore the extra coordinate and consider this to be a transformation of
-          (x,y) into (x1,y1 ). </p>
+        <p>Assuming that a is positive and v is not zero, av is a vector that points in the same direction as
+          v, whose length is a times the length of v. If a is negative, av points in the opposite direction
+          from v, and its length is |a| times the length of v. </p>
 
-        ADD IMAGE HERE
+        <p>This type of product is called a scalar product
+          because a number like a is also referred to as a "scalar", perhaps because multiplication by a
+          scales v to a new length.
+        </p>
 
-        <p>You can compare multiplication by these matrices to the formulas given above for translation,
-          scaling, and rotation.</p>
+        <p>Given two vectors v1 = (x1,y1,z1 ) and v2 = (x2,y2,z2 ), the <b>dot product</b> of v1 and v2 is
+          denoted by v1 ·v2 and is defined by:</p>
 
-        <p>But when doing graphics programming, you won't need to do the
-          multiplication yourself. For now, the important idea that you should take away from this
-          discussion is that a sequence of transformations can be combined into a single transformation.</p>
+        <text class="center"><b>v1·v2 = x1*x2 + y1*y2 + z1*z2;</b></text>
 
-        <p>The computer only needs to keep track of a single matrix, which we can call the "current
-          matrix" or "current transformation". To implement transform commands such as translate(a,b)
-          or rotate(d), the computer simply multiplies the current matrix by the matrix that represents
-          the transform.</p>
+        <p>Note that the dot product is a number, not a vector.</p>
 
+        <p>The dot product has several very important
+          geometric meanings. First of all, note that the length of a vector v is just the square root of
+          v·v. Furthermore, the dot product of two non-zero vectors v1 and v2 has the property that:</p>
+
+        <text class="center"><b>cos(angle) = v1·v2 / (|v1|*|v2|)</b></text>
+
+        <p>where angle is the measure of the angle between v1 and v2.</p>
+
+        <p> In particular, <b>in the case of two
+            unit vectors, whose lengths are 1, the dot product of two unit vectors is simply the cosine
+            of the angle between them</b>.</p>
+
+        <p>Furthermore, since the cosine of a 90-degree angle is zero, two
+          non-zero vectors are perpendicular if and only if their dot product is zero. Because of these
+          properties, the dot product is particularly important in lighting calculations, where the effect
+          of light shining on a surface depends on the angle that the light makes with the surface.</p>
+
+        <p>The scalar product and dot product are defined in any dimension.</p>
+
+        <p>For vectors in 3D, there
+          is another type of product called the <b>cross product</b>, which also has an important geometric
+          meaning. For vectors v1 = (x1,y1,z1) and v2 = (x2,y2,z2), the cross product of v1 and v2 is
+          denoted v1×v2 and is the vector defined by:</p>
+
+        <text class="center"><b>v1×v2 = ( y1*z2 - z1*y2, z1*x2 - x1*z2, x1*y2 - y1*x2 )</b></text>
+
+        <p>If v1 and v2 are non-zero vectors, then v1×v2 is zero if and only if v1 and v2 point in the same
+          direction or in exactly opposite directions.</p>
+
+        <p>Assuming v1×v2 is non-zero, then it is perpendicular
+          both to v1 and to v2 ; furthermore, the vectors v1, v2, v1×v2 follow the right-hand rule (in
+          a right-handed coordinate system); that is, if you curl the fingers of your right hand from v1
+          to v2, then your thumb points in the direction of v1×v2.</p>
+
+        <p>If v1 and v2 are perpendicular unit
+          vectors, then the cross product v1×v2 is also a unit vector, which is perpendicular both to v1
+          and to v2.</p>
+
+        <p>Finally, I will note that given two points P1 = (x1,y1,z1 ) and P2 = (x2,y2,z2 ), the difference
+          P2−P1 is defined by:</p>
+
+        <text class="center"><b>P2−P1 = ( x2−x1, y2−y1, z2−z1 )</b></text>
+
+        <p>This difference is a vector that can be visualized as an arrow that starts at P1 and ends at P2.</p>
+
+        <p>Now, suppose that P1, P2, and P3 are vertices of a polygon. Then the vectors P1−P2 and
+          P3−P2 lie in the plane of the polygon, and so the cross product:</p>
+
+        <text class="center"><b>(P3−P2) × (P1−P2)</b></text>
+
+        <p>is a vector that is perpendicular to the polygon.</p>
+
+        <img class="center" style="width: 100%; height: 100%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/Vectors%202.png?raw=true"
+          alt="Vectors 2" />
+
+        <p>This vector is said to be a <b>normal vector</b> for the polygon.</p>
+
+        <p>A normal vector of length one is
+          called a <b>unit normal</b>. Unit normals will be important in lighting calculations, and it will be
+          useful to be able to calculate a unit normal for a polygon from its vertices.</p>
+
+        <h2>Matrices and Transformations</h2>
+
+        <p>A matrix is just a two-dimensional array of numbers.</p>
+
+        <p>A matrix with r rows and c columns is
+          said to be an r -by-c matrix. If A and B are matrices, and if the number of columns in A is
+          equal to the number of rows in B, then A and B can be multiplied to give the matrix product
+          AB. If A is an n-by-m matrix and B is an m-by-k matrix, then AB is an n-by-k matrix. In
+          particular, two n-by-n matrices can be multiplied to give another n-by-n matrix.</p>
+
+        <p>An n-dimensional vector can be thought of an n-by-1 matrix. If A is an n-by-n matrix and
+          v is a vector in n dimensions, thought of as an n-by-1 matrix, then the product Av is again an
+          n-dimensional vector.</p>
+
+        <p>The product of a 3-by-3 matrix A and a 3D vector v = (x,y,z) is often
+          displayed like this:</p>
+
+        <img class="center" style="width: 100%; height: 100%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/matrix%20product.png?raw=true" alt="Matrix Vector Multiplication">
+
+        <p>Note that the i-th coordinate in the product Av is simply the dot product of the i-th row of
+          the matrix A and the vector v.</p>
+
+        <p>Using this definition of the multiplication of a vector by a matrix, a matrix defines a
+          transformation that can be applied to one vector to yield another vector.</p>
+
+        <p>Transformations
+          that are defined in this way are <b>linear transformations</b>, and they are the main object of study
+          in linear algebra. A linear transformation L has the properties that for two vectors v and w,
+          L(v+w) = L(v) + L(w), and for a number s, L(sv) = sL(v).
+        </p>
+
+        <p>Rotation and scaling are linear transformations, but translation is <b>not</b> a linear transformation. </p>
+
+        <p>To include translations, we have to widen our view of transformation to include affine
+          transformations. An affine transformation can be defined, roughly, as a linear transformation
+          followed by a translation.</p>
+
+        <p>Geometrically, an affine transformation is a transformation that
+          preserves parallel lines; that is, if two lines are parallel, then their images under an affine
+          transformation will also be parallel lines.</p>
+
+        <p>For computer graphics, we are interested in affine
+          transformations in three dimensions. However—by what seems at first to be a very odd trick—
+          we can narrow our view back to the linear by moving into the fourth dimension.</p>
+
+        <p>Note first of all that an affine transformation in three dimensions transforms a vector
+          (x1,y1,z1) into a vector (x2,y2,z2) given by formulas:</p>
+
+        <text class="center"><b>x2 = a1*x1 + a2*y1 + a3*z1 + t1</b></text>
+        <text class="center"><b>y2 = b1*x1 + b2*y1 + b3*z1 + t2</b></text>
+        <text class="center"><b>z2 = c1*x1 + c2*y1 + c3*z1 + t3</b></text>
+
+        <p>These formulas express a linear transformation given by multiplication by the 3-by-3 matrix:</p>
+
+        <img class="center" style="width: 45%; height: 45%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/3x3%20matrix%2001.png?raw=true" alt="3x3 Matrix">
+
+        <p>followed by translation by t1 in the x direction, t2 in the y direction and t3 in the z direction.</p>
+
+        <p>The trick is to replace each three-dimensional vector (x,y,z) with the four-dimensional vector
+          (x,y,z,1), adding a "1" as the fourth coordinate. And instead of the 3-by-3 matrix, we use the
+          4-by-4 matrix:
+        </p>
+
+        <img class="center" style="width: 50%; height: 50%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/4x4%20matrix.png?raw=true" alt="4x4 Matrix">
+        
+
+        <p>If the vector (x1,y1,z1,1) is multiplied by this 4-by-4 matrix, the result is precisely the vector
+          (x2,y2,z2,1). That is, instead of applying an affine transformation to the 3D vector (x1,y1,z1),
+          we can apply a linear transformation to the 4D vector (x1,y1,z1,1).</p>
+
+        <p>This might seem pointless to you, but nevertheless, that is what is done in OpenGL
+          and other 3D computer graphics systems: <b>An affine transformation is represented as a 4-
+            by-4 matrix in which the bottom row is (0,0,0,1), and a three-dimensional vector is changed
+            into a four dimensional vector by adding a 1 as the final coordinate</b>.</p>
+
+        <p>The result is that all
+          the affine transformations that are so important in computer graphics can be implemented as
+          multiplication of vectors by matrices.</p>
+
+        <p>The identity transformation, which leaves vectors unchanged, corresponds to multiplication
+          by the identity matrix, which has ones along its descending diagonal and zeros elsewhere.</p>
+
+        <p>The OpenGL function glLoadIdentity() sets the current matrix to be the 4-by-4 identity matrix.</p>
+
+        <p>An OpenGL transformation function, such as glTranslatef (tx,ty,tz), has the effect of multiplying
+          the current matrix by the 4-by-4 matrix that represents the transformation.</p>
+
+        <p>Multiplication is on the right; that is, if M is the current matrix and T is the matrix that represents the
+          transformation, then the current matrix will be set to the product matrix MT.</p>
+
+        <p>For the record,
+          the following illustration shows the identity matrix and the matrices corresponding to various
+          OpenGL transformation functions:</p>
+
+          <img class="center" style="width: 100%; height: 100%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/all%20matrices.png?raw=true" alt="4x4 Matrix">
+        
+
+        <p>So if we want to translate the vector (10,10,10,1) of 10 units in the X direction, we get:</p>
+        
+        <img class="center" style="width: 100%; height: 100%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/translation%20matrix%20example.png?raw=true" alt="Translation Matrix Example">
+        
+
+        <p>and we get a (20,10,10,1) homogeneous vector! Remember, the 1 means that it is a position, not a direction. So our transformation didn't change the fact that we were dealing with a position, which is good.</p>
+
+      <p>If we want to scale a vector (position or direction, it doesn't matter) by 2.0 in all directions:</p>
+
+
+      <img class="center" style="width: 100%; height: 100%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/scaling%20matrix%20example.png?raw=true" alt="Scaling Matrix Example">
+
+      <p>and the w still didn't change. You may ask: what is the meaning of "scaling a direction"? Well, often, not much, so you usually don't do such a thing, but in some (rare) cases it can be handy.</p>
+
+
+      <h2>Homogeneous Coordinates</h2>
+
+      <p>There is one common transformation in computer graphics that is not an
+        affine transformation: In the case of a perspective projection, the projection transformation is
+        not affine.</p>
+
+      <p>In a perspective projection, an object will appear to get smaller as it moves farther
+        away from the viewer, and that is a property that no affine transformation can express, since
+        affine transforms preserve parallel lines and parallel lines will seem to converge in the distance
+        in a perspective projection.</p>
+
+        <p>Surprisingly, we can still represent a perspective projection as a 4-by-4 matrix, provided
+          we are willing to stretch our use of coordinates even further than we have already.</p>
+
+        <p>We have already represented 3D vectors by 4D vectors in which the fourth coordinate is 1. We now
+          allow the fourth coordinate to be anything at all, except for requiring that at least one of
+          the four coordinates is non-zero. </p>
+
+        <p>When the fourth coordinate, w, is non-zero, we consider the
+          coordinates (x,y,z,w) to represent the three-dimensional vector (x/w,y/w,z/w). Note that this
+          is consistent with our previous usage, since it considers (x,y,z,1) to represent (x,y,z), as before.</p>
+
+        <p>When the fourth coordinate is zero, there is no corresponding 3D vector, but it is possible to
+          think of (x,y,z,0) as representing a 3D “point at infinity” in the direction of (x,y,z).</p>
+
+        <p>Coordinates (x,y,z,w) used in this way are referred to as <b>homogeneous coordinates</b>.</p>
+
+        <p> If we use homogeneous coordinates, then any 4-by-4 matrix can be used to transform threedimensional vectors, including matrices whose bottom row is not (0,0,0,1).</p>
+
+        <p>Among the transformations that can be represented in this way is the projection transformation for a
+          perspective projection. And in fact, this is what OpenGL does internally.</p>
+
+        <p>It represents all three-dimensional points and vectors using homogeneous coordinates, and it represents
+          all transformations as 4-by-4 matrices. You can even specify vertices using homogeneous
+          coordinates.</p>
+
+        <p>For example, the command:</p>
+
+        <text class="center"><b>glVertex4f(x,y,z,w);</b></text>
+
+        <p>with a non-zero value for w, generates the 3D point (x/w,y/w,z/w). Fortunately, you will almost
+          never have to deal with homogeneous coordinates directly (we'll talk more about that again later).</p>
 
 
 
@@ -4070,7 +4261,313 @@ scale(a,b)
 
       </article>
       <br />
-    </section>-->
+    </section>
+
+
+    <hr />
+    <section class="main-section" id="Intro_to_3D_Graphics">
+      <br />
+      <header><b>Intro to 3D Graphics</b></header>
+      <article>
+        <p>Nowadays 3D Computer graphics, or CG, are everywhere. From video games to medical applications.</p>
+
+        <p>The film industry is dominated by computers, and it's not just sci-fi and animation. While filming the
+          Irishman, Martin Scorsese used computer effects to de-age actors Robert De Niro, Joe Pesci, and Al Pacino.</p>
+
+        <p>It's kind of crazy when you realize that the first feature film to incorporate computer generated imagery was
+          Westworld, starring Yul Brynner and James Brolin. That was in 1973, more than 50 years ago!</p>
+
+        <p>Today, we have devices like the Meta Quest 3 and the Apple Vision Pro, which blend digital content with your
+          physical space.</p>
+
+        <p>With all of this, it's clear that 3D computer graphics have become an integral component of our everyday
+          lives. But, how are these computer graphics created?</p>
+
+        <p>The process usually begins with an artist or designer using 3D modeling software like Maya, Cinema4D, or
+          Blender, just to name a few.</p>
+
+        <p>Artists usually start off with a simple shape like a box or a sphere and then use different tools to modify
+          this geometry.</p>
+
+        <p>If not working with an artist (or being an artist yourself), there are various Graphics APIs.</p>
+
+        <p>Graphics APIs and pipelines are crucial in computer graphics. They enable developers to create visuals for
+          video games, animations, or simulations. These systems are important for managing how images are drawn and
+          displayed on the screen.</p>
+
+        <h2>What are Graphics APIs?</h2>
+
+        <p>A Graphics API (Application Programming Interface) is a set of functions that allows programs to perform
+          operations like drawing images and 3D surfaces.</p>
+
+        <p>Essentially, APIs provide a way for software to communicate with hardware. Graphics APIs focus specifically
+          on creating and displaying visual content.</p>
+
+        <p>Every graphics program requires two key types of APIs:</p>
+
+        <ul>
+          <li>A Graphics API to handle the visual output</li>
+          <li>A User-Interface API to manage user input</li>
+        </ul>
+
+        <h2>Types of Graphics APIs</h2>
+
+        <p>There are two approaches for using graphics APIs:</p>
+
+        <ol>
+          <li>Integrated Approach</li>
+          <p>Some languages, such as Java, have built-in graphics and user-interface APIs. This ensures portability.
+            Where the code will work across different systems. Everything is standardized, making development simpler
+            for beginners.</p>
+          <li>Library-Based Approach</li>
+          <p>Direct3D and OpenGL are example of these types, where drawing commands are part of a software library. This
+            approach is more powerful but can vary from system to system. It offers more control, portability can be an
+            issue unless developers use an additional library to handle user interface differences.</p>
+        </ol>
+
+        <h2>Examples of Popular Graphics APIs</h2>
+
+        <p>Direct3D and OpenGL are the most popular and widely used Graphics APIs.</p>
+
+        <ul>
+          <li><b>Direct3D</b> - It is used in video games, the Direct3D is a graphics API that belongs to the DirectX
+            suite by
+            Microsoft. It focuses on rendering 3D graphics, allowing games to render realistic environments. The popular
+            game Halo uses Direct3D to render its 3D environments.</li>
+          <li><b>OpenGL</b> - It is a cross-platform graphics API that is widely used for developing both 2D and 3D
+            graphics.
+            It is particularly popular in CAD applications and scientific visualization. The graphics in Google Earth
+            use OpenGL to render detailed maps and 3D landscapes.</li>
+        </ul>
+
+        <h2>What are Graphics Pipelines?</h2>
+
+        <p>After the graphics APIs, let's look at the concept of graphics pipelines.</p>
+
+        <p>The following image shows a monkey head model created using the free and open source software Blender:</p>
+
+        <img class="center" style="width: 75%; height: 75%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/monkey%20head%201.png?raw=true"
+          alt="monkey head 1">
+
+        <p>If we inspect the model closer, we can see that it's made up of a collection of points joined together with
+          simple geometries.
+          This structure of joined points is known as a <b>Mesh</b>.</p>
+
+        <img class="center" style="width: 75%; height: 75%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/monkey%20head%202.png?raw=true"
+          alt="monkey head 2">
+
+        <p>Each individual point is known as a <b>vertex</b>. A vertex is a point in space that has coordinates x, y,
+          and z which determine its position in the 3D world.</p>
+
+        <p>So, meshes are made up of vertices and vertices are made up of coordinate values. But how do we go from three
+          numerical values to something on the screen?</p>
+
+        <p>A <b>graphics pipeline</b> is a sequence of stages that transform data from a mathematical representation to
+          something on a screen.</p>
+
+        <p>In essence, all 3D objects are just data. Data can live in a 3D space, however, our screen is not 3D.
+          We need to take vertices in 3D space through a series of stages in order to transform them to a 2D space.</p>
+
+        <p>In other words, these are the process that computers follow to create 3D images and display them on a 2D
+          screen. It is a series of steps that take the input, such as the geometry of 3D models, and turn it into
+          pixels on the screen.</p>
+
+        <p>Let's start with the first stage: <b>the Vertex Shader</b>.</p>
+
+        <h3>The Vertex Shader</h3>
+
+        <p>This is the first step where the positions of 3D points (vertices) are calculated. These vertices form the
+          basic structure of 3D objects. For example, if we are rendering a car in a racing game, the position of each
+          vertex of the car model is calculated in this stage
+
+        <p>Imagine we have a simple cube. This cube geometry is defined as a list of 8 vertices.</p>
+
+        <img class="center" style="width: 75%; height: 75%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/the%20vertex%20shader.png?raw=true"
+          alt="the vertex shader">
+
+        <p>The vertex shader first transforms these vertices from a space where they are relative to their own origin,
+          to a new space where everything is in relation to a camera's position and orientation.</p>
+
+        <p>Finally, we take vertices from a 3D coordinate system into a 2D plane by using <b>perspective projection</b>.
+        </p>
+
+        <p>Projection creates the illusion of depth by scaling an object's coordinates based on their distance from the
+          camera. This simulates how objects appear smaller as they move away from the viewer.</p>
+
+        <img class="center" style="width: 75%; height: 75%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/perspective%20projection.png?raw=true"
+          alt="perspective projection">
+
+        <p>Now that our vertices have been transformed to a 2D space, it's time for the second stage: <b>the primitive
+            assembly</b>.</p>
+
+        <h3>The Primitive (or Triangle) Assembly</h3>
+
+        <p>Once vertices have been transformed, it's time for the primitive assembly.</p>
+
+        <p>In this stage, vertices are connected through geometric primitives. We can choose to use lines, points, or
+          triangles.</p>
+
+        <p>Most modern graphics hardware are optimized to process triangles efficiently, that is why we usually choose
+          them over lines and points.</p>
+
+        <img class="center" style="width: 50%; height: 50%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/primitive%20assembly.gif?raw=true"
+          alt="primitive assembly">
+
+        <p>The primitive assembly lays the groundwork for the next step, which is <b>rasterization</b>.</p>
+
+        <h3>Rasterization</h3>
+
+        <p>The next important step is rasterization. This is where the 3D models are converted into pixels or fragments.
+          These pixels represent the final image that will appear on the screen. For example, the 3D model of a tree in
+          a game is converted into a collection of colored pixels that represent the tree on the screen.</p>
+
+        <p>We now have geometry made up of 3 dimensional vertices projected onto a 2D screen.</p>
+
+        <p>The rasterization step determines which pixels are inside the triangle. It breaks the shape into small
+          fragments or pixels.</p>
+
+        <img class="center" style="width: 50%; height: 50%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/rasterization.png?raw=true"
+          alt="rasterization">
+
+        <p>Rasterization not only determines which pixels are inside the shape, but also improves performance by
+          discarding triangles which are not visible or occluded. This is known as <b>Culling</b>.</p>
+
+        <p>Culling determines which triangles are facing away from the camera, are outside of the camera's view, or
+          simply hidden by another object.</p>
+
+        <p>In this case the triangle gets discarded and the computational load on the GPU (Graphical Processing Unit )
+          is reduced.</p>
+
+        <h3>The Fragment Shader</h3>
+
+        <p>The next stage in the pipeline is known as the fragment shader.</p>
+
+        <p>After rasterization, the triangle is broken into pixel fragments. These individual pixel fragments are then
+          processed by the fragment shader.</p>
+
+        <img class="center" style="width: 75%; height: 75%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/fragment%20shader.png?raw=true"
+          alt="the fragment shader">
+
+        <p>In this step we determine a color for each of the pixels that belong to the triangle. We do this by taking
+          into account the material properties of the object, textures, and light sources in the scene.</p>
+
+        <p>With all of these information, we perform some calculations that determine the final color of the fragment.
+        </p>
+
+        <h3>Framebuffer</h3>
+
+        <p>Finally, all of the shaded fragments are copied to the framebuffer, which is basically the image displayed on
+          the screen.</p>
+
+        <p>You can think of the framebuffer as a canvas where everything gets stored before being displayed on the
+          screen.</p>
+
+        <img class="center" style="width: 90%; height: 90%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/the%20graphics%20pipeline.png?raw=true"
+          alt="the graphics pipeline">
+
+        <p>This is a general overview of a typical graphics pipeline. Note that there may be different pipelines, which
+          have additional steps that we ignored.</p>
+
+        <p>Earlier versions of graphics libraries offered "fixed" pipeline. This means that the process had predefined
+          stages and operations. Specifically, the vertex and fragment shaders. Developers had limited control over how
+          these specific stages behaved.</p>
+
+        <p>With older pipelines, we would simply define the vertex data, material data, and lighting. Then, we would
+          send this data to the GPU and we'd get a result. This was easier for beginners, but provided little room for
+          modification and customization. For example, the lighting model used could not be changed.</p>
+
+        <p>In modern graphics libraries, "fixed" pipelines are deprecated in favor of "programmable" pipelines. Modern
+          pipelines provide greater flexibility and control over the rendering process. However, you must provide the
+          code for the vertex and fragment shader yourself. This means more control for the developer, but an additional
+          layer of difficulty for beginners.</p>
+
+        <p>Shader programs are written in a C style language called GLSL (OpenGL Shading Language). Shader programs run
+          on the GPU, which is different from how programs run on the CPU. The CPU executes tasks sequentially, while
+          the GPU executes tasks in parallel.</p>
+
+        <p>The fact is that this extra layer is worth it! We can achieve great results with these new pipelines. There
+          is also a thriving community of creative individuals that are constantly pushing this technology even further.
+        </p>
+
+
+
+
+
+      </article>
+      <br />
+    </section>
+
+
+
+
+    <hr />
+    <section class="main-section" id="Graphic_APIs">
+      <br />
+      <header><b>Graphic APIs</b></header>
+      <article>
+        <p></p>
+
+        <h2>OpenGL</h2>
+
+
+        <p>OpenGL is generally considered to be a cross-platform graphics API for high-performance 2D and 3D graphics
+          rendering. In fact, OpenGL is not an API. It is a specification developed and maintained by the Khronos
+          organization.</p>
+
+        <p>The specification strictly defines how each function should be executed and what their outputs should be. How
+          each function is implemented internally is up to the developer.</p>
+
+
+
+        <p>It is widely used in video games, CAD, virtual reality, scientific visualization, and more.</p>
+
+        <h2>WebGL</h2>
+
+        <p>WebGL (Web Graphics Library) is a JavaScript API for rendering interactive 2D and 3D graphics within any
+          compatible web browser without the use of plug-ins.</p>
+
+        <p>It is based on OpenGL ES (a subset of OpenGL for embedded systems).</p>
+
+        <p>Major browser vendors Apple (Safari), Google (Chrome), Microsoft (Edge), and Mozilla (Firefox) are members of
+          the WebGL Working Group.</p>
+
+        <h2>Three.js</h2>
+
+        <p>Three.js is a popular JavaScript library that simplifies the creation and display of 3D graphics in a web
+          browser using WebGL.</p>
+
+        <p>It supports VR and AR, offers cross-browser compatibility via WebGL, provides extensive tools for adding
+          materials, textures, and animations, and allows for the integration of models from other 3D modeling software.
+        </p>
+
+        <h3>Key Features</h3>
+
+        <ul>
+          <li><b>Scene Graph</b>: It uses a scene graph structure, allowing developers to create and manage 3D objects,
+            cameras, lights, and other elements in a hierarchical manner.</li>
+          <li><b>Geometries and Materials</b>: Three.js provides a variety of built-in geometries (e.g., cubes, spheres,
+            planes) and materials (e.g., basic, lambert, phong, standard) that can be easily customized and combined.
+          </li>
+          <li><b>Animation</b>: The library supports animations, including skeletal animations, morph targets, and
+            keyframe animations, making it suitable for creating animated 3D content.</li>
+          <li><b>Shaders and Post-Processing</b>: Three.js allows the use of custom shaders written in GLSL and supports
+            post-processing effects such as bloom, depth of field, and motion blur.</li>
+        </ul>
+
+      </article>
+      <br />
+    </section>
+
+
+
 
 
 
