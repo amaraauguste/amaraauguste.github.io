@@ -63,13 +63,6 @@
           <a href="#Mouse_Events" onclick="closeDropdown2()">Mouse Events</a>
           <a href="#Additional_Events" onclick="closeDropdown2()">Additional Events</a>
           <a href="#Transforms" onclick="closeDropdown2()">Transforms</a>
-          <!--<a href="#Linear_Algebra" onclick="closeDropdown2()">Linear Algebra</a>
-          <a href="#Variable_Scope" onclick="closeDropdown2()">Variable Scope</a>
-          <a href="#Global_Variables" onclick="closeDropdown2()">Global Variables</a>
-          <a href="#Operators" onclick="closeDropdown2()">Operators</a>
-          <a href="#Floating-Point_Numbers" onclick="closeDropdown2()">Floating-Point Numbers</a>
-          <a href="#Math_Methods" onclick="closeDropdown2()">Math Methods</a>
-          <a href="#Error_Types" onclick="closeDropdown2()">Error Types</a>-->
         </div>
       </li>
 
@@ -79,7 +72,8 @@
           <a href="#Linear_Algebra" onclick="closeDropdown3()">Linear Algebra</a>
           <a href="#Intro_to_3D_Graphics" onclick="closeDropdown3()">Intro to 3D Graphics</a>
           <a href="#Graphic_APIs" onclick="closeDropdown3()">Graphic APIs</a>
-
+          <a href="#Intro_to_Three.js" onclick="closeDropdown3()">Intro to Three.js</a>
+          <a href="#Lights_and_Interactivity" onclick="closeDropdown3()">Lights and Interactivity</a>
           <!--<a href="#Linear_Algebra" onclick="closeDropdown2()">Linear Algebra</a>
           <a href="#Variable_Scope" onclick="closeDropdown2()">Variable Scope</a>
           <a href="#Global_Variables" onclick="closeDropdown2()">Global Variables</a>
@@ -4097,7 +4091,8 @@ ctx.strokeRect(5, 5, 100, 75);</code></pre>
           displayed like this:</p>
 
         <img class="center" style="width: 100%; height: 100%"
-          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/matrix%20product.png?raw=true" alt="Matrix Vector Multiplication">
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/matrix%20product.png?raw=true"
+          alt="Matrix Vector Multiplication">
 
         <p>Note that the i-th coordinate in the product Av is simply the dot product of the i-th row of
           the matrix A and the vector v.</p>
@@ -4135,7 +4130,8 @@ ctx.strokeRect(5, 5, 100, 75);</code></pre>
         <p>These formulas express a linear transformation given by multiplication by the 3-by-3 matrix:</p>
 
         <img class="center" style="width: 45%; height: 45%"
-          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/3x3%20matrix%2001.png?raw=true" alt="3x3 Matrix">
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/3x3%20matrix%2001.png?raw=true"
+          alt="3x3 Matrix">
 
         <p>followed by translation by t1 in the x direction, t2 in the y direction and t3 in the z direction.</p>
 
@@ -4145,8 +4141,9 @@ ctx.strokeRect(5, 5, 100, 75);</code></pre>
         </p>
 
         <img class="center" style="width: 50%; height: 50%"
-          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/4x4%20matrix.png?raw=true" alt="4x4 Matrix">
-        
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/4x4%20matrix.png?raw=true"
+          alt="4x4 Matrix">
+
 
         <p>If the vector (x1,y1,z1,1) is multiplied by this 4-by-4 matrix, the result is precisely the vector
           (x2,y2,z2,1). That is, instead of applying an affine transformation to the 3D vector (x1,y1,z1),
@@ -4176,37 +4173,42 @@ ctx.strokeRect(5, 5, 100, 75);</code></pre>
           the following illustration shows the identity matrix and the matrices corresponding to various
           OpenGL transformation functions:</p>
 
-          <img class="center" style="width: 100%; height: 100%"
-          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/all%20matrices.png?raw=true" alt="4x4 Matrix">
-        
+        <img class="center" style="width: 100%; height: 100%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/all%20matrices.png?raw=true"
+          alt="4x4 Matrix">
+
 
         <p>So if we want to translate the vector (10,10,10,1) of 10 units in the X direction, we get:</p>
-        
+
         <img class="center" style="width: 100%; height: 100%"
-          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/translation%20matrix%20example.png?raw=true" alt="Translation Matrix Example">
-        
-
-        <p>and we get a (20,10,10,1) homogeneous vector! Remember, the 1 means that it is a position, not a direction. So our transformation didn't change the fact that we were dealing with a position, which is good.</p>
-
-      <p>If we want to scale a vector (position or direction, it doesn't matter) by 2.0 in all directions:</p>
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/translation%20matrix%20example.png?raw=true"
+          alt="Translation Matrix Example">
 
 
-      <img class="center" style="width: 100%; height: 100%"
-          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/scaling%20matrix%20example.png?raw=true" alt="Scaling Matrix Example">
+        <p>and we get a (20,10,10,1) homogeneous vector! Remember, the 1 means that it is a position, not a direction.
+          So our transformation didn't change the fact that we were dealing with a position, which is good.</p>
 
-      <p>and the w still didn't change. You may ask: what is the meaning of "scaling a direction"? Well, often, not much, so you usually don't do such a thing, but in some (rare) cases it can be handy.</p>
+        <p>If we want to scale a vector (position or direction, it doesn't matter) by 2.0 in all directions:</p>
 
 
-      <h2>Homogeneous Coordinates</h2>
+        <img class="center" style="width: 100%; height: 100%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/scaling%20matrix%20example.png?raw=true"
+          alt="Scaling Matrix Example">
 
-      <p>There is one common transformation in computer graphics that is not an
-        affine transformation: In the case of a perspective projection, the projection transformation is
-        not affine.</p>
+        <p>and the w still didn't change. You may ask: what is the meaning of "scaling a direction"? Well, often, not
+          much, so you usually don't do such a thing, but in some (rare) cases it can be handy.</p>
 
-      <p>In a perspective projection, an object will appear to get smaller as it moves farther
-        away from the viewer, and that is a property that no affine transformation can express, since
-        affine transforms preserve parallel lines and parallel lines will seem to converge in the distance
-        in a perspective projection.</p>
+
+        <h2>Homogeneous Coordinates</h2>
+
+        <p>There is one common transformation in computer graphics that is not an
+          affine transformation: In the case of a perspective projection, the projection transformation is
+          not affine.</p>
+
+        <p>In a perspective projection, an object will appear to get smaller as it moves farther
+          away from the viewer, and that is a property that no affine transformation can express, since
+          affine transforms preserve parallel lines and parallel lines will seem to converge in the distance
+          in a perspective projection.</p>
 
         <p>Surprisingly, we can still represent a perspective projection as a 4-by-4 matrix, provided
           we are willing to stretch our use of coordinates even further than we have already.</p>
@@ -4224,7 +4226,8 @@ ctx.strokeRect(5, 5, 100, 75);</code></pre>
 
         <p>Coordinates (x,y,z,w) used in this way are referred to as <b>homogeneous coordinates</b>.</p>
 
-        <p> If we use homogeneous coordinates, then any 4-by-4 matrix can be used to transform threedimensional vectors, including matrices whose bottom row is not (0,0,0,1).</p>
+        <p> If we use homogeneous coordinates, then any 4-by-4 matrix can be used to transform threedimensional vectors,
+          including matrices whose bottom row is not (0,0,0,1).</p>
 
         <p>Among the transformations that can be represented in this way is the projection transformation for a
           perspective projection. And in fact, this is what OpenGL does internally.</p>
@@ -4567,6 +4570,560 @@ ctx.strokeRect(5, 5, 100, 75);</code></pre>
     </section>
 
 
+    <section class="main-section" id="Intro_to_Three.js">
+      <br />
+      <header><b>Intro to Three.js</b></header>
+      <article>
+        <p>All modern browsers became more powerful and more accessible directly using JavaScript. They have adopted
+          WebGL (Web Graphics Library) and as previously mentioned, WebGL is a Javascript API that allows you to render
+          2D and 3D graphics without the use of plugins.
+          Trying to create 3D elements with WebGL would involve writing lots of code and can get fairly complex.</p>
+
+        <p>Three.js helps simplify the process and is essentially an abstracted layer on top of WebGL that makes it
+          easier to use.</p>
+
+        <p>Three.js is an open-source, lightweight, cross-browser, general-purpose JavaScript library. Three.js uses
+          WebGL behind the scenes, so you can use it to render Graphics on an HTML canvas element in the browser.</p>
+
+        <p>Since Three.js uses JavaScript, you can interact with other web page elements, add animations and
+          interactions,
+          and even create a game with some logic.</p>
+
+        <h2>Why use Three.js?</h2>
+
+        <p>The following features make Three.js an excellent library to use:</p>
+
+        <ul>
+          <li>You can create complex 3D graphics by just using JavaScript.</li>
+          <li>You can create Virtual Reality (VR) and Augmented Reality (AR) scenes inside the browser.</li>
+          <li>Since it uses WebGL, it has cross-browser support. Many browsers support it.</li>
+          <li>You can add various materials, textures and animate 3D objects.</li>
+          <li>You can also load and work on objects from other 3D modeling software.</li>
+        </ul>
+
+        <p>With a couple of lines of JavaScript and simple logic, you can create anything, from highperformance
+          interactive 3D models to photorealistic real-time scenes.</p>
+
+        <p>We'll start by adding the following to our HTML:</p>
+
+        <pre><code class="HTML5">&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"&gt;&lt;/script&gt;</code></pre>
+
+        <p>Before you can use three.js, you need somewhere to display it.</p>
+        <p>To actually be able to display anything with three.js, we need three things:</p>
+
+        <ul>
+          <li>Scene</li>
+          <li>Camera</li>
+          <li>Renderer</li>
+        </ul>
+
+        <pre><code class="javascript">const scene = new THREE.Scene(); 
+const camera = new THREE.PerspectiveCamera(75, 500 / 400, 0.1, 1000);  
+const renderer = new THREE.WebGLRenderer(); 
+renderer.setSize(500, 400); 
+document.body.appendChild(renderer.domElement);</code></pre>
+
+        <p>Now, let's break down each of these components.</p>
+
+        <h2>Scene</h2>
+
+        <p>A scene is the container object that includes everything we will be rendering, such as geometries, lights,
+          and cameras. In a sense, it's much like a stage where you place all the elements you want to display.</p>
+
+        <p>We create an instance of the scene object using the constructor: <b>THREE.Scene()</b></p>
+
+        <h2>Camera</h2>
+
+        <p>Next, we create a camera which will be how we view the scene.</p>
+
+        <p>The camera displays the objects in the scene, with varying points of view depending on which type of camera
+          is used.</p>
+
+        <p>The Three.js library provides two main cameras: <b>Orthographic</b> and <b>Perspective</b>.</p>
+
+        <ul>
+          <li><b>OrthographicCamera</b>: uses orthographic projection, meaning that elements viewed with this camera
+            <b>maintain a constant size, regardless of their distance from the camera</b>. <br /><br />
+            This can be popular in top down 2D games like SimCity and UI elements, amongst other
+            things.
+          </li>
+          <br />
+          <li><b>PerspectiveCamera</b>: uses perspective projection. This type of camera is designed to mimic the
+            way the human eye sees. <b>So the closer an object is, the larger it will appear and the farther it is, the
+              smaller it will appear</b>.
+            <br /><br />It is the most common projection mode used for rendering a 3D scene.
+          </li>
+        </ul>
+
+        <img class="center" style="width: 75%; height: 75%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/orthographic%20v%20perspective.png?raw=true"
+          alt="orthographic vs perspective">
+
+        <p>In a perspective view (left), <b>edges that are farther away appear shorter</b>.</p>
+
+        <p>In an Orthographic view (right), <b>far-away edges are the same size as nearby ones</b>.</p>
+
+        <p>Since the PerspectiveCamera is more common, let's go over its four attributes:</p>
+
+        <ul>
+          <li>Field of View (FOV)</li>
+          <li>Aspect</li>
+          <li>Near</li>
+          <li>Far</li>
+        </ul>
+
+        <p>The first parameter it takes is the <b>field of view (FOV)</b>, <b>the maximum area of the scene that can be
+            viewed</b>. To help visualize, picture a cone coming out of a camera lens, and the flat end of the cone is
+          the space the camera can see. This value is measured in degrees.</p>
+
+        <p>Next is the <b>aspect ratio</b>, which is the proportion of the width to the height of the element.</p>
+
+        <p>You almost always want to use <b>the width of the element divided by the height</b>, or you'll get the same
+          result as
+          when you play old movies on a widescreen TV - the image looks squished.</p>
+
+        <p>The <b>near and far attributes</b> are the <b>minimum and maximum distance from the camera at which the
+            camera will render scene objects</b>.
+          Anything beyond these values, either too close or too far from the camera, will not be rendered.</p>
+
+        <p>Finally, once the camera is set up, you need to add it to the scene.</p>
+
+        <p>Remember to append everything to your container to make it show on your scene.</p>
+
+        <p>Keep in mind that by default, when you add something to the scene, it will be placed in the center at the XYZ
+          coordinates 0, 0, 0 respectively. So if you have trouble seeing anything you have added render in the scene,
+          chances are you might need to position your camera further out of view.</p>
+
+        <p>For example, setting the camera's Z coordinate to 5:</p>
+
+        <pre><code class="javascript">camera.position.z = 5;</code></pre>
+
+        <h2>Renderer</h2>
+
+        <p>The last step is to render the scene. The renderer is what compiles it all together and draws the scene.</p>
+
+        <p>We need to create the renderer instance, we will use WebGLRenderer() but
+          three.js comes with others as well, often used as fallbacks for users with
+          older browsers/who don't have WebGL support.</p>
+
+        <p>We also need to set the size at which we want it to render our app.</p>
+
+        <p>In the following examples we will use a width of 500 and a height of 400, though it is
+          common to use the width and height of the browser window (window.innerWidth, window.innerHeight) as well.</p>
+
+        <p>Lastly, we add the renderer element to our HTML document. This is a canvas element the renderer uses to
+          display the scene to us.</p>
+
+        <p>However, just defining an instance of the renderer is not enough to see the results of our code yet, because
+          we have not actually rendered anything as of
+          yet.</p>
+
+        <p>To achieve this, we will need to create a render or animate loop, like this:</p>
+
+        <pre><code class="javascript">function animate() {
+    requestAnimationFrame(animate);
+    renderer.render(scene, camera);
+}
+
+animate();</code></pre>
+
+        <p>We have now created a loop named animate() that causes the renderer to
+          draw the scene every time the screen is refreshed (on a typical screen, this is
+          about 60 times per second), and called it immediately after.</p>
+
+        <p>Using requestAnimationFrame() has a number of advantages, such as
+          pausing when the user navigates to another browser tab, saving processing
+          power and battery life.</p>
+
+        <p>Now we've successfully set up out scene! Now for the fun part, we can start creating the shapes that we would
+          like
+          to add to our scene.</p>
+        <p>Much like how we need three elements to set a scene, objects require three elements:
+        </p>
+
+        <ul>
+          <li>Geometry</li>
+          <li>Material</li>
+          <li>Mesh</li>
+        </ul>
+
+        <p>Let's start with the first element, the geometry.</p>
+
+        <h2>Geometry</h2>
+
+        <p>The geometry defines the shape of the objects we draw in Three.js.</p>
+
+        <p>It is made up of a collection of vertices and faces which combine
+          three vertices into a triangle face.</p>
+
+        <p>There are two main types of geometries in Three.js:</p>
+
+        <ul>
+          <li><b>Custom Geometry</b>: created by defining the vertices and faces of an object from
+            scratch (by using THREE.Geometry() or THREE.BufferGeometry())</li>
+          <br />
+          <li><b>Built-in Geometry</b>: the Three.js library provides a number of different geometries you can use and
+            customize yourself. Each geometry has its own set of parameters. (i.e. a BoxGeometry accepts attributes for
+            width, height, and depth while a SphereGeometry's parameters are radius, widthSegments, and heightSegments,
+            etc.)</li>
+        </ul>
+
+        <img class="center" style="width: 80%; height: 80%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/three%20js%20geometries.png?raw=true"
+          alt="geometry">
+
+        <h2>Material</h2>
+
+        <p>Materials describe the appearance of objects.</p>
+
+        <p>They are defined in a (mostly) renderer-independent way, so you don't have
+          to rewrite materials if you decide to use a different renderer.</p>
+
+        <p>There are different types of materials:</p>
+
+        <ul>
+          <li><b>MeshBasicMaterial</b>: This is the most boring material you can get in Three.js world, but the benefit
+            is, it doesn't need a light for it to show.
+            <br /><br />
+            Just pass a color in as a parameter to get a solid colored
+            object, which has no shading and is not affected by lights
+          </li>
+          <br />
+          <li><b>MeshNormalMaterial</b>: colors the faces of the mesh differently based on the
+            face's normal or what direction they are facing</li>
+          <p>The next materials however, DO require lights in order to be seen:</p>
+          <li><b>MeshLambertMaterial</b>: responds to lights and gives our geometry shading
+            with a dull surface, computes lighting only at the vertices</li>
+          <br />
+          <li><b>MeshPhongMaterial</b>: similar to Lambert, responds to lights but adds a
+            metallic luster to the surface, reflecting light with more intensity, computes
+            lighting at every pixel</li>
+          <br />
+          <li><b>MeshStandardMaterial</b>: combines Lambert and Phong into a single material,
+            has properties for roughness and metalness and adjusting these can create
+            both dull or metallic looking surfaces
+          </li>
+          <br />
+          <li><b>MeshDepthMaterial</b>: draws the mesh grayscale from black to white based on
+            the depth of the content</li>
+          <br />
+          <li><b>MeshToonMaterial</b>: toon shading or cel shading is a type of non-photorealistic rendering technique
+            designed to make 3D computer graphics appear more cartoonish by using less shading color instead of a smooth
+            gradient effect.</li>
+        </ul>
+
+        <img class="center" style="width: 80%; height: 80%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/three%20js%20materials.png?raw=true"
+          alt="material">
+
+        <h2>Mesh</h2>
+
+        <p>A Mesh is a class representing triangular polygon mesh based objects.</p>
+
+        <p>A Mesh pairs a Geometry and a Material in order to draw/create an object.</p>
+
+        <p>Both Material objects and Geometry objects can be used by multiple Mesh
+          objects.</p>
+
+        <img class="center" style="width: 80%; height: 80%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/three%20js%20mesh.png?raw=true"
+          alt="mesh">
+
+        <p>Now that we have our scene, camera, renderer, geometry, material, and mesh, we can start creating our
+          objects.</p>
+
+        <h2>Example: Creating a Basic Triangle</h2>
+
+        <p>Although we'll mostly focus on 3D objects in Three.js, let's start with a simple 2D triangle.</p>
+
+        <p>We can create this triangle using BufferGeometry:</p>
+
+        <pre><code class="javascript">var size = 2;
+
+function createTriGeometry(size) {
+    const triGeom = new THREE.BufferGeometry();
+
+    // Define the vertices of the triangle
+    const vertices = new Float32Array([
+        0, 0, 0, // Vertex 1
+        size, 0, 0, // Vertex 2
+        0, size, 0  // Vertex 3
+    ]);
+
+    // Set the vertices as attribute
+    triGeom.setAttribute('position', new THREE.BufferAttribute(vertices, 3));
+
+    // Define the indices for the single triangle face
+    const indices = new Uint16Array([
+        0, 1, 2 // A single face made up of the three vertices
+    ]);
+
+    // Set the indices
+    triGeom.setIndex(new THREE.BufferAttribute(indices, 1));
+
+    return triGeom;
+}
+
+// Create the triangle geometry
+var triGeom1 = createTriGeometry(size);
+
+// Define the material for the triangle
+var triMaterial = new THREE.MeshBasicMaterial({ 
+    color: new THREE.Color("red"), 
+    side: THREE.DoubleSide // Render both sides of the triangle
+});
+
+// Create the mesh with geometry and material
+var triMesh1 = new THREE.Mesh(triGeom1, triMaterial);
+
+// Add triangle to the scene
+scene.add(triMesh1);</code></pre>
+
+        <p>In this code we:</p>
+
+        <ul>
+          <li>Create a BufferGeometry object for the triangle.</li>
+          <li>Define the vertices of the triangle and set them as an attribute of the geometry.</li>
+          <li>Define the indices for the single triangle face and set them.</li>
+          <li>Create a MeshBasicMaterial object for the triangle.</li>
+          <li>Create a Mesh object by passing in the geometry and material objects, and add it to the scene.</li>
+        </ul>
+
+        <p>Now, when we run the code, we should see a red triangle rendered in the scene.</p>
+
+        <p>Let's adjust the background color:</p>
+
+        <pre><code class="javascript
+">scene.background = new THREE.Color("blue");</code></pre>
+
+        <p>Now our red triangle should be displayed on a blue background.</p>
+
+        <h2>Example: Creating a Simple Cube</h2>
+
+        <p>Let's create a simple square using BufferGeometry:</p>
+
+        <pre><code class="javascript">const geometry = new THREE.BufferGeometry();
+// create a simple square shape. We duplicate the top left and bottom right
+// vertices because each vertex needs to appear once per triangle.
+const vertices = new Float32Array( [
+	-1.0, -1.0,  1.0, // v0
+	 1.0, -1.0,  1.0, // v1
+	 1.0,  1.0,  1.0, // v2
+
+	 1.0,  1.0,  1.0, // v3
+	-1.0,  1.0,  1.0, // v4
+	-1.0, -1.0,  1.0  // v5
+]);
+
+geometry.setAttribute('position', new THREE.BufferAttribute(vertices, 3));
+const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+const cube = new THREE.Mesh(geometry, material);
+
+scene.add(cube);</code></pre>
+
+        <p>Now, when you run the code, you should see a green square (cube) rendered in the scene.</p>
+
+        <p>Here we create a BufferGeometry object and pass in an array
+          of vertices that define the square's shape.</p>
+
+        <p>Next, we create a MeshBasicMaterial object and pass in a color
+          parameter to give the square a green color.</p>
+
+        <p>Finally, we create a Mesh object by passing in the geometry and
+          material objects, and add it to the scene.</p>
+
+
+        <p>Now let's create a cube instead of just a square by using BoxGeometry()
+          instead of BufferGeometry().</p>
+
+        <p>BoxGeometry is a geometry class for a rectangular cuboid with a given 'width', 'height',
+          and 'depth'. How can we obtain the same scaled 2D shape using BoxGeometry()?</p>
+
+        <p>To create a cube without declaring all vertices, we use BoxGeometry. This is an object that contains all the
+          points (vertices) and fill (faces) of the cube.</p>
+
+        <p>Let's set the width, height, and depth to 2 respectively, because our previous square had a width, height,
+          and depth of 2 as well! (if we do not set it at all, the w/h/d defaults to 1, try changing the values! How
+          does this change the object?)</p>
+
+        <pre><code class="javascript">const geometry = new THREE.BoxGeometry(2, 2, 2);</code></pre>
+
+        <p>Notice how since our structure is a simple cube we have no need for a
+          group of vertices since the same result can be obtained in one line of
+          code!</p>
+
+        <p>We'll definitely use vertices for more irregular polygons but for
+          now, BoxGeometry works just fine!</p>
+
+        <p>Let's add X and Y-axis rotation to our cube. We can do this simply by adding
+          the following to animate():</p>
+
+        <pre><code class="javascript">//Now to make it more interesting and dimensional, let's add a rotation animation
+cube.rotation.x += 0.01;
+cube.rotation.y += 0.01;</code></pre>
+
+        <p>We can increase/decrease the speed of rotation by changing the values of
+          cube.rotation.x and cube.rotation.y</p>
+
+        <p>Now, when you run the code, you should see the cube rotating on both the X and Y axes.</p>
+
+        <p>Let's make a multi-colored cube:</p>
+
+        <p>We can achieve this using an array of materials.</p>
+
+        <pre><code class="javascript
+">const materials = [
+    new THREE.MeshBasicMaterial({ color: "green" }),
+    new THREE.MeshBasicMaterial({ color: "blue" }),
+    new THREE.MeshBasicMaterial({ color: "red" }),
+    new THREE.MeshBasicMaterial({ color: "yellow" }),
+    new THREE.MeshBasicMaterial({ color: "orange" }),
+    new THREE.MeshBasicMaterial({ color: "purple" })
+];</code></pre>
+
+        <p>Now, when we run the code, we should see a cube with different colored faces.</p>
+
+        <p>Let's revert back to a singularly colored cube.</p>
+
+        <p>We'll change the material of our cube to MeshNormalMaterial:</p>
+
+        <pre><code class="javascript">const material = new THREE.MeshNormalMaterial();</code></pre>
+
+        <p>Now, let's look at a wireframe to our cube:</p>
+
+        <pre><code class="javascript">const wireframe = new THREE.WireframeGeometry(geometry);
+const line = new THREE.LineSegments(wireframe);
+line.material.depthTest = false;
+line.material.opacity = 1;
+line.material.transparent = true;
+scene.add(line);</code></pre>
+
+        <p>If we want it to rotate remember to update the rotations as well.</p>
+
+        <h2>Additional Tools</h2>
+
+        <p>A helpful tool to implement when creating your projects is <b>dat.GUI</b>.</p>
+
+        <p>In Javascript, dat.GUI is a lightweight graphics controller API. It allows the user to manipulate variables
+          easily and activate functions inside the application by providing a graphical controller interface.</p>
+
+        <p>This API is frequently used in Three.js for making changes to a scene without having to refer directly to the
+          code.</p>
+
+        <p>It will be displayed as a small box in the corner of your screen and you can play around with the parameters
+          and see the newly applied changes happen live.</p>
+
+        <p>It's a great tool to use when you want to experiment with different values and see how they affect your
+          project.</p>
+
+        <p>Here's how we can add dat.GUI to our project:</p>
+
+        <p>First, we need to ensure that we have access to dat.GUI by adding this line to our HTML:</p>
+
+        <pre><code class="HTML5">&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.6/dat.gui.min.js"&gt;&lt;/script&gt;</code></pre>
+
+        <p>Next, we can add the following code to our JavaScript:</p>
+
+        <pre><code class="javascript">const gui = new dat.GUI();
+gui.add(cube.rotation, 'x', 0, Math.PI * 2);
+gui.add(cube.rotation, 'y', 0, Math.PI * 2);</code></pre>
+
+        <p>Now, when we run the code, we should see the dat.GUI box in the corner of our screen.</p>
+
+        <p>By changing the values of the sliders, we can adjust the rotation of the cube on the X and Y axes.</p>
+
+        <p>And that's it! We've successfully added dat.GUI to our project.</p>
+
+        <p>Let's add a color changer to our dat.GUI as well:</p>
+
+        <pre><code class="javascript">// Add GUI for controls
+const gui = new dat.GUI();
+const cubeFolder = gui.addFolder('Cube Properties');
+
+const cubeParams = {
+    color: `#${material.color.getHexString()}`,
+    rotationX: 0,  // New parameter for X rotation angle
+    rotationY: 0   // New parameter for Y rotation angle
+};
+
+// Color control
+cubeFolder.addColor(cubeParams, 'color').onChange((value) => {
+    cube.material.color.set(value);
+});
+
+// X rotation control
+cubeFolder.add(cubeParams, 'rotationX', -Math.PI, Math.PI).name('Rotation X').onChange((value) => {
+    cube.rotation.x = value;
+});
+
+// Y rotation control
+cubeFolder.add(cubeParams, 'rotationY', -Math.PI, Math.PI).name('Rotation Y').onChange((value) => {
+    cube.rotation.y = value;
+});
+
+cubeFolder.open();</code></pre>
+
+        <h2>Exercise: Let's Create a Sphere: </h2>
+
+        <p>Now that we've created a cube, let's create a sphere using SphereGeometry().</p>
+
+        <pre><code class="javascript">const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 500 / 400, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(500, 400);
+document.body.appendChild(renderer.domElement);
+
+camera.position.z = 7;
+
+//sphere:
+const material = new THREE.MeshBasicMaterial({
+    color: "orange"
+});
+const geometry = new THREE.SphereGeometry(2, 50, 50); //radius, widthSegments, heightSegments
+const sphere = new THREE.Mesh(geometry, material);
+scene.add(sphere);
+
+function animate() {
+    requestAnimationFrame(animate);
+    renderer.render(scene, camera);
+}
+
+animate();</code></pre>
+
+        <p>We should see a basic Three.js code snippet creating an orange sphere on canvas. Nothing fancy. The sphere is
+          made from a basic material which does not respond to light, therefore we can see the model as is.</p>
+
+        <p>We can turn this sphere into a wireframe like we did before, by using WireframeGeometry or we can simply add
+          another specification to our original material.</p>
+
+        <p>Let's add a wireframe to our sphere:</p>
+
+        <pre><code class="javascript">const material = new THREE.MeshBasicMaterial({
+    color: "orange",
+    wireframe: true //sets the wireframe
+});</code></pre>
+
+        <p>Now, when we run the code, we should see an orange wireframe sphere rendered in the scene.</p>
+
+        <p>Let's rotate it by adding the following lines to our animate function:</p>
+
+        <pre><code class="javascript">sphere.rotation.x += 0.01;
+sphere.rotation.y += 0.01;</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+      </article>
+      <br />
+    </section>
 
 
 
