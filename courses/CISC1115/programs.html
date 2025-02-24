@@ -161,8 +161,8 @@
     <a class="nav-link" href="#Week2" style="font-size: 22px">Week 2</a>
     <a class="nav-link" href="#Week3" style="font-size: 22px">Week 3</a>
     <a class="nav-link" href="#Week4" style="font-size: 22px">Week 4</a>
-    <!--<a class="nav-link" href="#Week5" style="font-size: 22px">Week 5</a>
-    <a class="nav-link" href="#Week6" style="font-size: 22px">Week 6</a>
+    <a class="nav-link" href="#Week5" style="font-size: 22px">Week 5</a>
+    <!--<a class="nav-link" href="#Week6" style="font-size: 22px">Week 6</a>
     <a class="nav-link" href="#Exam1" style="font-size: 22px">Exam 1 Review</a>
     <a class="nav-link" href="#Week8" style="font-size: 22px">Week 8</a>
     <a class="nav-link" href="#Week9" style="font-size: 22px">Week 9</a>
@@ -709,82 +709,34 @@ b += 2 * 3 - 1;</code></pre>
     " src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC1115/images/while%20loop%20average%20calculator%20output.png?raw=true"
         alt="average calculator" />
 
-      <p>3) Given <b>int variables k and total that have already been declared</b>, use a <b>do/while loop to compute
-          the sum of the squares
-          of the first 50 counting numbers</b>, and <b>store this value in total</b>. <br><br>
-        Thus your code should put 1*1 + 2*2 + 3*3 +... + 49*49 + 50*50 into total. <br><br>Use no variables other than k
-        and total.<br><br>
-        <b>(CodeLab: Chapter 7: Loops > 7.6: The do-while loop > #20684)</b>
-      </p>
-
-       <p>5) Write a Java program that <b>prompts the user to enter the number whose factorial 
-    they wish to compute</b> and then <b>calculates the factorial of that number using a while loop</b>.<br><br>
-    The <b>factorial</b> of any number n: 
-    <ul>
-      <li>is represented by n!</li>
-      <li>and is equal to 1*2*3*....*(n-1)*n</li>
-    </ul>
-    Example: the factorial of 5 is represented as 5!
-    <br><br>
-    And, <b>5! = 5 * 4 * 3 * 2 * 1 = 120</b>
-    <br><br>
-    Note: The value of 0! is 1, according to the convention for an empty product.
-    <br><br></p>
-  
-
-        
-        <p>6) Write a Java program that prompts the user to input an integer and then
-          outputs the number with the digits reversed. For example, <b>if the input is
-          1234, the output should be 4321</b>.</p>
-
-        <p>Here is a step-by-step walkthrough to help you outline a solution:</p>
-        <ul style="list-style: none;">
-          <li>First, <b>prompt the user for the number that they want to reverse</b></li>
-          <br>
-          <li>Create any necessary variables, we will need two:</li>
-          <ol>
-            <li>a variable initialized to 0 to <b>hold the reversed number</b> (let's call it <b>reverseNum</b>)</li>
-            <li>a variable to hold the temporary values needed during calculation also initialized to 0 (let's call it <b>rem</b>)</li>
-          </ol>
-          <br>
-          <li>At the beginning of each loop, we'll <b>multiply reverseNum by 10</b>.</li>
-          <br>
-          <li>Now, let's take our <b>original number and divide it by 10 using the modulus operator</b>. 
-            This is to find a single-digit remainder which equals the current last digit of nums, 
-            we can hold that value in our temporary variable <b>rem</b>.</li>
-            <br>
-          <li>Then <b>subtract rem from num and divide the result by 10</b>. And now we're left with the same integer, but one digit less.
-            <br><br>(Why are we dividing and multiplying numbers by 10? <br><br>
-            It's because we're replicating decimal place values where each place has a value of times ten from right to left.<br><br>
-Dividing by 10 eliminates the last zero in num, which then gives us access to the next digit that ends up in the ones place.<br><br>
-Multiplying reverseNum by 10 makes room in the ones place where we can place the digit we popped off from num.)
-          </li>
-          <br> 
-          <li>Next, it's time to "push" the "popped" digit from num by taking the remainder 
-            (that we saved in the variable <b>rem</b>) and <b>adding it to reverseNum</b>.</li>
-           <br>
-          <li><b>Now, we've completed one cycle of this process</b>.</li>
-          <br>
-          <li><b>Repeat until num's value dwindles to 0 and there are no more digits to 'pop' or 'push'</b>.<br><br>
-            After the reversal of digits is complete, <b>we can finally print out reverseNum</b>.</li>
-        </ul>
+      
 
       </section>
 
-      <!--<p>
-        <a href="/courses/CISC1115/classwork_code/Week 05 Answers.txt">Answers to Week 5 found here</a>
+      <p>
+        <a href="/courses/CISC1115/classwork_code/Week 05 Answers.txt">Answers to Week 4 found here</a>
       </p>
 
       <hr />
     
 
-     WEEK 6 EXERCISES 
-    <section class="main-section" id="Week6">
+     <!--WEEK 6 EXERCISES-->
+    <section class="main-section" id="Week5">
 
 
       <h2>Review</h2>
 
-      <p>a) For the following program:</p>
+      <p>a) Given <b>int variables k and total that have already been declared</b>, use a <b>do/while loop to compute
+        the sum of the squares
+        of the first 50 counting numbers</b>, and <b>store this value in total</b>. <br><br>
+      Thus your code should put 1*1 + 2*2 + 3*3 +... + 49*49 + 50*50 into total. <br><br>Use no variables other than k
+      and total.<br><br>
+      <b>(CodeLab: Chapter 7: Loops > 7.6: The do-while loop > #20684)</b>
+    </p>
+
+  
+
+      <p>b) For the following program:</p>
 
       <pre><code class="language-java">public static void main(String [] args) {
     int i = 10;
@@ -798,13 +750,12 @@ Multiplying reverseNum by 10 makes room in the ones place where we can place the
     }
 }
 </code></pre>
-      <ol style="list-style: lower-alpha;">
-        <li>Trace the program.</li>
-        <br>
-        <li>What is the output of this program?</li>
-      </ol>
+      
 
-      <p>b) Write a Java program that <b>prompts the user to enter the number whose factorial 
+        <p>What is the output of this program?</p>
+
+
+      <p>c) Write a Java program that <b>prompts the user to enter the number whose factorial 
   they wish to compute</b> and then <b>calculates the factorial of that number using a while loop</b>.<br><br>
   The <b>factorial</b> of any number n: 
   <ul>
@@ -820,7 +771,7 @@ Multiplying reverseNum by 10 makes room in the ones place where we can place the
 
 
       
-      <p>c) Write a Java program that prompts the user to input an integer and then
+      <!--<p>d) Write a Java program that prompts the user to input an integer and then
         outputs the number with the digits reversed. For example, <b>if the input is
         1234, the output should be 4321</b>.</p>
 
@@ -854,13 +805,13 @@ Multiplying reverseNum by 10 makes room in the ones place where we can place the
         <br>
         <li><b>Repeat until num's value dwindles to 0 and there are no more digits to 'pop' or 'push'</b>.<br><br>
           After the reversal of digits is complete, <b>we can finally print out reverseNum</b>.</li>
-      </ul>
+      </ul>-->
 
 
       <hr />
 
 
-      <h2>Week 6</h2>
+      <h2>Week 5</h2>
       <p>1) Write Java code for each the following tasks:</p>
       <ol style="list-style: lower-alpha;">
         <li>Create a for loop that prints all even numbers between 1 and 20 (inclusive)</li>
@@ -872,15 +823,15 @@ Multiplying reverseNum by 10 makes room in the ones place where we can place the
         <li>Create a for loop that calculates and prints the sum of the first 15 multiples of 5</li>
       </ol>
 
-      <p>
+      <!--<p>
         <a href="/courses/CISC1115/classwork_code/Week 06 Answers.txt">Answers to Week 6 found here</a>
       </p>
 
-      <hr />
+      <hr />-->
     </section>
 
 
-     EXAM 1 REVIEW EXERCISES 
+     <!--EXAM 1 REVIEW EXERCISES 
     <section class="main-section" id="Exam1">
 
 
