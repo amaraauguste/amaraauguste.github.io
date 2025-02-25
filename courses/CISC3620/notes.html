@@ -5062,8 +5062,74 @@ scene.add(cube);</code></pre>
         <p>Finally, we create a Mesh object by passing in the geometry and
           material objects, and add it to the scene.</p>
 
+        <p>Notice this only makes a 2D square out of two triangles, but we can
+          make a 3D cube by adding more vertices and faces.</p>
 
-        <p>Now let's create a cube instead of just a square by using BoxGeometry()
+        <pre><code class="javascript">// Define vertices for a cube
+const vertices = new Float32Array([
+    // Front face
+    -1.0, -1.0,  1.0,
+     1.0, -1.0,  1.0,
+     1.0,  1.0,  1.0,
+     1.0,  1.0,  1.0,
+    -1.0,  1.0,  1.0,
+    -1.0, -1.0,  1.0,
+
+    // Back face
+    -1.0, -1.0, -1.0,
+    -1.0,  1.0, -1.0,
+     1.0,  1.0, -1.0,
+     1.0,  1.0, -1.0,
+     1.0, -1.0, -1.0,
+    -1.0, -1.0, -1.0,
+
+    // Top face
+    -1.0,  1.0, -1.0,
+    -1.0,  1.0,  1.0,
+     1.0,  1.0,  1.0,
+     1.0,  1.0,  1.0,
+     1.0,  1.0, -1.0,
+    -1.0,  1.0, -1.0,
+
+    // Bottom face
+    -1.0, -1.0, -1.0,
+     1.0, -1.0, -1.0,
+     1.0, -1.0,  1.0,
+     1.0, -1.0,  1.0,
+    -1.0, -1.0,  1.0,
+    -1.0, -1.0, -1.0,
+
+    // Right face
+     1.0, -1.0, -1.0,
+     1.0,  1.0, -1.0,
+     1.0,  1.0,  1.0,
+     1.0,  1.0,  1.0,
+     1.0, -1.0,  1.0,
+     1.0, -1.0, -1.0,
+
+    // Left face
+    -1.0, -1.0, -1.0,
+    -1.0, -1.0,  1.0,
+    -1.0,  1.0,  1.0,
+    -1.0,  1.0,  1.0,
+    -1.0,  1.0, -1.0,
+    -1.0, -1.0, -1.0
+]);
+
+// Create geometry and material
+const geometry = new THREE.BufferGeometry();
+geometry.setAttribute('position', new THREE.BufferAttribute(vertices, 3));
+
+const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+
+// Create cube mesh
+const cube = new THREE.Mesh(geometry, material);
+scene.add(cube);</code></pre>
+
+        <p>Now we should be able to see a cube since we have defined the vertices of each of the six faces.</p>
+
+        <p>Understanding this is important, although not entirely necessary since we are merely creating a cube. 
+          We can simplify this process by using BoxGeometry()
           instead of BufferGeometry().</p>
 
         <p>BoxGeometry is a geometry class for a rectangular cuboid with a given 'width', 'height',
