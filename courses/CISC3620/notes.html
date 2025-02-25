@@ -5181,7 +5181,12 @@ cube.rotation.y += 0.01;</code></pre>
 
         <p>Let's revert back to a singularly colored cube.</p>
 
-        <p>We'll change the material of our cube to MeshNormalMaterial:</p>
+        <p>We can also change our cube to simply display the wireframe of our geometry by modifying our material:</p>
+
+        <pre><code class="javascript
+">const material = new THREE.MeshBasicMaterial({ color: "green", wireframe: true });</code></pre>
+
+        <p>Now let's change the material of our cube to MeshNormalMaterial:</p>
 
         <pre><code class="javascript">const material = new THREE.MeshNormalMaterial();</code></pre>
 
@@ -5193,6 +5198,8 @@ line.material.depthTest = false;
 line.material.opacity = 1;
 line.material.transparent = true;
 scene.add(line);</code></pre>
+
+        <p>This is good if we want a wireframe in addition to our solid object.</p>
 
         <p>If we want it to rotate remember to update the rotations as well.</p>
 
