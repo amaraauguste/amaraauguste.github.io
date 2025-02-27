@@ -73,7 +73,7 @@
           <a href="#Intro_to_3D_Graphics" onclick="closeDropdown3()">Intro to 3D Graphics</a>
           <a href="#Graphic_APIs" onclick="closeDropdown3()">Graphic APIs</a>
           <a href="#Intro_to_Three.js" onclick="closeDropdown3()">Intro to Three.js</a>
-          <!--<a href="#Lights_and_Interactivity" onclick="closeDropdown3()">Lights and Interactivity</a>-->
+          <a href="#Lights_and_Interactivity" onclick="closeDropdown3()">Lights and Interactivity</a>
           <!--<a href="#Linear_Algebra" onclick="closeDropdown2()">Linear Algebra</a>
           <a href="#Variable_Scope" onclick="closeDropdown2()">Variable Scope</a>
           <a href="#Global_Variables" onclick="closeDropdown2()">Global Variables</a>
@@ -4569,7 +4569,7 @@ ctx.strokeRect(5, 5, 100, 75);</code></pre>
       <br />
     </section>
 
-
+    <hr />
     <section class="main-section" id="Intro_to_Three.js">
       <br />
       <header><b>Intro to Three.js</b></header>
@@ -4832,7 +4832,8 @@ animate();</code></pre>
         <p>The class <b>PlaneGeometry</b> represents the geometry of a rectangle lying in the xy-plane,
           centered at the origin. Its parameters are similar to those for a cube. </p>
 
-        <p>A <b>RingGeometry</b> represents an annulus, that is, a disk with a smaller disk removed from its center. The ring lies in the
+        <p>A <b>RingGeometry</b> represents an annulus, that is, a disk with a smaller disk removed from its center. The
+          ring lies in the
           xy-plane, with its center at the origin. You should always specify the inner and outer radii of
           the ring.</p>
 
@@ -4855,52 +4856,54 @@ animate();</code></pre>
           the default values give a complete sphere. The four parameters are angles measured in radians.
           phiStart and phiLength are measured in angles around the equator and give the extent in
           longitude of the spherical shell that is generated.</p>
-        
-          <p>For example:</p>
 
-          <text><b>new THREE.SphereGeometry(5, 32, 16, 0, Math.PI)</b></text>
+        <p>For example:</p>
 
-          <p>creates the geometry for the "western hemisphere" of a sphere.</p>
+        <text><b>new THREE.SphereGeometry(5, 32, 16, 0, Math.PI)</b></text>
 
-          <p>The last two parameters are
-            angles measured along a line of latitude from the north pole of the sphere to the south pole.</p>
+        <p>creates the geometry for the "western hemisphere" of a sphere.</p>
 
-          <p>For example, to get the sphere's "northern hemisphere":</p>
+        <p>The last two parameters are
+          angles measured along a line of latitude from the north pole of the sphere to the south pole.</p>
 
-          <text><b>new THREE.SphereGeometry(5, 32, 16, 0, 2*Math.PI, 0, Math.PI/2)</b></text>
+        <p>For example, to get the sphere's "northern hemisphere":</p>
 
-          <p>For <b>TorusGeometry</b>, the constructor creates a torus lying in the xy-plane, centered at the
-            origin, with the z -axis passing through its hole.</p>
+        <text><b>new THREE.SphereGeometry(5, 32, 16, 0, 2*Math.PI, 0, Math.PI/2)</b></text>
 
-          <p>The parameter radius is the distance from the
-            center of the torus to the center of the torus's tube, while tube is the radius of the tube. The
-            next two parameters give the number of subdivisions in each direction.</p>
+        <p>For <b>TorusGeometry</b>, the constructor creates a torus lying in the xy-plane, centered at the
+          origin, with the z -axis passing through its hole.</p>
 
-          <p>The last parameter,
-            arc, allows you to make just part of a torus. It is an angle between 0 and 2*Math.PI, measured
-            along the circle at the center of the tube.</p>
+        <p>The parameter radius is the distance from the
+          center of the torus to the center of the torus's tube, while tube is the radius of the tube. The
+          next two parameters give the number of subdivisions in each direction.</p>
 
-          <p>There are also geometry classes representing the regular polyhedra: THREE.TetrahedronGeometry,
-            THREE.OctahedronGeometry, THREE.DodecahedronGeometry, and THREE.IcosahedronGeometry.
-            (For a cube use a BoxGeometry.) </p>
+        <p>The last parameter,
+          arc, allows you to make just part of a torus. It is an angle between 0 and 2*Math.PI, measured
+          along the circle at the center of the tube.</p>
 
-          <p>The constructors for these four classes take two parameters.
-            The first specifies the size of the polyhedron, with a default of 1. The size is given as the radius
-            of the sphere that contains the polyhedron. </p>
+        <p>There are also geometry classes representing the regular polyhedra: THREE.TetrahedronGeometry,
+          THREE.OctahedronGeometry, THREE.DodecahedronGeometry, and THREE.IcosahedronGeometry.
+          (For a cube use a BoxGeometry.) </p>
 
-          <p>The second parameter is an integer called detail.
-            The default value, 0, gives the actual regular polyhedron. Larger values add detail by adding
-            additional faces. </p>
+        <p>The constructors for these four classes take two parameters.
+          The first specifies the size of the polyhedron, with a default of 1. The size is given as the radius
+          of the sphere that contains the polyhedron. </p>
 
-          <p>As the detail increases, the polyhedron becomes a better approximation for a
-            sphere. This is easier to understand with an illustration:</p>
+        <p>The second parameter is an integer called detail.
+          The default value, 0, gives the actual regular polyhedron. Larger values add detail by adding
+          additional faces. </p>
 
-          <!--ADD IMAGE HERE-->
-          
-          <img class="center" style="width: 100%; height: 100%" src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/mesh%20objects%20example.png?raw=true" alt="icosahedral geometries">
+        <p>As the detail increases, the polyhedron becomes a better approximation for a
+          sphere. This is easier to understand with an illustration:</p>
 
-          <p>The image shows four mesh objects that use icosahedral geometries with detail parameter equal
-            to 0, 1, 2, and 3.</p>
+        <!--ADD IMAGE HERE-->
+
+        <img class="center" style="width: 100%; height: 100%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/mesh%20objects%20example.png?raw=true"
+          alt="icosahedral geometries">
+
+        <p>The image shows four mesh objects that use icosahedral geometries with detail parameter equal
+          to 0, 1, 2, and 3.</p>
 
         <h2>Material</h2>
 
@@ -5128,7 +5131,7 @@ scene.add(cube);</code></pre>
 
         <p>Now we should be able to see a cube since we have defined the vertices of each of the six faces.</p>
 
-        <p>Understanding this is important, although not entirely necessary since we are merely creating a cube. 
+        <p>Understanding this is important, although not entirely necessary since we are merely creating a cube.
           We can simplify this process by using BoxGeometry()
           instead of BufferGeometry().</p>
 
@@ -5313,8 +5316,389 @@ animate();</code></pre>
         <pre><code class="javascript">sphere.rotation.x += 0.01;
 sphere.rotation.y += 0.01;</code></pre>
 
+        <p>Now, when you run the code, you should see the sphere rotating on both the X and Y axes.</p>
+
+        <p>Let's add dat.GUI to our sphere that only includes a checkbox that helps us toggle from our original orange
+          color to a blue wireframe:</p>
+
+        <pre><code class="javascript">const gui = new dat.GUI();
+const sphereFolder = gui.addFolder('Sphere Properties');
+
+const sphereParams = {
+    blue: false
+};
+
+// Wireframe color control
+sphereFolder.add(sphereParams, 'blue').name('blue wireframe').onChange((value) => {
+    if (value) {
+        sphere.material.color.set('blue');    
+    } else {
+        sphere.material.color.set('orange');    
+    }
+});
+
+sphereFolder.open(); //to start with the folder open</code></pre>
+
+        <p>Now when you run the code, you should see a checkbox in the dat.GUI box that allows you to toggle between the
+          original orange color and a blue wireframe for the sphere.</p>
+
+      </article>
+      <br />
+    </section>
+    <hr />
+    <section class="main-section" id="Lights_and_Interactivity">
+      <br />
+      <header><b>Lights</b></header>
+      <article>
+
+        <p>So we've seen objects with simple materials like MeshBasicMaterial and MeshNormalMaterial that did not need
+          lighting, however
+          to render a scene realistically we need to add lights.</p>
+
+        <p>There are several types of lights in Three.js:</p>
+
+        <ul>
+          <li><b>AmbientLight</b>: This light is used to simulate global illumination. It lights up all objects in the
+            scene equally.</li>
+          <li><b>HemisphereLight</b>: This light is used to simulate the light coming from the sky. It is used to create
+            a gradient sky color.</li>
+          <li><b>DirectionalLight</b>: This light is used to simulate light that is coming from a specific direction. It
+            is similar to sunlight.</li>
+          <li><b>PointLight</b>: This light is used to simulate light that is coming from a specific point in space. It
+            is similar to a light bulb.</li>
+          <li><b>SpotLight</b>: This light is used to simulate light that is coming from a specific point in space in a
+            specific direction. It is similar to a flashlight.</li>
+        </ul>
+
+        <h2>Ambient Light</h2>
+
+        <p>AmbientLight does not point or direct light toward a direction, so it cannot
+          cast shadows, contributes just a little light/brightness to the scene. </p>
+
+        <p>The first parameter is the color and the second parameter is the intensity:</p>
+
+        <text class="center"><b>var light = new THREE.AmbientLight(color, intensity);</b></text>
+
+        <pre><code class="javascript">// Ambient light
+const ambientLight = new THREE.AmbientLight("green", 1); //color, intensity
+scene.add(ambientLight);</code></pre>
+
+        <p>Let's look at an example: <a href="https://codepen.io/amaraauguste/pen/abByRov">Ambient Light Example</a></p>
+
+        <p>Notice how if we remove the light from our scene we cannot see the cube anymore. That is because it is made
+          out of MeshPhongMaterial, we'll talk more about that a bit later with shading.</p>
+
+        <p>Just know that MeshPhongMaterial is a material that responds to lights and adds a metallic luster to the
+          surface, reflecting
+          light with more intensity. It computes lighting at every pixel.</p>
+
+        <p>If all you have is an AmbientLight, you'll have the same effect as for a MeshBasicMaterial because all faces
+          of the geometries will be lit equally.</p>
+
+        <h2>Hemisphere Light</h2>
+
+        <p>Like ambient light, hemisphere light has no position or direction. But unlike ambient light it has two
+          colors.</p>
+
+        <ul>
+          <li>One to simulate the color coming from above, like a sun or ceiling light source.</li>
+          <li>The other is the color of light coming from below, to simulate the light reflected off the floor or ground
+            surface.</li>
+        </ul>
+
+        <p>This is to provide a bit more realism than a globally applied ambient light.</p>
+
+        <text class="center"><b>var light = new THREE.HemisphereLight(skyColor, groundColor, intensity);</b></text>
+
+        <pre><code class="javascript
+">// Hemisphere light
+const hemisphereLight = new THREE.HemisphereLight("blue", "green", 1); //skyColor, groundColor, intensity
+scene.add(hemisphereLight);</code></pre>
+
+        <p>Let's look at an example: <a href="https://codepen.io/amaraauguste/pen/qBqXJBN">Hemisphere Light Example</a>
+        </p>
+
+        <p>Notice how the cube is lit from the top with a blue light and from the bottom with a green light.</p>
+
+        <h2>Directional Light</h2>
+
+        <p>Direcional lights resemble the Sun. They're a distant powerful light source pointing in one direction.</p>
+
+        <p>They are positioned infinitely far away and emit light in a specific direction.</p>
+
+        <p>They have a color and intensity.</p>
+
+        <p>Directional lights are useful for simulating sunlight in a scene.</p>
+
+        <text class="center"><b>var light = new THREE.DirectionalLight(color, intensity);</b></text>
+
+        <pre><code class="javascript
+">// Directional light
+const directionalLight = new THREE.DirectionalLight("white", 1); //color, intensity
+directionalLight.position.set(0, 1, 0); //x, y, z
+scene.add(directionalLight);</code></pre>
+
+        <p>Let's look at an example: <a href="https://codepen.io/amaraauguste/pen/rNWzqaN">Directional Light Example</a>
+        </p>
+
+        <p>Notice how the cube is lit from the top right corner. This is because the directional light is positioned at
+          (0, 1, 0).</p>
+
+        <p>Let's add a second directional light to our scene:</p>
+
+        <pre><code class="javascript
+">// Directional light 2
+const directionalLight2 = new THREE.DirectionalLight("red", 1); //color, intensity
+directionalLight2.position.set(0, -1, 0); //x, y, z
+scene.add(directionalLight2);</code></pre>
+
+        <p>Now how does the cube look?</p>
+
+        <h2>Point Light</h2>
+
+        <p>Point lights are like light bulbs in your scene.</p>
+
+        <p>They are positioned at a specific location and radiate light outwards in all directions from that postion.
+          They have a color and intensity.</p>
+
+        <p>Point lights allow you to set the distance from the light at which point it's intensity is zero. You can also
+          set the decay which is the amount the light dims along the distance.</p>
+
+        <text class="center"><b>var light = new THREE.PointLight(color, intensity, distance, decay);</b></text>
+
+        <pre><code class="javascript">// Point light
+const pointLight = new THREE.PointLight("white", 1); //color, intensity
+pointLight.position.set(5, 5, 5); //x, y, z
+scene.add(pointLight);</code></pre>
+
+        <p>Let's look at an example: <a href="https://codepen.io/amaraauguste/pen/ZEBJqYg">Point Light Example</a></p>
+
+        <p>Notice how the cube is lit from the top right corner. This is because the point light is positioned at (5, 5,
+          5).</p>
+
+        <p>Let's add a second point light to our scene:</p>
+
+        <pre><code class="javascript">// Point light 2
+const pointLight2 = new THREE.PointLight("blue", 1); //color, intensity
+pointLight2.position.set(-5, -5, -5); //x, y, z
+scene.add(pointLight2);</code></pre>
+
+        <h2>Spot Light</h2>
+
+        <p>Spotlights are just that, spotlights.</p>
+
+        <p>They are lights that point in one direction radiating out in a cone shape.</p>
+
+        <p>We can pass an angle to the light as a parameter which is the maximum angle of the light cone in radians.</p>
+
+        <p>Penumbra affects the intensity or softness of outer shadow or light fall-off as it fades to darkness.</p>
+
+        <p>Because spotlights have a direction they suffer from the same rotation behavior as directional lights,
+          requiring them to point to a target object's position.</p>
+
+        <text class="center"><b>var light = new THREE.SpotLight(color, intensity, distance, angle, penumbra, decay);</b>
+        </text>
+
+        <pre><code class="javascript">// Spot light
+const spotLight = new THREE.SpotLight("white", 1); //color, intensity
+spotLight.position.set(5, 5, 5); //x, y, z this is the position of the light
+spotLight.target.position.set(0, 0, 0); //x, y, z this is the direction the light is pointing
+scene.add(spotLight);
+scene.add(spotLight.target);</code></pre>
+
+        <p>Let's look at an example: <a href="https://codepen.io/amaraauguste/pen/wvoqYKx">Spot Light Example</a></p>
+
+        <p>Notice how the cube is lit from the top right corner. This is because the spot light is positioned at (5, 5,
+          5).</p>
+
+        <p>Let's add a second spot light to our scene:</p>
+
+        <pre><code class="javascript
+">// Spot light 2 
+const spotLight2 = new THREE.SpotLight("green", 1); //color, intensity
+spotLight2.position.set(-5, -5, -5); //x, y, z this is the position of the light
+spotLight2.target.position.set(0, 0, 0); //x, y, z this is the direction the light is pointing
+scene.add(spotLight2);
+scene.add(spotLight2.target);</code></pre>
+
+        <h2>Phong Shading</h2>
+
+        <p>As previously mentioned, MeshPhongMaterial is a material for shiny surfaces
+          with specular highlights.</p>
+
+        <p>Shading is calculated using a <b>Phong shading</b> model. The Phong shading model calculates <b>shading per
+            pixel</b> (i.e. in the fragment shader, AKA pixel shader) which gives more accurate results/displays more
+          realistic highlights.</p>
+
+        <p>The Phong model is made up of three distinct components:</p>
+
+        <ul>
+          <li>Ambient</li>
+          <li>Diffuse</li>
+          <li>Specular</li>
+        </ul>
+
+        <img class="center" style="width: 100%; height: 100%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/Phong_components.png?raw=true"
+          alt="Phong shading model" />
+
+        <p>And uses four vectors:</p>
+
+        <ul>
+          <li>To source: <b>L</b></li>
+          <li>To viewer: <b>V</b></li>
+          <li>Normal: <b>N</b></li>
+          <li>Perfect reflector: <b>R</b></li>
+        </ul>
+
+        <img class="center" style="width: 60%; height: 60%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/phong%20vector.png?raw=true"
+          alt="Phong shading model vectors" />
+
+        <p>The following equation breaks it down:</p>
+
+        <img class="center" style="width: 100%; height: 100%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/phong%20equation.png?raw=true"
+          alt="Phong shading model equation" />
+
+        <p>The first part of the equation computes the <b>diffuse light</b>: shows the
+          direction of the light and can show depth in an object.</p>
+
+        <p>The second part of the equation computes the <b>specular highlight</b>: for
+          shiny objects and it reflects the bright spot on the surface. And the
+          <b>shininess coefficient α</b>
+        </p>
+
+        <p>The third part of the equation computes the <b>ambient light</b>: the
+          background light for the object.</p>
+
+        <p>In summary:</p>
+
+        <ul>
+          <li><b>kd</b> is the diffuse reflection coefficient</li>
+          <li><b>Id</b> is the diffuse light intensity</li>
+          <li><b>ks</b> is the specular reflection coefficient</li>
+          <li><b>Is</b> is the specular light intensity</li>
+          <li><b>α</b> is the shininess coefficient</li>
+          <li><b>ka</b> is the ambient reflection coefficient</li>
+          <li><b>Ia</b> is the ambient light intensity</li>
+        </ul>
+
+        <h2>Blinn-Phong</h2>
+
+        <p>There is also a <b>Blinn-Phong</b> shading model which is a modification of the Phong shading model.</p>
+
+        <p>Blinn-Phong, also known as the modified Phong model, uses the same
+          equation, but measures the angle between the surface normal and the
+          halfway vector instead of finding the angle between the view vector and the
+          reflection vector.</p>
+
+        <img class="center" style="width: 75%; height: 75%"
+          src="https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/c79773fa83ed58d460ee5273f4ac98a1a428f766/courses/CISC3620/images/Blinn_Vectors.svg"
+          alt="Blinn-Phong shading model vectors" />
+
+        <p>where:</p>
+
+        <img class="center" style="width: 100%; height: 100%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/blinn%20phong%20equation.png?raw=true"
+          alt="Blinn-Phong shading model" />
+
+        <p>Although the material is called Phong it actually uses the Blinn-Phong reflection model rather than a pure
+          Phong Reflection model.</p>
+
+        <p>Let's create a new material to see this in action:</p>
+
+        <pre><code class="javascript">const material = new THREE.MeshPhongMaterial({
+   color: "red", // color to use for light, default is white
+   shininess : 60, // shininess default is 30
+   specular: "blue" // color of the specular highlight, default is white
+});</code></pre>
+
+        <p>Let's add some point lights so we can actually see the cube:</p>
+
+        <pre><code class="javascript">//Create point light and add to scene 
+const pointLight = new THREE.PointLight("white", 1); //color, intensity
+pointLight.position.set(50, 50, 50); //x, y, z
+scene.add(pointLight);
 
 
+// Point light 2
+const pointLight2 = new THREE.PointLight("white", 1); //color, intensity
+pointLight2.position.set(-50, -50, -50); //x, y, z
+scene.add(pointLight2);</code></pre>
+
+        <p>Now, when you run the code, you should see a red cube with a blue specular highlight rendered in the scene.
+        </p>
+
+        <h2>Interactivity</h2>
+
+        <p>So far, we made the cube rotate automatically as it is rendered. This
+          time let's try to control its rotation with user interaction.</p>
+
+        <p>To do this, we will comment out the rotational behavior and write our own.</p>
+
+        <p>We will use the arrow keys to control how to cube rotates. How do we make
+          sure that the program is aware when we press a specific key and react
+          accordingly?</p>
+
+        <p>As we saw a bit in 2D graphics, we will have to add an<b>event listener</b> to attach an event handler to a
+          specified element. In this case, we do not need to specify a particular
+          element so we can attach an event handler to the document directly.</p>
+
+        <p>This is proper syntax for creating an event listener for the arrow keys:</p>
+
+        <pre><code class="javascript">// Add listener for keyboard
+document.addEventListener('keydown', keyPressed);
+
+//behavior for directional keys
+function keyPressed(e){
+  switch(e.key) {
+    case "ArrowLeft": //left arrow
+      //move left on the y-axis
+    	cube.rotation.y -= 0.1; 
+    	break;
+  	case "ArrowUp": //up arrow
+      //move up on the x-axis
+    	cube.rotation.x -= 0.1; 
+    	break;
+    case "ArrowRight": //right arrow
+      //move right on the y-axis
+    	cube.rotation.y += 0.1;
+    	break;  
+    case "ArrowDown": //down arrow
+      //move down on the x-axis 
+    	cube.rotation.x += 0.1; 
+    	break;
+  }
+}</code></pre>
+
+        <p>Now, when we run the code, we should be able to control the rotation of the cube using the arrow keys.</p>
+
+        <p>We've successfully added basic interactivity to our project.</p>
+
+        <h2>Orbit Controls</h2>
+
+        <p>Another way to add interactivity to your Three.js project is by using OrbitControls.</p>
+
+        <p>OrbitControls is a utility that allows you to control the camera in your scene using the mouse.</p>
+
+        <p>It allows you to rotate, zoom, and pan the camera around the scene.</p>
+
+        <p>Here's how you can add OrbitControls to your project:</p>
+
+        <p>First, you need to include the OrbitControls script in your HTML:</p>
+
+        <pre><code class="HTML5">&lt;script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/controls/OrbitControls.js"&gt;&lt;/script&gt;</code></pre>
+
+
+        <p>Next, you can add the following code to your JavaScript:</p>
+
+        <pre><code class="javascript">const controls = new THREE.OrbitControls(camera, renderer.domElement);
+controls.update();</code></pre>
+
+        <p>Now, when you run the code, you should be able to control the camera in your scene using the mouse.</p>
+
+        <p>And that's it! We've successfully added both mouse and keyboard interaction.</p>
 
 
 
@@ -5327,7 +5711,6 @@ sphere.rotation.y += 0.01;</code></pre>
       </article>
       <br />
     </section>
-
 
 
 
