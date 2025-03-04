@@ -74,6 +74,8 @@
           <a href="#Graphic_APIs" onclick="closeDropdown3()">Graphic APIs</a>
           <a href="#Intro_to_Three.js" onclick="closeDropdown3()">Intro to Three.js</a>
           <a href="#Lights_and_Interactivity" onclick="closeDropdown3()">Lights and Interactivity</a>
+          <a href="#Shadows" onclick="closeDropdown3()">Shadows</a>
+          <a href="#Textures" onclick="closeDropdown3()">Textures</a>
           <!--<a href="#Linear_Algebra" onclick="closeDropdown2()">Linear Algebra</a>
           <a href="#Variable_Scope" onclick="closeDropdown2()">Variable Scope</a>
           <a href="#Global_Variables" onclick="closeDropdown2()">Global Variables</a>
@@ -5700,13 +5702,562 @@ controls.update();</code></pre>
 
         <p>And that's it! We've successfully added both mouse and keyboard interaction.</p>
 
+      </article>
+      <br />
+    </section>
+    <hr />
+    <section class="main-section" id="Shadows">
+      <br />
+      <header><b>Shadows</b></header>
+      <article>
+        <p>Shadows are an important part of creating a realistic 3D scene.</p>
+
+        <p>The light that is coming from a specific direction can cast shadows. First, we should make the scene ready
+          for casting shadows.</p>
+
+        <p>We should first tell the renderer that we want to enable shadows. Casting shadows is an expensive operation.
+          WebGLRenderer only supports this functionality.</p>
+
+        <p>It uses Shadow mapping, a technique specific to WebGL, performed directly on the GPU.</p>
+
+        <pre><code class="javascript">renderer.shadowMapEnabled = true;</code></pre>
+
+        <p>The above line of code tells the renderer to cast shadows in the scene.</p>
+
+        <p>Note - Three.js, by default, uses shadow maps. Shadow map works for light that casts shadows.
+          The scene renders all objects marked to cast shadows from the point of view of the light.</p>
+
+        <p>There are two types of shadows in Three.js:</p>
+
+        <p></p><b>Shadow Mapping</b>: This is the most common technique used to create shadows in 3D graphics. It works
+        by rendering the scene from the perspective of the light source and storing the depth values of the scene in a
+        texture called the shadow map. When rendering the scene from the camera's perspective, the depth values of
+        the scene are compared to the depth values in the shadow map to determine if a pixel is in shadow or not.
+        </p>
 
 
+        <p>Shadow mapping is the method of choice for creating shadows in high-end rendering for motion pictures and
+          television. However, it has been problematic to use shadow mapping in real-time applications, such as video
+          games, because of aliasing problems in the form of magnified jaggies. </p>
+
+        <p>Shadow mapping involves projecting a shadow map on geometry and comparing the shadow map values with the
+          light-view depth at each pixel. If the projection causes the shadow map to be magnified, aliasing in the form
+          of large, unsightly jaggies will appear at shadow borders.</p>
+
+        <p>Aliasing can usually be reduced by using higher-resolution shadow maps and increasing the shadow map
+          resolution,
+          using techniques such as perspective shadow maps (Stamminger and Drettakis 2002). </p>
+
+        <p>However, using perspective shadow-mapping techniques and increasing shadow map resolution does not work when
+          the light is traveling nearly parallel to the shadowed surface, because the magnification approaches infinity.
+        </p>
+
+        <p>High-end rendering software solves the aliasing problem by using a technique called <b>percentage-closer
+            filtering</b>.</p>
 
 
+        <p><b>PCF (Percentage-Closer Filtering)</b>: This is a technique used to smooth out the edges of shadows by
+          taking multiple samples around each pixel and averaging the results. This helps to reduce the jagged
+          appearance of shadows and create a more realistic effect.</p>
+
+        <p>Unlike normal textures, shadow map textures cannot be prefiltered to remove aliasing. Instead, multiple
+          shadow map comparisons are made per pixel and averaged together.</p>
+
+        <p>This technique is called percentage-closer filtering (PCF) because it calculates the percentage of the
+          surface that is closer to the light and, therefore, not in shadow.</p>
+
+        <p>The original PCF algorithm, described in Reeves et al. 1987, called for mapping the region to be shaded into
+          shadow map space and sampling that region stochastically (that is, randomly). </p>
+
+        <p>The algorithm was first implemented using the REYES rendering engine, so the region to be shaded meant a
+          four-sided micropolygon. The figure below shows an example of that implementation.</p>
+
+        <img class="center" style="width: 100%; height: 100%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/percentage-closer%20filtering.jpg?raw=true" alt="PCF shadow mapping" />
+
+        <p>However, this algorithm advances over time.</p>
+
+        <p>For instance, NVIDIA GPUs have changed the PCF algorithm slightly to make it easy and efficient to apply.
+          Instead of
+          calculating the region to be shaded in shadow map space, they simply use a 4x4-texel sample region everywhere.
+        </p>
+
+        <p>This region is large enough to significantly reduce aliasing, but not so large as to require huge numbers of
+          samples or stochastic sampling techniques to achieve good results. Note that the sampling region is not
+          aligned to texel boundaries. </p>
+
+        <p>PCF is a simple and effective way to reduce aliasing in shadow maps. It is not perfect, but it is a good
+          compromise between quality and performance.</p>
+
+        <p>Since we are on the topic of antialiasing, we should also make sure that our scene is rendered with it enabled.
+        </p>
+
+        <pre><code class="javascript
+">renderer.antialias = true;</code></pre>
+
+          <p>By doing this we can reduce the jagged edges of our objects.</p>
+
+        <p>Let's create a scene with shadows:</p>
+
+        <p>First, we need to enable shadows in our renderer:</p>
+
+        <pre><code class="javascript
+">renderer.shadowMap.enabled = true;</code></pre>
+
+        <p>Next, we need to enable shadows for each light that we want to cast shadows:</p>
+
+        <pre><code class="javascript
+">// Enable shadows for directional light
+const light = new THREE.DirectionalLight(0xffffff, 1);
+light.position.set(5, 5, 5); // Position the light
+light.castShadow = true; // Enable shadow casting for the light
+scene.add(light);</code></pre>
+
+        <p>We should configure objects to cast shadows. We can inform Three.js which objects can cast shadows and which
+          objects can receive shadows.</p>
+
+        <pre><code class="javascript">object1.castShadow = true;
+object2.recieveShadow = true;</code></pre>
+
+        <p>Let's create a simple cube that casts a shadow on a floor:</p>
+
+        <pre><code class="javascript
+">// Create a cube that casts a shadow
+const cubeGeometry = new THREE.BoxGeometry(2, 2, 2);
+const cubeMaterial = new THREE.MeshStandardMaterial({ color: "red" });
+const cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
+cube.position.set(0, -1, 0);
+cube.castShadow = true;
+scene.add(cube);
+
+// Create a floor that receives shadows
+const floorGeometry = new THREE.PlaneGeometry(20, 20);
+const floorMaterial = new THREE.MeshStandardMaterial({ color: "gray" });
+const floor = new THREE.Mesh(floorGeometry, floorMaterial);
+floor.rotation.x = -Math.PI / 2;
+floor.position.y = -2;
+floor.receiveShadow = true;
+
+scene.add(floor);</code></pre>
+
+        <p>Let's see how the shadow looks with a BasicShadowMap: </p>
+
+        <pre><code class="javascript">renderer.shadowMapType = THREE.BasicShadowMap;</code></pre>
+
+        <p>If our shadow looks a bit blocky around its edges, it means the shadow map is too small.</p>
+
+        <p>To increase the shadow map size, we can define shadowMapHeight and shadowMapWidth properties for the light.
+        </p>
+
+        <p>Alternatively, we can also try to change the shadowMapType property of WebGLRenderer. We can set this to
+          THREE.BasicShadowMap, THREE.PCFShadowMap, or THREE.PCFSoftShadowMap.</p>
+
+        <p>Now let's try to antialias the shadow:</p>
+
+        <pre><code class="javascript">// to antialias the shadow
+renderer.shadowMapType = THREE.PCFSoftShadowMap;
+// or
+directionalLight.shadowMapWidth = 2048;
+directionalLight.shadowMapHeight = 2048;</code></pre>
+
+        <h2>Exercise: Let's Create a Scene with Shadows</h2>
+
+        <p>Now that we've learned how to add shadows to our scene, add another object that casts a shadow on the floor:
+        </p>
+
+        <p>Let's add a sphere that casts a shadow:</p>
+
+        <pre><code class="javascript
+">const sphereGeometry = new THREE.SphereGeometry(1, 32, 32);
+const sphereMaterial = new THREE.MeshStandardMaterial({ color: "blue" });
+const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
+sphere.position.set(5, -1, 0);
+sphere.castShadow = true;
+scene.add(sphere);</code></pre>
+
+        <p>Now, when we run the code, we should see a red cube and a blue sphere casting shadows on a gray floor in
+          the scene.</p>
+
+        <p>And that's it! We've successfully created a scene with shadows.</p>
+
+      </article>
+      <br />
+    </section>
+    <hr />
+    <section class="main-section" id="Textures">
+      <br />
+      <header><b>Textures</b></header>
+      <article>
+        <p>When we create a mesh, such as our humble cube, we pass in two components: a geometry and a material.</p>
+
+        <pre><code class="javascript">const geometry = new THREE.BoxGeometry(2, 2, 2);
+const material = new THREE.MeshStandardMaterial({color: 'purple'});
+const cube = new THREE.Mesh(geometry, material);
+scene.add(cube);</code></pre>
+
+        <p>The geometry defines the mesh's shape, and the material defines various surface properties of the mesh, in
+          particular, how it reacts to light. The geometry and the material, along with any light and shadows affecting
+          the mesh, control the appearance of the mesh when we render the scene.</p>
+
+        <p>Currently, our scene contains a single mesh with a shape defined by a BoxGeometry and a surface defined by a
+          MeshStandardMaterial with the color parameter set to purple.</p>
+
+        <p>Let's illuminate the scene by a single DirectionalLight, so when we render the scene, the result is this
+          simple purple box:</p>
+
+        <pre><code class="javascript">//Create a DirectionalLight
+const light = new THREE.DirectionalLight(0xffffff, 1);
+light.position.set(5,2,15); //x, y, z
+scene.add(light);</code></pre>
+
+        <p>Compare this to a concrete box in the real world - or a wooden box, or a metal box, or a box made from nearly
+          any substance except smooth plastic, and we can immediately see that our 3D box is not at all realistic.
+          Objects in the real world are usually scratched, broken, and dirty.</p>
+
+        <p>However, the material applied to our box doesn't look like this. Rather, it consists of a single color
+          applied smoothly over the entire surface of the mesh. Unless we want all of our creations to look like
+          brand-new plastic, this won't do.</p>
+
+        <p>Materials have many parameters besides color, and we can use these to adjust various attributes of an
+          object's surface, like the roughness, metalness, opacity, and so on.</p>
+
+        <p>However, just like the color parameter, these parameters are applied uniformly over the entire surface of the
+          mesh.</p>
+
+        <p>If we increase the material's .roughness property, for example, the entire surface of the object will become
+          rougher. Just like if we set the .color to red, the entire object will become red.</p>
+
+        <pre><code class="javascript">const material = new THREE.MeshStandardMaterial({color: 'purple', roughness: 0.0});</code></pre>
+
+        <p>When we set the roughness property to 0.0, the surface of the object becomes perfectly smooth. If we set it
+          to 1.0, the surface becomes perfectly rough.</p>
+
+        <p>How does this affect the cube that we are currently looking at?</p>
+
+        <p>By contrast, the surface properties of most real-world objects change from one point to the next.</p>
+
+        <p>Once again, it consists of a geometry and a material, just like our cube mesh.</p>
+
+        <p>The large scale features, like the eyes, nose, ears, neck, and chin, are defined by the geometry.</p>
+
+        <p>However, a lot more than a well-crafted geometry goes into creating a realistic face. Looking closely at the
+          skin, we can see there are many small bumps, wrinkles, and pores, not to mention eyebrows, lips, and a slight
+          beard.</p>
+
+        <p>When creating a complex model like a face, an artist must decide what parts of the model to represent using
+          geometry, and what parts to represent at the material level, bearing in mind that it's usually cheaper to
+          represent things using the material than the geometry.</p>
+
+        <p>This is an especially important consideration when the model has to run on a mobile device, where high
+          performance is paramount.</p>
+
+        <p>For example, while it would be possible to model every hair in the eyebrows in geometry, doing so would make
+          this model unsuitable for real-time use on all but the most powerful of devices. Instead, we must represent
+          small features like hair at the material level, and reserve the geometry for large scale features like the
+          eyes, nose, and ears.</p>
+
+        <p>Note, also, that this face is made from a single geometry. We usually want to avoid splitting a geometry up
+          more than necessary since every mesh can have only one geometry, so each separate geometry corresponds to a
+          new mesh in our scene.</p>
+
+        <p>Having fewer objects in a scene usually results in better performance, and it's also easier for both the
+          developer and the 3D artist to work with. In other words, we don't want to be forced to create different
+          geometries for the ears, and eyes. In any case, this wouldn't be practical. Looking closely at the lips, we
+          can see there is no sharp divide between the red of the lips and the skin tone of the chin. This means we need
+          some way of modifying material properties so that they can change smoothly across the surface of an object.
+        </p>
+
+        <p>We need to be able to say things like this:</p>
+
+        <ul>
+          <li>the part of the geometry making up the lips is red</li>
+          <li>the part of the geometry making up the chin is a skin tone overlaid by a slight beard</li>
+          <li>the part of the geometry making up the eyebrows is hair colored</li>
+        </ul>
+
+        <p>… and so on. And this doesn't only apply to color. The skin is shinier than the hair and lips, for example.
+          So, we also need to be able to specify how other properties like roughness change from one point to the next
+          across the geometry.</p>
+
+        <p>This is where <b>texture mapping</b> comes in. In the simplest possible terms, texture mapping means taking
+          an image
+          and stretching it over the surface of a 3D object.</p>
+
+        <p>We refer to an image used in this manner as a texture, and we can use textures to represent material
+          properties like color, roughness, and opacity.</p>
+
+        <p>While it's easy to take a 2D texture and stretch it over a regular shape like a cube, it's much harder to do
+          that with an irregular geometry like a face, and over the years, many texture mapping techniques have been
+          developed. Perhaps the simplest technique is <b>projection mapping</b>, which projects the texture onto an
+          object (or scene) as if it has been shone through a film projector. Imagine holding your hand in front of a
+          film
+          projector and seeing the image projected onto your skin.</p>
+
+        <p>While projection mapping and other techniques are still widely used for things like creating shadows (or
+          simulating projectors), that's not going to work for attaching the face's color texture to the face geometry.
+        </p>
+
+        <p>Instead, we use a technique called <b>UV mapping</b> which allows us to create a connection between points on
+          the geometry and points on the face.</p>
+
+        <p>Using UV mapping, we divide the texture up into a 2D grid with the point (0,0) at the bottom left and the
+          point (1,1) at the top right. Then, the point (0.5,0.5) will be at the exact center of the image.</p>
+
+        <img class="center" style="width: 50%; height: 50%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/texture%20example%201.png?raw=true"
+          alt="UV mapping" />
+
+        <p>Likewise, every point in a geometry has a position in the 3D local space of the mesh. UV mapping, then, is
+          the process of assigning 2D points in the texture to 3D points in the geometry.</p>
+
+        <p>For example, suppose the lips in the face model are at the point (0,0,0). We can see that the lips in the
+          texture are close to the center, somewhere around (0.5,0.5).</p>
+
+        <p>So, we'll create a mapping:</p>
+
+        <text class="center"><b>(0.5,0.5)⟶(0,0,0)</b></text>
+
+        <p>Now, when we assign the texture as a color map in the material, the center of the texture will be mapped onto
+          the lips.</p>
+
+        <p>Next, we must do the same for many other points in the geometry, assigning the ears, eyes, eyebrows, nose,
+          and chin to the appropriate points of the texture. If this sounds like a daunting procedure, don't worry,
+          because it's rare to do this manually.</p>
+
+        <p>For this model, the UV mapping was created in an external program, and in general, that's the recommended way
+          to create UV mappings.</p>
+
+        <p>Data representing the UV mapping is stored on the geometry. The Three.js geometries like the BoxGeometry have
+          already got UV mapping set up, and in most cases, when you load a model like a face that was created in an
+          external program, it will also have UV mapping ready for use.</p>
+
+        <p>Once we have a geometry with a UV mapping, we can take any texture and apply it to the geometry and it will
+          immediately work.</p>
+
+        <p>However, it might be hard to find other textures that will look good with a face model since the UV map must
+          be carefully coordinated to match the texture to the correct points on the face, and doing this well is the
+          work of a skilled 3D artist.</p>
+
+        <p>However, for simple shapes like a cube we can use nearly any image as a texture, turning the box into a
+          wooden box, or a concrete box, or a crate, and so on.</p>
+
+        <p>Before we proceed with loading a texture and applying it to our cube, let's go over all the technical terms
+          that we'll be using when working with textures.</p>
+
+        <h2>What's the Difference Between an Image and a Texture?</h2>
+
+        <p>We'll see the terms <b>texture</b> and <b>image</b> a lot in computer graphics literature. These are even
+          often stored in the same format, such as PNG or JPG. What’s the difference?</p>
+
+        <ul>
+          <li>An <b>image</b> is a 2D picture designed to be viewed by a human</li>
+          <li>A <b>texture</b> is specially prepared data used for various purposes in 3D graphics.</li>
+        </ul>
+
+        <p>The individual pixels that make up an image represent color. Another way of looking at this is that an image
+          is a 2D array of colors.</p>
+
+        <p>In the early days of computer graphics, that was the case for textures too, but over time more and more uses
+          were found for textures and now it's more correct to say that a texture is a 2D array of data.</p>
+
+        <p>This data can represent anything. Nowadays it's even possible to store geometry or animations in a texture.
+        </p>
+
+        <p>When we use a texture in Three.js, we're usually using it to represent material properties like color,
+          roughness, and opacity.</p>
+
+        <p>Textures are applied to a mesh by creating a Texture object and passing it to the map property of the
+          material used to render the mesh.</p>
+
+        <h2>Texture Map</h2>
+
+        <p>Although technically incorrect, a texture is also often referred to as a <b>map</b>, or even a texture map,
+          although
+          map is most commonly used when assigning a texture to a material.</p>
+
+        <p>When using a texture to represent color, we'll say that we are assigning a texture to the color map slot on a
+          material.</p>
+
+        <h2>UV Mapping</h2>
+
+        <p>UV mapping is a method for taking a 2-dimensional texture and mapping it onto a 3-dimensional geometry.</p>
+
+        <p>Imagine a 2D coordinate system on top of the texture, with (0,0) in the bottom left and (1,1) in the top
+          right. Since we already use the letters X, Y and Z for our 3D coordinates, we'll refer to the 2D texture
+          coordinate using the letters U and V.</p>
+
+        <p>This is where the name UV mapping comes from.</p>
+
+        <p>Here's the formula used in UV mapping:</p>
+
+        <text class="center"><b>(u,v)⟶(x,y,z)</b></text>
+
+        <p>(u,v) represents a point on the texture, and (x,y,z) represents a point on the geometry, defined in local
+          space. Technically, a point on a geometry is called a vertex.</p>
+
+        <img class="center" style="width: 75%; height: 75%"
+          src="https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/3c4901326e43478f13f54ae0d1b60d7ca2b4c6ef/courses/CISC3620/images/geometry_uv_map.svg"
+          alt="UV mapping" />
+
+        <p>In the figure above, the top left corner of the texture has been mapped to a vertex on the corner of the cube
+          with coordinates (−1,1,1):</p>
+
+        <text class="center"><b>(0,1)⟶(−1,1,1)</b></text>
+
+        <p>Similar mappings are done for the other five faces of the cube, resulting in one complete copy of the texture
+          on each of the cube's six faces:</p>
+
+        <img class="center" style="width: 75%; height: 75%"
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/texture%20map%20example.png?raw=true"
+          alt="UV mapping example" />
+
+        <p>Note that there is no mapping for the point (0.5,0.5), the center of the texture. Only the corners of the
+          texture are mapped, onto the eight corners of the cube, and the rest of the points are "guessed" from these.
+        </p>
+
+        <p>By contrast, a complex model like a face must have many more UV coordinates defined to map the parts of the
+          texture representing the nose, ears, eyes, lips, and so on, to the correct points of the geometry.</p>
+
+        <p>Fortunately, we rarely need to set up UV mapping manually since all the three.js geometries, including the
+          BoxGeometry, have UV mapping built-in. We only need to load the texture and apply it to our material and
+          everything will work.</p>
+
+        <h2>How to Load a Texture</h2>
+
+        <p>Three.js has a built-in function <b>TextureLoader()</b> to load textures into your Three.js project.</p>
+
+        <p>First, we should create a loader:</p>
+
+        <pre><code class="javascript">const loader = new THREE.TextureLoader();</code></pre>
+
+        <p>Then we can load any texture or image by specifying its path in the load() function:</p>
+
+        <pre><code class="javascript">const texture = loader.load('path/to/texture.jpg');</code></pre>
+
+        <p>Now, we can apply the texture to the material by setting the map property of the material to the texture:</p>
+
+        <pre><code class="javascript">const material = new THREE.MeshStandardMaterial({ map: texture });</code></pre>
 
 
+        <p>Now, let's add a basic texture to our cube:</p>
 
+        <p>This is a basic image of a side of a wooden crate:</p>
+
+        <img class="center" style="width: 30%; height: 30%"
+          src="https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/textures/crate.gif"
+          alt="crate texture" />
+
+        <p>First, we should create a loader, then we can load our texture or image by specifying its path in the load()
+          function.</p>
+
+        <pre><code class="javascript">const loader = new THREE.TextureLoader();
+const texture = loader.load('https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/textures/crate.gif');</code></pre>
+
+        <p>Now, we can apply the texture to the material by setting the map property of the material to the texture.</p>
+
+        <pre><code class="javascript">const material = new THREE.MeshStandardMaterial({ map: texture });</code></pre>
+
+        <p>And add a light source so we can actually see our crate:</p>
+
+        <pre><code class="javascript">//Create a AmbientLight
+const light = new THREE.AmbientLight( 0xffffff, 1 );
+scene.add(light);</code></pre>
+
+        <p>Now, when we render the scene, we should see the cube with the crate texture applied to its surface.</p>
+
+        <p>Let's now create a crate positioned on a floor (plane)</p>
+
+        <p>First let's set our scene, camera, and renderer:</p>
+
+        <pre><code class="javascript">let width = 500;
+let height = 400;
+// Create the scene
+const scene = new THREE.Scene();
+scene.background = new THREE.Color("green"); //green screen to better view environment
+const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+// Position the camera
+camera.position.set(0, 3, 10); // Move it back on the z-axis and up on the y-axis
+          
+const renderer = new THREE.WebGLRenderer();</code></pre>
+
+        <p>Now let's enable our renderer to include shadows:</p>
+
+        <pre><code class="javascript">renderer.shadowMap.enabled = true;</code></pre>
+
+        <p>And set size and add our renderer to view:</p>
+
+        <pre><code class="javascript">renderer.setSize(width, height);
+document.body.appendChild(renderer.domElement); //add renderer to view</code></pre>
+
+        <p>Don't forget our animate function:</p>
+
+        <pre><code class="javascript">function animate() {
+    requestAnimationFrame(animate);
+    renderer.render(scene, camera);
+}
+animate();</code></pre>
+
+        <p>Now above our animate function, let's create a plane to act as our floor:</p>
+
+        <pre><code class="javascript">// Create plane geometry and material
+const planeGeometry = new THREE.PlaneGeometry(50, 50);
+const planeTexture = new THREE.TextureLoader().load('https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/textures/concrete%20floor.jpg');
+const planeMaterial = new THREE.MeshStandardMaterial({ map: planeTexture });
+const plane = new THREE.Mesh(planeGeometry, planeMaterial);
+plane.rotation.x = -Math.PI / 2; // Rotate the plane to be horizontal
+plane.receiveShadow = true; // Allow the plane to receive shadows
+scene.add(plane);</code></pre>
+
+        <p>Now let's create a crate to place on the floor:</p>
+
+        <pre><code class="javascript">// Create crate geometry and material
+const geometry = new THREE.BoxGeometry(5, 5, 5);
+const crateTexture = new THREE.TextureLoader().load('https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/textures/crate3.jpg');
+const material = new THREE.MeshStandardMaterial({ map: crateTexture });
+
+const crate = new THREE.Mesh(geometry, material);
+crate.position.y = 2.5; // Position it above the plane
+crate.castShadow = true; // Allow the cube to cast shadows
+scene.add(crate);</code></pre>
+
+        <p>Now when you run the code, you should see a cube positioned on a floor, however due to lack of lights it is
+          hard to make out.</p>
+
+        <p>Now let's create a directional light so we can actually illuminate our scene:</p>
+
+        <pre><code class="javascript">const light = new THREE.DirectionalLight(0xffffff, 1);
+light.position.set(7, 7, 7); // Position the light
+light.castShadow = true; // Enable shadow casting for the light
+scene.add(light);</code></pre>
+
+        <p>Now we should see a cube textured to look like a wooden crate positioned on a concrete floor, illuminated by
+          a directional light.</p>
+
+        <p>Let's add some orbit controls to take a closer look at the scene:</p>
+
+        <pre><code class="javascript
+">// Create orbit controls
+const controls = new THREE.OrbitControls(camera, renderer.domElement);
+controls.update();</code></pre>
+
+        <p>It looks good but upon further inspection, notice how our floor texture looks more pixelated the closer we
+          get. This is because the texture is being stretched over a large area.</p>
+
+        <p>One way to fix this is to increase the resolution of the texture. However, this can be expensive in terms of
+          memory and performance.</p>
+
+        <p>Another way to fix this is to use a technique called <b>texture tiling</b>. Texture tiling involves repeating
+          the texture multiple times over the surface of the mesh.</p>
+
+        <p>Let's add texture tiling to our floor:</p>
+
+        <pre><code class="javascript">//to improve by repeating texture
+planeTexture.wrapS = THREE.RepeatWrapping; // Repeat the texture in the x-direction
+planeTexture.wrapT = THREE.RepeatWrapping; // Repeat the texture in the y-direction
+planeTexture.repeat.set(4, 4); // Repeat the texture 4 times in both directions</code></pre>
+
+        <p>Now we see the floor texture repeated multiple times over the surface of the plane, which improves the
+          appearance of the texture.</p>
 
       </article>
       <br />
