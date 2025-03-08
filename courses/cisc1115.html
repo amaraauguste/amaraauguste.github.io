@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <link rel="stylesheet" href="1115style.css" />
     <title>CISC 1115</title>
 </head>
+
 <body>
 
-    <nav id="navbar"><header class="header-link">
-        <a href="https://amaraauguste.github.io/courses/cisc1115.html" style="color: inherit; text-decoration: none;" class="header-text">CISC 1115</a>
-    </header>
-        
+    <nav id="navbar">
+        <header class="header-link">
+            <a href="https://amaraauguste.github.io/courses/cisc1115.html"
+                style="color: inherit; text-decoration: none;" class="header-text">CISC 1115</a>
+        </header>
+
         <div class="mode">
-            Dark mode: 
+            Dark mode:
             <span class="change">OFF</span>
         </div>
         <hr />
@@ -22,26 +26,34 @@
         <a class="nav-link" href="#Homework" style="font-size: 22px">Homework</a>
         <a class="nav-link" href="CISC1115/notes.html" style="font-size: 22px">Class Notes</a>
         <a class="nav-link" href="CISC1115/programs.html" style="font-size: 22px">Programs From Class</a>
+        <a class="dropdown-btn" style="font-size: 22px">Exam Review</a>
+        <div class="dropdown-container">
+            <a href="CISC1115/CISC_1115_SP25_TY8_Exam_1_REVIEW.pdf" style="font-size: 22px" onclick="closeDropdown()">Exam 1</a>
+           
+        </div>
+
         <!--<a class="nav-link" href="CISC1115/CISC 1115 F24 TY8 Exam 2 REVIEW.pdf" style="font-size: 22px">Exam Review</a>-->
         <!--<a class="nav-link" href="#Examples" style="font-size: 22px">Examples</a>-->
     </nav>
-    
+
     <main id="main-doc">
         <section class="main-section" id="Introduction">
             <br />
             <header><b>Introduction</b></header>
             <article>
                 <p>Welcome to CISC 1115 - Introduction to Java Programming!</p>
-                <p>This web-site will provide a basic course outline, syllabus, and anything else that is important for the class. Feel free to email any questions, suggestions, thoughts, etc.</p>
-            
+                <p>This web-site will provide a basic course outline, syllabus, and anything else that is important for
+                    the class. Feel free to email any questions, suggestions, thoughts, etc.</p>
+
                 <p>Our course will be using the following textbook: </p>
 
                 <p>Allen Downey and Chris Mayfield,
-            <i><b>Think Java: How to Think Like a Computer Scientist</b></i>, 2nd Edition, Version 6.1.3, Green Tea Press, 2016, Creative Commons License.
-                    </p>
+                    <i><b>Think Java: How to Think Like a Computer Scientist</b></i>, 2nd Edition, Version 6.1.3, Green
+                    Tea Press, 2016, Creative Commons License.
+                </p>
 
                 <p>which can be found: <a href="https://greenteapress.com/thinkjava6/thinkjava.pdf">here</a></p>
-            
+
             </article>
             <br />
             <hr />
@@ -51,12 +63,15 @@
             <br />
             <header><b>CodeLab</b></header>
             <article>
-                <p>For this course we will use CodeLab — an online, interactive programming exercise system — for short practice problems that typically consist of a few lines of code that are very narrowly focused on a topic covered in class and are completed and submitted directly in CodeLab.</p>
+                <p>For this course we will use CodeLab — an online, interactive programming exercise system — for short
+                    practice problems that typically consist of a few lines of code that are very narrowly focused on a
+                    topic covered in class and are completed and submitted directly in CodeLab.</p>
                 <p>To Register:</p>
                 <ul>
                     <li>Go to <a href="https://www.turingscraft.com/">turingscraft.com</a></li>
                     <li>Click "Register" and follow the instructions</li>
-                    <li style="margin-left: 40px">When you fill out the forms, use your Best Email Address and Actual Name</li>
+                    <li style="margin-left: 40px">When you fill out the forms, use your Best Email Address and Actual
+                        Name</li>
                     <li style="margin-left: 40px">When asked for a Section Access Code, enter the following:<br /><br />
                         <b style="margin-left: 60px">CUNY-32198-RLQZ-63</b>
                     </li><br />
@@ -71,33 +86,50 @@
             <br />
             <header><b>Homework</b></header>
             <article>
-                <p>As previously mentioned, homework/projects are larger, often complete programs incorporating several topics, and give you a better taste of 'real' programming.</p>
-                <p>These should be coded and tested in the IDE of your choice (e.g. NetBeans, Eclipse, IntelliJ, etc.) and submitted to Blackboard by the due date provided.</p>
-                <p>Each homework will be due about a week and a half (two or three class meetings) after it is assigned unless specified otherwise.</p>
+                <p>As previously mentioned, homework/projects are larger, often complete programs incorporating several
+                    topics, and give you a better taste of 'real' programming.</p>
+                <p>These should be coded and tested in the IDE of your choice (e.g. NetBeans, Eclipse, IntelliJ, etc.)
+                    and submitted to Blackboard by the due date provided.</p>
+                <p>Each homework will be due about a week and a half (two or three class meetings) after it is assigned
+                    unless specified otherwise.</p>
                 <p>Homework will be listed both here and on Blackboard and <b>MUST</b> be submitted via Blackboard.</p>
                 <p>Homework:</p>
                 <ul>
                     <li>
                         <p>
-                            <b><u>Homework 0</u>:</b> If I do not have it already, please email me your preferred email address to ensure that you receive any class messages that will be sent out. Also, install Java + the IDE of your choice, and sign into our Codelab course.
+                            <b><u>Homework 0</u>:</b> If I do not have it already, please email me your preferred email
+                            address to ensure that you receive any class messages that will be sent out. Also, install
+                            Java + the IDE of your choice, and sign into our Codelab course.
                         </p>
                     </li>
                 </ul>
                 <ul style="column-count: 1; font-size: 29px">
-                    <li><b><a href="CISC1115/homeworks/CISC 1115 - Homework 1.pdf">Homework 1</a>: DUE 02/11 EOD</b> - Please submit the .java file and a plain text file (extension .txt, using either Notepad on Windows, TextEdit on macOS, etc.) of the output (you can just copy/paste it into a file, we will go over WRITING to files in a future class)</li>
-                    <br/>
-                    <li><b><a href="CISC1115/homeworks/CISC 1115 - Homework 2.pdf">Homework 2</a>: DUE 02/20 EOD</b> - For part 1: Please submit the <b>MODIFIED</b> .java file and the output file, <b>"dosageLog.txt"</b>;
+                    <li><b><a href="CISC1115/homeworks/CISC 1115 - Homework 1.pdf">Homework 1</a>: DUE 02/11 EOD</b> -
+                        Please submit the .java file and a plain text file (extension .txt, using either Notepad on
+                        Windows, TextEdit on macOS, etc.) of the output (you can just copy/paste it into a file, we will
+                        go over WRITING to files in a future class)</li>
+                    <br />
+                    <li><b><a href="CISC1115/homeworks/CISC 1115 - Homework 2.pdf">Homework 2</a>: DUE 02/20 EOD</b> -
+                        For part 1: Please submit the <b>MODIFIED</b> .java file and the output file,
+                        <b>"dosageLog.txt"</b>;
                         For part 2: Please submit the .java file and the output file, <b>"interest.txt"</b>
                         (There should be <b>FOUR files submitted</b> in total)</li>
-                    <br/>
-                    <li><b><a href="CISC1115/homeworks/CISC 1115 - Homework 3.pdf">Homework 3</a>: DUE 02/25 EOD</b> - Please submit the .java file and the output file, <b>"monthlyBill.txt"</b></li>
-                    <br/>
-                    <li><b><a href="CISC1115/homeworks/CISC 1115 - Homework 4.pdf">Homework 4</a>: DUE 03/04 EOD</b> - Please submit the .java file (source code) and <b>a log (you can copy/paste this into a plain .txt file) of each operation run at least once</b>.</li>
-                    <br/>
-                    <li><b><a href="CISC1115/homeworks/CISC 1115 - Homework 5.pdf">Homework 5</a>: DUE 03/11 EOD</b> - Please submit the .java file (source code) and <b>a copy (you can copy/paste this into a plain .txt file) of the output of the game</b>.</li>
-                    <br/>
-                    <li><b><a href="CISC1115/homeworks/CISC 1115 - Homework 6.pdf">Homework 6</a>: DUE 03/13 EOD</b> - Please submit the .java file (source code) and the output file named <b>"semesterTranscript.txt"</b>.</li>
-                    <br/>
+                    <br />
+                    <li><b><a href="CISC1115/homeworks/CISC 1115 - Homework 3.pdf">Homework 3</a>: DUE 02/25 EOD</b> -
+                        Please submit the .java file and the output file, <b>"monthlyBill.txt"</b></li>
+                    <br />
+                    <li><b><a href="CISC1115/homeworks/CISC 1115 - Homework 4.pdf">Homework 4</a>: DUE 03/04 EOD</b> -
+                        Please submit the .java file (source code) and <b>a log (you can copy/paste this into a plain
+                            .txt file) of each operation run at least once</b>.</li>
+                    <br />
+                    <li><b><a href="CISC1115/homeworks/CISC 1115 - Homework 5.pdf">Homework 5</a>: DUE 03/11 EOD</b> -
+                        Please submit the .java file (source code) and <b>a copy (you can copy/paste this into a plain
+                            .txt file) of the output of the game</b>.</li>
+                    <br />
+                    <li><b><a href="CISC1115/homeworks/CISC 1115 - Homework 6.pdf">Homework 6</a>: DUE 03/13 EOD</b> -
+                        Please submit the .java file (source code) and the output file named
+                        <b>"semesterTranscript.txt"</b>.</li>
+                    <br />
                     <!--<li><b><a href="CISC1115/homeworks/CISC 1115 - Homework 7.pdf">Homework 7</a>: DUE 10/31 EOD</b> - Please submit the .java file (source code) and <b>a log (you can copy/paste this into a plain .txt file) of each possible test case (invalid and valid).</b>.</li>
                     <br/>
                     <li><b><a href="CISC1115/homeworks/CISC 1115 - Homework 8.pdf">Homework 8</a>: DUE 11/14 EOD</b> - Please submit the .java file (source code) and <b>the output file named "receipt.txt"</b> that should contain everything printed by the method printReceipt().</li>
@@ -136,7 +168,7 @@
         }
 
         // Dark mode toggle functionality
-        document.querySelector('.mode').addEventListener('click', function() {
+        document.querySelector('.mode').addEventListener('click', function () {
             document.body.classList.toggle('dark-mode');
 
             // Get the change element
@@ -169,4 +201,5 @@
         }
     </script>
 </body>
+
 </html>
