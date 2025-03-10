@@ -76,6 +76,7 @@
           <a href="#Lights_and_Interactivity" onclick="closeDropdown3()">Lights and Interactivity</a>
           <a href="#Shadows" onclick="closeDropdown3()">Shadows</a>
           <a href="#Textures" onclick="closeDropdown3()">Textures</a>
+          <a href="#A_More_Complex_Scene" onclick="closeDropdown3()">A More Complex Scene</a>
           <!--<a href="#Linear_Algebra" onclick="closeDropdown2()">Linear Algebra</a>
           <a href="#Variable_Scope" onclick="closeDropdown2()">Variable Scope</a>
           <a href="#Global_Variables" onclick="closeDropdown2()">Global Variables</a>
@@ -5773,7 +5774,8 @@ controls.update();</code></pre>
           four-sided micropolygon. The figure below shows an example of that implementation.</p>
 
         <img class="center" style="width: 50%; height: 50%"
-          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/percentage-closer%20filtering.jpg?raw=true" alt="PCF shadow mapping" />
+          src="https://github.com/amaraauguste/amaraauguste.github.io/blob/master/courses/CISC3620/images/percentage-closer%20filtering.jpg?raw=true"
+          alt="PCF shadow mapping" />
 
         <p>However, this algorithm advances over time.</p>
 
@@ -5789,13 +5791,14 @@ controls.update();</code></pre>
         <p>PCF is a simple and effective way to reduce aliasing in shadow maps. It is not perfect, but it is a good
           compromise between quality and performance.</p>
 
-        <p>Since we are on the topic of antialiasing, we should also make sure that our scene is rendered with it enabled.
+        <p>Since we are on the topic of antialiasing, we should also make sure that our scene is rendered with it
+          enabled.
         </p>
 
         <pre><code class="javascript
 ">renderer.antialias = true;</code></pre>
 
-          <p>By doing this we can reduce the jagged edges of our objects.</p>
+        <p>By doing this we can reduce the jagged edges of our objects.</p>
 
         <p>Let's create a scene with shadows:</p>
 
@@ -6262,6 +6265,301 @@ planeTexture.repeat.set(4, 4); // Repeat the texture 4 times in both directions<
       </article>
       <br />
     </section>
+    <hr />
+
+    <section class="main-section" id="A_More_Complex_Scene">
+      <br />
+      <header><b>A More Complex Scene</b></header>
+      <article>
+        <p>So far, we've learned how to create a scene, add objects to it, add lights, cast shadows, and apply textures to those objects.</p>
+
+        <p>For example, we've played around with cubes but if we want realistic scenes that are not just made up of
+          crates and boxes we need to start building more complex objects.</p>
+
+        <p>Let's say we want to create a table. What does a table actually look like?</p>
+
+        <p>A basic table has a flat surface and four legs. How can we create this in Three.js?</p>
+
+        <p>One way to do this is to use <b>primitive geometries</b> like BoxGeometry to create
+          custom models.</p>
+
+        <p>For example, to create a table, we can use a BoxGeometry for the table top and four additional BoxGeometries
+          for the legs.</p>
+
+        <p>First, let's set up our scene:</p>
+
+        <pre><code class="javascript">let width = 500;
+let height = 400;
+// Create the scene
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+// Position the camera
+camera.position.z = 10; // Move it back on the z-axis
+camera.position.y = 2; // Move it up on the y-axis
+const renderer = new THREE.WebGLRenderer();
+renderer.shadowMap.enabled = true; // Enable shadows in the renderer
+renderer.setSize(width, height);
+renderer.antialias = true; // Enable antialiasing
+document.body.appendChild(renderer.domElement); //add renderer to view</code></pre>
+
+        <p>Let's also add orbit controls so we can get a better view of our scene:</p>
+
+        <pre><code class="javascript">// Create orbit controls
+const controls = new THREE.OrbitControls(camera, renderer.domElement);
+controls.update();</code></pre>
+
+        <p>And don't forget our animate() function so we can actually see our scene:</p>
+
+        <pre><code class="javascript">function animate() {
+    requestAnimationFrame(animate);
+    renderer.render(scene, camera);
+}
+animate();</code></pre>
+
+        <p>Let's add a floor for our objects to sit atop:</p>
+
+        <pre><code class="javascript">// Create a floor that receives shadows
+const floorGeometry = new THREE.PlaneGeometry(20, 20);
+const floorMaterial = new THREE.MeshBasicMaterial({ color: "gray" });
+const floor = new THREE.Mesh(floorGeometry, floorMaterial);
+floor.rotation.x = -Math.PI / 2; // Rotate the floor to be horizontal
+floor.position.y = -2;
+floor.receiveShadow = true;
+scene.add(floor);</code></pre>
+
+        <p>Now let's actually create our table. First we need a table top:</p>
+
+        <pre><code class="javascript
+">// Create table top geometry and material
+const tableTopGeometry = new THREE.BoxGeometry(8.5, 0.75, 4); //width, height, depth
+const tableTopMaterial = new THREE.MeshBasicMaterial({ color: "brown" });
+const tableTop = new THREE.Mesh(tableTopGeometry, tableTopMaterial);
+tableTop.position.y = 0.85; // Position the table top above the floor
+tableTop.castShadow = true; // Allow the table top to cast shadows
+scene.add(tableTop);</code></pre>
+
+        <p>Now let's create the legs of the table:</p>
+
+        <pre><code class="javascript">const legGeometry = new THREE.BoxGeometry(0.5, 3, 0.5); //width, height, depth
+const legMaterial = new THREE.MeshBasicMaterial({ color: "brown" });
+const leg1 = new THREE.Mesh(legGeometry, legMaterial);
+const leg2 = new THREE.Mesh(legGeometry, legMaterial);
+const leg3 = new THREE.Mesh(legGeometry, legMaterial);
+const leg4 = new THREE.Mesh(legGeometry, legMaterial);
+leg1.position.set(-4, -1, 1.75); // Position the legs at the corners of the table top
+leg2.position.set(-4, -1, -1.75);
+leg3.position.set(4, -1, 1.75);
+leg4.position.set(4, -1, -1.75);
+leg1.castShadow = true;
+leg2.castShadow = true;
+leg3.castShadow = true;
+leg4.castShadow = true;
+scene.add(leg1, leg2, leg3, leg4);</code></pre>
+
+        <p>This is okay but what if we needed to reposition the table now? Because we added each part of the table to
+          the scene as it's own individual object, we would have to manually adjust the
+          position of each leg. This is not ideal.</p>
+
+        <p>Instead of adding each part of the table as a separate object, we can group them together using a
+          <b>Group</b> object.
+        </p>
+
+        <p>Let's group the table top and legs together:</p>
+
+        <pre><code class="javascript">// Create a group to hold the table top and legs
+const table = new THREE.Group();
+table.add(tableTop, leg1, leg2, leg3, leg4);
+scene.add(table);</code></pre>
+
+        <p>Now, when we want to move the table, we can simply move the table object and all of its children will move
+          with it.</p>
+
+        <p>Let's better position the table so the legs are not going through the floor:</p>
+
+        <pre><code class="javascript">table.position.y = 0.5;</code></pre>
+
+        <p>We should now have a simple table in our scene. We can add more objects to the scene in a similar way to
+          create more complex scenes.</p>
+
+        <p>Notice that we used MeshBasicMaterial since we did not set up any lights. Let's fix that:</p>
+
+        <p>First, we need to change our material to something that uses lights, i.e MeshStandardMaterial.</p>
+
+        <p>When we change the material of the table, we should see a simple black silhouette of the brown table we once
+          had. Don't worry we will see it again once we add light.</p>
+
+        <p>Now, let's add some light:</p>
+
+        <pre><code class="javascript
+">// Create a directional light
+const light = new THREE.DirectionalLight("white", 1);
+light.position.set(7, 7, 7);
+light.castShadow = true;
+
+// Add the light to the scene
+scene.add(light);</code></pre>
+
+        <p>Now we should see a table with legs positioned on a floor, illuminated by a directional light.</p>
+
+        <p>Let's make sure to update our floor material as well. Now we should see a shadow of the table being cast onto
+          the floor.</p>
+
+        <p>Our table looks good but it's a bit plain. Let's add a texture to the table top:</p>
+
+        <p>First, let's load our texture:</p>
+
+        <pre><code class="javascript">// Create a texture loader
+const loader = new THREE.TextureLoader();
+const tableTexture = loader.load('https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/textures/wood%20table%20top%20texture.jpg');</code></pre>
+
+        <p>Now, let's apply the texture to the table top:</p>
+
+        <pre><code class="javascript">const tableTopMaterial = new THREE.MeshStandardMaterial({ map: tableTexture });</code></pre>
+
+        <p>And do the same to the legs:</p>
+
+        <pre><code class="javascript">const legMaterial = new THREE.MeshStandardMaterial({ map: tableTexture });</code></pre>
+
+        <p>Now our table should have a wooden texture applied to the table top and legs and look more realistic.</p>
+
+        <p>In addition to our standard primitive geometries like BoxGeometry and PlaneGeometry, Three.js also provides
+          a number of built-in geometries for creating more complex objects, for example: TeapotGeometry</p>
+
+        <p>We'll add a teapot to our scene but first let's understand TeapotGeometry:</p>
+
+        <p>TeapotGeometry is a geometry that represents a teapot. It's a complex geometry that is not built into
+          Three.js by default, but we can add it by importing it from the Three.js examples.</p>
+
+        <p>TeapotGeometry has multiple parameters that can be set to customize the teapot, such as size, segments, and
+          detail.</p>
+
+        <p>However, the only required parameter is the size of the teapot.</p>
+
+        <p>We need to add the following script to our HTML file to import the TeapotGeometry:</p>
+
+        <pre><code class="HTML">&lt;script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/geometries/TeapotGeometry.js"&gt;&lt;/script&gt;</code></pre>
+
+        <p>Now we can create a teapot and add it to our scene:</p>
+
+        <pre><code class="javascript
+">// Create teapot geometry and material
+const teapotGeometry = new THREE.TeapotGeometry(0.75); // Set the size of the teapot
+const teapotMaterial = new THREE.MeshStandardMaterial({ color: "white" });
+const teapot = new THREE.Mesh(teapotGeometry, teapotMaterial);
+teapot.position.y = 2.5; // Position the teapot to sit atop the table
+teapot.castShadow = true;
+scene.add(teapot);</code></pre>
+
+        <p>We should now see a white teapot sitting atop our wooden table. However, there is no shadow on the table from
+          our teapot. This is because although we have enable shadow casting for the teapot, we have not enabled shadow
+          receiving for the table top.</p>
+
+        <p>Let's enable shadow receiving for the table top:</p>
+
+        <pre><code class="javascript">// Enable shadow receiving for the table
+tableTop.receiveShadow = true;</code></pre>
+
+        <p>Now we should see a shadow of the teapot being cast onto the table.</p>
+
+        <p>Now we have a simple scene with a table and a teapot. We can add more objects to the scene in a similar way
+          to create more complex scenes.</p>
+
+        <p>Let's add texture to our floor:</p>
+
+        <pre><code class="javascript">const floorTexture = loader.load('https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/textures/wood%20floor.jpg');</code></pre>
+
+        <p>And remember to update our floorMaterial to apply the texture:</p>
+
+        <pre><code class="javascript
+">const floorMaterial = new THREE.MeshStandardMaterial({ map: floorTexture });</code></pre>
+
+        <p>And now our scene looks more realistic than it did when we began!</p>
+
+        <p>We can modify this scene by adding more objects, such as walls, furniture, lights, etc.</p>
+
+        <p>Let's create walls for our scene so we have a room. We will only need three walls as the fourth will be
+          occupied by our camera.</p>
+
+        <p>First, let's create a wall:</p>
+
+        <pre><code class="javascript
+">// Create wall geometry and material
+const wallGeometry = new THREE.PlaneGeometry(20, 15);
+const wallMaterial = new THREE.MeshStandardMaterial({ color: "#a0d6b4" }); // Turquoise Green
+const wall = new THREE.Mesh(wallGeometry, wallMaterial);
+wall.position.z = -10; // Position the wall behind the table
+wall.position.y = 5.5; // Position the wall at the same height as the table
+wall.receiveShadow = true; // Allow the wall to receive shadows
+scene.add(wall);</code></pre>
+
+        <p>We need to ensure that the wall has two sides or else we will only see the wall from one side. We can do this
+          by setting the side property of the material to THREE.DoubleSide:</p>
+
+
+        <pre><code class="javascript">wall.material.side = THREE.DoubleSide;</code></pre>
+
+        <p>While on the topic, let's also make sure our floor has two sides:</p>
+
+        <pre><code class="javascript">floor.material.side = THREE.DoubleSide;</code></pre>
+
+
+        <p>Now we should see a turquoise green wall behind our table. Let's add two more walls:</p>
+
+        <pre><code class="javascript">const wall2 = wall.clone(); // Clone the wall
+wall2.rotation.y = Math.PI / 2; // Rotate the wall to be perpendicular to the first wall
+wall2.position.x = -10; // Position the wall to the left of the table
+wall2.position.z = 0.0001; // Position so edges of the walls meet
+scene.add(wall2);
+
+const wall3 = wall.clone();
+wall3.rotation.y = Math.PI / 2; // Rotate the wall to be perpendicular to the first wall
+wall3.position.x = 10; // Position the wall to the right of the table
+wall3.position.z = 0.0001; // Position so edges of the walls meet
+scene.add(wall3);</code></pre>
+
+        <p>Now how our right wall is shadowed, that is due to lack of light on that side. Let's add a point light above (like a ceiling light) to view better:</p>
+
+        <pre><code class="javascript">// Create a point light
+const light2 = new THREE.PointLight("white", 1);
+light2.position.set(0, 20, 0);
+light2.castShadow = true;
+scene.add(light2);</code></pre>
+
+       <p>Now our scene should be more illuminated.</p>
+
+       <p>How does having these two different lights in different positions affect our scene? How does it affect our shadows?</p>
+
+       <p>What does our scene look like if we rid of our directional light? How does having just the center point light change the scene?</p>
+
+
+      <p>If our teapot's shadow looks a bit blocky from the point light, we applying some antialiasing:</p>
+      <pre><code class="javascript">// Antialias the point light shadow
+light2.shadow.mapSize.width = 2048; // Increase shadow map size for better quality
+light2.shadow.mapSize.height = 2048;
+light2.shadow.radius = 4; // Increase shadow radius for softer shadows</code></pre>
+       
+      <p>This should make our shadow look smoother.</p>
+
+      <p>And there we have it! We've used what we've learned so far to build a more complex scene with a table, teapot, walls, and lights.</p>
+
+
+
+
+
+
+      </article>
+      <br />
+    </section>
+
+
+
+
+
+
+
+
+
+
 
 
 
