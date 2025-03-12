@@ -38,7 +38,49 @@ for (int i = 1; i <= n; i++) {
 
 System.out.println("sum = " + sum);
 
-b) 
+b)
+
+import java.util.Scanner;
+
+public class PositiveNumberCheck {
+    public static void main(String[] args) {
+        // Create a Scanner object to read input
+        Scanner scanner = new Scanner(System.in);
+
+        // Declare and initialize the variables x and y
+        System.out.print("Enter value for x: ");
+        int x = scanner.nextInt();
+
+        System.out.print("Enter value for y: ");
+        int y = scanner.nextInt();
+
+        // 1. Check if both x and y are positive
+        if (x > 0 && y > 0) {
+            System.out.println("they are both positive");
+        } else {
+            System.out.println("they are not both positive");
+        }
+
+        // 2. Check if at least one of x or y is positive
+        if (x > 0 || y > 0) {
+            System.out.println("at least one is positive");
+        } else {
+            System.out.println("neither one is positive");
+        }
+
+        // 3. Check if either x or y is not not positive
+        if (!(x > 0 && y > 0)) { // This effectively checks if either x or y is positive
+            System.out.println("it is not positive");
+        } else {
+            System.out.println("it is positive"); // This means both are positive
+        }
+
+        // Close the Scanner
+        scanner.close();
+    }
+}
+
+c) 
 
 import java.util.Scanner;
 
