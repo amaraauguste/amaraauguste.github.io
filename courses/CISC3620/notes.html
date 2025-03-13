@@ -6271,7 +6271,8 @@ planeTexture.repeat.set(4, 4); // Repeat the texture 4 times in both directions<
       <br />
       <header><b>A More Complex Scene</b></header>
       <article>
-        <p>So far, we've learned how to create a scene, add objects to it, add lights, cast shadows, and apply textures to those objects.</p>
+        <p>So far, we've learned how to create a scene, add objects to it, add lights, cast shadows, and apply textures
+          to those objects.</p>
 
         <p>For example, we've played around with cubes but if we want realistic scenes that are not just made up of
           crates and boxes we need to start building more complex objects.</p>
@@ -6517,7 +6518,8 @@ wall3.position.x = 10; // Position the wall to the right of the table
 wall3.position.z = 0.0001; // Position so edges of the walls meet
 scene.add(wall3);</code></pre>
 
-        <p>Now how our right wall is shadowed, that is due to lack of light on that side. Let's add a point light above (like a ceiling light) to view better:</p>
+        <p>Now how our right wall is shadowed, that is due to lack of light on that side. Let's add a point light above
+          (like a ceiling light) to view better:</p>
 
         <pre><code class="javascript">// Create a point light
 const light2 = new THREE.PointLight("white", 1);
@@ -6525,26 +6527,276 @@ light2.position.set(0, 20, 0);
 light2.castShadow = true;
 scene.add(light2);</code></pre>
 
-       <p>Now our scene should be more illuminated.</p>
+        <p>Now our scene should be more illuminated.</p>
 
-       <p>How does having these two different lights in different positions affect our scene? How does it affect our shadows?</p>
+        <p>How does having these two different lights in different positions affect our scene? How does it affect our
+          shadows?</p>
 
-       <p>What does our scene look like if we rid of our directional light? How does having just the center point light change the scene?</p>
+        <p>What does our scene look like if we rid of our directional light? How does having just the center point light
+          change the scene?</p>
 
 
-      <p>If our teapot's shadow looks a bit blocky from the point light, we applying some antialiasing:</p>
-      <pre><code class="javascript">// Antialias the point light shadow
+        <p>If our teapot's shadow looks a bit blocky from the point light, we applying some antialiasing:</p>
+        <pre><code class="javascript">// Antialias the point light shadow
 light2.shadow.mapSize.width = 2048; // Increase shadow map size for better quality
 light2.shadow.mapSize.height = 2048;
 light2.shadow.radius = 4; // Increase shadow radius for softer shadows</code></pre>
+
+        <p>This should make our shadow look smoother.</p>
+
+        <p>And there we have it! We've used what we've learned so far to build a more complex scene with a table,
+          teapot, walls, and lights.</p>
+
+        <p>Now think about tables that we have seen in reality, they can vary from material. A standard table like our
+          object can be made out of wood (like our example), marble (for which we would use a different texture and a
+          shinier material),
+          or even glass.</p>
+
+        <p>Let's talk about the properties of glass.</p>
+
+        <p>Glass is transparent, meaning light can pass through it. This is different from our current table material
+          which is opaque, meaning light cannot pass through it.</p>
+
+        <p>In order to create transparent objects, first we need to set the transparent property of our material to
+          true.
+          We also need to set the opacity property to a value between 0 and 1, where 0 is completely transparent and 1
+          is
+          completely opaque.</p>
+
+        <p>Let's create a glass table:</p>
+
+        <pre><code class="javascript">const tableMaterial = new THREE.MeshPhongMaterial({ color : "pink", 
+    transparent : true, 
+    opacity: 0.75
+}); //opacity will not work if transparent is not set to true</code></pre>
+
+        <p>Now we should see a pink glass table in our scene.</p>
+
+        <p>Let's add a GUI to toggle our lights on and off:</p>
+
+        <p>First, we need to add the following script to our HTML file to import the GUI library:</p>
+
+        <pre><code class="HTML">&lt;script src="https://cdn.jsdelivr.net/npm/dat.gui/build/dat.gui.min.js"&gt;&lt;/script&gt;</code></pre>
+
+        <p>Now we can create a GUI to toggle our lights on and off:</p>
+
+        <pre><code class="javascript">// GUI setup
+const gui = new dat.GUI();
+const guiParams = {
+    directionalLight: true, // Directional light toggle
+    pointLight: true, // Point light toggle
+};</code></pre>
+
+        <p>Now we can add controls to our GUI to toggle our lights:</p>
+
+        <pre><code class="javascript">gui.add(guiParams, 'directionalLight').name('Directional Light').onChange((value) => {
+    light.visible = value;
+});
+      
+gui.add(guiParams, 'pointLight').name('Point Light').onChange((value) => {
+    light2.visible = value;
+});</code></pre>
+
+        <p>Now we should see a GUI with toggles for our directional and point lights.</p>
+
+        <p>Let's try a different scene, a tree on some grass.</p>
+
+        <p>Let's set our scene:</p>
+
+        <pre><code class="javascript">// Scene setup
+let width = 500;
+let height = 400;
+const scene = new THREE.Scene();
+scene.background = new THREE.Color("skyblue"); // Set sky color
+
+const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(width, height);
+renderer.shadowMap.enabled = true;
+renderer.antialias = true;
+document.body.appendChild(renderer.domElement);
+        
+// Camera position
+camera.position.set(0, 1, 10); // Set camera position so we can view the scene
        
-      <p>This should make our shadow look smoother.</p>
-
-      <p>And there we have it! We've used what we've learned so far to build a more complex scene with a table, teapot, walls, and lights.</p>
-
-
+// Add OrbitControls to enable mouse movement
+const controls = new THREE.OrbitControls(camera, renderer.domElement);
+controls.update();
 
 
+
+
+function animate() {
+    requestAnimationFrame(animate);
+    renderer.render(scene, camera);
+}
+animate();</code></pre>
+
+        <p>And ensure that we have an light source:</p>
+
+        <pre><code class="javascript">// Create a directional light
+const light = new THREE.DirectionalLight("white", 1);
+light.position.set(-10, 7, 7);
+light.castShadow = true;
+scene.add(light);</code></pre>
+
+        <p>Now we need our grass ground:</p>
+
+        <pre><code class="javascript">// Create grass geometry and material
+const groundGeometry = new THREE.PlaneGeometry(100, 100);
+const groundMaterial = new THREE.MeshStandardMaterial({ color: "green", side: THREE.DoubleSide });
+const ground = new THREE.Mesh(groundGeometry, groundMaterial);
+ground.rotation.x = -Math.PI / 2; // Rotate to make it flat
+ground.receiveShadow = true;
+scene.add(ground);</code></pre>
+
+        <p>And now we'll write a function to make a pine tree. First, think about how a pine tree looks. A standard one
+          has a triangular shape with a brown trunk and green leaves. We can create this using a ConeGeometry for the
+          leaves and a CylinderGeometry for the trunk.</p>
+
+        <p>Let's create a pine tree:</p>
+
+        <pre><code class="javascript">// Function to create a pine tree
+function createPineTree() {
+    const tree = new THREE.Group(); // Group to hold tree components
+
+    // Create the trunk of the tree
+    const trunkGeometry = new THREE.CylinderGeometry(0.1, 0.25, 2, 8); // Radius top, radius bottom, height, number of segments
+    const trunkMaterial = new THREE.MeshStandardMaterial({ color: "brown" }); // Brown color for the trunk
+    const trunk = new THREE.Mesh(trunkGeometry, trunkMaterial);
+    trunk.castShadow = true;
+    trunk.position.y = 0.5;  // Position trunk at the bottom of the tree
+    tree.add(trunk);  // Add trunk to the tree group
+
+    // Create foliage using cones
+    const foliageGeometry = new THREE.ConeGeometry(0.8, 1.5, 8); // Radius, height, number of segments
+    const foliageMaterial = new THREE.MeshStandardMaterial({ color: "green" }); // Green color for foliage
+
+    // Create multiple layers of foliage for a better shape
+    for (let i = 0; i < 3; i++) {
+        const foliage = new THREE.Mesh(foliageGeometry, foliageMaterial);
+        foliage.position.y = 1 + i * 0.5;  // Adjust position for layers
+        foliage.rotation.y = Math.random() * Math.PI;  // Random rotation
+        foliage.castShadow = true;
+        tree.add(foliage);  // Add foliage layer to tree
+    }
+
+    return tree;  // Return the complete tree object
+}</code></pre>
+
+        <p>Now we can add our pine tree to the scene:</p>
+
+        <pre><code class="javascript">// Create a pine tree
+const pineTree = createPineTree();
+pineTree.scale.set(2,2,2); // Scale the tree to make it larger
+pineTree.position.y = 1; // Position the tree above the ground
+pineTree.position.x = -5; // Position the tree to the left
+scene.add(pineTree);</code></pre>
+
+        <p>Now we should see a pine tree (and it's shadow) on some grass in our scene.</p>
+
+        <p>Let's add a simple house next to the tree:</p>
+
+        <pre><code class="javascript">// Create a simple house
+const houseStructure = new THREE.Group(); // to group all our objects
+const houseGeometry = new THREE.BoxGeometry(4, 4, 4);
+const houseMaterial = new THREE.MeshStandardMaterial({ color: 0xffcc00 });
+const house = new THREE.Mesh(houseGeometry, houseMaterial);
+house.castShadow = true;
+house.position.set(0, 2, 0); 
+houseStructure.add(house);
+
+// Create a simple roof for the house
+const roofGeometry = new THREE.ConeGeometry(2.8, 2, 4);
+const roofMaterial = new THREE.MeshStandardMaterial({ color: 0x8B0000 });
+const roof = new THREE.Mesh(roofGeometry, roofMaterial);
+roof.castShadow = true;
+roof.position.set(0, 5, 0);
+roof.rotation.y = Math.PI / 4; // Rotate to place it correctly on top of the house
+houseStructure.add(roof);
+
+// Create a door for the house
+const doorGeometry = new THREE.BoxGeometry(1, 2, 0.1);
+const doorMaterial = new THREE.MeshStandardMaterial({ color: 0x654321 }); // Door color
+const door = new THREE.Mesh(doorGeometry, doorMaterial);
+door.position.set(0, 1, 2); // Position the door
+houseStructure.add(door);
+
+// Create windows for the house
+const windowGeometry = new THREE.BoxGeometry(1, 1, 0.1);
+const windowMaterial = new THREE.MeshPhongMaterial({ color: 0xadd8e6 }); // Window color
+
+// Left window
+const leftWindow = new THREE.Mesh(windowGeometry, windowMaterial);
+leftWindow.position.set(-1.25, 2, 2); // Position left window
+houseStructure.add(leftWindow);
+        
+// Right window
+const rightWindow = new THREE.Mesh(windowGeometry, windowMaterial);
+rightWindow.position.set(1.25, 2, 2); // Position right window
+houseStructure.add(rightWindow);
+
+scene.add(houseStructure);</code></pre>
+
+        <p>Let's move the house forward a bit:</p>
+
+        <pre><code class="javascript
+">houseStructure.position.z = 2;</code></pre>
+
+        <p>And we should move out camera back on the z-axis to reflect this.</p>
+
+        <p>Now we should see a pine tree, a house, and some grass in our scene.</p>
+
+        <p>Let's add a GUI to toggle our objects on and off:</p>
+
+        <pre><code class="javascript">const gui = new dat.GUI();
+const guiParams = {
+    tree: true, // Tree toggle
+    house: true, // House toggle
+};
+
+gui.add(guiParams, 'tree').name('Pine Tree').onChange((value) => {
+    pineTree.visible = value;
+});
+
+gui.add(guiParams, 'house').name('House').onChange((value) => {
+    houseStructure.visible = value;
+});</code></pre>
+
+        <p>Now we should be able to toggle our pine tree and house visible by our GUI.</p>
+
+        <p>Let's modify our house with some textures for the base, roof, and door.</p>
+
+        <p>Let's create our texture loader:</p>
+
+        <pre><code class="javascript">// Create a texture loader
+const loader = new THREE.TextureLoader();</code></pre>
+
+        <p>Now let's load our textures:</p>
+
+        <pre><code class="javascript"">const houseTexture = loader.load('https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/textures/brown%20house%20texture.jpg');
+const roofTexture = loader.load('https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/textures/red%20roof%20texture.png');
+const doorTexture = loader.load('https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/textures/pixel_door.png');</code></pre>
+
+        <p>Now let's apply the textures to our house:</p>
+
+        <pre><code class="javascript">const houseMaterial = new THREE.MeshStandardMaterial({ map: houseTexture });
+const roofMaterial = new THREE.MeshStandardMaterial({ map: roofTexture });
+const doorMaterial = new THREE.MeshStandardMaterial({ map: doorTexture });</code></pre>
+
+        <p>And now our house should have textures applied to the base, roof, and door.</p>
+
+        <p>Let's improve our roof with some texture tiling:</p>
+
+        <pre><code class="javascript
+">roofTexture.wrapS = THREE.RepeatWrapping; // Repeat the texture in the x-direction
+roofTexture.wrapT = THREE.RepeatWrapping; // Repeat the texture in the y-direction
+roofTexture.repeat.set(4, 4); // Repeat the texture 4 times in both directions</code></pre>
+
+        <p>Now our roof should have a tiled texture applied to it.</p>
+
+        <p>And there we have it! We've used what we've learned so far to successfully build a more complex (although
+          still rather simple) scene both indoors and outdoors.</p>
 
 
       </article>
