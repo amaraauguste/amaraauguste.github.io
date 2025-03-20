@@ -77,6 +77,7 @@
           <a href="#Shadows" onclick="closeDropdown3()">Shadows</a>
           <a href="#Textures" onclick="closeDropdown3()">Textures</a>
           <a href="#A_More_Complex_Scene" onclick="closeDropdown3()">A More Complex Scene</a>
+          <a href="#Custom_Geometry" onclick="closeDropdown3()">Custom Geometry</a>
           <!--<a href="#Linear_Algebra" onclick="closeDropdown2()">Linear Algebra</a>
           <a href="#Variable_Scope" onclick="closeDropdown2()">Variable Scope</a>
           <a href="#Global_Variables" onclick="closeDropdown2()">Global Variables</a>
@@ -6536,7 +6537,8 @@ scene.add(light2);</code></pre>
           change the scene?</p>
 
 
-        <p>If our teapot's shadow looks a bit blocky from the point light, we can fix this by applying some antialiasing:</p>
+        <p>If our teapot's shadow looks a bit blocky from the point light, we can fix this by applying some
+          antialiasing:</p>
         <pre><code class="javascript">// Antialias the point light shadow
 light2.shadow.mapSize.width = 2048; // Increase shadow map size for better quality
 light2.shadow.mapSize.height = 2048;
@@ -6802,7 +6804,298 @@ roofTexture.repeat.set(4, 4); // Repeat the texture 4 times in both directions</
       </article>
       <br />
     </section>
+    <hr />
+    <section class="main-section" id="Custom_Geometry">
+      <br />
+      <header><b>Custom Geometry</b></header>
+      <article>
+        <p>So far, we've used primitive geometries like BoxGeometry, ConeGeometry, and CylinderGeometry to create
+          objects in Three.js.</p>
 
+        <p>However, sometimes we may want to create custom geometries that are not built into Three.js.</p>
+
+        <p>We've seen a bit of this with BufferGeometry, which allows us to create custom geometries by specifying the
+          vertices and faces of the geometry.</p>
+
+        <p>Another way to create custom geometries is to use the THREE.Shape class</p>
+
+        <p>First, we need to define the shape. We can do this by creating a path using the
+          <b>THREE.Shape</b> class.
+        </p>
+
+        <p>The THREE.Shape class allows us to define 2D shapes by specifying a series of points. This is similar to how
+          we define paths in SVG, Adobe Illustrator, or like we did in HTML5 Canvas.</p>
+
+        <h2>Example 1: Custom Triangle with THREE.Shape</h2>
+
+        <p>Let's create a custom geometry using THREE.Shape:</p>
+
+        <pre><code class="javascript">const tri = new THREE.Shape();
+tri.moveTo(0, 1); 
+tri.lineTo(1, -1);
+tri.lineTo(-1, -1);</code></pre>
+
+        <p>We've created a triangle shape with vertices at (0, 1), (1, -1), and (-1, -1).</p>
+
+        <p>Now we can create a custom geometry using the shape:</p>
+
+        <pre><code class="javascript">const geometry = new THREE.ShapeGeometry(tri);</code></pre>
+
+        <p>THREE.ShapeGeometry() takes a shape as a parameter and creates a geometry based on that shape. We can then
+          create a mesh using the custom geometry and a material and add it to the scene.</p>
+
+        <pre><code class="javascript">const material = new THREE.MeshStandardMaterial({ color: "blue" });
+const mesh = new THREE.Mesh(geometry, material);
+scene.add(mesh);</code></pre>
+
+        <p>Now we should see a blue triangle in our scene.</p>
+
+        <p>We can create a variety of custom geometries by defining different shapes and paths.</p>
+
+        <p>Another way to create custom geometries is to use <b>ExtrudeGeometry</b>.</p>
+
+        <p>ExtrudeGeometry allows us to create geometries by extruding a 2D shape along a path in 3D space. This is
+          similar to how we create 3D objects by extruding 2D shapes in 3D modeling software.</p>
+
+        <p>ExtrudeGeometry is useful for creating complex geometries like buildings, furniture, and other objects with
+          depth.</p>
+
+        <h2>Example 1.5: Pyramid with ExtrudeGeometry</h2>
+
+        <p>Let's extrude our triangle to create a pyramid:</p>
+
+        <pre><code class="javascript">const extrudeSettings = {
+    steps: 1, // Number of steps to extrude the shape
+    depth: 1, // Depth of the extrusion
+    bevelEnabled: false, // Disable beveling
+};
+
+const pyramidGeometry = new THREE.ExtrudeGeometry(tri, extrudeSettings);
+const pyramidMaterial = new THREE.MeshStandardMaterial({ color: "red" });
+const pyramidMesh = new THREE.Mesh(pyramidGeometry, pyramidMaterial);
+scene.add(pyramidMesh);</code></pre>
+
+        <p>ExtrudeGeometry takes two parameters: the shape we want to extrude and extrusion settings.</p>
+        <p>Extrusion settings include:</p>
+        <ul>
+          <li>steps: the number of steps to extrude the shape - this means how many times the shape is extruded along
+            the path</li>
+          <li>depth: the depth of the extrusion - this means how far the shape is extruded along the path</li>
+          <li>bevelEnabled: whether to enable beveling which creates rounded edges</li>
+        </ul>
+
+        <h2>Example 2: Custom Cube with ExtrudeGeometry</h2>
+
+        <p>Let's create a custom cube:</p>
+
+        <pre><code class="javascript">const shape = new THREE.Shape();
+shape.moveTo(0, 0); // Move to the starting point
+shape.lineTo(0, 1); // Draw a line to the next point
+shape.lineTo(1, 1); // Draw a line to the next point
+shape.lineTo(1, 0); // Draw a line to the next point
+shape.lineTo(0, 0); // Draw a line back to the starting point</code></pre>
+
+        <p>Now we can create our custom geometry using ExtrudeGeometry:</p>
+
+        <pre><code class="javascript">const extrudeSettings = {
+    steps: 2, 
+    depth: 1, 
+    bevelEnabled: false, // Disable beveling which creates rounded edges
+};
+
+const geometry = new THREE.ExtrudeGeometry(shape, extrudeSettings);</code></pre>
+
+        <p>Now we can create a mesh using our custom geometry:</p>
+
+        <pre><code class="javascript">const material = new THREE.MeshStandardMaterial({ color: "red" });
+const mesh = new THREE.Mesh(geometry, material);
+scene.add(mesh);</code></pre>
+
+        <p>Now we should see a red extruded shape (cube) in our scene.</p>
+
+        <h2>Example 3: Custom Star Shape with ExtrudeGeometry</h2>
+
+        <p>For example, we can create a custom geometry by extruding a star shape:</p>
+
+        <pre><code class="javascript">// Create a star shape
+const starShape = new THREE.Shape();
+starShape.moveTo(0, 0.5);
+starShape.lineTo(0.15, 0.15);
+starShape.lineTo(0.5, 0.15);
+starShape.lineTo(0.2, -0.15);
+starShape.lineTo(0.3, -0.5);
+starShape.lineTo(0, -0.25);
+starShape.lineTo(-0.3, -0.5);
+starShape.lineTo(-0.2, -0.15);
+starShape.lineTo(-0.5, 0.15);
+starShape.lineTo(-0.15, 0.15);
+starShape.lineTo(0, 0.5);
+
+// Extrude the star shape
+const extrudeSettings = {
+    steps: 2,
+    depth: 0.1,
+    bevelEnabled: false,
+};
+
+const starGeometry = new THREE.ExtrudeGeometry(starShape, extrudeSettings);
+const starMaterial = new THREE.MeshStandardMaterial({ color: "yellow" });
+const starMesh = new THREE.Mesh(starGeometry, starMaterial);
+starMesh.scale.set(4,4,4);
+scene.add(starMesh);</code></pre>
+
+        <p>Now we should see a yellow extruded star shape in our scene.</p>
+
+        <p>Or let's create a simple heart shape.</p>
+
+        <h2>Example 4: Custom Heart Shape with ExtrudeGeometry</h2>
+
+        <p>To draw a heart shape, we need to define a series of points that form the shape of a heart. The easiest way
+          to do this is
+          with bezier curves.</p>
+
+        <p>To refresh your memory, a bezier curve is a parametric curve that is defined by a set of control points.
+          In Three.js (like in HTML5 Canvas), we can use the bezierCurveTo() method of the Shape class to create bezier
+          curves.</p>
+
+        <p>The parameters of bezierCurveTo() are the x and y coordinates of the control point and the x and y
+          coordinates of the end point of the curve.</p>
+
+        <pre><code class="javascript">const heartShape = new THREE.Shape();
+heartShape.moveTo( 2.5, 2.5 );
+heartShape.bezierCurveTo( 2.5, 2.5, 2.0, 0, 0, 0 ); 
+heartShape.bezierCurveTo( - 3.0, 0, - 3.0, 3.5, - 3.0, 3.5 );
+heartShape.bezierCurveTo( - 3.0, 5.5, - 1.0, 7.7, 2.5, 9.5 );
+heartShape.bezierCurveTo( 6.0, 7.7, 8.0, 5.5, 8.0, 3.5 );
+heartShape.bezierCurveTo( 8.0, 3.5, 8.0, 0, 5.0, 0 );
+heartShape.bezierCurveTo( 3.5, 0, 2.5, 2.5, 2.5, 2.5 );
+
+const extrudeSettings = {
+    steps: 2,
+    depth: 1,
+    bevelEnabled: true,
+}; 
+const geometry = new THREE.ExtrudeGeometry( heartShape, extrudeSettings );
+geometry.rotateX(Math.PI * 1);
+geometry.center();
+
+const material = new THREE.MeshStandardMaterial({color: "#FF69B4"});
+
+const heartMesh = new THREE.Mesh( geometry, material);
+
+heartMesh.scale.set(0.25, 0.25, 0.25);
+
+scene.add(heartMesh);</code></pre>
+
+        <p>It's starting to come along but it's not quite right. We can adjust even further to get the shape we're
+          after:</p>
+
+        <pre><code class="javascript">const extrudeSettings = {
+    steps: 2,
+    depth: 1,
+    bevelEnabled: true,
+    curveSegments: 40, // Number of points on the curves
+    bevelSegments: 20, // Number of segments for the bevel
+    bevelThickness: 0.75, // Thickness of the bevel
+    bevelSize: 0.75 // Size of the bevel
+};</code></pre>
+
+        <p>These modifications should give us a more accurate heart shape by adding more curve segments and bevel
+          segments
+          to the extrusion.</p>
+
+        <p>Now we should see a pink extruded heart shape in our scene.</p>
+
+        <p>We can also "punch" a shaped hole into other shapes.</p>
+
+        <h2>Example 5: Custom Triangle with Hole using ExtrudeGeometry</h2>
+
+        <pre><code class="javascript">const tri = new THREE.Shape();
+tri.moveTo(0, 2);
+tri.lineTo(2, -2);
+tri.lineTo(-2, -2);
+// add the hole
+const hole = new THREE.Shape();
+hole.arc(0, -0.8, 1.0, 0, Math.PI * 2);
+
+tri.holes.push(hole); // push to the shapes holes array
+
+const extrudeSettings = {
+    steps: 2,
+    depth: 1,
+    bevelEnabled: false
+};
+const geometry = new THREE.ExtrudeGeometry(tri, extrudeSettings);
+geometry.rotateX(Math.PI * 1); 
+geometry.center();
+
+const mesh = new THREE.Mesh(geometry, new THREE.MeshNormalMaterial());
+
+scene.add(mesh);</code></pre>
+
+        <p>This code creates a triangle with a hole in the center. The hole is created by adding a circle shape to the
+          triangle's holes array and extruding the shape with the hole.</p>
+
+        <p>We can also create custom geometries by setting the vertices of the geometry directly using the
+          <b>setFromPoints</b> method of the Shape class.
+        </p>
+
+        <p>We can set the state of a path by way of an
+          array of <b>THREE.vector2</b> class objects. The Vector2 class is a class that is used to represent a point
+          in 2D space.</p>
+
+        <p>We can create an array of these Vector2 objects by any means
+          that we would like, and then we can just create a shape, and then call the set from points method off of the
+          shape
+          and pass the array of Vector2 objects.</p>
+
+        <h2>Example 6: Custom Parabola Shape with ExtrudeGeometry</h2>
+
+        <pre><code class="javascript">// creating an array of THREE.Vector2 objects
+const points = []; // array to hold the points
+const len = 100;
+let i = 0;
+while(i < len){ // loop to create the points
+    const a = i / len;
+    const x = -3  + 6 * a; // x position that will be used to create a parabola
+    const y = Math.sin( Math.PI * 1.0 * a ) * 4; //to create a parabola
+    points.push(new THREE.Vector2(x, y));
+    i += 1;
+}
+const shape = new THREE.Shape();
+// creating the path by using the set from points method with the array of THREE.Vector2 objects
+shape.setFromPoints(points);
+  
+const extrudeSettings = {
+    steps: 2,
+    depth: 1.5,
+    bevelEnabled: false
+};
+const geometry = new THREE.ExtrudeGeometry( shape, extrudeSettings );
+geometry.center(); //to center the geometry
+  
+const material = new THREE.MeshStandardMaterial({ color: "blue" });
+const mesh = new THREE.Mesh( geometry, material );
+  
+scene.add(mesh);</code></pre>
+
+
+        <p>And there we have it! We've used what we've learned so far to create custom geometries using THREE.Shape and
+          ExtrudeGeometry.</p>
+
+        <p>Now think about what other custom geometries you could create using these methods. What shapes could you
+          create? What objects could you model?</p>
+
+        <p>What other methods could you use to create custom geometries in Three.js?</p>
+
+        <p>What are some other ways you could modify the custom geometries we've created?</p>
+
+        <p>What are some other ways you could use custom geometries in your Three.js projects?</p>
+
+
+      </article>
+      <br />
+    </section>
 
 
 
