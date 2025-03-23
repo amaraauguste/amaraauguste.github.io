@@ -78,6 +78,7 @@
           <a href="#Textures" onclick="closeDropdown3()">Textures</a>
           <a href="#A_More_Complex_Scene" onclick="closeDropdown3()">A More Complex Scene</a>
           <a href="#Custom_Geometry" onclick="closeDropdown3()">Custom Geometry</a>
+          <a href="#Loading_Models" onclick="closeDropdown3()">Loading Models</a>
           <!--<a href="#Linear_Algebra" onclick="closeDropdown2()">Linear Algebra</a>
           <a href="#Variable_Scope" onclick="closeDropdown2()">Variable Scope</a>
           <a href="#Global_Variables" onclick="closeDropdown2()">Global Variables</a>
@@ -7091,6 +7092,366 @@ scene.add(mesh);</code></pre>
         <p>What are some other ways you could modify the custom geometries we've created?</p>
 
         <p>What are some other ways you could use custom geometries in your Three.js projects?</p>
+
+
+      </article>
+      <br />
+    </section>
+    <hr />
+    <section class="main-section" id="Loading_Models">
+      <br />
+      <header><b>Loading Models</b></header>
+      <article>
+        <p>So far we've created geometries using Three.js's built-in geometries and custom geometries.</p>
+
+        <p>But as aforementioned the 3D Graphics pipeline actually starts with a 3D model. A 3D model is a digital
+          representation of a 3D object or scene.</p>
+
+        <p>To create beautiful 3D models, a sophisticated modeling program is required, like Blender, Maya, 3ds Max, or
+          SketchUp.
+          We can use Three.js to build any kind of 3D application, however, building a modeling app from scratch would
+          be a huge amount of work. A
+          much simpler solution is to use an existing program and export your work for use in Three.js… or, "cheat", and
+          download any of the millions of amazing models and other scene assets that are available for free in many
+          places around the web.</p>
+
+        <h2>Types of 3D Models</h2>
+
+        <p>Once a 3D model is created, it can be exported to a file format that can be read by a 3D graphics library
+          like Three.js.</p>
+
+        <p>Three.js supports a variety of 3D model file formats including:</p>
+        <ul>
+          <li><b>OBJ</b> (Wavefront)</li>
+          <li><b>glTF</b> (GL Transmission Format)</li>
+          <li><b>FBX</b> (Filmbox)</li>
+          <li><b>DAE</b> (Collada)</li>
+          <li><b>STL</b> (Stereolithography)</li>
+          <li><b>3DS</b> (3D Studio)</li>
+          <li><b>PLY</b> (Polygon File Format)</li>
+        </ul>
+
+        <p>Let's talk about each of these formats:</p>
+
+        <p><b>OBJ</b> (Wavefront) is a simple text-based file format that stores information about the 3D model's
+          geometry,
+          materials, and textures.</p>
+        <p><b>glTF</b> (GL Transmission Format) is a binary file format that stores information about the 3D model's
+          geometry,
+          materials, textures, and animations. GLTF is designed to be compact and efficient for web-based 3D
+          applications.</p>
+        <p><b>FBX</b> (Filmbox) is a proprietary file format developed by Autodesk that stores information about the 3D
+          model's
+          geometry, materials, textures, animations, and other data. FBX is widely used in the film and game industry.
+        </p>
+        <p><b>DAE</b> (Collada) is an XML-based file format that stores information about the 3D model's geometry,
+          materials,
+          textures, animations, and other data. Collada is designed to be an open and interoperable format for 3D
+          content.</p>
+        <p><b>STL</b> (Stereolithography) is a file format that stores information about the 3D model's geometry as a
+          series of
+          triangles. STL is commonly used for 3D printing and rapid prototyping.</p>
+        <p><b>3DS</b> (3D Studio) is a file format developed by Autodesk that stores information about the 3D model's
+          geometry,
+          materials, textures, and animations. 3DS is widely used in the film and game industry.</p>
+        <p><b>PLY</b> (Polygon File Format) is a file format that stores information about the 3D model's geometry as a
+          series
+          of vertices, edges, and faces. PLY is commonly used for 3D scanning and computer graphics research.</p>
+
+        <p>There have been many attempts at creating a standard 3D asset exchange format over the last thirty years or
+          so. FBX, OBJ (Wavefront) and DAE (Collada) formats were the most popular of these until recently, although
+          they all have problems that prevented their widespread adoption.</p>
+
+        <p>For example, OBJ doesn't support animation, FBX is a closed format that belongs to Autodesk, and the Collada
+          spec is overly complex, resulting in large files that are difficult to load.</p>
+
+        <p>However, recently, a newcomer called <b>glTF</b> has become the de facto standard format for exchanging 3D
+          assets on
+          the web. <b>glTF (GL Transmission Format)</b>, sometimes referred to as the JPEG of 3D, was created by the
+          Kronos
+          Group, the same people who are in charge of WebGL, OpenGL, and a whole host of other graphics APIs. </p>
+
+        <p>Originally released in 2017, glTF is now the best format for exchanging 3D assets on the web, and in many
+          other fields. In this class, we will always use glTF, and if possible, you should do the same. It's designed
+          for sharing models on the web, so the file size is as small as possible and your models will load quickly.</p>
+
+        <p>glTF files can contain models, animations, geometries, materials, lights, cameras, or even entire scenes.
+          This means you can create an entire scene in an external program then load it into Three.js.</p>
+
+          
+
+        <h2>Types of glTF Files</h2>
+
+        <p>glTF files come in standard and binary form. These have different extensions:</p>
+
+        <ul>
+          <li>Standard <b>.gltf files</b> are uncompressed and may come with an extra .bin data file</li>
+          <li>Binary <b>.glb files</b> include all data in one single file.</li>
+        </ul>
+
+        <p>Both standard and binary glTF files may contain textures embedded in the file or may reference external
+          textures. Since <b>binary .glb files are considerably smaller</b>, it's best to use this type. On the other
+          hand,
+          <b>uncompressed .gltf are easily readable in a text editor</b>, so they may be useful for debugging purposes.
+        </p>
+
+        <h2>Loading 3D Models</h2>
+
+        <p>Now that we know about the different types of 3D model file formats, let's learn how to
+          load a 3D model into a Three.js scene.</p>
+
+        <p>We'll start with three simple and beautiful models of a parrot, a flamingo, and a stork, created by the
+          talented people at
+          <a href="https://mirada.com/">mirada.com</a>. These three models are low poly, meaning they'll run on even the
+          most low-power
+          of mobile devices, and they are even animated.
+        </p>
+
+        <p>We will load Parrot.glb, Flamingo.glb, and Stork.glb and then add the bird-shaped meshes each file contains
+          to our scene.
+          Later, we will learn how to play the flying animation that is included with each bird.</p>
+
+        <p>In order to load a 3D model into Three.js, we need to use a loader. A loader is a class that reads a 3D model
+          file and creates a Three.js object from it. More specifically, since we're using glTF models, we'll use the
+          GLTFLoader class.</p>
+
+          <p>Since glTF is relatively new, your favorite application might not have an exporter yet. In that
+            case, you can convert your models to glTF before using them, or use another loader such as the FBXLoader or
+            OBJLoader. All Three.js loaders work the same way, so if you do need to use another loader, everything will
+            still apply, with only minor differences.</p>
+
+        <p>To load glTF files, first, we need to add the GLTFLoader plugin to our environment.
+          This works the same way as adding the OrbitControls plugin:</p>
+
+        <pre><code class="HTML">&lt;script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"&gt;&lt;/script&gt;</code></pre>
+
+        <p>Now we can now create an instance of the GLTFLoader class:</p>
+
+        <pre><code class="javascript">const loader = new THREE.GLTFLoader();</code></pre>
+
+        <p>Next, we can use the load() method of the loader to load a glTF model file:</p>
+
+        <pre><code class="javascript">loader.load('https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/master/courses/CISC3620/models/Parrot.glb', function (gltf) {
+    const parrot = gltf.scene;
+    scene.add(parrot);
+});</code></pre>
+
+        <p>The load() method takes two parameters: the URL of the model file and a callback function that is called when
+          the model is loaded. The callback function receives a gltf object that contains the loaded 3D model. We can
+          access the 3D model scene by using gltf.scene and then add it to our Three.js scene.</p>
+
+          <p>Let's add the stork and flamingo models to our scene:</p>
+
+        <pre><code class="javascript">loader.load('https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/master/courses/CISC3620/models/Stork.glb', function (gltf) {
+    const stork = gltf.scene;
+    scene.add(stork);
+});
+
+loader.load('https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/master/courses/CISC3620/models/Flamingo.glb', function (gltf) {
+    const flamingo = gltf.scene;
+    scene.add(flamingo);
+});</code></pre>
+
+        <p>It is possible for models loaded from a glTF file to have a position already specified, but that's not the case here, so all three models start at the point (0,0,0), all jumbled together on top of each other.</p>
+
+        <p>We'll adjust the position of each bird to make it look like they are flying in formation:</p>
+
+        <pre><code class="javascript">parrot.position.set(0, 20, 2.5); //before we add the parrot to the scene
+stork.position.set(70, -40, -10); //before we add the stork to the scene
+flamingo.position.set(-70, 0, -10); //before we add the flamingo to the scene</code></pre>
+
+        <p>Now the birds should be in a more visually appealing formation.</p>
+
+        <p>We will revisit these birds later but first let's pivot back to stationary objects like furniture.</p>
+
+        <h2>Importing Models By Other Artists</h2>
+
+        <p>If you are interested in creating your own 3D models, you can start by learning how to use one of these
+          software programs. However, for those who are not interested in creating their own 3D models, there are many
+          websites that offer free and paid 3D models that you can download and use in your projects.</p>
+
+        <p>Some of these include:</p>
+
+        <ul>
+          <li><a href="https://poly.pizza/" target="_blank">Poly Pizza</a></li>
+          <li><a href="https://www.turbosquid.com/" target="_blank">TurboSquid</a></li>
+          <li><a href="https://sketchfab.com/" target="_blank">Sketchfab</a></li>
+          <li><a href="https://www.cgtrader.com/" target="_blank">CGTrader</a></li>
+          <li><a href="https://www.blendswap.com/" target="_blank">Blend Swap</a></li>
+          <li><a href="https://free3d.com/" target="_blank">Free3D</a></li>
+        </ul>
+
+        <p>We'll use 3D models from Poly Pizza in this class, as they offer a variety of free 3D models that we can
+          use in our projects as long as we credit the creator under the Creative Commons license. However you can use
+          any of the above websites to find 3D models for your projects or create your own.</p>
+
+        <p>Let's load a glTF model of a table from Poly Pizza into our scene:</p>
+
+        <pre><code class="javascript"> // Load GLB Table Model
+const loader = new THREE.GLTFLoader();
+//Model Credit: Table Round Small by Quaternius
+loader.load('https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/master/courses/CISC3620/models/Table%20Round%20Small.glb', function (gltf) {
+    const tableModel = gltf.scene;
+    tableModel.scale.set(20, 20, 20); // Scale the model
+    tableModel.position.y = -9.5; // Position the model
+    scene.add(tableModel);
+});</code></pre>
+
+        <p>Now we should see a 3D model of a table in our scene.</p>
+
+
+        <p>Apart from transformations like scaling up (or down) the model we can also adjust how the model looks by
+          changing the material of the model.</p>
+
+        <p>Let's change the material of the table model as we like it:</p>
+
+        <pre><code class="javascript">// Load GLB Table Model
+const loader = new THREE.GLTFLoader();
+//Model Credit: Table Round Small by Quaternius
+loader.load('https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/master/courses/CISC3620/models/Table%20Round%20Small.glb', function (gltf) {
+    const tableModel = gltf.scene;
+    tableModel.scale.set(20, 20, 20); // Adjust table model scale if needed
+    tableModel.position.y = -9.5; // Adjust table model position if needed
+    const tableMaterial = new THREE.MeshStandardMaterial({ color: "white" });
+    tableModel.traverse((child) => {
+        if (child.isMesh) {
+            child.material = tableMaterial;
+            child.castShadow = true; // The table will cast shadows
+            child.receiveShadow = true; // The table will receive shadows
+        }
+    });
+
+    scene.add(tableModel);
+});</code></pre>
+
+        <p>This code creates a new MeshStandardMaterial with a white color and then uses the traverse() method to
+          iterate over all the child objects of the table model. For each child object that is a mesh, it sets the
+          material to the new material.</p>
+
+        <p>Now we should see a white table model in our scene.</p>
+
+        <p>Let's add another model, a flower pot, to sit on the table:</p>
+
+        <pre><code class="javascript">// Load GLB Flower Pot Model
+const loader2 = new THREE.GLTFLoader();
+//Model Credit: Flower by jeremy [CC-BY] via Poly Pizza
+loader2.load('https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/master/courses/CISC3620/models/Flower.glb', function (gltf) {
+    const flowerPotModel = gltf.scene;
+    flowerPotModel.scale.set(20, 20, 20); // Adjust flower pot model scale if needed
+    flowerPotModel.position.y = -5; // Adjust flower pot model position if needed
+    // Set shadow properties
+    flowerPotModel.traverse((child) => {
+        if (child.isMesh) {
+            child.castShadow = true; // The flower pot will cast shadows
+            child.receiveShadow = true; // The flower pot can receive shadows
+        }
+    });   
+
+    scene.add(flowerPotModel);
+});</code></pre>
+
+        <p>This code loads a GLTF model of a flower pot and adds it to the scene. We can adjust the scale and position
+          of the flower pot model as needed.</p>
+
+        <p>Now we should see a flower pot model on the table in our scene.</p>
+
+        <p>Let's group the models together so they are easier to reposition:</p>
+
+        <pre><code class="javascript">// Create a group to hold the table and flower pot models
+const modelsGroup = new THREE.Group();
+//load table model
+modelsGroup.add(tableModel); // Add the table model to the group
+
+//load flower pot model
+modelsGroup.add(flowerPotModel); // Add the flower pot model to the group
+
+// Position the group
+modelsGroup.position.set(0, 0, 0);
+modelsGroup.rotation.y = Math.PI / 2;
+
+scene.add(modelsGroup);</code></pre>
+
+        <p>This code creates a new Group object to hold the table and flower pot models. It adds the table and flower
+          pot models to the group and then positions the group in the scene.</p>
+
+        <p>This now makes it easier to move around. Let's create a room for the models to be displayed in:</p>
+
+        <p>First we need a floor, then three walls, and a ceiling:</p>
+
+        <pre><code class="javascript">// Create a floor
+const floorGeometry = new THREE.PlaneGeometry(100, 100);
+const floorMaterial = new THREE.MeshStandardMaterial({ color: "gray", side: THREE.DoubleSide });
+const floor = new THREE.Mesh(floorGeometry, floorMaterial);
+floor.rotation.x = -Math.PI / 2; // Rotate the floor to be horizontal
+floor.position.y = -10; // Position the floor below the models
+scene.add(floor);
+
+// Create walls
+const wallGeometry = new THREE.BoxGeometry(100, 60, 1);
+const wallMaterial = new THREE.MeshStandardMaterial({ color: "white" });
+
+const leftWall = new THREE.Mesh(wallGeometry, wallMaterial);
+leftWall.rotation.y = -Math.PI / 2;
+leftWall.position.set(-50, 20, 0); // Position the left wall
+scene.add(leftWall);
+
+const rightWall = new THREE.Mesh(wallGeometry, wallMaterial);
+rightWall.rotation.y = -Math.PI / 2;
+rightWall.position.set(50, 20, 0); // Position the right wall
+scene.add(rightWall);
+
+const backWall = new THREE.Mesh(wallGeometry, wallMaterial);
+backWall.position.set(0, 20, -50); // Position the back wall
+scene.add(backWall);
+
+// Create a ceiling
+const ceilingGeometry = new THREE.PlaneGeometry(100, 100);
+const ceilingMaterial = new THREE.MeshStandardMaterial({ color: "white", side: THREE.DoubleSide});
+const ceiling = new THREE.Mesh(ceilingGeometry, ceilingMaterial);
+ceiling.rotation.x = Math.PI / 2; // Rotate the ceiling to be horizontal
+ceiling.position.y = 50; // Position the ceiling above the models
+scene.add(ceiling);</code></pre>
+
+        <p>This code creates a floor, three walls, and a ceiling to create a room for the models to be displayed in. The
+          floor is a horizontal plane below the models, the walls are vertical planes around the models, and the ceiling
+          is a horizontal plane above the models.</p>
+
+        <p>Now we should see the models displayed in a room with a floor, walls, and ceiling.</p>
+
+        <p>Let's add some lights to the scene to illuminate the models:</p>
+
+        <pre><code class="javascript">// Create a directional light
+const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+directionalLight.position.set(0, 10, 0); // Position the light
+directionalLight.castShadow = true; // Enable shadow casting  
+scene.add(directionalLight);
+
+// Create an ambient light
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+scene.add(ambientLight);</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
       </article>
