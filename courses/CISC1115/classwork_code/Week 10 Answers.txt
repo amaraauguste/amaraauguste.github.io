@@ -3,30 +3,6 @@ REVIEW
 a)
 
 import java.util.Scanner;
-public class CountVowels {
-    public static void main(String [] args) {
-        Scanner sc = new Scanner (System.in);
-        System.out.print("Enter a String: ");
-        String s = sc.nextLine();
-
-        int countVowels = 0;
-
-        for(int i = 0; i < s.length(); i++) {
-            char c = s.charAt(i);
-            if(c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U' || c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u') {
-                countVowels++;
-            }
-        }
-
-        System.out.println("Number of vowels: " + countVowels);
-
-    }
-}
-
-
-b) 
-
-import java.util.Scanner;
 public class IsPalindrome {
     public static void main(String [] args) {
         Scanner sc = new Scanner (System.in);
@@ -49,7 +25,7 @@ public class IsPalindrome {
 }
 
 
-c) 
+b) 
 
 public static void main(String[] args) throws Exception {
     File file = new File("Week9Emails.txt");
@@ -68,9 +44,9 @@ public static void main(String[] args) throws Exception {
 }
 
 
-d) first = (name2.compareTo(name1)>0)? name2:name1;
+c) first = (name2.compareTo(name1)>0)? name2:name1;
 
-e)
+d)
 
 String word, prev;
 boolean isdup=false;
