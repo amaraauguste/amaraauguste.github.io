@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Three.js Scene with Table, Chairs, and Lamp</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/utils/BufferGeometryUtils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/geometries/TeapotGeometry.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.6/dat.gui.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script>
+        // Create a scene
+        const scene = new THREE.Scene();
+
+        // Set up the camera
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.set(0, 0, 200); // Position it to have a wider and more centered view
+
+        // Initialize the renderer
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.shadowMap.enabled = true; // Enable shadows
+        renderer.shadowMap.type = THREE.PCFSoftShadowMap; // Optional: use softer shadows
+        document.body.appendChild(renderer.domElement);
+
+        // Add Orbit Controls
+        const controls = new THREE.OrbitControls(camera, renderer.domElement);
+
+        const room = new THREE.Group();
+
+        const loader = new THREE.TextureLoader();
+        const tableTexture = loader.load('https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/textures/wood%20table%20top%20texture.jpg');
+        const floorTexture = loader.load('https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/textures/white%20wood%20floor.jpg');
+
+        // Texture tiling
+        floorTexture.wrapS = THREE.RepeatWrapping;
+        floorTexture.wrapT = THREE.RepeatWrapping;
+        floorTexture.repeat.set(4, 4); // 2 times in both directions
+
+        // Create a plane for the floor
+        const planeGeometry = new THREE.PlaneGeometry(250.5, 250);
+        const planeMaterial = new THREE.MeshStandardMaterial({ map: floorTexture, side: THREE.DoubleSide });
+        const plane = new THREE.Mesh(planeGeometry, planeMaterial);
+        plane.rotation.x = -Math.PI / 2;
+        plane.position.y = -0.6;
+        plane.receiveShadow = true; // Receive shadows
+        room.add(plane);
+
+        // Create rug on floor
+        const rugGeometry = new THREE.PlaneGeometry(200, 200);
+        const rugTexture = new THREE.TextureLoader().load('https://raw.githubusercontent.com/amaraauguste/Graphics/refs/heads/main/textures/pink%20rug%20texture.jpg');
+        const rugMaterial = new THREE.MeshLambertMaterial({ map: rugTexture });
+        const rug = new THREE.Mesh(rugGeometry, rugMaterial);
+        rug.rotation.x = -Math.PI / 2;
+        rug.position.y = -0.5; // Adjust floor position if needed
+        //rug.receiveShadow = true;
+        room.add(rug);
+
+        // Create wall texture
+        const wallTexture = new THREE.TextureLoader().load('https://raw.githubusercontent.com/amaraauguste/Graphics/refs/heads/main/textures/standard%20tiles.jpg');
+        // Texture tiling
+        wallTexture.wrapS = THREE.RepeatWrapping;
+        wallTexture.wrapT = THREE.RepeatWrapping;
+        wallTexture.repeat.set(2, 2); // 2 times in both directions
+
+        // Create left wall
+        const leftWallGeometry = new THREE.PlaneGeometry(250.5, 175);
+        const leftWallMaterial = new THREE.MeshStandardMaterial({ color: "#feede9", side: THREE.DoubleSide });
+        const leftWall = new THREE.Mesh(leftWallGeometry, leftWallMaterial);
+        leftWall.rotation.y = Math.PI / 2;
+        leftWall.position.x = -125;
+        leftWall.position.y = 87;
+        leftWall.receiveShadow = true; // Receive shadows
+        room.add(leftWall);
+
+        // Create right wall
+        const rightWall = leftWall.clone();
+        rightWall.rotation.y = -Math.PI / 2;
+        rightWall.position.x = 125;
+        rightWall.position.y = 87;
+        rightWall.receiveShadow = true; // Receive shadows
+        room.add(rightWall);
+
+        // Create back wall
+        const backWallGeometry = new THREE.PlaneGeometry(250, 175);
+        const backWallMaterial = new THREE.MeshStandardMaterial({ color: "#feede9", side: THREE.DoubleSide });
+        const backWall = new THREE.Mesh(backWallGeometry, backWallMaterial);
+        backWall.position.z = -125;
+        backWall.position.y = 87;
+        backWall.receiveShadow = true; // Receive shadows
+        room.add(backWall);
+
+        // Create a ceiling
+        const ceilingGeometry = new THREE.PlaneGeometry(250, 250);
+        const ceilingMaterial = new THREE.MeshStandardMaterial({ color: 0xffffff, side: THREE.DoubleSide });
+        const ceiling = new THREE.Mesh(ceilingGeometry, ceilingMaterial);
+        ceiling.rotation.x = Math.PI / 2;
+        ceiling.position.y = 174;
+        room.add(ceiling);
+
+        // Add a point light for the standing lamp
+        const pointLight1 = new THREE.PointLight(0xffffff, 1, 100);
+        pointLight1.position.set(-100, 80, -100);
+        pointLight1.castShadow = true; // Enable casting shadows
+        room.add(pointLight1);
+        pointLight1.visible = false;
+
+        // Add a point light
+        const ceilingLight = new THREE.PointLight(0xffffff, 1);
+        ceilingLight.position.set(0, 90, 0);
+        ceilingLight.castShadow = true; // Enable casting shadows
+        room.add(ceilingLight);
+
+        // Create a bottom half-sphere to cover the ceiling light
+        const sphereRadius = 20;
+        const sphereGeometry = new THREE.SphereGeometry(sphereRadius, 32, 16, 0, Math.PI * 2, 0, Math.PI / 2);
+        const sphereMaterial = new THREE.MeshPhongMaterial({ color: 0xffffff, transparent: true, opacity: 0.8, side: THREE.DoubleSide });
+        const halfSphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
+        halfSphere.position.set(0, 155, 0);
+        room.add(halfSphere);
+
+        // Lamp creation functions
+        function cbattailLamp(radius, color) {
+            var r = radius;
+            var material = new THREE.MeshPhongMaterial({ color: color });
+
+            var geom = new THREE.Object3D();
+            var shade = createShade(r, material);
+            shade.position.y = 8 * r + r / 160;
+            shade.castShadow = true; // Lamp shade casts shadow
+
+            var base = createBase(r);
+            base.position.y = r / 20;
+            base.castShadow = true; // Base casts shadow
+
+            var post = createPost(r);
+            post.rotation.x = -Math.PI / 2;
+            post.castShadow = true; // Post casts shadow
+
+            geom.add(shade);
+            geom.add(base);
+            geom.add(post);
+            geom.position.set(0, base.position.y / 2, 0);
+
+            return geom;
+        }
+
+        function createBase(r) {
+            var geom = new THREE.CylinderGeometry(r / 2, r, r / 10, 20);
+            var mat = new THREE.MeshPhongMaterial({ color: 0x3a3737 });
+            return new THREE.Mesh(geom, mat);
+        }
+
+        function createPost(r) {
+            var shape = new THREE.Shape();
+            shape.moveTo(0, r / 4);
+            shape.lineTo(r / 4, 0);
+            shape.lineTo(0, -r / 4);
+            shape.lineTo(-r / 4, 0);
+            shape.lineTo(0, r / 4);
+            var geom = new THREE.ExtrudeGeometry(shape, { amount: 8 * r, bevelEnabled: false });
+            var mat = new THREE.MeshPhongMaterial({ color: 0x3a3737 });
+            return new THREE.Mesh(geom, mat);
+        }
+
+        function createShade(r, mat) {
+            var v1 = new THREE.Vector2(0, 2 * r);
+            var v2 = new THREE.Vector2(r / 2, 2 * r);
+            var v3 = new THREE.Vector2(r, 0);
+            var v4 = new THREE.Vector2(0, 0);
+            var points = [v1, v2, v3, v4];
+            var geom = new THREE.LatheGeometry(points);
+            return new THREE.Mesh(geom, mat);
+        }
+
+        // Create and add the lamp to the scene
+        const lamp = cbattailLamp(1, "pink");
+        lamp.position.set(-100, 1, -100);
+        lamp.scale.set(10, 10, 10);
+        lamp.castShadow = true; // Enable lamp to cast shadow
+        room.add(lamp);
+
+        // Model loading functions and other components remain the same...
+
+        // Load the Fiddle-leaf Plant model
+        const modelLoader = new THREE.GLTFLoader();
+        modelLoader.load('https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/master/courses/CISC3620/models/Fiddle-leaf%20Plant.glb', (gltf) => {
+            const flowerPot = gltf.scene;
+            flowerPot.position.set(100, -69, -75);
+            flowerPot.scale.set(10, 10, 10);
+            flowerPot.rotation.y = Math.PI / 2;
+
+            scene.add(flowerPot);
+        });
+
+        // Load the Bookshelf model
+        const modelLoader2 = new THREE.GLTFLoader();
+        modelLoader2.load('https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/master/courses/CISC3620/models/Bookshelf.glb', (gltf) => {
+            const bookcase = gltf.scene;
+            bookcase.position.set(0, -50, -100);
+            bookcase.scale.set(100, 100, 100);
+            bookcase.rotation.y = Math.PI;
+            scene.add(bookcase);
+        });
+
+        var colors = [
+            new THREE.Color("pink"),
+            new THREE.Color("blue"),
+            new THREE.Color("orange"),
+            new THREE.Color("purple"),
+            new THREE.Color("red"),
+            new THREE.Color("green"),
+            new THREE.Color("cyan"),
+            new THREE.Color("magenta"),
+            new THREE.Color("violet"),
+        ];
+
+        // CREATE A TABLE
+        var tableParams = {
+            tableTopRadius: 40,
+            tableTopHeight: 4,
+            tableColor: new THREE.Color(0xc47e3c),
+            tableLegRadius: 3,
+            tableLegHeight: 40,
+        };
+
+        function createTableLeg(tableParams) {
+            var tp = tableParams;
+            var tableLegGeom = new THREE.CylinderGeometry(tp.tableLegRadius, tp.tableLegRadius, tp.tableLegHeight, 20);
+            var tableLegMaterial = new THREE.MeshStandardMaterial({ map: tableTexture });
+            return new THREE.Mesh(tableLegGeom, tableLegMaterial);
+        }
+
+        function createTable(tableParams) {
+            var table = new THREE.Object3D();
+            var tp = tableParams;
+
+            var tableTopGeom = new THREE.CylinderGeometry(tp.tableTopRadius, tp.tableTopRadius, tp.tableTopHeight, 4);
+            var tableTopMaterial = new THREE.MeshStandardMaterial({ map: tableTexture });
+            var tableTop = new THREE.Mesh(tableTopGeom, tableTopMaterial);
+            tableTop.rotation.y = Math.PI / 4;
+            tableTop.castShadow = true; // Enable table top to cast shadow
+            tableTop.receiveShadow = true;
+            table.add(tableTop);
+
+            var distance = tp.tableTopRadius * 0.5;
+
+            var leg1 = createTableLeg(tp);
+            leg1.position.set(distance, -tp.tableLegHeight / 2, distance);
+            table.add(leg1);
+
+            var leg2 = createTableLeg(tp);
+            leg2.position.set(distance, -tp.tableLegHeight / 2, -distance);
+            table.add(leg2);
+
+            var leg3 = createTableLeg(tp);
+            leg3.position.set(-distance, -tp.tableLegHeight / 2, distance);
+            table.add(leg3);
+
+            var leg4 = createTableLeg(tp);
+            leg4.position.set(-distance, -tp.tableLegHeight / 2, -distance);
+            table.add(leg4);
+
+            return table;
+        }
+
+        // CREATE A COFFEE MUG
+        var coffeeParams = {
+            coffeeMugWidth: 5,
+            coffeeMugHeight: 10,
+            coffeeMugColor: "blue",
+            coffeeHandleHeight: 5,
+            coffeeColor: "brown",
+        };
+
+        function createCoffeeMug(coffeeParams) {
+            var coffeeMug = new THREE.Group();
+            var cp = coffeeParams;
+
+            var coffeeMugColor = "white"
+            var coffeeHandleColor = "white";
+
+            var coffeeMugGeom = new THREE.CylinderGeometry(cp.coffeeMugWidth, cp.coffeeMugWidth, cp.coffeeMugHeight, 10);
+            var coffeeMugMaterial = new THREE.MeshPhongMaterial({ color: coffeeMugColor });
+            var coffeeMugMesh = new THREE.Mesh(coffeeMugGeom, coffeeMugMaterial);
+            coffeeMugMesh.castShadow = true;
+            coffeeMug.add(coffeeMugMesh);
+
+            var coffeeHandleGeom = new THREE.TorusGeometry((cp.coffeeMugHeight / 2) * 0.7, 0.8, 10, 10, Math.PI);
+            var coffeeHandleMaterial = new THREE.MeshPhongMaterial({ color: coffeeHandleColor });
+            var coffeeHandleMesh = new THREE.Mesh(coffeeHandleGeom, coffeeHandleMaterial);
+            coffeeHandleMesh.rotation.z = Math.PI / 2;
+            coffeeHandleMesh.position.x = -cp.coffeeMugWidth;
+            coffeeHandleMesh.castShadow = true;
+            coffeeMug.add(coffeeHandleMesh);
+
+            var coffeeGeom = new THREE.CylinderGeometry(cp.coffeeMugWidth - 1.5, cp.coffeeMugWidth, 2, 10);
+            var coffeeMat = new THREE.MeshPhongMaterial({ color: cp.coffeeColor });
+            var coffeeMesh = new THREE.Mesh(coffeeGeom, coffeeMat);
+            coffeeMesh.position.y = (cp.coffeeMugHeight - 5.95);
+            coffeeMug.add(coffeeMesh);
+
+            return coffeeMug;
+        }
+
+        // CREATE A CHAIR
+        var chairParams = {
+            chairBackWidth: 25,
+            chairBackHeight: 35,
+            chairSeatWidth: 25,
+            chairSeatHeight: 30,
+            chairLegRadius: 3,
+            chairLegHeight: 25,
+        };
+
+        function createChairLeg(chairParams) {
+            var cp = chairParams;
+            var chairLegGeom = new THREE.CylinderGeometry(cp.chairLegRadius, cp.chairLegRadius, cp.chairLegHeight, 20);
+            var chairLegMaterial = new THREE.MeshPhongMaterial({ color: "pink" });
+            return new THREE.Mesh(chairLegGeom, chairLegMaterial);
+        }
+
+        function createChair(chairParams, chairColor) {
+            var chair = new THREE.Group();
+            var cp = chairParams;
+
+            var chairBackGeom = new THREE.BoxGeometry(cp.chairBackWidth, cp.chairBackHeight, 1);
+            var chairBackMat = new THREE.MeshPhongMaterial({ color: chairColor });
+            var chairBackMesh = new THREE.Mesh(chairBackGeom, chairBackMat);
+            //chairBackMesh.castShadow = true;
+            var chairSeatGeom = new THREE.BoxGeometry(cp.chairSeatWidth, cp.chairSeatHeight, 1);
+            var chairSeatMat = new THREE.MeshPhongMaterial({ color: chairColor });
+            var chairSeatMesh = new THREE.Mesh(chairSeatGeom, chairSeatMat);
+            //chairSeatMesh.castShadow = true;
+            chairSeatMesh.position.set(0, -cp.chairBackHeight / 2, cp.chairSeatHeight / 2);
+            chairSeatMesh.rotation.x = -Math.PI / 2;
+
+            chair.add(chairBackMesh);
+            chair.add(chairSeatMesh);
+
+            var distance = cp.chairSeatWidth / 4;
+
+            var leg1 = createChairLeg(cp);
+            leg1.position.set(distance, -cp.chairLegHeight / 2, distance);
+            leg1.position.y = -30;
+            leg1.position.x = 9;
+            leg1.position.z = 25;
+            leg1.castShadow = true; // Cast shadow for chair leg
+            chair.add(leg1);
+
+            var leg2 = createChairLeg(cp);
+            leg2.position.set(distance, -cp.chairLegHeight / 2, -distance);
+            leg2.position.y = -30;
+            leg2.position.x = 9;
+            leg2.position.z = 2.5;
+            leg2.castShadow = true; // Cast shadow for chair leg
+            chair.add(leg2);
+
+            var leg3 = createChairLeg(cp);
+            leg3.position.set(-distance, -cp.chairLegHeight / 2, distance);
+            leg3.position.y = -30;
+            leg3.position.x = -9;
+            leg3.position.z = 25;
+            leg3.castShadow = true; // Cast shadow for chair leg
+            chair.add(leg3);
+
+            var leg4 = createChairLeg(cp);
+            leg4.position.set(-distance, -cp.chairLegHeight / 2, -distance);
+            leg4.position.y = -30;
+            leg4.position.x = -9;
+            leg4.position.z = 2.5;
+            leg4.castShadow = true; // Cast shadow for chair leg
+            chair.add(leg4);
+
+            return chair;
+        }
+
+        // CREATE A TABLE SET
+        function createTableSet() {
+            var tableSet = new THREE.Object3D();
+            var table = createTable(tableParams);
+            table.scale.set(2, 2, 2);
+            tableSet.add(table);
+
+            var chairColor = "pink";
+
+            var chair1 = createChair(chairParams, chairColor);
+            chair1.rotation.y = Math.PI / 2;
+            chair1.position.set(-(tableParams.tableTopRadius + 80), 4, 0);
+            chair1.scale.set(2, 2, 2);
+            tableSet.add(chair1);
+
+            var chair2 = createChair(chairParams, chairColor);
+            chair2.rotation.y = -Math.PI / 2;
+            chair2.position.set((tableParams.tableTopRadius + 80), 4, 0);
+            chair2.scale.set(2, 2, 2);
+            tableSet.add(chair2);
+
+            var coffeeMug1 = createCoffeeMug(coffeeParams);
+            coffeeMug1.position.set(-tableParams.tableTopRadius * 0.6, (coffeeParams.coffeeMugHeight / 2 + tableParams.tableTopHeight / 2), 25);
+            coffeeMug1.scale.set(2, 2, 2);
+            coffeeMug1.position.y = 14;
+            tableSet.add(coffeeMug1);
+
+            var coffeeMug2 = createCoffeeMug(coffeeParams);
+            coffeeMug2.position.set(tableParams.tableTopRadius * 0.6, (coffeeParams.coffeeMugHeight / 2 + tableParams.tableTopHeight / 2), 25);
+            coffeeMug2.rotation.y = Math.PI;
+            coffeeMug2.scale.set(2, 2, 2);
+            coffeeMug2.position.y = 14;
+            tableSet.add(coffeeMug2);
+
+            // Add teapot
+            const teapotGeometry = new THREE.TeapotGeometry(9);
+            const teapotMaterial = new THREE.MeshPhongMaterial({ color: "white" });
+            const teapot = new THREE.Mesh(teapotGeometry, teapotMaterial);
+            teapot.position.set(0, tableParams.tableTopRadius - 15, -15);
+            teapot.scale.set(2, 2, 2);
+            teapot.castShadow = true; // Teapot casts shadow
+            tableSet.add(teapot);
+
+            tableSet.position.set(0, tableParams.tableLegHeight, 0);
+            return tableSet;
+        }
+
+        // Create the entire table set
+        var tableSet = createTableSet();
+        tableSet.scale.set(0.5, 0.5, 0.5);
+        tableSet.position.y = 42;
+        room.add(tableSet);
+
+        room.position.y = -70;
+        scene.add(room);
+
+        // GUI setup 
+        const gui = new dat.GUI();
+        const guiParams = {
+            ceilingLight: true,
+            standingLamp: false,
+        }
+
+        gui.add(guiParams, 'ceilingLight').name('Ceiling Light').onChange((value) => { ceilingLight.visible = value; });
+        gui.add(guiParams, 'standingLamp').name('Standing Lamp').onChange((value) => { pointLight1.visible = value; });
+
+        // Render loop
+        function animate() {
+            requestAnimationFrame(animate);
+            renderer.render(scene, camera);
+        }
+
+        animate();
+
+    </script>
+</body>
+
+</html>
