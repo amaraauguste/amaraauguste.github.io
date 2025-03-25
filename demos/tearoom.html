@@ -80,7 +80,7 @@
 
         // Create left wall
         const leftWallGeometry = new THREE.PlaneGeometry(250.5, 174.025);
-        const leftWallMaterial = new THREE.MeshStandardMaterial({ color: "#feede9", side: THREE.DoubleSide });
+        const leftWallMaterial = new THREE.MeshStandardMaterial({ color: "#feede9" });
         const leftWall = new THREE.Mesh(leftWallGeometry, leftWallMaterial);
         leftWall.rotation.y = Math.PI / 2;
         leftWall.position.x = -125;
@@ -98,12 +98,22 @@
 
         // Create back wall
         const backWallGeometry = new THREE.PlaneGeometry(250, 174.025);
-        const backWallMaterial = new THREE.MeshStandardMaterial({ color: "#feede9", side: THREE.DoubleSide });
+        const backWallMaterial = new THREE.MeshStandardMaterial({ color: "#feede9" });
         const backWall = new THREE.Mesh(backWallGeometry, backWallMaterial);
         backWall.position.z = -125;
         backWall.position.y = 86.5;
         backWall.receiveShadow = true; // Receive shadows
         room.add(backWall);
+        
+        // Create back wall
+        const frontWallGeometry = new THREE.PlaneGeometry(250, 174.025);
+        const frontWallMaterial = new THREE.MeshStandardMaterial({ color: "#feede9" });
+        const frontWall = new THREE.Mesh(backWallGeometry, backWallMaterial);
+        frontWall.position.z = 125;
+        frontWall.position.y = 86.5;
+        frontWall.rotation.y = Math.PI;
+        frontWall.receiveShadow = true; // Receive shadows
+        room.add(frontWall);
 
         // Create a ceiling
         const ceilingGeometry = new THREE.PlaneGeometry(250, 251.025);
