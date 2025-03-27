@@ -7111,7 +7111,8 @@ scene.add(mesh);</code></pre>
           SketchUp.
           We can use Three.js to build any kind of 3D application, however, building a modeling app from scratch would
           be a huge amount of work. A
-          much simpler solution is to use an existing program and export your work for use in Three.js… or, "cheat", and
+          much simpler solution is to use an existing program and export your work for use in Three.js ... or, "cheat",
+          and
           download any of the millions of amazing models and other scene assets that are available for free in many
           places around the web.</p>
 
@@ -7178,7 +7179,7 @@ scene.add(mesh);</code></pre>
         <p>glTF files can contain models, animations, geometries, materials, lights, cameras, or even entire scenes.
           This means you can create an entire scene in an external program then load it into Three.js.</p>
 
-          
+
 
         <h2>Types of glTF Files</h2>
 
@@ -7215,10 +7216,10 @@ scene.add(mesh);</code></pre>
           file and creates a Three.js object from it. More specifically, since we're using glTF models, we'll use the
           GLTFLoader class.</p>
 
-          <p>Since glTF is relatively new, your favorite application might not have an exporter yet. In that
-            case, you can convert your models to glTF before using them, or use another loader such as the FBXLoader or
-            OBJLoader. All Three.js loaders work the same way, so if you do need to use another loader, everything will
-            still apply, with only minor differences.</p>
+        <p>Since glTF is relatively new, your favorite application might not have an exporter yet. In that
+          case, you can convert your models to glTF before using them, or use another loader such as the FBXLoader or
+          OBJLoader. All Three.js loaders work the same way, so if you do need to use another loader, everything will
+          still apply, with only minor differences.</p>
 
         <p>To load glTF files, first, we need to add the GLTFLoader plugin to our environment.
           This works the same way as adding the OrbitControls plugin:</p>
@@ -7240,7 +7241,7 @@ scene.add(mesh);</code></pre>
           the model is loaded. The callback function receives a gltf object that contains the loaded 3D model. We can
           access the 3D model scene by using gltf.scene and then add it to our Three.js scene.</p>
 
-          <p>Let's add the stork and flamingo models to our scene:</p>
+        <p>Let's add the stork and flamingo models to our scene:</p>
 
         <pre><code class="javascript">loader.load('https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/master/courses/CISC3620/models/Stork.glb', function (gltf) {
     const stork = gltf.scene;
@@ -7252,7 +7253,8 @@ loader.load('https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.
     scene.add(flamingo);
 });</code></pre>
 
-        <p>It is possible for models loaded from a glTF file to have a position already specified, but that's not the case here, so all three models start at the point (0,0,0), all jumbled together on top of each other.</p>
+        <p>It is possible for models loaded from a glTF file to have a position already specified, but that's not the
+          case here, so all three models start at the point (0,0,0), all jumbled together on top of each other.</p>
 
         <p>We'll adjust the position of each bird to make it look like they are flying in formation:</p>
 
@@ -7429,6 +7431,258 @@ scene.add(directionalLight);
 // Create an ambient light
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
 scene.add(ambientLight);</code></pre>
+
+        <h2>Model Viewer</h2>
+
+        <p>Now that we have loaded and positioned models in the scene, we can create a simple model viewer that
+          allows us to interact with the models using the mouse.</p>
+
+        <p>Let's revisit our three birds.</p>
+
+        <p>Notice how we already have radio buttons for the different models and a button to toggle the animation of the
+          birds. We'll use these to toggle between the models.</p>
+
+        <p>These models were loaded from the binary glTF files parrot.glb, flamingo.glb, and stork.glb. Alongside the
+          bird models, each of these files also contains an animation clip of the bird flying.</p>
+
+        <h2>Animated Models</h2>
+
+        <p>The Three.js animation system is a <b>complete animation mixing desk</b>. Using this system you can animate
+          virtually any aspect of an object, such as position, scale, rotation, a material's color or opacity, the bones
+          of a skinned mesh, morph targets, and many other things besides. </p>
+
+        <p>We can also blend and mix animations, so, for example, if we have a "walk" animation and a "run" animation
+          attached to a human character you can make the character speed up from a walk to a run by blending these
+          animations.</p>
+
+        <p><b>The animation system uses keyframes to define animations.</b></p>
+
+        <p>Keyframes are snapshots of the object's state at a particular point in time. The animation system then
+          interpolates between these keyframes to create smooth animations.</p>
+
+        <p>To create an animation, we set keyframes at particular points in time, and then the animation system fills in
+          the gaps for us using a process known as <b>tweening</b>.</p>
+
+        <p>To animate a bouncing ball, for example, you can specify the points at the top and bottom of the bounce, and
+          the ball will smoothly animate across all the points in between.</p>
+
+        <p>The amount of keyframes you need depends on the complexity of the animation. A very simple animation may only
+          need one keyframe per second, or less, while a complex animation will need more, up to a maximum of sixty
+          keyframes per second (any more than this will be ignored on a standard 60Hz display).</p>
+
+        <p>The animation system is built from a number of components that work together to create animations, attach
+          them to objects in the scene, and control them.</p>
+
+        <p>We'll split these into two categories, <b>animation creation</b>, and <b>animation playback and control</b>.
+          We'll briefly introduce both categories here, and then we'll use our new knowledge to set up the flying
+          animations that we have loaded from the three glTF files.</p>
+
+        <p>Normally to animate a mesh in Three.js we would need to create a keyframe animation, but luckily for us, the
+          models we
+          are using already have animations attributed to them.</p>
+
+        <p>To animate an object such as a mesh using the animation system, we must connect it to an
+          <b>AnimationMixer</b>. From
+          here on, we'll refer to an AnimationMixer as simply a mixer. We need <b>one mixer for each animated object in
+            the
+            scene</b>. The mixer does the technical work of making the model move in time to the animation clip, whether
+          that
+          means moving the feet, arms, and hips of a dancer, or the wings of a flying bird.</p>
+
+        <pre><code class="javascript">let width = 500;
+let height = 400;
+const scene = new THREE.Scene();
+scene.background = new THREE.Color("green");
+const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setSize(width, height);
+document.body.appendChild(renderer.domElement);
+
+camera.position.set(0, 30, 200);
+const controls = new THREE.OrbitControls(camera, renderer.domElement);
+
+// Lights
+const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+scene.add(directionalLight);
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+scene.add(ambientLight);
+
+// Loader to load models
+const loader = new THREE.GLTFLoader();
+
+const models = {
+  stork: null,
+  flamingo: null,
+  parrot: null
+};
+
+let mixers = {}; // Store mixers for each model
+let activeMixer = null;
+let animating = false;
+
+// Load models
+function loadModel(url, name) {
+  loader.load(url, function (gltf) {
+    models[name] = gltf.scene;
+    // If there are animations, create a mixer
+    if (gltf.animations && gltf.animations.length) {
+      const mixer = new THREE.AnimationMixer(gltf.scene);
+      gltf.animations.forEach((clip) => {
+        mixer.clipAction(clip).play();
+      });
+      mixers[name] = mixer; // Store the mixer
+    }
+    const box = new THREE.Box3().setFromObject(gltf.scene); // Get the bounding box of the model
+    const center = box.getCenter(new THREE.Vector3()); // Get the center of the model
+    models[name].position.sub(center); // Center the model at the origin
+  });
+}
+
+loadModel(
+  "https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/master/courses/CISC3620/models/Stork.glb",
+  "stork"
+);
+loadModel(
+  "https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/master/courses/CISC3620/models/Flamingo.glb",
+  "flamingo"
+);
+loadModel(
+  "https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/master/courses/CISC3620/models/Parrot.glb",
+  "parrot"
+);
+
+// Animation handling
+function animate() {
+  requestAnimationFrame(animate);
+
+  // Only update the active mixer if the animate checkbox is checked
+  const animateCheckbox = document.getElementById("animate");
+  if (activeMixer && animateCheckbox.checked) {
+    activeMixer.update(0.005); // Update animation based on the current frame time
+  }
+
+  renderer.render(scene, camera);
+}
+
+// Selection of the model
+function selectModel(modelName) {
+  Object.keys(models).forEach((name) => {
+    if (models[name]) {
+      if (name === modelName) {
+        scene.add(models[name]);
+        activeMixer = mixers[name] || null; // Set active mixer
+
+      } else {
+        scene.remove(models[name]);
+      }
+    }
+  });
+}
+
+// Event listeners for model selection
+document.getElementById("storkCheckbox").onchange = function () {
+  selectModel("stork");
+};
+
+document.getElementById("flamingoCheckbox").onchange = function () {
+  selectModel("flamingo");
+};
+
+document.getElementById("parrotCheckbox").onchange = function () {
+  selectModel("parrot");
+};
+
+// Animation checkbox handling
+document.getElementById("animate").onchange = function () {
+  const animateCheckbox = this;
+  if (animateCheckbox.checked && activeMixer) {
+    startAnimation();
+  } else {
+    pauseAnimation();
+  }
+};
+
+function startAnimation() {
+  if (!animating && activeMixer) {
+    animating = true;
+    animate(); // Start the animation loop
+  }
+}
+
+function pauseAnimation() {
+  animating = false;
+  // The animation will pause when the animation loop stops
+}
+
+// Start the rendering loop
+animate();</code></pre>
+
+        <p>Apart from simply loading the models, we have now also added the ability to toggle between the models and
+          toggle the animation of the birds. We have also added the ability to start and pause the animation of the
+          birds by checking the animate checkbox.</p>
+
+        <p>We contain each of the models' animations in a mixer object and store the mixers in the mixers object. We
+          then set the activeMixer to the mixer of the selected model. We update the active mixer in the animate()
+          function to update the animations based on the current frame time.</p>
+
+        <p>When the animate checkbox is selected and the activeMixer is not null, the startAnimation() function is
+          called
+          to start the animation loop. When the animate checkbox is deselected, the pauseAnimation() function is called
+          to
+          pause the animation.</p>
+
+        <p>Now we have a simple model viewer.</p>
+
+        <p>Let's add another model, a horse, to our viewer:</p>
+
+        <p>Our horse model is stored in the file Horse.glb, so it is a binary glTF file with accompanying animations
+          like our bird models.</p>
+
+        <p>We will need to add a radio button for the horse in our HTML:</p>
+
+        <pre><code class="HTML">&lt;label style="margin-left: 10px"/&gt;&lt;input type="radio" name="model" id="horseCheckbox"&gt;Horse&lt;/label&gt;</code></pre>
+
+        <p>Add our horse to our models:</p>
+
+        <pre><code class="javascript">const models = {
+  stork: null,
+  flamingo: null,
+  parrot: null,
+  horse: null // Add horse model
+};</code></pre>
+
+        <p>Then we will load the horse model and add it to our scene:</p>
+
+        <pre><code class="javascript">loadModel("https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/master/courses/CISC3620/models/Horse.glb",
+    "horse"
+);</code></pre>
+
+        <p>And add an event listener for the horse radio button:</p>
+
+        <pre><code class="javascript">document.getElementById("horseCheckbox").onchange = function () {
+  selectModel("horse");
+};
+</code></pre>
+
+        <p>And lastly our horse model is actually larger than the rest of the models (to be understood as a horse is
+          more than three times the size of a bird), so we will scale it down:</p>
+
+        <p>In our loadModel() function, let's add:</p>
+
+        <pre><code class="javascript">if (name === 'horse') {
+    models[name].scale.set(0.5,0.5,0.5);
+}</code></pre>
+
+      <p>This will scale our horse model down to a more convenient size.</p>
+
+      <p>Now we should see a horse model in our model viewer.</p>
+
+      <p>Our model viewer is now complete.</p>
+
+      
+
+
+
 
 
 
