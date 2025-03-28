@@ -7711,19 +7711,19 @@ animate();</code></pre>
 ...
 // Animation handling
 function animate(timestamp) {
-  requestAnimationFrame(animate);
+    requestAnimationFrame(animate);
 
-  // Calculate delta time
-  const delta = timestamp - lastTime;
-  lastTime = timestamp;
+    // Calculate delta time
+    const delta = timestamp - lastTime;
+    lastTime = timestamp;
 
-  // Only update the active mixer if the animate checkbox is checked
-  const animateCheckbox = document.getElementById("animate");
-  if (activeMixer && animateCheckbox.checked) {
-    activeMixer.update(delta * 0.0025); // Update animation based on delta time in seconds
-  }
+    // Only update the active mixer if the animate checkbox is checked
+    const animateCheckbox = document.getElementById("animate");
+    if (activeMixer && animateCheckbox.checked) {
+        activeMixer.update(delta * 0.0025); // Update animation based on delta time in seconds
+    }
 
-  renderer.render(scene, camera);
+    renderer.render(scene, camera);
 }</code></pre>
 
         <p>This will update the animation based on the delta time in seconds, so when we recheck the animate checkbox,
