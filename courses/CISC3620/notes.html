@@ -7487,7 +7487,8 @@ scene.add(ambientLight);</code></pre>
             the
             scene</b>. The mixer does the technical work of making the model move in time to the animation clip, whether
           that
-          means moving the feet, arms, and hips of a dancer, or the wings of a flying bird.</p>
+          means moving the feet, arms, and hips of a dancer, or the wings of a flying bird.
+        </p>
 
         <pre><code class="javascript">let width = 500;
 let height = 400;
@@ -7673,13 +7674,81 @@ animate();</code></pre>
     models[name].scale.set(0.5,0.5,0.5);
 }</code></pre>
 
-      <p>This will scale our horse model down to a more convenient size.</p>
+        <p>This will scale our horse model down to a more convenient size.</p>
 
-      <p>Now we should see a horse model in our model viewer.</p>
+        <p>Now we should see a horse model in our model viewer.</p>
 
-      <p>Our model viewer is now complete.</p>
+        <p>Our model viewer is now complete.</p>
 
-      
+        <p>This code should work, however, if the animate checkbox is checked and then unchecked and AGAIN late
+          rechecked, you might notice something interesting. The speed of the animation has increased from when we last
+          saw it.</p>
+
+        <p>This is because the animation is being updated based on the current frame time, and when we recheck the
+          animate checkbox, the animation is being updated based on the current frame time again.</p>
+        <p>To fix this, we can simply set the animation time to 0 when we pause the animation:</p>
+
+        <pre><code class="javascript">function pauseAnimation() {
+  animating = false;
+  if (activeMixer) {
+    activeMixer.time = 0; // Reset animation time to 0
+  }
+  // The animation will pause when the animation loop stops
+} </code></pre>
+        <p>This will reset the animation time to 0 when we pause the animation, so when we recheck the animate checkbox,
+          the animation will start from the beginning.</p>
+
+        <p>However, for animations, a more appropriate solution would be what we refer to as <b>delta time</b>. Delta time is
+          <b>the time between the last frame and the current frame</b>, and it is used to update the animation based on the
+          current frame time.</p>
+        <p>We can use the delta time to update the animation based on the current frame time, so when we recheck the
+          animate checkbox, the animation will start from the last frame.</p>
+        <p>To do this, we can simply add a variable to store the last time and then use the delta time to update the
+          animation:</p>
+
+        <pre><code class="javascript">let lastTime = 0; // Store the last time
+...
+...
+// Animation handling
+function animate(timestamp) {
+  requestAnimationFrame(animate);
+
+  // Calculate delta time
+  const delta = timestamp - lastTime;
+  lastTime = timestamp;
+
+  // Only update the active mixer if the animate checkbox is checked
+  const animateCheckbox = document.getElementById("animate");
+  if (activeMixer && animateCheckbox.checked) {
+    activeMixer.update(delta * 0.0025); // Update animation based on delta time in seconds
+  }
+
+  renderer.render(scene, camera);
+}</code></pre>
+
+        <p>This will update the animation based on the delta time in seconds, so when we recheck the animate checkbox,
+          the animation will start from the last frame.</p>
+
+        <p>We need to update our startAnimation() to reflect this:</p>
+
+        <pre><code class="javascript">function startAnimation() {
+    if (!animating && activeMixer) {
+        animating = true;
+        lastTime = performance.now(); // Initialize lastTime when starting the animation
+        animate(lastTime); // Start the animation loop
+    }
+}</code></pre>
+
+      <p>And lastly, update our animate() call to:</p>
+
+      <pre><code class="javascript">animate(performance.now());</code></pre>
+
+      <p>Which will pass the current time to the animate() function.</p>
+      <p>Now we should see the animation speed is consistent regardless of how many times we check and uncheck the
+        animate checkbox.</p>
+
+       
+
 
 
 
