@@ -43,10 +43,12 @@ public static void main(String[] args) throws Exception {
     scanner.close();
 }
 
+----------------------------------------------------------------------------------------
 
-c) first = (name2.compareTo(name1)>0)? name2:name1;
 
-d)
+1) first = (name1.compareTo(name2) < 0) ? name2 : name1;
+
+2)
 
 String word, prev;
 boolean isdup=false;
@@ -66,18 +68,6 @@ while (!word.equals("xxxxx")) {
 if (!isdup) n++;
 
 
-----------------------------------------------------------------------------------------
 
-1) 
 
-public static void printMessage(String message) {
-    System.out.println(message);
-}
-
-2)
-
-public static void calculateArea(double length, double width) {
-    double area = length * width;
-    System.out.println("The area of the rectangle is: " + area);
-}
 
