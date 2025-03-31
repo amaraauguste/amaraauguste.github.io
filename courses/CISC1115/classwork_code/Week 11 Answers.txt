@@ -1,6 +1,18 @@
-Review
+1) 
 
-a)
+public static void printMessage(String message) {
+    System.out.println(message);
+}
+
+2)
+
+public static void calculateArea(double length, double width) {
+    double area = length * width;
+    System.out.println("The area of the rectangle is: " + area);
+}
+
+
+3)
 
 public static void calcAverage() {
     Scanner scanner = new Scanner(System.in);
@@ -21,7 +33,7 @@ public static void calcAverage() {
     scanner.close();
 }
 
-b)
+4)
 
 public static void printPattern(int n) {
     for (int i = 1; i <= n; i++) {
@@ -32,7 +44,7 @@ public static void printPattern(int n) {
     }
 }
 
-c)
+5)
 
 import java.util.Scanner;
 public class W11_Q1 {
