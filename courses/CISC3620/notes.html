@@ -79,6 +79,7 @@
           <a href="#A_More_Complex_Scene" onclick="closeDropdown3()">A More Complex Scene</a>
           <a href="#Custom_Geometry" onclick="closeDropdown3()">Custom Geometry</a>
           <a href="#Loading_Models" onclick="closeDropdown3()">Loading Models</a>
+          <a href="#Global_Lighting_Models" onclick="closeDropdown3()">Global Lighting Models</a>
           <!--<a href="#Linear_Algebra" onclick="closeDropdown2()">Linear Algebra</a>
           <a href="#Variable_Scope" onclick="closeDropdown2()">Variable Scope</a>
           <a href="#Global_Variables" onclick="closeDropdown2()">Global Variables</a>
@@ -7698,9 +7699,12 @@ animate();</code></pre>
         <p>This will reset the animation time to 0 when we pause the animation, so when we recheck the animate checkbox,
           the animation will start from the beginning.</p>
 
-        <p>However, for animations, a more appropriate solution would be what we refer to as <b>delta time</b>. Delta time is
-          <b>the time between the last frame and the current frame</b>, and it is used to update the animation based on the
-          current frame time.</p>
+        <p>However, for animations, a more appropriate solution would be what we refer to as <b>delta time</b>. Delta
+          time is
+          <b>the time between the last frame and the current frame</b>, and it is used to update the animation based on
+          the
+          current frame time.
+        </p>
         <p>We can use the delta time to update the animation based on the current frame time, so when we recheck the
           animate checkbox, the animation will start from the last frame.</p>
         <p>To do this, we can simply add a variable to store the last time and then use the delta time to update the
@@ -7739,15 +7743,15 @@ function animate(timestamp) {
     }
 }</code></pre>
 
-      <p>And lastly, update our animate() call to:</p>
+        <p>And lastly, update our animate() call to:</p>
 
-      <pre><code class="javascript">animate(performance.now());</code></pre>
+        <pre><code class="javascript">animate(performance.now());</code></pre>
 
-      <p>Which will pass the current time to the animate() function.</p>
-      <p>Now we should see the animation speed is consistent regardless of how many times we check and uncheck the
-        animate checkbox.</p>
+        <p>Which will pass the current time to the animate() function.</p>
+        <p>Now we should see the animation speed is consistent regardless of how many times we check and uncheck the
+          animate checkbox.</p>
 
-       
+
 
 
 
@@ -7781,6 +7785,436 @@ function animate(timestamp) {
       <br />
     </section>
 
+    <hr />
+
+    <section class="main-section" id="Global_Lighting_Models">
+      <br />
+      <header><b>Global Lighting Models</b></header>
+      <article>
+        <p>So far when we speak about lighting, we have only been speaking of <b>local lighting models</b>.</p>
+
+        <p>Local lighting models are perfect for a pipeline architecture like OpenGL's, because very little information
+          is taken into account in choosing the RGB. This enhances speed at the price of quality. To determine the color
+          of a polygon, we need the following information:</p>
+        <ul>
+          <li><b>material</b>: what kind of stuff is the object made of? Blue silk is different from blue jeans. Blue
+            jeans are different from black jeans.</li>
+          <li><b>surface geometry</b>: is the surface curved? How is it oriented? What direction is it facing? How would
+            we even define the direction that a curved surface is facing?</li>
+          <li><b>lights</b>: what lights are in the scene? Are they colored? How bright are they? What directions does
+            the light go?</li>
+        </ul>
+
+        <p>But it does not take into account the light that is reflected from other objects in the scene.</p>
+
+        <p>Global lighting models take into account the properties of the whole scene and account interactions of light
+          with objects in the room.</p>
+
+        <p>For example:</p>
+
+        <ul>
+          <li>light will bounce off one object and onto another, lighting it</li>
+          <li>objects may block light from a source</li>
+          <li>shadows may be cast</li>
+          <li>reflections may be cast</li>
+          <li>diffraction may occur</li>
+        </ul>
+
+        <p>Global lighting algorithms fall into two basic categories, <b>radiosity</b> and <b>ray-tracing</b>
+          algorithms:</p>
+
+        <h3>Radiosity</h3>
+
+        <p>Using <b>radiosity</b>, <b>any surface that is not completely black is treated as a light source, as if it
+            glows</b>.</p>
+
+        <p>Of course, the color that it emits depends on the color of light that falls on it. The light falling on the
+          surface is determined by direct lighting from the light sources in the scene and also indirect lighting from
+          the other objects in the scene. Thus, every object's color is determined by every other object's color.</p>
+
+        <p>You can see the dilemma: how can you determine what an object's color is if it depends on another object
+          whose color is determined by the first object's color? How to escape?</p>
+
+        <p><b>Radiosity algorithms typically work by iterative improvement</b> (successive approximation): first
+          handling
+          direct lighting, then primary effects (other objects' direct lighting color), then secondary effects (other
+          objects' indirect lighting color) and so on, until there is no more change.</p>
+
+        <h3>Ray-tracing</h3>
+
+        <p>The color and brightness of an object within a scene are predominantly determined by how light interacts with
+          the material of the object.</p>
+
+        <p>Light consists of photons, electromagnetic particles that embody both electric and magnetic properties. These
+          particles carry energy and oscillate similarly to sound waves, traveling in direct lines.</p>
+
+        <p>Sunlight is a prime example of a natural light source emitting photons. When photons encounter an object,
+          they can be absorbed, reflected, or transmitted, with the outcome varying depending on the material's
+          properties.</p>
+
+        <p>However, a universal principle across all materials is the conservation of photon count: the sum of absorbed,
+          reflected, and transmitted photons must equal the initial number of incoming photons.</p>
+
+        <p>For instance, if 100 photons illuminate an object's surface, the distribution of absorbed and reflected
+          photons must total 100, ensuring energy conservation.</p>
+
+        <p>Materials are broadly categorized into two types: <b>conductors</b>, which are metals, and
+          <b>dielectrics</b>, encompassing non-metals such as glass, plastic, wood, and water.
+        </p>
+
+        <p>Interestingly, dielectrics are insulators of electricity, with even pure water acting as an insulator. These
+          materials may vary in their transparency, with some being completely opaque and others transparent to certain
+          wavelengths of electromagnetic radiation, like X-rays penetrating human tissue.</p>
+
+        <p>Moreover, materials can be composite or layered, combining different properties. For example, a wooden object
+          might be coated with a transparent layer of varnish, giving it a simultaneously diffuse and glossy appearance,
+          similar to the effect seen on colored plastic balls.</p>
+
+        <p>This complexity in material composition adds depth and realism to the rendered scene by mimicking the
+          multifaceted interactions between light and surfaces in the real world.</p>
+
+        <p><b>Ray-tracing is essentially a system of simulating how light travels, interacts with various objects in the
+            environment, and ultimately reaches our eyes</b>.</p>
+
+        <p>Ray-tracing simulates how light behaves in the real world by <b>tracing the path of light rays as they
+            interact
+            with objects in a scene</b>. In simple terms, ray tracing starts with a virtual camera that "shoots" rays of
+          light
+          into a 3D scene. Each ray travels from the camera's origin through a pixel and then into the virtual scene
+          until it hits a diffuse surface. As the ray travels through the scene, it interacts with objects it encounter.
+        </p>
+
+        <p>We can break this down into two concepts: <b>forward ray-tracing</b> and <b>backward ray-tracing</b>.
+        </p>
+
+        <h3>Forward Ray-Tracing</h3>
+
+        <p><b>Forward ray-tracing</b> or <b>light tracing</b> follows the light particles (photons) from the light
+          source to the object. Although
+          forward ray tracing can most accurately determine the coloring of each object, it is <b>highly
+            inefficient</b>. This
+          is because many rays from the light source never come through the viewplane and into the eye. Tracking every
+          light ray from the light source down means that <b>many rays will go to waste because they never contribute to
+            the final image as seen from the eye</b>.</p>
+
+        <img class="center" style="width: 50%; height: 50%"
+          src="https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/images/forward%20ray%20tracing.png"
+          alt="Forward Ray Tracing" />
+
+        <p>In the image above, countless photons emitted by the light source hit the green sphere, but only one will
+          reach the eye's surface.</p>
+
+        <p>Consider the analogy of attempting to paint a teapot by dotting a black sheet of paper with a white marker,
+          with each dot representing a photon. Initially, only a sparse number of photons intersect the teapot, leaving
+          vast areas unmarked. Increasing the dots gradually fills in the gaps, making the teapot progressively more
+          discernible.</p>
+
+        <img class="center" style="width: 50%; height: 50%"
+          src="https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/images/teapotracing.gif"
+          alt="Teapot Tracing" />
+
+        <p>However, deploying even thousands or multiples thereof of photons cannot guarantee complete coverage of the
+          object's surface.</p>
+
+        <p>This method's inherent flaw necessitates running the program until we subjectively deem enough photons have
+          been applied to accurately depict the object. This process, requiring constant monitoring of the rendering
+          process, is impractical in a production setting. <b>The primary cost in ray tracing lies in detecting
+            ray-geometry intersections, not in generating photons, but in identifying all their intersections within the
+            scene, which is exceedingly resource-intensive</b>.</p>
+
+        <p>In summary, Forward ray-tracing or light tracing, which involves casting rays from the light source, can
+          theoretically replicate natural light behavior on a computer. However, as discussed, this technique is neither
+          efficient nor practical for actual use. Let's discuss an alternative apporach:</p>
+
+        <h3>Backward Ray-Tracing</h3>
+
+        <p>To make ray tracing more efficient, the method of backward ray-tracing is introduced.</p>
+
+        <p>In contrast to the natural process where rays emanate from the light source to the receptor (like our eyes),
+          backward ray-tracing reverses this flow by initiating rays from the receptor towards the objects.</p>
+
+        <p>In backward ray-tracing, an eye ray is created at the eye; it passes through the viewplane and on into the
+          world. The first object the eye ray hits is the object that will be visible from that point of the viewplane.
+          After the ray tracer allows that light ray to bounce around, it figures out the exact coloring and shading of
+          that point in the viewplane and displays it on the corresponding pixel on the computer monitor screen.
+        </p>
+
+        <p>Upon impacting an object, we evaluate the light it receives by dispatching another ray—termed a light or
+          shadow ray—from the contact point towards the light source. If this "light ray" encounters obstruction by
+          another object, it indicates that the initial point of contact is shadowed, receiving no light. Hence, these
+          rays are more aptly called <b>shadow rays</b>. The inaugural ray shot from the eye (or camera) into the scene
+          is
+          referred to in computer graphics literature as a <b>primary ray</b>, <b>visibility ray</b>, or <b>camera
+            ray</b>.</p>
+
+        <p>Backward ray-tracing is also known as <b>eye tracing</b>.</p>
+
+        <img class="center" style="width: 50%; height: 50%"
+          src="https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/images/backward%20ray%20tracing.gif"
+          alt="Backward Ray Tracing" />
+
+        <p>In the image above, we trace a ray from the eye to a point on the sphere, then a ray from that point to the
+          light source.</p>
+
+        <p>The downfall of backward ray tracing is that it assumes only the light rays that come through the viewplane
+          and on into the eye contribute to the final image of the scene. In certain cases, this assumption is flawed.
+        </p>
+
+        <p>For example, if a lens is held at a distance on top of a table, and is illuminated by a light source directly
+          above, there will exist a focal point beneath the lens with a large concentration of light. If backward ray
+          tracing tries to re-create this image, it will miscalculate because shooting light rays backward only confirms
+          that rays traveled through the lens; backward rays have no way of recognizing that forward rays are bent when
+          they go through the lens.</p>
+
+        <p>Therefore, if only backward ray tracing is performed, there will only be an even patch of light beneath the
+          lens, just as if the lens were a normal piece of glass and light is transmitted straight through it.</p>
+
+        <p>The technique of initiating rays either from the light source or from the eye is encapsulated by the term
+          <b>path tracing</b> in computer graphics.
+        </p>
+
+        <p>While ray-tracing is a synonymous term, path tracing emphasizes the methodological essence of generating
+          computer-generated imagery by tracing the journey of light from its source to the camera, or vice versa. This
+          approach facilitates the realistic simulation of optical phenomena such as caustics or indirect illumination,
+          where light reflects off surfaces within the scene.</p>
+
+        <h3>The Ray-Tracing Algorithm</h3>
+
+        <p>The essence of the ray-tracing algorithm is to render an image pixel by pixel.</p>
+
+        <p>For each pixel, it launches a primary ray into the scene, its direction determined by drawing a line from the
+          eye through the pixel's center.</p>
+
+        <p>This primary ray's journey is then tracked to ascertain if it intersects with any scene objects. In scenarios
+          where multiple intersections occur, the algorithm selects the intersection nearest to the eye for further
+          processing.</p>
+
+        <p>A secondary ray, known as a shadow ray, is then projected from this nearest intersection point towards the
+          light source as shown in the following figure:</p>
+
+        <img class="center" style="width: 50%; height: 50%"
+          src="https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/images/ray%20tracing%20algorithm%201.gif"
+          alt="Ray Tracing" />
+
+        <p>In the image above, a primary ray is cast through the pixel center to detect object intersections. Upon
+          finding one, a shadow ray is dispatched to determine the illumination status of the point.</p>
+
+        <p>An intersection point is deemed illuminated if the shadow ray reaches the light source unobstructed.
+          Conversely, if it intersects another object en route, it signifies the casting of a shadow on the initial
+          point.</p>
+
+        <img class="center" style="width: 50%; height: 50%"
+          src="https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/images/ray%20tracing%20algorithm%202.gif"
+          alt="Ray Tracing 2" />
+
+        <p>A shadow is cast on the larger sphere by the smaller one, as the shadow ray encounters the smaller sphere
+          before reaching the light.</p>
+
+        <p>Repeating this procedure across all pixels yields a two-dimensional depiction of our three-dimensional scene.
+        </p>
+
+        <img class="center" style="width: 50%; height: 50%"
+          src="https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/images/ray%20tracing%20algorithm%203.gif"
+          alt="Ray Tracing 3" />
+
+        <p>Rendering a frame involves dispatching a primary ray for every pixel within the frame buffer.</p>
+
+        <p>The elegance of ray-tracing lies in its simplicity and direct correlation with the physical world, allowing
+          for the creation of a basic ray-tracer in as few as 200 lines of code. This simplicity contrasts sharply with
+          more complex algorithms, like scanline rendering, making ray tracing comparatively effortless to implement.
+        </p>
+
+        <p>Regardless of which global lighting model chosen, <b>global lighting models are very expensive to
+            compute</b>. According to Tony DeRose, rendering a single frame of the Pixar movie Finding Nemo took four
+          hours. For The Incredibles, the next Pixar movie, rendering each frame took ten hours, which means that the
+          algorithms have gotten more expensive even though the hardware is speeding up.</p>
+
+        <p>Three.js manages to fall somewhere in between, because (as we have already seen) it can use the <b>Scene
+            Graph</b>
+          data structure to compute
+          shadows, but it <b>doesn't do the full ray-tracing or radiosity computation</b>.</p>
+
+        <h3>Adding Reflection and Refraction</h3>
+
+        <p>Another key benefit of ray-tracing is its capacity to seamlessly simulate intricate optical effects such as
+          <b>reflection</b> and <b>refraction</b>.These capabilities are crucial for accurately rendering materials like
+          glass or mirrored surfaces.
+        </p>
+
+        <p>First, let's talk about <b>reflection</b>. Surfaces like metal and glass exhibit a high degree of
+          reflectivity, causing them to mirror their surroundings. This effect is particularly pronounced in materials
+          such as polished metals and glass, where the surface reflects light in a manner akin to a mirror.</p>
+
+        <p>Reflections in Three.js can be accomplished quite easily using a <b>CubeCamera</b>.This is a unique camera
+          that contains six perspective cameras that will display what each camera sees onto any object in which you
+          place it. It fits well on all default three dimensional shapes provided by the core threejs library.</p>
+
+        <p>CubeCamera is a special type of camera that captures the scene from six different angles, creating a cube
+          map.This cube map can then be used to create realistic reflections on objects in the scene.</p>
+
+        <pre><code class="javascript">// Create the scene
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x87ceeb); // Set background color
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+
+// Create a WebGLRenderer
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
+
+// Add lighting
+const ambientLight = new THREE.AmbientLight(0x404040, 1); // Soft white light
+scene.add(ambientLight);
+
+const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+directionalLight.position.set(5, 5, 5);
+scene.add(directionalLight);
+
+const controls = new THREE.OrbitControls(camera, renderer.domElement);
+
+// Create texture loader
+const textureLoader = new THREE.TextureLoader();
+
+// Create a CubeCamera for reflections
+const cubeRenderTarget = new THREE.WebGLCubeRenderTarget(128, { //128 is the size of the cube map
+  format: THREE.RGBFormat, //the color format of the cube map
+  generateMipmaps: true, //generate mipmaps for better quality
+  //mipmaps are precomputed textures that are used to improve the quality of the texture when viewed at a distance
+  minFilter: THREE.LinearMipmapLinearFilter //filter used to sample the texture when viewed at a distance
+});
+
+const near = 0.1;
+const far = 100;
+const cubeCamera = new THREE.CubeCamera(near, far, cubeRenderTarget);
+scene.add(cubeCamera);
+
+// Load a texture for the plane and ensure it loads correctly
+const planeTexture = textureLoader.load('https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/textures/checkered_pattern.jpg');
+
+// Plane material
+const planeMaterial = new THREE.MeshStandardMaterial({
+    map: planeTexture, 
+    roughness: 1,
+    metalness: 0, 
+});
+
+// Sphere material
+const sphereMaterial = new THREE.MeshStandardMaterial({
+    metalness: 1, 
+    roughness: 0, 
+    envMap: cubeRenderTarget.texture 
+});
+
+// Create the plane
+const planeGeometry = new THREE.PlaneGeometry(20, 20);
+const plane = new THREE.Mesh(planeGeometry, planeMaterial);
+plane.rotation.x = -Math.PI / 2; 
+plane.position.y = 0; // Position it on the ground
+plane.receiveShadow = true; 
+scene.add(plane);
+
+// Create the reflective sphere
+const sphereGeometry = new THREE.SphereGeometry(2, 32, 32);
+const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
+sphere.position.y = 4; // Position it above the plane
+sphere.castShadow = true; 
+scene.add(sphere);
+
+// Position the camera
+camera.position.set(0, 5, 10);
+controls.update(); // Update controls
+
+// Animation loop
+function animate() {
+  requestAnimationFrame(animate);
+
+  // Update the CubeCamera position to match the sphere's position
+  cubeCamera.position.copy(sphere.position);
+  // Update the CubeCamera to capture the environment
+  cubeCamera.update(renderer, scene);
+
+  // Render the scene
+  renderer.render(scene, camera);
+}
+
+animate();</code></pre>
+
+        <p>Now we have a reflective sphere on a checkered plane. The CubeCamera captures the scene from the sphere's
+          perspective and creates a cube map that is used to create realistic reflections on the sphere.</p>
+
+        <p>This is a simple way to create reflections on surfaces so that we can have more realistic renderings of our
+          objects such as metals.</p>
+
+        <!--<h4>Refraction</h4>
+
+        <p>Refraction is the bending of light as it passes through a transparent object. This is what happens when you
+          look at a straw in a glass of water and it looks bent.</p>
+
+        <p>As we saw in a previous example, we attempted to make a "glass table" in
+          Three.js by using a transparent material. However, this approach only made the table transparent, not reflective.</p>-->
+
+          
+
+
+        <!--<h3>Additional Ray-Tracing Fundamentals</h3>
+
+        <h4>Raycasting</h4>
+
+        <p><b>Raycasting</b> is the process in a ray-tracing algorithm that <b>shoots one or more rays from the camera
+            (eye
+            position) through each pixel in an image plane, and then tests to see if the rays intersect any primitives
+            (triangles) in the scene</b>. If a ray passing through a pixel and out into the 3D scene hits a primitive,
+          then
+          the distance along the ray from the origin (camera or eye point) to the primitive is determined, and the color
+          data from the primitive contributes to the final color of the pixel. The ray may also bounce and hit other
+          objects and pick up color and lighting information from them.</p>
+
+        <p>In simpler terms, <b>raycasting is a way to determine where the user's mouse is pointing in a 3D scene</b>.
+        </p>
+
+        <p>In Three.js, raycasting can be achieved using Vector2D and the Raycaster.</p>
+
+        <p>The Raycaster is given the coordinates of the mouse on the screen, and it creates a ray normal to the mouse's
+          position.This allows the Raycaster to determine the objects that the ray is intersecting using the
+          intersectObjects method. </p>
+
+        <p>The syntax for using the Raycaster is as follows:</p>
+
+        <pre><code class="javascript">const raycaster = new THREE.Raycaster();</code></pre>
+
+        <p>Here, along with the Raycaster, we also need to initialize a Vector2.</p>
+
+        <p>A Vector2 is a two-dimensional vector that only contains the x and y coordinates. We use this to track the
+          movement of the cursor on the screen.</p>-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <p>
+      </article>
+      <br />
+    </section>
 
 
 
