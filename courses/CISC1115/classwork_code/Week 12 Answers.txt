@@ -1,3 +1,60 @@
+Review
+
+a)
+
+public static boolean isDivisible(double n, double m) {
+    return (n % m == 0);
+}
+
+b) 
+
+/**
+ * Checks if the given three sides form a valid triangle.
+ * @param side1 the length of the first side of the triangle
+ * @param side2 the length of the second side of the triangle
+ * @param side3 the length of the third side of the triangle
+ * @return true if the sides can form a valid triangle, false otherwise 
+ */
+public static boolean isTriangle(int side1, int side2, int side3) {
+    boolean isPositive = (side1 > 0) && (side2 > 0) && (side3 > 0);
+    return (isPositive && (side1 + side2 > side3) && (side1 + side3 > side2) && (side2 + side3 > side1));
+}
+
+c) 
+
+true
+true
+ping!
+pong!
+
+d) 
+
+public static double calculateVolumeOfSphere(double radius) {
+    return (4.0/3.0) * Math.PI * Math.pow(radius, 3);
+}
+
+public static double calculateSurfaceAreaOfSphere(double radius) {
+    return 4 * Math.PI * Math.pow(radius, 2);
+}
+
+public static boolean isSphereLarge(double radius) {
+    return calculateVolumeOfSphere(radius) > 1000;
+}
+
+public static void main(String [] args) {
+    double radius = 5.0;
+    double volume = calculateVolumeOfSphere(radius);
+    double surfaceArea = calculateSurfaceAreaOfSphere(radius);
+    boolean isLarge = isSphereLarge(radius);
+
+    System.out.println("Volume of the sphere: " + volume + " cubic units");
+    System.out.println("Surface area of the sphere: " + surfaceArea + " square units");
+    System.out.println("Is the sphere large: " + isLarge);
+}
+
+LAB 4 DISCUSSED IN CLASS
+
+----------------------------------------------------------------------------------------
 
 1) 
 
