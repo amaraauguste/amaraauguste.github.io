@@ -1,12 +1,83 @@
-Review
+1) 
 
-a)
+1  8  8
+-48  8  8
+
+2) 
+
+a. public static int method(int b, int a)
+
+b. c = method(a, b); AND a = method(b, a);
+
+c. 
+
+public static int method(int b, int a) {
+    int d;
+
+    d = a * b - b * b;
+    return d + b;
+}
+
+3) 
+
+public static int biggest(int x, int y, int z) {
+    if (x > y && x > z) {
+        return x;
+    } else if (y > z) {
+        return y;
+    } 
+    return z;
+}
+
+4)
+
+// Method to calculate the perimeter of a triangle
+public static double calcPerimeter(double a, double b, double c) {
+    return a + b + c;
+}
+
+// Method to calculate the perimeter of a square
+public static double calcPerimeter(double length) {
+    return 4 * length;
+}
+
+// Method to calculate the perimeter of a rectangle
+public static double calcPerimeter(double length, double width) {
+    return 2 * (length + width);
+}
+
+5) 
+
+import java.util.Scanner;//Scanner
+public class CountOccurrences {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a String: ");
+        String temp = sc.nextLine().toLowerCase();
+        int count = 0;
+        for(char c='a'; c<='z'; c++) {// iterate for each lower case letter
+            count = countOccurrences(temp, c);// count number of times lower case letter appears
+            if(count>0) System.out.println(c + " appears " + count + " times");// if it appears, output how many times
+        }
+    }
+
+    // iterate through the String and compare each lowercase version of the letter at that index to c, returning the count
+    public static int countOccurrences(String temp, char c) {
+        int count = 0;
+        for(int i=0; i<temp.length(); i++) {
+            if(c==temp.charAt(i)) count++;
+        }
+        return count;
+    }
+}
+
+6)
 
 public static boolean isDivisible(double n, double m) {
     return (n % m == 0);
 }
 
-b) 
+7) 
 
 /**
  * Checks if the given three sides form a valid triangle.
@@ -20,14 +91,14 @@ public static boolean isTriangle(int side1, int side2, int side3) {
     return (isPositive && (side1 + side2 > side3) && (side1 + side3 > side2) && (side2 + side3 > side1));
 }
 
-c) 
+8) 
 
 true
 true
 ping!
 pong!
 
-d) 
+9) 
 
 public static double calculateVolumeOfSphere(double radius) {
     return (4.0/3.0) * Math.PI * Math.pow(radius, 3);
