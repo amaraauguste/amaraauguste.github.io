@@ -8390,17 +8390,6 @@ function animate() {
           be part of the scene would be inside the cube. It is possible to construct a skybox by hand in just this way.
         </p>
 
-        <p>However, Three.js makes it very easy to use a skybox as the background for a scene. It has the class
-          THREE.CubeTexture to represent cube maps, and you can enclose your scene in a skybox simply by <b>assigning a
-            CubeTexture as the value of the property scene.background</b>. (The value of that property could also be a
-          normal
-          Texture or a Color.)</p>
-
-        <p>A CubeTexture can be created by a CubeTextureLoader, which can load the six images that make up the cube map.
-          The loader has a method named load() that works in the same way as the load() method of a TextureLoader,
-          except that the first parameter to the method is an array of six strings giving the URLs of the six images for
-          the cube map.</p>
-
         <p>Let's create a cubemap/skybox contained within a cube:</p>
 
         <pre><code class="javascript">//creating a cube
@@ -8437,6 +8426,17 @@ scene.add(cube);
 camera.position.set(0, 0, 15);</code></pre>
 
         <p>Based on this we should see a cube with the six images of the cube map applied inside it.</p>
+
+        <p>However, Three.js makes it very easy to use a skybox as the background for a scene. It has the class
+          THREE.CubeTexture to represent cube maps, and you can enclose your scene in a skybox simply by <b>assigning a
+            CubeTexture as the value of the property scene.background</b>. (The value of that property could also be a
+          normal
+          Texture or a Color.)</p>
+
+        <p>A CubeTexture can be created by a CubeTextureLoader, which can load the six images that make up the cube map.
+          The loader has a method named load() that works in the same way as the load() method of a TextureLoader,
+          except that the first parameter to the method is an array of six strings giving the URLs of the six images for
+          the cube map.</p>
 
         <p>Now, let's load a texture map for a meadow (this particular cube map, and others like it, are by
           Emil Persson, who has made a large number of cube maps available for download at
