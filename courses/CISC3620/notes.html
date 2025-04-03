@@ -80,6 +80,7 @@
           <a href="#Custom_Geometry" onclick="closeDropdown3()">Custom Geometry</a>
           <a href="#Loading_Models" onclick="closeDropdown3()">Loading Models</a>
           <a href="#Global_Lighting_Models" onclick="closeDropdown3()">Global Lighting Models</a>
+          <a href="#Cubemap_Textures_and_Skyboxes" onclick="closeDropdown3()">Cubemap Textures and Skyboxes</a>
           <!--<a href="#Linear_Algebra" onclick="closeDropdown2()">Linear Algebra</a>
           <a href="#Variable_Scope" onclick="closeDropdown2()">Variable Scope</a>
           <a href="#Global_Variables" onclick="closeDropdown2()">Global Variables</a>
@@ -8088,7 +8089,7 @@ const far = 100;
 const cubeCamera = new THREE.CubeCamera(near, far, cubeRenderTarget);
 scene.add(cubeCamera);
 
-// Load a texture for the plane and ensure it loads correctly
+// Load a texture for the plane
 const planeTexture = textureLoader.load('https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/textures/checkered_pattern.jpg');
 
 // Plane material
@@ -8098,13 +8099,6 @@ const planeMaterial = new THREE.MeshStandardMaterial({
     metalness: 0, 
 });
 
-// Sphere material
-const sphereMaterial = new THREE.MeshStandardMaterial({
-    metalness: 1, 
-    roughness: 0, 
-    envMap: cubeRenderTarget.texture 
-});
-
 // Create the plane
 const planeGeometry = new THREE.PlaneGeometry(20, 20);
 const plane = new THREE.Mesh(planeGeometry, planeMaterial);
@@ -8112,6 +8106,13 @@ plane.rotation.x = -Math.PI / 2;
 plane.position.y = 0; // Position it on the ground
 plane.receiveShadow = true; 
 scene.add(plane);
+
+// Sphere material
+const sphereMaterial = new THREE.MeshStandardMaterial({
+    metalness: 1, 
+    roughness: 0, 
+    envMap: cubeRenderTarget.texture 
+});
 
 // Create the reflective sphere
 const sphereGeometry = new THREE.SphereGeometry(2, 32, 32);
@@ -8145,15 +8146,132 @@ animate();</code></pre>
         <p>This is a simple way to create reflections on surfaces so that we can have more realistic renderings of our
           objects such as metals.</p>
 
-        <!--<h4>Refraction</h4>
+        <p>Three.js can also do <b>refraction</b>. Refraction occurs when light passes through a transparent or
+          translucent object. A ray of light will be bent as it passes between the inside of the object and the outside.
+          This is what happens when you look at a straw in a glass of water and it looks bent.
+        </p>
 
-        <p>Refraction is the bending of light as it passes through a transparent object. This is what happens when you
-          look at a straw in a glass of water and it looks bent.</p>
+        <p>The amount of bending depends on the so-called <b>"indices of refraction"</b> of the material outside and the
+          material inside the object. More exactly, it depends on the ratio between the two indices. Even a perfectly
+          transparent object will be visible because of the distortion induced by this bending (unless the ratio is 1,
+          meaning that there is no bending of light at all).</p>
 
-        <p>As we saw in a previous example, we attempted to make a "glass table" in
-          Three.js by using a transparent material. However, this approach only made the table transparent, not reflective.</p>-->
+        <p>In Three.js, refraction is implemented using environment maps.</p>
 
-          
+        <p>As with reflection, a refracting object does not show its actual environment; it refracts the cubemap texture
+          that is used as the environment map. For refraction, a special "mapping" must be used for the environment map
+          texture.</p>
+
+        <p>The mapping property of a texture tells how that texture will be mapped to a surface. For a cubemap texture
+          being used for refraction, our <b>CubeRenderTargets texture.mapping should be set to
+            THREE.CubeRefractionMapping</b>. (The default value of this
+          property in a cubemap texture is appropriate for reflection rather than refraction.) </p>
+
+        <p>And we need to add the <b>refractionRatio</b> property to our sphereMaterial.</p>
+
+        <p>So let's start by adjusting out CubeCamera and CubeRenderTargets:</p>
+
+        <pre><code class="javascript">// CubeCamera target
+const cubeRenderTarget = new THREE.WebGLCubeRenderTarget(128, {
+    format: THREE.RGBFormat,
+    generateMipmaps: true,
+    minFilter: THREE.LinearMipmapLinearFilter
+});
+
+// IMPORTANT TO SET REFRACTION
+cubeRenderTarget.texture.mapping = THREE.CubeRefractionMapping;
+
+// Set the near and far for the cubeCamera
+const near = 0.1;
+const far = 100;
+const cubeCamera = new THREE.CubeCamera(near, far, cubeRenderTarget);
+scene.add(cubeCamera);</code></pre>
+
+        <p>And adjust our sphere properties:</p>
+
+        <pre><code class="javascript">// Sphere
+const sphereGeometry = new THREE.SphereGeometry(2, 32, 32);
+const sphereMaterial = new THREE.MeshPhongMaterial({
+    shininess: 100, //high shininess for a shiny surface
+    color: "white", //white color
+    specular: "white", //white specular color
+    envMap: cubeRenderTarget.texture, //the environment map texture
+    refractionRatio: 0.5, //the ratio of the indices of refraction
+    transparent: true, //enable transparency
+    side: THREE.BackSide, //the side of the object to render
+    combine: THREE.MixOperation //mix the environment map with the color of the object
+});
+const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
+sphere.position.y = 4; // Slightly above the plane
+scene.add(sphere);</code></pre>
+
+        <p>We can also now add a GUI to adjust our refraction ratio to see how that changes the effect on the sphere:
+        </p>
+
+        <pre><code class="javascript">// GUI to adjust refraction ratio
+const gui = new dat.GUI();
+const guiParams = { refractionRatio: sphereRefractionMaterial.refractionRatio };
+
+const refractionFolder = gui.addFolder("Refraction");
+refractionFolder.add(guiParams, "refractionRatio", 0, 1, 0.01).onChange((v) => {
+    sphereMaterial.refractionRatio = v;
+});
+refractionFolder.open();</code></pre>
+
+        <p>And lastly remember to update our cubeCamera in our animate() function:</p>
+
+        <pre><code class="javascript">// Animate function
+function animate() {
+  requestAnimationFrame(animate);
+
+  // Update cube camera position to match the position of the sphere
+  cubeCamera.position.copy(sphere.position);
+
+  // Update cube camera to capture the environment
+  cubeCamera.update(renderer, scene);
+
+  // Render scene
+  renderer.render(scene, camera);
+}</code></pre>
+
+        <p>Now we should be able to see the plane refracted through the "glass sphere".</p>
+
+        <p>How do the two examples differ? Reflection vs refraction?</p>
+
+        <p>Reflection is the bouncing of light off a surface, while refraction is the bending of light as it passes
+          through a medium. In the case of the <b>reflective sphere</b>, the <b>light is bouncing off the surface and
+            creating a
+            mirror-like effect</b>. In the case of the <b>refractive sphere</b>, the <b>light is bending as it passes
+            through the glass and
+            creating a distorted effect</b>.</p>
+
+        <p>Let's look at them side by side: <a href="https://codepen.io/amaraauguste/pen/wBvRRed">here</a></p>
+
+
+        <p>Notice how both spheres either reflect or refract the environment around them. Once again, this is achieved
+          by the use of a CubeCamera.</p>
+
+        <p><b>CubeCamera can take a six-fold picture of a scene from a given point of view and make a cubemap texture
+            from those images</b>.
+          To use the camera, we have to place it at the location of an object—and make the object invisible so it
+          doesn't show up in the pictures.
+          Snap the picture, and apply it as an environment map on the object.</p>
+        <p>For animated scenes, you have to do this in every frame, and we need to do it for every reflective/refractive
+          object in the scene.
+          Obviously, this can get very computationally expensive! And the result still isn't perfect. </p>
+
+        <p>There is also the case where we do not want to use the exact environment around our object but instead use a
+          different environment.
+          This is where we can use a <b>CubeTextureLoader</b> to load a cubemap texture (opposed to capturing our
+          current environment with a CubeCamera) from a set of images.</p>
+
+
+
+
+
+
+
+
 
 
         <!--<h3>Additional Ray-Tracing Fundamentals</h3>
@@ -8215,6 +8333,219 @@ animate();</code></pre>
       </article>
       <br />
     </section>
+    <hr />
+    <section class="main-section" id="Cubemap_Textures_and_Skyboxes">
+      <br />
+      <header><b>Cubemap Textures and Skyboxes</b></header>
+      <article>
+
+        <p>We have created and viewed simple scenes, shown on a solid-colored background, but it would be nice to put
+          our scenes in an "environment" such as the interior of a building, a nature scene, or a public square.</p>
+
+        <p>It's not practical to build representations of such complex environments out of geometric primitives, but we
+          can get a reasonably good effect using textures.</p>
+
+        <p>The technique that is used in Three.js is called a <b>skybox</b>.</p>
+        <p>A skybox is a large cube — effectively, infinitely large — where a different texture is applied to each face
+          of the cube.
+          The textures are images of some environment. For a viewer inside the cube, the six texture images on the cube
+          fit together to provide a
+          complete view of the environment in every direction.</p>
+
+        <p>The six texture images together make up what is called a <b>cubemap texture</b>. The images must match up
+          along the edges of the cube to form a seamless view of the environment.</p>
+
+        <p>A cube map of an actual physical environment can be made by <b>taking six pictures of the environment in six
+            directions: left, right, up, down, forward, and back</b>. (More realistically, it is made by taking enough
+          photographs to cover all directions, with overlaps, and then using software to "stitch" the images together
+          into a complete cube map.) </p>
+
+        <div style="display: flex; justify-content: center;">
+          <img class="center" style="width: 50%; height: auto; margin-right: 10px;"
+            src="https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/images/skybox%20layout.png"
+            alt="Skybox layout 1" />
+
+          <img class="center" style="width: 50%; height: auto;"
+            src="https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/images/skybox%20layout%202.png"
+            alt="Skybox layout 2" />
+        </div>
+
+        <p>The six directions are referred to by their relation to the coordinate axes as: <b>positive x, negative x,
+            positive y, negative y, positive z, and negative z, and the images must be listed in that order when you
+            specify the cube map</b>.</p>
+
+        <p>Here is an example - The first picture shows the six images of a cube map laid out next to each other.</p>
+
+        <p>The positive y image is at the top, the negative y image is at the bottom. In between are the negative x,
+          positive
+          z, positive x, and negative z images laid out in a row.</p>
+        <p>The second picture shows the images used to texture a cube, viewed here from the outside. You can see how the
+          images match up along the edges of the cube:</p>
+
+        <img class="center" style="width: 100%; height: 100%;"
+          src="https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/images/skybox%20example.png"
+          alt="Skybox example" />
+
+        <p>For a skybox, conceptually, a very large cube would be used. The camera, lights, and any objects that are to
+          be part of the scene would be inside the cube. It is possible to construct a skybox by hand in just this way.
+        </p>
+
+        <p>However, Three.js makes it very easy to use a skybox as the background for a scene. It has the class
+          THREE.CubeTexture to represent cube maps, and you can enclose your scene in a skybox simply by <b>assigning a
+            CubeTexture as the value of the property scene.background</b>. (The value of that property could also be a
+          normal
+          Texture or a Color.)</p>
+
+        <p>A CubeTexture can be created by a CubeTextureLoader, which can load the six images that make up the cube map.
+          The loader has a method named load() that works in the same way as the load() method of a TextureLoader,
+          except that the first parameter to the method is an array of six strings giving the URLs of the six images for
+          the cube map.</p>
+
+        <p>Let's create a cubemap/skybox contained within a cube:</p>
+
+        <pre><code class="javascript">//creating a cube
+const geometry = new THREE.BoxGeometry(8,8,8);
+var materials = [
+    new THREE.MeshBasicMaterial({
+        map : new THREE.TextureLoader().load('https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/textures/Daylight%20Box_Pieces/Daylight%20Box_PosX.bmp'),
+        side : THREE.BackSide,
+    }),
+    new THREE.MeshBasicMaterial({
+        map : new THREE.TextureLoader().load('https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/textures/Daylight%20Box_Pieces/Daylight%20Box_NegX.bmp'),
+        side : THREE.BackSide,
+    }),
+    new THREE.MeshBasicMaterial({
+        map : new THREE.TextureLoader().load('https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/textures/Daylight%20Box_Pieces/Daylight%20Box_PosY.bmp'),
+        side : THREE.BackSide,
+    }),
+    new THREE.MeshBasicMaterial({
+        map : new THREE.TextureLoader().load('https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/textures/Daylight%20Box_Pieces/Daylight%20Box_NegY.bmp'),
+        side : THREE.BackSide,
+    }),
+    new THREE.MeshBasicMaterial({
+        map : new THREE.TextureLoader().load('https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/textures/Daylight%20Box_Pieces/Daylight%20Box_PosZ.bmp'),
+        side : THREE.BackSide,
+    }),
+    new THREE.MeshBasicMaterial({
+        map : new THREE.TextureLoader().load('https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/textures/Daylight%20Box_Pieces/Daylight%20Box_NegZ.bmp'),
+        side : THREE.BackSide,
+    }),
+];
+const cube = new THREE.Mesh(geometry,materials);
+scene.add(cube);
+
+camera.position.set(0, 0, 15);</code></pre>
+
+        <p>Based on this we should see a cube with the six images of the cube map applied inside it.</p>
+
+        <p>Now, let's load a texture map for a meadow (this particular cube map, and others like it, are by
+          Emil Persson, who has made a large number of cube maps available for download at
+          <a href="http://www.humus.name/index.php?page=Textures">http://www.humus.name/index.php?page=Textures</a>
+          under a creative commons license or from sources like <a href="opengameart.org">opengameart.org</a> which is
+          where the previous textures came from).
+        </p>
+
+        <pre><code class="javascript">const textureURLs = [  // URLs of the six faces of the cube map (in the order: +x, -x, +y, -y, +z, -z)
+    "https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/textures/Meadow/posx.jpg",   
+    "https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/textures/Meadow/negx.jpg",   
+    "https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/textures/Meadow/posy.jpg",   
+    "https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/textures/Meadow/negy.jpg",  
+    "https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/textures/Meadow/posz.jpg",   
+    "https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/textures/Meadow/negz.jpg"
+];
+const cubeLoader = new THREE.CubeTextureLoader();
+const cubeTexture = loader.load(textureURLs);
+scene.background = cubeTexture;</code></pre>
+
+        <p>Now we should see our environment as our scene is now surrounded by the skybox texture.</p>
+
+        <p>Let's put our reflective sphere into this environment and see how it works:</p>
+
+        <pre><code class="javascript">// Create a cube render target for reflections
+const cubeRenderTarget = new THREE.WebGLCubeRenderTarget(128, {
+    format: THREE.RGBFormat,
+    generateMipmaps: true,
+    minFilter: THREE.LinearMipmapLinearFilter
+});
+
+const near = 0.1;
+const far = 100;
+const cubeCamera = new THREE.CubeCamera(near, far, cubeRenderTarget);
+scene.add(cubeCamera);
+
+// Sphere for reflection
+const sphereReflectionMaterial = new THREE.MeshStandardMaterial({
+    metalness: 1,
+    roughness: 0,
+    envMap: cubeRenderTarget.texture
+});
+const sphereReflection = new THREE.Mesh(
+    new THREE.SphereGeometry(50, 32, 32),
+    sphereReflectionMaterial
+);
+sphereReflection.position.y = 4;
+sphereReflection.position.x = -53; // Position it on the left
+scene.add(sphereReflection);</code></pre>
+
+        <p>And remember to add the following to our animate() function:</p>
+
+        <pre><code class="javascript">// Update cube camera for reflection
+cubeCamera.position.copy(sphereReflection.position);
+cubeCamera.update(renderer, scene);</code></pre>
+
+        <p>What effect does the skybox have on the reflective sphere?</p>
+
+        <p>The skybox provides a background environment for the reflective sphere, allowing it to reflect the
+          surrounding
+          scenery. The reflections on the sphere will now show the meadow environment instead of a solid color.</p>
+
+        <p>Let's add our refractive sphere too:</p>
+
+        <pre><code class="javascript">// Create a cube render target for refractions
+const cubeRenderTarget2 = new THREE.WebGLCubeRenderTarget(128, {
+  format: THREE.RGBFormat,
+  generateMipmaps: true,
+  minFilter: THREE.LinearMipmapLinearFilter
+});
+
+const cubeCamera2 = new THREE.CubeCamera(near, far, cubeRenderTarget2);
+scene.add(cubeCamera2);
+
+// Important to set for refraction
+cubeRenderTarget2.texture.mapping = THREE.CubeRefractionMapping;
+
+// Sphere for refraction
+const sphereRefractionMaterial = new THREE.MeshPhongMaterial({
+    shininess: 100,
+    color: 0xffffff,
+    specular: 0xffffff,
+    envMap: cubeRenderTarget2.texture,
+    refractionRatio: 0.5,
+    transparent: true,
+    side: THREE.BackSide // Render from inside
+});
+const sphereRefraction = new THREE.Mesh(
+    new THREE.SphereGeometry(50, 32, 32),
+    sphereRefractionMaterial
+);
+sphereRefraction.position.y = 4;
+sphereRefraction.position.x = 53; // Position it on the right
+scene.add(sphereRefraction);</code></pre>
+
+        <p>And once again update in our animate() function:</p>
+
+        <pre><code class="javascript">// Update cube camera for refraction
+cubeCamera2.position.copy(sphereRefraction.position);
+cubeCamera2.update(renderer, scene);</code></pre>
+
+        <p>Now we should have a sphere for reflecting and a sphere for refracting the cubemap environment around them.
+        </p>
+
+
+
+      </article>
+      <br />
+    </section>
 
 
 
@@ -8238,7 +8569,7 @@ animate();</code></pre>
         <ul>
           <li>
             Eck, D. J. (2023). Introduction to computer graphics (Version 1.4). Hobart and William Smith Colleges.
-            Retrieved from https://math.hws.edu/graphicsbook/
+            Retrieved from <a href="https://math.hws.edu/graphicsbook/">https://math.hws.edu/graphicsbook/</a>
           </li>
           <li>
             <a href="https://www.tutorialspoint.com/computer_graphics/index.htm" target="_blank">Tutorials Point</a>
