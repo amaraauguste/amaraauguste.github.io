@@ -6779,7 +6779,7 @@ const loader = new THREE.TextureLoader();</code></pre>
 
         <p>Now let's load our textures:</p>
 
-        <pre><code class="javascript"">const houseTexture = loader.load('https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/textures/brown%20house%20texture.jpg');
+        <pre><code class="javascript">const houseTexture = loader.load('https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/textures/brown%20house%20texture.jpg');
 const roofTexture = loader.load('https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/textures/red%20roof%20texture.png');
 const doorTexture = loader.load('https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/textures/pixel_door.png');</code></pre>
 
@@ -8552,8 +8552,302 @@ function animate() {
           are both refractive and reflective (not either or)</b>. The problem is how do we know how much light they transmit vs. the amount
           of light they reflect? </p>
 
-        <p>This ratio is given by the <b>Fresnel equations</b> which we will discuss more in depth later.</p>
+        <p>This ratio is given by the <b>Fresnel equations</b>.</p>
+        
+        <p>Transparent objects such as glass or water are both refractive and reflective. How much light they reflect vs the amount they transmit depends on the angle of incidence. <b>The amount of transmitted light increases when the angle of incidence decreases</b>. </p>
+        
+        <p>And since by the principle of the conservation of energy, <b>the amount of reflected light plus the amount of refracted light is necessarily equal to the total amount of incident light</b>, you can deduce that <b>the amount of reflected light increases when the angle of incidence increases</b>, up to 100% as the angle gets closer to 90 degrees.</p>
+        
+        <p>Technically, the edges of a glass ball are 100% reflective. In its center though, the sphere only reflects about 6% of the incident light.</p>
+        
+        <p>The amount of reflected vs. refracted light can be computed using what we call the <b>Fresnel equations</b>. Explaining the origin of these equations and how they can be derived goes far beyond the level of explanation we are willing to give in this lesson.</p>
+        
+        <p>Light is composed of two perpendicular waves which we call <b>parallel</b> and <b>perpendicular polarised light</b>. Don't worry too much if you don't know about this detail.</p>
+        
+        <p>Suffice it to know that we need to compute the ratio of reflected light for these two waves using two different equations (one for each type of wave) and average the results to find the solution.</p>
+        
+        <p>The two Fresnel equations are:</p>
 
+		<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <mtable columnalign="left" columnspacing="1em" rowspacing="4pt">
+    <mtr>
+      <mtd>
+        <msub>
+          <mi>F</mi>
+          <mrow data-mjx-texclass="ORD">
+            <mi>R</mi>
+            <mo>&#x2225;</mo>
+          </mrow>
+        </msub>
+        <mo>=</mo>
+        <msup>
+          <mrow data-mjx-texclass="INNER">
+            <mo data-mjx-texclass="OPEN">(</mo>
+            <mstyle displaystyle="true" scriptlevel="0">
+              <mfrac>
+                <mrow>
+                  <msub>
+                    <mi>&#x3B7;</mi>
+                    <mn>2</mn>
+                  </msub>
+                  <mi>cos</mi>
+                  <mo data-mjx-texclass="NONE">&#x2061;</mo>
+                  <msub>
+                    <mi>&#x3B8;</mi>
+                    <mn>1</mn>
+                  </msub>
+                  <mo>&#x2212;</mo>
+                  <msub>
+                    <mi>&#x3B7;</mi>
+                    <mn>1</mn>
+                  </msub>
+                  <mi>cos</mi>
+                  <mo data-mjx-texclass="NONE">&#x2061;</mo>
+                  <msub>
+                    <mi>&#x3B8;</mi>
+                    <mn>2</mn>
+                  </msub>
+                </mrow>
+                <mrow>
+                  <msub>
+                    <mi>&#x3B7;</mi>
+                    <mn>2</mn>
+                  </msub>
+                  <mi>cos</mi>
+                  <mo data-mjx-texclass="NONE">&#x2061;</mo>
+                  <msub>
+                    <mi>&#x3B8;</mi>
+                    <mn>1</mn>
+                  </msub>
+                  <mo>+</mo>
+                  <msub>
+                    <mi>&#x3B7;</mi>
+                    <mn>1</mn>
+                  </msub>
+                  <mi>cos</mi>
+                  <mo data-mjx-texclass="NONE">&#x2061;</mo>
+                  <msub>
+                    <mi>&#x3B8;</mi>
+                    <mn>2</mn>
+                  </msub>
+                </mrow>
+              </mfrac>
+            </mstyle>
+            <mo data-mjx-texclass="CLOSE">)</mo>
+          </mrow>
+          <mn>2</mn>
+        </msup>
+        <mo>,</mo>
+      </mtd>
+    </mtr>
+    <mtr>
+      <mtd>
+        <msub>
+          <mi>F</mi>
+          <mrow data-mjx-texclass="ORD">
+            <mi>R</mi>
+            <mo>&#x22A5;</mo>
+          </mrow>
+        </msub>
+        <mo>=</mo>
+        <msup>
+          <mrow data-mjx-texclass="INNER">
+            <mo data-mjx-texclass="OPEN">(</mo>
+            <mstyle displaystyle="true" scriptlevel="0">
+              <mfrac>
+                <mrow>
+                  <msub>
+                    <mi>&#x3B7;</mi>
+                    <mn>1</mn>
+                  </msub>
+                  <mi>cos</mi>
+                  <mo data-mjx-texclass="NONE">&#x2061;</mo>
+                  <msub>
+                    <mi>&#x3B8;</mi>
+                    <mn>2</mn>
+                  </msub>
+                  <mo>&#x2212;</mo>
+                  <msub>
+                    <mi>&#x3B7;</mi>
+                    <mn>2</mn>
+                  </msub>
+                  <mi>cos</mi>
+                  <mo data-mjx-texclass="NONE">&#x2061;</mo>
+                  <msub>
+                    <mi>&#x3B8;</mi>
+                    <mn>1</mn>
+                  </msub>
+                </mrow>
+                <mrow>
+                  <msub>
+                    <mi>&#x3B7;</mi>
+                    <mn>1</mn>
+                  </msub>
+                  <mi>cos</mi>
+                  <mo data-mjx-texclass="NONE">&#x2061;</mo>
+                  <msub>
+                    <mi>&#x3B8;</mi>
+                    <mn>2</mn>
+                  </msub>
+                  <mo>+</mo>
+                  <msub>
+                    <mi>&#x3B7;</mi>
+                    <mn>2</mn>
+                  </msub>
+                  <mi>cos</mi>
+                  <mo data-mjx-texclass="NONE">&#x2061;</mo>
+                  <msub>
+                    <mi>&#x3B8;</mi>
+                    <mn>1</mn>
+                  </msub>
+                </mrow>
+              </mfrac>
+            </mstyle>
+            <mo data-mjx-texclass="CLOSE">)</mo>
+          </mrow>
+          <mn>2</mn>
+        </msup>
+      </mtd>
+    </mtr>
+  </mtable>
+</math>
+
+		<p>By taking the average of the two we get the actual ratio of reflected light:</p>
+        
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <msub>
+    <mi>F</mi>
+    <mi>R</mi>
+  </msub>
+  <mo>=</mo>
+  <mstyle displaystyle="true" scriptlevel="0">
+    <mfrac>
+      <mn>1</mn>
+      <mn>2</mn>
+    </mfrac>
+  </mstyle>
+  <mo stretchy="false">(</mo>
+  <msub>
+    <mi>F</mi>
+    <mrow data-mjx-texclass="ORD">
+      <mi>R</mi>
+      <mo>&#x2225;</mo>
+    </mrow>
+  </msub>
+  <mo>+</mo>
+  <msub>
+    <mi>F</mi>
+    <mrow data-mjx-texclass="ORD">
+      <mi>R</mi>
+      <mo>&#x22A5;</mo>
+    </mrow>
+  </msub>
+  <mo stretchy="false">)</mo>
+</math>
+
+<p>The terms <math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msub>
+    <mi>&#x3B7;</mi>
+    <mn>1</mn>
+  </msub>
+</math>
+, <math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msub>
+    <mi>&#x3B7;</mi>
+    <mn>2</mn>
+  </msub>
+</math>
+ are the refraction indices of the two mediums. The terms <math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mi>cos</mi>
+  <mo data-mjx-texclass="NONE">&#x2061;</mo>
+  <msub>
+    <mi>&#x3B8;</mi>
+    <mn>1</mn>
+  </msub>
+</math>
+ and <math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mi>cos</mi>
+  <mo data-mjx-texclass="NONE">&#x2061;</mo>
+  <msub>
+    <mi>&#x3B8;</mi>
+    <mn>2</mn>
+  </msub>
+</math>
+ are the angles of incidence and refraction respectively. As mentioned before, due to the conservation of energy, the ratio of refracted light can simply be computed as:
+
+</p>
+
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <msub>
+    <mi>F</mi>
+    <mi>T</mi>
+  </msub>
+  <mo>=</mo>
+  <mn>1</mn>
+  <mo>&#x2212;</mo>
+  <msub>
+    <mi>F</mi>
+    <mi>R</mi>
+  </msub>
+  <mo>.</mo>
+</math>
+        <p>Keep in mind that <b>if the light goes from one medium to another medium with a lower refraction index, it may be subject to the phenomenon of total internal reflection</b>. This is happening in the case of materials such as glass or water, so we need to take this into account.</p>
+
+
+<p>We do so by computing as in the case of reflection, the sine of the angle of refraction or <math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msub>
+    <mi>&#x3B8;</mi>
+    <mn>2</mn>
+  </msub>
+</math>
+. If <math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mi>sin</mi>
+  <mo data-mjx-texclass="NONE">&#x2061;</mo>
+  <msub>
+    <mi>&#x3B8;</mi>
+    <mn>2</mn>
+  </msub>
+</math>
+ is greater than 1, then we have a case of <b>total reflection</b>. In this particular case, there is no need to compute the Fresnels formulas, we can just set 
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msub>
+    <mi>F</mi>
+    <mi>R</mi>
+  </msub>
+</math> to 1. </p>
+
+<p>As usual, you will need to swap the refraction indices if you find out that the incident ray is inside the object with the greatest refraction index. This can be done again by testing the sign of the cosine of the angle between the surface normal and the incident ray direction (the sign of <math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mi>cos</mi>
+  <mo data-mjx-texclass="NONE">&#x2061;</mo>
+  <msub>
+    <mi>&#x3B8;</mi>
+    <mn>1</mn>
+  </msub>
+</math>
+).</p>
+
+<p>The fresnel effect can easily be observed in nature.</p>
+
+<p>If you look at the picture of the lake with some mountains in the background and pebbles in the foreground, you can see that <b>the reflection seems to increase with distance</b>.</p>
+
+<img class="center" style="width: 90%; height: 90%"
+          src="https://www.scratchapixel.com/images/shading-intro/shad-fresnel1.png?"
+          alt="Fresnel 1" />
+ 
+<p>Note also that while reflections are strong in the distance, we see more clearly through the water in the foreground than we do in the far distance. This is due to fresnel.</p>
+
+<p>The angle of incidence increases with the distance as shown in the following image:</p>
+
+<img class="center" style="width: 90%; height: 90%"
+          src="https://www.scratchapixel.com/images/shading-intro/shad-fresnel3.png?"
+          alt="Fresnel 2" />
+
+<p>and we know that the ratio of reflection vs. transmission increases with the angle of incidence. Thus naturally as we look in the distance, the water's surface reflects more light.</p>
+
+<p>Though if we look almost directly down on the water surface, a few meters from where we stand, the angle incidence is low and most of the light is transmitted. Thus we see through the water more clearly than when we look in the distance.</p>
+
+<p>You can easily observe this effect on a large variety of objects: the facade of a building made out of glass, glass balls that are more reflective on the edges, etc.</p>
+ 
         <p>But back to our example, we can see that the <b>CubeCamera</b> is a very useful tool for creating realistic
           reflections and refractions in our scenes.</p>
 
