@@ -80,7 +80,7 @@
           <a href="#Custom_Geometry" onclick="closeDropdown3()">Custom Geometry</a>
           <a href="#Loading_Models" onclick="closeDropdown3()">Loading Models</a>
           <a href="#Global_Lighting_Models" onclick="closeDropdown3()">Global Lighting Models</a>
-          <a href="#Cubemap_Textures_and_Skyboxes" onclick="closeDropdown3()">Cubemap Textures and Skyboxes</a>
+          <a href="#Particle_Effects" onclick="closeDropdown3()">Particle Effects</a>
           <!--<a href="#Linear_Algebra" onclick="closeDropdown2()">Linear Algebra</a>
           <a href="#Variable_Scope" onclick="closeDropdown2()">Variable Scope</a>
           <a href="#Global_Variables" onclick="closeDropdown2()">Global Variables</a>
@@ -8245,7 +8245,8 @@ function animate() {
             through the glass and
             creating a distorted effect</b>.</p>
 
-        <p>The important thing to remember is that in the <b>law of (specular) reflection</b>, <b>angle of incidence is equal to
+        <p>The important thing to remember is that in the <b>law of (specular) reflection</b>, <b>angle of incidence is
+            equal to
             the angle of reflection</b>.</p>
 
         <img class="center" style="width: 50%; height: 50%"
@@ -8255,7 +8256,7 @@ function animate() {
         <p>This is similar to what happens to a tennis ball when it hits the surface of the floor. It bounces back in a
           direction that is symmetrical to the incident direction about the surface normal at the point of impact.</p>
 
-          <img class="center" style="width: 50%; height: 50%"
+        <img class="center" style="width: 50%; height: 50%"
           src="https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/images/tennis%20ball%20example%201.png"
           alt="Law of Reflection Example 1" />
 
@@ -8267,7 +8268,8 @@ function animate() {
           src="https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/images/tennis%20ball%20example%202.png"
           alt="Law of Reflection Example 2" />
 
-        <p>As you can see in image above, the vectors <b><i>I</i></b> and <b><i>R</i></b> can be expressed in terms of the vectors <b><i>A</i></b> and <b><i>B</i></b>:</p>
+        <p>As you can see in image above, the vectors <b><i>I</i></b> and <b><i>R</i></b> can be expressed in terms of
+          the vectors <b><i>A</i></b> and <b><i>B</i></b>:</p>
 
         <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
           <mtable columnalign="left" columnspacing="1em" rowspacing="4pt">
@@ -8300,22 +8302,25 @@ function animate() {
           </mtable>
         </math>
 
-        <p>The vector <b><i>B</i></b> can easily be computed. It is the projection of the vector <b><i>I</i></b> or <b><i>R</i></b> onto the vector <b><i>N</i></b>. We can compute 
-          this vector using the following equation:</p>
+        <p>The vector <b><i>B</i></b> can easily be computed. It is the projection of the vector <b><i>I</i></b> or
+          <b><i>R</i></b> onto the vector <b><i>N</i></b>. We can compute
+          this vector using the following equation:
+        </p>
 
-          <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-            <mi>B</mi>
-            <mo>=</mo>
-            <mi>cos</mi>
-            <mo data-mjx-texclass="NONE">&#x2061;</mo>
-            <mo stretchy="false">(</mo>
-            <mi>&#x3B8;</mi>
-            <mo stretchy="false">)</mo>
-            <mo>&#x2217;</mo>
-            <mi>N</mi>
-          </math>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+          <mi>B</mi>
+          <mo>=</mo>
+          <mi>cos</mi>
+          <mo data-mjx-texclass="NONE">&#x2061;</mo>
+          <mo stretchy="false">(</mo>
+          <mi>&#x3B8;</mi>
+          <mo stretchy="false">)</mo>
+          <mo>&#x2217;</mo>
+          <mi>N</mi>
+        </math>
 
-        <p>As the term cos(θ) is equal to the dot product between the two vectors <b><i>N</i></b> and <b><i>I</i></b>.</p>
+        <p>As the term cos(θ) is equal to the dot product between the two vectors <b><i>N</i></b> and <b><i>I</i></b>.
+        </p>
 
         <p>We can now replace <b><i>B</i></b> in both equations:</p>
 
@@ -8504,350 +8509,376 @@ function animate() {
             and angle of refraction
             is equivalent to the opposite ratio of the indices of refraction</b>.</p>
 
-          <p>Snell's Law:</p>
+        <p>Snell's Law:</p>
 
-          <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-            <mstyle displaystyle="true" scriptlevel="0">
-              <mfrac>
-                <mrow>
-                  <mi>sin</mi>
-                  <mo data-mjx-texclass="NONE">&#x2061;</mo>
-                  <msub>
-                    <mi>&#x3B8;</mi>
-                    <mn>1</mn>
-                  </msub>
-                </mrow>
-                <mrow>
-                  <mi>sin</mi>
-                  <mo data-mjx-texclass="NONE">&#x2061;</mo>
-                  <msub>
-                    <mi>&#x3B8;</mi>
-                    <mn>2</mn>
-                  </msub>
-                </mrow>
-              </mfrac>
-            </mstyle>
-            <mo>=</mo>
-            <mstyle displaystyle="true" scriptlevel="0">
-              <mfrac>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+          <mstyle displaystyle="true" scriptlevel="0">
+            <mfrac>
+              <mrow>
+                <mi>sin</mi>
+                <mo data-mjx-texclass="NONE">&#x2061;</mo>
                 <msub>
-                  <mi>&#x3B7;</mi>
-                  <mn>2</mn>
-                </msub>
-                <msub>
-                  <mi>&#x3B7;</mi>
+                  <mi>&#x3B8;</mi>
                   <mn>1</mn>
                 </msub>
-              </mfrac>
-            </mstyle>
-            <mo>.</mo>
-          </math>
+              </mrow>
+              <mrow>
+                <mi>sin</mi>
+                <mo data-mjx-texclass="NONE">&#x2061;</mo>
+                <msub>
+                  <mi>&#x3B8;</mi>
+                  <mn>2</mn>
+                </msub>
+              </mrow>
+            </mfrac>
+          </mstyle>
+          <mo>=</mo>
+          <mstyle displaystyle="true" scriptlevel="0">
+            <mfrac>
+              <msub>
+                <mi>&#x3B7;</mi>
+                <mn>2</mn>
+              </msub>
+              <msub>
+                <mi>&#x3B7;</mi>
+                <mn>1</mn>
+              </msub>
+            </mfrac>
+          </mstyle>
+          <mo>.</mo>
+        </math>
 
         <p>Let's look at them side by side: <a href="https://codepen.io/amaraauguste/pen/wBvRRed">here</a></p>
 
         <p>Notice how both spheres either reflect or refract the environment around them.</p>
-        
+
         <p>The problem with this image though, is that it is not completely realistic. Glass spheres as well as pretty
-          much every other transparent surface (water, diamonds, crystals, etc.) transmit as well as reflect light. <b>They
-          are both refractive and reflective (not either or)</b>. The problem is how do we know how much light they transmit vs. the amount
-          of light they reflect? </p>
+          much every other transparent surface (water, diamonds, crystals, etc.) transmit as well as reflect light.
+          <b>They
+            are both refractive and reflective (not either or)</b>. The problem is how do we know how much light they
+          transmit vs. the amount
+          of light they reflect?
+        </p>
 
         <p>This ratio is given by the <b>Fresnel equations</b>.</p>
-        
-        <p>Transparent objects such as glass or water are both refractive and reflective. How much light they reflect vs the amount they transmit depends on the angle of incidence. <b>The amount of transmitted light increases when the angle of incidence decreases</b>. </p>
-        
-        <p>And since by the principle of the conservation of energy, <b>the amount of reflected light plus the amount of refracted light is necessarily equal to the total amount of incident light</b>, you can deduce that <b>the amount of reflected light increases when the angle of incidence increases</b>, up to 100% as the angle gets closer to 90 degrees.</p>
-        
-        <p>Technically, the edges of a glass ball are 100% reflective. In its center though, the sphere only reflects about 6% of the incident light.</p>
-        
-        <p>The amount of reflected vs. refracted light can be computed using what we call the <b>Fresnel equations</b>. Explaining the origin of these equations and how they can be derived goes far beyond the level of explanation we are willing to give in this lesson.</p>
-        
-        <p>Light is composed of two perpendicular waves which we call <b>parallel</b> and <b>perpendicular polarised light</b>. Don't worry too much if you don't know about this detail.</p>
-        
-        <p>Suffice it to know that we need to compute the ratio of reflected light for these two waves using two different equations (one for each type of wave) and average the results to find the solution.</p>
-        
+
+        <p>Transparent objects such as glass or water are both refractive and reflective. How much light they reflect vs
+          the amount they transmit depends on the angle of incidence. <b>The amount of transmitted light increases when
+            the angle of incidence decreases</b>. </p>
+
+        <p>And since by the principle of the conservation of energy, <b>the amount of reflected light plus the amount of
+            refracted light is necessarily equal to the total amount of incident light</b>, you can deduce that <b>the
+            amount of reflected light increases when the angle of incidence increases</b>, up to 100% as the angle gets
+          closer to 90 degrees.</p>
+
+        <p>Technically, the edges of a glass ball are 100% reflective. In its center though, the sphere only reflects
+          about 6% of the incident light.</p>
+
+        <p>The amount of reflected vs. refracted light can be computed using what we call the <b>Fresnel equations</b>.
+          Explaining the origin of these equations and how they can be derived goes far beyond the level of explanation
+          we are willing to give in this lesson.</p>
+
+        <p>Light is composed of two perpendicular waves which we call <b>parallel</b> and <b>perpendicular polarised
+            light</b>. Don't worry too much if you don't know about this detail.</p>
+
+        <p>Suffice it to know that we need to compute the ratio of reflected light for these two waves using two
+          different equations (one for each type of wave) and average the results to find the solution.</p>
+
         <p>The two Fresnel equations are:</p>
 
-		<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-  <mtable columnalign="left" columnspacing="1em" rowspacing="4pt">
-    <mtr>
-      <mtd>
-        <msub>
-          <mi>F</mi>
-          <mrow data-mjx-texclass="ORD">
-            <mi>R</mi>
-            <mo>&#x2225;</mo>
-          </mrow>
-        </msub>
-        <mo>=</mo>
-        <msup>
-          <mrow data-mjx-texclass="INNER">
-            <mo data-mjx-texclass="OPEN">(</mo>
-            <mstyle displaystyle="true" scriptlevel="0">
-              <mfrac>
-                <mrow>
-                  <msub>
-                    <mi>&#x3B7;</mi>
-                    <mn>2</mn>
-                  </msub>
-                  <mi>cos</mi>
-                  <mo data-mjx-texclass="NONE">&#x2061;</mo>
-                  <msub>
-                    <mi>&#x3B8;</mi>
-                    <mn>1</mn>
-                  </msub>
-                  <mo>&#x2212;</mo>
-                  <msub>
-                    <mi>&#x3B7;</mi>
-                    <mn>1</mn>
-                  </msub>
-                  <mi>cos</mi>
-                  <mo data-mjx-texclass="NONE">&#x2061;</mo>
-                  <msub>
-                    <mi>&#x3B8;</mi>
-                    <mn>2</mn>
-                  </msub>
-                </mrow>
-                <mrow>
-                  <msub>
-                    <mi>&#x3B7;</mi>
-                    <mn>2</mn>
-                  </msub>
-                  <mi>cos</mi>
-                  <mo data-mjx-texclass="NONE">&#x2061;</mo>
-                  <msub>
-                    <mi>&#x3B8;</mi>
-                    <mn>1</mn>
-                  </msub>
-                  <mo>+</mo>
-                  <msub>
-                    <mi>&#x3B7;</mi>
-                    <mn>1</mn>
-                  </msub>
-                  <mi>cos</mi>
-                  <mo data-mjx-texclass="NONE">&#x2061;</mo>
-                  <msub>
-                    <mi>&#x3B8;</mi>
-                    <mn>2</mn>
-                  </msub>
-                </mrow>
-              </mfrac>
-            </mstyle>
-            <mo data-mjx-texclass="CLOSE">)</mo>
-          </mrow>
-          <mn>2</mn>
-        </msup>
-        <mo>,</mo>
-      </mtd>
-    </mtr>
-    <mtr>
-      <mtd>
-        <msub>
-          <mi>F</mi>
-          <mrow data-mjx-texclass="ORD">
-            <mi>R</mi>
-            <mo>&#x22A5;</mo>
-          </mrow>
-        </msub>
-        <mo>=</mo>
-        <msup>
-          <mrow data-mjx-texclass="INNER">
-            <mo data-mjx-texclass="OPEN">(</mo>
-            <mstyle displaystyle="true" scriptlevel="0">
-              <mfrac>
-                <mrow>
-                  <msub>
-                    <mi>&#x3B7;</mi>
-                    <mn>1</mn>
-                  </msub>
-                  <mi>cos</mi>
-                  <mo data-mjx-texclass="NONE">&#x2061;</mo>
-                  <msub>
-                    <mi>&#x3B8;</mi>
-                    <mn>2</mn>
-                  </msub>
-                  <mo>&#x2212;</mo>
-                  <msub>
-                    <mi>&#x3B7;</mi>
-                    <mn>2</mn>
-                  </msub>
-                  <mi>cos</mi>
-                  <mo data-mjx-texclass="NONE">&#x2061;</mo>
-                  <msub>
-                    <mi>&#x3B8;</mi>
-                    <mn>1</mn>
-                  </msub>
-                </mrow>
-                <mrow>
-                  <msub>
-                    <mi>&#x3B7;</mi>
-                    <mn>1</mn>
-                  </msub>
-                  <mi>cos</mi>
-                  <mo data-mjx-texclass="NONE">&#x2061;</mo>
-                  <msub>
-                    <mi>&#x3B8;</mi>
-                    <mn>2</mn>
-                  </msub>
-                  <mo>+</mo>
-                  <msub>
-                    <mi>&#x3B7;</mi>
-                    <mn>2</mn>
-                  </msub>
-                  <mi>cos</mi>
-                  <mo data-mjx-texclass="NONE">&#x2061;</mo>
-                  <msub>
-                    <mi>&#x3B8;</mi>
-                    <mn>1</mn>
-                  </msub>
-                </mrow>
-              </mfrac>
-            </mstyle>
-            <mo data-mjx-texclass="CLOSE">)</mo>
-          </mrow>
-          <mn>2</mn>
-        </msup>
-      </mtd>
-    </mtr>
-  </mtable>
-</math>
-
-		<p>By taking the average of the two we get the actual ratio of reflected light:</p>
-        
         <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-  <msub>
-    <mi>F</mi>
-    <mi>R</mi>
-  </msub>
-  <mo>=</mo>
-  <mstyle displaystyle="true" scriptlevel="0">
-    <mfrac>
-      <mn>1</mn>
-      <mn>2</mn>
-    </mfrac>
-  </mstyle>
-  <mo stretchy="false">(</mo>
-  <msub>
-    <mi>F</mi>
-    <mrow data-mjx-texclass="ORD">
-      <mi>R</mi>
-      <mo>&#x2225;</mo>
-    </mrow>
-  </msub>
-  <mo>+</mo>
-  <msub>
-    <mi>F</mi>
-    <mrow data-mjx-texclass="ORD">
-      <mi>R</mi>
-      <mo>&#x22A5;</mo>
-    </mrow>
-  </msub>
-  <mo stretchy="false">)</mo>
-</math>
+          <mtable columnalign="left" columnspacing="1em" rowspacing="4pt">
+            <mtr>
+              <mtd>
+                <msub>
+                  <mi>F</mi>
+                  <mrow data-mjx-texclass="ORD">
+                    <mi>R</mi>
+                    <mo>&#x2225;</mo>
+                  </mrow>
+                </msub>
+                <mo>=</mo>
+                <msup>
+                  <mrow data-mjx-texclass="INNER">
+                    <mo data-mjx-texclass="OPEN">(</mo>
+                    <mstyle displaystyle="true" scriptlevel="0">
+                      <mfrac>
+                        <mrow>
+                          <msub>
+                            <mi>&#x3B7;</mi>
+                            <mn>2</mn>
+                          </msub>
+                          <mi>cos</mi>
+                          <mo data-mjx-texclass="NONE">&#x2061;</mo>
+                          <msub>
+                            <mi>&#x3B8;</mi>
+                            <mn>1</mn>
+                          </msub>
+                          <mo>&#x2212;</mo>
+                          <msub>
+                            <mi>&#x3B7;</mi>
+                            <mn>1</mn>
+                          </msub>
+                          <mi>cos</mi>
+                          <mo data-mjx-texclass="NONE">&#x2061;</mo>
+                          <msub>
+                            <mi>&#x3B8;</mi>
+                            <mn>2</mn>
+                          </msub>
+                        </mrow>
+                        <mrow>
+                          <msub>
+                            <mi>&#x3B7;</mi>
+                            <mn>2</mn>
+                          </msub>
+                          <mi>cos</mi>
+                          <mo data-mjx-texclass="NONE">&#x2061;</mo>
+                          <msub>
+                            <mi>&#x3B8;</mi>
+                            <mn>1</mn>
+                          </msub>
+                          <mo>+</mo>
+                          <msub>
+                            <mi>&#x3B7;</mi>
+                            <mn>1</mn>
+                          </msub>
+                          <mi>cos</mi>
+                          <mo data-mjx-texclass="NONE">&#x2061;</mo>
+                          <msub>
+                            <mi>&#x3B8;</mi>
+                            <mn>2</mn>
+                          </msub>
+                        </mrow>
+                      </mfrac>
+                    </mstyle>
+                    <mo data-mjx-texclass="CLOSE">)</mo>
+                  </mrow>
+                  <mn>2</mn>
+                </msup>
+                <mo>,</mo>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd>
+                <msub>
+                  <mi>F</mi>
+                  <mrow data-mjx-texclass="ORD">
+                    <mi>R</mi>
+                    <mo>&#x22A5;</mo>
+                  </mrow>
+                </msub>
+                <mo>=</mo>
+                <msup>
+                  <mrow data-mjx-texclass="INNER">
+                    <mo data-mjx-texclass="OPEN">(</mo>
+                    <mstyle displaystyle="true" scriptlevel="0">
+                      <mfrac>
+                        <mrow>
+                          <msub>
+                            <mi>&#x3B7;</mi>
+                            <mn>1</mn>
+                          </msub>
+                          <mi>cos</mi>
+                          <mo data-mjx-texclass="NONE">&#x2061;</mo>
+                          <msub>
+                            <mi>&#x3B8;</mi>
+                            <mn>2</mn>
+                          </msub>
+                          <mo>&#x2212;</mo>
+                          <msub>
+                            <mi>&#x3B7;</mi>
+                            <mn>2</mn>
+                          </msub>
+                          <mi>cos</mi>
+                          <mo data-mjx-texclass="NONE">&#x2061;</mo>
+                          <msub>
+                            <mi>&#x3B8;</mi>
+                            <mn>1</mn>
+                          </msub>
+                        </mrow>
+                        <mrow>
+                          <msub>
+                            <mi>&#x3B7;</mi>
+                            <mn>1</mn>
+                          </msub>
+                          <mi>cos</mi>
+                          <mo data-mjx-texclass="NONE">&#x2061;</mo>
+                          <msub>
+                            <mi>&#x3B8;</mi>
+                            <mn>2</mn>
+                          </msub>
+                          <mo>+</mo>
+                          <msub>
+                            <mi>&#x3B7;</mi>
+                            <mn>2</mn>
+                          </msub>
+                          <mi>cos</mi>
+                          <mo data-mjx-texclass="NONE">&#x2061;</mo>
+                          <msub>
+                            <mi>&#x3B8;</mi>
+                            <mn>1</mn>
+                          </msub>
+                        </mrow>
+                      </mfrac>
+                    </mstyle>
+                    <mo data-mjx-texclass="CLOSE">)</mo>
+                  </mrow>
+                  <mn>2</mn>
+                </msup>
+              </mtd>
+            </mtr>
+          </mtable>
+        </math>
 
-<p>The terms <math xmlns="http://www.w3.org/1998/Math/MathML">
-  <msub>
-    <mi>&#x3B7;</mi>
-    <mn>1</mn>
-  </msub>
-</math>
-, <math xmlns="http://www.w3.org/1998/Math/MathML">
-  <msub>
-    <mi>&#x3B7;</mi>
-    <mn>2</mn>
-  </msub>
-</math>
- are the refraction indices of the two mediums. The terms <math xmlns="http://www.w3.org/1998/Math/MathML">
-  <mi>cos</mi>
-  <mo data-mjx-texclass="NONE">&#x2061;</mo>
-  <msub>
-    <mi>&#x3B8;</mi>
-    <mn>1</mn>
-  </msub>
-</math>
- and <math xmlns="http://www.w3.org/1998/Math/MathML">
-  <mi>cos</mi>
-  <mo data-mjx-texclass="NONE">&#x2061;</mo>
-  <msub>
-    <mi>&#x3B8;</mi>
-    <mn>2</mn>
-  </msub>
-</math>
- are the angles of incidence and refraction respectively. As mentioned before, due to the conservation of energy, the ratio of refracted light can simply be computed as:
+        <p>By taking the average of the two we get the actual ratio of reflected light:</p>
 
-</p>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+          <msub>
+            <mi>F</mi>
+            <mi>R</mi>
+          </msub>
+          <mo>=</mo>
+          <mstyle displaystyle="true" scriptlevel="0">
+            <mfrac>
+              <mn>1</mn>
+              <mn>2</mn>
+            </mfrac>
+          </mstyle>
+          <mo stretchy="false">(</mo>
+          <msub>
+            <mi>F</mi>
+            <mrow data-mjx-texclass="ORD">
+              <mi>R</mi>
+              <mo>&#x2225;</mo>
+            </mrow>
+          </msub>
+          <mo>+</mo>
+          <msub>
+            <mi>F</mi>
+            <mrow data-mjx-texclass="ORD">
+              <mi>R</mi>
+              <mo>&#x22A5;</mo>
+            </mrow>
+          </msub>
+          <mo stretchy="false">)</mo>
+        </math>
 
-<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-  <msub>
-    <mi>F</mi>
-    <mi>T</mi>
-  </msub>
-  <mo>=</mo>
-  <mn>1</mn>
-  <mo>&#x2212;</mo>
-  <msub>
-    <mi>F</mi>
-    <mi>R</mi>
-  </msub>
-  <mo>.</mo>
-</math>
-        <p>Keep in mind that <b>if the light goes from one medium to another medium with a lower refraction index, it may be subject to the phenomenon of total internal reflection</b>. This is happening in the case of materials such as glass or water, so we need to take this into account.</p>
+        <p>The terms <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <msub>
+              <mi>&#x3B7;</mi>
+              <mn>1</mn>
+            </msub>
+          </math>
+          , <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <msub>
+              <mi>&#x3B7;</mi>
+              <mn>2</mn>
+            </msub>
+          </math>
+          are the refraction indices of the two mediums. The terms <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <mi>cos</mi>
+            <mo data-mjx-texclass="NONE">&#x2061;</mo>
+            <msub>
+              <mi>&#x3B8;</mi>
+              <mn>1</mn>
+            </msub>
+          </math>
+          and <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <mi>cos</mi>
+            <mo data-mjx-texclass="NONE">&#x2061;</mo>
+            <msub>
+              <mi>&#x3B8;</mi>
+              <mn>2</mn>
+            </msub>
+          </math>
+          are the angles of incidence and refraction respectively. As mentioned before, due to the conservation of
+          energy, the ratio of refracted light can simply be computed as:
+
+        </p>
+
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+          <msub>
+            <mi>F</mi>
+            <mi>T</mi>
+          </msub>
+          <mo>=</mo>
+          <mn>1</mn>
+          <mo>&#x2212;</mo>
+          <msub>
+            <mi>F</mi>
+            <mi>R</mi>
+          </msub>
+          <mo>.</mo>
+        </math>
+        <p>Keep in mind that <b>if the light goes from one medium to another medium with a lower refraction index, it
+            may be subject to the phenomenon of total internal reflection</b>. This is happening in the case of
+          materials such as glass or water, so we need to take this into account.</p>
 
 
-<p>We do so by computing as in the case of reflection, the sine of the angle of refraction or <math xmlns="http://www.w3.org/1998/Math/MathML">
-  <msub>
-    <mi>&#x3B8;</mi>
-    <mn>2</mn>
-  </msub>
-</math>
-. If <math xmlns="http://www.w3.org/1998/Math/MathML">
-  <mi>sin</mi>
-  <mo data-mjx-texclass="NONE">&#x2061;</mo>
-  <msub>
-    <mi>&#x3B8;</mi>
-    <mn>2</mn>
-  </msub>
-</math>
- is greater than 1, then we have a case of <b>total reflection</b>. In this particular case, there is no need to compute the Fresnels formulas, we can just set 
-<math xmlns="http://www.w3.org/1998/Math/MathML">
-  <msub>
-    <mi>F</mi>
-    <mi>R</mi>
-  </msub>
-</math> to 1. </p>
+        <p>We do so by computing as in the case of reflection, the sine of the angle of refraction or <math
+            xmlns="http://www.w3.org/1998/Math/MathML">
+            <msub>
+              <mi>&#x3B8;</mi>
+              <mn>2</mn>
+            </msub>
+          </math>
+          . If <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <mi>sin</mi>
+            <mo data-mjx-texclass="NONE">&#x2061;</mo>
+            <msub>
+              <mi>&#x3B8;</mi>
+              <mn>2</mn>
+            </msub>
+          </math>
+          is greater than 1, then we have a case of <b>total reflection</b>. In this particular case, there is no need
+          to compute the Fresnels formulas, we can just set
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <msub>
+              <mi>F</mi>
+              <mi>R</mi>
+            </msub>
+          </math> to 1.
+        </p>
 
-<p>As usual, you will need to swap the refraction indices if you find out that the incident ray is inside the object with the greatest refraction index. This can be done again by testing the sign of the cosine of the angle between the surface normal and the incident ray direction (the sign of <math xmlns="http://www.w3.org/1998/Math/MathML">
-  <mi>cos</mi>
-  <mo data-mjx-texclass="NONE">&#x2061;</mo>
-  <msub>
-    <mi>&#x3B8;</mi>
-    <mn>1</mn>
-  </msub>
-</math>
-).</p>
+        <p>As usual, you will need to swap the refraction indices if you find out that the incident ray is inside the
+          object with the greatest refraction index. This can be done again by testing the sign of the cosine of the
+          angle between the surface normal and the incident ray direction (the sign of <math
+            xmlns="http://www.w3.org/1998/Math/MathML">
+            <mi>cos</mi>
+            <mo data-mjx-texclass="NONE">&#x2061;</mo>
+            <msub>
+              <mi>&#x3B8;</mi>
+              <mn>1</mn>
+            </msub>
+          </math>
+          ).</p>
 
-<p>The fresnel effect can easily be observed in nature.</p>
+        <p>The fresnel effect can easily be observed in nature.</p>
 
-<p>If you look at the picture of the lake with some mountains in the background and pebbles in the foreground, you can see that <b>the reflection seems to increase with distance</b>.</p>
+        <p>If you look at the picture of the lake with some mountains in the background and pebbles in the foreground,
+          you can see that <b>the reflection seems to increase with distance</b>.</p>
 
-<img class="center" style="width: 90%; height: 90%"
-          src="https://www.scratchapixel.com/images/shading-intro/shad-fresnel1.png?"
-          alt="Fresnel 1" />
- 
-<p>Note also that while reflections are strong in the distance, we see more clearly through the water in the foreground than we do in the far distance. This is due to fresnel.</p>
+        <img class="center" style="width: 90%; height: 90%"
+          src="https://www.scratchapixel.com/images/shading-intro/shad-fresnel1.png?" alt="Fresnel 1" />
 
-<p>The angle of incidence increases with the distance as shown in the following image:</p>
+        <p>Note also that while reflections are strong in the distance, we see more clearly through the water in the
+          foreground than we do in the far distance. This is due to fresnel.</p>
 
-<img class="center" style="width: 90%; height: 90%"
-          src="https://www.scratchapixel.com/images/shading-intro/shad-fresnel3.png?"
-          alt="Fresnel 2" />
+        <p>The angle of incidence increases with the distance as shown in the following image:</p>
 
-<p>and we know that the ratio of reflection vs. transmission increases with the angle of incidence. Thus naturally as we look in the distance, the water's surface reflects more light.</p>
+        <img class="center" style="width: 90%; height: 90%"
+          src="https://www.scratchapixel.com/images/shading-intro/shad-fresnel3.png?" alt="Fresnel 2" />
 
-<p>Though if we look almost directly down on the water surface, a few meters from where we stand, the angle incidence is low and most of the light is transmitted. Thus we see through the water more clearly than when we look in the distance.</p>
+        <p>and we know that the ratio of reflection vs. transmission increases with the angle of incidence. Thus
+          naturally as we look in the distance, the water's surface reflects more light.</p>
 
-<p>You can easily observe this effect on a large variety of objects: the facade of a building made out of glass, glass balls that are more reflective on the edges, etc.</p>
- 
+        <p>Though if we look almost directly down on the water surface, a few meters from where we stand, the angle
+          incidence is low and most of the light is transmitted. Thus we see through the water more clearly than when we
+          look in the distance.</p>
+
+        <p>You can easily observe this effect on a large variety of objects: the facade of a building made out of glass,
+          glass balls that are more reflective on the edges, etc.</p>
+
         <p>But back to our example, we can see that the <b>CubeCamera</b> is a very useful tool for creating realistic
           reflections and refractions in our scenes.</p>
 
@@ -8865,79 +8896,7 @@ function animate() {
           This is where we can use a <b>CubeTextureLoader</b> to load a cubemap texture (opposed to capturing our
           current environment with a CubeCamera) from a set of images.</p>
 
-
-
-
-
-
-
-
-
-
-        <!--<h3>Additional Ray-Tracing Fundamentals</h3>
-
-        <h4>Raycasting</h4>
-
-        <p><b>Raycasting</b> is the process in a ray-tracing algorithm that <b>shoots one or more rays from the camera
-            (eye
-            position) through each pixel in an image plane, and then tests to see if the rays intersect any primitives
-            (triangles) in the scene</b>. If a ray passing through a pixel and out into the 3D scene hits a primitive,
-          then
-          the distance along the ray from the origin (camera or eye point) to the primitive is determined, and the color
-          data from the primitive contributes to the final color of the pixel. The ray may also bounce and hit other
-          objects and pick up color and lighting information from them.</p>
-
-        <p>In simpler terms, <b>raycasting is a way to determine where the user's mouse is pointing in a 3D scene</b>.
-        </p>
-
-        <p>In Three.js, raycasting can be achieved using Vector2D and the Raycaster.</p>
-
-        <p>The Raycaster is given the coordinates of the mouse on the screen, and it creates a ray normal to the mouse's
-          position.This allows the Raycaster to determine the objects that the ray is intersecting using the
-          intersectObjects method. </p>
-
-        <p>The syntax for using the Raycaster is as follows:</p>
-
-        <pre><code class="javascript">const raycaster = new THREE.Raycaster();</code></pre>
-
-        <p>Here, along with the Raycaster, we also need to initialize a Vector2.</p>
-
-        <p>A Vector2 is a two-dimensional vector that only contains the x and y coordinates. We use this to track the
-          movement of the cursor on the screen.</p>-->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <p>
-      </article>
-      <br />
-    </section>
-    <hr />
-    <section class="main-section" id="Cubemap_Textures_and_Skyboxes">
-      <br />
-      <header><b>Cubemap Textures and Skyboxes</b></header>
-      <article>
+        <h3>Cubemap Textures and Skyboxes</h3>
 
         <p>We have created and viewed simple scenes, shown on a solid-colored background, but it would be nice to put
           our scenes in an "environment" such as the interior of a building, a nature scene, or a public square.</p>
@@ -9041,7 +9000,8 @@ camera.position.set(0, 0, 15);</code></pre>
         <p>Now, let's load a texture map for a meadow (this particular cube map, and others like it, are by
           Emil Persson, who has made a large number of cube maps available for download at
           <a href="http://www.humus.name/index.php?page=Textures">http://www.humus.name/index.php?page=Textures</a>
-          under a creative commons license or from sources like <a href="http://opengameart.org">opengameart.org</a> which is
+          under a creative commons license or from sources like <a href="http://opengameart.org">opengameart.org</a>
+          which is
           where the previous textures came from).
         </p>
 
@@ -9138,7 +9098,653 @@ scene.add(sphereRefraction);</code></pre>
 cubeCamera2.position.copy(sphereRefraction.position);
 cubeCamera2.update(renderer, scene);</code></pre>
 
-        <p>Now we should have a sphere for reflecting and a sphere for refracting the cubemap environment around them.</p>
+        <p>Now we should have a sphere for reflecting and a sphere for refracting the cubemap environment around them.
+        </p>
+
+        <h3>Additional Ray-Tracing Fundamentals</h3>
+
+        <h3>Ray Casting</h3>
+
+        <p><b>Ray casting</b> (or Object Picking) is the process in a ray-tracing algorithm that <b>shoots one or more
+            rays from the camera
+            (eye
+            position) through each pixel in an image plane, and then tests to see if the rays intersect any primitives
+            (triangles) in the scene</b>. If a ray passing through a pixel and out into the 3D scene hits a primitive,
+          then
+          the distance along the ray from the origin (camera or eye point) to the primitive is determined, and the color
+          data from the primitive contributes to the final color of the pixel. The ray may also bounce and hit other
+          objects and pick up color and lighting information from them.</p>
+
+        <p>Ray casting is critical for rendering and visualization because it creates realistic lighting. This technique
+          simulates how light interacts with objects in the real world in a digital environment, which allows for
+          astonishingly realistic characters, objects, and scenes.</p>
+
+        <p>Ray casting is a fundamental technique for modern 3D design, but the technology is decades old. In the 1960s,
+          computer scientists explored methods to simulate how light interacts with surfaces for realistic image
+          generation. In the 1980s, Turner Whitted wrote a paper on recursive ray tracing that popularized the
+          technique. It introduced <b>the concept of handling reflections and refractions by recursively casting
+            rays</b> — a
+          true game-changer for ray casting.</p>
+
+        <p>John Carmack popularized ray casting in the early 1990s with the game <a
+            href="https://youtu.be/eOCQfxRQ2pY?si=XhbADL-3ZOD2iMRI">"Wolfenstein 3D"</a>, which used ray
+          casting to create a 3D perspective in a 2D world. In the 2000s, <b>ray casting techniques blended with
+            rasterization to support real-time rendering in digital simulations</b>. Today, companies are developing
+          hardware-accelerated ray tracing, which pushes the boundaries of what's possible.</p>
+
+        <p>Ray casting has many important applications, such as:</p>
+        <ul>
+          <li><b>Medical imaging</b>: Ray casting renders volumetric data from CT and MRI scans. This gives medical
+            professionals detailed 3D images that improve diagnostic accuracy.</li>
+          <li><b>Architectural visualizations</b>: Architects use ray casting to predict how light will interact with
+            their spaces. It's especially useful for determining how sunlight will illuminate rooms at different times
+            of the day or year.</li>
+          <li><b>Virtual reality (VR)</b>: VR uses ray casting for interaction detection, including gaze tracking and
+            object selection. This creates a more immersive user experience.</li>
+          <li><b>Games</b>: Ray casting is important for video game design because it supports realistic, interactive
+            environments. Video games use ray casting for various purposes, including rendering and collision detection.
+            Games like Doom Eternal and Cyberpunk 2077 are just a few examples of ray casting at work.</li>
+        </ul>
+
+        <h3>Ray Casting in Three.js</h3>
+
+        <p>We can use <b>ray casting as a way to determine where the user's mouse is pointing in a 3D
+            scene</b>.
+        </p>
+
+        <p>Essentially, a pointer is cast from your mouse or finger (on mobile) through the <b>frustum</b> (the shape of
+          the region that can be seen and rendered by a perspective camera) of the scene to the
+          object that it intersects.</p>
+
+        <img class="center" style="width: 50%; height: 50%;"
+          src="https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/images/raycasting%20in%20three%20js.png"
+          alt="Raycasting" />
+
+        <p>In Three.js, ray casting can be achieved using Vector2D and the Raycaster.</p>
+
+        <p>The Raycaster is given the coordinates of the mouse on the screen, and it creates a ray normal to the mouse's
+          position.This allows the Raycaster to determine the objects that the ray is intersecting using the
+          intersectObjects method. </p>
+
+        <p>A Raycaster takes an initial point and a direction, given as a vector. The point and vector determine a ray,
+          that is, a half-infinite line that extends from a starting point, in some direction, to infinity. </p>
+
+        <p>The Raycaster can find all the intersections of the ray with a given set of objects in a three.js scene,
+          sorted by order of distance from the rays's starting point.</p>
+
+        <p>The syntax for using the Raycaster is as follows:</p>
+
+        <pre><code class="javascript">const raycaster = new THREE.Raycaster();</code></pre>
+
+        <p>To tell it which ray to use, you can call:</p>
+
+        <pre><code class="javascript">raycaster.set(startingPoint, direction);</code></pre>
+
+        <p>or more specifically set from camera: </p>
+
+        <pre><code class="javascript">raycaster.setFromCamera(mouse, camera);</code></pre>
+
+        <p>Here, along with the Raycaster, we also need to initialize a Vector2 that will hold the coordinates of the
+          mouse.</p>
+
+        <p>A Vector2 is a two-dimensional vector that only contains the x and y coordinates. We use this to track the
+          movement of the cursor on the screen.</p>
+
+        <p>The syntax for creating a Vector2 is as follows:</p>
+
+        <pre><code class="javascript">const mouse = new THREE.Vector2();</code></pre>
+
+        <p>To set the coordinates of the mouse, we can use the following syntax:</p>
+
+        <pre><code class="javascript">mouse.set(x, y);</code></pre>
+
+        <p>Where x and y are the coordinates of the mouse on the screen.</p>
+
+        <p>To get the coordinates of the mouse, we can use the following syntax:</p>
+
+        <pre><code class="javascript">mouse.x = (event.clientX / width) * 2 - 1;</code></pre>
+        <p>And</p>
+        <pre><code class="javascript">mouse.y = -(event.clientY / height) * 2 + 1;</code></pre>
+
+        <p>Where event is the event object that is passed to the event handler.</p>
+
+        <p>We multiply by 2 and subtract 1 to get the coordinates in the range of <b>-1 to 1</b>.</p>
+
+        <p>We also need to set the camera to the Raycaster. The camera is the point of view from which we are looking at
+          the scene.</p>
+
+        <p>To check if the ray intersects with any objects in the scene, we can use the following syntax:</p>
+
+        <pre><code class="javascript">const intersects = raycaster.intersectObjects(objects);</code></pre>
+        <p>Where objects is an array of objects in the scene.</p>
+
+        <p>Let's try an example:</p>
+
+        <pre><code class="javascript">const width = 500;
+const height = 400;
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(width, height);
+document.body.appendChild(renderer.domElement);
+
+// Position the camera
+camera.position.set(0, 0, 10); 
+
+// Lights
+const hemisphere = new THREE.HemisphereLight("white", "gray", 1);
+scene.add(hemisphere);
+const directional = new THREE.DirectionalLight("white", 0.5);
+directional.position.set(5, 5, 5);
+scene.add(directional);
+
+// Objects array for raycasting
+const objects = [];
+
+// Geometry
+const geometry = new THREE.SphereGeometry(3, 64, 64);
+// Material
+const material = new THREE.MeshStandardMaterial({
+  color: "red",
+  metalness: 0.5,
+  roughness: 1
+});
+// Mesh
+const circle = new THREE.Mesh(geometry, material);
+scene.add(circle);
+objects.push(circle); // Store the circle in the objects array
+
+// Mouse event for color change
+document.addEventListener("mousedown", onMouseDown);
+function onMouseDown(event) {
+  event.preventDefault();
+  const mouse = new THREE.Vector2();
+  mouse.set((event.clientX / width) * 2 - 1, -(event.clientY / height) * 2 + 1);
+  const raycaster = new THREE.Raycaster();
+  raycaster.setFromCamera(mouse, camera);
+  const intersects = raycaster.intersectObjects(objects);
+  if (intersects.length > 0) { // Check if there is an intersection
+    // Change the color of the intersected object
+    intersects[0].object.material.color.setHex(Math.random() * 0xffffff);
+  }
+}
+
+// Animation loop
+function animate() {
+  requestAnimationFrame(animate);
+
+  // Render the scene from the perspective of the camera
+  renderer.render(scene, camera);
+}
+
+animate();</code></pre>
+
+        <p>In this example, we create a scene with a red sphere. When the user clicks on the sphere, it changes color to
+          a random color.</p>
+
+        <p>We use the Raycaster to check if the mouse intersects with the sphere. If it does, we change the color of the
+          sphere.</p>
+
+        <p>We can also use the Raycaster to check if the mouse intersects with other objects in the scene.</p>
+
+        <p>For example, we can create a plane and check if the mouse intersects with it:</p>
+
+        <pre><code class="javascript">const planeGeometry = new THREE.PlaneGeometry(20, 20);
+const planeMaterial = new THREE.MeshStandardMaterial({ color: "blue", side: THREE.DoubleSide });
+const plane = new THREE.Mesh(planeGeometry, planeMaterial);
+plane.rotation.x = -Math.PI / 2; // Rotate the plane to be horizontal
+plane.position.y = -2.75; // Position the plane below the sphere
+scene.add(plane);
+objects.push(plane); // Store the plane in the objects array</code></pre>
+
+        <p>Now, when the user clicks on the plane, it will also change color to a random color.</p>
+
+        <p>Let's use the Raycaster to create a scene with more functionality.</p>
+
+        <p>The scene shows a square, green base, and some tapered, yellow
+          cylinders standing on the base. Cylinders can intersect; no attempt
+          is made to treat them like real solid objects.</p>
+
+
+        <p>The user can interact with the scene using the mouse.</p>
+
+        <p>Three radio buttons let the user select the action that they want to perform with the mouse.</p>
+
+        <ul>
+          <li>When "Add" is selected, a mouse click at a point on the green base will add a new cylinder at that point.
+            Clicking a cylinder will have no effect.</li>
+          <li>When "Drag" is selected, the mouse can be used to drag the yellow cylinders. The cylinder is constrained
+            to stay on the base.
+            An interesting point is that as the cylinder is dragged, its new position is determined using the Raycaster.
+          </li>
+          <li>When "Delete" is selected, clicking on one of the yellow cylinders will remove it from the scene.
+            Clicking the ground will have no effect.</li>
+        </ul>
+
+        <pre><code class="javascript">const width = 500;
+const height = 400;
+
+// Create the scene and camera
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+camera.position.set(-30, 40, 10);
+camera.lookAt(0, 0, 0);
+
+// Create the renderer
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(width, height);
+document.body.appendChild(renderer.domElement);
+
+// Add lights
+const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+directionalLight.position.set(5, 10, 7.5);
+scene.add(directionalLight);
+
+const ambientLight = new THREE.AmbientLight(0x404040); // Soft white light
+scene.add(ambientLight);
+
+// Create ground
+const ground = new THREE.Mesh(
+  new THREE.BoxGeometry(40, 1, 40),
+  new THREE.MeshLambertMaterial({ color: "green" })
+);
+ground.position.y = -0.5;
+scene.add(ground);
+
+// Create variables for interactivity
+const raycaster = new THREE.Raycaster();
+const mouse = new THREE.Vector2();
+let mouseAction = 1; // Default to ADD = 1
+let dragItem = null; // To track the object being dragged
+
+// Functions for interaction
+function addCylinder(x, z) {
+  const cylinderGeometry = new THREE.CylinderGeometry(1, 2, 6, 16, 1);
+  const cylinderMaterial = new THREE.MeshLambertMaterial({ color: "yellow" });
+  const cylinder = new THREE.Mesh(cylinderGeometry, cylinderMaterial);
+  cylinder.position.set(x, 3, z);
+  scene.add(cylinder);
+}
+
+function handleMouseDown(event) {
+  mouse.x = (event.clientX / width) * 2 - 1;
+  mouse.y = -(event.clientY / height) * 2 + 1;
+  raycaster.setFromCamera(mouse, camera);
+
+  const intersects = raycaster.intersectObjects(scene.children);
+  if (intersects.length > 0) {
+    const objectHit = intersects[0].object;
+
+    // Only interact with the ground or cylinders
+    if (mouseAction === 1) {
+      // ADD
+      const coords = intersects[0].point;
+      addCylinder(coords.x, coords.z);
+    } else if (mouseAction === 2) {
+      // DRAG
+      // Only start dragging if the item is not the ground
+      if (objectHit !== ground) {
+        dragItem = objectHit;
+      }
+    } else if (mouseAction === 3) {
+      // DELETE
+      // Check if the clicked object is NOT the ground
+      if (objectHit !== ground) {
+        scene.remove(objectHit);
+      }
+    }
+  }
+}
+
+function handleMouseMove(event) {
+  if (!dragItem) return; // Only proceed if an item is being dragged
+  mouse.x = (event.clientX / width) * 2 - 1;
+  mouse.y = -(event.clientY / height) * 2 + 1;
+  raycaster.setFromCamera(mouse, camera);
+
+  const intersects = raycaster.intersectObject(ground);
+  if (intersects.length > 0) {
+    // Use the intersection point to set the position of the dragItem.
+    // Ensure dragItem's scale is untouched; it should remain the same as originally created.
+    dragItem.position.copy(intersects[0].point);
+    dragItem.position.y = 3; // Keep the cylinder at a fixed height
+  }
+}
+
+function handleMouseUp() {
+  dragItem = null; // Release the dragged item
+}
+
+function doChangeMouseAction() {
+  const checkedAction = document.querySelector(
+    'input[name="mouseAction"]:checked'
+  );
+  if (checkedAction) {
+    switch (checkedAction.id) {
+      case "mouseAdd":
+        mouseAction = 1;
+        break;
+      case "mouseDrag":
+        mouseAction = 2;
+        break;
+      case "mouseDelete":
+        mouseAction = 3;
+        break;
+    }
+  }
+}
+
+// Event listeners
+window.addEventListener("mousedown", handleMouseDown);
+window.addEventListener("mousemove", handleMouseMove);
+window.addEventListener("mouseup", handleMouseUp);
+
+// Animation loop
+function animate() {
+  requestAnimationFrame(animate);
+  renderer.render(scene, camera);
+}
+animate();</code></pre>
+
+        <p>Now we have a scene where we can add, drag, and delete cylinders using the mouse.</p>
+
+
+        <p>
+      </article>
+      <br />
+    </section>
+    <hr />
+    <section class="main-section" id="Particle_Effects">
+      <br />
+      <header><b>Particle Effects</b></header>
+      <article>
+
+        <p>Particle effects are a way to simulate and render large numbers of small, simple objects in a scene.</p>
+
+        <p>They are often used to create effects like smoke, fire, rain, snow, and explosions.</p>
+
+        <p>In Three.js, particle effects can be created using the <b>THREE.Points</b> class.</p>
+
+        <p>The <b>THREE.Points</b> class is a type of geometry that represents a collection of points in 3D space.</p>
+
+        <p>Each point can have its own color, size, and other properties.</p>
+
+        <p>To create a particle effect, we can create a geometry and a material, and then use the <b>THREE.Points</b>
+          class to create a mesh.</p>
+
+        <p>For example, we can create a particle effect that simulates falling confetti:</p>
+
+        <pre><code class="javascript">const particleCount = 1000;
+const particles = new THREE.BufferGeometry();
+const positions = new Float32Array(particleCount * 3); // 3 coordinates for each particle
+const colors = new Float32Array(particleCount * 3); // 3 color values for each particle
+
+const sizes = new Float32Array(particleCount); // Size for each particle
+
+for (let i = 0; i < particleCount; i++) {
+  // Random position
+  positions[i * 3] = (Math.random() - 0.5) * 100; // x
+  positions[i * 3 + 1] = (Math.random() - 0.5) * 100; // y
+  positions[i * 3 + 2] = (Math.random() - 0.5) * 100; // z
+
+  // Random color
+  colors[i * 3] = Math.random(); // r
+  colors[i * 3 + 1] = Math.random(); // g
+  colors[i * 3 + 2] = Math.random(); // b
+
+  // Random size
+  sizes[i] = Math.random() * 5; // Size between 0 and 5
+
+}
+
+particles.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+particles.setAttribute("color", new THREE.BufferAttribute(colors, 3)); // Set color attribute
+
+particles.setAttribute("size", new THREE.BufferAttribute(sizes, 1)); // Set size attribute
+
+const particleMaterial = new THREE.PointsMaterial({
+    size: 1,
+    vertexColors: true, // Use vertex colors
+    sizeAttenuation: true, // Size decreases with distance
+    transparent: true,
+    opacity: 0.5,
+});
+
+
+const particleSystem = new THREE.Points(particles, particleMaterial);
+
+scene.add(particleSystem);</code></pre>
+
+        <p>In this example, we create a particle system with 1000 particles.</p>
+        <p>Each particle has a random position, color, and size.</p>
+
+        <p>We use the <b>THREE.BufferGeometry</b> class to create a geometry that can hold a large number of points.</p>
+        <p>We set the position, color, and size attributes of the geometry using the <b>setAttribute</b> method.</p>
+
+        <p>We create a material using the <b>THREE.PointsMaterial</b> class, which allows us to set the size and color
+          of the particles.</p>
+
+        <p>Finally, we create a <b>THREE.Points</b> object using the geometry and material, and add it to the scene.</p>
+
+        <p>We can also animate the particles to create a falling confetti effect:</p>
+
+        <pre><code class="javascript">function animateParticles() {
+    const positionArray = particles.attributes.position.array;
+
+    // Update the positions of the particles to create a falling effect
+    for (let i = 0; i < particleCount; i++) {
+        positionArray[i * 3 + 1] -= 0.1; // Move down
+        if (positionArray[i * 3 + 1] < -50) {
+            positionArray[i * 3 + 1] = 50; // Reset to the top
+        }
+    }
+
+    particles.attributes.position.needsUpdate = true; // Mark the position attribute as needing an update
+}
+
+function animate() {
+    requestAnimationFrame(animate);
+    renderer.render(scene, camera);
+    animateParticles(); // Call the particle animation function
+}
+animate();</code></pre>
+
+        <p>In this example, we update the y-coordinate of each particle to create a falling effect.</p>
+
+        <p>When a particle goes below a certain threshold, we reset its position to the top of the screen.</p>
+
+        <p>We also rotate the particle system to create a nice effect.</p>
+
+        <p>We can also create other particle effects, such as fire, smoke, and explosions, using the same technique.</p>
+
+        <p>For example, we can create a fire effect using a particle system with a red-orange color and a larger size.
+        </p>
+
+        <p>We can also use textures to create more complex particle effects.</p>
+
+        <p>For example, we can use a texture of a snowflake to create a snow effect:</p>
+
+        <pre><code class="javascript">const snowflakeTexture = new THREE.TextureLoader().load("https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/textures/snowflake.png");
+const particleMaterial = new THREE.PointsMaterial({
+  size: 1,
+  alphaTest: 0.25, // Discard pixels with an alpha value below this threshold so we don't see the edges of the texture
+  map: snowflakeTexture, // Use the snowflake texture
+  transparent: true,
+  sizeAttenuation: true, // Size decreases with distance
+  vertexColors: true, // Use vertex colors
+  opacity: 0.5,
+});</code></pre>
+
+        <p>Now we should see randomly colored snowflakes falling from the sky.</p>
+
+        <p>To make these snowflakes one color (e.g. white) we can modify our colors to have the same value for each
+          particle:</p>
+
+        <pre><code class="javascript">for (let i = 0; i < particleCount; i++) {
+  // Random position
+  positions[i * 3] = (Math.random() - 0.5) * 100; // x
+  positions[i * 3 + 1] = (Math.random() - 0.5) * 100; // y
+  positions[i * 3 + 2] = (Math.random() - 0.5) * 100; // z
+
+  // White color
+  colors[i * 3] = 1; // r
+  colors[i * 3 + 1] = 1; // g
+  colors[i * 3 + 2] = 1; // b
+
+  // Random size
+  sizes[i] = Math.random() * 5; // Size between 0 and 5
+} // Set the color to white for all particles</code></pre>
+
+        <p>Now we should see white snowflakes falling from the sky.</p>
+
+        <p>Let's contain these snowflakes to a certain area, like within a cube:</p>
+
+        <p>First, we have to set our bounding for the snowflakes:</p>
+
+        <pre><code class="javascript">// Size of the cube that contains the snowflakes
+const cubeSize = 100; // Size of the cube
+
+for (let i = 0; i < particleCount; i++) {
+  // Initialize the snowflakes within the cube
+  positions[i * 3] = (Math.random() - 0.5) * cubeSize; // X position
+  positions[i * 3 + 1] = Math.random() * cubeSize; // Y position starts from 0 to cubeSize
+  positions[i * 3 + 2] = (Math.random() - 0.5) * cubeSize; // Z position
+
+  // Set particle color to white
+  colors[i * 3] = 1; // Red
+  colors[i * 3 + 1] = 1; // Green
+  colors[i * 3 + 2] = 1; // Blue
+
+  sizes[i] = Math.random() * 5;
+}</code></pre>
+
+        <p>Then we can create a wireframe cube to house our snowflakes</p>
+
+        <pre><code class="javascript">// Create a cube to contain the snowflakes
+const cubeGeometry = new THREE.BoxGeometry(cubeSize, cubeSize, cubeSize);
+const cubeMaterial = new THREE.LineBasicMaterial({ color: 0x00ff00 }); // Green color for wireframe
+const cubeEdges = new THREE.EdgesGeometry(cubeGeometry); // Creates edges for the cube
+const cubeWireframe = new THREE.LineSegments(cubeEdges, cubeMaterial);
+scene.add(cubeWireframe);
+cubeWireframe.position.y = 50;
+
+camera.position.set(0, 50, 150);</code></pre>
+
+        <p>Let's use what we know about skyboxes to better contain our snow scene:</p>
+
+        <pre><code class="javascript">const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
+        
+// Add Orbit Controls
+const controls = new THREE.OrbitControls(camera, renderer.domElement);
+
+const particleCount = 1000;
+const particles = new THREE.BufferGeometry();
+const positions = new Float32Array(particleCount * 3);
+const colors = new Float32Array(particleCount * 3);
+const sizes = new Float32Array(particleCount);
+
+// Size of the cube that contains the snowflakes
+const cubeSize = 100;
+
+for (let i = 0; i < particleCount; i++) {
+    // Initialize the snowflakes within the cube
+    positions[i * 3] = (Math.random() - 0.5) * cubeSize; // X position
+    positions[i * 3 + 1] = Math.random() * cubeSize; // Y position starts from 0 to cubeSize
+    positions[i * 3 + 2] = (Math.random() - 0.5) * cubeSize; // Z position
+
+    // Set particle color to white
+    colors[i * 3] = 1; // Red
+    colors[i * 3 + 1] = 1; // Green
+    colors[i * 3 + 2] = 1; // Blue
+
+    sizes[i] = Math.random() * 5;
+}
+
+// Create a cube to contain the snowflakes
+const cubeGeometry = new THREE.BoxGeometry(cubeSize, cubeSize, cubeSize);
+var materials = [ 
+  new THREE.MeshBasicMaterial({
+    map: new THREE.TextureLoader().load('https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/textures/winter%20world/frost_posX.png'), side: THREE.BackSide, 
+  }),
+  new THREE.MeshBasicMaterial({
+    map: new THREE.TextureLoader().load('https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/textures/winter%20world/frost_negX.png'), side: THREE.BackSide, 
+  }),
+   new THREE.MeshBasicMaterial({
+    map: new THREE.TextureLoader().load('https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/textures/winter%20world/frost_posY.png'), side: THREE.BackSide, 
+  }),
+   new THREE.MeshBasicMaterial({
+    map: new THREE.TextureLoader().load('https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/textures/winter%20world/frost_negY.png'), side: THREE.BackSide, 
+  }),
+   new THREE.MeshBasicMaterial({
+    map: new THREE.TextureLoader().load('https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/textures/winter%20world/frost_posZ.png'), side: THREE.BackSide, 
+  }),
+   new THREE.MeshBasicMaterial({
+    map: new THREE.TextureLoader().load('https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/textures/winter%20world/frost_negZ.png'), side: THREE.BackSide, 
+  })
+];
+
+const cube = new THREE.Mesh(cubeGeometry,materials);
+scene.add(cube);
+cube.position.y = 50;
+
+camera.position.set(0, 50, 200);
+particles.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+particles.setAttribute("color", new THREE.BufferAttribute(colors, 3));
+particles.setAttribute("size", new THREE.BufferAttribute(sizes, 1));
+
+const snowflakeTexture = new THREE.TextureLoader().load("https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/textures/snowflake.png");
+const particleMaterial = new THREE.PointsMaterial({
+    size: 2,
+    alphaTest: 0.25,
+    map: snowflakeTexture,
+    transparent: true,
+    sizeAttenuation: true,
+    vertexColors: true,
+    opacity: 1,
+});
+
+const particleSystem = new THREE.Points(particles, particleMaterial);
+scene.add(particleSystem);
+        
+function animateParticles() {
+    for (let i = 0; i < particleCount; i++) {
+        // Move the snowflakes down
+        positions[i * 3 + 1] -= 0.1;
+
+        // Check if the snowflake is out of bounds
+        if (positions[i * 3 + 1] < 0) {
+          // Reset Y position to the top of the cube
+          positions[i * 3 + 1] = cubeSize; 
+          // Randomize X and Z positions within the cube bounds
+          positions[i * 3] = (Math.random() - 0.5) * cubeSize; // New X position
+          positions[i * 3 + 2] = (Math.random() - 0.5) * cubeSize; // New Z position
+        }
+    }
+
+    particles.attributes.position.array.set(positions);
+    particles.attributes.position.needsUpdate = true;
+}
+
+function animate() {
+    requestAnimationFrame(animate);
+    animateParticles();
+    renderer.render(scene, camera);
+}
+
+animate();</code></pre>
+
+        <p>We can also use particle effects to create explosions and other effects.</p>
+
+        <p>Particle effects are a powerful tool for creating realistic and dynamic effects in Three.js.</p>
+
+        <p>They can be used to create a wide range of effects, from simple particles to complex simulations.</p>
+
 
 
 
