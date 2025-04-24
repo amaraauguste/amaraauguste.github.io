@@ -9745,6 +9745,104 @@ animate();</code></pre>
 
         <p>They can be used to create a wide range of effects, from simple particles to complex simulations.</p>
 
+        <p>Let's make a fire using particles, we can achieve this by importing from esm.sh specifically the Three
+          Particle Fire
+          library.</p>
+
+        <p>We can use the following code to create a fire effect:</p>
+
+        <pre><code class="javascript">import particleFire from "https://esm.sh/three-particle-fire"; // Import the particle fire library
+
+particleFire.install({ THREE: THREE }); // Install the library with THREE 
+
+const width = 500;
+const height = 400;
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(width, height);
+document.body.appendChild(renderer.domElement);
+
+// Position the camera
+camera.position.set(0, 0, 2);
+
+// Add Orbit Controls
+const controls = new THREE.OrbitControls(camera, renderer.domElement);
+
+const fireRadius = 0.5; // Radius of the fire
+const fireHeight = 3; // Height of the fire
+const particleCount = 800; // Number of particles in the fire
+
+const geometry = new particleFire.Geometry(fireRadius, fireHeight, particleCount); // radius, height, number of particles
+const material = new particleFire.Material({ color: 0xff2200  }); // scarlet color
+material.setPerspective(camera.fov, height); // Set the perspective of the material
+const particleFireMesh = new THREE.Points(geometry, material); // Create the particle fire mesh
+particleFireMesh.position.y = -0.9;
+scene.add(particleFireMesh);
+
+
+// Animation loop
+function animate() {
+  requestAnimationFrame(animate);
+ 
+  // Render the scene from the perspective of the camera
+  renderer.render(scene, camera);
+}
+
+animate();</code></pre>
+
+        <p>In this example, we create a fire effect using the particle fire library.</p>
+
+        <p>We create a geometry and a material for the fire, and then create a mesh using the geometry and material.</p>
+
+        <p>We can also animate the fire to create a flickering effect using what we call <b>delta time</b>.</p>
+
+        <p>As a reminder, delta time is computed by <b>subtracting the current time from the previous time
+            when the tick function was last updated</b>.</p>
+
+        <p>In the realm of animation, you can conceptualize delta time as a frame.</p>
+
+        <p>It provides a more controlled and consistent measure, addressing the issue of erratic behavior tied to
+          scrolling movements (that often occurs with the use of elapsed time).</p>
+
+        <p>By including delta time we assure that our animation speed remains constant on different machines. In other
+          words, our animation
+          using delta time is <b>frame-independent</b>, regardless of how fast the computer is, the animation will be
+          played at the same speed.</p>
+
+        <p>We can use delta time to add a smooth animation to our particle fire.</p>
+
+        <p>First, we need to create a clock to track the time:</p>
+
+        <pre><code class="javascript">const clock = new THREE.Clock();</code></pre>
+        <p>Three.js conveniently provides a getDelta() function, streamlining the process of obtaining the delta time.
+          This built-in function simplifies the calculation, making it more accessible and efficient for managing
+          time-based updates in our animations.</p>
+        <p>We can use the clock to get the delta time:</p>
+        <pre><code class="javascript">const delta = clock.getDelta();</code></pre>
+        <p>We can use the delta time to update the fire:</p>
+        <pre><code class="javascript">particleFireMesh.material.update(delta);</code></pre>
+        <p>Now we can put it all together:</p>
+        <pre><code class="javascript">// Create a clock
+const clock = new THREE.Clock(); // Initialize a clock to track time
+
+// Animation loop
+function animate() {
+  requestAnimationFrame(animate);
+
+  // Update the particle fire
+  var delta = clock.getDelta(); // Get the time elapsed since the last frame
+
+  particleFireMesh.material.update(delta/4); //we divide by 4 to slow the animation down
+  // Render the scene from the perspective of the camera
+  renderer.render(scene, camera);
+  
+}
+
+// Start the animation
+animate();</code></pre>
 
 
 
