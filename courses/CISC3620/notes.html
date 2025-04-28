@@ -81,6 +81,9 @@
           <a href="#Loading_Models" onclick="closeDropdown3()">Loading Models</a>
           <a href="#Global_Lighting_Models" onclick="closeDropdown3()">Global Lighting Models</a>
           <a href="#Particle_Effects" onclick="closeDropdown3()">Particle Effects</a>
+          <a href="#Adding_Physics" onclick="closeDropdown3()">Adding Physics</a>
+          <!--<a href="#Shaders" onclick="closeDropdown3()">Shaders</a>
+          <a href="#Cameras_and_Projections" onclick="closeDropdown3()">Cameras and Projections</a>-->
           <!--<a href="#Linear_Algebra" onclick="closeDropdown2()">Linear Algebra</a>
           <a href="#Variable_Scope" onclick="closeDropdown2()">Variable Scope</a>
           <a href="#Global_Variables" onclick="closeDropdown2()">Global Variables</a>
@@ -9850,8 +9853,489 @@ animate();</code></pre>
       </article>
       <br />
     </section>
+    <hr />
+
+    <section class="main-section" id="Adding_Physics">
+      <br />
+      <header><b>Adding Physics</b></header>
+      <article>
+        <p>So far we have made scenes that are static and do not have any physics, meaning that the objects in the scene
+          do not interact with each other.</p>
+
+        <p>With the advent of WebGL, the web has been opened up to yet another dimensions of possibilities: <b>3D
+            graphics and Interactivity</b>.</p>
+
+        <p>Let's say we want to make a bowling game. We have the ball and the pins arranged. But the problem is we would
+          have to code all the steps involved in rolling the ball and the ball knocking down the pins.</p>
+
+        <p>So we set out to code the dynamics involved: how the ball will roll on the floor, its collision with the
+          pins, the force of collision, how the pins will collide against each other and so on.</p>
+
+        <p>We would have to code the physics of the game, which is a lot of work.</p>
+
+        <p>Luckily, we can implement a physics engine. A physics Engine is a software, a group of codes or a collection
+          of objects and algorithms that provides functions for the simulation of a physical world, be it in games or
+          other virtual reality application. We don't have to stress yourself coding the movement of a bowling ball or
+          how it collides with pins when you can have them represented by physics objects and the actions simulated in a
+          realistic way.</p>
+
+        <p>What do you want to make? Is it a catapult game like AngryBirds or a shooting game or you even want to make
+          your own soccer game, Physics Engines have you well covered.</p>
+
+        <p>There are many physics engines available for Three.js, but the most popular ones are:</p>
+
+        <ul>
+          <li><b>Cannon.js</b>: an open source JavaScript 3D physics engine</li>
+          <li><b>Ammo.js</b>: a direct port of the Bullet physics engine to JavaScript, using Emscripten</li>
+          <li><b>p2.js</b>: a 2D rigid body physics engine written in JavaScript</li>
+          <li><b>Rapier.js</b>: a physics engine that we can use to calculate Rigid body forces, velocities, contacts,
+            constraints and more</li>
+          <li><b>Matter.js</b>: a JavaScript 2D rigid body physics engine for the web</li>
+          <li><b>Oimo.js</b>: a lightweight 3d physics engine for JavaScript. It's a full javascript conversion of
+            OimoPhysics.</li>
+          <li><b>Physijs</b>: a physics engine built on top of ammo. js (although there is also a cannon. js branch)
+          </li>
+          <li><b>Box2Djs</b>: a direct port of the Box2D C++ 2D physics engine to JavaScript, using Emscripten.</li>
+          <li><b>Planck.js</b>: a JavaScript/TypeScript rewrite of Box2D physics engine for cross-platform HTML5 game
+            development.</li>
+        </ul>
+
+        <p>A very popular JavaScript physics solution is Ammo.js, which is a direct port of Bullet physics (a C++
+          physics engine).
+          While directly using Ammo.js is possible, it is not very beginner friendly and has a lot of boilerplate code
+          for
+          each aspect. Also, as it is not manually written but ported using Emscripten, the code is not easy to
+          understand. </p>
+
+        <p>An alternative solution is to use Cannon.js or Physijs.</p>
+
+        <p>We will use Cannon.js for our physics engine.</p>
+
+        <p>Unlike physics engine libraries ported from C++ to JavaScript, Cannon.js is written in JavaScript from the
+          start and can take advantage of its features.</p>
+
+        <p>The physics engine implements rigid-body dynamics, discrete collision detection, a Gauss-Seidel constraint
+          solver, and can perform cloth simulation.</p>
+
+        <p>First we need to add a script to the HTML to be able to use Cannon.js:</p>
+
+        <pre><code class="html">&lt;script src="https://cdn.rawgit.com/schteppe/cannon.js/master/build/cannon.js"&gt;&lt;/script&gt;</code></pre>
+
+        <p>When implementing physics, not only do we need our scene set up but we also need an equivalent physics world.
+        </p>
+
+        <p>A physics world is a virtual space where all the physics calculations are done. It is a separate entity from
+          the
+          Three.js scene.</p>
+
+        <p>After we set up our scene, camera, and renderer (+ orbit controls), we need to create a physics world.</p>
+
+        <p>We can do this by creating a new instance of the Cannon.World class:</p>
+        <pre><code class="javascript">const world = new CANNON.World();
+world.gravity.set(0, -9.81, 0); // Gravity set to -9.81 m/s² (Earth's gravity)</code></pre>
+
+        <p>Next, we need to create a physics body for each object in the scene.</p>
+
+        <p>We can do this by creating a new instance of the Cannon.Body class alsong with each new object:</p>
+
+        <pre><code class="javascript">// Create the plane
+const planeGeometry = new THREE.PlaneGeometry(25, 25);
+const planeMaterial = new THREE.MeshPhongMaterial({ color: "lightgrey", side: THREE.DoubleSide });
+const planeMesh = new THREE.Mesh(planeGeometry, planeMaterial);
+planeMesh.rotation.x = -Math.PI / 2; // Rotate the plane to be horizontal
+planeMesh.receiveShadow = true;
+planeMesh.position.y = -0.5;
+scene.add(planeMesh);
+
+// Create the corresponding physics body for the plane
+const planeShape = new CANNON.Plane();
+const planeBody = new CANNON.Body({ mass: 0 }); // Mass of 0 means it's static
+planeBody.quaternion.setFromEuler(-Math.PI / 2, 0, 0); // Rotate plane body to match geometry
+planeBody.addShape(planeShape);
+world.addBody(planeBody);
+
+// Create the sphere
+const sphereGeometry = new THREE.SphereGeometry(1, 32, 32);
+const sphereMaterial = new THREE.MeshNormalMaterial();
+const sphereMesh = new THREE.Mesh(sphereGeometry, sphereMaterial);
+sphereMesh.position.set(0, 5, 0); // Starting position above the plane
+sphereMesh.castShadow = true;
+scene.add(sphereMesh);
+
+// Create the corresponding physics body for the sphere
+const sphereShape = new CANNON.Sphere(0.5);
+const sphereBody = new CANNON.Body({ mass: 1 }); // Mass of 1 means it's dynamic, the larger the mass the more force it will take to move it
+sphereBody.addShape(sphereShape);
+sphereBody.position.set(0, 5, 0); // Ensure it's above the plane
+world.addBody(sphereBody); // Add the sphere body to the world</code></pre>
+
+        <p>Lastly, we need to update the physics world in the animation loop.</p>
+
+        <p>We can do this by using delta time and the Cannon.js step function:</p>
+        <pre><code class="javascript">const clock = new THREE.Clock(); // Create a clock to track time
+function animate() {
+  requestAnimationFrame(animate);
+
+  const deltaTime = clock.getDelta(); // Get the time elapsed since the last frame
+
+  world.step(1 / 60, deltaTime, 3); // Step the physics world, parameters: time step, delta time, number of substeps
+  
+  // Update the Three.js objects to match the physics bodies
+  sphereMesh.position.copy(sphereBody.position); // Update the sphere mesh position
+
+  // Render the scene from the perspective of the camera
+  renderer.render(scene, camera);
+  controls.update(); // Update the orbit controls
+
+}
+
+animate();</code></pre>
+
+        <p>Now we have a simple physics simulation with a plane and a sphere.</p>
+
+        <p>The sphere will fall under the influence of gravity and collide with the plane.</p>
+
+        <p>We can increase the bounciness of the sphere by setting the <b>restitution property, which is a measure of
+            how much energy is conserved during a collision</b>.</p>
+
+        <h3>Coefficient of Restitution</h3>
+
+        <p>When two objects collide with each other, many forces come into play, which also means the application of
+          various mathematical equations. Many of these laws were first derived by the same super popular scientist who
+          is credited with numerous discoveries and derivations, meaning that he has a number of patents to his name --
+          Sir Isaac Newton.</p>
+
+        <p>Pertaining to the collision of two objects, Newton formulated a theory that we now know as Newton's law of
+          <b>restitution</b>.
+        </p>
+
+        <p>It simply states that when two bodies collide, the speed with which they move <i>after</i> the collision
+          depends on the material from which they are made.</p>
+
+        <img class="center" style="width: 50%; height: 50%;"
+          src="https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/images/Before-after-collision.png"
+          alt="Newton's Law of Restitution" />
+
+        <p>The <b>coefficient of restitution</b> (CoR) is a measure of <b>how elastic a collision is between two
+            objects</b>.
+        </p>
+
+        <p>It is defined as the ratio of the relative velocity of separation to the relative velocity of approach.</p>
+        <p>In simple terms, it tells us <b>how much energy is conserved during a collision</b>.</p>
+
+        <p>In most cases, the coefficient of restitution is <b>between 0 and 1</b>.</p>
+
+        <img class="center" style="width: 80%; height: 80%;"
+          src="https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/images/coefficient%20of%20restitution.png"
+          alt="Coefficient of Restitution" />
+
+        <p>A <b>coefficient of restitution of 1</b> means that the collision is <b>perfectly elastic</b>, meaning that
+          <b>no energy is
+            lost during the collision</b>. In other words, <b>the objects will bounce off each other with the same speed
+            and
+            energy as they had before the collision</b>.
+        </p>
+
+        <p>A <b>coefficient of restitution of 0</b> means that the collision is <b>perfectly inelastic</b>, meaning that
+          <b>all energy is
+            lost during the collision</b> and <b>the objects stick together</b>.
+        </p>
+
+        <p>A coefficient of restitution between 0 and 1 means that the collision is <b>partially elastic</b>, meaning
+          that <b>some energy is lost during the collision</b>.</p>
+
+        <p>Let's suppose a rubber ball bounces on a flat, hard surface. Obviously, the rubber ball will rebound off the
+          surface, but with only a fraction of its original energy, because all real collisions are inelastic. (Note: If
+          this collision were elastic, then the ball would have bounced back with the same amount of energy it had
+          before striking the surface.)</p>
+
+        <p>When we 'deform' something by colliding it with something else (say, when we bounce a basketball
+          on the ground), a fraction of its original energy is lost. That's why the basketball bounces lower with every
+          collision -- as its energy gets converted to heat/vibrations.</p>
+
+        <img class="center" style="width: 50%; height: 50%;"
+          src="https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/images/Bouncing-basketballs.png"
+          alt="Coefficient of Restitution Example" />
+
+        <p>The formula to calculate the coefficient of restitution is rather straightforward. Since it is defined as a
+          ratio of the final to the initial relative velocity between two objects after their collision, it can be
+          mathematically represented as follows:</p>
+
+        <img class="center" style="width: 80%; height: 80%;"
+          src="https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/images/coefficient%20of%20restitution%20formula%201.png"
+          alt="Coefficient of Restitution Formula" />
+
+        <p>When considering a one-dimensional collision of two objects, A and B, the coefficient of restitution could be
+          calculated by:</p>
+
+        <img class="center" style="width: 50%; height: 50%;"
+          src="https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/images/coefficient%20of%20restitution%20formula%202.png"
+          alt="Coefficient of Restitution Formula 2" />
+
+        <p>In the case of a ball bouncing off a flat, stationary surface, the coefficient of restitution turns out to
+          be:</p>
+
+        <img class="center" style="width: 50%; height: 50%;"
+          src="https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/images/coefficient%20of%20restitution%20formula%203.png"
+          alt="Coefficient of Restitution Formula 3" />
+
+        <p>In the case of our sphere and plane, we can set the restitution property of the sphere to a value between 0
+          and 1 to control how bouncy the sphere is.</p>
+
+        <p>In Cannon.js, the restitution property is set on the material of
+          the body.</p>
+
+        <p>We can create a new material for the plane and set the restitution property:</p>
+        <pre><code class="javascript">// Set restitution for the plane
+planeBody.material = new CANNON.Material();
+planeBody.material.restitution = 0.6; // Adjust this value for bounciness</code></pre>
+
+        <p>And of the sphere:</p>
+
+        <pre><code class="javascript">// Set restitution for the sphere
+sphereBody.material = new CANNON.Material();
+sphereBody.material.restitution = 0.9; // Adjust this value for bounciness</code></pre>
+
+        <p>Now the sphere will bounce off the plane when it collides.</p>
+
+        <p>We can add more objects to the scene and create more complex physics simulations.</p>
+
+        <p>We can also use Cannon.js to create more advanced physics simulations, such as ragdoll physics, soft body
+          physics, and fluid dynamics.</p>
+
+        
 
 
+
+
+
+
+
+
+
+
+
+      </article>
+      <br />
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--
+     <hr />
+    <section class="main-section" id="Cameras_and_Projections">
+      <br />
+      <header><b>Cameras and Projections</b></header>
+      <article>
+        <p>So we spoke about the two main cameras in Three.js, the <b>PerspectiveCamera</b> and the
+          <b>OrthographicCamera</b>, but what exactly are they?
+        </p>
+
+        <p>The PerspectiveCamera, as we know, is the most commonly used camera in Three.js. It mimics the perspective
+          projection of
+          real-world cameras, creating a sense of depth and realism in the scene. So that the objects far from the
+          camera look smaller and those near to the camera look bigger, just like our eyes work.</p>
+
+        <p>Once again, it is defined by a field of view (FOV), aspect ratio, and near and far clipping planes.</p>
+
+        <img class="center" style="width: 50%; height: 50%;"
+          src="https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/images/persepective%20camera.png"
+          alt="Perspective Camera" />
+
+        <p>The OrthographicCamera, on the other hand, provides an orthographic projection, which means that objects
+          appear the same size regardless of their distance from the camera. This camera type is often used for 2D games
+          or architectural visualizations.</p>
+
+        <img class="center" style="width: 50%; height: 50%;"
+          src="https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/images/orthographic%20camera.png"
+          alt="Orthographic Camera" />
+
+        <p>Orthographic projection is just one of the types of parallel projection.</p>
+
+        <p><b>Representing an n-dimensional object into an n-1 dimension is known as projection</b>.</p>
+
+        <p>It is process of converting a 3D object into 2D object, where we represent a 3D object on a 2D plane
+          {(x,y,z)->(x,y)}. It is also defined as mapping or transforming of the object in projection plane or view
+          plane.</p>
+
+        <p>When geometric objects are formed by the intersection of lines with a plane, the plane is called the
+          projection plane and the lines are called projections.</p>
+
+        <h3>Types of Projections:</h3>
+
+        <ul>
+          <li><b>Parallel</b> Projection (which includes Orthographic)</li>
+          <li><b>Perspective</b> Projection</li>
+        </ul>
+
+        <img class="center" style="width: 75%; height: 75%;"
+          src="https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/images/projection%20types.png"
+          alt="Projection Types 1" />
+
+        <h3>Center of Projection</h3>
+
+        <p>The center of projection (CoP) is an arbitrary point from where the lines are drawn on each point of an
+          object.</p>
+
+        <ul>
+          <li>In parallel projection, <b>the CoP is at infinity</b>.</li>
+          <li>In perspective projection, <b>the CoP is at a finite distance</b>.</li>
+        </ul>
+
+        <h3>Parallel Projection</h3>
+
+        <p>A parallel projection is formed by extending parallel lines from each vertex of object until they intersect
+          plane of screen.</p>
+
+        <p>Parallel projection transforms object to the view plane along parallel lines. A projection is said to be
+          parallel, if center of projection is at an infinite distance from the projected plane.</p>
+
+        <p>A parallel projection preserves relative proportion of objects, accurate views of the various sides of an
+          object are obtained with a parallel projection. The projection lines are parallel to each other and extended
+          from the object and intersect the view plane. </p>
+
+        <p>It preserves relative propositions of objects, and it is used in drafting to produce scale drawings of 3D
+          objects. This is not a realistic representation, the point of intersection is the projection of the vertex.
+        </p>
+
+        <img class="center" style="width: 75%; height: 75%;"
+          src="https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/images/parallel%20projection.png"
+          alt="Parallel Projection" />
+
+        <p>Parallel projection is divided into two parts and these two parts sub divided into many:</p>
+
+        <ul>
+          <li>Orthographic Projection</li>
+          <li>Oblique Projection</li>
+        </ul>
+
+        <h3>Orthographic Projection</h3>
+
+        <p>In orthographic projection the direction of projection is normal to the projection of the plane. In
+          orthographic lines are parallel to each other making an angle 90 with view plane. Orthographic parallel
+          projections are done by <b>projecting points along parallel lines that are perpendicular to the projection
+            line</b>.
+        </p>
+
+        <p>Orthographic projections are most often used to procedure the front, side, and top views of an object and are
+          called <b>evaluations</b>.</p>
+
+        <p>Engineering and architectural drawings commonly employ these orthographic projections.</p>
+
+        <p>Transformation equations for an orthographic parallel projection as straight forward. Some special
+          orthographic parallel projections involve plan view, side elevations. We can also perform orthographic
+          projections that <b>display more than one phase of an object</b>, such views are called <b>monometric
+            orthographic
+            projections</b>.</p>
+
+        <h3>Orthographic Projection has two categories:</h3>
+
+        <ul>
+          <li>Multiview Projection</li>
+          <li>Axonometric Projection</li>
+        </ul>
+
+        <h3>Multiview Projection</h3>
+
+        <p>Multiview Projection is further divided into three categories:</p>
+
+        <ol>
+          <li><b>Top-View (or First Angle Projection)</b>: In this projection, the rays that emerge from the top of the
+            polygon
+            surface are observed.</li>
+          <img class="center" style="width: 70%; height: 70%;"
+            src="https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/images/top%20view.png"
+            alt="Top View" />
+          <li><b>Front-View (or Third Angle Projection)</b>: In this orthographic projection front face view of the
+            object is
+            observed.</li>
+          <img class="center" style="width: 70%; height: 70%;"
+            src="https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/images/front%20view.png"
+            alt="Front View" />
+          <li><b>Side-View</b>: It is another type of projection orthographic projection where the side view of the
+            polygon
+            surface is observed.</li>
+          <img class="center" style="width: 35%; height: 35%;"
+            src="https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/images/side%20view.png"
+            alt="Side View" />
+        </ol>
+
+        <h3>Axonometric Projection</h3>
+
+        <p>Axonometric projection is an orthographic projection, where the projection lines are perpendicular to the
+          plane of projection, and the object is rotated around one or more of its axes to show multiple sides.</p>
+
+        <p>It is further divided into three categories:</p>
+
+        <ol>
+          <li><b>Isometric Projection</b>: It is a method for visually representing three-dimensional objects in
+            two-dimensional display in technical and engineering drawings. Here in this projection, the three coordinate
+            axes appear equally foreshortened and the angle between any two of them is 120 degrees.</li>
+          <img class="center" style="width: 80%; height: 80%;"
+            src="https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/images/isometric%20projection.png"
+            alt="Isometric Projection" />
+          <li><b>Dimetric Projection</b>: It is a kind of orthographic projection where the visualized object appears to
+            have
+            only two adjacent sides and angles are equal.</li>
+          <img class="center" style="width: 55%; height: 55%;"
+            src="https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/images/dimetric%20projection.png"
+            alt="Dimetric Projection" />
+          <li><b>Trimetric Projection</b>: It is a kind of orthographic projection where the visualized object appears
+            to have
+            all the adjacent sides and angles unequal.</li>
+          <img class="center" style="width: 55%; height: 55%;"
+            src="https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/images/trimetric%20projection.png"
+            alt="Trimetric Projection" />
+        </ol>
+
+        <h3>Oblique Projection</h3>
+
+        <p>Oblique projection is a kind of parallel projection where projecting rays emerges parallel from the surface
+          of the polygon and incident at an angle other than 90 degrees on the plane.</p>
+        <p>It is further divided into two categories:</p>
+
+        <ol>
+          <li><b>Cavalier Projection</b>: is a kind of oblique projection where the projecting lines emerge parallel
+            from the
+            object surface and incident at 45′ rather than 90′ at the projecting plane. In this projection, the length
+            of the reading axis is larger than the cabinet projection.</li>
+          <img class="center" style="width: 75%; height: 75%;"
+            src="https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/images/cavalier%20projection.png"
+            alt="Cavalier Projection" />
+          <li><b>Cabinet Projection</b>: It is similar to that cavalier projection but here the length of reading axes
+            just
+            half than the cavalier projection and the incident angle at the projecting plane is 63.4′ rather 45′.</li>
+          <img class="center" style="width: 75%; height: 75%;"
+            src="https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/images/cabinet%20projection.png"
+            alt="Cabinet Projection" />
+        </ol>
+
+      </article>
+      <br />
+    </section>
+  -->
 
 
 
