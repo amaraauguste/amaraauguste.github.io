@@ -9969,6 +9969,35 @@ sphereBody.addShape(sphereShape);
 sphereBody.position.set(0, 5, 0); // Ensure it's above the plane
 world.addBody(sphereBody); // Add the sphere body to the world</code></pre>
 
+        <p>As you can see in our physics world we introduce <b>quaternion</b>, which is a mathematical representation of
+          rotation, as opposed to our standard Euler angles.</p>
+
+        <p>Quaternions are an extension of imaginary number set, commonely refered to as a hyper-complex number. A
+          quaternion can be thought of as a <b>four element vector</b>.</p>
+
+        <p></p>This vector is composed of two distinct components: a <b>scalar</b> and a <b>3 element unit vector</b>.
+        </p>
+        <p>In mathematical notation, a quaternion is represented as:</p>
+
+        <p class="center" style="font-size: 40px; padding-left: 30%;"><b>q = w + xi + yj + zk</b></p>
+
+        <p>Where <b>w</b> is the scalar part and <b>[x y z]</b> is the vector part.</p>
+
+        <p>The scalar value, <b>w</b>, corresponds to <b>an angle of rotation</b>. The vector term,
+          <b>[x y z]</b>, corresponds to <b>an axis of rotation</b>, about which the angle or rotation is performed.
+        </p>
+
+        <p>The i, j, and k are the imaginary unit vectors, which are used to represent <b>the three dimensions of
+            space</b>.</p>
+
+        <img class="center" style="width: 50%; height: 50%;"
+          src="https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/images/quaternion.jpg"
+          alt="Quaternion" />
+
+        <p>We set our planeBody.quaternion.setFromEuler(-Math.PI / 2, 0, 0); in order to rotate the plane body to match
+          the
+          geometry, since our plane is rotated to be horizontal.</p>
+
         <p>Lastly, we need to update the physics world in the animation loop.</p>
 
         <p>We can do this by using delta time and the Cannon.js step function:</p>
@@ -9985,7 +10014,6 @@ function animate() {
 
   // Render the scene from the perspective of the camera
   renderer.render(scene, camera);
-  controls.update(); // Update the orbit controls
 
 }
 
@@ -10098,12 +10126,89 @@ sphereBody.material.restitution = 0.9; // Adjust this value for bounciness</code
 
         <p>Now the sphere will bounce off the plane when it collides.</p>
 
+        <p>Let's use what we know about raycasting to add the ability to pick up and drop the sphere.</p>
+
+        <p>We can do this by first creating a new raycaster to detect when the mouse is over the sphere and then pick
+          it up.</p>
+
+        <pre><code class="javascript"">// Raycaster and mouse
+const raycaster = new THREE.Raycaster();
+const mouse = new THREE.Vector2();
+let isDragging = false; // Flag to check if the sphere is being dragged
+</code></pre>
+
+        <p>We can write a function to handle the mouse down event:</p>
+
+        <pre><code class="javascript">function onMouseDown(event) {
+  // Calculate mouse position in normalized device coordinates
+  mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+  mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+  // Update the picking ray with the camera and mouse position
+  raycaster.setFromCamera(mouse, camera);
+
+  // Calculate objects intersecting the picking ray
+  const intersects = raycaster.intersectObject(sphereMesh);
+  if (intersects.length > 0) {
+    isDragging = true;
+    sphereBody.velocity.set(0, 0, 0); // Reset velocity when picked up
+  }
+}
+</code></pre>
+
+        <p>The onMouseDown function will be called when the mouse is clicked.</p>
+
+        <p>We can create another function to handle the mouse up event:</p>
+
+        <pre><code class="javascript">function onMouseUp() {
+  if (isDragging) {
+    isDragging = false;
+    // Release the sphere and apply an initial force downward
+    sphereBody.velocity.set(0, -2, 0); // Apply an initial downward velocity to simulate a bounce
+  }
+}</code></pre>
+
+        <p>The onMouseUp function will be called when the mouse is released.</p>
+
+        <p>And finally, we can create a function to handle the mouse move event:</p>
+
+        <pre><code class="javascript">function onMouseMove(event) {
+  if (isDragging) {
+    // Calculate mouse position in normalized device coordinates
+    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+    mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+    // Update the picking ray with the camera and mouse position
+    raycaster.setFromCamera(mouse, camera);
+
+    // Get the position in world coordinates
+    const intersects = raycaster.intersectObject(planeMesh);
+    if (intersects.length > 0) {
+      const intersectPoint = intersects[0].point;
+      // Set the sphere's position to be above the plane
+      sphereBody.position.set(intersectPoint.x, intersectPoint.y + 2, intersectPoint.z); // Keep it above the plane
+      sphereMesh.position.copy(sphereBody.position); // Sync visual sphere position
+    }
+  }
+}</code></pre>
+
+        <p>Which will be called when the mouse is moved.</p>
+
+        <p>We can add event listeners to the document to handle the mouse events:</p>
+
+        <pre><code class="javascript">document.addEventListener("mousedown", onMouseDown, false);
+document.addEventListener("mouseup", onMouseUp, false);
+document.addEventListener("mousemove", onMouseMove, false);</code></pre>
+
+        <p>Now we can pick up and drop the sphere using the mouse.</p>
+
         <p>We can add more objects to the scene and create more complex physics simulations.</p>
 
         <p>We can also use Cannon.js to create more advanced physics simulations, such as ragdoll physics, soft body
           physics, and fluid dynamics.</p>
 
-        
+
+
 
 
 
