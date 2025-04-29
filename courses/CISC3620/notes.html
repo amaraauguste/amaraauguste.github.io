@@ -9970,7 +9970,8 @@ sphereBody.position.set(0, 5, 0); // Ensure it's above the plane
 world.addBody(sphereBody); // Add the sphere body to the world</code></pre>
 
         <p>As you can see in our physics world we introduce <b>quaternion</b>, which is a mathematical representation of
-          rotation, as opposed to our standard Euler angles.</p>
+          rotation, as opposed to our standard Euler angles. Here's <a
+            href="https://youtu.be/zjMuIxRvygQ?si=yczgsTp0yZf2cSRW">a more detailed explanation.</a></p>
 
         <p>Quaternions are an extension of imaginary number set, commonely refered to as a hyper-complex number. A
           quaternion can be thought of as a <b>four element vector</b>.</p>
@@ -9987,12 +9988,18 @@ world.addBody(sphereBody); // Add the sphere body to the world</code></pre>
           <b>[x y z]</b>, corresponds to <b>an axis of rotation</b>, about which the angle or rotation is performed.
         </p>
 
-        <p>The i, j, and k are the imaginary unit vectors, which are used to represent <b>the three dimensions of
+        <p>The i, j, and k are unit vectors representing the three Cartesian axes (traditionally x, y, z), <b>the three dimensions of
             space</b>.</p>
 
         <img class="center" style="width: 50%; height: 50%;"
           src="https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/images/quaternion.jpg"
           alt="Quaternion" />
+
+        <p>Compared to rotation matrices, <b>quaternions are more compact, efficient, and numerically stable</b>. </p>
+        <p>Compared to Euler angles, they are simpler to compose.</p>
+        <p>However, they are not as intuitive and easy to understand and, due to the periodic nature of sine and cosine,
+          rotation angles differing precisely by the natural period will be
+          encoded into identical quaternions and recovered angles in radians will be limited to [0, 2&pi;]</p>
 
         <p>We set our planeBody.quaternion.setFromEuler(-Math.PI / 2, 0, 0); in order to rotate the plane body to match
           the
