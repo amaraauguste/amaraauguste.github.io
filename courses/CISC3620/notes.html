@@ -9988,7 +9988,8 @@ world.addBody(sphereBody); // Add the sphere body to the world</code></pre>
           <b>[x y z]</b>, corresponds to <b>an axis of rotation</b>, about which the angle of rotation is performed.
         </p>
 
-        <p>The i, j, and k are unit vectors representing the three Cartesian axes (traditionally x, y, z), <b>the three dimensions of
+        <p>The i, j, and k are unit vectors representing the three Cartesian axes (traditionally x, y, z), <b>the three
+            dimensions of
             space</b>.</p>
 
         <img class="center" style="width: 50%; height: 50%;"
@@ -10210,6 +10211,168 @@ document.addEventListener("mousemove", onMouseMove, false);</code></pre>
         <p>Now we can pick up and drop the sphere using the mouse.</p>
 
         <p>We can add more objects to the scene and create more complex physics simulations.</p>
+
+        <h2>Colliding with Other Objects</h2>
+
+        <p>We can also create more complex objects and add them to the scene.</p>
+
+        <p>Let's start by setting up our Physics world:</p>
+
+        <pre><code class="javascript">// Initialize physics world
+const world = new CANNON.World();
+world.gravity.set(0, -9.81, 0);</pre></code>
+
+        <p>We can also create our clock for delta time and step our physics world in our animate function:</p>
+
+        <pre><code class="javascript">// Animation loop
+const clock = new THREE.Clock();
+
+function animate() {
+  requestAnimationFrame(animate);
+  const delta = clock.getDelta();
+
+  // Step the physics world
+  world.step(1 / 60, delta, 3);
+
+  renderer.render(scene, camera);
+}
+
+animate();</code></pre>
+
+        <p>Now we can create our plane (in both the scene and our Physics World). However, by default, CANNON.Plane() is
+          an infinite plane, but its orientation and the shape's effective size are not directly set by dimensions like
+          in THREE.PlaneGeometry. To get a finite plane matching our visual plane size, we will use CANNON.Box:</p>
+
+        <pre><code class="javascript">// Define size for the visual and physics ground plane
+const planeSize = 25;
+
+// --- Visual Ground Plane ---
+const planeGeo = new THREE.PlaneGeometry(planeSize, planeSize);
+const planeMat = new THREE.MeshStandardMaterial({
+  color: "lightgrey",
+  side: THREE.DoubleSide
+});
+const planeMesh = new THREE.Mesh(planeGeo, planeMat);
+planeMesh.rotation.x = -Math.PI / 2;
+planeMesh.receiveShadow = true;
+scene.add(planeMesh);
+
+// --- Physics Ground Plane ---
+// Using a box shape to match the visual plane's size
+const groundShape = new CANNON.Box(
+  new CANNON.Vec3(planeSize / 2, 0.1, planeSize / 2)
+);
+const groundBody = new CANNON.Body({ mass: 0 });
+groundBody.addShape(groundShape);
+groundBody.position.set(0, 0, 0);
+world.addBody(groundBody);</code></pre>
+
+        <p>Now we can start adding in our objects:</p>
+
+        <pre><code class="javascript">// Arrays to hold visual meshes and physics bodies
+const objects = [];
+const physicsBodies = [];
+
+// Create a wall of cubes
+const rows = 7;
+const cols = 15;
+const cubeSize = 1;
+const startX = -(cols / 2) * cubeSize + cubeSize / 2;
+const startY = -0.5;
+const startZ = 0;
+
+for (let i = 0; i < rows; i++) {
+  for (let j = 0; j < cols; j++) {
+    const x = startX + j * cubeSize;
+    const y = startY + i * cubeSize;
+    const z = startZ;
+
+    // Visual cube
+    const geo = new THREE.BoxGeometry(cubeSize, cubeSize, cubeSize);
+    const mat = new THREE.MeshStandardMaterial({ color: 0x00ff00 });
+    const mesh = new THREE.Mesh(geo, mat);
+    mesh.castShadow = true;
+    scene.add(mesh);
+    objects.push(mesh);
+
+    // Physics body
+    const shape = new CANNON.Box(
+      new CANNON.Vec3(cubeSize / 2, cubeSize / 2, cubeSize / 2)
+    );
+    const body = new CANNON.Body({ mass: 0.5 });
+    body.addShape(shape);
+    body.position.set(x, y, z);
+    world.addBody(body);
+    physicsBodies.push(body);
+  }
+}</code></pre>
+
+        <p>We will see a wall of cubes with 7 rows and 15 cubes per row once we update our animate function:</p>
+
+        <pre><code class="javascript">for (let i = 0; i < physicsBodies.length; i++) {
+    const pBody = physicsBodies[i];
+    const mesh = objects[i];
+    mesh.position.copy(pBody.position);
+    mesh.quaternion.copy(pBody.quaternion);
+}</code></pre>
+
+        <p>We want to be able to shoot balls at the wall to knock down the cube, this will require a raycaster:</p>
+
+        <pre><code class="javascript">// For shooting balls
+const ballRadius = 0.5;
+const ballGeometry = new THREE.SphereGeometry(ballRadius, 16, 16);
+const ballMaterial = new THREE.MeshStandardMaterial({ color: 0xff0000 });
+
+const ballMeshes = [];
+const ballBodies = [];
+
+// Raycaster for mouse interaction
+const raycaster = new THREE.Raycaster();
+const mouse = new THREE.Vector2();
+
+function onMouseDown(event) {
+  // Convert mouse coords
+  mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+  mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+  // Raycast from camera
+  raycaster.setFromCamera(mouse, camera);
+  const direction = raycaster.ray.direction.clone();
+  const origin = raycaster.ray.origin.clone();
+
+  // Create visual sphere
+  const mesh = new THREE.Mesh(ballGeometry, ballMaterial);
+  mesh.castShadow = true;
+  scene.add(mesh);
+  ballMeshes.push(mesh);
+
+  // Create physics body
+  const shape = new CANNON.Sphere(ballRadius);
+  const body = new CANNON.Body({ mass: 1 });
+  body.addShape(shape);
+
+  // Position the ball slightly in front of camera
+  const spawnPos = origin.clone().add(direction.clone().multiplyScalar(1));
+  body.position.copy(spawnPos);
+  // Set initial velocity forward
+  const shootSpeed = 50;
+  body.velocity.copy(direction.multiplyScalar(shootSpeed));
+
+  world.addBody(body);
+  ballBodies.push(body);
+}
+
+document.addEventListener("mousedown", onMouseDown);</code></pre>
+
+        <p>Now we should possess the ability to shoot balls at our scene. Let's modify our animate function to reflect
+          this:</p>
+
+        <pre><code class="javascript">for (let i = 0; i < ballBodies.length; i++) {
+    ballMeshes[i].position.copy(ballBodies[i].position);
+    ballMeshes[i].quaternion.copy(ballBodies[i].quaternion);
+}</code></pre>
+
+        <p>And now we should be able to knock down the cubes with the spheres!</p>
 
         <p>We can also use Cannon.js to create more advanced physics simulations, such as ragdoll physics, soft body
           physics, and fluid dynamics.</p>
