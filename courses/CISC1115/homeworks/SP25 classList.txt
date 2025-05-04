@@ -72,7 +72,7 @@
 2019,Demon Slayer,JP,ONGOING
 2008,Breaking Bad,US,2013
 2015,Better Call Saul,US,2022
-2010,The Pacific ,US,2010
+2010,The Pacific,US,2010
 2017,Ozark,US,2022
 2021,Invincible,US,ONGOING
 2019,The Boys,US,ONGOING
