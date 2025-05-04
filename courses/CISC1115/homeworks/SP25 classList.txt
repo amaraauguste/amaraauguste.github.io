@@ -1,0 +1,95 @@
+2005,Grey's Anatomy,US,ONGOING
+2018,All American,US,ONGOING
+2016,This Is Us,US,2022
+2017,Atypical,US,2021
+2014,Haikyu!!,JP,2020
+2000,Gilmore Girls,US,2007
+2011,Ninjago,US,2022
+2014,Sonic Boom,FR,2017
+2005,Avatar: The Last Airbender,US,2008
+2012,The Legend of Korra,US,2014
+2010,The Walking Dead,US,2022
+2014,The Flash,US,2023
+2021,Invincible,US,ONGOING
+2022,The Bear,US,ONGOING
+2013,Steven Universe,US,2019
+2008,Breaking Bad,US,2013
+2000,Gilmore Girls,US,2007
+2019,The Boys,US,ONGOING
+1966,Star Trek ,US,1969
+1993,Frasier,US,2024
+2013,Father Brown,UK,ONGOING
+2009,White Collar ,US,2014
+2009,The Middle ,US,2018
+1955,Gunsmoke,US,1975
+2018,Succession,US,2023
+2022,Severance,US,ONGOING
+2005,Avatar: The Last Airbender,US,2008
+2001,Six Feet Under,US,2005
+2021,Invincible,US,ONGOING
+2015,Better Call Saul,US,2022
+2015,Daredevil,US,2018
+2014,The Flash,US,2023
+2016,Stranger Things,US,ONGOING
+2011,Suits,US,2019
+2022,The Lincoln Lawyer,US,ONGOING
+2022,Reacher,US,ONGOING
+2022,Reacher,US,ONGOING
+2006,Dexter,US,2013
+2019,You,US,2025
+2016,Stranger Things,US,ONGOING
+2021,Arcane,US,2024
+2008,Breaking Bad,US,2013
+2015,Daredevil,US,2018
+2011,Person of Interest,US,2016
+2020,Ted Lasso,US,ONGOING
+1994,Friends,US,2004
+2011,New Girl,US,2018
+2005,Avatar: The Last Airbender,US,2008
+2005,Grey's Anatomy,US,ONGOING
+2009,The Vampire Diaries,US,2017
+2013,The Originals,US,2018
+2007,Gossip Girl,US,2012
+2013,Reign,US,2017
+2011,Bob's Burgers,US,ONGOING
+2020,Alice in Borderland,JP,ONGOING
+2021,Loki,US,2023
+2019,Warrior,US,2023
+2015,Better Call Saul,US,2022
+2005,Criminal Minds,US,ONGOING
+2020,Sweet Home,KR,2024
+2008,Breaking Bad,US,2013
+2023,The Last of Us,US,ONGOING
+2021,Squid Game,KR,ONGOING
+2005,Prison Break,US,2017
+2007,iCarly,US,2012
+2010,The Walking Dead,US,2022
+2013,Attack On Titan,JP,2023
+2016,My Hero Academia,JP,ONGOING
+2020,Jujutsu Kaisen,JP,ONGOING
+2024,Solo Leveling,JP,ONGOING
+2002,Naruto,JP,2007
+2019,Demon Slayer,JP,ONGOING
+2008,Breaking Bad,US,2013
+2015,Better Call Saul,US,2022
+2010,The Pacific ,US,2010
+2017,Ozark,US,2022
+2021,Invincible,US,ONGOING
+2019,The Boys,US,ONGOING
+2017,Snowfall,US,2023
+1997,South Park,US,ONGOING
+1976,Family Feud,US,ONGOING
+2009,Shark Tank,US,ONGOING
+2005,Hell's Kitchen,US,ONGOING
+2008,Breaking Bad,US,2013
+2005,Prison Break,US,2017
+2019,You,US,2025
+2021,Arcane,US,2024
+2022,Severance,US,ONGOING
+2013,The Blacklist,US,2023
+2008,Breaking Bad,US,2013
+2011,Black Mirror,UK,ONGOING
+2011,Game of Thrones,US,2019
+2016,Stranger Things,US,ONGOING
+2016,The Crown,UK,2023
+2005,The Office,US,2013
