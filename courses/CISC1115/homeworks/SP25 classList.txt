@@ -16,11 +16,11 @@
 2008,Breaking Bad,US,2013
 2000,Gilmore Girls,US,2007
 2019,The Boys,US,ONGOING
-1966,Star Trek ,US,1969
+1966,Star Trek,US,1969
 1993,Frasier,US,2024
 2013,Father Brown,UK,ONGOING
-2009,White Collar ,US,2014
-2009,The Middle ,US,2018
+2009,White Collar,US,2014
+2009,The Middle,US,2018
 1955,Gunsmoke,US,1975
 2018,Succession,US,2023
 2022,Severance,US,ONGOING
