@@ -82,6 +82,7 @@
           <a href="#Global_Lighting_Models" onclick="closeDropdown3()">Global Lighting Models</a>
           <a href="#Particle_Effects" onclick="closeDropdown3()">Particle Effects</a>
           <a href="#Adding_Physics" onclick="closeDropdown3()">Adding Physics</a>
+          <a href="#Cameras_and_Projections" onclick="closeDropdown3()">Cameras and Projections</a>
           <!--<a href="#Shaders" onclick="closeDropdown3()">Shaders</a>
           <a href="#Cameras_and_Projections" onclick="closeDropdown3()">Cameras and Projections</a>-->
           <!--<a href="#Linear_Algebra" onclick="closeDropdown2()">Linear Algebra</a>
@@ -9873,7 +9874,13 @@ animate();</code></pre>
 
         <p>We would have to code the physics of the game, which is a lot of work.</p>
 
-        <p>Luckily, we can implement a physics engine. A physics Engine is a software, a group of codes or a collection
+        <p>There are many ways of adding physics to your project, and it depends on what you want to achieve. You can
+          create your own physics with some mathematics and solutions like Raycaster, but if you wish to get realistic
+          physics with tension, friction, bouncing, constraints, pivots, etc. and all that in 3D space, you better use a
+          <b>physics engine</b>.
+        </p>
+
+        <p>A physics engine is a software, a group of codes or a collection
           of objects and algorithms that provides functions for the simulation of a physical world, be it in games or
           other virtual reality application. We don't have to stress yourself coding the movement of a bowling ball or
           how it collides with pins when you can have them represented by physics objects and the actions simulated in a
@@ -9921,14 +9928,22 @@ animate();</code></pre>
 
         <pre><code class="html">&lt;script src="https://cdn.rawgit.com/schteppe/cannon.js/master/build/cannon.js"&gt;&lt;/script&gt;</code></pre>
 
-        <p>When implementing physics, not only do we need our scene set up but we also need an equivalent physics world.
+        <p>When implementing physics, not only do we need our scene set up but we also need an equivalent <b>physics
+            world</b>.
+          It is a separate entity from the Three.js scene.</p>
+
+        <p>The idea is simple. We are going to create a physics world. This physics world is purely theoretical, and we
+          cannot see it. But in this world, things fall, collide, rub, slide, etc.</p>
+
+        <p>When we create a Three.js mesh, we will also create a version of that mesh inside the physics world. If we
+          make a Box in Three.js, we also create a box in the physics world.</p>
+
+        <p>Then, on each frame, before rendering anything, we tell the physics world to update itself; we take the
+          coordinates (position and rotation) of the physics objects and apply them to the corresponding Three.js mesh.
         </p>
 
-        <p>A physics world is a virtual space where all the physics calculations are done. It is a separate entity from
-          the
-          Three.js scene.</p>
-
-        <p>After we set up our scene, camera, and renderer (+ orbit controls), we need to create a physics world.</p>
+        <p>So, after we set up our scene, camera, and renderer (+ orbit controls), we need to create a physics world.
+        </p>
 
         <p>We can do this by creating a new instance of the Cannon.World class:</p>
         <pre><code class="javascript">const world = new CANNON.World();
@@ -10418,8 +10433,8 @@ document.addEventListener("mousedown", onMouseDown);</code></pre>
 
 
 
-    <!--
-     <hr />
+
+    <hr />
     <section class="main-section" id="Cameras_and_Projections">
       <br />
       <header><b>Cameras and Projections</b></header>
@@ -10429,8 +10444,8 @@ document.addEventListener("mousedown", onMouseDown);</code></pre>
         </p>
 
         <p>The PerspectiveCamera, as we know, is the most commonly used camera in Three.js. It mimics the perspective
-          projection of
-          real-world cameras, creating a sense of depth and realism in the scene. So that the objects far from the
+          projection of real-world cameras, creating a sense of depth and realism in the scene. So that the objects far
+          from the
           camera look smaller and those near to the camera look bigger, just like our eyes work.</p>
 
         <p>Once again, it is defined by a field of view (FOV), aspect ratio, and near and far clipping planes.</p>
@@ -10439,6 +10454,73 @@ document.addEventListener("mousedown", onMouseDown);</code></pre>
           src="https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/images/persepective%20camera.png"
           alt="Perspective Camera" />
 
+        <p>Let's set up a scene that uses a PerspectiveCamera:</p>
+
+        <pre><code class="javascript">const scene = new THREE.Scene();
+scene.background = new THREE.Color("green"); 
+
+// Set up the Camera (Perspective)
+const camera = new THREE.PerspectiveCamera(
+  75, // Field of view (in degrees)
+  window.innerWidth / window.innerHeight, // Aspect ratio
+  0.1, // Near clipping plane
+  1000 // Far clipping plane
+);
+
+// Position the camera
+camera.position.set(3, 5, 7);
+camera.lookAt(0, 0, 0); 
+
+const renderer = new THREE.WebGLRenderer({ antialias: true }); // Add antialiasing
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.shadowMap.enabled = true; // Enable shadow maps
+renderer.shadowMap.type = THREE.PCFSoftShadowMap; // Softer shadows
+document.body.appendChild(renderer.domElement);
+
+// Create the Plane
+const planeGeometry = new THREE.PlaneGeometry(20, 20); // Larger plane
+const planeMaterial = new THREE.MeshStandardMaterial({
+  color: "lightgrey",
+  side: THREE.DoubleSide
+});
+const plane = new THREE.Mesh(planeGeometry, planeMaterial);
+plane.rotation.x = Math.PI / 2; // Rotate to lie flat
+plane.receiveShadow = true; // Plane can receive shadows
+scene.add(plane);
+
+// Create the Cube
+const cubeGeometry = new THREE.BoxGeometry(1, 1, 1); // Width, height, depth
+const cubeMaterial = new THREE.MeshStandardMaterial({ color: "blue" });
+const cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
+cube.position.set(-1.5, 0.5, 0); // Position above the plane
+cube.castShadow = true; // Cube can cast shadows
+scene.add(cube);
+
+// Create the Sphere
+const sphereGeometry = new THREE.SphereGeometry(0.75, 32, 16); // Radius, width segments, height segments
+const sphereMaterial = new THREE.MeshStandardMaterial({ color: 0xff0000 }); // Red color
+const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
+sphere.position.set(1.5, 0.75, 0); // Position above the plane
+sphere.castShadow = true; // Sphere can cast shadows
+scene.add(sphere);
+
+// Add Lighting
+const ambientLight = new THREE.AmbientLight("grey", 0.5); // Color, Intensity
+scene.add(ambientLight);
+
+const directionalLight = new THREE.DirectionalLight("white", 0.8); // Color, Intensity
+directionalLight.position.set(5, 10, -10); // Position of the light source
+directionalLight.castShadow = true; // Enable shadow casting for this light
+
+scene.add(directionalLight);
+
+function animate() {
+  requestAnimationFrame(animate);
+  renderer.render(scene, camera);
+}
+
+animate();</code></pre>
+
         <p>The OrthographicCamera, on the other hand, provides an orthographic projection, which means that objects
           appear the same size regardless of their distance from the camera. This camera type is often used for 2D games
           or architectural visualizations.</p>
@@ -10446,6 +10528,34 @@ document.addEventListener("mousedown", onMouseDown);</code></pre>
         <img class="center" style="width: 50%; height: 50%;"
           src="https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/images/orthographic%20camera.png"
           alt="Orthographic Camera" />
+
+        <p>To create an OrthographicCamera in Three.js, we can use the following constructor:</p>
+
+        <pre><code class="javascript">const camera = new THREE.OrthographicCamera(left, right, top, bottom, near, far);</code></pre>
+        <p>Where:</p>
+        <ul>
+          <li><b>left</b>: The left plane of the camera frustum</li>
+          <li><b>right</b>: The right plane of the camera frustum</li>
+          <li><b>top</b>: The top plane of the camera frustum</li>
+          <li><b>bottom</b>: The bottom plane of the camera frustum</li>
+          <li><b>near</b>: The near clipping plane distance</li>
+          <li><b>far</b>: The far clipping plane distance</li>
+        </ul>
+
+        <p>We can modify our cube and sphere scene to use an OrthographicCamera instead:</p>
+
+        <pre><code class="javascript">//Set up the Camera (Orthographic)
+const aspect = window.innerWidth / window.innerHeight;
+const frustumSize = 15; // Controls the 'zoom' or size of the view
+const camera = new THREE.OrthographicCamera(
+  (frustumSize * aspect) / -2, // left
+  (frustumSize * aspect) / 2, // right
+  frustumSize / 2, // top
+  frustumSize / -2, // bottom
+  -100, // Near clipping plane
+  1000 // Far clipping plane
+);
+</code></pre>
 
         <p>Orthographic projection is just one of the types of parallel projection.</p>
 
@@ -10458,7 +10568,7 @@ document.addEventListener("mousedown", onMouseDown);</code></pre>
         <p>When geometric objects are formed by the intersection of lines with a plane, the plane is called the
           projection plane and the lines are called projections.</p>
 
-        <h3>Types of Projections:</h3>
+        <h2>Types of Projections:</h2>
 
         <ul>
           <li><b>Parallel</b> Projection (which includes Orthographic)</li>
@@ -10469,7 +10579,7 @@ document.addEventListener("mousedown", onMouseDown);</code></pre>
           src="https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/images/projection%20types.png"
           alt="Projection Types 1" />
 
-        <h3>Center of Projection</h3>
+        <h2>Center of Projection</h2>
 
         <p>The center of projection (CoP) is an arbitrary point from where the lines are drawn on each point of an
           object.</p>
@@ -10479,7 +10589,7 @@ document.addEventListener("mousedown", onMouseDown);</code></pre>
           <li>In perspective projection, <b>the CoP is at a finite distance</b>.</li>
         </ul>
 
-        <h3>Parallel Projection</h3>
+        <h2>Parallel Projection</h2>
 
         <p>A parallel projection is formed by extending parallel lines from each vertex of object until they intersect
           plane of screen.</p>
@@ -10607,10 +10717,209 @@ document.addEventListener("mousedown", onMouseDown);</code></pre>
             alt="Cabinet Projection" />
         </ol>
 
+        <h2>Perspective Projection</h2>
+
+        <p>In Perspective Projection the <b>center of projection (CoP) is at finite distance from projection plane</b>.
+        </p>
+
+        <p>The perspective projection can be easily described by the following figure:</p>
+
+        <img class="center" style="width: 60%; height: 60%;"
+          src="https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/images/perspective%20projection%202.png"
+          alt="Perspective Projection" />
+
+        <ul>
+          <li><b>Center of Projection</b> – It is a point where lines or projection that are not parallel to projection
+            plane appear to meet.</li>
+          <li><b>View Plane or Projection Plane</b> – The view plane is determined by :</li>
+          <ul>
+            <li>View reference point <b>R0(x0, y0, z0)</b></li>
+            <li>View plane normal</li>
+          </ul>
+          <li><b>Location of an Object</b> – It is specified by a point P that is located in world coordinates at (x, y,
+            z)
+            location. The objective of perspective projection is to determine the image point P’ whose coordinates are
+            (x’, y’, z’)</li>
+        </ul>
+
+        <p>This projection produces realistic views but <b>does not preserve relative proportions of an object
+            dimensions</b>.
+          Projections of distant object are smaller than projections of objects of same size that are closer to
+          projection plane.</p>
+
+        <p>In perspective projection, <b>the lines of projection are not parallel</b>. Instead, they all converge at a
+          single point called the center of projection or projection reference point.</p>
+
+        <p>The object positions are transformed to the view plane along these converged projection lines and the
+          projected view of an object is determined by calculating the intersection of the converged projection lines
+          with the view plane, as shown in the below figure:</p>
+
+        <img class="center" style="width: 75%; height: 75%;"
+          src="https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/images/perspective%20projection%203.png"
+          alt="Perspective Projection 3" />
+
+        <h3>Types of Perspective Projection</h3>
+
+        <p>Classification of perspective projection is on basis of <b>vanishing points</b> (It is a point in image where
+          a
+          parallel line through center of projection intersects view plane.).</p>
+
+        <p>The classification is as follows:</p>
+
+        <img class="center" style="width: 55%; height: 55%;"
+          src="https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/images/types%20of%20perspective%20projection.png"
+          alt="Types of Perspective Projection" />
+
+        <ul>
+          <li><b>One Point Perspective Projection</b>: this projection occurs when any of principal
+            axes intersects with projection plane or we can say when projection plane is perpendicular to principal
+            axis. In the image below, the z axis intersects projection plane whereas x and y axis remain parallel to
+            projection plane.</li>
+            <br/>
+          <img class="center" style="width: 50%; height: 50%;"
+            src="https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/images/one%20point%20perspective%20projection.png"
+            alt="One Point Perspective Projection" />
+            <br/>
+          <li><b>Two Point Perspective Projection</b>: in this projection, the projection plane intersects two of
+            principal axis. This is used for objects that are at an angle to the viewer. In the image below, the
+            projection plane intersects x and y axis whereas z axis remains parallel to projection plane.</li>
+            <br/>
+          <img class="center" style="width: 75%; height: 75%;"
+            src="https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/images/two%20point%20perspective%20projection.png"
+            alt="Two Point Perspective Projection" />
+            <br/>
+          <li><b>Three Point Perspective Projection</b>: this projection occurs when all three axis intersects with
+            projection plane. There is not any principal axis which is parallel to projection plane.</li>
+            <br/>
+          <img class="center" style="width: 40%; height: 40%;"
+            src="https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/images/three%20point%20perspective%20projection.png"
+            alt="Three Point Perspective Projection" />
+            <br/>
+        </ul>
+
+        <h2>Additional Cameras</h2>
+
+        <p>There are also other types of cameras in Three.js, such as the <b>CubeCamera</b>, which is used for rendering
+          cube maps, and the <b>StereoCamera</b>, which is used for rendering stereo images for VR applications.</p>
+
+        <p>As we have already seen, the <b>CubeCamera</b> is used for capturing a panoramic view of the scene from a
+          specific position.
+          It <b>renders the scene six times, each time capturing the view along one of the cube's faces</b>. This camera
+          type is commonly used
+          for creating <b>reflections or environment maps</b>.</p>
+
+        <p>Here’s an example of creating and updating a CubeCamera:</p>
+
+        <pre><code class="javascript">const cubeCamera = new THREE.CubeCamera(near, far, resolution);</code></pre>
+
+        <p>Where:</p>
+        <ul>
+          <li><b>near</b>: The near clipping plane distance</li>
+          <li><b>far</b>: The far clipping plane distance</li>
+          <li><b>resolution</b>: The resolution of the cube map (e.g., 256)</li>
+        </ul>
+
+        <p>To use the CubeCamera, you need to add it to the scene and update it in your render loop:</p>
+        <pre><code class="javascript">// Add the CubeCamera to the scene
+scene.add(cubeCamera);
+
+// Update the CubeCamera in the render loop
+cubeCamera.update(renderer, scene);</code></pre>
+
+        <p>CubeCamera is useful for creating realistic reflections and environment maps in your 3D scenes.</p>
+
+        <p>The <b>ArrayCamera</b> allows you to create an array of cameras and switch between them to achieve different
+          perspectives or views. It can be useful for <b>creating multi-camera setups or implementing camera
+            transitions</b>.
+        </p>
+
+        <p>To create an ArrayCamera, you can use the following constructor:</p>
+        <pre><code class="javascript">const cameras = [
+  new THREE.PerspectiveCamera(fov, aspect, near, far),
+  new THREE.PerspectiveCamera(fov, aspect, near, far)
+];
+const arrayCamera = new THREE.ArrayCamera(cameras);</code></pre>
+
+        <p>Where:</p>
+        <ul>
+          <li><b>cameras</b>: An array of cameras to be used in the ArrayCamera</li>
+        </ul>
+
+        <p>To use the ArrayCamera, you can set it as the active camera in your render loop:</p>
+        <pre><code class="javascript">// Set the ArrayCamera as the active camera
+renderer.render(scene, arrayCamera);</code></pre>
+
+        <p>ArrayCamera is useful for creating multi-camera setups or implementing camera transitions in your 3D scenes.
+        </p>
+
+        <p>The <b>StereoCamera</b> is used to create stereoscopic 3D effects, providing a <b>sense of depth perception
+            by
+            rendering separate views for the left and right eye</b>. This camera type is commonly used for <b>virtual
+            reality
+            (VR) or augmented reality (AR) applications</b>.
+
+        <p>It is used to render the scene through two cameras that mimic the eyes in order to create what we call a
+          <b>parallax effect</b> that will lure your brain into thinking that there is depth. You <b>must have the
+            adequate
+            equipment like a VR headset or red and blue glasses to see the result</b>.
+        </p>
+
+        <img class="center" style="width: 70%; height: 70%;"
+          src="https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/images/stereoCamera%20example.png"
+          alt="Stereo Camera" />
+
+        <p>Here’s an example of creating a StereoCamera:</p>
+
+        <pre><code class="javascript">const camera = new THREE.StereoCamera();
+
+// Set up left and right cameras
+const leftCamera = camera.cameraL;
+const rightCamera = camera.cameraR;
+
+// Position the cameras
+leftCamera.position.set(x, y, z);
+rightCamera.position.set(x, y, z);
+
+// Set the focal length for both cameras
+leftCamera.focalLength = 10;
+rightCamera.focalLength = 10;</code></pre>
+
+        <p>To render the stereo view, you need to <b>update the camera and render the scene twice, once for the left eye
+            and once for the right eye</b>.</p>
+
+        <p>Here’s an example of rendering with a StereoCamera, we would put the following in our animate() function:</p>
+
+        <pre><code class="javascript">// Update the stereo camera
+camera.update(renderer, scene);
+
+// Set the active renderer to the left eye
+renderer.setRenderTarget(renderer.getRenderTarget().left);
+renderer.render(scene, leftCamera);
+
+// Set the active renderer to the right eye
+renderer.setRenderTarget(renderer.getRenderTarget().right);
+renderer.render(scene, rightCamera);
+
+// Reset the active renderer to the default
+renderer.setRenderTarget(null);</code></pre>
+
+        <p>Understanding the different types of cameras available in Three.js is crucial for controlling the view and
+          perspective of our 3D scenes.</p>
+
+        <p>Whether we need to create a realistic perspective, an orthographic projection, or capture panoramic views,
+          Three.js offers a variety of camera options to suit our needs. By utilising these cameras, we can enhance
+          the interactivity and immersion of our web-based 3D applications.</p>
+
+        <p>Remember to experiment with camera settings, position, and movement to achieve the desired effects and create
+          captivating user experiences.</p>
+
+
+
+
       </article>
       <br />
     </section>
-  -->
+
 
 
 
