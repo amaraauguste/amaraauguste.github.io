@@ -11311,8 +11311,7 @@ vec2 func(float x, float y) {
         <p>For example, if we create an object with 20 vertices, the main function of the vertex shader will be executed
           20 times to position each vertex correctly.</p>
 
-        <img class="center" style="width: 80%; height: 80%;"
-          src="images/vertex%20shader%20example%201.png"
+        <img class="center" style="width: 80%; height: 80%;" src="images/vertex%20shader%20example%201.png"
           alt="Vertex Shader" />
 
         <p>Within the main function of the vertex shader, we must assign a value to the built-in variable gl_Position,
@@ -11340,7 +11339,8 @@ vec2 func(float x, float y) {
         <p>Essentially, the role of a fragment shader is to apply colors to vertices and the meshes they form after they
           have been positioned by the vertex shader.</p>
 
-        <img class="center" style="width: 80%; height: 80%;" src="images/fragment%20shader%20example%201.png" alt="Fragment Shader" />
+        <img class="center" style="width: 80%; height: 80%;" src="images/fragment%20shader%20example%201.png"
+          alt="Fragment Shader" />
 
         <p>The colorization process involves several steps, but as a beginner, you just need to know that the fragment
           shader breaks down the mesh, created from the vertices positioned by the vertex shader, into small fragments
@@ -11364,8 +11364,9 @@ vec2 func(float x, float y) {
 
         <h3>Using Shaders in a Three.js Application</h3>
 
-        <p>First, we need a basic Three.js project to implement what we've learned so far. To make things easier, <a href="https://codepen.io/amaraauguste/pen/MYYBbXd">here's
-          a basic Three.js scene</a>.</p>
+        <p>First, we need a basic Three.js project to implement what we've learned so far. To make things easier, <a
+            href="https://codepen.io/amaraauguste/pen/MYYBbXd">here's
+            a basic Three.js scene</a>.</p>
 
         <p>Every object in a Three.js scene has its own vertex and fragment shader. In fact, even the scene itself has a
           vertex and fragment shader. To apply an effect using shaders, we will replace the existing shaders with the
@@ -11589,10 +11590,174 @@ animate();</code></pre>
             <p>And there we go! You can see how applying a short, random math equation to the x position of a plane's
               vertices made such a big change to its shape.</p>
 
+            <p>Here's a <a href="https://www.youtube.com/watch?v=C8Cuwq1eqDw&ab_channel=SimonDev">video</a> to explain
+              what we just did.</p>
+
+            <h3>Example 5</h3>
+
+            <p>We'll now write some code that creates an animated, wavy, colored plane using custom shaders (vertex and
+              fragment shaders).
+              The shaders manipulate the geometry and colors over time to produce a dynamic visual effect.</p>
+
+            <p>We'll use the same approach as before, but this time we'll add some more complexity to the shaders.</p>
+
+            <pre><code class="HTML">&lt;script id="vertexshader" type="vertex"&gt;
+  uniform float u_time;
+  uniform float size;
+  uniform float sizex;
+  uniform float sizey;
+  attribute float aRandom;
+
+  varying vec2 uUV;
+  varying float vRandom;
+  varying vec3 u_Normal;
+  varying vec3 pos;
+  
+  void main(){ 
+    pos = position;
+    
+
+ gl_Position = projectionMatrix  * modelViewMatrix  * vec4(vec3(position.x ,position.y + sin(position.x + position.z + u_time) * sizex,sin((position.z +  size) * position.y + u_time)),1.0);
+  u_Normal = normal;
+  uUV = uv;
+  vRandom = aRandom;
+
+  }
+&lt;/script&gt;
+&lt;script id="fragmentshader" type="fragment"&gt;
+  varying vec3 pos;
+    varying vec2 uUV;
+    varying vec3 u_Normal;
+    varying float vRandom;
+ 
+    uniform float color_value;
+    uniform float size;
+    uniform float sizex;
+    uniform float sizey;
+
+    uniform float u_color;
+    uniform float u_time;
+ 
+    
+  void main(){
+ 
+
+ 
+  gl_FragColor = vec4(vec3((uUV.x / uUV.y),sin(uUV.y * (size * 1.5) + u_time),color_value),uUV.x / uUV.y);
+ 
+
+  
+  }
+&lt;/script&gt;</code></pre>
+
+            <p>In this example, we have a vertex shader and a fragment shader. The vertex shader takes the position of
+              each
+              vertex and applies a sine function to it, creating a wavy effect. The fragment shader colors the fragments
+              based on their UV coordinates.</p>
+
+            <p>We can also use the u_time variable to animate the color of the plane.</p>
+
+            <p>Now, the color of the plane will be animated based on the time passed to the fragment shader.</p>
+
+            <p>Now in our JS:</p>
+
+            <pre><code class="JavaScript">let randomnumber = Math.random() * 1.5;
+const clock = new THREE.Clock();
+
+let values = {
+  value1: 0.005,
+  value2: 0.01, 
+  color_value: 0.1, 
+  speed: 0.005,
+};
+
+const uniformData = {
+  u_time: {
+    type: "f",
+    value: clock.getElapsedTime() 
+  },
+
+  color_value: {
+    type: "f",
+    value: values.color_value
+  },
+
+  size: {
+    type: "f",
+    value: values.value1 
+  },
+
+  sizex: {
+    value: values.value2 
+  }
+};
+
+const geometry = new THREE.PlaneGeometry(10, 6, 200);
+const count = geometry.attributes.position.count;
+const randoms = new Float32Array(count);
+
+const material = new THREE.ShaderMaterial({
+  uniforms: uniformData,
+  vertexShader: document.getElementById("vertexshader").textContent,
+  fragmentShader: document.getElementById("fragmentshader").textContent,
+  wireframe: false,
+  side: THREE.DoubleSide,
+});
+
+const plane = new THREE.Mesh(geometry, material);
+scene.add(plane);
+
+
+const gui = new dat.GUI();
+gui.add(values,'value1',0.0001, 12, 0.01);
+gui.add(values,'value2',0.01, 9, 0.01);
+gui.add(values,'color_value',0.01, 2, 0.01);
+gui.add(values,'speed',0.005, 6, 0.01);
+
+let time = 0;
+
+function animate() {
+  requestAnimationFrame(animate);
+
+  time += values.speed / 30;
+
+  uniformData.u_time.value = time;
+  uniformData.size.value = values.value1;
+  uniformData.sizex.value = values.value2;
+  uniformData.color_value.value = values.color_value;
+
+  renderer.render(scene, camera);
+}
+
+animate();</code></pre>
+
+            <p>This code demonstrates how to combine custom vertex and fragment shaders with three.js to produce
+              animated, dynamic surfaces with real-time parameter control since we can can tweak wave amplitude, color
+              intensity, and animation speed through our GUI sliders.</p>
+
+            <p>Feel free to play around with the values in the GUI to see how they affect the animation and color of
+              the plane.</p>
+
+            <p>How does this help us when determining how to create something like water?</p>
+
+            <p>Well, we can use the same principles to create a water shader. We can use the vertex shader to create
+              waves and the fragment shader to color the water.</p>
+
+            <p>However, conveniently there are prewritten water shaders that we can use (both to create objects and as
+              starting points for our own if necessary).</p>
+
+            <p>For example, <a href="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/objects/Water.js">this
+                water shader</a> is a great starting point for creating realistic water effects in Three.js.</p>
+
+            <p>It uses a combination of vertex and fragment shaders to create realistic water effects, including
+              reflections, refractions, and surface waves.</p>
+
+            <p>It also includes a number of parameters that you can tweak to customize the appearance of the water.</p>
+
+            <p>Let's look at an <a href="https://codepen.io/amaraauguste/pen/yyyQbwj">example</a>.</p>
 
 
 
-    </section>
 
 
 
@@ -11601,8 +11766,14 @@ animate();</code></pre>
 
 
 
-    </article>
-    <br />
+
+
+
+
+
+
+      </article>
+      <br />
     </section>
 
 
