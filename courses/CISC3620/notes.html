@@ -11615,18 +11615,15 @@ animate();</code></pre>
   
   void main(){ 
     pos = position;
-    
-
- gl_Position = projectionMatrix  * modelViewMatrix  * vec4(vec3(position.x ,position.y + sin(position.x + position.z + u_time) * sizex,sin((position.z +  size) * position.y + u_time)),1.0);
-  u_Normal = normal;
-  uUV = uv;
-  vRandom = aRandom;
-
+    gl_Position = projectionMatrix  * modelViewMatrix  * vec4(vec3(position.x ,position.y + sin(position.x + position.z + u_time) * sizex,sin((position.z +  size) * position.y + u_time)),1.0);
+    u_Normal = normal;
+    uUV = uv;
+    vRandom = aRandom;
   }
 &lt;/script&gt;
 &lt;script id="fragmentshader" type="fragment"&gt;
-  varying vec3 pos;
-    varying vec2 uUV;
+    varying vec3 pos;
+    varying vec2 uUV; // UV coordinates
     varying vec3 u_Normal;
     varying float vRandom;
  
@@ -11640,13 +11637,7 @@ animate();</code></pre>
  
     
   void main(){
- 
-
- 
-  gl_FragColor = vec4(vec3((uUV.x / uUV.y),sin(uUV.y * (size * 1.5) + u_time),color_value),uUV.x / uUV.y);
- 
-
-  
+      gl_FragColor = vec4(vec3((uUV.x / uUV.y),sin(uUV.y * (size * 1.5) + u_time),color_value),uUV.x / uUV.y);
   }
 &lt;/script&gt;</code></pre>
 
