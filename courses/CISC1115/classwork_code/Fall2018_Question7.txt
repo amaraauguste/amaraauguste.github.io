@@ -1,0 +1,75 @@
+import java.io.File;
+import java.util.Scanner;
+
+public class Question7 {
+
+    public static void main(String[] args) throws Exception {
+        // Declare arrays to hold the data (maximum 100 rows as per problem statement)
+        double[] arr1 = new double[100];
+        double[] arr2 = new double[100];
+
+        // Read data from input.txt into arr1 and arr2
+        int num = readData(arr1, arr2);
+
+        // Modify arr2 by multiplying each element with corresponding element in arr1
+        changeArray(arr1, arr2, num);
+
+        // Sort arr1 and arr2 separately
+        sortArray(arr1, num);
+        sortArray(arr2, num);
+
+        // Print the arrays in two columns with headers
+        System.out.printf("%8s %8s%n", "arr1", "arr2");
+        for (int i = 0; i < num; i++) {
+            System.out.printf("%8.2f %8.2f%n", arr1[i], arr2[i]);
+        }
+    }
+
+    /**
+     * Reads data from input.txt into the provided arrays.
+     * Reads all doubles in the file sequentially, pairing them as first and second values.
+     * Returns the number of data rows read.
+     * Assumes the file exists; no exception handling.
+     */
+    public static int readData(double[] arrOne, double[] arrTwo) throws Exception {
+        int count = 0;
+        File file = new File("input.txt");
+        Scanner scanner = new Scanner(file);
+        
+        // Read all doubles from the file
+        while (scanner.hasNextDouble()) {
+            arrOne[count] = scanner.nextDouble();
+            arrTwo[count] = scanner.nextDouble();
+            count++;
+        }
+        scanner.close();
+        return count;
+    }
+
+    /**
+     * Modifies the beta array by multiplying each element with the corresponding element of alpha.
+     */
+    public static void changeArray(double[] alpha, double[] beta, int k) {
+        for (int i = 0; i < k; i++) {
+            beta[i] = alpha[i] * beta[i];
+        }
+    }
+
+    /**
+     * Sorts the first k elements of arrToOrder in ascending order using selection sort.
+     */
+    public static void sortArray(double[] arrToOrder, int k) {
+        for (int i = 0; i < k - 1; i++) {
+            int minIndex = i;
+            for (int j = i + 1; j < k; j++) {
+                if (arrToOrder[j] < arrToOrder[minIndex]) {
+                    minIndex = j;
+                }
+            }
+            // Swap the found minimum with the current position
+            double temp = arrToOrder[i];
+            arrToOrder[i] = arrToOrder[minIndex];
+            arrToOrder[minIndex] = temp;
+        }
+    }
+}
