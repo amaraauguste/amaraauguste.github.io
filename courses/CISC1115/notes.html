@@ -5,6 +5,29 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+   .dropdown-btn .arrow {
+  display: inline-block;
+  transition: transform 0.3s;
+  margin-right: 8px;
+}
+
+.dropdown-container {
+  display: none;
+  padding-left: 20px;
+}
+
+.open .dropdown-container {
+  display: block;
+}
+
+.open .arrow {
+  transform: rotate(90deg);
+}
+
+</style>
+
   <!-- Default CSS style for dark mode -->
   <link id="dark-mode" rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/base16/bright.css" />
@@ -22,6 +45,16 @@
   <script>
     hljs.highlightAll();
   </script>
+
+  <script>
+    function toggleDropdown(element) {
+  const li = element.parentElement;
+  li.classList.toggle("open");
+}
+
+    </script>
+
+
   <title>CISC 1115</title>
 </head>
 
@@ -39,7 +72,7 @@
     <ul>
       <!--Chapter 1 Dropdown-->
       <li>
-        <a class="dropdown-btn" style="font-size: 20px">The Way of The Program</a>
+        <a class="dropdown-btn"  onclick="toggleDropdown(this)" style="font-size: 18.5px"><span class="arrow">▶</span>The Way of The Program</a>
         <div class="dropdown-container">
           <a href="#Intro" onclick="closeDropdown()">Intro to Programming</a>
           <a href="#What_is_Computer_Science?" onclick="closeDropdown()">What is Computer Science?</a>
@@ -51,7 +84,7 @@
       </li>
       <!--Chapter 2 Dropdown-->
       <li>
-        <a class="dropdown-btn" style="font-size: 20px">Variables and Operators</a>
+        <a class="dropdown-btn"  onclick="toggleDropdown(this)" style="font-size: 18.5px"><span class="arrow">▶</span>Variables and Operators</a>
         <div class="dropdown-container container2">
           <a href="#Variables" onclick="closeDropdown2()">What are Variables?</a>
           <a href="#Declaring_Variables" onclick="closeDropdown2()">Declaring Variables</a>
@@ -67,7 +100,7 @@
 
       <!--Chapter 3 Dropdown-->
       <li>
-        <a class="dropdown-btn" href="#Input_and_Output" style="font-size: 20px">Input and Output</a>
+        <a class="dropdown-btn" href="#Input_and_Output" onclick="toggleDropdown(this)" style="font-size: 18.5px"><span class="arrow">▶</span>Input and Output</a>
         <div class="dropdown-container container3">
           <a href="#System_Class" onclick="closeDropdown3()">System Class</a>
           <a href="#Data_Types" onclick="closeDropdown3()">Data Types</a>
@@ -80,7 +113,7 @@
       </li>
       <!--Chapter 5 Dropdown-->
       <li>
-        <a class="dropdown-btn" href="#Conditionals_and_Logic" style="font-size: 20px">Conditionals and Logic</a>
+        <a class="dropdown-btn" href="#Conditionals_and_Logic" onclick="toggleDropdown(this)" style="font-size: 18.5px"><span class="arrow">▶</span>Conditionals and Logic</a>
         <div class="dropdown-container container5">
           <a href="#Relational_Operators" onclick="closeDropdown5()">Relational Operators</a>
           <a href="#Logical_Operators" onclick="closeDropdown5()">Logical Operators</a>
@@ -94,7 +127,7 @@
       </li>
       <!--Chapter 7 Dropdown-->
       <li>
-        <a class="dropdown-btn" style="font-size: 20px">Loops</a>
+        <a class="dropdown-btn" onclick="toggleDropdown(this)" style="font-size: 18.5px"><span class="arrow">▶</span>Loops</a>
         <div class="dropdown-container container7">
           <a href="#Loops" onclick="closeDropdown7()">What are Loops?</a>
           <a href="#The_while_Loop" onclick="closeDropdown7()">The while Loop</a>
@@ -106,7 +139,7 @@
       </li>
       <!--Chapter 9 Dropdown-->
       <li>
-        <a class="dropdown-btn" href="#Strings_and_Things" style="font-size: 20px">Strings and Things</a>
+        <a class="dropdown-btn" href="#Strings_and_Things" onclick="toggleDropdown(this)"  style="font-size: 18.5px"><span class="arrow">▶</span>Strings and Things</a>
         <div class="dropdown-container container9">
           <a href="#Characters" onclick="closeDropdown9()">Characters</a>
           <a href="#The_Character_Class" onclick="closeDropdown9()">The Character Class</a>
@@ -122,7 +155,7 @@
       </li>
      <!-- Chapter 4 and 6 Dropdown-->
       <li>
-        <a class="dropdown-btn" href="#Methods" style="font-size: 20px">Methods</a>
+        <a class="dropdown-btn" href="#Methods" onclick="toggleDropdown(this)" style="font-size: 18.5px"><span class="arrow">▶</span>Methods</a>
         <div class="dropdown-container container46">
           <a href="#Composition" onclick="closeDropdown46()">Composition</a>
           <a href="#Adding_New_Methods" onclick="closeDropdown46()">Adding New Methods</a>
@@ -140,7 +173,7 @@
       </li>
       <!--Chapter 8 Dropdown-->
       <li>
-        <a class="dropdown-btn" href="#Arrays" style="font-size: 20px">Arrays</a>
+        <a class="dropdown-btn" href="#Arrays" onclick="toggleDropdown(this)" style="font-size: 18.5px"><span class="arrow">▶</span>Arrays</a>
         <div class="dropdown-container container8">
           <a href="#Creating_Arrays" onclick="closeDropdown8()">Creating Arrays</a>
           <a href="#Accessing_Elements" onclick="closeDropdown8()">Accessing Elements</a>
@@ -160,7 +193,7 @@
       </li>
       <!--Number Systems Dropdown-->
       <li>
-        <a class="dropdown-btn" href="#Number_Systems" style="font-size: 20px">Number Systems</a>
+        <a class="dropdown-btn" href="#Number_Systems" onclick="toggleDropdown(this)"  style="font-size: 18.5px"><span class="arrow">▶</span>Number Systems</a>
         <div class="dropdown-container containerNS">
           <a href="#Decimal/Binary" onclick="closeDropdownNS()">Decimal / Binary Conversion</a>
           <a href="#Binary/Hexadecimal" onclick="closeDropdownNS()">Binary / Hexadecimal Conversion</a>
@@ -168,10 +201,10 @@
           <a href="#Binary_Arithmetic" onclick="closeDropdownNS()">Binary Arithmetic</a>
         </div>
       </li>
-      <li><a href="#Reference" style="font-size: 20px">Reference</a></li>
+      <li><a href="#Reference" style="font-size: 18.5px">Reference</a></li>
       <!-- add more links here -->
       <a href="https://amaraauguste.github.io/courses/cisc1115.html" class="previous backbutton"
-        style="font-size: 20px;">&laquo; Back</a>
+        style="font-size: 20px;">⬅ Back</a>
       <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
     </ul>
   </nav>
