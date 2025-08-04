@@ -10,38 +10,38 @@
   <link href="https://fonts.googleapis.com/css2?family=Modak&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet" />
   <style>
-  .tab-buttons {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 15px;
-  }
+    .tab-buttons {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
 
-  .tab-buttons button {
-    padding: 10px 15px;
-    font-size: 16px;
-    cursor: pointer;
-    border: 1px solid #ccc;
-    background-color: #f1f1f1;
-  }
+    .tab-buttons button {
+      padding: 10px 15px;
+      font-size: 16px;
+      cursor: pointer;
+      border: 1px solid #ccc;
+      background-color: #f1f1f1;
+    }
 
-  .tab-buttons button.active {
-    background-color: #ccc;
-  }
+    .tab-buttons button.active {
+      background-color: #ccc;
+    }
 
-  .tab-content {
-    display: none;
-  }
+    .tab-content {
+      display: none;
+    }
 
-  .tab-content.active {
-    display: block;
-  }
+    .tab-content.active {
+      display: block;
+    }
 
-  .classLink {
-    font-size: 20px;
-    color: #000;
-    text-decoration: none;
-  }
-</style>
+    .classLink {
+      font-size: 20px;
+      color: #000;
+      text-decoration: none;
+    }
+  </style>
 
   <style>
     /* Media Queries for different screen sizes */
@@ -722,50 +722,63 @@
     <br>
     <!-- Spring 2024 Workshops -->
     <h2>CS Workshops (held at the Brooklyn College Learning Center):</h2>
-      <br>
-      <!-- list of current Workshops found here -->
-      <div class="col2">
-  <!-- Tabs -->
-  <div class="tab-buttons">
-  	 <button onclick="openTab('summer25')" class="active">Summer 2025</button>
-    <button onclick="openTab('winter25')">Winter 2025</button>
-    <button onclick="openTab('summer24')">Summer 2024</button>
-  </div>
+    <br>
+    <!-- list of current Workshops found here -->
+    <div class="col2">
+      <!-- Tabs -->
+      <div class="tab-buttons">
+        <button onclick="openTab('summer25')" class="active">Summer 2025</button>
+        <button onclick="openTab('winter25')">Winter 2025</button>
+        <button onclick="openTab('summer24')">Summer 2024</button>
+      </div>
 
-  <!-- Tab Content -->
-  <div id="summer25" class="tab-content active">
-    <h1 style="font-size: 23px; color: #000000">Summer 2025</h1>
-    <ul>
-      <li><a class="classLink" href="/workshops/S25 - CISC 1115 Prep Workshop.pdf" target="_blank">CISC 1115 Prep Workshop</a></li>
-      <li><a class="classLink" href="/workshops/S25 - CISC 3115 Prep Workshop.pdf" target="_blank">CISC 3115 Prep Workshop</a></li>
-    </ul>
-    <ul>
-	<h4>Dates:</h4>
-          <b>
-          	<li>CISC 1115:</li></b>
-            <ul><li>August 4th at 10 AM (In-person) </li></ul>
-            <b><li>CISC 3115:</li></b>
-            <ul><li>July 18th at 10 AM (In-person) </li>
-	    	<li>July 29th at 1 PM (In-person)</li>
-            <li>August 8th at 1 PM (remote)</li></ul>
+      <!-- Tab Content -->
+      <div id="summer25" class="tab-content active">
+        <h1 style="font-size: 23px; color: #000000">Summer 2025</h1>
+        <ul>
+          <li><a class="classLink" href="/workshops/S25 - CISC 1115 Prep Workshop.pdf" target="_blank">CISC 1115 Prep
+              Workshop</a></li>
+          <li><a class="classLink" href="/workshops/S25 - CISC 3115 Prep Workshop.pdf" target="_blank">CISC 3115 Prep
+              Workshop</a></li>
         </ul>
-  </div>
-  <div id="winter25" class="tab-content">
-    <h1 style="font-size: 23px; color: #000000">Winter 2025</h1>
-    <ul>
-      <li><a class="classLink" href="/workshops/W25 - CISC 1115 Prep Workshop.pdf" target="_blank">CISC 1115 Prep Workshop</a></li>
-      <li><a class="classLink" href="/workshops/W25 - CISC 3115 Prep Workshop.pdf" target="_blank">CISC 3115 Prep Workshop</a></li>
-    </ul>
-  </div>
+        <ul>
+          <h4>Dates:</h4>
+          <b>
+            <li>CISC 1115:</li>
+          </b>
+          <ul>
+            <li>August 4th at 1 PM (In-person) </li>
+          </ul>
+          <b>
+            <li>CISC 3115:</li>
+          </b>
+          <ul>
+            <li>August 7th at 12 PM (Remote) </li>
+            <li>JAugust 12th at 3 PM (Remote)</li>
+            <li>August 11th at 11 AM (remote)</li>
+          </ul>
+        </ul>
+      </div>
+      <div id="winter25" class="tab-content">
+        <h1 style="font-size: 23px; color: #000000">Winter 2025</h1>
+        <ul>
+          <li><a class="classLink" href="/workshops/W25 - CISC 1115 Prep Workshop.pdf" target="_blank">CISC 1115 Prep
+              Workshop</a></li>
+          <li><a class="classLink" href="/workshops/W25 - CISC 3115 Prep Workshop.pdf" target="_blank">CISC 3115 Prep
+              Workshop</a></li>
+        </ul>
+      </div>
 
-  <div id="summer24" class="tab-content">
-    <h1 style="font-size: 23px; color: #000000">Summer 2024</h1>
-    <ul>
-      <li><a class="classLink" href="/workshops/S24 - CISC 1115 Prep Workshop.pdf" target="_blank">CISC 1115 Prep Workshop</a></li>
-      <li><a class="classLink" href="/workshops/S24 - CISC 3115 Prep Workshop.pdf" target="_blank">CISC 3115 Prep Workshop</a></li>
-    </ul>
-  </div>
-</div>
+      <div id="summer24" class="tab-content">
+        <h1 style="font-size: 23px; color: #000000">Summer 2024</h1>
+        <ul>
+          <li><a class="classLink" href="/workshops/S24 - CISC 1115 Prep Workshop.pdf" target="_blank">CISC 1115 Prep
+              Workshop</a></li>
+          <li><a class="classLink" href="/workshops/S24 - CISC 3115 Prep Workshop.pdf" target="_blank">CISC 3115 Prep
+              Workshop</a></li>
+        </ul>
+      </div>
+    </div>
 
     <!-- closes current tutoring hours -->
     <!--<h2>Office Hours:</h2>
@@ -1062,16 +1075,16 @@
     });
   </script>
   <script>
-  function openTab(tabId) {
-    const tabs = document.querySelectorAll('.tab-content');
-    const buttons = document.querySelectorAll('.tab-buttons button');
-    tabs.forEach(tab => tab.classList.remove('active'));
-    buttons.forEach(btn => btn.classList.remove('active'));
+    function openTab(tabId) {
+      const tabs = document.querySelectorAll('.tab-content');
+      const buttons = document.querySelectorAll('.tab-buttons button');
+      tabs.forEach(tab => tab.classList.remove('active'));
+      buttons.forEach(btn => btn.classList.remove('active'));
 
-    document.getElementById(tabId).classList.add('active');
-    event.target.classList.add('active');
-  }
-</script>
+      document.getElementById(tabId).classList.add('active');
+      event.target.classList.add('active');
+    }
+  </script>
 </body>
 
 </html>
