@@ -338,8 +338,10 @@
         <!-- Wrap quizzes in a container -->
         <div id="quiz-section" style="display:none;">
             <h3>Quizzes</h3>
+            <!-- inside #quiz-buttons -->
             <div id="quiz-buttons">
                 <button class="quiz-button" data-quiz="quiz-what-is-game">Take Quiz: What is a Game?</button>
+                <button class="quiz-button" data-quiz="quiz-randomness">Take Quiz: Randomness & Probability</button>
             </div>
         </div>
 
@@ -396,6 +398,8 @@
         let readPDFs = JSON.parse(localStorage.getItem('readPDFs')) || [];
         let completedQuizzes = JSON.parse(localStorage.getItem('completedQuizzes')) || [];
         let badges = JSON.parse(localStorage.getItem('badges')) || [];
+        let quizAttempts = JSON.parse(localStorage.getItem('quizAttempts')) || {};
+        let lastQuizPerfect = JSON.parse(localStorage.getItem('lastQuizPerfect')) || false;
 
         const xpDisplay = document.getElementById('xp-display');
         const xpBar = document.getElementById('xp-bar');
@@ -428,8 +432,11 @@
         }
 
         function renderBadges() {
-            if (badges.length === 0) badgeArea.innerHTML = "<p>No badges yet—explore the site to earn some!</p>";
-            else badgeArea.innerHTML = badges.map(b => `<span class="badge">${b}</span>`).join(" ");
+            if (badges.length === 0) {
+                badgeArea.innerHTML = "<p>No badges yet—explore the site to earn some!</p>";
+            } else {
+                badgeArea.innerHTML = badges.map(b => `<span class="badge">${b}</span>`).join(" ");
+            }
         }
 
         function showPopup(msg) {
@@ -445,7 +452,9 @@
             earnXP(50);
             document.getElementById('secret-modal').style.display = 'flex';
         });
-        function closeSecret() { document.getElementById('secret-modal').style.display = 'none'; }
+        function closeSecret() {
+            document.getElementById('secret-modal').style.display = 'none';
+        }
 
         // Panel Toggle
         document.getElementById('game-panel-button').addEventListener('click', () => {
@@ -462,7 +471,10 @@
 
         // Reset Progress
         document.getElementById('reset-progress').addEventListener('click', () => {
-            if (confirm('Reset all progress?')) { localStorage.clear(); location.reload(); }
+            if (confirm('Reset all progress?')) {
+                localStorage.clear();
+                location.reload();
+            }
         });
         document.addEventListener('keydown', e => {
             if (e.ctrlKey && e.key.toLowerCase() === 'r') document.getElementById('reset-progress').style.display = 'inline-block';
@@ -486,7 +498,6 @@
         });
 
         // === Quiz Unlocking ===
-        // Unlock quiz when all 4 "What is a Game?" readings are done
         function updateQuizButtons() {
             let anyQuizUnlocked = false;
 
@@ -499,55 +510,102 @@
                     btn.style.display = allRead ? 'inline-block' : 'none';
                     if (allRead) anyQuizUnlocked = true;
                 }
+
+                if (quizId === "quiz-randomness") {
+                    const randomnessLink = [...readingLinks].find(a => a.textContent.includes("Chance"));
+                    const read = randomnessLink && readPDFs.includes(randomnessLink.textContent.trim());
+                    btn.style.display = read ? 'inline-block' : 'none';
+                    if (read) anyQuizUnlocked = true;
+                }
             });
 
-            // Show/hide the whole quizzes section
             document.getElementById('quiz-section').style.display = anyQuizUnlocked ? 'block' : 'none';
         }
 
-
-        // Quiz logic
+        // === Quiz logic ===
         document.querySelectorAll('.quiz-button').forEach(btn => {
             btn.addEventListener('click', () => {
+                const quizId = btn.dataset.quiz;
                 const quizContent = document.getElementById('quiz-content');
-                quizContent.innerHTML = `
-          <h3>Quiz: What is a Game?</h3>
-          <form id="quiz-form">
-            <p>1. According to Chris Crawford, which of these best describes Tetris?</p>
-            <label><input type="radio" name="q1" value="a"> A toy</label><br>
-            <label><input type="radio" name="q1" value="b"> A game</label><br>
-            <label><input type="radio" name="q1" value="c"> A puzzle</label><br>
-            <label><input type="radio" name="q1" value="d"> A challenge</label><br><br>
 
-            <p>2. Which of these is NOT required in Jane McGonigal's definition of a game?</p>
-            <label><input type="radio" name="q2" value="a"> Voluntary Participation</label><br>
-            <label><input type="radio" name="q2" value="b"> Competition</label><br>
-            <label><input type="radio" name="q2" value="c"> Feedback System</label><br>
-            <label><input type="radio" name="q2" value="d"> Rules</label><br><br>
+                if (quizId === "quiz-what-is-game") {
+                    quizContent.innerHTML = `
+              <h3>Quiz: What is a Game?</h3>
+              <form id="quiz-form">
+                <p>1. According to Chris Crawford, which of these best describes Tetris?</p>
+                <label><input type="radio" name="q1" value="a"> A toy</label><br>
+                <label><input type="radio" name="q1" value="b"> A game</label><br>
+                <label><input type="radio" name="q1" value="c"> A puzzle</label><br>
+                <label><input type="radio" name="q1" value="d"> A challenge</label><br><br>
 
-            <p>3. Jesse Schell describes games as...?</p>
-            <label><input type="radio" name="q3" value="a"> A series of puzzles</label><br>
-            <label><input type="radio" name="q3" value="b"> A problem-solving activity approached with a playful attitude</label><br>
-            <label><input type="radio" name="q3" value="c"> A form of play with goals and structure</label><br>
-            <label><input type="radio" name="q3" value="d"> A distraction from life</label><br><br>
+                <p>2. Which of these is NOT required in Jane McGonigal's definition of a game?</p>
+                <label><input type="radio" name="q2" value="a"> Voluntary Participation</label><br>
+                <label><input type="radio" name="q2" value="b"> Competition</label><br>
+                <label><input type="radio" name="q2" value="c"> Feedback System</label><br>
+                <label><input type="radio" name="q2" value="d"> Rules</label><br><br>
 
-            <button type="button" onclick="submitQuiz()">Submit</button>
-            <button type="button" onclick="closeQuiz()">Close</button>
-          </form>`;
+                <p>3. Jesse Schell describes games as...?</p>
+                <label><input type="radio" name="q3" value="a"> A series of puzzles</label><br>
+                <label><input type="radio" name="q3" value="b"> A problem-solving activity approached with a playful attitude</label><br>
+                <label><input type="radio" name="q3" value="c"> A form of play with goals and structure</label><br>
+                <label><input type="radio" name="q3" value="d"> A distraction from life</label><br><br>
+
+                <button type="button" onclick="submitQuiz('quiz-what-is-game')">Submit</button>
+                <button type="button" onclick="closeQuiz()">Close</button>
+              </form>`;
+                }
+
+                if (quizId === "quiz-randomness") {
+                    quizContent.innerHTML = `
+              <h3>Quiz: Randomness & Probability</h3>
+              <form id="quiz-form">
+                <p>1. In game design, randomness is often used to...?</p>
+                <label><input type="radio" name="q1" value="a"> Remove all strategy</label><br>
+                <label><input type="radio" name="q1" value="b"> Create uncertainty and replayability</label><br>
+                <label><input type="radio" name="q1" value="c"> Guarantee player victory</label><br>
+                <label><input type="radio" name="q1" value="d"> Make rules irrelevant</label><br><br>
+
+                <p>2. A “fair” six-sided die means that...?</p>
+                <label><input type="radio" name="q2" value="a"> Each outcome has probability 1/6</label><br>
+                <label><input type="radio" name="q2" value="b"> The die always rolls high numbers</label><br>
+                <label><input type="radio" name="q2" value="c"> Odd numbers are more likely</label><br>
+                <label><input type="radio" name="q2" value="d"> Players can choose the outcome</label><br><br>
+
+                <p>3. Which of these best balances randomness and skill?</p>
+                <label><input type="radio" name="q3" value="a"> Rock-Paper-Scissors</label><br>
+                <label><input type="radio" name="q3" value="b"> Poker</label><br>
+                <label><input type="radio" name="q3" value="c"> Roulette</label><br>
+                <label><input type="radio" name="q3" value="d"> Slot Machines</label><br><br>
+
+                <button type="button" onclick="submitQuiz('quiz-randomness')">Submit</button>
+                <button type="button" onclick="closeQuiz()">Close</button>
+              </form>`;
+                }
 
                 document.getElementById('quiz-modal').style.display = 'flex';
 
-                // 🔄 If already completed, re-apply labels
-                if (completedQuizzes.includes("quiz-what-is-game")) {
-                    markCorrectAnswers();
+                if (completedQuizzes.includes(quizId)) {
+                    markCorrectAnswers(quizId);
                     document.querySelectorAll('#quiz-form input').forEach(i => i.disabled = true);
                 }
             });
         });
 
-        function submitQuiz() {
+        function submitQuiz(quizId) {
             const form = document.getElementById('quiz-form');
-            const answers = { q1: 'c', q2: 'b', q3: 'b' };
+            let answers = {};
+            let badgeName = "";
+            let xpReward = 50;
+
+            if (quizId === "quiz-what-is-game") {
+                answers = { q1: 'c', q2: 'b', q3: 'b' };
+                badgeName = "🎯 What is a Game? Quiz Mastery";
+            }
+            if (quizId === "quiz-randomness") {
+                answers = { q1: 'b', q2: 'a', q3: 'b' };
+                badgeName = "🎲 Randomness & Probability Quiz Mastery";
+            }
+
             let correct = 0;
 
             // Clear old highlights
@@ -581,30 +639,60 @@
                 });
             });
 
-            if (correct === Object.keys(answers).length) {
-                earnXP(50);
-                earnBadge("🎯 What is a Game? Mastery");
-                showPopup("✅ All answers correct! Badge earned.");
+            // Track attempts
+            if (!quizAttempts[quizId]) quizAttempts[quizId] = { tries: 0, passed: false };
+            quizAttempts[quizId].tries++;
 
-                // ✅ Save completion
-                if (!completedQuizzes.includes("quiz-what-is-game")) {
-                    completedQuizzes.push("quiz-what-is-game");
+            if (correct === Object.keys(answers).length) {
+                earnXP(xpReward);
+                earnBadge(badgeName);
+
+                if (!completedQuizzes.includes(quizId)) {
+                    completedQuizzes.push(quizId);
                     localStorage.setItem("completedQuizzes", JSON.stringify(completedQuizzes));
                 }
+                quizAttempts[quizId].passed = true;
 
-                // Permanently show correct answers + disable inputs
-                markCorrectAnswers();
+                // NEW: Perfect Streak
+                if (lastQuizPerfect) {
+                    earnBadge("🏅 Perfect Streak (two quizzes in a row perfect)");
+                }
+                lastQuizPerfect = true;
+
+                // NEW: Persistence Badge
+                if (quizAttempts[quizId].tries > 3) {
+                    earnBadge("🔁 Persistence (3+ fails before passing)");
+                }
+
+                // NEW: Quiz Champion
+                const totalQuizzes = document.querySelectorAll(".quiz-button").length;
+                if (completedQuizzes.length === totalQuizzes) {
+                    earnBadge("👑 Quiz Champion (complete all quizzes)");
+                }
+
+                showPopup("✅ All answers correct! Badge earned.");
+                markCorrectAnswers(quizId);
                 form.querySelectorAll("input").forEach(i => i.disabled = true);
             } else {
+                lastQuizPerfect = false;
                 showPopup(`❌ Some answers wrong. Try again!`);
             }
+
+            localStorage.setItem("quizAttempts", JSON.stringify(quizAttempts));
+            localStorage.setItem("lastQuizPerfect", JSON.stringify(lastQuizPerfect));
         }
 
-        // helper: permanently show correct answers (after success or on reopen)
-        function markCorrectAnswers() {
+        function markCorrectAnswers(quizId) {
             const form = document.getElementById('quiz-form');
             if (!form) return;
-            const answers = { q1: 'c', q2: 'b', q3: 'b' };
+
+            let answers = {};
+            if (quizId === "quiz-what-is-game") {
+                answers = { q1: 'c', q2: 'b', q3: 'b' };
+            }
+            if (quizId === "quiz-randomness") {
+                answers = { q1: 'b', q2: 'a', q3: 'b' };
+            }
 
             form.querySelectorAll("label").forEach(l => {
                 l.style.color = "";
@@ -625,12 +713,15 @@
             });
         }
 
-        function closeQuiz() { document.getElementById('quiz-modal').style.display = 'none'; }
+        function closeQuiz() {
+            document.getElementById('quiz-modal').style.display = 'none';
+        }
 
         // Init
         renderBadges();
         updateXPBar();
         updateQuizButtons();
+
     </script>
 
 </body>
