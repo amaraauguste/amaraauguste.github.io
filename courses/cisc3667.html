@@ -229,16 +229,16 @@
                     to take. Completing quizzes will earn you XP and may unlock badges!</p>
 
                 <ul id="readings-list">
-                    <li><a href="CISC3667/readings/GameDesignBasics.pdf" target="_blank" data-quiz="quiz1">Eric
+                    <li><a href="CISC3667/readings/Iterative_Design%20(1).pdf" target="_blank" data-quiz="quiz1">Eric
                             Zimmerman, Play as Research: The Iterative Design Process</a></li>
                     <br />
                     <li><b>What is a Game?</b></li>
                     <ul>
                         <li><a href="https://web.archive.org/web/20221208215052/http://www.thegamesjournal.com/articles/MyEntireWakingLife.shtml"
                                 target="_blank" data-quiz="quiz1">Kevin Maroney, What is a Game?</a></li>
-                        <li><a href="CISC3667/readings/GameMechanics.pdf" target="_blank">Jane McGonigal, Reality is
+                        <li><a href="CISC3667/readings/Jane%20McGonigal-%20Reality%20is%20Broken%20(1).pdf" target="_blank">Jane McGonigal, Reality is
                                 Broken</a></li>
-                        <li><a href="CISC3667/readings/UnityIntro.pdf" target="_blank" data-quiz="quiz2">Jesse Schell,
+                        <li><a href="CISC3667/readings/Art%20of%20Game%20Design%20Chapter%204.pdf" target="_blank" data-quiz="quiz2">Jesse Schell,
                                 The Art of Game Design, Chapter 4</a>
                         </li>
                         <li><a href="https://www.erasmatazz.com/library/the-journal-of-computer/jcgd-volume-4/my-definition-of-game.html"
@@ -247,39 +247,39 @@
                     <br />
                     <li><b>Game Mechanics and Rules</b></li>
                     <ul>
-                        <li><a href="https://web.archive.org/web/20221208215052/http://www.thegamesjournal.com/articles/MyEntireWakingLife.shtml"
+                        <li><a href="CISC3667/readings/rules%20of%20play%20chapters%2011-12%20(1).pdf"
                                 target="_blank" data-quiz="quiz1">Rules of Play, by Salen & Zimmerman, Chapter 11-12</a>
                         </li>
-                        <li><a href="CISC3667/readings/GameMechanics.pdf" target="_blank">Jesse Schell, The Art of Game
+                        <li><a href="CISC3667/readings/Art%20of%20Game%20Design%2C%20Chapter%205.pdf" target="_blank">Jesse Schell, The Art of Game
                                 Design, Chapter 5</a></li>
                     </ul>
                     <br />
                     <li><b>Players' Relationship to Rules</b></li>
                     <ul>
-                        <li><a href="https://web.archive.org/web/20221208215052/http://www.thegamesjournal.com/articles/MyEntireWakingLife.shtml"
+                        <li><a href="CISC3667/readings/RulesofPlay.Ch21.pdf"
                                 target="_blank" data-quiz="quiz1">Rules of Play, by Salen & Zimmerman, Chapter 21</a>
                         </li>
                     </ul>
                     <br />
                     <li><b>Objects/Attributes/States/Actions, Feedback Loops</b></li>
                     <ul>
-                        <li><a href="https://web.archive.org/web/20221208215052/http://www.thegamesjournal.com/articles/MyEntireWakingLife.shtml"
+                        <li><a href="CISC3667/readings/Art%20of%20Game%20Design%20Chapter%2012.pdf"
                                 target="_blank" data-quiz="quiz1">Jesse Schell, The Art of Game Design, Chapter 12</a>
                         </li>
-                        <li><a href="CISC3667/readings/GameMechanics.pdf" target="_blank">Rules of Play, by Salen &
+                        <li><a href="CISC3667/readings/RulesofPlay.Ch18.pdf" target="_blank">Rules of Play, by Salen &
                                 Zimmerman, Chapter 18</a></li>
                     </ul>
                     <br />
                     <li><b>Serious Games</b></li>
                     <ul>
-                        <li><a href="https://web.archive.org/web/20221208215052/http://www.thegamesjournal.com/articles/MyEntireWakingLife.shtml"
+                        <li><a href="CISC3667/readings/geeGBL.pdf"
                                 target="_blank" data-quiz="quiz1">James Paul Gee, Learning by Design: Good Video Games as Learning Machines</a>
                         </li>
                     </ul>
                     <br />
                     <li><b>Randomness and Probability</b></li>
                     <ul>
-                        <li><a href="https://web.archive.org/web/20221208215052/http://www.thegamesjournal.com/articles/MyEntireWakingLife.shtml"
+                        <li><a href="CISC3667/readings/Art%20of%20Game%20Design%20Chapter%2012%20chance.pdf"
                                 target="_blank" data-quiz="quiz1">Jesse Schell, The Art of Game Design, Chapter 12: Chance</a>
                         </li>
                     </ul>
@@ -288,10 +288,9 @@
                 <p>In addition, you are more than welcome to read any other game design or development books you
                     find interesting. Here are a few suggestions:</p>
                 <ul>
-                    <li><a href="https://www.amazon.com/Game-Design-Workshop-Second-Development/dp/1138623932"
-                            target="_blank">Game Design Workshop: A Playcentric Approach to Creating Innovative
-                            Games</a>
-                    </li>
+                    <li><b>The Art of Game Design: A Book of Lenses</b> by Jesse Schell</li>
+                    <li><b>Rules of Play: Game Design Fundamentals</b> by Katie Salen and Eric Zimmerman</li>
+                    <li><b>Game Design Workshop: A Playcentric Approach to Creating Innovative Games</b> by Tracy Fullerton</li>
                 </ul>
 
                 <p>If you have any suggestions for additional readings, please let me know!</p>
@@ -365,121 +364,136 @@
             }
         });
 
-        // === Gamification Data ===
-        let xp = parseInt(localStorage.getItem('xp')) || 0;
-        let level = parseInt(localStorage.getItem('level')) || 1;
-        let readPDFs = JSON.parse(localStorage.getItem('readPDFs')) || [];
-        let completedQuizzes = JSON.parse(localStorage.getItem('completedQuizzes')) || [];
-        let badges = JSON.parse(localStorage.getItem('badges')) || [];
+    // === Gamification Data ===
+    let xp = parseInt(localStorage.getItem('xp')) || 0;
+    let level = parseInt(localStorage.getItem('level')) || 1;
+    let readPDFs = JSON.parse(localStorage.getItem('readPDFs')) || [];
+    let completedQuizzes = JSON.parse(localStorage.getItem('completedQuizzes')) || [];
+    let badges = JSON.parse(localStorage.getItem('badges')) || [];
 
-        const xpDisplay = document.getElementById('xp-display');
-        const xpBar = document.getElementById('xp-bar');
-        const badgeArea = document.getElementById('badge-area');
+    const xpDisplay = document.getElementById('xp-display');
+    const xpBar = document.getElementById('xp-bar');
+    const badgeArea = document.getElementById('badge-area');
 
-        function updateXPBar() {
-            xpDisplay.textContent = `XP: ${xp} | Level: ${level}`;
-            xpBar.style.width = Math.min((xp / (level * 50)) * 100, 100) + '%';
+    function updateXPBar() {
+        xpDisplay.textContent = `XP: ${xp} | Level: ${level}`;
+        xpBar.style.width = Math.min((xp / (level * 50)) * 100, 100) + '%';
+    }
+    function earnXP(amount) {
+        xp += amount;
+        if (xp >= level * 50) { 
+            level++; 
+            showPopup(`⬆️ Level Up! Now Level ${level}`); 
         }
-        function earnXP(amount) {
-            xp += amount;
-            if (xp >= level * 50) { level++; showPopup(`⬆️ Level Up! Now Level ${level}`); }
-            localStorage.setItem('xp', xp);
-            localStorage.setItem('level', level);
-            updateXPBar();
+        localStorage.setItem('xp', xp);
+        localStorage.setItem('level', level);
+        updateXPBar();
+    }
+
+    function earnBadge(name) {
+        if (!badges.includes(name)) {
+            badges.push(name);
+            localStorage.setItem('badges', JSON.stringify(badges));
+            renderBadges();
+            showPopup(`🏅 Badge Unlocked: ${name}`);
         }
+    }
+    function renderBadges() {
+        if (badges.length === 0) badgeArea.innerHTML = "<p>No badges yet—explore the site to earn some!</p>";
+        else badgeArea.innerHTML = badges.map(b => `<span class="badge">${b}</span>`).join(" ");
+    }
 
-        function earnBadge(name) {
-            if (!badges.includes(name)) {
-                badges.push(name);
-                localStorage.setItem('badges', JSON.stringify(badges));
-                renderBadges();
-                showPopup(`🏅 Badge Unlocked: ${name}`);
-            }
-        }
-        function renderBadges() {
-            if (badges.length === 0) badgeArea.innerHTML = "<p>No badges yet—explore the site to earn some!</p>";
-            else badgeArea.innerHTML = badges.map(b => `<span class="badge">${b}</span>`).join(" ");
-        }
+    function showPopup(msg) {
+        const popup = document.getElementById('popup');
+        popup.textContent = msg;
+        popup.classList.add('show');
+        setTimeout(() => popup.classList.remove('show'), 2500);
+    }
 
-        function showPopup(msg) {
-            const popup = document.getElementById('popup');
-            popup.textContent = msg;
-            popup.classList.add('show');
-            setTimeout(() => popup.classList.remove('show'), 2500);
-        }
+    // Hidden Star
+    document.getElementById('hidden-star').addEventListener('click', () => {
+        earnBadge('Secret Star Finder');
+        earnXP(50);
+        document.getElementById('secret-modal').style.display = 'flex';
+    });
+    function closeSecret() { document.getElementById('secret-modal').style.display = 'none'; }
 
-        // Hidden Star
-        document.getElementById('hidden-star').addEventListener('click', () => {
-            earnBadge('Secret Star Finder');
-            earnXP(50);
-            document.getElementById('secret-modal').style.display = 'flex';
-        });
-        function closeSecret() { document.getElementById('secret-modal').style.display = 'none'; }
+    // Gamification Panel Toggle
+    const panelBtn = document.getElementById('game-panel-button');
+    const panel = document.getElementById('game-panel');
+    panelBtn.addEventListener('click', () => { 
+        panel.style.display = (panel.style.display === 'block' ? 'none' : 'block'); 
+    });
 
-        // Gamification Panel Toggle
-        const panelBtn = document.getElementById('game-panel-button');
-        const panel = document.getElementById('game-panel');
-        panelBtn.addEventListener('click', () => { panel.style.display = (panel.style.display === 'block' ? 'none' : 'block'); });
+    // Screenshot Mode
+    const screenshotBtn = document.getElementById('screenshot-mode');
+    screenshotBtn.addEventListener('click', () => {
+        panel.classList.toggle('screenshot-mode');
+        showPopup(panel.classList.contains('screenshot-mode') ? '📸 Screenshot Mode Activated' : '📄 Normal Mode Restored');
+    });
 
-        // Screenshot Mode
-        const screenshotBtn = document.getElementById('screenshot-mode');
-        screenshotBtn.addEventListener('click', () => {
-            panel.classList.toggle('screenshot-mode');
-            showPopup(panel.classList.contains('screenshot-mode') ? '📸 Screenshot Mode Activated' : '📄 Normal Mode Restored');
-        });
+    // Reset Progress
+    const resetBtn = document.getElementById('reset-progress');
+    resetBtn.addEventListener('click', () => {
+        if (confirm('Reset all progress?')) { localStorage.clear(); location.reload(); }
+    });
+    document.addEventListener('keydown', e => {
+        if (e.ctrlKey && e.key.toLowerCase() === 'r') resetBtn.style.display = 'inline-block';
+    });
 
-        // Reset Progress
-        const resetBtn = document.getElementById('reset-progress');
-        resetBtn.addEventListener('click', () => {
-            if (confirm('Reset all progress?')) { localStorage.clear(); location.reload(); }
-        });
-        document.addEventListener('keydown', e => {
-            if (e.ctrlKey && e.key.toLowerCase() === 'r') resetBtn.style.display = 'inline-block';
-        });
-
-        // Reading PDFs unlock XP / Quizzes
-        document.querySelectorAll('#readings-list a').forEach(a => {
-            a.addEventListener('click', () => {
-                const pdfName = a.textContent;
-                if (!readPDFs.includes(pdfName)) readPDFs.push(pdfName);
+    // === Readings Tracking ===
+    const readingLinks = document.querySelectorAll('#readings-list a');
+    readingLinks.forEach(a => {
+        a.addEventListener('click', () => {
+            const pdfName = a.textContent.trim();
+            if (!readPDFs.includes(pdfName)) {
+                readPDFs.push(pdfName);
                 localStorage.setItem('readPDFs', JSON.stringify(readPDFs));
                 earnXP(10);
-                // Badge for reading all PDFs
-                if (readPDFs.length === document.querySelectorAll('#readings-list a').length)
-                    earnBadge('📚 Read All Readings');
-                updateQuizButtons();
-            });
+                showPopup(`📖 Read: ${pdfName}`);
+            }
+            // Check if all readings are done
+            if (readPDFs.length === readingLinks.length) {
+                earnBadge('📚 Read All Readings');
+            }
+            updateQuizButtons();
         });
+    });
 
-        function updateQuizButtons() {
-            document.querySelectorAll('.quiz-button').forEach(btn => {
-                const quizId = btn.dataset.quiz;
-                // Show quiz if its PDF has been read
-                if (readPDFs.some(pdf => quizId.toLowerCase().includes(pdf.split(' ')[0].toLowerCase()))) btn.style.display = 'inline-block';
-            });
-        }
-
-        // Quiz Buttons
+    function updateQuizButtons() {
         document.querySelectorAll('.quiz-button').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const quizId = btn.dataset.quiz;
-                document.getElementById('quiz-content').innerHTML = `<h3>${quizId} Quiz</h3><p>Answer questions and submit screenshot to instructor.</p><button onclick="closeQuiz()">Close</button>`;
-                document.getElementById('quiz-modal').style.display = 'flex';
-                if (!completedQuizzes.includes(quizId)) {
-                    completedQuizzes.push(quizId);
-                    localStorage.setItem('completedQuizzes', JSON.stringify(completedQuizzes));
-                    earnXP(20);
-                    earnBadge(`Completed ${quizId}`);
+            const quizId = btn.dataset.quiz;
+            // unlock if any reading mapped to this quiz was read
+            readingLinks.forEach(a => {
+                if (a.dataset.quiz === quizId && readPDFs.includes(a.textContent.trim())) {
+                    btn.style.display = 'inline-block';
                 }
             });
         });
-        function closeQuiz() { document.getElementById('quiz-modal').style.display = 'none'; }
+    }
 
-        // Initialize
-        renderBadges();
-        updateXPBar();
-        updateQuizButtons();
-    </script>
+    // === Quizzes ===
+    document.querySelectorAll('.quiz-button').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const quizId = btn.dataset.quiz;
+            document.getElementById('quiz-content').innerHTML = `<h3>${quizId} Quiz</h3><p>Answer questions and submit screenshot to instructor.</p><button onclick="closeQuiz()">Close</button>`;
+            document.getElementById('quiz-modal').style.display = 'flex';
+            if (!completedQuizzes.includes(quizId)) {
+                completedQuizzes.push(quizId);
+                localStorage.setItem('completedQuizzes', JSON.stringify(completedQuizzes));
+                earnXP(20);
+                earnBadge(`Completed ${quizId}`);
+            }
+        });
+    });
+    function closeQuiz() { document.getElementById('quiz-modal').style.display = 'none'; }
+
+    // Initialize
+    renderBadges();
+    updateXPBar();
+    updateQuizButtons();
+</script>
+
 </body>
 
 </html>
