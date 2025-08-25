@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>CISC 1115 Calendar</title>
+  <!-- CSS for full calendar -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.css" rel="stylesheet" />
+  <!-- JS for jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- JS for full calendar -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js"></script>
+  <style>
+    /* width */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 5px grey;
+      border-radius: 10px;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      background: rgb(183, 147, 241);
+      border-radius: 10px;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgb(140, 111, 186);
+    }
+
+    html,
+    body {
+      background-color: #ffedfd;
+      font-family: "Copperplate";
+    }
+  </style>
+</head>
+
+<body>
+  <div id="calendar"></div>
+</body>
+<script>
+  $(document).ready(function () {
+    $("#calendar").fullCalendar({
+      defaultView: "month",
+      events: [
+         {
+          title: "Start of Fall 2025 Semester",
+          start: "2025-08-26",
+          color: "#FF0000",
+        },
+        {
+          title: "First Day of TY8 Class",
+          start: "2025-08-26",
+          color: "#D186FF",
+        },
+        {
+          title: "College Closed - No Classes Scheduled",
+          start: "2025-09-01", // Labor Day
+          color: "#FF0000",
+        },
+
+         {
+          title: "No Classes Scheduled",
+          start: "2025-09-22", // Rosh Hashanah
+          end: "2025-09-24",
+          color: "#FF0000",
+        },
+        {
+          title: "No Classes Scheduled",
+          start: "2025-10-01", // Yom Kippur
+          end: "2025-10-03",
+          color: "#FF0000",
+        },
+        {
+          title: "College Closed - No Classes Scheduled",
+          start: "2025-10-13", // Indigenous Peoples' Day,
+          color: "#FF0000",
+        },
+        {
+          title: "No Class - Monday Schedule",
+          start: "2025-10-14", //Conversion Day - Monday Schedule
+          color: "#FF0000",
+        },
+         {
+          title: "No Classes Scheduled",
+          start: "2025-10-20", 
+          color: "#FF0000",
+        },
+
+        {
+          title: "Conversion Day - Monday Schedule",
+          start: "2024-10-24", //Conversion Day - Monday Schedule
+          color: "#FF0000",
+        },
+       
+        {
+          title: "Withdrawal Deadline",
+          start: "2025-11-06",
+          color: "#FF0000",
+        },
+        
+
+         {
+          title: "No Class - Thanksgiving Holiday",
+          start: "2025-11-27", 
+          end: "2025-11-30",
+          color: "#FF0000",
+        },
+         {
+          title: "End of Fall 2025 Semester",
+          start: "2025-12-15",
+          color: "#FF0000",
+        },
+        
+
+      ],
+      eventRender: function (event, element) {
+        element.css("background-color", event.color); // set background color
+        element.css("border-color", event.color); // set border color
+      },
+    });
+  });
+</script>
+
+</html>
