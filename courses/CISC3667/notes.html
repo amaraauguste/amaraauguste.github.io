@@ -2,548 +2,712 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>CISC 3667</title>
-    <link rel="stylesheet" href="3667style.css" />
-    <style>
-        /* Gamification Button */
-        #game-panel-button {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            font-size: 28px;
-            cursor: pointer;
-            z-index: 10000;
-        }
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        /* Gamification Panel */
-        #game-panel {
-            position: fixed;
-            bottom: 70px;
-            right: 20px;
-            width: 300px;
-            max-height: 80%;
-            background: #fff;
-            color: #000;
-            border: 2px solid #333;
-            border-radius: 12px;
-            padding: 15px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-            display: none;
-            overflow-y: auto;
-            z-index: 9999;
-        }
+  <!-- Default CSS style for dark mode -->
+  <link id="dark-mode" rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/base16/bright.css" />
 
-        #game-panel h3 {
-            margin: 10px 0 5px 0;
-            font-size: 18px;
-        }
+  <!-- CSS style for light mode -->
+  <link id="light-mode" rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/felipec.css" disabled />
 
-        .progress-bar-container {
-            width: 100%;
-            background: #ddd;
-            border-radius: 8px;
-            overflow: hidden;
-            margin: 5px 0 15px 0;
-        }
+  <link rel="stylesheet" href="../3667style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 
-        .progress-bar {
-            height: 18px;
-            background: #4caf50;
-            width: 0%;
-            transition: width 0.3s ease;
-        }
+  <!-- and it's easy to individually load additional languages -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
 
-        .badge {
-            display: inline-block;
-            margin: 5px;
-            padding: 5px 10px;
-            border-radius: 8px;
-            background: #f1c40f;
-            font-size: 12px;
-        }
-
-        .quiz-button {
-            display: none;
-            margin: 5px 0;
-            padding: 5px 10px;
-            cursor: pointer;
-        }
-
-        #reset-progress {
-            display: none;
-            margin-top: 10px;
-            font-size: 12px;
-            cursor: pointer;
-        }
-
-        #screenshot-mode {
-            display: inline-block;
-            margin-top: 10px;
-            font-size: 12px;
-            cursor: pointer;
-        }
-
-        /* Screenshot Mode Styling */
-        #game-panel.screenshot-mode {
-            width: 95%;
-            height: 90%;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            padding: 10px;
-            border-radius: 15px;
-            background: #fff;
-            color: #000;
-            overflow-y: visible;
-            font-size: 16px;
-        }
-
-        #game-panel.screenshot-mode .quiz-button,
-        #game-panel.screenshot-mode #reset-progress {
-            display: none !important;
-        }
-
-        #game-panel.screenshot-mode .badge {
-            font-size: 16px;
-            padding: 8px 12px;
-        }
-
-        /* Popup Notifications */
-        .popup {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: #333;
-            color: #fff;
-            padding: 10px 15px;
-            border-radius: 10px;
-            opacity: 0;
-            transform: translateY(-20px);
-            transition: opacity 0.4s ease, transform 0.4s ease;
-            z-index: 10001;
-        }
-
-        .popup.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Hidden Star */
-        #hidden-star {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            font-size: 28px;
-            cursor: pointer;
-            opacity: 0.6;
-            z-index: 10005;
-            transition: opacity 0.3s ease, transform 0.2s ease;
-            user-select: none;
-        }
-
-        #hidden-star:hover {
-            opacity: 1;
-            transform: scale(1.4);
-        }
-
-        /* Modal */
-        .modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 10002;
-        }
-
-        .modal .content {
-            background: #fff;
-            color: #000;
-            padding: 20px 30px;
-            border-radius: 15px;
-            text-align: center;
-            font-size: 18px;
-        }
-
-        .modal button {
-            margin: 10px;
-        }
-
-        /* Dark Mode */
-        body.dark-mode #game-panel {
-            background: #222;
-            color: #f5f5f5;
-            border-color: #555;
-        }
-
-        body.dark-mode #game-panel.screenshot-mode {
-            background: #222;
-            color: #f5f5f5;
-        }
-
-        body.dark-mode .modal .content {
-            background: #333;
-            color: #f5f5f5;
-        }
-
-        body.dark-mode .badge {
-            background: #e1b700;
-            color: #222;
-        }
-
-        body.dark-mode .progress-bar-container {
-            background: #444;
-        }
-    </style>
+  <script>
+    hljs.highlightAll();
+  </script>
+  <title>CISC 3667</title>
 </head>
 
 <body>
-
-    <!-- Navigation -->
-    <nav id="navbar">
-        <header class="header-link">
-            <a href="https://amaraauguste.github.io/courses/cisc3667.html"
-                style="color: inherit; text-decoration: none;" class="header-text">CISC 3667</a>
-        </header>
-        <div class="mode">Dark mode: <span class="change">OFF</span></div>
-        <hr />
-        <a class="nav-link" href="#Introduction">Introduction</a>
-        <a class="nav-link" href="CISC3667/CISC_3667_F25_TY11_Syllabus.pdf" style="font-size: 22px">Syllabus</a>
-        <a class="nav-link" href="CISC3667/calendar.html">Calendar</a>
-        <a class="nav-link" href="#Readings">Readings</a>
-        <a class="nav-link" href="CISC3667/notes.html">Class Notes</a>
-    </nav>
-
-    <!-- Main Content -->
-    <main id="main-doc">
-        <section class="main-section" id="Introduction">
-            <br />
-            <header><b>Introduction</b></header>
-            <article>
-                <p>Welcome to CISC 3667 - Game Design and Development!</p>
-                <p>This web-site will provide a basic course outline, syllabus, and anything else that is important for
-                    the class. Feel free to email any questions, suggestions, thoughts, etc.</p>
-            </article>
-            <br />
-            <hr />
-        </section>
-
-        <section class="main-section" id="Readings">
-            <br />
-            <header><b>Readings</b></header>
-            <article>
-                <ul id="readings-list">
-                    <li><a href="CISC3667/readings/Iterative_Design%20(1).pdf" target="_blank" data-quiz="quiz1">Eric
-                            Zimmerman, Play as Research: The Iterative Design Process</a></li>
-                    <br />
-                    <li><b>What is a Game?</b></li>
-                    <ul>
-                        <li><a href="https://web.archive.org/web/20221208215052/http://www.thegamesjournal.com/articles/MyEntireWakingLife.shtml"
-                                target="_blank" data-group="what-is-game">Kevin Maroney, What is a Game?</a></li>
-                        <li><a href="CISC3667/readings/Jane%20McGonigal-%20Reality%20is%20Broken%20(1).pdf"
-                                target="_blank" data-group="what-is-game">Jane McGonigal, Reality is Broken</a></li>
-                        <li><a href="CISC3667/readings/Art%20of%20Game%20Design%20Chapter%204.pdf" target="_blank"
-                                data-group="what-is-game">Jesse Schell, The Art of Game Design, Chapter 4</a></li>
-                        <li><a href="https://www.erasmatazz.com/library/the-journal-of-computer/jcgd-volume-4/my-definition-of-game.html"
-                                target="_blank" data-group="what-is-game">Chris Crawford, My Definition of 'Game'</a>
-                        </li>
-                    </ul>
-                    <br />
-                    <li><b>Game Mechanics and Rules</b></li>
-                    <ul>
-                        <li><a href="CISC3667/readings/rules%20of%20play%20chapters%2011-12%20(1).pdf" target="_blank"
-                                data-quiz="quiz1">Rules of Play, by Salen & Zimmerman, Chapter 11-12</a>
-                        </li>
-                        <li><a href="CISC3667/readings/Art%20of%20Game%20Design%2C%20Chapter%205.pdf"
-                                target="_blank">Jesse Schell, The Art of Game
-                                Design, Chapter 5</a></li>
-                    </ul>
-                    <br />
-                    <li><b>Players' Relationship to Rules</b></li>
-                    <ul>
-                        <li><a href="CISC3667/readings/RulesofPlay.Ch21.pdf" target="_blank" data-quiz="quiz1">Rules of
-                                Play, by Salen & Zimmerman, Chapter 21</a>
-                        </li>
-                    </ul>
-                    <br />
-                    <li><b>Objects/Attributes/States/Actions, Feedback Loops</b></li>
-                    <ul>
-                        <li><a href="CISC3667/readings/Art%20of%20Game%20Design%20Chapter%2012.pdf"
-                                target="_blank">Jesse Schell, The Art of Game Design, Chapter 12</a>
-                        </li>
-                        <li><a href="CISC3667/readings/RulesofPlay.Ch18.pdf" target="_blank">Rules of Play, by Salen &
-                                Zimmerman, Chapter 18</a></li>
-                    </ul>
-                    <br />
-                    <li><b>Serious Games</b></li>
-                    <ul>
-                        <li><a href="CISC3667/readings/geeGBL.pdf" target="_blank" data-quiz="quiz1">James Paul Gee,
-                                Learning by Design: Good Video Games as Learning Machines</a>
-                        </li>
-                    </ul>
-                    <br />
-                    <li><b>Randomness and Probability</b></li>
-                    <ul>
-                        <li><a href="CISC3667/readings/Art%20of%20Game%20Design%20Chapter%2012%20chance.pdf"
-                                target="_blank">Jesse Schell, The Art of Game Design, Chapter 12:
-                                Chance</a>
-                        </li>
-                    </ul>
-                </ul>
-
-                <p>In addition, you are more than welcome to read any other game design or development books you
-                    find interesting. Here are a few suggestions:</p>
-                <ul>
-                    <li><b>The Art of Game Design: A Book of Lenses</b> by Jesse Schell</li>
-                    <li><b>Rules of Play: Game Design Fundamentals</b> by Katie Salen and Eric Zimmerman</li>
-                    <li><b>Game Design Workshop: A Playcentric Approach to Creating Innovative Games</b> by Tracy
-                        Fullerton</li>
-                </ul>
-
-                <p>If you have any suggestions for additional readings, please let me know!</p>
-            </article>
-            <br />
-            <hr />
-        </section>
-    </main>
-
-    <!-- Gamification Button -->
-    <div id="game-panel-button">🎮</div>
-
-    <!-- Gamification Panel -->
-    <div id="game-panel">
-        <h3>⭐ XP & Level</h3>
-        <div id="xp-display">XP: 0 | Level: 1</div>
-        <div class="progress-bar-container">
-            <div class="progress-bar" id="xp-bar"></div>
-        </div>
-
-        <h3>Quizzes</h3>
-        <div id="quiz-buttons">
-            <button class="quiz-button" data-quiz="quiz-what-is-game">Take Quiz: What is a Game?</button>
-        </div>
-
-        <h3>Badges</h3>
-        <div id="badge-area">
-            <p>No badges yet—explore the site to earn some!</p>
-        </div>
-
-        <button id="screenshot-mode">Toggle View</button>
-        <button id="reset-progress">Reset Progress</button>
+  <nav id="navbar">
+    <header class="header-link">
+      <a href="https://amaraauguste.github.io/courses/cisc3667.html" style="color: inherit; text-decoration: none;"
+        class="header-text">CISC 3667</a>
+    </header>
+    <div class="mode">
+      Dark mode:
+      <span class="change" onclick="toggleMode()">OFF</span>
     </div>
+    <hr />
 
-    <!-- Hidden Star -->
-    <div id="hidden-star">⭐</div>
-
-    <!-- Secret Modal -->
-    <div id="secret-modal" class="modal">
-        <div class="content">
-            🎉 Secret Star Found! <br> Badge Unlocked! <br>
-            <button onclick="closeSecret()">Close</button>
+    <ul>
+      <!--Chapter 1 Dropdown-->
+      <li>
+        <a class="dropdown-btn" style="font-size: 22px">Introduction</a>
+        <div class="dropdown-container">
+          <a href="#What_is_Game_Design?" onclick="closeDropdown()" style="font-size: 20px">What is Game Design?</a>
+          <a href="#The_Game_Design_Process" onclick="closeDropdown()" style="font-size: 20px">The Game Design Process</a>
+          <a href="#What_is_Game_Development?" onclick="closeDropdown()" style="font-size: 19px">What is Game Development?</a>
+          <a href="#The_Game_Development_Process" onclick="closeDropdown()" style="font-size: 20px">The Game Development Process</a>
+          <a href="#Game_Engines" onclick="closeDropdown()" style="font-size: 20px">Game Engines</a>
+          <a href="#Game_Development_Tools" onclick="closeDropdown()" style="font-size: 20px">Game Development Tools</a>
+          <a href="#Game_Development_Teams" onclick="closeDropdown()" style="font-size: 20px">Game Development Teams</a>
+          <a href="#Game_Design_Documents" onclick="closeDropdown()" style="font-size: 20px">Game Design Documents</a>
+          <a href="#Careers_in_Game_Development" onclick="closeDropdown()" style="font-size: 20px">Careers in Game Development</a>
         </div>
-    </div>
+      </li>
+      <li>
+        <a class="dropdown-btn" style="font-size: 22px">Defining Games</a>
+        <div class="dropdown-container">
+          <a href="#What_is_a_Game?" onclick="closeDropdown()" style="font-size: 20px">What is a Game?</a>
+          <!--<a href="#Understanding_Fun" onclick="closeDropdown()" style="font-size: 20px">Understanding Fun</a>-->
+        </div>
+      </li>
 
-    <!-- Quiz Modal -->
-    <div id="quiz-modal" class="modal">
-        <div class="content" id="quiz-content"></div>
-    </div>
 
-    <!-- Popup -->
-    <div id="popup" class="popup"></div>
+      <li><a href="#Reference" style="font-size: 20px">Reference</a></li>
+      <!-- add more links here -->
+      <a href="https://amaraauguste.github.io/courses/cisc3667.html" class="previous backbutton"
+        style="font-size: 20px;">&laquo; Back</a>
+      <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    </ul>
+  </nav>
 
-    <script>
-        // === Dark Mode ===
-        if (localStorage.getItem('darkMode') === 'enabled') {
-            document.body.classList.add('dark-mode');
-            document.querySelector('.change').textContent = 'ON';
+  <main id="main-doc">
+    <!-- WEEK 1 NOTES -->
+    <!-- WEEK 1 DAY 1-->
+
+
+    <section class="main-section" id="What_is_Game_Design?">
+      <br />
+      <header><b>What is Game Design?</b></header>
+      <article>
+        <p>Game design is the process of designing the content and rules of a game in the pre-production stage and
+          involves concepts such as gameplay, environment, storyline, and characters. Game design requires artistic
+          vision, technical knowledge, and an understanding of how players will interact with the game. A game designer
+          creates <b>the core mechanics of a game, including its rules, objectives, challenges, and rewards</b>. They
+          also
+          design the user interface and overall user experience to ensure that players can easily navigate and enjoy the
+          game.</p>
+      </article>
+      <br />
+    </section>
+    <hr />
+    <section class="main-section" id="The_Game_Design_Process">
+      <br />
+      <header><b>The Game Design Process</b></header>
+      <article>
+        <p>Design is a way to ask questions. Design research, when it occurs through the practice of
+          design itself, is a way to ask larger questions beyond the limited scope of a particular
+          design problem. When design research is integrated into the design process, new and
+          unexpected questions emerge directly from the act of design.</p>
+
+        <p>One such research design methodology: <b>the iterative design process</b>, is a design methodology based on
+          <b>a cyclic process of prototyping, testing,
+            analyzing, and refining a work in progress</b>.
+        </p>
+
+        <p>In iterative design, interaction with the
+          designed system is used as a form of research for informing and evolving a project, as
+          successive versions, or iterations of a design are implemented.</p>
+
+        <p>Because the experience of a viewer/user/player/etc
+          cannot ever be completely predicted, in an iterative process design <b>decisions are based on
+            the experience of the prototype in progress</b>. The prototype is tested, revisions are made,
+          and the project is tested once more. In this way, the project develops through an ongoing
+          dialogue between the designers, the design, and the testing audience.</p>
+
+        <p>In the case of games, iterative design means <b>playtesting</b>.</p>
+
+        <p>Throughout the entire process of
+          design and development, your game is played. You play it. The rest of the development
+          team plays it. Other people in the office play it. People visiting your office play it. You
+          organize groups of testers that match your target audience. You have as many people as
+          possible play the game. In each case, you observe them, ask them questions, then adjust
+          your design and playtest again.</p>
+
+        <img src="images/iterative_design_process.png" alt="Iterative Design Process"
+          style="max-width: 50%; height: auto;" class="center" >
+
+         
+
+        <p>This iterative process of design is radically different than typical retail game
+          development. More often than not, at the start of the design process for a computer or
+          console title, a game designer will think up a finished concept and then write an
+          exhaustive design document that outlines every possible aspect of the game in minute
+          detail. Invariably, the final game never resembles the carefully conceived original. <b>A
+            more iterative design process, on the other hand, will not only streamline development
+            resources, but will also result in a more robust and successful final product</b>.</p>
+
+      </article>
+      <br />
+    </section>
+    <hr />
+    <section class="main-section" id="What_is_Game_Development?">
+      <br />
+      <header><b>What is Game Development?</b></header>
+      <article>
+        <p>Game development is the process of creating a game from concept to final product. It involves a
+          multidisciplinary approach that includes game design, programming, art and animation, sound design, and
+          testing. <b>Game development typically involves several stages, including pre-production, production, and
+            post-production</b>. During pre-production, the game concept is developed, and the game's mechanics and
+          features
+          are defined. In the production stage, the game is built, and assets such as graphics, sound effects, and music
+          are created. Finally, in post-production, the game is tested for bugs and glitches, and any necessary changes
+          are made before the game is released to the public.</p>
+      </article>
+      <br />
+    </section>
+    <hr />
+    <section class="main-section" id="The_Game_Development_Process">
+      <br />
+      <header><b>The Game Development Process</b></header>
+      <article>
+        <p>The game development process typically involves several stages, including:</p>
+        <ul>
+          <li><b>Concept Development:</b> This stage involves brainstorming and developing the initial concept for the
+            game, including its genre, storyline, and gameplay mechanics.</li>
+          <li><b>Pre-Production:</b> In this stage, the game design document is created, and the game's mechanics,
+            features, and art style are defined. The development team is assembled, and a project plan is created.</li>
+          <li><b>Production:</b> This stage involves building the game, creating assets such as graphics, sound effects,
+            and music, and programming the game's mechanics and features.</li>
+          <li><b>Testing:</b> In this stage, the game is tested for bugs and glitches, and any necessary changes are
+            made
+            to improve gameplay and user experience.</li>
+          <li><b>Post-Production:</b> This stage involves finalizing the game, preparing it for release, and marketing
+            the game to potential players.</li>
+        </ul>
+
+        <img src="images/game_dev_process.png" alt="Game Development Process" style="max-width: 100%; height: auto;" class="center" >
+      </article>
+      <br />
+    </section>
+    <hr />
+    <section class="main-section" id="Game_Engines">
+      <br />
+      <header><b>Game Engines</b></header>
+      <article>
+        <p>In this course, we will be creating both traditional games like board games and card games.
+          For these types of games, we will simply be using
+          pen, paper, and any other physical materials we may need.</p>
+
+        <p>However, for video games, we will need to use a game engine. A game engine is a software framework designed
+          for the creation and development
+          of video games. It provides developers with a set of tools and features that simplify the game development
+          process, allowing them to focus on creating the game's content rather than building everything from scratch.
+          Game
+          engines typically include features such as graphics rendering, physics simulation, audio processing, input
+          handling,
+          and scripting capabilities. Some popular game engines include Unity, Unreal Engine, Godot, and CryEngine.
+          These
+          engines are used by both indie developers and large game studios to create games for various platforms,
+          including PC,
+          consoles, and mobile devices.</p>
+
+        <p>Unity is a powerful and widely used game engine that provides a comprehensive set of tools and features for
+          game development. It supports 2D and 3D game development, as well as virtual reality (VR) and augmented
+          reality (AR) experiences. Unity offers a user-friendly interface, a robust asset store, and a large community
+          of
+          developers, making it an excellent choice for both beginners and experienced game developers.</p>
+
+        <p>We will be using the free version of Unity, which provides access to most of the engine's features and is
+          suitable for small to medium-sized projects. You can download Unity for free from the official website: <a
+            href="https://unity.com/" target="_blank">https://unity.com/</a>. Make sure to check the system requirements
+          to ensure that your computer meets the necessary specifications to run Unity smoothly.</p>
+
+
+
+      </article>
+      <br />
+    </section>
+    <hr />
+    <section class="main-section" id="Game Development Tools">
+      <br />
+      <header><b>Game Development Tools</b></header>
+      <article>
+        <p>Game development tools are software applications and frameworks that assist developers in creating,
+          designing,
+          and managing various aspects of game development. These tools can range from game engines to asset creation
+          software, version control systems, and project management tools. Here are some common types of game
+          development
+          tools:</p>
+        <ul>
+          <li><b>Game Engines:</b> As mentioned earlier, game engines like Unity, Unreal Engine, and Godot provide a
+            comprehensive
+            set of tools for building and deploying games across multiple platforms.</li>
+          <li><b>Asset Creation Software:</b> Tools like Blender, Maya, and 3ds Max are used for creating 3D models,
+            animations, and textures. For 2D art, software like Adobe Photoshop, Illustrator,
+            and GIMP are commonly used.</li>
+          <li><b>Audio Tools:</b> Software like Audacity, FL Studio,
+            and Ableton Live are used for creating and editing sound effects and music for games.</li>
+          <li><b>Version Control Systems:</b> Tools like Git, SVN, and Perforce help developers manage changes to their
+            codebase and collaborate with team members.</li>
+          <li><b>Project Management Tools:</b> Applications like Trello, Jira, and Asana help teams organize tasks,
+            track progress, and manage deadlines.</li>
+          <li><b>Testing and Debugging Tools:</b> Tools like Unity Test Framework, NUnit, and Visual Studio Debugger
+            assist developers in identifying and fixing bugs in their games.</li>
+          <li><b>Collaboration Tools:</b> Platforms like Slack, Discord, and Microsoft Teams facilitate communication
+            and collaboration among team members.</li>
+        </ul>
+        <p>These tools are essential for streamlining the game development process, improving productivity, and ensuring
+          the successful completion of a game project.</p>
+      </article>
+      <br />
+    </section>
+    <hr />
+    <section class="main-section" id="Game Development Teams">
+      <br />
+      <header><b>Game Development Teams</b></header>
+      <article>
+        <p>In this class, you will work both individually and in teams to create games. Working in a team allows you to
+          collaborate with others, share ideas, and divide tasks based on individual strengths and skills. Here are some
+          common roles in a game development team:</p>
+        <ul>
+          <li><b>Game Designer:</b> Responsible for creating the game's concept, mechanics, and overall design.</li>
+          <li><b>Programmer:</b> Writes the code that brings the game to life, implementing gameplay mechanics, AI, and
+            other features.</li>
+          <li><b>Artist:</b> Creates the visual elements of the game, including characters, environments, and UI design.
+          </li>
+          <li><b>Animator:</b> Brings characters and objects to life through animation.</li>
+          <li><b>Sound Designer:</b> Creates sound effects and music to enhance the game's atmosphere.</li>
+          <li><b>Producer/Project Manager:</b> Oversees the development process, manages timelines, and ensures the
+            project stays on track.</li>
+          <li><b>Tester/QA:</b> Tests the game for bugs and provides feedback on gameplay and user experience.</li>
+        </ul>
+        <p>Effective communication and collaboration are key to a successful game development team. Regular meetings,
+          clear documentation, and a shared vision for the project can help ensure that everyone is on the same page and
+          working towards a common goal.</p>
+
+        <p>In this course, you will all learn the basics of game design and development, and you will have the
+          opportunity to take on different roles
+          within your teams. This will give you a well-rounded understanding of the game development process and help
+          you
+          develop skills that are valuable in the industry.</p>
+
+        <p>Remember, the most important aspect of game development is to have fun and be creative! Don't be afraid to
+          experiment with new ideas and
+          approaches, and always be open to feedback and collaboration with your teammates.</p>
+      </article>
+      <br />
+    </section>
+    <hr />
+    <section class="main-section" id="Careers_in_Game_Development?">
+      <br />
+      <header><b>Careers in Game Development</b></header>
+      <article>
+        <p>Over the course of this class, you will learn the basics of game design and development, which can open up
+          various career
+          opportunities in the game industry. Here are some common career paths in game development:</p>
+        <ul>
+          <li><b>Game Designer:</b> Responsible for creating the game's concept, mechanics, and overall design.</li>
+          <li><b>Game Programmer:</b> Writes the code that brings the game to life, implementing gameplay mechanics, AI,
+            and other features.</li>
+          <li><b>Game Artist:</b> Creates the visual elements of the game, including characters, environments, and UI
+            design.</li>
+          <li><b>Game Animator:</b> Brings characters and objects to life through animation.</li>
+          <li><b>Sound Designer/Composer:</b> Creates sound effects and music to enhance the game's atmosphere.</li>
+          <li><b>Game Producer/Project Manager:</b> Oversees the development process, manages timelines, and ensures the
+            project stays on track.</li>
+          <li><b>Quality Assurance (QA) Tester:</b> Tests the game for bugs and provides feedback on gameplay and user
+            experience.</li>
+          <li><b>Level Designer:</b> Designs and builds the levels and environments within the game.</li>
+          <li><b>Game Writer/Narrative Designer:</b> Develops the storyline, dialogue, and character development.</li>
+          <li><b>Community Manager:</b> Engages with the game's community, manages social media, and gathers player
+            feedback.</li>
+        </ul>
+      </article>
+      <br />
+    </section>
+    <hr />
+    <section class="main-section" id="What_is_a_Game?">
+      <br />
+      <header><b>What is a Game?</b></header>
+      <article>
+        <p>So we know what game design and game development are, but what exactly is a game?</p>
+
+        <p>Brainstorm: <b>Think of as many different games as you can. Write down the names of the games, and a few
+            words
+            about what each game is like. Try to think of games that are very different from each other. For example,
+            you might
+            include chess, tag, poker, and Minecraft. What do these games have in common? How are they different?</b>
+        </p>
+
+        <p>So how would you define a game? What makes something a game?</p>
+
+        <p>Are there games that do not fit this definition? Are there non-games that do fit this definition?</p>
+
+        <p>We can start with the following definition:</p>
+        <blockquote>
+          <p><b>A game is something you play.</b></p>
+        </blockquote>
+
+        <p>But this definition is a bit too broad. For example, you can play with a toy, but a toy is not a game. More
+          specifically, <b>a toy is an
+            object that you can play with</b>.</p>
+
+        <p>However, this is still quite broad. You might play with a roll of tape, while idly sitting at your desk, but
+          does that make it a toy? Technically, yes, but probably not a very good one.
+          In fact, <b>anything you play with could be classified as a toy</b>. Perhaps it is a good idea
+          for us to start considering what makes for a good toy.</p>
+
+        <p>"<b>Fun</b>" is one word that comes to mind in conjunction with good toys. In fact, you might say: <b>A good
+            toy is an object that is fun to play with</b>.</p>
+
+        <p>See how we have expanded our definition? Still, what do we mean when we say "fun"? Do we simply mean
+          pleasure,
+          or enjoyment? Pleasure is part of fun, but is fun simply pleasure? There are lots of
+          experiences that are pleasurable, for example, eating a sandwich or lying in the sun,
+          but it would seem strange to call those experiences "fun".</p>
+
+        <p>Generally, things that are fun
+          have a special sparkle, a special excitement to them. Generally, fun things involve
+          surprises. So a definition for fun might be: <b>Fun is pleasure with surprises</b>.</p>
+
+        <p><b>Surprise</b> is a crucial part of all entertainment—it is at the root
+          of humor, strategy, and problem
+          solving. Our brains are hardwired to enjoy surprises. In an
+          experiment where participants
+          received sprays of sugar water
+          or plain water into their mouths,
+          the participants who received
+          random sprays considered the experience much more pleasurable than participants who received the sprays
+          according to a fixed pattern, even though the same amount of sugar was delivered. In other experiments, brain
+          scans revealed that even during unpleasant
+          surprises, the pleasure centers of the brain are triggered.</p>
+
+        <p>What are some examples of surprises? Here are a few:</p>
+        <ul>
+          <li>In a card game, you might be dealt a hand of cards that is much better than you expected.</li>
+          <li>In a movie, you might be shocked by an unexpected plot twist.</li>
+          <li>In a puzzle game, you might figure out a solution that you hadn't considered before.</li>
+        </ul>
+
+        <p>When designing games, it is important to consider how to create
+          surprises that will delight players. Surprises can come in many forms, such as unexpected challenges,
+          plot twists, or hidden rewards. By incorporating surprises into the game design, developers can create a more
+          engaging and enjoyable experience for players.</p>
+
+        <p>Ask yourself the following:</p>
+
+        <ul>
+          <li>What will surprise players when they play my game?</li>
+          <li>Does the story in my game have surprises? Do the game rules? Does the
+            artwork? The technology?</li>
+          <li>Do your rules give players ways to surprise each other?</li>
+          <li>Do your rules give players ways to surprise themselves?</li>
+        </ul>
+
+        <p><b>Fun</b> is desirable in nearly every game, although sometimes fun defies analysis.</p>
+
+        <p>To maximize a game's fun, ask yourself
+          these questions:</p>
+
+        <ul>
+          <li>What parts of my game are fun? Why?</li>
+          <li>What parts need to be more fun?</li>
+        </ul>
+
+        <p>So, back to toys. We say that a toy is an object you play with, and a good toy is
+          an object that is fun to play with. But what do we mean by <b>play</b>?</p>
+
+        <p>We all know what play is when we see it, but it is hard to express. Many people
+          have tried for a solid definition of what play means, and most of them seem to have
+          failed in one way or another. Let's consider a few:</p>
+        <ul>
+          <li>"<b>Play is the aimless expenditure of exuberant energy.</b>" —Friedrich Schiller
+          </li>
+          <li>"<b>Play refers to those activities which are accompanied by a state of comparative
+              pleasure, exhilaration, power, and the feeling of self-initiative.</b>" —J. Barnard Gilmore</li>
+          <li>"<b>Play is free movement within a more rigid structure.</b>" —Katie Salen and Eric Zimmerman</li>
+          <li>"<b>Play is whatever is done spontaneously and for its own sake.</b>" —George Santayana</li>
+        </ul>
+
+        <p>These definitions are all interesting, but they all seem to fall short in some way. For
+          example, the first definition seems to exclude a lot of play that is not particularly
+          energetic, such as playing chess. The second definition seems to exclude play that is
+          not particularly pleasurable, such as playing a difficult puzzle game. The third
+          definition seems to exclude play that is not particularly structured, such as freeform
+          role-playing. The fourth definition seems to exclude play that is not particularly
+          spontaneous, such as playing a game with rules.</p>
+
+        <p>So, what exactly is play?</p>
+
+        <p>Play can be summarized in roughly three aspects:</p>
+
+        <ol>
+          <li><b>Perform</b> → players are active participants</li>
+          <li><b>Pretend</b> → Not reality. If games are reality, "they're no longer games -- they're life."</li>
+          <li><b>Not work</b> → Entertainment. "But, in the end, if it isn't fun, it's not a game; it's training or
+            therapy. Or, unfortunately, a waste of time and money."</li>
+        </ol>
+
+        <p>We've come up with some definitions for toys and fun and even made a good solid
+          run at play. Let's try again to answer our original question: How should we define
+          "game"?</p>
+
+        <p>Let's look at four distinct definitions of a game:</p>
+
+        <p>According to game designer <b>Kevin Maroney</b>, a game is: <b>A game is a form of play with goals and
+            structure.</b></p>
+
+        <p>We can break this definition down into its parts:</p>
+        <ul>
+          <li><b>Play:</b> A game is a form of play. Play is an activity that is performed for its own sake, not for
+            practical purposes. Play is often characterized by imagination, creativity, and spontaneity.</li>
+          <li><b>Goals:</b> A game has goals. Goals give players something to strive for and provide a sense of purpose
+            and
+            direction such as score, or winning condition.
+            <br />
+            <p>A game's goal <b>does not have to produce winners and losers</b>. Cooperative games (such as the games in
+              Sid Sackson's Beyond Competition) allow every player to win if the goals are reached, and in Earthball, a
+              noncompetitive sport invented in the 1970s, play continues indefinitely until the game is won.</p>
+
+            <p>Role-playing games (which stretch the definition of games in so many ways) usually have neither winners
+              nor losers. An individual player can achieve his or her own goals without preventing other players from
+              achieving theirs. Players' goals tend to be ad hoc (succeed in a particular mission for the Emperor) or
+              long-term milestones in a career rather than ending points (become a high-ranking noble). A referee's
+              goals are even more nebulous— presenting a credible challenge to the players, advancing a storyline,
+              bringing a particular object into play—and usually revolve around creating an entertaining atmosphere for
+              the players. A referee who views the success of the players as a personal failure and vice versa is not
+              likely to get a lot of repeat play</p>
+          </li>
+          <li><b>Structure:</b> A game has structure. Structure provides the framework within which players can
+            engage in play and pursue their goals. Structure can include rules, mechanics, and systems that govern how
+            the game is played -- e.g. a referee.</li>
+        </ul>
+
+        <p>Game designer <b>Jane McGonigal</b>, believes that when you strip away the genre differences and the
+          technological complexities, all
+          games share four defining traits:</p>
+
+        <ul>
+          <li><b>A goal:</b> A game is a challenge with a clear outcome. Players must work to achieve a specific
+            objective, whether it's reaching the finish line, solving a puzzle, or defeating an opponent.</li>
+          <li><b>Rules:</b> A game has rules that define how players can interact with the game world and each other.
+            Rules create structure and provide a framework for gameplay.</li>
+          <li><b>Feedback system:</b> A game provides feedback to players based on their actions. This feedback can
+            come in the form of points, rewards, or penalties, and helps players understand how well they are doing in
+            the game.</li>
+          <li><b>Voluntary participation:</b> A game is something that players choose to engage in voluntarily. Players
+            must be willing to participate and follow the rules of the game in order for it to be considered a game.
+          </li>
+        </ul>
+
+        <p>In the words of the late, great philosopher, Bernard Suits: <b>"Playing a game is the voluntary attempt
+            to overcome unnecessary obstacles"</b></p>
+
+        <p>Game designer <b>Jesse Schell</b>, on the other hand, defines a game as: <b>a problem-solving activity,
+            approached with a playful attitude</b> (what philosopher Bernard Suits calls a "lusory attitude" (from the
+          Latin <i>ludus</i>, play))
+        </p>
+
+        <p>We can actually see this theory in the film <i>Mary Poppins</i> (1964), as the titular character is about the
+          sing the song <a href="https://youtu.be/_L4qauTiCY4?si=7HCV9s54WOjjDnNK" target="_blank">"A Spoonful of
+            Sugar"</a>. The children are given the task of cleaning up their room, which is a
+          chore or job, however, Mary Poppins turns it into a game by adding a playful attitude and making it fun.</p>
+
+        <p>And lastly, according to game designer <b>Chris Crawford</b>, a game is: <b>an interactive, goal-oriented
+            activity, with active agents to play against, in which players
+            (including active agents) can interfere with each other.</b></p>
+
+        <p>Crawford's four main principles are as such:</p>
+
+        <ol>
+          <li>A piece of entertainment is a plaything if it is <b>interactive</b>. Movies and books are cited as
+            examples of
+            non-interactive entertainment.
+          </li>
+          <li>If no goals are associated with a plaything, it is a <b>toy</b>. (Crawford notes that by his definition,
+            (a) a toy can
+            become a game element if the player makes up rules, and (b) The Sims and SimCity are toys, not
+            games.) If it has goals, a plaything is a <b>challenge</b>.</li>
+          <li>If a challenge has no "active agent against whom you compete", it is a <b>puzzle</b>; if there is one, it
+            is a
+            <b>conflict</b>.
+          </li>
+          <li>Finally, if the player can only outperform the opponent, but not attack them to interfere with their
+            performance, the conflict is a <b>competition</b>. (Competitions include racing and figure skating.)
+            However, <b>if
+              attacks are allowed, then the conflict qualifies as a game</b>.
+          </li>
+        </ol>
+
+        <img src="images/crawford_game_definition.png" alt="Game Definition Comparison"
+          style="max-width: 100%; height: auto;" class="center" >
+
+        <p>Brainstorm: <b>What are some games you have played that you found particularly fun or engaging? What makes
+            these games be considered games based on the definitions provided above?</b></p>
+
+        <p>In what way do the definitions above inform design?</p>
+
+        <ul>
+          <li>Fundamentals - know what to include</li>
+          <li>Expanded genres help guide design</li>
+          <li>Designing game - purpose - entertainment, competition, etc?</li>
+          <li>Constraints limit what the designer can do</li>
+        </ul>
+
+        <p>Brainstorm: <b>Choose an activity that is not typically considered a game (e.g. waiting for the bus).
+            Now turn it into a game. How will you do that?</b></p>
+
+
+      </article>
+      <br />
+    </section>
+    <hr />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <hr />
+    <section class="main-section" id="Reference">
+      <br />
+      <header><b>Reference</b></header>
+      <article>
+        <p>Documentation on this page is taken from the following:</p>
+        <ul>
+          <li>
+            Schell, J. (2020). The art of game design: A book of lenses (3rd ed.). CRC Press.
+          </li>
+
+        </ul>
+      </article>
+    </section>
+  </main>
+  <script>
+    var dropdown = document.getElementsByClassName("dropdown-btn");
+    var i;
+
+    for (i = 0; i < dropdown.length; i++) {
+      dropdown[i].addEventListener("click", function () {
+        this.classList.toggle("active");
+        var dropdownContent = this.nextElementSibling;
+        if (dropdownContent.style.display === "block") {
+          dropdownContent.style.display = "none";
+        } else {
+          dropdownContent.style.display = "block";
         }
-        document.querySelector('.mode').addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            const change = document.querySelector('.change');
-            if (document.body.classList.contains('dark-mode')) {
-                change.textContent = 'ON';
-                localStorage.setItem('darkMode', 'enabled');
-            } else {
-                change.textContent = 'OFF';
-                localStorage.setItem('darkMode', 'disabled');
-            }
-        });
+      });
+    }
+  </script>
+  <script>
+    // Function to close the dropdown menu
+    function closeDropdown() {
+      var dropdown = document.querySelector(".dropdown-container");
+      dropdown.style.display = "none";
+    }
+    // Function to close the chapter 2 dropdown menu
+    function closeDropdown2() {
+      var dropdown = document.querySelector(".container2");
+      dropdown.style.display = "none";
+    }
+    // Function to close the chapter 3 dropdown menu
+    function closeDropdown3() {
+      var dropdown = document.querySelector(".container3");
+      dropdown.style.display = "none";
+    }
+    // Function to close the chapter 7 dropdown menu
+    function closeDropdown5() {
+      var dropdown = document.querySelector(".container5");
+      dropdown.style.display = "none";
+    }
+    // Function to close the chapter 7 dropdown menu
+    function closeDropdown7() {
+      var dropdown = document.querySelector(".container7");
+      dropdown.style.display = "none";
+    }
+    // Function to close the chapter 9 dropdown menu
+    function closeDropdown9() {
+      var dropdown = document.querySelector(".container9");
+      dropdown.style.display = "none";
+    }
+    // Function to close the chapter 4 and chapter 6 dropdown menu
+    function closeDropdown46() {
+      var dropdown = document.querySelector(".container46");
+      dropdown.style.display = "none";
+    }
 
-        // === Gamification Data ===
-        let xp = parseInt(localStorage.getItem('xp')) || 0;
-        let level = parseInt(localStorage.getItem('level')) || 1;
-        let readPDFs = JSON.parse(localStorage.getItem('readPDFs')) || [];
-        let completedQuizzes = JSON.parse(localStorage.getItem('completedQuizzes')) || [];
-        let badges = JSON.parse(localStorage.getItem('badges')) || [];
+    // Function to close the chapter 8 dropdown menu
+    function closeDropdown8() {
+      var dropdown = document.querySelector(".container8");
+      dropdown.style.display = "none";
+    }
 
-        const xpDisplay = document.getElementById('xp-display');
-        const xpBar = document.getElementById('xp-bar');
-        const badgeArea = document.getElementById('badge-area');
-        const readingLinks = document.querySelectorAll('#readings-list a');
+    // Function to close the Number Systems dropdown menu
+    function closeDropdownNS() {
+      var dropdown = document.querySelector(".containerNS");
+      dropdown.style.display = "none";
+    }
+  </script>
+  <script>
+    // Check for saved dark mode preference
+    if (localStorage.getItem('darkMode') === 'enabled') {
+      document.body.classList.add('dark-mode');
+      document.querySelector('.change').textContent = 'ON';
+    }
 
-        function updateXPBar() {
-            xpDisplay.textContent = `XP: ${xp} | Level: ${level}`;
-            xpBar.style.width = Math.min((xp / (level * 50)) * 100, 100) + '%';
-        }
+    // Dark mode toggle functionality
+    document.querySelector('.mode').addEventListener('click', function () {
+      document.body.classList.toggle('dark-mode');
 
-        function earnXP(amount) {
-            xp += amount;
-            if (xp >= level * 50) {
-                level++;
-                showPopup(`⬆️ Level Up! Now Level ${level}`);
-            }
-            localStorage.setItem('xp', xp);
-            localStorage.setItem('level', level);
-            updateXPBar();
-        }
+      // Get the change element
+      const changeModeText = document.querySelector('.change');
 
-        function earnBadge(name) {
-            if (!badges.includes(name)) {
-                badges.push(name);
-                localStorage.setItem('badges', JSON.stringify(badges));
-                renderBadges();
-                showPopup(`🏅 Badge Unlocked: ${name}`);
-            }
-        }
+      // Update the text based on dark mode status
+      if (document.body.classList.contains('dark-mode')) {
+        changeModeText.textContent = 'ON'; // Change the text to 'ON'
+        localStorage.setItem('darkMode', 'enabled'); // Save preference
+      } else {
+        changeModeText.textContent = 'OFF'; // Change the text to 'OFF'
+        localStorage.setItem('darkMode', 'disabled'); // Save preference
+      }
+    });
 
-        function renderBadges() {
-            if (badges.length === 0) badgeArea.innerHTML = "<p>No badges yet—explore the site to earn some!</p>";
-            else badgeArea.innerHTML = badges.map(b => `<span class="badge">${b}</span>`).join(" ");
-        }
+  </script>
+  <script>
+    function toggleMode() {
+      const lightModeLink = document.getElementById('light-mode');
+      const darkModeLink = document.getElementById('dark-mode');
+      const modeText = document.querySelector('.change');
 
-        function showPopup(msg) {
-            const popup = document.getElementById('popup');
-            popup.textContent = msg;
-            popup.classList.add('show');
-            setTimeout(() => popup.classList.remove('show'), 2500);
-        }
+      if (lightModeLink.disabled) {
+        lightModeLink.disabled = false;
+        darkModeLink.disabled = true;
+        modeText.textContent = "OFF"; // Update the mode text to show Dark mode is off
+      } else {
+        lightModeLink.disabled = true;
+        darkModeLink.disabled = false;
+        modeText.textContent = "ON"; // Update the mode text to show Dark mode is on
+      }
+    }
 
-        // Hidden Star
-        document.getElementById('hidden-star').addEventListener('click', () => {
-            earnBadge('Secret Star Finder');
-            earnXP(50);
-            document.getElementById('secret-modal').style.display = 'flex';
-        });
-        function closeSecret() { document.getElementById('secret-modal').style.display = 'none'; }
-
-        // Panel Toggle
-        document.getElementById('game-panel-button').addEventListener('click', () => {
-            const panel = document.getElementById('game-panel');
-            panel.style.display = (panel.style.display === 'block' ? 'none' : 'block');
-        });
-
-        // Screenshot Mode
-        document.getElementById('screenshot-mode').addEventListener('click', () => {
-            const panel = document.getElementById('game-panel');
-            panel.classList.toggle('screenshot-mode');
-            showPopup(panel.classList.contains('screenshot-mode') ? '📸 Screenshot Mode Activated' : '📄 Normal Mode Restored');
-        });
-
-        // Reset Progress
-        document.getElementById('reset-progress').addEventListener('click', () => {
-            if (confirm('Reset all progress?')) { localStorage.clear(); location.reload(); }
-        });
-        document.addEventListener('keydown', e => {
-            if (e.ctrlKey && e.key.toLowerCase() === 'r') document.getElementById('reset-progress').style.display = 'inline-block';
-        });
-
-        // === Readings Tracking ===
-        readingLinks.forEach(a => {
-            a.addEventListener('click', () => {
-                const pdfName = a.textContent.trim();
-                if (!readPDFs.includes(pdfName)) {
-                    readPDFs.push(pdfName);
-                    localStorage.setItem('readPDFs', JSON.stringify(readPDFs));
-                    earnXP(10);
-                    showPopup(`📖 Read: ${pdfName}`);
-                }
-                if (readPDFs.length === readingLinks.length) {
-                    earnBadge('📚 Read All Readings');
-                }
-                updateQuizButtons();
-            });
-        });
-
-        // === Quiz Unlocking ===
-        // Unlock quiz when all 4 "What is a Game?" readings are done
-        function updateQuizButtons() {
-            document.querySelectorAll('.quiz-button').forEach(btn => {
-                const quizId = btn.dataset.quiz;
-                if (quizId === "quiz-what-is-game") {
-                    const groupLinks = [...readingLinks].filter(a => a.dataset.group === "what-is-game");
-                    const allRead = groupLinks.every(a => readPDFs.includes(a.textContent.trim()));
-                    btn.style.display = allRead ? 'inline-block' : 'none';
-                }
-            });
-        }
-
-        // Quiz logic
-        document.querySelectorAll('.quiz-button').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const quizContent = document.getElementById('quiz-content');
-                quizContent.innerHTML = `
-          <h3>Quiz: What is a Game?</h3>
-          <form id="quiz-form">
-            <p>1. According to Chris Crawford, which of these best describes Tetris?</p>
-            <label><input type="radio" name="q1" value="a"> A toy</label><br>
-            <label><input type="radio" name="q1" value="b"> A game</label><br>
-            <label><input type="radio" name="q1" value="c"> A puzzle</label><br>
-            <label><input type="radio" name="q1" value="d"> A challenge</label><br><br>
-
-            <p>2. Which of these is NOT required in Jane McGonigal's definition of a game?</p>
-            <label><input type="radio" name="q2" value="a"> Voluntary Participation</label><br>
-            <label><input type="radio" name="q2" value="b"> Competition</label><br>
-            <label><input type="radio" name="q2" value="c"> Feedback System</label><br>
-            <label><input type="radio" name="q2" value="d"> Rules</label><br><br>
-
-            <p>3. Jesse Schell describes games as...?</p>
-            <label><input type="radio" name="q3" value="a"> A series of puzzles</label><br>
-            <label><input type="radio" name="q3" value="b"> A problem-solving activity approached with a playful attitude</label><br>
-            <label><input type="radio" name="q3" value="c"> A form of play with goals and structure</label><br>
-            <label><input type="radio" name="q3" value="d"> A distraction from life</label><br><br>
-
-            <button type="button" onclick="submitQuiz()">Submit</button>
-            <button type="button" onclick="closeQuiz()">Close</button>
-          </form>`;
-                document.getElementById('quiz-modal').style.display = 'flex';
-            });
-        });
-
-        function submitQuiz() {
-            const form = document.getElementById('quiz-form');
-            const answers = {
-                q1: 'c',
-                q2: 'b',
-                q3: 'b'
-            };
-            let correct = 0;
-            Object.keys(answers).forEach(q => {
-                const chosen = form[q].value;
-                if (chosen === answers[q]) correct++;
-            });
-            if (correct === Object.keys(answers).length) {
-                earnXP(50);
-                earnBadge("🎯 What is a Game? Mastery");
-                showPopup("✅ All answers correct! Badge earned.");
-                closeQuiz();
-            } else {
-                showPopup(`❌ Some answers wrong. Try again!`);
-            }
-        }
-
-        function closeQuiz() { document.getElementById('quiz-modal').style.display = 'none'; }
-
-        // Init
-        renderBadges();
-        updateXPBar();
-        updateQuizButtons();
-    </script>
-
+    // Call highlight.js to apply syntax highlighting
+    document.addEventListener('DOMContentLoaded', () => {
+      hljs.highlightAll();
+    });
+  </script>
 </body>
 
 </html>
