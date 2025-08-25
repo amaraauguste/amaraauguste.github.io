@@ -206,7 +206,7 @@ body {
 }
 
 .header-link a {
-  font-size: 22px !important; /* Use !important to ensure it gets applied */
+  font-size: 25px !important; /* Use !important to ensure it gets applied */
   white-space: nowrap; /* Prevent wrapping */
 }
 
@@ -253,22 +253,22 @@ body {
 
 /* Handle */
 .dark-mode::-webkit-scrollbar-thumb {
-  background: #591e2c; /* Green color for the scrollbar handle */
+  background: #24050d; /* Green color for the scrollbar handle */
 }
 
 /* Handle on hover */
 .dark-mode::-webkit-scrollbar-thumb:hover {
-  background: #591e2c; /* Darker green on hover */
+  background: #24050d; /* Darker green on hover */
 }
 
 /* Handle */
 .dark-mode #navbar::-webkit-scrollbar-thumb {
-  background: #591e2c; /* Green color for the scrollbar handle */
+  background: #24050d; /* Green color for the scrollbar handle */
 }
 
 /* Handle on hover */
 .dark-mode #navbar::-webkit-scrollbar-thumb:hover {
-  background: #591e2c; /* Darker green on hover */
+  background: #24050d; /* Darker green on hover */
 }
 
 .dark-mode #navbar {
@@ -292,11 +292,11 @@ body {
 }
 
 .dark-mode .backbutton {
-  background-color: #0b3c1a; /* Darker navbar */
+  background-color: #632131; /* Darker navbar */
 }
 
 .dark-mode .backbutton:hover {
-  background-color: #04170a; /* Darker navbar */
+  background-color: #4e1826; /* Darker navbar */
 }
 
 .dark-mode tr:nth-child(1) {
