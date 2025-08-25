@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>CISC 3667 - Game Design and Development</title>
+    <title>CISC 3667</title>
     <link rel="stylesheet" href="3667style.css" />
     <style>
         /* Gamification Button */
@@ -24,6 +24,7 @@
             width: 300px;
             max-height: 80%;
             background: #fff;
+            color: #000; /* ensure readable in light mode */
             border: 2px solid #333;
             border-radius: 12px;
             padding: 15px;
@@ -86,23 +87,17 @@
         /* Screenshot Mode Styling - Centered */
         #game-panel.screenshot-mode {
             width: 95%;
-            /* almost full screen width */
             height: 90%;
-            /* larger height */
             left: 50%;
             top: 50%;
             transform: translate(-50%, -50%);
             padding: 10px;
-            /* more interior spacing */
             border-radius: 15px;
             background: #fff;
-            /* ensures white fill */
+            color: #000;
             overflow-y: visible;
-            /* no scrollbar */
             font-size: 16px;
         }
-
-
 
         #game-panel.screenshot-mode .quiz-button,
         #game-panel.screenshot-mode #reset-progress {
@@ -168,6 +163,7 @@
 
         .modal .content {
             background: #fff;
+            color: #000;
             padding: 20px 30px;
             border-radius: 15px;
             text-align: center;
@@ -176,6 +172,32 @@
 
         .modal button {
             margin: 10px;
+        }
+
+        /* 🌙 DARK MODE OVERRIDES */
+        body.dark-mode #game-panel {
+            background: #222;
+            color: #f5f5f5;
+            border-color: #555;
+        }
+
+        body.dark-mode #game-panel.screenshot-mode {
+            background: #222;
+            color: #f5f5f5;
+        }
+
+        body.dark-mode .modal .content {
+            background: #333;
+            color: #f5f5f5;
+        }
+
+        body.dark-mode .badge {
+            background: #e1b700;
+            color: #222;
+        }
+
+        body.dark-mode .progress-bar-container {
+            background: #444;
         }
     </style>
 </head>
