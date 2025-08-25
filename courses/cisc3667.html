@@ -24,7 +24,7 @@
             width: 300px;
             max-height: 80%;
             background: #fff;
-            color: #000; /* ensure readable in light mode */
+            color: #000;
             border: 2px solid #333;
             border-radius: 12px;
             padding: 15px;
@@ -84,7 +84,7 @@
             cursor: pointer;
         }
 
-        /* Screenshot Mode Styling - Centered */
+        /* Screenshot Mode Styling */
         #game-panel.screenshot-mode {
             width: 95%;
             height: 90%;
@@ -174,7 +174,7 @@
             margin: 10px;
         }
 
-        /* 🌙 DARK MODE OVERRIDES */
+        /* Dark Mode */
         body.dark-mode #game-panel {
             background: #222;
             color: #f5f5f5;
@@ -199,6 +199,18 @@
         body.dark-mode .progress-bar-container {
             background: #444;
         }
+
+        .correct-label {
+            color: green;
+            font-weight: bold;
+            margin-left: 8px;
+        }
+
+        .wrong-label {
+            color: red;
+            font-weight: bold;
+            margin-left: 8px;
+        }
     </style>
 </head>
 
@@ -217,8 +229,6 @@
         <a class="nav-link" href="CISC3667/calendar.html">Calendar</a>
         <a class="nav-link" href="#Readings">Readings</a>
         <a class="nav-link" href="CISC3667/notes.html">Class Notes</a>
-        <!--<a class="nav-link" href="CISC3667/examples.html">Examples</a>-->
-
     </nav>
 
     <!-- Main Content -->
@@ -228,7 +238,6 @@
             <header><b>Introduction</b></header>
             <article>
                 <p>Welcome to CISC 3667 - Game Design and Development!</p>
-
                 <p>This web-site will provide a basic course outline, syllabus, and anything else that is important for
                     the class. Feel free to email any questions, suggestions, thoughts, etc.</p>
             </article>
@@ -240,16 +249,6 @@
             <br />
             <header><b>Readings</b></header>
             <article>
-                <p>In this course, we will explore the fundamentals of game design and development using Unity. The
-                    readings will cover key concepts, mechanics, and tools that are essential for creating engaging
-                    games.</p>
-
-                <p>Readings are an important part of this course. They will help you understand the concepts we cover in
-                    class and prepare you for assignments and projects.</p>
-
-                <p>Each reading is linked below. Clicking a PDF will mark it as read and may unlock a mini-quiz for you
-                    to take. Completing quizzes will earn you XP and may unlock badges!</p>
-
                 <ul id="readings-list">
                     <li><a href="CISC3667/readings/Iterative_Design%20(1).pdf" target="_blank" data-quiz="quiz1">Eric
                             Zimmerman, Play as Research: The Iterative Design Process</a></li>
@@ -257,36 +256,37 @@
                     <li><b>What is a Game?</b></li>
                     <ul>
                         <li><a href="https://web.archive.org/web/20221208215052/http://www.thegamesjournal.com/articles/MyEntireWakingLife.shtml"
-                                target="_blank" data-quiz="quiz1">Kevin Maroney, What is a Game?</a></li>
-                        <li><a href="CISC3667/readings/Jane%20McGonigal-%20Reality%20is%20Broken%20(1).pdf" target="_blank">Jane McGonigal, Reality is
-                                Broken</a></li>
-                        <li><a href="CISC3667/readings/Art%20of%20Game%20Design%20Chapter%204.pdf" target="_blank" data-quiz="quiz2">Jesse Schell,
-                                The Art of Game Design, Chapter 4</a>
-                        </li>
+                                target="_blank" data-group="what-is-game">Kevin Maroney, What is a Game?</a></li>
+                        <li><a href="CISC3667/readings/Jane%20McGonigal-%20Reality%20is%20Broken%20(1).pdf"
+                                target="_blank" data-group="what-is-game">Jane McGonigal, Reality is Broken</a></li>
+                        <li><a href="CISC3667/readings/Art%20of%20Game%20Design%20Chapter%204.pdf" target="_blank"
+                                data-group="what-is-game">Jesse Schell, The Art of Game Design, Chapter 4</a></li>
                         <li><a href="https://www.erasmatazz.com/library/the-journal-of-computer/jcgd-volume-4/my-definition-of-game.html"
-                                target="_blank" data-quiz="quiz1">Chris Crawford, My Definition of 'Game'</a></li>
+                                target="_blank" data-group="what-is-game">Chris Crawford, My Definition of 'Game'</a>
+                        </li>
                     </ul>
                     <br />
                     <li><b>Game Mechanics and Rules</b></li>
                     <ul>
-                        <li><a href="CISC3667/readings/rules%20of%20play%20chapters%2011-12%20(1).pdf"
-                                target="_blank" data-quiz="quiz1">Rules of Play, by Salen & Zimmerman, Chapter 11-12</a>
+                        <li><a href="CISC3667/readings/rules%20of%20play%20chapters%2011-12%20(1).pdf" target="_blank"
+                                data-quiz="quiz1">Rules of Play, by Salen & Zimmerman, Chapter 11-12</a>
                         </li>
-                        <li><a href="CISC3667/readings/Art%20of%20Game%20Design%2C%20Chapter%205.pdf" target="_blank">Jesse Schell, The Art of Game
+                        <li><a href="CISC3667/readings/Art%20of%20Game%20Design%2C%20Chapter%205.pdf"
+                                target="_blank">Jesse Schell, The Art of Game
                                 Design, Chapter 5</a></li>
                     </ul>
                     <br />
                     <li><b>Players' Relationship to Rules</b></li>
                     <ul>
-                        <li><a href="CISC3667/readings/RulesofPlay.Ch21.pdf"
-                                target="_blank" data-quiz="quiz1">Rules of Play, by Salen & Zimmerman, Chapter 21</a>
+                        <li><a href="CISC3667/readings/RulesofPlay.Ch21.pdf" target="_blank" data-quiz="quiz1">Rules of
+                                Play, by Salen & Zimmerman, Chapter 21</a>
                         </li>
                     </ul>
                     <br />
                     <li><b>Objects/Attributes/States/Actions, Feedback Loops</b></li>
                     <ul>
                         <li><a href="CISC3667/readings/Art%20of%20Game%20Design%20Chapter%2012.pdf"
-                                target="_blank" data-quiz="quiz1">Jesse Schell, The Art of Game Design, Chapter 12</a>
+                                target="_blank">Jesse Schell, The Art of Game Design, Chapter 12</a>
                         </li>
                         <li><a href="CISC3667/readings/RulesofPlay.Ch18.pdf" target="_blank">Rules of Play, by Salen &
                                 Zimmerman, Chapter 18</a></li>
@@ -294,15 +294,16 @@
                     <br />
                     <li><b>Serious Games</b></li>
                     <ul>
-                        <li><a href="CISC3667/readings/geeGBL.pdf"
-                                target="_blank" data-quiz="quiz1">James Paul Gee, Learning by Design: Good Video Games as Learning Machines</a>
+                        <li><a href="CISC3667/readings/geeGBL.pdf" target="_blank" data-quiz="quiz1">James Paul Gee,
+                                Learning by Design: Good Video Games as Learning Machines</a>
                         </li>
                     </ul>
                     <br />
                     <li><b>Randomness and Probability</b></li>
                     <ul>
                         <li><a href="CISC3667/readings/Art%20of%20Game%20Design%20Chapter%2012%20chance.pdf"
-                                target="_blank" data-quiz="quiz1">Jesse Schell, The Art of Game Design, Chapter 12: Chance</a>
+                                target="_blank">Jesse Schell, The Art of Game Design, Chapter 12:
+                                Chance</a>
                         </li>
                     </ul>
                 </ul>
@@ -312,7 +313,8 @@
                 <ul>
                     <li><b>The Art of Game Design: A Book of Lenses</b> by Jesse Schell</li>
                     <li><b>Rules of Play: Game Design Fundamentals</b> by Katie Salen and Eric Zimmerman</li>
-                    <li><b>Game Design Workshop: A Playcentric Approach to Creating Innovative Games</b> by Tracy Fullerton</li>
+                    <li><b>Game Design Workshop: A Playcentric Approach to Creating Innovative Games</b> by Tracy
+                        Fullerton</li>
                 </ul>
 
                 <p>If you have any suggestions for additional readings, please let me know!</p>
@@ -333,10 +335,12 @@
             <div class="progress-bar" id="xp-bar"></div>
         </div>
 
-        <h3>Quizzes</h3>
-        <div id="quiz-buttons">
-            <button class="quiz-button" data-quiz="quiz1">Take Quiz: Game Design Basics</button>
-            <button class="quiz-button" data-quiz="quiz2">Take Quiz: Unity Intro</button>
+        <!-- Wrap quizzes in a container -->
+        <div id="quiz-section" style="display:none;">
+            <h3>Quizzes</h3>
+            <div id="quiz-buttons">
+                <button class="quiz-button" data-quiz="quiz-what-is-game">Take Quiz: What is a Game?</button>
+            </div>
         </div>
 
         <h3>Badges</h3>
@@ -344,10 +348,10 @@
             <p>No badges yet—explore the site to earn some!</p>
         </div>
 
-        <!-- Screenshot & Reset Buttons -->
         <button id="screenshot-mode">Toggle View</button>
         <button id="reset-progress">Reset Progress</button>
     </div>
+
 
     <!-- Hidden Star -->
     <div id="hidden-star">⭐</div>
@@ -386,135 +390,248 @@
             }
         });
 
-    // === Gamification Data ===
-    let xp = parseInt(localStorage.getItem('xp')) || 0;
-    let level = parseInt(localStorage.getItem('level')) || 1;
-    let readPDFs = JSON.parse(localStorage.getItem('readPDFs')) || [];
-    let completedQuizzes = JSON.parse(localStorage.getItem('completedQuizzes')) || [];
-    let badges = JSON.parse(localStorage.getItem('badges')) || [];
+        // === Gamification Data ===
+        let xp = parseInt(localStorage.getItem('xp')) || 0;
+        let level = parseInt(localStorage.getItem('level')) || 1;
+        let readPDFs = JSON.parse(localStorage.getItem('readPDFs')) || [];
+        let completedQuizzes = JSON.parse(localStorage.getItem('completedQuizzes')) || [];
+        let badges = JSON.parse(localStorage.getItem('badges')) || [];
 
-    const xpDisplay = document.getElementById('xp-display');
-    const xpBar = document.getElementById('xp-bar');
-    const badgeArea = document.getElementById('badge-area');
+        const xpDisplay = document.getElementById('xp-display');
+        const xpBar = document.getElementById('xp-bar');
+        const badgeArea = document.getElementById('badge-area');
+        const readingLinks = document.querySelectorAll('#readings-list a');
 
-    function updateXPBar() {
-        xpDisplay.textContent = `XP: ${xp} | Level: ${level}`;
-        xpBar.style.width = Math.min((xp / (level * 50)) * 100, 100) + '%';
-    }
-    function earnXP(amount) {
-        xp += amount;
-        if (xp >= level * 50) { 
-            level++; 
-            showPopup(`⬆️ Level Up! Now Level ${level}`); 
+        function updateXPBar() {
+            xpDisplay.textContent = `XP: ${xp} | Level: ${level}`;
+            xpBar.style.width = Math.min((xp / (level * 50)) * 100, 100) + '%';
         }
-        localStorage.setItem('xp', xp);
-        localStorage.setItem('level', level);
-        updateXPBar();
-    }
 
-    function earnBadge(name) {
-        if (!badges.includes(name)) {
-            badges.push(name);
-            localStorage.setItem('badges', JSON.stringify(badges));
-            renderBadges();
-            showPopup(`🏅 Badge Unlocked: ${name}`);
+        function earnXP(amount) {
+            xp += amount;
+            if (xp >= level * 50) {
+                level++;
+                showPopup(`⬆️ Level Up! Now Level ${level}`);
+            }
+            localStorage.setItem('xp', xp);
+            localStorage.setItem('level', level);
+            updateXPBar();
         }
-    }
-    function renderBadges() {
-        if (badges.length === 0) badgeArea.innerHTML = "<p>No badges yet—explore the site to earn some!</p>";
-        else badgeArea.innerHTML = badges.map(b => `<span class="badge">${b}</span>`).join(" ");
-    }
 
-    function showPopup(msg) {
-        const popup = document.getElementById('popup');
-        popup.textContent = msg;
-        popup.classList.add('show');
-        setTimeout(() => popup.classList.remove('show'), 2500);
-    }
-
-    // Hidden Star
-    document.getElementById('hidden-star').addEventListener('click', () => {
-        earnBadge('Secret Star Finder');
-        earnXP(50);
-        document.getElementById('secret-modal').style.display = 'flex';
-    });
-    function closeSecret() { document.getElementById('secret-modal').style.display = 'none'; }
-
-    // Gamification Panel Toggle
-    const panelBtn = document.getElementById('game-panel-button');
-    const panel = document.getElementById('game-panel');
-    panelBtn.addEventListener('click', () => { 
-        panel.style.display = (panel.style.display === 'block' ? 'none' : 'block'); 
-    });
-
-    // Screenshot Mode
-    const screenshotBtn = document.getElementById('screenshot-mode');
-    screenshotBtn.addEventListener('click', () => {
-        panel.classList.toggle('screenshot-mode');
-        showPopup(panel.classList.contains('screenshot-mode') ? '📸 Screenshot Mode Activated' : '📄 Normal Mode Restored');
-    });
-
-    // Reset Progress
-    const resetBtn = document.getElementById('reset-progress');
-    resetBtn.addEventListener('click', () => {
-        if (confirm('Reset all progress?')) { localStorage.clear(); location.reload(); }
-    });
-    document.addEventListener('keydown', e => {
-        if (e.ctrlKey && e.key.toLowerCase() === 'r') resetBtn.style.display = 'inline-block';
-    });
-
-    // === Readings Tracking ===
-    const readingLinks = document.querySelectorAll('#readings-list a');
-    readingLinks.forEach(a => {
-        a.addEventListener('click', () => {
-            const pdfName = a.textContent.trim();
-            if (!readPDFs.includes(pdfName)) {
-                readPDFs.push(pdfName);
-                localStorage.setItem('readPDFs', JSON.stringify(readPDFs));
-                earnXP(10);
-                showPopup(`📖 Read: ${pdfName}`);
+        function earnBadge(name) {
+            if (!badges.includes(name)) {
+                badges.push(name);
+                localStorage.setItem('badges', JSON.stringify(badges));
+                renderBadges();
+                showPopup(`🏅 Badge Unlocked: ${name}`);
             }
-            // Check if all readings are done
-            if (readPDFs.length === readingLinks.length) {
-                earnBadge('📚 Read All Readings');
-            }
-            updateQuizButtons();
+        }
+
+        function renderBadges() {
+            if (badges.length === 0) badgeArea.innerHTML = "<p>No badges yet—explore the site to earn some!</p>";
+            else badgeArea.innerHTML = badges.map(b => `<span class="badge">${b}</span>`).join(" ");
+        }
+
+        function showPopup(msg) {
+            const popup = document.getElementById('popup');
+            popup.textContent = msg;
+            popup.classList.add('show');
+            setTimeout(() => popup.classList.remove('show'), 2500);
+        }
+
+        // Hidden Star
+        document.getElementById('hidden-star').addEventListener('click', () => {
+            earnBadge('Secret Star Finder');
+            earnXP(50);
+            document.getElementById('secret-modal').style.display = 'flex';
         });
-    });
+        function closeSecret() { document.getElementById('secret-modal').style.display = 'none'; }
 
-    function updateQuizButtons() {
+        // Panel Toggle
+        document.getElementById('game-panel-button').addEventListener('click', () => {
+            const panel = document.getElementById('game-panel');
+            panel.style.display = (panel.style.display === 'block' ? 'none' : 'block');
+        });
+
+        // Screenshot Mode
+        document.getElementById('screenshot-mode').addEventListener('click', () => {
+            const panel = document.getElementById('game-panel');
+            panel.classList.toggle('screenshot-mode');
+            showPopup(panel.classList.contains('screenshot-mode') ? '📸 Screenshot Mode Activated' : '📄 Normal Mode Restored');
+        });
+
+        // Reset Progress
+        document.getElementById('reset-progress').addEventListener('click', () => {
+            if (confirm('Reset all progress?')) { localStorage.clear(); location.reload(); }
+        });
+        document.addEventListener('keydown', e => {
+            if (e.ctrlKey && e.key.toLowerCase() === 'r') document.getElementById('reset-progress').style.display = 'inline-block';
+        });
+
+        // === Readings Tracking ===
+        readingLinks.forEach(a => {
+            a.addEventListener('click', () => {
+                const pdfName = a.textContent.trim();
+                if (!readPDFs.includes(pdfName)) {
+                    readPDFs.push(pdfName);
+                    localStorage.setItem('readPDFs', JSON.stringify(readPDFs));
+                    earnXP(10);
+                    showPopup(`📖 Read: ${pdfName}`);
+                }
+                if (readPDFs.length === readingLinks.length) {
+                    earnBadge('📚 Read All Readings');
+                }
+                updateQuizButtons();
+            });
+        });
+
+        // === Quiz Unlocking ===
+        // Unlock quiz when all 4 "What is a Game?" readings are done
+        function updateQuizButtons() {
+            let anyQuizUnlocked = false;
+
+            document.querySelectorAll('.quiz-button').forEach(btn => {
+                const quizId = btn.dataset.quiz;
+
+                if (quizId === "quiz-what-is-game") {
+                    const groupLinks = [...readingLinks].filter(a => a.dataset.group === "what-is-game");
+                    const allRead = groupLinks.every(a => readPDFs.includes(a.textContent.trim()));
+                    btn.style.display = allRead ? 'inline-block' : 'none';
+                    if (allRead) anyQuizUnlocked = true;
+                }
+            });
+
+            // Show/hide the whole quizzes section
+            document.getElementById('quiz-section').style.display = anyQuizUnlocked ? 'block' : 'none';
+        }
+
+
+        // Quiz logic
         document.querySelectorAll('.quiz-button').forEach(btn => {
-            const quizId = btn.dataset.quiz;
-            // unlock if any reading mapped to this quiz was read
-            readingLinks.forEach(a => {
-                if (a.dataset.quiz === quizId && readPDFs.includes(a.textContent.trim())) {
-                    btn.style.display = 'inline-block';
+            btn.addEventListener('click', () => {
+                const quizContent = document.getElementById('quiz-content');
+                quizContent.innerHTML = `
+          <h3>Quiz: What is a Game?</h3>
+          <form id="quiz-form">
+            <p>1. According to Chris Crawford, which of these best describes Tetris?</p>
+            <label><input type="radio" name="q1" value="a"> A toy</label><br>
+            <label><input type="radio" name="q1" value="b"> A game</label><br>
+            <label><input type="radio" name="q1" value="c"> A puzzle</label><br>
+            <label><input type="radio" name="q1" value="d"> A challenge</label><br><br>
+
+            <p>2. Which of these is NOT required in Jane McGonigal's definition of a game?</p>
+            <label><input type="radio" name="q2" value="a"> Voluntary Participation</label><br>
+            <label><input type="radio" name="q2" value="b"> Competition</label><br>
+            <label><input type="radio" name="q2" value="c"> Feedback System</label><br>
+            <label><input type="radio" name="q2" value="d"> Rules</label><br><br>
+
+            <p>3. Jesse Schell describes games as...?</p>
+            <label><input type="radio" name="q3" value="a"> A series of puzzles</label><br>
+            <label><input type="radio" name="q3" value="b"> A problem-solving activity approached with a playful attitude</label><br>
+            <label><input type="radio" name="q3" value="c"> A form of play with goals and structure</label><br>
+            <label><input type="radio" name="q3" value="d"> A distraction from life</label><br><br>
+
+            <button type="button" onclick="submitQuiz()">Submit</button>
+            <button type="button" onclick="closeQuiz()">Close</button>
+          </form>`;
+
+                document.getElementById('quiz-modal').style.display = 'flex';
+
+                // 🔄 If already completed, re-apply labels
+                if (completedQuizzes.includes("quiz-what-is-game")) {
+                    markCorrectAnswers();
+                    document.querySelectorAll('#quiz-form input').forEach(i => i.disabled = true);
                 }
             });
         });
-    }
 
-    // === Quizzes ===
-    document.querySelectorAll('.quiz-button').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const quizId = btn.dataset.quiz;
-            document.getElementById('quiz-content').innerHTML = `<h3>${quizId} Quiz</h3><p>Answer questions and submit screenshot to instructor.</p><button onclick="closeQuiz()">Close</button>`;
-            document.getElementById('quiz-modal').style.display = 'flex';
-            if (!completedQuizzes.includes(quizId)) {
-                completedQuizzes.push(quizId);
-                localStorage.setItem('completedQuizzes', JSON.stringify(completedQuizzes));
-                earnXP(20);
-                earnBadge(`Completed ${quizId}`);
+        function submitQuiz() {
+            const form = document.getElementById('quiz-form');
+            const answers = { q1: 'c', q2: 'b', q3: 'b' };
+            let correct = 0;
+
+            // Clear old highlights
+            form.querySelectorAll("label").forEach(l => {
+                l.style.color = "";
+                const old = l.querySelector(".correct-label, .wrong-label");
+                if (old) old.remove();
+            });
+
+            Object.keys(answers).forEach(q => {
+                const chosen = form[q].value;
+                const correctVal = answers[q];
+                const options = form.querySelectorAll(`input[name="${q}"]`);
+
+                options.forEach(opt => {
+                    const lbl = opt.parentNode;
+                    if (opt.checked) {
+                        if (opt.value === correctVal) {
+                            lbl.style.color = "green";
+                            if (!lbl.querySelector(".correct-label")) {
+                                lbl.insertAdjacentHTML("beforeend", `<span class="correct-label"> ✅ Correct</span>`);
+                            }
+                            correct++;
+                        } else {
+                            lbl.style.color = "red";
+                            if (!lbl.querySelector(".wrong-label")) {
+                                lbl.insertAdjacentHTML("beforeend", `<span class="wrong-label"> ❌ Wrong</span>`);
+                            }
+                        }
+                    }
+                });
+            });
+
+            if (correct === Object.keys(answers).length) {
+                earnXP(50);
+                earnBadge("🎯 What is a Game? Mastery");
+                showPopup("✅ All answers correct! Badge earned.");
+
+                // ✅ Save completion
+                if (!completedQuizzes.includes("quiz-what-is-game")) {
+                    completedQuizzes.push("quiz-what-is-game");
+                    localStorage.setItem("completedQuizzes", JSON.stringify(completedQuizzes));
+                }
+
+                // Permanently show correct answers + disable inputs
+                markCorrectAnswers();
+                form.querySelectorAll("input").forEach(i => i.disabled = true);
+            } else {
+                showPopup(`❌ Some answers wrong. Try again!`);
             }
-        });
-    });
-    function closeQuiz() { document.getElementById('quiz-modal').style.display = 'none'; }
+        }
 
-    // Initialize
-    renderBadges();
-    updateXPBar();
-    updateQuizButtons();
-</script>
+        // helper: permanently show correct answers (after success or on reopen)
+        function markCorrectAnswers() {
+            const form = document.getElementById('quiz-form');
+            if (!form) return;
+            const answers = { q1: 'c', q2: 'b', q3: 'b' };
+
+            form.querySelectorAll("label").forEach(l => {
+                l.style.color = "";
+                const old = l.querySelector(".correct-label, .wrong-label");
+                if (old) old.remove();
+            });
+
+            Object.keys(answers).forEach(q => {
+                const correctVal = answers[q];
+                const option = form.querySelector(`input[name="${q}"][value="${correctVal}"]`);
+                if (option) {
+                    const lbl = option.parentNode;
+                    lbl.style.color = "green";
+                    if (!lbl.querySelector(".correct-label")) {
+                        lbl.insertAdjacentHTML("beforeend", `<span class="correct-label"> ✅ Correct</span>`);
+                    }
+                }
+            });
+        }
+
+        function closeQuiz() { document.getElementById('quiz-modal').style.display = 'none'; }
+
+        // Init
+        renderBadges();
+        updateXPBar();
+        updateQuizButtons();
+    </script>
 
 </body>
 
