@@ -116,11 +116,11 @@ tr:nth-child(9) {
 }
 
 .backbutton:hover {
-  background-color: #a854db;
+  background-color: #7fbbac;
 }
 
 .previous {
-  background-color: #c59cde;
+  background-color: #9cdece;
   color: black;
 }
 
@@ -206,7 +206,7 @@ body {
 }
 
 .header-link a {
-  font-size: 25px !important; /* Use !important to ensure it gets applied */
+  font-size: 22px !important; /* Use !important to ensure it gets applied */
   white-space: nowrap; /* Prevent wrapping */
 }
 
@@ -253,26 +253,26 @@ body {
 
 /* Handle */
 .dark-mode::-webkit-scrollbar-thumb {
-  background: #486c0e; /* Green color for the scrollbar handle */
+  background: #591e2c; /* Green color for the scrollbar handle */
 }
 
 /* Handle on hover */
 .dark-mode::-webkit-scrollbar-thumb:hover {
-  background: #304809; /* Darker green on hover */
+  background: #591e2c; /* Darker green on hover */
 }
 
 /* Handle */
 .dark-mode #navbar::-webkit-scrollbar-thumb {
-  background: #3a6321; /* Green color for the scrollbar handle */
+  background: #591e2c; /* Green color for the scrollbar handle */
 }
 
 /* Handle on hover */
 .dark-mode #navbar::-webkit-scrollbar-thumb:hover {
-  background: #304809; /* Darker green on hover */
+  background: #591e2c; /* Darker green on hover */
 }
 
 .dark-mode #navbar {
-  background-color: #0b3c1a; /* Darker navbar */
+  background-color: #632131; /* Darker navbar */
 }
 
 .dark-mode #navbar a {
