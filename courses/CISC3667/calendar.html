@@ -49,7 +49,7 @@
     $("#calendar").fullCalendar({
       defaultView: "month",
       events: [
-         {
+        {
           title: "Start of Fall 2025 Semester",
           start: "2025-08-26",
           color: "#FF0000",
@@ -60,12 +60,21 @@
           color: "#D186FF",
         },
         {
+          title: "HW 1 Assigned",
+          start: "2025-08-28",
+          color: "Orange",
+        },
+        {
           title: "College Closed - No Classes Scheduled",
           start: "2025-09-01", // Labor Day
           color: "#FF0000",
         },
-
-         {
+        {
+          title: "HW 1 Due",
+          start: "2025-09-02",
+          color: "Blue",
+        },
+        {
           title: "No Classes Scheduled",
           start: "2025-09-22", // Rosh Hashanah
           end: "2025-09-24",
@@ -87,9 +96,9 @@
           start: "2025-10-14", //Conversion Day - Monday Schedule
           color: "#FF0000",
         },
-         {
+        {
           title: "No Classes Scheduled",
-          start: "2025-10-20", 
+          start: "2025-10-20",
           color: "#FF0000",
         },
 
@@ -98,26 +107,26 @@
           start: "2024-10-24", //Conversion Day - Monday Schedule
           color: "#FF0000",
         },
-       
+
         {
           title: "Withdrawal Deadline",
           start: "2025-11-06",
           color: "#FF0000",
         },
-        
 
-         {
+
+        {
           title: "No Class - Thanksgiving Holiday",
-          start: "2025-11-27", 
+          start: "2025-11-27",
           end: "2025-11-30",
           color: "#FF0000",
         },
-         {
+        {
           title: "End of Fall 2025 Semester",
           start: "2025-12-15",
           color: "#FF0000",
         },
-        
+
 
       ],
       eventRender: function (event, element) {
