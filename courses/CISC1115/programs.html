@@ -87,7 +87,6 @@
         <li><b>#define</b></li>
       </ol>
 
-      <hr />
       <!--<header><b>Week 2</b></header>-->
       <p>
         3) We learned about basic programs such as Hello World!
@@ -180,14 +179,44 @@ b += 2 * 3 - 1;</code></pre>
         <li>print and label the results</li>
       </ul>
 
+     
+
+     
+
+     
+
       <p>
-        8) Write a Java program to convert temperature from Fahrenheit to
+        8) Write a Java program that initializes the radius of a circle and
+        computes and prints the circle's area and circumference (perimeter).
+        (Limit each result to a precision of <b>3 decimal places</b>)
+      </p>
+      <ul>
+        <li>Formula for area: <b>πr^2</b></li>
+        <li>Formula for circumference (perimeter): <b>2πr</b></li>
+      </ul>
+
+
+
+
+      <p>
+        <a href="/courses/CISC1115/classwork_code/F25/Week 01 Answers.txt">Answers to Week 1 found here</a>
+      </p>
+
+      <hr />
+    </section>
+
+    <section class="main-section" id="Week2">
+
+      <h2>Review</h2>
+
+       <p>
+        a) Write a Java program to convert temperature from Fahrenheit to
         Celsius degrees.
       </p>
       <text style="margin: 5px; font-size: 25px"><b>Temperature in degrees Celsius (°C) = (Temperature in degrees
           Fahrenheit (°F) - 32) * 5/9</b></text>
 
-      <p>9) What will be printed by the following program?</p>
+         <p>b) What will be printed by the following program?</p>
       <pre><code class="language-java">public static void main(String [] args) {
       int w, x;
       double y;
@@ -199,22 +228,11 @@ b += 2 * 3 - 1;</code></pre>
       System.out.printf("%d %d %.2f%n", w,x,y);
 }</code></pre>
 
-      <p>10) Assuming that the variable x has already been declared and assigned a value,
+       <p>c) Assuming that the variable x has already been declared and assigned a value,
         is the following <b>assignment</b> legal? If not why?</p>
       <text style="margin: 100px; font-size: 50px">double sqrt = Math.sqrt(x);</text>
 
-      <p>
-        11) Write a Java program that initializes the radius of a circle and
-        computes and prints the circle's area and circumference (perimeter).
-        (Limit each result to a precision of <b>3 decimal places</b>)
-      </p>
-      <ul>
-        <li>Formula for area: <b>πr^2</b></li>
-        <li>Formula for circumference (perimeter): <b>2πr</b></li>
-      </ul>
-
-
-      <p>12) Write a Java <b><i>expression</i></b> that would compute the following:</p>
+      <p>d) Write a Java <b><i>expression</i></b> that would compute the following:</p>
       <img style="
             width: 60%;
             height: 60%;
@@ -223,28 +241,14 @@ b += 2 * 3 - 1;</code></pre>
             margin-right: auto;
           " src="images/week%201%20equation.png?raw=true" alt="equation" />
 
+      <hr />
 
-
-
-
-
-
-      <!--<p>
-        <a href="/courses/CISC1115/classwork_code/Week 02 Answers.txt">Answers to Week 1 found here</a>
-      </p>
-
-      <hr />-->
-    </section>
-
-    <!--<section class="main-section" id="Week2">
-
-      <h2>Review</h2>
-      <p>a) Write a <b>statement</b> that reads an integer value from <b>standard input</b> into val.
+      <p>1) Write a <b>statement</b> that reads an integer value from <b>standard input</b> into val.
         Assume that val has already been declared as an int variable.
         Assume also that stdin is a variable that references a <b>Scanner object</b>
         associated with standard input.</p>
 
-      <p>b) Assume the availability of a <b>class named Arithmetic</b> that provides a static method,
+      <p>2) Assume the availability of a <b>class named Arithmetic</b> that provides a static method,
         <b>add</b>, that accepts two int arguments and returns their sum.
         <br><br>
         Two <b>int</b> variables, <b>euroSales</b> and <b>asiaSales</b>, have already been declared
@@ -255,10 +259,10 @@ b += 2 * 3 - 1;</code></pre>
       </p>
 
 
-      <p>c) Given the variable <b>pricePerCase</b>, write an <b>expression</b> corresponding to
+      <p>3) Given the variable <b>pricePerCase</b>, write an <b>expression</b> corresponding to
         the price of a <b>dozen</b> cases.</p>
 
-      <p>e) Write a Java <b><i>expression</i></b> that would compute the following:</p>
+      <p>4) Write a Java <b><i>expression</i></b> that would compute the following:</p>
       <img style="
       width: 80%;
       height: 80%;
@@ -270,7 +274,7 @@ b += 2 * 3 - 1;</code></pre>
       <hr />
       <br />
       <header><b>Week 2</b></header>
-      <p>1) Write a Java program that computes the cost of traveling between two cities. <br><br>
+      <p>5) Write a Java program that computes the cost of traveling between two cities. <br><br>
         Prompt for and read in the name of each city (two separate prompts),
         the distance (in miles) between the two cities, and the cost of travel per mile. </p>
       <p>Run the program with the following data:</p>
@@ -310,7 +314,7 @@ b += 2 * 3 - 1;</code></pre>
 
       <hr />
 
-      <p>2) Three business partners are forming a company whose name will be of the form "Name1, Name2, and Name3".
+      <p>6) Three business partners are forming a company whose name will be of the form "Name1, Name2, and Name3".
         However, they can't agree whose name should be first, second or last. <br><br>Help them out by writing code that
         reads in their
         three names and prints each possible combination exactly once, on a line by itself (that is, each possible
@@ -324,7 +328,7 @@ b += 2 * 3 - 1;</code></pre>
         <br><br><b>(CodeLab: Chapter 3: Input and output > 3.2: The Scanner class > #20966)</b>
       </p>
 
-      <p>3) Write a Java program that converts a total number of seconds to
+      <p>7) Write a Java program that converts a total number of seconds to
         hours, minutes, and seconds. </p>
       <p>It should: </p>
       <ol>
@@ -337,7 +341,7 @@ b += 2 * 3 - 1;</code></pre>
           and 20 seconds".</b> <br><br> (Hint: Use the modulus operator)
       </p>
 
-      <p>4) Write a Java program to prompt the user to enter their first and last name, then generate a random integer
+      <p>8) Write a Java program to prompt the user to enter their first and last name, then generate a random integer
         between 1000 - 9999 (inclusive)
         and write it to a file as follows:
         <br /><br />
@@ -351,12 +355,12 @@ b += 2 * 3 - 1;</code></pre>
 
 
 
-      <p>
-        <a href="/courses/CISC1115/classwork_code/Week 03 Answers.txt">Answers to Week 2 found here</a>
+      <!--<p>
+        <a href="/courses/CISC1115/classwork_code/F25/Week 02 Answers.txt">Answers to Week 2 found here</a>
       </p>
 
-      <hr />
-    </section>-->
+      <hr />-->
+    </section>
     <!--<br />-->
     <!--<section class="main-section" id="Week3">
      
