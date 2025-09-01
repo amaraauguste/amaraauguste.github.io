@@ -19,6 +19,4 @@ b) -9 4 2.00
 c) This is a perfectly legal statement because the class name Math allows Java to distinguish between the variable sqrt and the method sqrt. 
 However, we should avoid having multiple aspects of a program with the same name as it may cause confusion.
 
-
-
-12) (Math.pow(x, 2) - (1 / (y + 3))) / ((1 / z) + Math.sqrt(x))
+d) (Math.pow(x, 2) - (1 / (y + 3))) / ((1 / z) + Math.sqrt(x))
