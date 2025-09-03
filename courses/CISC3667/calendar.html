@@ -2,149 +2,773 @@
 <html lang="en">
 
 <head>
-  <title>CISC 3667 Calendar</title>
-  <!-- CSS for full calendar -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.css" rel="stylesheet" />
-  <!-- JS for jQuery -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <!-- JS for full calendar -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js"></script>
-  <style>
-    /* width */
-    ::-webkit-scrollbar {
-      width: 10px;
-    }
+    <meta charset="UTF-8">
+    <title>CISC 3667</title>
+    <link rel="stylesheet" href="3667style.css" />
+    <style>
+        /* Gamification Button */
+        #game-panel-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            font-size: 28px;
+            cursor: pointer;
+            z-index: 10000;
+        }
 
-    /* Track */
-    ::-webkit-scrollbar-track {
-      box-shadow: inset 0 0 5px grey;
-      border-radius: 10px;
-    }
+        /* Gamification Panel */
+        #game-panel {
+            position: fixed;
+            bottom: 70px;
+            right: 20px;
+            width: 300px;
+            max-height: 80%;
+            background: #fff;
+            color: #000;
+            border: 2px solid #333;
+            border-radius: 12px;
+            padding: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            display: none;
+            overflow-y: auto;
+            z-index: 9999;
+        }
 
-    /* Handle */
-    ::-webkit-scrollbar-thumb {
-      background: rgb(183, 147, 241);
-      border-radius: 10px;
-    }
+        #game-panel h3 {
+            margin: 10px 0 5px 0;
+            font-size: 18px;
+        }
 
-    /* Handle on hover */
-    ::-webkit-scrollbar-thumb:hover {
-      background: rgb(140, 111, 186);
-    }
+        .progress-bar-container {
+            width: 100%;
+            background: #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 5px 0 15px 0;
+        }
 
-    html,
-    body {
-      background-color: #ffedfd;
-      font-family: "Copperplate";
-    }
-  </style>
+        .progress-bar {
+            height: 18px;
+            background: #4caf50;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .badge {
+            display: inline-block;
+            margin: 5px;
+            padding: 5px 10px;
+            border-radius: 8px;
+            background: #f1c40f;
+            font-size: 12px;
+        }
+
+        .quiz-button {
+            display: none;
+            margin: 5px 0;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        #reset-progress {
+            display: none;
+            margin-top: 10px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        #screenshot-mode {
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        /* Screenshot Mode Styling */
+        #game-panel.screenshot-mode {
+            width: 95%;
+            height: 90%;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            padding: 10px;
+            border-radius: 15px;
+            background: #fff;
+            color: #000;
+            overflow-y: visible;
+            font-size: 16px;
+        }
+
+        #game-panel.screenshot-mode .quiz-button,
+        #game-panel.screenshot-mode #reset-progress {
+            display: none !important;
+        }
+
+        #game-panel.screenshot-mode .badge {
+            font-size: 16px;
+            padding: 8px 12px;
+        }
+
+        /* Popup Notifications */
+        .popup {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #333;
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 10px;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            z-index: 10001;
+        }
+
+        .popup.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hidden Star */
+        #hidden-star {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            font-size: 28px;
+            cursor: pointer;
+            opacity: 0.6;
+            z-index: 10005;
+            transition: opacity 0.3s ease, transform 0.2s ease;
+            user-select: none;
+        }
+
+        #hidden-star:hover {
+            opacity: 1;
+            transform: scale(1.4);
+        }
+
+        /* Modal */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 10002;
+        }
+
+        .modal .content {
+            background: #fff;
+            color: #000;
+            padding: 20px 30px;
+            border-radius: 15px;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .modal button {
+            margin: 10px;
+        }
+
+        /* Dark Mode */
+        body.dark-mode #game-panel {
+            background: #222;
+            color: #f5f5f5;
+            border-color: #555;
+        }
+
+        body.dark-mode #game-panel.screenshot-mode {
+            background: #222;
+            color: #f5f5f5;
+        }
+
+        body.dark-mode .modal .content {
+            background: #333;
+            color: #f5f5f5;
+        }
+
+        body.dark-mode .badge {
+            background: #e1b700;
+            color: #222;
+        }
+
+        body.dark-mode .progress-bar-container {
+            background: #444;
+        }
+
+        .correct-label {
+            color: green;
+            font-weight: bold;
+            margin-left: 8px;
+        }
+
+        .wrong-label {
+            color: red;
+            font-weight: bold;
+            margin-left: 8px;
+        }
+    </style>
 </head>
 
 <body>
-  <div id="calendar"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <header class="header-link">
+            <a href="https://amaraauguste.github.io/courses/cisc3667.html"
+                style="color: inherit; text-decoration: none;" class="header-text">CISC 3667</a>
+        </header>
+        <div class="mode">Dark mode: <span class="change">OFF</span></div>
+        <hr />
+        <a class="nav-link" href="#Introduction">Introduction</a>
+        <a class="nav-link" href="CISC3667/CISC_3667_F25_TY11_Syllabus.pdf" target="_blank"
+            style="font-size: 22px">Syllabus</a>
+        <a class="nav-link" href="CISC3667/calendar.html" target="_blank">Calendar</a>
+        <a class="nav-link" href="#Readings">Readings</a>
+        <a class="nav-link" href="CISC3667/notes.html" target="_blank">Class Notes</a>
+        <a class="nav-link" href="#Homework">Homework</a>
+        <a class="nav-link" href="#Group_Projects">Group Projects</a>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-doc">
+        <section class="main-section" id="Introduction">
+            <br />
+            <header><b>Introduction</b></header>
+            <article>
+                <p>Welcome to CISC 3667 - Game Design and Development!</p>
+                <p>This web-site will provide a basic course outline, syllabus, and anything else that is important for
+                    the class. Feel free to email any questions, suggestions, thoughts, etc.</p>
+            </article>
+            <br />
+            <hr />
+        </section>
+
+        <section class="main-section" id="Readings">
+            <br />
+            <header><b>Readings</b></header>
+            <article>
+                <ul id="readings-list">
+                    <li><a href="CISC3667/readings/Iterative_Design%20(1).pdf" target="_blank" data-quiz="quiz1">Eric
+                            Zimmerman, Play as Research: The Iterative Design Process</a></li>
+                    <br />
+                    <li><b>What is a Game?</b></li>
+                    <ul>
+                        <li><a href="https://web.archive.org/web/20221208215052/http://www.thegamesjournal.com/articles/MyEntireWakingLife.shtml"
+                                target="_blank" data-group="what-is-game">Kevin Maroney, What is a Game?</a></li>
+                        <li><a href="CISC3667/readings/Jane%20McGonigal-%20Reality%20is%20Broken%20(1).pdf"
+                                target="_blank" data-group="what-is-game">Jane McGonigal, Reality is Broken</a></li>
+                        <li><a href="CISC3667/readings/Art%20of%20Game%20Design%20Chapter%204.pdf" target="_blank"
+                                data-group="what-is-game">Jesse Schell, The Art of Game Design, Chapter 4</a></li>
+                        <li><a href="https://www.erasmatazz.com/library/the-journal-of-computer/jcgd-volume-4/my-definition-of-game.html"
+                                target="_blank" data-group="what-is-game">Chris Crawford, My Definition of 'Game'</a>
+                        </li>
+                    </ul>
+                    <br />
+                    <li><b>Game Mechanics and Rules</b></li>
+                    <ul>
+                        <li><a href="CISC3667/readings/rules%20of%20play%20chapters%2011-12%20(1).pdf" target="_blank"
+                                data-quiz="quiz1">Rules of Play, by Salen & Zimmerman, Chapter 11-12</a>
+                        </li>
+                        <li><a href="CISC3667/readings/Art%20of%20Game%20Design%2C%20Chapter%205.pdf"
+                                target="_blank">Jesse Schell, The Art of Game
+                                Design, Chapter 5</a></li>
+                    </ul>
+                    <br />
+                    <li><b>Players' Relationship to Rules</b></li>
+                    <ul>
+                        <li><a href="CISC3667/readings/RulesofPlay.Ch21.pdf" target="_blank" data-quiz="quiz1">Rules of
+                                Play, by Salen & Zimmerman, Chapter 21</a>
+                        </li>
+                    </ul>
+                    <br />
+                    <li><b>Objects/Attributes/States/Actions, Feedback Loops</b></li>
+                    <ul>
+                        <li><a href="CISC3667/readings/Art%20of%20Game%20Design%20Chapter%2012.pdf"
+                                target="_blank">Jesse Schell, The Art of Game Design, Chapter 12</a>
+                        </li>
+                        <li><a href="CISC3667/readings/RulesofPlay.Ch18.pdf" target="_blank">Rules of Play, by Salen &
+                                Zimmerman, Chapter 18</a></li>
+                    </ul>
+                    <br />
+                    <li><b>Serious Games</b></li>
+                    <ul>
+                        <li><a href="CISC3667/readings/geeGBL.pdf" target="_blank" data-quiz="quiz1">James Paul Gee,
+                                Learning by Design: Good Video Games as Learning Machines</a>
+                        </li>
+                    </ul>
+                    <br />
+                    <li><b>Randomness and Probability</b></li>
+                    <ul>
+                        <li><a href="CISC3667/readings/Art%20of%20Game%20Design%20Chapter%2012%20chance.pdf"
+                                target="_blank">Jesse Schell, The Art of Game Design, Chapter 12:
+                                Chance</a>
+                        </li>
+                    </ul>
+                </ul>
+
+                <p>In addition, you are more than welcome to read any other game design or development books you
+                    find interesting. Here are a few suggestions:</p>
+                <ul>
+                    <li><b>The Art of Game Design: A Book of Lenses</b> by Jesse Schell</li>
+                    <li><b>Rules of Play: Game Design Fundamentals</b> by Katie Salen and Eric Zimmerman</li>
+                    <li><b>Game Design Workshop: A Playcentric Approach to Creating Innovative Games</b> by Tracy
+                        Fullerton</li>
+                </ul>
+
+                <p>If you have any suggestions for additional readings, please let me know!</p>
+            </article>
+            <br />
+            <hr />
+        </section>
+
+        <section class="main-section" id="Homework">
+            <br />
+            <header><b>Homework</b></header>
+            <article>
+                <p>Homework will be listed both here and on Brightspace and <b>MUST</b> be submitted via Brightspace
+                    unless instructed otherwise.
+                </p>
+                <p>Homework:</p>
+                <ul>
+                    <li>
+                        <p>
+                            <b><u>Homework 0</u>:</b> If I do not have it already, please email me your preferred email
+                            address to ensure that you receive any class messages that will be sent out.
+                        </p>
+                    </li>
+                </ul>
+                <ul style="column-count: 1; font-size: 29px">
+                    <li><b><a href="CISC3667/homeworks/CISC 3667 - HW 1_ What is a Game_.pdf" target="_blank"
+                                rel="noopener">Homework 1</a>: DUE 09/01 EOD</b> - The purpose of this assignment is to
+                        critically examine what counts as a "game" through the lens of different game design theorists.
+                        Submit your 1-2 page response on Brightspace.
+                    </li>
+                    <!--<br />-->
+
+                </ul>
+
+            </article>
+            <br />
+            <hr />
+        </section>
+
+        <section class="main-section" id="Group_Projects">
+            <br />
+            <header><b>Group Projects</b></header>
+            <article>
+                <p>Group projects will be listed both here and on Brightspace and <b>MUST</b> be submitted via
+                    Brightspace unless instructed otherwise.
+                </p>
+
+                    <ul style="column-count: 2; font-size: 29px"></ul>
+                    <li>
+                        <b><a href="CISC3667/groups/CISC%203667%20F25%20Group%20Project%201%20Groups.pdf"
+                                target="_blank" rel="noopener">List of Group Project 1 Groups</a></b>
+                    </li>
+                    <li><b><a href="CISC3667/group%20projects/CISC%203667%20-%20Group%20Project%201_%20Race%20to%20the%20End!.pdf"
+                                target="_blank" rel="noopener">Group Project 1</a>: DUE 09/15 EOD</b>
+                    </li>
+
+                </ul>
+                <!--<br />-->
+
+            </article>
+            <br />
+            <hr />
+        </section>
+
+
+
+    </main>
+
+    <!-- Gamification Button -->
+    <div id="game-panel-button">🎮</div>
+
+    <!-- Gamification Panel -->
+    <div id="game-panel">
+        <h3>⭐ XP & Level</h3>
+        <div id="xp-display">XP: 0 | Level: 1</div>
+        <div class="progress-bar-container">
+            <div class="progress-bar" id="xp-bar"></div>
+        </div>
+
+        <!-- Wrap quizzes in a container -->
+        <div id="quiz-section" style="display:none;">
+            <h3>Quizzes</h3>
+            <!-- inside #quiz-buttons -->
+            <div id="quiz-buttons">
+                <button class="quiz-button" data-quiz="quiz-what-is-game">Take Quiz: What is a Game?</button>
+                <button class="quiz-button" data-quiz="quiz-randomness">Take Quiz: Randomness & Probability</button>
+            </div>
+        </div>
+
+        <h3>Badges</h3>
+        <div id="badge-area">
+            <p>No badges yet—explore the site to earn some!</p>
+        </div>
+
+        <button id="screenshot-mode">Toggle View</button>
+        <button id="reset-progress">Reset Progress</button>
+    </div>
+
+
+    <!-- Hidden Star -->
+    <div id="hidden-star">⭐</div>
+
+    <!-- Secret Modal -->
+    <div id="secret-modal" class="modal">
+        <div class="content">
+            🎉 Secret Star Found! <br> Badge Unlocked! <br>
+            <button onclick="closeSecret()">Close</button>
+        </div>
+    </div>
+
+    <!-- Quiz Modal -->
+    <div id="quiz-modal" class="modal">
+        <div class="content" id="quiz-content"></div>
+    </div>
+
+    <!-- Popup -->
+    <div id="popup" class="popup"></div>
+
+    <script>
+        // === Gamification Data ===
+        let xp = parseInt(localStorage.getItem('xp')) || 0;
+        let level = parseInt(localStorage.getItem('level')) || 1;
+        let readPDFs = JSON.parse(localStorage.getItem('readPDFs')) || [];
+        let completedQuizzes = JSON.parse(localStorage.getItem('completedQuizzes')) || [];
+        let badges = JSON.parse(localStorage.getItem('badges')) || [];
+        let quizAttempts = JSON.parse(localStorage.getItem('quizAttempts')) || {};
+        let lastQuizPerfect = JSON.parse(localStorage.getItem('lastQuizPerfect')) || false;
+        let readingTimestamps = JSON.parse(localStorage.getItem('readingTimestamps')) || {};
+
+        const xpDisplay = document.getElementById('xp-display');
+        const xpBar = document.getElementById('xp-bar');
+        const badgeArea = document.getElementById('badge-area');
+        const readingLinks = document.querySelectorAll('#readings-list a');
+
+        // === Utility Functions ===
+        function updateXPBar() {
+            xpDisplay.textContent = `XP: ${xp} | Level: ${level}`;
+            xpBar.style.width = Math.min((xp / (level * 50)) * 100, 100) + '%';
+        }
+
+        function earnXP(amount) {
+            xp += amount;
+            if (xp >= level * 50) {
+                level++;
+                showPopup(`⬆️ Level Up! Now Level ${level}`);
+            }
+            localStorage.setItem('xp', xp);
+            localStorage.setItem('level', level);
+            updateXPBar();
+        }
+
+        function earnBadge(name) {
+            if (!badges.includes(name)) {
+                badges.push(name);
+                localStorage.setItem('badges', JSON.stringify(badges));
+                renderBadges();
+                showPopup(`🏅 Badge Unlocked: ${name}`);
+            }
+        }
+
+        function renderBadges() {
+            if (badges.length === 0) {
+                badgeArea.innerHTML = "<p>No badges yet—explore the site to earn some!</p>";
+            } else {
+                badgeArea.innerHTML = badges.map(b => `<span class="badge">${b}</span>`).join(" ");
+            }
+        }
+
+        function showPopup(msg) {
+            const popup = document.getElementById('popup');
+            popup.textContent = msg;
+            popup.classList.add('show');
+            setTimeout(() => popup.classList.remove('show'), 2500);
+        }
+
+        // === Dark Mode ===
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            document.body.classList.add('dark-mode');
+            document.querySelector('.change').textContent = 'ON';
+            if (!badges.includes("🌓 Dark Mode Devotee")) earnBadge("🌓 Dark Mode Devotee");
+        }
+
+        document.querySelector('.mode').addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const change = document.querySelector('.change');
+            if (document.body.classList.contains('dark-mode')) {
+                change.textContent = 'ON';
+                localStorage.setItem('darkMode', 'enabled');
+                if (!badges.includes("🌓 Dark Mode Devotee")) earnBadge("🌓 Dark Mode Devotee");
+            } else {
+                change.textContent = 'OFF';
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        });
+
+        // === Night Owl Badge ===
+        function checkNightOwl() {
+            const hour = new Date().getHours();
+            if (hour >= 0 && hour < 4) earnBadge("🌙 Night Owl");
+        }
+        checkNightOwl();
+
+        // === Hidden Star ===
+        document.getElementById('hidden-star').addEventListener('click', () => {
+            earnBadge('🌠 Secret Star Finder');
+            earnXP(50);
+            document.getElementById('secret-modal').style.display = 'flex';
+        });
+        function closeSecret() {
+            document.getElementById('secret-modal').style.display = 'none';
+        }
+
+        // === Panel Toggle ===
+        document.getElementById('game-panel-button').addEventListener('click', () => {
+            const panel = document.getElementById('game-panel');
+            panel.style.display = (panel.style.display === 'block' ? 'none' : 'block');
+        });
+
+        // === Screenshot Mode ===
+        document.getElementById('screenshot-mode').addEventListener('click', () => {
+            const panel = document.getElementById('game-panel');
+            panel.classList.toggle('screenshot-mode');
+            showPopup(panel.classList.contains('screenshot-mode') ? '📸 Screenshot Mode Activated' : '📄 Normal Mode Restored');
+        });
+
+        // === Reset Progress ===
+        document.getElementById('reset-progress').addEventListener('click', () => {
+            if (confirm('Reset all progress?')) {
+                localStorage.clear();
+                location.reload();
+            }
+        });
+        document.addEventListener('keydown', e => {
+            if (e.ctrlKey && e.key.toLowerCase() === 'r') document.getElementById('reset-progress').style.display = 'inline-block';
+        });
+
+        // === Readings Tracking ===
+        readingLinks.forEach(a => {
+            a.addEventListener('click', () => {
+                const pdfName = a.textContent.trim();
+                if (!readPDFs.includes(pdfName)) {
+                    readPDFs.push(pdfName);
+                    localStorage.setItem('readPDFs', JSON.stringify(readPDFs));
+                    readingTimestamps[pdfName] = Date.now();
+                    localStorage.setItem('readingTimestamps', JSON.stringify(readingTimestamps));
+                    earnXP(10);
+                    showPopup(`📖 Read: ${pdfName}`);
+                }
+                if (readPDFs.length === readingLinks.length) earnBadge('📚 Read All Readings');
+                updateQuizButtons();
+            });
+        });
+
+        // === Quiz Unlocking ===
+        function updateQuizButtons() {
+            let anyQuizUnlocked = false;
+            document.querySelectorAll('.quiz-button').forEach(btn => {
+                const quizId = btn.dataset.quiz;
+
+                if (quizId === "quiz-what-is-game") {
+                    const groupLinks = [...readingLinks].filter(a => a.dataset.group === "what-is-game");
+                    const allRead = groupLinks.every(a => readPDFs.includes(a.textContent.trim()));
+                    btn.style.display = allRead ? 'inline-block' : 'none';
+                    if (allRead) anyQuizUnlocked = true;
+                }
+
+                if (quizId === "quiz-randomness") {
+                    const randomnessLink = [...readingLinks].find(a => a.textContent.includes("Chance"));
+                    const read = randomnessLink && readPDFs.includes(randomnessLink.textContent.trim());
+                    btn.style.display = read ? 'inline-block' : 'none';
+                    if (read) anyQuizUnlocked = true;
+                }
+            });
+            document.getElementById('quiz-section').style.display = anyQuizUnlocked ? 'block' : 'none';
+        }
+
+        // === Quiz Logic ===
+        document.querySelectorAll('.quiz-button').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const quizId = btn.dataset.quiz;
+                const quizContent = document.getElementById('quiz-content');
+
+                if (quizId === "quiz-what-is-game") {
+                    quizContent.innerHTML = `
+                    <h3>Quiz: What is a Game?</h3>
+                    <form id="quiz-form">
+                        <p>1. According to Chris Crawford, which best describes Tetris?</p>
+                        <label><input type="radio" name="q1" value="a"> A toy</label><br>
+                        <label><input type="radio" name="q1" value="b"> A game</label><br>
+                        <label><input type="radio" name="q1" value="c"> A puzzle</label><br>
+                        <label><input type="radio" name="q1" value="d"> A challenge</label><br><br>
+
+                        <p>2. NOT required in Jane McGonigal's definition?</p>
+                        <label><input type="radio" name="q2" value="a"> Voluntary Participation</label><br>
+                        <label><input type="radio" name="q2" value="b"> Competition</label><br>
+                        <label><input type="radio" name="q2" value="c"> Feedback System</label><br>
+                        <label><input type="radio" name="q2" value="d"> Rules</label><br><br>
+
+                        <p>3. Jesse Schell describes games as...?</p>
+                        <label><input type="radio" name="q3" value="a"> A series of puzzles</label><br>
+                        <label><input type="radio" name="q3" value="b"> Problem-solving with playful attitude</label><br>
+                        <label><input type="radio" name="q3" value="c"> Play with goals and structure</label><br>
+                        <label><input type="radio" name="q3" value="d"> A distraction from life</label><br><br>
+
+                        <button type="button" onclick="submitQuiz('quiz-what-is-game')">Submit</button>
+                        <button type="button" onclick="closeQuiz()">Close</button>
+                    </form>`;
+                }
+
+                if (quizId === "quiz-randomness") {
+                    quizContent.innerHTML = `
+                    <h3>Quiz: Randomness & Probability</h3>
+                    <form id="quiz-form">
+                        <p>1. Randomness is used to...?</p>
+                        <label><input type="radio" name="q1" value="a"> Remove all strategy</label><br>
+                        <label><input type="radio" name="q1" value="b"> Create uncertainty and replayability</label><br>
+                        <label><input type="radio" name="q1" value="c"> Guarantee player victory</label><br>
+                        <label><input type="radio" name="q1" value="d"> Make rules irrelevant</label><br><br>
+
+                        <p>2. A fair six-sided die means...?</p>
+                        <label><input type="radio" name="q2" value="a"> Each outcome has probability 1/6</label><br>
+                        <label><input type="radio" name="q2" value="b"> Always rolls high numbers</label><br>
+                        <label><input type="radio" name="q2" value="c"> Odd numbers more likely</label><br>
+                        <label><input type="radio" name="q2" value="d"> Player chooses outcome</label><br><br>
+
+                        <p>3. Best balances randomness and skill?</p>
+                        <label><input type="radio" name="q3" value="a"> Rock-Paper-Scissors</label><br>
+                        <label><input type="radio" name="q3" value="b"> Poker</label><br>
+                        <label><input type="radio" name="q3" value="c"> Roulette</label><br>
+                        <label><input type="radio" name="q3" value="d"> Slot Machines</label><br><br>
+
+                        <button type="button" onclick="submitQuiz('quiz-randomness')">Submit</button>
+                        <button type="button" onclick="closeQuiz()">Close</button>
+                    </form>`;
+                }
+
+                document.getElementById('quiz-modal').style.display = 'flex';
+                if (completedQuizzes.includes(quizId)) {
+                    markCorrectAnswers(quizId);
+                    document.querySelectorAll('#quiz-form input').forEach(i => i.disabled = true);
+                }
+            });
+        });
+
+        function submitQuiz(quizId) {
+            const form = document.getElementById('quiz-form');
+            let answers = {};
+            let badgeName = "";
+            let xpReward = 50;
+
+            if (quizId === "quiz-what-is-game") {
+                answers = { q1: 'c', q2: 'b', q3: 'b' };
+                badgeName = "🎯 What is a Game? Quiz Mastery";
+            }
+            if (quizId === "quiz-randomness") {
+                answers = { q1: 'b', q2: 'a', q3: 'b' };
+                badgeName = "🎲 Randomness & Probability Quiz Mastery";
+            }
+
+            let correct = 0;
+            form.querySelectorAll("label").forEach(l => {
+                l.style.color = "";
+                const old = l.querySelector(".correct-label, .wrong-label");
+                if (old) old.remove();
+            });
+
+            Object.keys(answers).forEach(q => {
+                const options = form.querySelectorAll(`input[name="${q}"]`);
+                options.forEach(opt => {
+                    const lbl = opt.parentNode;
+                    if (opt.checked) {
+                        if (opt.value === answers[q]) {
+                            lbl.style.color = "green";
+                            if (!lbl.querySelector(".correct-label")) lbl.insertAdjacentHTML("beforeend", `<span class="correct-label"> ✅ Correct</span>`);
+                            correct++;
+                        } else {
+                            lbl.style.color = "red";
+                            if (!lbl.querySelector(".wrong-label")) lbl.insertAdjacentHTML("beforeend", `<span class="wrong-label"> ❌ Wrong</span>`);
+                        }
+                    }
+                });
+            });
+
+            if (!quizAttempts[quizId]) quizAttempts[quizId] = { tries: 0, passed: false };
+            quizAttempts[quizId].tries++;
+
+            if (correct === Object.keys(answers).length) {
+                earnXP(xpReward);
+                earnBadge(badgeName);
+                if (!completedQuizzes.includes(quizId)) {
+                    completedQuizzes.push(quizId);
+                    localStorage.setItem("completedQuizzes", JSON.stringify(completedQuizzes));
+                }
+                quizAttempts[quizId].passed = true;
+
+                // Speed Reader badge
+                const groupLinks = [...readingLinks].filter(a => a.dataset.group === quizId.split('-')[1]);
+                if (groupLinks.length > 0) {
+                    const earliest = Math.min(...groupLinks.map(a => readingTimestamps[a.textContent.trim()] || Date.now()));
+                    if ((Date.now() - earliest) <= 10 * 60 * 1000) earnBadge("⚡ Speed Reader");
+                }
+
+                // Persistence badge
+                if (quizAttempts[quizId].tries > 3) earnBadge("🔁 Persistence (3+ fails before passing)");
+
+                // Quiz Champion
+                if (completedQuizzes.length === document.querySelectorAll(".quiz-button").length) {
+                    earnBadge("👑 Quiz Champion (complete all quizzes)");
+                }
+
+                showPopup("✅ All answers correct! Badge earned.");
+                markCorrectAnswers(quizId);
+                form.querySelectorAll("input").forEach(i => i.disabled = true);
+            } else {
+                showPopup("❌ Some answers wrong. Try again!");
+            }
+
+            localStorage.setItem("quizAttempts", JSON.stringify(quizAttempts));
+            localStorage.setItem("lastQuizPerfect", JSON.stringify(lastQuizPerfect));
+            localStorage.setItem("readingTimestamps", JSON.stringify(readingTimestamps));
+        }
+
+        function markCorrectAnswers(quizId) {
+            const form = document.getElementById('quiz-form');
+            if (!form) return;
+
+            let answers = {};
+            if (quizId === "quiz-what-is-game") answers = { q1: 'c', q2: 'b', q3: 'b' };
+            if (quizId === "quiz-randomness") answers = { q1: 'b', q2: 'a', q3: 'b' };
+
+            Object.keys(answers).forEach(q => {
+                const option = form.querySelector(`input[name="${q}"][value="${answers[q]}"]`);
+                if (option) {
+                    const lbl = option.parentNode;
+                    lbl.style.color = "green";
+                    if (!lbl.querySelector(".correct-label")) lbl.insertAdjacentHTML("beforeend", `<span class="correct-label"> ✅ Correct</span>`);
+                }
+            });
+        }
+
+        function closeQuiz() {
+            document.getElementById('quiz-modal').style.display = 'none';
+        }
+
+        // === Initialize ===
+        renderBadges();
+        updateXPBar();
+        updateQuizButtons();
+    </script>
+
+
 </body>
-<script>
-  $(document).ready(function () {
-    $("#calendar").fullCalendar({
-      defaultView: "month",
-      events: [
-        {
-          title: "Start of Fall 2025 Semester",
-          start: "2025-08-26",
-          color: "#FF0000",
-        },
-        {
-          title: "First Day of TY11 Class",
-          start: "2025-08-26",
-          color: "#D186FF",
-        },
-        {
-          title: "HW 1 Assigned",
-          start: "2025-08-28",
-          color: "Orange",
-        },
-        {
-          title: "College Closed - No Classes Scheduled",
-          start: "2025-09-01", // Labor Day
-          color: "#FF0000",
-        },
-        {
-          title: "HW 1 Due EOD",
-          start: "2025-09-01",
-          color: "Blue",
-        },
-         {
-          title: "Group Project 1 Assigned",
-          start: "2025-09-04",
-          color: "Orange",
-        },
-        {
-          title: "Group Project 1 Due EOD",
-          start: "2025-09-15",
-          color: "Blue",
-        },
-        {
-          title: "No Classes Scheduled",
-          start: "2025-09-22", // Rosh Hashanah
-          end: "2025-09-24",
-          color: "#FF0000",
-        },
-        {
-          title: "No Classes Scheduled",
-          start: "2025-10-01", // Yom Kippur
-          end: "2025-10-03",
-          color: "#FF0000",
-        },
-        {
-          title: "College Closed - No Classes Scheduled",
-          start: "2025-10-13", // Indigenous Peoples' Day,
-          color: "#FF0000",
-        },
-        {
-          title: "No Class - Monday Schedule",
-          start: "2025-10-14", //Conversion Day - Monday Schedule
-          color: "#FF0000",
-        },
-        {
-          title: "No Classes Scheduled",
-          start: "2025-10-20",
-          color: "#FF0000",
-        },
-
-        {
-          title: "Conversion Day - Monday Schedule",
-          start: "2025-10-24", //Conversion Day - Monday Schedule
-          color: "#FF0000",
-        },
-
-        {
-          title: "Withdrawal Deadline",
-          start: "2025-11-06",
-          color: "#FF0000",
-        },
-
-
-        {
-          title: "No Class - Thanksgiving Holiday",
-          start: "2025-11-27",
-          end: "2025-11-30",
-          color: "#FF0000",
-        },
-        {
-          title: "End of Fall 2025 Semester",
-          start: "2025-12-15",
-          color: "#FF0000",
-        },
-
-
-      ],
-      eventRender: function (event, element) {
-        element.css("background-color", event.color); // set background color
-        element.css("border-color", event.color); // set border color
-      },
-    });
-  });
-</script>
 
 </html>
