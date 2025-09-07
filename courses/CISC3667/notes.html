@@ -1495,7 +1495,242 @@
       <br />
     </section>
     <hr />
+    <section class="main-section" id="Defining_Rules">
+      <br />
+      <header><b>Defining Rules</b></header>
+      <article>
+        <p>So let's talk about rules.</p>
 
+        <p>What are game rules? Let's begin with a simple example, one of the most minimal games we can find:
+          <i>Tic-Tac-Toe</i>
+        </p>
+
+        <p>The game of Tic-Tac-Toe is defined by the following set of rules:</p>
+
+        <ol>
+          <li>Play occurs on a 3 by 3 grid of 9 empty squares</li>
+          <li>Two players take turns marking empty squares, the first player marking Xs and the second player
+            marking Os</li>
+          <li>If one player places three of the same marks in a row, that player wins</li>
+          <li>If the spaces are all filled and there is no winner, the game ends in a draw</li>
+        </ol>
+
+        <p>These four rules completely describe the formal system of Tic-Tac-Toe. They don't describe the experience of
+          playing the game, they don't describe the history and culture of the game, but they do constitute the rules of
+          the game. These four rules are all you need to begin playing a game of Tic-Tac-Toe.</p>
+
+        <p>Astonishingly enough, these simple rules have generated millions and millions of hours of game play. Armed
+          with these rules, any two Tic-Tac-Toe players can be assured that when they begin play, they will both be
+          playing the exact same game.</p>
+
+        <p>Whether played in front of a computer terminal or scratched in the sand of a
+          beach, every game of Tic-Tac-Toe shares the same basic formal identity. In this sense, <b>rules are the deep
+            structure of a game from which all real-world instances of the game's play are derived</b>.</p>
+
+        <h3>Qualities of Rules</h3>
+
+        <p>What are game rules like? What sets them apart from other kinds of rules? How do they function in a game?
+          Consider the following list of rule characteristics:</p>
+
+        <ul>
+          <li><b>Rules limit player action</b>: The chief way that rules operate is to limit the activities of players.
+            <br /><br />If you are playing the dice game <i>Yatzee</i>, think of all of the things you could do with the
+            dice in that game:
+            you could light them on fire eat them, juggle them, or make jewelry out of them. But you do not do
+            any of these things. When you play a game of <i>Yatzee</i>, you follow the rules and do something
+            incredibly narrow and specific. When it is your turn, you roll the dice and interpret their numerical
+            results in particular ways.<br /><br /><b>Rules are "sets of instructions", and following those instructions
+              means
+              doing what the rules require and not doing something else instead.</b>
+          </li><br />
+          <li><b>Rules are explicit and unambiguous</b>: Rules are complete and lack any ambiguity. For example, if
+            you were going to play a board game and it wasn't clear what to do when you landed on a particular
+            space, that ambiguity would have to be cleared up in order to play.<br /><br />Similarly, rules have to be
+            totally
+            explicit in what they convey. If you were playing baseball in an abandoned lot and a tree was being
+            used as second base, ambiguities regarding what counted as second base could lead to a collapse of
+            the game. What can you touch and still be on second base? The roots? The branches? Or just the tree
+            trunk?</li><br />
+          <li><b>Rules are shared by all players</b>: In a game with many players all players share the same set of
+            rules.
+            If one player is operating under a set of rules different than the others, the game can break
+            down.<br /><br />Take
+            the abandoned lot baseball game example. If one player thinks that touching a branch of the tree is
+            legally touching second base, but another player thinks that only the trunk is the base and tags the
+            runner when he is holding onto a branch of the tree,is the player "out"? When the disagreement is
+            raised, the game grinds to a halt. For the situation to be resolved, allowing the game to continue, all
+            players must come to a common understanding of the rules and their application within play. It is not
+            enough that rules are explicitly and unambiguously stated: <b>the interpretation of the rules must also be
+              shared.</b></li><br />
+          <li><b>Rules are fixed</b>: The rules of a game are fixed and do not change as a game is played. If two
+            players
+            are playing a game of Chess and one of them suddenly announces a new rule that one of her own
+            pawns is invulnerable, the other player would most likely protest this sudden rule improvisation.
+            <br /><br />There are many games in which changing the rules is part of the game in some way; however, the
+            way
+            rules can be modified is always highly regulated. In professional sports, for example, changes to rules
+            must pass through a legislative process by governing organizations.<br /><br />Even in games in which the
+            rules
+            are changed during play itself, such as the whimsical card game Flux (in which playing a card can
+            change the overall game's goals and rules), the ways the rules change are quite limited and are
+            themselves determined by other, more fundamental rules.
+          </li><br />
+          <li><b>Rules are binding</b>: Rules are meant to be followed. The reason why the rules of a game can remain
+            fixed and shared is
+            because they are ultimately binding. In some games, the authority of the rules is manifest in the
+            persona of the referee.<br /><br />Like the rules themselves, the referee has an authority beyond that of an
+            ordinary player. If players did not feel that rules were binding, they would feel free to cheat or to
+            leave the game as a "spoil sport".</li><br />
+          <li><b>Rules are repeatable</b>: Rules are repeatable from game to game and are portable between sets of
+            different players. In a Magic: The Gathering tournament, all the players in the tournament follow the
+            same rules when they square off against each other. Outside of the limited context of an individual
+            tournament, the game rules are equally repeatable and portable.<br /><br />Although games often have "home
+            rules," such as the many different versions of rules for the "Free Parking" space in Monopoly, these
+            rule variants are just local variants on largely consistent rule sets. In any case, players must resolve
+            ambiguities between sets of "home rules" in order to play a game.</li>
+        </ul>
+
+        <p>These qualities of rules are in operation whenever one plays a game. If any of these qualities are not in
+          effect,
+          the game system may break down, making play impossible. If rules are ambiguous, players must resolve the
+          ambiguities before play begins. If rules are not binding, players won't respect their authority and might
+          cheat.</p>
+
+        <h3>Rules and Strategy</h3>
+
+        <p>One note of clarification about the difference between the rules of a game and rules of strategy: rules as we
+          understand them here as the formal structure of a game are not the same thing as strategies for play, even
+          though the two might seem similar.</p>
+
+        <p>While playing Tic-Tac-Toe, you might devise a "rule of thumb" to assist your play. For example, if your
+          opponent is about to win, you need to place a mark that will block your opponent. This kind of strategic
+          "rule"
+          is an important aspect of games (for example, you might use rules like this to program a computer opponent
+          for a Tic-Tac-Toe game), but <b>these rules of strategy are not part of the formal rules of the game</b>.</p>
+
+        <p>The actual
+          game rules are the core formal system that constitutes how a game functions. Rules that help players perform
+          better are not a part of this formal system.</p>
+
+        <p>Do these four rules specified constitute the complete formal system of Tic-Tac-Toe?</p>
+
+        <p>Although these rules do describe
+          to players what they need to know in order to play, there are aspects of the formal system of Tic-Tac-Toe that
+          are not included here.</p>
+
+        <p>Specifically, there are two kinds of formal structures that these four rules do not
+          completely cover: <b>the underlying mathematical structures of the game</b> and <b>the implied rules of game
+            etiquette</b>.</p>
+
+        <p>Let us explore these two kinds of formal structures one at a time. First, there is the foundational formal
+          structure that lies "under the hood" of the rules of Tic-Tac-Toe. Does such a structure exist? Is it different
+          than
+          the stated rules of play? There is, in fact, a core mathematical logic that is part of every game but that is
+          not
+          necessarily expressed directly in the stated rules of the game that a player must learn.</p>
+
+        <p>To understand this
+          point, take a look at a game thought experiment by Marc LeBlanc. The game is called 3-to-15.</p>
+
+        <p>Rules for 3-to-15:</p>
+
+        <ol>
+          <li>Two players alternate turns</li>
+          <li>On your turn, pick a number from 1 to 9</li>
+          <li>You may not pick a number that has already been picked by either player. If you have a set of exactly
+            3 numbers that sum to 15, you win</li>
+        </ol>
+
+        <p>What does this game have to do with Tic-Tac-Toe? At first glance, 3-to-15 doesn't seem anything like
+          Tic-Tac-Toe. Instead of making Xs and Os, players are picking numbers. There is not even mention of a grid.
+        </p>
+
+        <p>But if you look more closely, you will see that 3-to-15 is really just a disguised version of Tic-Tac-Toe.
+          The
+          numbers 1 to 9 can be arranged in a 3 by 3 grid like this:</p>
+
+        <pre><code class="language-none"> 8 | 1 | 6
+  ---------
+  3 | 5 | 7
+  ---------
+  4 | 9 | 2</code></pre>
+
+        <p>The underlying rules
+          found in both Tic-Tac-Toe and 3-to-15 look something like this:</p>
+
+        <ul>
+          <li>Two players alternate making a unique selection from a grid array of 3 by 3 units.</li>
+          <li>The first player to select three units in a horizontal, vertical, or diagonal row is the winner</li>
+          <li>If no player can make a selection and there is no winner, then the game ends in a draw</li>
+        </ul>
+
+        <p>These "rules" resemble both the rules of Tic-Tac-Toe and 3-to-15, with some significant differences. For
+          example, the rules don't mention how the player makes a selection from the array of choices, or how to record
+          a player's action. The rules above are a kind of abstraction of both games.</p>
+
+        <p>Questions remain: is 3-to-15 a variant of Tic-Tac-Toe or a different game entirely? If it is a different
+          game,
+          what does it share with Tic-Tac-Toe? What does all of this say about the "rules" of Tic-Tac-Toe?</p>
+
+        <p> For the time being, just note that there are in fact formal aspects of games
+          such as Tic-Tac-Toe that lie underneath the stated "rules of play".</p>
+
+        <h3>Three Kinds of Rules</h3>
+
+        <p>As the example of Tic-Tac-Toe demonstrates, in order to fully understand the formal operation of a game, we
+          need to complexify our understanding of game rules. We propose a three-part system for understanding what
+          game rules are and how they operate.</p>
+
+        <ol>
+          <li><b>Operational rules</b>: the "rules of play" of a game.They are what we normally think of as rules: the
+            guidelines
+            players require in order to play. The operational rules are usually synonymous with the written-out "rules"
+            that
+            accompany board games and other non-digital games.<br /><br />The operational rules of Tic-Tac-Toe are the
+            four rules
+            we initially presented</li><br />
+          <li><b>Constitutive rules</b>: the underlying formal structures that exist "below the surface" of the
+            rules presented to players. These formal structures are logical and mathematical.<br /><br />In the case of
+            Tic-Tac-Toe,
+            the constitutive rules are the underlying mathematical logic that Tic-Tac-Toe shares with the game 3-to-15.
+          </li>
+          <li><b>Implicit rules</b>: the "unwritten rules" of a game. These rules concern etiquette, good sportsmanship,
+            and
+            other implied rules of proper game behavior. The number of implicit rules of Tic-Tac-Toe is vast and cannot
+            be completely listed.<br /><br />The implicit rules of Tic-Tac-Toe are similar to the implicit rules of
+            other turn-based
+            games such as Chess. However, <b>implicit rules can change from game to game and from context to
+              context</b>.<br /><br />
+            For example, you might let a young child "take back" a foolish move in a game of Chess, but you probably
+            wouldn't let your opponent do the same in a hotly contested grudge match.</li>
+        </ol>
+
+        <p>The <b>operational rules for any particular game build directly on that game's constitutive rules</b>.
+          However, <b>any given set of constitutive rules can be expressed in many different operational forms</b>.
+        </p>
+
+        <p><b>There is a fuzzy boundary between operational and implicit rules</b>. For example, sometimes a game
+          designer may make certain implicit rules explicit by including them in the printed rules of a game</p>
+
+        <p>The <b>formal identity</b> of a game allows us to distinguish a game as formally unique and distinct from
+          other games. This identity emerges from <b>the relationship between the game's constitutive rules and
+            operational rules</b>.</p>
+
+        <p>Key in establishing the formal identity of a game is the <b>specificity</b> of the rules. The exact and
+          unambiguous nature of the constitutive and operational rules allow a game to be this game and not
+          that game.</p>
+
+        <p><b>Elegant rules</b> allow players to <b>focus on the experience of play rather than on the logic of the rules</b>.
+          Designing meaningful play involves building discernable and integrated relationships between action
+          and outcome into all levels of the rules of a game. Elegant rules translate constitutive rules into
+          operational rules in a way that maximizes intuitive and pleasurable gameplay.</p>
+
+
+
+      </article>
+      <br />
+    </section>
+    <hr />
 
 
 
