@@ -58,24 +58,7 @@ public class CitiesComparison {
 
 ----------------------------------------------------------------------------------------
 
-LAB 1 TO BE DISCUSSED IN CLASS
-
-----------------------------------------------------------------------------------------
-
-6) In Permutations, the order matters. So ABC would be one permutation and ACB would be another, for example. Now, there are 6 (3 factorial) permutations of ABC.
-
-name1 = stdin.next();
-name2 = stdin.next();
-name3 = stdin.next();
-
-System.out.println(name1 + ", " + name2 + ", and " + name3);
-System.out.println(name1 + ", " + name3 + ", and " + name2);
-System.out.println(name2 + ", " + name1 + ", and " + name3);
-System.out.println(name2 + ", " + name3 + ", and " + name1);
-System.out.println(name3 + ", " + name2 + ", and " + name1);
-System.out.println(name3 + ", " + name1 + ", and " + name2);
-
-7) 
+6) 
 
 import java.util.Scanner;
 
@@ -104,7 +87,7 @@ public class SecondsConversion {
     }
 }
 
-8) 
+7) 
 
 public class RandomFile {
     public static void main(String[] args) throws Exception{
@@ -144,3 +127,9 @@ public class RandomFile {
         sc.close();
     }
 }
+
+----------------------------------------------------------------------------------------
+
+LAB 1 TO BE DISCUSSED IN CLASS
+
+----------------------------------------------------------------------------------------
