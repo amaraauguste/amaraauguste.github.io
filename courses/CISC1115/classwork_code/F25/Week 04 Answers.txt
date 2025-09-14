@@ -28,7 +28,27 @@ else {
 
 ----------------------------------------------------------------------------------------
 
-1)
+1) 
+
+switch(response) {
+		case 'y': System.out.print("Your request is being processed"); break;
+		case 'n': System.out.print("Thank you anyway for your consideration"); break;
+		case 'h': System.out.print("Sorry, no help is currently available"); break;
+		default: System.out.print("Invalid entry; please try again"); break;
+}
+System.out.println();
+
+2)
+
+switch(status) {
+	case 200: System.out.print("OK (fulfilled)"); break;
+	case 403: System.out.print("forbidden"); break;
+	case 404: System.out.print("not found"); break;
+	case 500: System.out.print("server error"); break;
+}
+
+
+3)
 
 import java.util.Scanner;
 
@@ -96,7 +116,7 @@ public class Question5 {
     }
 }
 
-2)
+4)
 
 import java.util.Scanner;
 
