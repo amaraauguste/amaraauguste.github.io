@@ -37,8 +37,8 @@
     <a class="nav-link" href="#Week2" style="font-size: 22px">Week 2</a>
     <a class="nav-link" href="#Week3" style="font-size: 22px">Week 3</a>
     <a class="nav-link" href="#Week4" style="font-size: 22px">Week 4</a>
-    <!--<a class="nav-link" href="#Week5" style="font-size: 22px">Week 5</a>
-    <a class="nav-link" href="#Exam1" style="font-size: 22px">Exam 1 Review</a>
+    <a class="nav-link" href="#Week5" style="font-size: 22px">Week 5</a>
+    <!--<a class="nav-link" href="#Exam1" style="font-size: 22px">Exam 1 Review</a>
     <a class="nav-link" href="#Week8" style="font-size: 22px">Week 8</a>
     <a class="nav-link" href="#Week9" style="font-size: 22px">Week 9</a>
     <a class="nav-link" href="#Week10" style="font-size: 22px">Week 10</a>
@@ -676,32 +676,22 @@ b += 2 * 3 - 1;</code></pre>
       <ul style="list-style: none;">
         <li>First, <b>prompt the user for the number that they want to reverse</b></li>
         <br>
-        <li>Create any necessary variables, we will need two:</li>
-        <ol>
-          <li>a variable initialized to 0 to <b>hold the reversed number</b> (let's call it <b>reverseNum</b>)</li>
-          <li>a variable to hold the temporary values needed during calculation also initialized to 0 (let's call it <b>rem</b>)</li>
-        </ol>
+        <li>Then, create the variables:
+          <ul>
+            <li><b>reverseNum</b>, initialized to 0, to hold the reversed number</li>
+            <li><b>rem</b>, initialized to 0, to temporarily hold digits as we extract them</li>
+          </ul>
+          </li> 
         <br>
-        <li>At the beginning of each loop, we'll <b>multiply reverseNum by 10</b>.</li>
-        <br>
-        <li>Now, let's take our <b>original number and divide it by 10 using the modulus operator</b>. 
-          This is to find a single-digit remainder which equals the current last digit of nums, 
-          we can hold that value in our temporary variable <b>rem</b>.</li>
-          <br>
-        <li>Then <b>subtract rem from num and divide the result by 10</b>. And now we're left with the same integer, but one digit less.
-          <br><br>(Why are we dividing and multiplying numbers by 10? <br><br>
-          It's because we're replicating decimal place values where each place has a value of times ten from right to left.<br><br>
-Dividing by 10 eliminates the last zero in num, which then gives us access to the next digit that ends up in the ones place.<br><br>
-Multiplying reverseNum by 10 makes room in the ones place where we can place the digit we popped off from num.)
+        <li>Next, use a <b>while loop to extract each digit from the number</b> and build the reversed number:
+          <ul>
+            <li>Extract the last digit of num by using modulus operator (%) with 10 and store it in rem</li>
+            <li>Build the reversed number by multiplying reverseNum by 10 and adding rem to it</li>
+            <li>Remove the last digit from num by performing integer division (/) by 10</li>
+          </ul>
         </li>
-        <br> 
-        <li>Next, it's time to "push" the "popped" digit from num by taking the remainder 
-          (that we saved in the variable <b>rem</b>) and <b>adding it to reverseNum</b>.</li>
-         <br>
-        <li><b>Now, we've completed one cycle of this process</b>.</li>
         <br>
-        <li><b>Repeat until num's value dwindles to 0 and there are no more digits to 'pop' or 'push'</b>.<br><br>
-          After the reversal of digits is complete, <b>we can finally print out reverseNum</b>.</li>
+        <li>Finally, <b>print out the reversed number</b></li>
       </ul>
 
       <!--<p>
