@@ -1,0 +1,129 @@
+REVIEW:
+
+a)
+
+import java.util.Scanner;
+
+public class NumberSeries {
+    public static void main(String[] args) {
+        //Initialize Scanner class for user input
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a starting number: ");
+        int start = sc.nextInt();
+
+        System.out.print("Enter an ending number: ");
+        int end = sc.nextInt();
+
+        //Perform a while loop to display numbers between start and end numbers
+        int i = start;
+        while (i <= end) {
+            System.out.print(i + " ");
+            i++;
+        }
+        sc.close();
+    }
+}
+
+
+b) 
+
+import java.util.Scanner;
+
+public class AverageValue {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter an integer value, (0 to end and get average): ");
+        int num = sc.nextInt();
+        int sum = 0;
+        int count = 0;
+        while (num != 0) {
+            sum += num;
+            count++;
+            System.out.print("Add another integer value, (0 to end and get average): ");
+            num = sc.nextInt();
+        }
+        System.out.printf("The average is: %.2f", sum/((double)count));
+        sc.close();
+    }
+
+c) 10
+   5
+   6
+   3
+   4
+   2
+
+----------------------------------------------------------------------------------------
+
+1)  
+
+total = 0; //important to make sure total is 0
+k = 1;
+do {
+   total + =Math.pow(k,2); //OR k*k
+   k++;
+} while (k <= 50);
+
+
+2) 
+
+public static void main(String []args) {
+        //declaring and initializing variables
+        int fact = 1;
+        int i = 1;
+
+        //creating object of Scanner class
+        Scanner sc = new Scanner(System.in);
+
+        //accepting a number from the user
+        System.out.print("Enter a number whose factorial is to be found: ");
+        int num = sc.nextInt();
+
+        //counting the factorial using while loop
+        while( i <= num ) {
+            fact = fact * i;
+            i++; //increment i by 1
+        }
+
+        //printing the result
+        System.out.println("\nFactorial of " + num + " is: " + fact);
+    }
+
+3) 
+
+import java.util.Scanner;
+
+public class ReverseNumber {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        // Step 1: Prompt the user
+        System.out.print("Enter an integer: ");
+        int num = input.nextInt();
+
+        // Step 2: Create variables
+        int reverseNum = 0; // to hold reversed number
+        int rem = 0;        // to hold remainders
+
+        // Step 3: Loop until num becomes 0
+        while (num != 0) {
+            // get remainder (last digit)
+            rem = num % 10;
+
+            // shift digits in reverseNum to the left
+            reverseNum = reverseNum * 10 + rem;
+
+            // remove last digit from num
+            num = num / 10;
+        }
+
+        // Step 4: Output the result
+        System.out.println("Reversed number: " + reverseNum);
+
+        input.close();
+    }
+}
+
+
+
+}
