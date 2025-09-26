@@ -1,0 +1,107 @@
+REVIEW:
+
+a) 
+
+public static void main(String []args) {
+        //declaring and initializing variables
+        int fact = 1;
+        int i = 1;
+
+        //creating object of Scanner class
+        Scanner sc = new Scanner(System.in);
+
+        //accepting a number from the user
+        System.out.print("Enter a number whose factorial is to be found: ");
+        int num = sc.nextInt();
+
+        //counting the factorial using while loop
+        while( i <= num ) {
+            fact = fact * i;
+            i++; //increment i by 1
+        }
+
+        //printing the result
+        System.out.println("\nFactorial of " + num + " is: " + fact);
+    }
+
+b) 
+
+import java.util.Scanner;
+
+public class ReverseNumber {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        // Step 1: Prompt the user
+        System.out.print("Enter an integer: ");
+        int num = input.nextInt();
+
+        // Step 2: Create variables
+        int reverseNum = 0; // to hold reversed number
+        int rem = 0;        // to hold remainders
+
+        // Step 3: Loop until num becomes 0
+        while (num != 0) {
+            // get remainder (last digit)
+            rem = num % 10;
+
+            // shift digits in reverseNum to the left
+            reverseNum = reverseNum * 10 + rem;
+
+            // remove last digit from num
+            num = num / 10;
+        }
+
+        // Step 4: Output the result
+        System.out.println("Reversed number: " + reverseNum);
+
+        input.close();
+    }
+}
+
+----------------------------------------------------------------------------------------
+
+1)
+
+a. 
+
+for(int i = 1; i <= 20; i++){
+   if(i % 2 == 0){
+     System.out.println(i);
+   }
+}
+
+OR
+
+for(int i = 2; i <= 20; i+=2){
+   System.out.println(i);
+}
+
+b. 
+
+for(int i = 30; i <= 50; i++) {
+   if(i % 2 != 0) {
+     System.out.println(i);
+   }
+}
+
+OR 
+
+for(int i = 31; i <= 50; i+=2) {
+   System.out.println(i);
+}
+
+
+c. 
+
+for(int i = 10; i > 0; i--) {
+   System.out.println(i);
+}
+
+d. 
+
+int sum = 0;
+for(int i = 1; i <= 15; i++) { //runs 15 times
+   sum += i * 5;
+}
+System.out.println(sum);
