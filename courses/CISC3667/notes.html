@@ -68,6 +68,7 @@
             Mechanics</a>
           <a href="#Defining_Rules" onclick="closeDropdown()" style="font-size: 20px">Defining Rules</a>
           <a href="#Players_and_Rules" onclick="closeDropdown()" style="font-size: 20px">Players and Rules</a>
+          <a href="#Objects_attributes_states" onclick="closeDropdown()" style="font-size: 20px">Objects, Attributes, and States</a>
         </div>
       </li>
       <li>
@@ -2080,7 +2081,7 @@
             acknowledge this player position, which stands in contrast to the other four types.<br /><br />
             This player type is a "standard" and honest game player that plays the game as
             it was
-            designed to be played, following the rules and respecting their authority.</li><br/>
+            designed to be played, following the rules and respecting their authority.</li><br />
           <li><b>The Dedicated Player</b>: is similar to the standard player but has an extra zealousness toward
             succeeding
             at a game. The dedicated player follows the rules, is interested in winning, and possesses the lusory
@@ -2088,7 +2089,7 @@
             in order
             to master and perfect his or her play of the game, often finding and exploiting unusual strategies in order
             to
-            win. Examples: professional athletes, hardcore gamers.</li><br/>
+            win. Examples: professional athletes, hardcore gamers.</li><br />
           <li><b>The Unsportsmanlike Player</b>: This third type of player follows the rules of a game, but does so in a
             way that
             violates the spirit of the lusory attitude. Examples: The older sibling that never lets the younger sibling
@@ -2103,7 +2104,7 @@
             that
             is
             seen as unfair or ungentlemanly by other players.
-          </li><br/>
+          </li><br />
           <li><b>The Cheat</b>: The cheater, unlike the other kinds of game-players, actually violates the formal rules
             of the
             game, but does so in order to win the game. Example: The hide-and-seek player that peeks while the other
@@ -2111,7 +2112,7 @@
             possess a strong
             interest in winning, but will forgo the normal means of achieving victory. Acknowledging that other
             players can invoke the authority of the rules, cheaters break rules secretly.
-          </li><br/>
+          </li><br />
           <li><b>The Spoil-Sport</b>: This kind of game player is hardly a player at all. Unlike the cheat, the
             spoil-sport refuses to
             acknowledge the magic circle of the game and does not care about winning or about following the rules.
@@ -2329,7 +2330,8 @@
         <p>It is also recommended that you install some kind of editor, such as
           Visual Studio (Windows) or VS Code (cross-platform) for C# scripting.</p>
 
-        <p>We can learn about the basics of Unity <a href="https://docs.unity3d.com/Manual/index.html" target="_blank">here</a></p>
+        <p>We can learn about the basics of Unity <a href="https://docs.unity3d.com/Manual/index.html"
+            target="_blank">here</a></p>
 
         <p>To create a new project, go to the "Projects" tab in Unity Hub and click on the "New" button. Choose a
           template
@@ -2363,7 +2365,369 @@
       </article>
       <br />
     </section>
-    <!--<hr/>-->
+    <hr />
+    <section class="main-section" id="Objects_attributes_states">
+      <br />
+      <header><b>Objects, attributes, states</b></header>
+      <article>
+
+        <p>So as we mentioned before, games are made up of objects, attributes, and states. Let's look at each of these
+          in more detail.</p>
+
+        <p><b>Objects</b> are the entities that make up a game. We can think of these as the "nouns". They can be
+          physical
+          objects, like a player character or a game
+          board, or they can be abstract concepts, like a score or a timer.</p>
+
+
+        <p><b>Attributes</b> are categories of information about object -- such as the properties or characteristics of
+          objects.
+          Attributes can be things like size, color, speed, or health. They can also be more abstract, like a player's
+          score or a character's level of experience.</p>
+
+        <p><b>States</b> are the specific values that attributes can take on at any given time. States can be things
+          like "alive" or "dead", "moving" or "stationary", or "winning" or
+          "losing". They can also be more abstract, like a player's current score or a character's current level of
+          experience.</p>
+
+        <p>If objects are the nouns of game mechanics, attributes and their states are the
+          adjectives.</p>
+
+        <p>Attributes can be <b>static</b> (such as the color of a checker), never changing throughout the game, or
+          <b>dynamic</b>
+          (the checker has a "movement mode" attribute with three
+          possible states: "normal", "king", and "captured"). Primarily, we are interested in
+          dynamic attributes.
+        </p>
+
+        <p>The following are two more examples:</p>
+
+        <ol>
+          <li>In chess, the king has a “movement mode” attribute with three important states
+            ("free to move", "in check", and "checkmated".)</li>
+          <li>In Monopoly, each property on the board can be considered an object with a
+            dynamic “number of houses” attribute with six states (0, 1, 2, 3, 4, hotel) and a
+            “mortgaged” attribute with two states (yes, no).</li>
+        </ol>
+
+        <p>Is it important to communicate every state change to the player? Not necessarily.
+          S ome state changes are better hidden. But for others, it is crucial to be sure they are
+          communicated to the player.</p>
+
+        <p>Video game objects, especially ones that simulate intelligent characters, have
+          so many attributes and states that it is easy for a designer to get confused. It is
+          often useful to construct a state diagram for each attribute to make sure you
+          understand which states are connected to which and what triggers state changes.
+        </p>
+
+        <p>In terms of game programming, implementing the state of an attribute as a “state
+          machine” can be a very useful way to keep all this complexity tidy and easy to
+          debug.<br /><br />The following is a sample state diagram for the “movement” attribute of
+          the ghosts in Pac Man.</p>
+
+        <img src="images/pacman%20ghost%20state%20diagram.png" alt="Pacman Ghost State Diagram"
+          style="max-width: 100%; height: auto;" />
+
+        <p>The circle that reads "In Cage" is the initial state for the ghosts (double circle is
+          often used to indicate the start state).</p>
+
+        <p>Each of the arrows indicates a possible state
+          transition, with an event that triggers that transition.</p>
+
+        <p>Diagrams like these are very
+          useful when trying to design complex behaviors in a game. They force you to really
+          think through everything that can happen to an object and what makes it happen.</p>
+
+        <p>By implementing these state transitions in computer code, you automatically forbid
+          illegal transitions (such as "In Cage" → "Blue"), which helps cut down on puzzling
+          bugs.</p>
+
+        <p>These diagrams can get quite complicated and are sometimes nested. For
+          example, it is quite likely that the real Pac-Man algorithm actually has several sub-states in "Chasing Pac
+          Man", such as "Scanning for Pac-Man", "On Pac-Man's Tail",
+          and "Moving through a Tunnel".</p>
+
+        <p>Deciding which objects have what attributes and what states is up to you.</p>
+
+        <p>There
+          are often multiple ways to represent the same thing. In a game of poker, for example, you could define a
+          player's hand as an area of the game space that has five card
+          objects in it, or you could decide you don't want to think of cards as objects and
+          just call the player's hand an object that has five different card attributes.</p>
+
+        <p>As with
+          everything in game design, <b>the "right" way to think about something is whichever
+            way is most useful at the moment</b>.
+        </p>
+
+        <p>Case Study: Checkers</p>
+
+        <p>What are the <b>objects</b> in a game of checkers?</p>
+
+        <ul>
+          <li>The board</li>
+          <li>The pieces</li>
+        </ul>
+
+        <p>What are the objects' <b>attributes</b>?</p>
+        <ul>
+          <li>Colors</li>
+          <li>Position on the board</li>
+          <li>"Role" of pieces</li>
+        </ul>
+
+        <p>What are the attributes' <b>states</b>?</p>
+
+        <ul>
+          <li>Colors: black, red (static)</li>
+          <li>Position on the board: lots of squares
+            on board, along diagonal path (dynamic) (1,1), (1,2), ..., (8,8)</li>
+          <li>"Role" of pieces: normal/default, king, captured/out</li>
+
+          <p>Here is a simple state machine diagram of an object in the game of checkers:</p>
+
+          <img src="images/checkers%20state%20diagram.png" alt="Checkers State Diagram"
+            style="max-width: 100%; height: auto;" />
+
+          <p>Games that force the players to be aware of too many states (too many game
+            pieces, too many statistics about each character) to play can confuse and overwhelm. Thinking of your game
+            strictly as a
+            set of objects and attributes with changing states can give a very useful perspective.</p>
+
+          <h2>Secrets</h2>
+
+          <p>A very important decision about game attributes and their states is <b>who is aware
+              of which ones</b>.</p>
+
+          <p>In many board games, all information is <b>public; that is, everyone
+              knows it</b>.</p>
+
+          <p>This can be considered <b>perfect information</b>, since there are no secrets and players have all
+            information about current state of the game.</p>
+
+          <p>In a game of chess, both players can see every piece on the board and
+            every piece that has been captured—there are no secrets, except what the other
+            player is thinking.</p>
+
+          <p>In card games, <b>hidden or private state</b> is a big part of the game.
+            You know what cards you hold, but which ones your opponents hold is a mystery
+            for you to puzzle out. The game of poker, for example, is largely about trying to
+            guess what cards your opponents have while attempting to conceal information
+            about what cards you might have.</p>
+
+          <p>This is considered <b>imperfect information</b>, since players do not have all the
+            information about the current state of the game.</p>
+
+          <img src="images/deterministic%20vs%20chance.png" alt="Perfect vs Imperfect Information"
+            style="max-width: 100%; height: auto;" />
+
+          <p><b>Games become dramatically different when you
+              change what information is public or private</b>.</p>
+
+          <p>In standard "draw poker", all states
+            are private—players can only guess your hand based on how much you bet. In "stud
+            poker", some of your cards are private and some are public. This gives opponents
+            much more information about each other's situations, and the game feels very different.</p>
+
+          <p>Board games such as Battleship and Stratego are all about guessing the states
+            of your opponent's private attributes.</p>
+
+          <p>In video games, we face something new: <b>a state that only the game itself knows
+              about</b>.</p>
+
+          <p>This raises a question about whether virtual opponents, from a game
+            mechanics standpoint, should be thought of as players or just part of the game.</p>
+
+          <p>From a public/private attribute point of view, it makes sense
+            to consider <b>virtual opponents as individual entities on par with players</b>. <b>The game
+              itself, though, is yet another entity, with a special status</b>, since it isn't really playing
+            the game, although it may be making decisions that enable the game to happen.</p>
+
+          <p>Game Designer, Celia Pearce points out another kind of information, which is private from all of
+            the entities we have mentioned so far: <b>randomly generated information</b>, such as a
+            die roll.</p>
+
+          <p>Depending on your views about predestination, you might argue that this
+            information doesn't even exist until it is generated and revealed, so that referring to
+            it as private is a little silly.</p>
+
+          <p>But the point is that this information is not known to any of the players, the
+            virtual opponents, or even the game itself until it is generated. This kind of information is
+            crucial to many games, since it introduces an element of chance and uncertainty.</p>
+
+          <p>This all fits well into a Venn diagram known as the "<b>hierarchy of knowers</b>", which helps to visualize
+            the relationship between the public and
+            private states:</p>
+
+          <img src="images/hierarchy%20of%20knowers.png" alt="Hierarchy of Knowers"
+            style="max-width: 100%; height: auto;" />
+
+          <p>Each circle in above figure represents a "knower". The "knowers" are <b>god, the
+              game, and players 1, 2, and 3</b>.</p>
+
+          <p>Each point represents some information in the game—
+            the state of an attribute:</p>
+
+          <ul>
+            <li>Point A is information that is completely public and known to everyone, such as the position playing
+              piece on
+              a game board, or a face-up card. All the players are aware of it.</li>
+            <li>Point B is the state that is shared between players 2 and 3 but kept secret from player 1.
+              Perhaps 2 and 3 each had the opportunity to look at a face-down card, but player
+              1 didn't. Or maybe players 2 and 3 are virtual opponents of player 1, and their
+              algorithm has them sharing information so they can team up against player 1.</li>
+            <li>Point C is information private to a single player, in this case player 2. It could be cards
+              he was dealt, for example.</li>
+            <li>Point D is information that the game knows about, but not the players themselves.<br /><br />
+              There are some mechanical board games where this kind of state exists in the
+              physical structure of the board game, but is unknown to the players. Stay Alive
+              was a classic example, with plastic sliders that when moved revealed holes in
+              the board.<br /><br />Touché is another interesting example, where magnets of unknown
+              polarity are placed under each square of the board. The states are "known"
+              by the game, but not by the players.<br /><br />Another example is tabletop role-playing
+              games, which feature a "dungeon master", or "game master", who is not one of
+              the players and who privately knows a great deal of the game state, since he is
+              the operational mechanism of the game, so to speak. Most computer games have
+              a great deal of internal state that is not known to the players.</li>
+            <li>Point E is randomly generated information, known only by the fates, god, etc.</li>
+          </ul>
+
+          <p>This diagram helps us see how different pieces of information can be public or private to different
+            entities in a game. It also shows how the game itself can have its own private information that players
+            don't know about.</p>
+
+          <p><b>Game-playing is decision making. Decisions are made based on information</b>.
+            Deciding the different attributes, their states, and who knows about them is
+            core to the mechanics of your game.</p>
+
+          <p>Small changes to who knows what information can radically change a game, sometimes for the better,
+            sometimes for
+            the worse. Who knows about what attributes can even change over the course
+            of a game—a great way to create drama in your game is to make an important
+            piece of private information suddenly become public.</p>
+
+          <h2>Emergent Gameplay</h2>
+
+          <p>Strategic actions are when players make decisions based on the game's rules and their understanding of the
+            game mechanics. These actions are often planned and deliberate, as players try to outthink their opponents
+            and achieve their goals within the game's framework.</p>
+
+          <p>The strategic actions often involve subtle interactions within the game and are often
+            very strategic moves. These actions are mostly not part of the rules, per se, but
+            rather <b>actions and strategies that emerge naturally as the game is played</b>.</p>
+
+          <p>Most
+            game designers agree that interesting emergent actions are the hallmark of a good
+            game.</p>
+
+          <p>Trying to create "<b>emergent gameplay</b>", that is, interesting strategic actions, has
+            been likened to tending a garden, since what emerges has a life of its own, but at
+            the same time, it is fragile and easily destroyed.</p>
+
+          <p>When you notice some interesting
+            strategic actions showing up in your game, you must be able to recognize them and
+            then do what you can to nurture them and give them a chance to flourish. But what
+            makes these things spring up in the first place?</p>
+
+          <p>It is not just luck—there are things
+            you can do to increase the chances of interesting strategic actions appearing.</p>
+
+          <p>Here
+            are five tips for preparing the soil of your game and planting seeds of emergence:</p>
+
+          <ol>
+            <li><b>Add more verbs</b>: That is, add more basic actions. The strategic actions appear
+              when basic actions interact with each other, with objects, and with the game
+              space. When you add more basic actions, there are more opportunities for interaction and thus emergence.
+              <br /><br />A game where you can run, jump, shoot, buy, sell,
+              drive, and build is going to have a lot more potential for emergence than a game
+              where you can just run and jump.<br /><br />Be careful, though—adding too many basic
+              actions, especially ones that don't interact with each other well, can lead to a
+              game that is bloated, confusing, and inelegant. Keep in mind that the ratio
+              of strategic actions to basic actions is more important than the sheer number
+              of basic actions.<br /><br /><b>It is usually better to add one good basic action than a slew of
+                mediocre ones.</b>
+            </li>
+            <li><b>Verbs that can act on many objects</b>: This is possibly the single most powerful
+              thing you can do to make an elegant, interesting game.<br /><br />If you give a player a gun
+              that can only shoot bad guys, you have a very simple game. But if that same gun
+              can also be used to shoot a lock off a door, break a window, hunt for food, pop
+              a car tire, or write messages on the wall, you now start to enter a world of many
+              possibilities.<br /><br />You still only have one basic action: "shoot", but by increasing the
+              number of things you can usefully shoot at, the number of meaningful strategic
+              actions increases as well.</li>
+            <li><b>Goals that can be achieved more than one way</b>: It's great to let players do all
+              kinds of different things in your game, giving them lots of verbs, and verbs
+              with lots of objects. But if the goals can only be achieved one way, players
+              have no reason to look for unusual interactions and interesting strategies.<br /><br />To
+              follow up with the “shoot” example, if you let players shoot all kinds of things,
+              but the goal of your game is just “shoot the boss monster,” the players will
+              only do that. On the other hand, if you can shoot the monster, or shoot out a
+              support chain so a chandelier could crash down on him, or maybe even not
+              shoot him at all, but stop him through some nonviolent means, you will have
+              a rich, dynamic gameplay, where lots of things are possible.<br /><br />The challenge
+              with this approach is that the game becomes hard to balance, for if one of the
+              options is always significantly easier than the others (a dominant strategy), players will always pursue
+              that option.</li>
+            <li><b>Many subjects</b>: If checkers involved just one red checker and one black one but
+              had the same rules, the game would not be interesting at all.<br /><br />It is because the
+              players have many different pieces they can move, pieces that can interact with
+              one another, coordinating and sacrificing, that the game becomes interesting.
+              This method obviously doesn't work for all games, but it can work in some surprising
+              places.<br /><br />The number of strategic actions seems to have roughly a magnitude of subjects times
+              verbs times objects, so adding more subjects is very likely
+              to increase the number of strategic actions.</li>
+            <li><b>Side effects that change constraints</b>: If every time you take an action, it
+              has side effects that change the constraints on you or your opponent, very
+              interesting gameplay is likely to result.<br /><br />Let us again look to checkers: every
+              time you move a piece, you not only change the squares that you threaten
+              with capture, but you simultaneously change which squares your opponent
+              (and you) can move into.<br /><br />In a sense, every move changes the very nature
+              of the game space, whether or not you intended it to. Think how different
+              checkers would be if multiple pieces could peacefully cohabitate on a single
+              square.<br /><br />By forcing multiple aspects of the game to change with every basic
+              action, you are very likely to cause interesting strategic actions to suddenly
+              appear.</li>
+          </ol>
+
+          <p>When comparing games with books and films, one of the most striking differences is the number of verbs.</p>
+
+          <p>The reason so many games seem similar to one another is because they use the
+            same set of actions.</p>
+
+          <p>Look at the games that are considered "<b>derivative</b>", and you
+            will see that they have the same set of actions as older games. Look at games that
+            people call "<b>innovative</b>", and you will find that they give the players new kinds
+            of actions, either basic or strategic.</p>
+
+          <p>When <i>Donkey Kong</i> first appeared, it seemed
+            very different because it was about running and jumping, which was new at the
+            time. <i>Harvest Moon</i> was a game about farming. <i>Katamari Damacy</i> was about rolling a sticky ball.
+          </p>
+
+          <p>The actions a player can take are so crucial to defining a game's
+            mechanics that changing a single action can give you a completely different game.</p>
+
+      </article>
+      <br />
+    </section>
+    <hr />
+
+    <!--<section class="main-section" id="Feedback_Loops">
+      <br />
+      <header><b>Feedback Loops</b></header>
+      <article>
+
+        <p>A <b>feedback loop</b> is a situation where part of the output of a system is
+          used for new input.</p>
+
+        
+        
+
+      </article>
+      <br />
+    </section>
+    <hr />-->
 
 
 
