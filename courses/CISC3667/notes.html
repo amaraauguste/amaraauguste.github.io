@@ -70,6 +70,7 @@
           <a href="#Players_and_Rules" onclick="closeDropdown()" style="font-size: 20px">Players and Rules</a>
           <a href="#Objects_attributes_states" onclick="closeDropdown()" style="font-size: 20px">Objects, Attributes,
             and States</a>
+          <a href="#Feedback_Loops" onclick="closeDropdown()" style="font-size: 20px">Feedback Loops</a>
         </div>
       </li>
       <li>
@@ -2573,13 +2574,13 @@
         <ul>
           <li>Point A is information that is completely public and known to everyone, such as the position playing
             piece on
-            a game board, or a face-up card. All the players are aware of it.</li><br/>
+            a game board, or a face-up card. All the players are aware of it.</li><br />
           <li>Point B is the state that is shared between players 2 and 3 but kept secret from player 1.
             Perhaps 2 and 3 each had the opportunity to look at a face-down card, but player
             1 didn't. Or maybe players 2 and 3 are virtual opponents of player 1, and their
-            algorithm has them sharing information so they can team up against player 1.</li><br/>
+            algorithm has them sharing information so they can team up against player 1.</li><br />
           <li>Point C is information private to a single player, in this case player 2. It could be cards
-            he was dealt, for example.</li><br/>
+            he was dealt, for example.</li><br />
           <li>Point D is information that the game knows about, but not the players themselves.<br /><br />
             There are some mechanical board games where this kind of state exists in the
             physical structure of the board game, but is unknown to the players. Stay Alive
@@ -2590,7 +2591,7 @@
             games, which feature a "dungeon master", or "game master", who is not one of
             the players and who privately knows a great deal of the game state, since he is
             the operational mechanism of the game, so to speak. Most computer games have
-            a great deal of internal state that is not known to the players.</li><br/>
+            a great deal of internal state that is not known to the players.</li><br />
           <li>Point E is randomly generated information, known only by the fates, god, etc.</li>
         </ul>
 
@@ -2649,7 +2650,7 @@
             of strategic actions to basic actions is more important than the sheer number
             of basic actions.<br /><br /><b>It is usually better to add one good basic action than a slew of
               mediocre ones.</b>
-          </li><br/>
+          </li><br />
           <li><b>Verbs that can act on many objects</b>: This is possibly the single most powerful
             thing you can do to make an elegant, interesting game.<br /><br />If you give a player a gun
             that can only shoot bad guys, you have a very simple game. But if that same gun
@@ -2657,7 +2658,7 @@
             a car tire, or write messages on the wall, you now start to enter a world of many
             possibilities.<br /><br />You still only have one basic action: "shoot", but by increasing the
             number of things you can usefully shoot at, the number of meaningful strategic
-            actions increases as well.</li><br/>
+            actions increases as well.</li><br />
           <li><b>Goals that can be achieved more than one way</b>: It's great to let players do all
             kinds of different things in your game, giving them lots of verbs, and verbs
             with lots of objects. But if the goals can only be achieved one way, players
@@ -2670,7 +2671,7 @@
             a rich, dynamic gameplay, where lots of things are possible.<br /><br />The challenge
             with this approach is that the game becomes hard to balance, for if one of the
             options is always significantly easier than the others (a dominant strategy), players will always pursue
-            that option.</li><br/>
+            that option.</li><br />
           <li><b>Many subjects</b>: If checkers involved just one red checker and one black one but
             had the same rules, the game would not be interesting at all.<br /><br />It is because the
             players have many different pieces they can move, pieces that can interact with
@@ -2678,7 +2679,7 @@
             This method obviously doesn't work for all games, but it can work in some surprising
             places.<br /><br />The number of strategic actions seems to have roughly a magnitude of subjects times
             verbs times objects, so adding more subjects is very likely
-            to increase the number of strategic actions.</li><br/>
+            to increase the number of strategic actions.</li><br />
           <li><b>Side effects that change constraints</b>: If every time you take an action, it
             has side effects that change the constraints on you or your opponent, very
             interesting gameplay is likely to result.<br /><br />Let us again look to checkers: every
@@ -2715,16 +2716,47 @@
     </section>
     <hr />
 
-    <!--<section class="main-section" id="Feedback_Loops">
+    <section class="main-section" id="Feedback_Loops">
       <br />
       <header><b>Feedback Loops</b></header>
       <article>
+
+        <p>A cybernetic system contains three elements: a <b>sensor</b>, a <b>comparator</b>, and an <b>activator</b>.
+          The sensor senses
+          something about the environment or the internal state of a system. The comparator decides whether or not a
+          change to the system needs to be made as a result of the sensor's reading, and the activator activates that
+          change. Together, these three elements regulate how a system operates and changes over time.</p>
+
+        <p>A common example of a cybernetic system is a thermostat. Imagine a hot summer day and a room with an air
+          conditioner that is attached to a thermostat.</p>
+
+        <p>The thermostat contains the system's <b>sensor</b>, a thermometer.</p>
+
+        <p>The
+          thermostat also contains a <b>comparator</b> it can use to compare the temperature of the room to a user-set
+          temperature.</p>
+
+        <p>If the thermostat measures the air temperature above the set amount, it activates the air
+          conditioner, the <b>activator</b> of the system, which cools down the room.</p>
+
+        <p>As the air begins to cool, the system continues to monitor the room temperature. When the room is
+          sufficiently cooled so that the thermostat's sensor doesn't register the temperature as being above the set
+          limit,
+          the thermostat no longer sends a signal to activate the air conditioner, and so shuts off the cold air.
+          However,
+          the hot summer sun will begin to heat up the room again. When the temperature rises above the thermo-stat's
+          limit, the air conditioner will again be activated. This cyclic behavior of the system is the "<b>process of
+            output-feed-back-adjustment</b>".</p>
+
+        <p>The fact that the cybernetic system is running as a circuit,
+          constantly monitoring itself to see whether or not conditions have been met, is the reason why cybernetic
+          systems are sometimes called <b>feedback systems</b>, or <b>feedback loops</b></p>
 
         <p>In every <b>feedback loop</b>, information about the result of a transformation or an action is sent back to
           the input
           of the system in the form of input data.</p>
 
-        <p>Let's take an example of a thermostat: the input data is information about air
+        <p>Let's take our example of a thermostat: the input data is information about air
           temperature.</p>
 
         <p>If this data causes the system to continue moving in the same direction (the temperature
@@ -2752,24 +2784,158 @@
           comparator's threshold, it would continue to run, making the room colder and colder, so that the temperature
           would steadily get lower and lower.</p>
 
-          <p>How do feedback systems operate in games? As a cybernetic system, the rules of a game define the sensors,
-comparators, and activators of the game's feedback loops. Within a game, there are many sub-systems that
-regulate the flow of play, dynamically changing and transforming game elements. Do you want your game to
-move toward a balanced, steady state? Or do you want it to spin wildly toward one extreme or another?</p>
+        <p>How do feedback systems operate in games? As a cybernetic system, the rules of a game define the sensors,
+          comparators, and activators of the game's feedback loops. Within a game, there are many sub-systems that
+          regulate the flow of play, dynamically changing and transforming game elements. Do you want your game to
+          move toward a balanced, steady state? Or do you want it to spin wildly toward one extreme or another?</p>
 
-          <p>Designing feedback loops within your game can help you shape these tendencies. Feedback loops can be
-tricky to grasp, but they offer a crucial way of understanding how formal game systems function.</p>
+        <p>Designing feedback loops within your game can help you shape these tendencies. Feedback loops can be
+          tricky to grasp, but they offer a crucial way of understanding how formal game systems function.</p>
 
+        <p>Game designer Marc LeBlanc has done a great deal of thinking about the relationship between game design
+          and feedback systems, and this schema is indebted to LeBlanc's important work on the subject. In 1999,
+          LeBlanc gave a presentation at the Game Developer's Conference,titled "Feedback Systems and the
+          Dramatic Structure of Competition". </p>
 
+        <p>In this lecture, LeBlanc proposed a way of thinking about games as
+          feedback systems, summarized in the following chart:</p>
 
+        <img src="images/feedback%20loops.png" alt="Feedback Loops" style="max-width: 100%; height: auto;" />
 
+        <p>In this model, the <b>game state</b> represents the current condition of the game at any given moment. </p>
 
+        <p>In a Chess
+          game, for example, the game state is represented by the arrangement of the pieces on the board, the captured
+          pieces, and which player is about to move next. In a console fighting game such as Virtua Fighter 4, the game
+          state includes which two combatants were chosen, the health and other fixed and variable stats of the two
+          fighters, their relative spatial positions, and the arena in which they are fighting. </p>
 
+        <p>The game state is a <b>formal</b>
+          way of understanding the current status of the game, and does not take into account the skills, emotions, and
+          experience of the players. Of course, these player-based factors will definitely affect the game state.</p>
+
+        <p>The other elements of LeBlanc's model correspond directly to the components of a cybernetic system as we
+          have discussed them.</p>
+
+        <p>The scoring function is the system's <b>sensor</b> that <b>measures some aspect of the game state</b>.</p>
+
+        <p>The controller is the <b>comparator</b>, which <b>looks at the sensor's reading and makes the decision
+            whether or not to
+            take action</b>.</p>
+
+        <p>The game mechanical bias is the <b>activator</b>, a game <b>event or set of events that can be turned on or
+            off depending on the decision of the comparator</b>.</p>
+
+        <p>LeBlanc invented two variations on the
+          formal structure of Basketball: Positive Feedback Basketball and Negative Feedback Basketball.</p>
+
+        <p>Each
+          variation adds just a single rule on top of the existing formal structure of the game:</p>
+
+        <ul>
+          <li><b>Positive Feedback Basketball</b>: For every N points of difference in the two teams' scores, the
+            winning team may have an extra player in play.
+          </li>
+          <li><b>Negative Feedback Basketball</b>: For every N points of difference in the two teams' scores, the
+            losing team may have an extra player in play.</li>
+        </ul>
+
+        <p>How do the addition of these rules change the game? Say, for example, that N is 5.</p>
+
+        <p>In a game of Negative
+          Feedback Basketball, when Team A fell behind by 5 points, it would gain a player on the court and begin to
+          play with a team of 6. As soon as Team A scored points that put it behind by less than 5, it would drop its
+          extra player. On the other hand, if Team A continued to do poorly, when its score was 10 points behind the
+          other team, it would gain a second extra player.</p>
+
+        <p>Why is this an example of negative feedback?</p>
+
+        <p>Because the
+          adjustments in the system (gaining and losing players) encourage the system to move toward a stable, steady
+          state. A losing team gets extra players, which helps it catch up to the winning team; when it moves to within
+          5
+          points, the two teams are evenly matched. The steady state of this system is not that the total points tend
+          towards zero, but that the difference between the two teams' scores stays near zero. The end result is that
+          <b>Negative Feedback Basketball games would tend to be very close games</b>.
+        </p>
+
+        <p>Positive Feedback Basketball creates the opposite situation. As soon as one team increased its lead, it would
+          gain additional players. These new players would help the team do even better against the opposing team,
+          which would increase the winning team's lead even more, which would result in yet more players for that
+          team. Eventually, the court would be absurdly crowded with members of one team, who would completely
+          overwhelm and defeat the team with only five players.</p>
+
+        <p><b>Positive Feedback Basketball encourages a large
+            difference between the two teams' scores, so that there is a runaway, devastating victory instead of a
+            closely
+            matched game</b>.</p>
+
+        <p>As in the examples of heating and cooling, there are many ways to transform the game system. We could, for
+          example, change the rules to remove players instead of adding them.</p>
+
+        <p>In this case, in Negative Feedback
+          Basketball, when one team pulls ahead by N points, it would lose a player, making it easier for the other team
+          to catch up.</p>
+
+        <p>In Positive Feedback Basketball, the team that was behind by N points would lose a player,
+          encouraging them to fall further behind, which would result in the loss of even more players. Eventually, one
+          team would fall so far behind that none of its players would be left on the court.</p>
+
+        <p>In both games, even though
+          players are removed rather than added, the end results remain the same: <b>Negative Feedback Basketball tends
+            toward stable, close matches</b> and <b>Positive Feedback Basketball tends toward unstable, unbalanced
+            matches</b>.</p>
+
+        <p>Overall, Negative Feedback Loops:</p>
+
+        <ul>
+          <li>Encourage balance and stability</li>
+          <li>Reduce the gap between leading and trailing players</li>
+          <li>Encourage close matches</li>
+          <li>Encourage comebacks</li>
+          <li>Also called "<b>catch-up</b>" or
+            "<b>rubberbanding</b>" in multiplayer
+            games because it favors players
+            that are further behind</li>
+        </ul>
+
+        <p>While, Positive Feedback Loops:</p>
+
+        <ul>
+          <li>Encourage imbalance and instability</li>
+          <li>Increase the gap between leading and trailing players</li>
+          <li>Encourage blowout matches</li>
+          <li>Encourage runaway victories</li>
+          <li>Also called "<b>snowballing</b>" in multiplayer games because it favors players that are already ahead</li>
+          <li>Throws things out of equilibrium
+just as negative feedback loops
+maintain balance / equilibrium</li>
+          <li>Can help
+bring a game to an end</li>
+        </ul>
+
+        <p>Both positive and negative feedback loops can be useful in game design, depending on the type of experience
+          you want to create for players.</p>
+
+        <p>Negative feedback loops are often used in competitive games to keep matches close and exciting, while
+          positive feedback loops can be used to create a sense of momentum and excitement as players build up their
+          advantages.</p>
+
+        <p>Many games use a combination of both types of feedback loops to create a dynamic and engaging gameplay
+          experience.</p>
+
+        <p>For example, in a racing game, a negative feedback loop might be used to give players who fall behind a speed
+          boost or other advantage to help them catch up to the leaders. At the same time, a positive feedback loop
+          might be used to reward players who are in the lead with additional points or bonuses, encouraging them to
+          maintain their position and build up their lead.</p>
+
+        <p>By carefully balancing these different types of feedback loops, game designers can create games that are both
+          challenging and rewarding for players of all skill levels.</p>
 
       </article>
       <br />
     </section>
-    <hr />-->
+    <hr />
 
 
 
