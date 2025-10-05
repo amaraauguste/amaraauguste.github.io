@@ -71,6 +71,7 @@
           <a href="#Objects_attributes_states" onclick="closeDropdown()" style="font-size: 20px">Objects, Attributes,
             and States</a>
           <a href="#Feedback_Loops" onclick="closeDropdown()" style="font-size: 20px">Feedback Loops</a>
+          <a href="#Game_Balance" onclick="closeDropdown()" style="font-size: 20px">Balancing Games</a>
         </div>
       </li>
       <li>
@@ -2787,7 +2788,7 @@
           would steadily get lower and lower.</p>
 
         <p>How do feedback systems operate in games? As a cybernetic system, <b>the rules of a game define the sensors,
-          comparators, and activators of the game's feedback loops</b>. Within a game, there are many sub-systems that
+            comparators, and activators of the game's feedback loops</b>. Within a game, there are many sub-systems that
           regulate the flow of play, dynamically changing and transforming game elements. Do you want your game to
           move toward a balanced, steady state? Or do you want it to spin wildly toward one extreme or another?</p>
 
@@ -2901,6 +2902,9 @@
             that are further behind</li>
         </ul>
 
+        <img src="images/negative%20feedback%20loop.png" alt="Negative Feedback Loops"
+          style="max-width: 100%; height: auto;" />
+
         <p>While, Positive Feedback Loops:</p>
 
         <ul>
@@ -2908,13 +2912,17 @@
           <li>Increase the gap between leading and trailing players</li>
           <li>Encourage blowout matches</li>
           <li>Encourage runaway victories</li>
-          <li>Also called "<b>snowballing</b>" in multiplayer games because it favors players that are already ahead</li>
+          <li>Also called "<b>snowballing</b>" in multiplayer games because it favors players that are already ahead
+          </li>
           <li>Throws things out of equilibrium
-just as negative feedback loops
-maintain balance / equilibrium</li>
+            just as negative feedback loops
+            maintain balance / equilibrium</li>
           <li>Can help
-bring a game to an end</li>
+            bring a game to an end</li>
         </ul>
+
+        <img src="images/positive%20feedback%20loop.png" alt="Positive Feedback Loops"
+          style="max-width: 100%; height: auto;" />
 
         <p>Both positive and negative feedback loops can be useful in game design, depending on the type of experience
           you want to create for players.</p>
@@ -2934,10 +2942,293 @@ bring a game to an end</li>
         <p>By carefully balancing these different types of feedback loops, game designers can create games that are both
           challenging and rewarding for players of all skill levels.</p>
 
+        <h2>Feedback Loops in Games Specifically</h2>
+
+        <p>Feedback loops are a fundamental concept in game design, as they help to create engaging and dynamic gameplay
+          experiences. The most prevalent one is the so-called compulsion loop, which is a type of feedback loop that
+          is designed to keep players engaged and motivated to continue playing a game.</p>
+
+        <p>A <b>compulsion loop</b> (also often called core loop) is a specific type of positive feedback loop and
+          represents a
+          habitual chain of actions that are repeated by players to cause them to continue a given activity. It's one of
+          the main reasons on why you continue playing certain games, even though you can't entirely explain why. It's
+          fun but can also be addicting.</p>
+
+        <p>Compulsion loops typically involve a series of actions that players can take, such as completing quests,
+          earning rewards, and unlocking new content. These actions are often tied to a sense of progression, where
+          players feel like they are making meaningful progress towards a goal.</p>
+
+        <p>Most core loops in video games are designed around extrinsic motivation for players, which gives them a
+          dopamine rush.</p>
+
+        <img src="images/compulsion%20loop.png" alt="Compulsion Loop" style="max-width: 100%; height: auto;" />
+
+        <p>Take your average RPG for example: Kill enemies, get stronger, kill more enemies faster, get even stronger.
+          That's a basic core loop - a positive feedback loop, with a positive outcome.</p>
+
+        <p>Of course most games counter-act this amplification in power with a myriad of additional game systems, such
+          as leveling system, scaling enemy power, reducing XP gain as the player gets stronger, etc. - all to create
+          compelling compulsion loops that keep you playing and keep you coming back.</p>
+
+        <p>So as we said, <b>positive feedback loops can be thought of as the boosters of success</b>.</p>
+
+        <p>One of the most famous examples of a positive feedback loop is the killstreak system in certain <i>Call of
+            Duty</i>
+          games. To sum it up, if you got a certain number of kills without dying, you were given perks that made it
+          easier to kill other players. This created somewhat of a snowball effect that meant that the most successful
+          players got progressively more successful, while the other players found it increasingly difficult to compete
+          with them.</p>
+
+        <p>It's like that saying, "the rich get richer" but for gamers.</p>
+
+        <p>Activision and Treyarch tried repeatedly to balance the killstreak mechanic, before eventually phasing it
+          out, making it an excellent example of how a single positive feedback loop can negatively impact game balance.
+        </p>
+
+        <p>On the other hand, positive loops can also be a bit of a downer when it comes to losses. Think about chess,
+          where losing a key piece means your strategies shrink, and the chances of more losses start piling up. It's
+          like a domino effect, but not in a good way.</p>
+
+        <p>On the flip side, <b>negative feedback loops are the great equalizers</b>. To explain this here's a gem of an
+          example we all know: <i>Mario Kart</i>'s item distribution.</p>
+
+        <img src="images/mario%20kart%20rubberbanding.png" alt="Mario Kart Item Distribution"
+          style="max-width: 100%; height: auto;" />
+
+        <p>In <i>Mario Kart</i>, if you're trailing behind, the game throws you a bone with powerful items like the
+          dreaded blue shell. It's like the game saying, "Hey, don't worry, we've got your back!" This keeps
+          things exciting and unpredictable, making sure that even if you're not in the lead, you still have a shot at
+          turning the tables.</p>
+
+        <p>While if you're cruising in first place, you'll mostly get less game-changing items like bananas or coins.
+          It's a way to
+          race. This helps prevent runaway victories and keeps all players engaged until the end.</p>
+
+        <p>This results in a so-called rubber-banding mechanic where good players are punished and bad players are
+          rewarded – the goal of this mechanic ultimately being to keep games interesting by making sure victory is
+          within grasp for all players, no matter their skill level. This is essentially a form of <b>Dynamic Difficulty
+            Adjustment</b> which ultimately seeks equilibrium, hence it's a negative feedback loop.</p>
+
+        <h2>Dynamic Difficulty Adjustment</h2>
+
+        <p>Dynamic Difficulty Adjustment (DDA) is a game design technique that automatically adjusts the difficulty of a
+          game in real-time based on the player's performance. The goal of DDA is to keep players engaged and challenged
+          without making the game too easy or too difficult.</p>
+
+        <p>For example, in
+          the original <i>Crash Bandicoot</i> game, the player is generally maneuvering the character Crash through a
+          series
+          of jumping and dodging obstacles, trying to overcome damaging hazards and reach objectives to finish the
+          level. When a player dies, the game restarts at the beginning of the level or at the most recent "save point"
+          reached in the level. </p>
+
+        <p>The danger in designing this kind of game is that players possess widely varying skill levels. An experienced
+          gamer might breeze through a level, whereas a beginner might become frustrated after dying several times
+          without making any progress.</p>
+
+        <p>To address this, the designers of <i>Crash Bandicoot</i> implemented a simple form of DDA. The DDA operations
+          in <i>Crash Bandicoot</i> evaluate the number of times that a player is dying at a particular
+          location in a level, and make the game easier as a result. A player having trouble might suddenly find that
+          there are more helpful objects nearby, or fewer enemies to avoid.</p>
+
+        <p>This kind of attention to the balancing of
+          player experience is evident in the play of <i>Crash Bandicoot</i> games, and it helps explain the fact that a
+          wide
+          audience of both hardcore and less experienced players enjoys them.</p>
+
+        <p>DDA points to a different kind of game, a game that constantly anticipates the abilities of the player, reads
+          the
+          player's behavior, and makes adjustments accordingly.</p>
+
+        <p>Playing a game becomes less like learning an
+          expressive language and more like being the sole audience member for a participatory, improvisational
+          performance, where the performers adjust their actions according to how you interact with them. Are you then
+          playing the game, or is it playing you? Is a game "cheating" if it constantly adjusts its own rules? Could
+          such a
+          scheme be designed into a multiplayer experience and still feel "fair" for everyone involved?</p>
+
+        <p>These questions
+          have no definitive answers, as there are always many solutions for any given game design problem.</p>
+
+        <p>Dynamic
+          Difficulty Adjustment could be considered a heavy-handed design tool that takes agency away from the
+          player, or it could be considered an elegant way of invisibly shaping game play so that every player has an
+          optimal experience.</p>
+
+
+
+
+
       </article>
       <br />
     </section>
-    <!--<hr />-->
+    <hr />
+
+
+    <section class="main-section" id="Game_Balance">
+      <br />
+      <header><b>Balancing Games</b></header>
+      <article>
+
+        <p>All this talk about feedback loops, objects, attributes, states, and emergent gameplay leads us to the
+          topic of <b>game balance</b>.</p>
+
+        <p>Have you ever looked forward to playing a game that you were certain was
+          going to be incredibly fun, only to be terribly disappointed? This game had a
+          story that sounded interesting, the kind of gameplay action that is your favorite, cutting-edge technology,
+          and beautiful artwork—but somehow the play
+          was monotonous, confusing, and frustrating.</p>
+
+        <p>This is a game that is out of balance.</p>
+
+        <p><b>Game balance</b> is the process of adjusting game mechanics to ensure that no single strategy, character,
+          or
+          element dominates the gameplay experience. A well-balanced game provides players with a fair and enjoyable
+          experience, where different strategies and play styles can be effective.</p>
+
+        <p>To novice designers, the business of balancing a game seems quite mysterious—
+          but really, balancing a game is nothing more than adjusting the elements of the
+          game until they deliver the experience you want.</p>
+
+        <p>Balancing a game is far from a
+          science; in fact, despite the simple mathematics that is often involved, it is generally considered the most
+          artful part of game design, for it is all about <b>understanding subtle nuances in the relationships between
+            the
+            elements of your game and
+            knowing which ones to alter, how much to alter them, and which ones to leave
+            alone</b>.</p>
+
+        <p>Part of what makes game balancing so difficult is that no two games are alike
+          and every game has many different factors that need to be in balance. As a designer,
+          you must discern what elements in your game need to be balanced and then experiment with changing them until
+          you have them generating exactly the experience
+          you want your players to have.</p>
+
+        <p>Game balancing can come in a variety of forms, because every different game
+          has different things that must be brought into balance. Still, there are some patterns
+          of balance that occur over and over again</p>
+
+        <h2>The Most Common Types of Game Balance</h2>
+
+        <h3>Balance Type #1: Fairness</h3>
+
+        <p>One quality that players universally seek in games is fairness. Players want to feel
+          that the forces working against them do not have an advantage that will make them
+          impossible to defeat.</p>
+
+        <p>One of the simplest ways to ensure this is to make your game
+          <b>symmetrical</b>, that is, to give equal resources and powers to all players. Most traditional board games
+          (such as checkers, chess, and Monopoly) and almost all sports
+          use this method to be sure that no player has an unfair advantage over another.
+        </p>
+
+        <p>If
+          you want to put players in direct competition with each other and you expect them
+          to have roughly equal levels of skill, symmetrical games are a great choice. They
+          are particularly good systems for determining which players are the best, since
+          <b>all things in the game are equal but for the skill and strategy that the individual
+            players bring to the game</b>.
+        </p>
+
+        <p>In these games, perfect symmetry is not always possible
+          as there is often some minor issue such as "who goes first?" or "who starts with
+          the ball?" that gives one side a small advantage over the other.</p>
+
+        <p>Generally, random
+          selection, such as a coin toss or die roll, is the solution. Though it gives one player
+          a small advantage, over many games, the advantage is distributed evenly.</p>
+
+        <p>In some
+          cases, the way this asymmetry is remedied is by giving the advantage to the player
+          with the least skill—such as "youngest player goes first". This is an elegant way to
+          use the natural imbalance of the game to help balance the skill levels of the players.</p>
+
+        <p>It is also possible, and often desirable, to give opponents different resources and
+          abilities.</p>
+
+        <p>This is called <b>asymmetrical balance</b>, and it is often used in games where players have
+          different roles, such as in team sports (offense vs. defense) or in games where players have different
+          characters with different abilities (such as in many role-playing games).</p>
+
+        <p>Here are some of the reasons you might create an asymmetrical game:</p>
+
+        <ul>
+          <li>To simulate a real-world situation</li>
+          <li>To give players another way to explore the game space</li>
+          <li>Personalization</li>
+          <li>To level the playing field</li>
+          <li>To create interesting situations</li>
+        </ul>
+
+        <p>In asymmetrical games, it is crucial to ensure that the different roles or characters are balanced in terms of
+          their strengths and weaknesses. This often requires extensive playtesting and fine-tuning to achieve a fair
+          and enjoyable experience for all players.</p>
+
+        <p>One simple way to balance elements for fairness is to make sure that whenever
+something in your game has an advantage over something else, yet another thing
+has an advantage over that!</p>
+
+        <p>Often referred to as "<b>circular balance</b>", the iconic example of this is the game of <i>Rock, Paper, Scissors</i>.</p>
+
+        <img src="images/rock%20paper%20scissors.png" alt="Rock Paper Scissors"
+          style="max-width: 100%; height: auto;" />
+
+        <p>Where:</p>
+
+        <ul>
+          <li>Rock crushes Scissors</li>
+          <li>Scissors cut Paper</li>
+          <li>Paper covers Rock</li>
+        </ul>
+
+        <p>None of the elements can be supreme, because there is always another that can defeat it.</p>
+
+        <p>We can see this balance better in a matrix, where the rows represent the choice of player 1 and the columns represent the choice of player 2:</p>
+        <table>
+          <tr>
+            <th></th>
+            <th>Rock</th>
+            <th>Paper</th>
+            <th>Scissors</th>
+          </tr>
+          <tr>
+            <th>Rock</th>
+            <td>Tie</td>
+            <td>Lose</td>
+            <td>Win</td>
+          </tr>
+          <tr>
+            <th>Paper</th>
+            <td>Win</td>
+            <td>Tie</td>
+            <td>Lose</td>
+          </tr>
+          <tr>
+            <th>Scissors</th>
+            <td>Lose</td>
+            <td>Win</td>
+            <td>Tie</td>
+          </tr>
+        </table>
+        
+        <p>A numerical representation:</p>
+
+        <img src="images/rock%20paper%20scissors%20matrix.png" alt="Rock Paper Scissors Matrix"
+          style="max-width: 100%; height: auto;" />
+
+        <p>It is a simple way to ensure that every game element has both strengths
+and weaknesses. Fighting games particularly like to use this technique to help
+ensure none of the warriors a player might choose are undefeatable.</p>
+
+
+
+
+
+
+      </article>
+      <br />
+    </section>
+    <hr />
 
 
 
