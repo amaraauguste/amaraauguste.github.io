@@ -58,7 +58,7 @@ tr:nth-child(1) {
   background-color: #dddddd;
 }
 
-tr:nth-child(4),
+/*tr:nth-child(4),
 tr:nth-child(6),
 tr:nth-child(8),
 tr:nth-child(9) {
@@ -86,7 +86,7 @@ tr:nth-child(9) {
 
 .truth tr:nth-child(odd) {
   background-color: rgb(235, 225, 220);
-}
+}*/
 /* width */
 ::-webkit-scrollbar {
   width: 10px;
