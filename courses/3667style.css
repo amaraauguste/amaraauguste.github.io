@@ -309,7 +309,7 @@ body {
 .dark-mode tr:nth-child(8),
 .dark-mode tr:nth-child(9) {
   background-color: #02025c;
-}
+}*/
 
 .dark-mode tr{
   background-color: #0b0b31;
@@ -318,7 +318,7 @@ body {
 .dark-mode .structure tr:nth-child(1) {
   background-color: #222222;
 }
-
+/*
 .dark-mode .structure tr{
  background-color: #0b0b31;
 }
