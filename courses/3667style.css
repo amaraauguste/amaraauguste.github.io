@@ -303,6 +303,7 @@ body {
   background-color: #222222;
 }
 
+/*
 .dark-mode tr:nth-child(4),
 .dark-mode tr:nth-child(6),
 .dark-mode tr:nth-child(8),
@@ -336,7 +337,7 @@ body {
 
  .dark-mode .truth tr:nth-child(even) {
   background-color: #141456;
- }
+ }*/
 
 .change {
   font-weight: bold;
