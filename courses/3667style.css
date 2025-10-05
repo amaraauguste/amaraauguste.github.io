@@ -342,7 +342,7 @@ body {
 .change {
   font-weight: bold;
   cursor: pointer;
-  /*color: #007BFF; /* Color for the toggle status text */
+  color: #007BFF; /* Color for the toggle status text */
 }
 
 @media screen and (max-height: 450px) {
