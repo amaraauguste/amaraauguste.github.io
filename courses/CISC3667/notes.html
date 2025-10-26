@@ -86,6 +86,18 @@
 
         </div>
       </li>
+      <li>
+        <a class="dropdown-btn" style="font-size: 22px">Designing Game Experiences</a>
+        <div class="dropdown-container">
+          <a href="#Game_Concepts_and_Genre" onclick="closeDropdown()" style="font-size: 20px">Game Concepts and
+            Genre</a>
+          <a href="#Storytelling_and_Narrative_Design" onclick="closeDropdown()" style="font-size: 20px">Storytelling
+            and Narrative Design</a>
+          <a href="#Game_Design_Documents" onclick="closeDropdown()" style="font-size: 20px">Game Design Documents</a>
+          <a href="#Serious_Games" onclick="closeDropdown()" style="font-size: 20px">Serious Games</a>
+
+        </div>
+      </li>
 
 
       <li><a href="#Reference" style="font-size: 22px">Reference</a></li>
@@ -3536,19 +3548,21 @@
 
         <ol>
           <li><b>Rule #1: Fractions are Decimals are Percents:</b> Probabilities can be expressed as fractions,
-            decimals, or percentages. For example, a probability of 1/4 is equivalent to 0.25 or 25%.</li><br/>
+            decimals, or percentages. For example, a probability of 1/4 is equivalent to 0.25 or 25%.</li><br />
           <li><b>Rule #2: Probabilities Range from 0 to 1:</b> A probability of 0 means an event will never happen,
-            while a probability of 1 means it will always happen. <b>Most probabilities fall between these two extremes</b>.
-          </li><br/>
+            while a probability of 1 means it will always happen. <b>Most probabilities fall between these two
+              extremes</b>.
+          </li><br />
           <li><b>Rule #3: "Looked For" Divided by "Possible Outcomes" = Probability:</b> The probability of an event
             occurring is calculated by <b>dividing the number of favorable outcomes by the total number of possible
-            outcomes</b>.</li><br/>
+              outcomes</b>.</li><br />
           <li><b>Rule #4: Enumerate!</b> To calculate probabilities, it's often helpful to list out all possible
-            outcomes and identify which ones are favorable.<br /><br/>For example, what the odds of flipping a
-            coin three times and getting "heads" at least twice, what is the number of "looked for" outcomes?<br /><br/>An
+            outcomes and identify which ones are favorable.<br /><br />For example, what the odds of flipping a
+            coin three times and getting "heads" at least twice, what is the number of "looked for"
+            outcomes?<br /><br />An
             easy way to
             find out the answer is to enumerate all the possible outcomes:
-            <br/>
+            <br />
             <ol>
               <li>HHH</li>
               <li>HHT</li>
@@ -3559,67 +3573,72 @@
               <li>TTH</li>
               <li>TTT</li>
             </ol>
-            <br /><br/>There are eight possible outcomes, and four of them have at least two heads (the first four
+            <br /><br />There are eight possible outcomes, and four of them have at least two heads (the first four
             outcomes). So the probability is 4 "looked for" outcomes divided by 8 "possible outcomes", or 4/8, which is
-            0.5, or 50%.<br /><br/>Now, why didn't the Chevalier do this with his games? With his first
-            game, there were four die rolls, which means 6×6×6×6, or 1296 possibilities.<br /><br/>It
+            0.5, or 50%.<br /><br />Now, why didn't the Chevalier do this with his games? With his first
+            game, there were four die rolls, which means 6×6×6×6, or 1296 possibilities.<br /><br />It
             would have been dull work, but he could have enumerated all the possibilities in
             an hour or so (the list would have looked like 1111, 1112, 1113, 1114, 1115, 1116,
             1121, 1122, 1123, etc.), then counted up the number of combinations that had a six
-            in them (671), and divided that by 1296 for his answer.<br /><br/>Enumeration will let you
-            solve almost any probability problem, if you have the time.<br /><br/>Consider the Chevalier's
+            in them (671), and divided that by 1296 for his answer.<br /><br />Enumeration will let you
+            solve almost any probability problem, if you have the time.<br /><br />Consider the Chevalier's
             second game, though: 24 rolls of 2 dice! There are 36 possible outcomes for 2 dice,
             and so enumerating all 24 rolls would have meant writing down 36^24 (a number 37
             digits long) combinations. Even if he could somehow write down one combination
-            a second, it would have taken longer than the age of the universe to list them all.<br /><br/>Enumeration is
+            a second, it would have taken longer than the age of the universe to list them all.<br /><br />Enumeration
+            is
             handy, but when it takes too long, you need to take shortcuts—and
             that's what the other rules are for.
-          </li><br/>
+          </li><br />
           <li><b>Rule #5: In Certain Cases, OR means ADD:</b> When calculating the probability of either of two mutually
-            exclusive events occurring, you can add their individual probabilities together.<br /><br/>e.g . What are the
-            odds of picking an ace OR a 4 from a deck of cards?<br /><br/>Watch out for <i>mutually inclusive</i>
-            events.<br /><br/>What are the odds of picking an ace OR a diamond from a deck of cards?
-            <br /><br/>There are <b>4 aces</b> and <b>13 diamonds</b>, but one of the diamonds is also an ace (the ace of
-            diamonds). So the total number of "looked for" outcomes is <b>4 + 13 - 1 = 16</b>.<br /><br/>The probability is
+            exclusive events occurring, you can add their individual probabilities together.<br /><br />e.g . What are
+            the
+            odds of picking an ace OR a 4 from a deck of cards?<br /><br />Watch out for <i>mutually inclusive</i>
+            events.<br /><br />What are the odds of picking an ace OR a diamond from a deck of cards?
+            <br /><br />There are <b>4 aces</b> and <b>13 diamonds</b>, but one of the diamonds is also an ace (the ace
+            of
+            diamonds). So the total number of "looked for" outcomes is <b>4 + 13 - 1 = 16</b>.<br /><br />The
+            probability is
             therefore <b>16/52</b>, or about <b>30.77%</b>.
-          </li><br/>
+          </li><br />
           <li><b>Rule #6: In Certain Cases, AND means MULTIPLY:</b> When calculating the probability of two independent
             events occurring together, you can multiply their individual probabilities.(ONLY works for mutually
-            inclusive events!)<br /><br/>What are the odds of drawing an ace AND a diamond?
-            <br /><br/>The probability of drawing an ace is <b>4/52</b>, and the probability of drawing a diamond is
-            <b>13/52</b>.<br /><br/>Since these events are independent, you can multiply their probabilities: <b>(4/52) × (13/52) =
-            52/2704</b>, which simplifies to <b>1/52</b>, or about <b>1.92%</b>.
-          </li><br/>
+            inclusive events!)<br /><br />What are the odds of drawing an ace AND a diamond?
+            <br /><br />The probability of drawing an ace is <b>4/52</b>, and the probability of drawing a diamond is
+            <b>13/52</b>.<br /><br />Since these events are independent, you can multiply their probabilities: <b>(4/52)
+              × (13/52) =
+              52/2704</b>, which simplifies to <b>1/52</b>, or about <b>1.92%</b>.
+          </li><br />
           <li><b>Rule #7: One minus "Does" = "Does Not":</b> The probability of an event not occurring is equal to 1
             minus the probability of it occurring. This is a more intuitive rule. If the chance of something happening
             is 10%, the
-            chance of it not happening is 90%. Why is this useful?<br /><br/>Because often it is quite hard
+            chance of it not happening is 90%. Why is this useful?<br /><br />Because often it is quite hard
             to figure out the chance of something happening but easy to figure out the chance
-            of it NOT happening.<br /><br/>Even though all probability problems can be solved through enumeration, Rule
-            #7 can be a really handy shortcut.</li><br/>
+            of it NOT happening.<br /><br />Even though all probability problems can be solved through enumeration, Rule
+            #7 can be a really handy shortcut.</li><br />
           <li><b>Rule #8: The Sum of Multiple Linear Random Selections is NOT a Linear Random Selection:</b> A "linear
             random selection" is simply a random event where all the outcomes have an equal chance of
-            happening. A die roll is a great example of a linear random selection.<br /><br/>If you add up
+            happening. A die roll is a great example of a linear random selection.<br /><br />If you add up
             multiple die rolls, though, <b>the possible outcomes do NOT have an equal chance of
               happening</b>. If you roll two dice, for example, your chance of getting a seven is very
-            good, while your chance of getting a twelve is small.<br /><br/>We can show this in a
+            good, while your chance of getting a twelve is small.<br /><br />We can show this in a
             graph, called a <b>probability distribution curve</b>, to visually see the chances of each
-            total coming up.<br /><br/>Game designers who want to use mechanic of chance as a tool in their games
+            total coming up.<br /><br />Game designers who want to use mechanic of chance as a tool in their games
             must know what kind of probability distribution curve they want and know how
             to get it. With practice, probability distribution curves will be a very valuable tool
-            in your toolbox.</li><br/>
+            in your toolbox.</li><br />
           <li><b>Rule #9: Roll the Dice</b>: All the probability we've been talking about so far is <b>theoretical
               probability</b>, that is,
-            mathematically, what ought to happen.<br /><br/>There is also <b>practical probability</b>, which is
-            a measure of what has happened.<br /><br/>For example, the theoretical probability of getting
+            mathematically, what ought to happen.<br /><br />There is also <b>practical probability</b>, which is
+            a measure of what has happened.<br /><br />For example, the theoretical probability of getting
             a 6 when you roll a die is a perfect 1/6, or about 16.67%. You could find the practical probability by
             rolling a
             six-sided die 100 times and recording how many times you get a
-            six. You might record 20 sixes out of 100.<br /><br/>In that case, <b>my practical probability is 20%,
+            six. You might record 20 sixes out of 100.<br /><br />In that case, <b>my practical probability is 20%,
               which is not too far from the theoretical probability</b>. Of course, <b>the more trials I do,
               the closer I would expect the practical probability to get to the theoretical probability</b>. This is
             sometimes
-            known as the <b>"Monte Carlo" method</b>, after the famous casino.</li><br/>
+            known as the <b>"Monte Carlo" method</b>, after the famous casino.</li><br />
           <li><b>Rule #10: Geeks Love Showing Off (Gombaud's Law)</b>: Game designers often enjoy demonstrating their
             understanding of probability through clever game mechanics and strategies, much like the Chevalier de Méré
             did.</li>
@@ -3763,22 +3782,25 @@
           than or equal to the probability of either one occurring itself. For two events A and B this inequality can be
           written as
           <b>Pr
-          (
-          A
-          ∧
-          B
-          )
-          ≤
-          Pr
-          (
-          A
-          )</b>
-.</p>
+            (
+            A
+            ∧
+            B
+            )
+            ≤
+            Pr
+            (
+            A
+            )</b>
+          .
+        </p>
 
         <p>For example, even choosing a very low probability of Linda's being a bank teller, say <b>Pr(Linda is a bank
-          teller) = 0.05</b> and a high probability that she would be a feminist, say <b>Pr(Linda is a feminist) = 0.95</b>, then,
-          assuming these two facts are <b>independent</b> of each other, <b>Pr(Linda is a bank teller and Linda is a feminist) =
-          0.05 × 0.95 or 0.0475</b>, lower than <b>Pr(Linda is a bank teller</b>).</p>
+            teller) = 0.05</b> and a high probability that she would be a feminist, say <b>Pr(Linda is a feminist) =
+            0.95</b>, then,
+          assuming these two facts are <b>independent</b> of each other, <b>Pr(Linda is a bank teller and Linda is a
+            feminist) =
+            0.05 × 0.95 or 0.0475</b>, lower than <b>Pr(Linda is a bank teller</b>).</p>
 
         <h2>The Belief in the Law of Small Numbers</h2>
 
@@ -3796,16 +3818,18 @@
 
         <h2>Representativeness Heuristic</h2>
 
-        <p>The <b>representativeness heuristic</b> is a mental shortcut that people use to judge the probability of an event
+        <p>The <b>representativeness heuristic</b> is a mental shortcut that people use to judge the probability of an
+          event
           based on how similar it is to a prototype or stereotype.</p>
 
         <p>For example, if you see a person who is tall, athletic, and wears a basketball jersey,
-          you might assume that they are a basketball player, even if there is no other evidence to support this conclusion.</p>
+          you might assume that they are a basketball player, even if there is no other evidence to support this
+          conclusion.</p>
 
         <p>This heuristic can lead to errors in judgment, as people may overlook other relevant information
           that could affect the probability of an event.</p>
 
-      <h2>Bayes' Theorem</h2>
+        <h2>Bayes' Theorem</h2>
 
         <p><b>Bayes' theorem</b> is a mathematical formula that describes how to update the probability of a hypothesis
           based on new evidence.</p>
@@ -3840,41 +3864,43 @@
         <ol>
           <li><b>Estimating chance is a skill:</b> In many games, what separates the skilled players
             from the unskilled is their ability to predict what is going to happen next, often
-            through calculating probabilities.<br /><br/>The game of <i>blackjack</i>, for example, is almost
+            through calculating probabilities.<br /><br />The game of <i>blackjack</i>, for example, is almost
             entirely about knowing the odds. Some players even practice "card counting",
             which is the practice of keeping track of what cards have already been played,
-            since each card played changes the odds of what subsequent cards can appear.<br /><br/>The <b>perceived
+            since each card played changes the odds of what subsequent cards can appear.<br /><br />The <b>perceived
               probabilities in your game can vary a great deal between players
-              who are skilled estimators and those who are not</b>.</li><br/>
+              who are skilled estimators and those who are not</b>.</li><br />
           <li><b>Skills have a probability of success:</b> Naively, one might think that completely
             skill-based games, such as chess or baseball, have no aspects of randomness
-            or risk in them. But from a player's point of view, this simply isn't true.<br /><br/><b>Every
+            or risk in them. But from a player's point of view, this simply isn't true.<br /><br /><b>Every
               action has some level of risk, and players are constantly making expected value
-              decisions, deciding when to play it safe and when to take a big risk</b>.<br /><br/>These risks
+              decisions, deciding when to play it safe and when to take a big risk</b>.<br /><br />These risks
             can be difficult to quantify (what are the odds that I can successfully steal a base
             or that I can trap my opponent's queen without him noticing?), but they are still
-            risks.<br /><br/>When designing a game, you need to make sure they are balanced just as
-            you would balance "pure chance" game elements, like drawn cards or die rolls.</li><br/>
+            risks.<br /><br />When designing a game, you need to make sure they are balanced just as
+            you would balance "pure chance" game elements, like drawn cards or die rolls.</li><br />
           <li><b>Estimating an opponent's skill is a skill:</b> A big part of a player's ability to determine the
             chances of success for a particular action rests on their ability to estimate
-            their opponent's skill.<br /><br/>A fascinating part of many games is trying to fool your opponent into thinking
+            their opponent's skill.<br /><br />A fascinating part of many games is trying to fool your opponent into
+            thinking
             your skills are greater than they are, to prevent him from trying anything too bold and to make him
-            uncertain of himself.<br /><br/>Likewise, sometimes the
+            uncertain of himself.<br /><br />Likewise, sometimes the
             opposite is true—in some games, it is a good strategy to make a player think your
             skills are less than they really are, so that your opponent will not notice your subtle
-            strategies and will perhaps try actions that would be risky against a skilled player.</li><br/>
+            strategies and will perhaps try actions that would be risky against a skilled player.</li><br />
           <li><b>Predicting pure chance is an imagined skill:</b> Humans look for patterns, consciously and
             subconsciously, to help predict what is going to happen next. Our
             mania for patterns often leads us to look for and find patterns where none exist.
-            <br /><br/>Two of the most common false patterns are the "<b>lucky streak fallacy</b>" (I've had
+            <br /><br />Two of the most common false patterns are the "<b>lucky streak fallacy</b>" (I've had
             several wins in a row, and therefore another is likely) and, its opposite, the "<b>gambler's fallacy</b>"
-            (I've had several losses, so I must be due for a win).<br /><br/>It is easy to
+            (I've had several losses, so I must be due for a win).<br /><br />It is easy to
             scoff at these as ignorant, but in the all-important mind of the player, detecting
             these bogus patterns feels like the exercise of a real skill, and as a designer, you
             should find ways to use that to your advantage
-          </li><br/>
+          </li><br />
           <li><b>Controlling pure chance is an imagined skill:</b> Not only do our brains actively
-            seek patterns, but they also actively and desperately seek cause-and-effect relationships.<br /><br/>With pure
+            seek patterns, but they also actively and desperately seek cause-and-effect relationships.<br /><br />With
+            pure
             chance, there is <b>no way to control the outcome</b>—but that
             doesn't stop people from rolling the dice a certain way, carrying lucky charms,
             or engaging in other superstitious rituals. This feeling that it might be possible to
@@ -3891,9 +3917,570 @@
 
 
 
+    <section class="main-section" id="Game_Concepts_and_Genre">
+      <br />
+      <header><b>Game Concepts and Genre</b></header>
+      <article>
+
+        <p>Overall, games can have various mediums/genres, such as <b>board games</b>, <b>card games</b>, <b>video
+            games</b>,
+          and <b>role-playing games</b>. Each medium offers unique experiences and gameplay mechanics.</p>
+
+        <p>Under these genres, games can be further classified into different subgenres based on their
+          gameplay style, themes, and objectives.</p>
+
+        <p>Board game genres can include strategy games, party games, cooperative games, and abstract games.
+          Card game genres can include collectible card games, deck-building games, and trick-taking games.
+          Video game genres encompass action, adventure, role-playing, simulation, strategy, sports,
+          and puzzle games. Role-playing game genres include fantasy RPGs, sci-fi RPGs, and horror RPGs.</p>
+
+        <p>Each genre has its own set of rules, mechanics, and player experiences, catering to different preferences
+          and interests.</p>
+
+        <h2>Examples of Game Genres</h2>
+
+        <p>Let's look at an example of a well-known game: <i>Monopoly</i>.</p>
+
+        <p>This game can be classified into multiple genres:</p>
+        <ul>
+          <li><b>Board Game:</b> Monopoly is played on a physical board with players moving pieces around the board
+            based
+            on dice rolls.</li>
+          <li><b>Economic Simulation:</b> The game simulates real estate trading and financial management, where players
+            buy, sell, and trade properties to accumulate wealth.</li>
+          <li><b>Strategy Game:</b> Players must make strategic decisions regarding property acquisition, development,
+            and
+            negotiation with other players to maximize their chances of winning.</li>
+        </ul>
+
+        <p>How does the game incorporate elements from these genres to create a unique experience?</p>
+
+        <p>Monopoly combines the physical interaction of a board game with the strategic decision-making of an economic
+          simulation. Players must navigate the board, manage their finances, and outwit their opponents through
+          negotiation and property management. The blend of these genres creates a dynamic and engaging gameplay
+          experience
+          that appeals to a wide range of players.</p>
+
+        <p>Let's look at another example, a very popular video game: <i>The Legend of Zelda: Breath of the Wild</i>.</p>
+
+        <p>This game can be classified into multiple genres:</p>
+        <ul>
+          <li><b>Action-Adventure:</b> The game combines action-packed combat with exploration and puzzle-solving
+            elements,
+            allowing players to engage in thrilling battles while navigating a vast open world.</li>
+          <li><b>Open World:</b> Players have the freedom to explore a large, immersive world filled with diverse
+            landscapes,
+            hidden secrets, and dynamic weather systems.</li>
+          <li><b>Role-Playing Game (RPG):</b> Players can customize their character, acquire new abilities, and embark
+            on quests
+            that shape the game's narrative and progression.</li>
+        </ul>
+
+        <p>How does the game incorporate elements from these genres to create a unique experience?</p>
+
+        <p><i>The Legend of Zelda: Breath of the Wild</i> seamlessly blends action-adventure gameplay with the freedom
+          of an
+          open world and the depth of RPG mechanics. Players can engage in fast-paced combat, solve intricate puzzles,
+          and explore a richly detailed world at their own pace. The game's genre fusion allows for a diverse range of
+          play-styles, catering to both action enthusiasts and exploration lovers alike.</p>
+
+        <p>Both <i>Monopoly</i> and <i>The Legend of Zelda: Breath of the Wild</i> demonstrate how games can
+          encompass multiple genres, offering diverse gameplay experiences that cater to different player preferences.
+        </p>
 
 
+        <h2>How Can We Determine Our Game's Genre?</h2>
 
+        <p>To determine our game's genre, we need to consider the following factors:</p>
+
+        <ol>
+          <li><b>Core Gameplay Mechanics:</b> Identify the primary actions and interactions that players will engage in.
+            Are they focused on combat, exploration, puzzle-solving, or strategy?</li><br />
+          <li><b>Theme and Setting:</b> Consider the game's narrative, world, and aesthetic. Is it set in a fantasy
+            realm,
+            a futuristic sci-fi universe, or a realistic simulation?</li><br />
+          <li><b>Objectives and Goals:</b> Define what players need to achieve to succeed in the game. Are they
+            completing
+            quests, building structures, or competing against others?</li><br />
+          <li><b>Player Experience:</b> Think about the emotions and experiences you want to evoke in players. Do you
+            want
+            them to feel excitement, challenge, creativity, or relaxation?</li><br />
+          <li><b>Target Audience:</b> Consider who your game is designed for. Different genres appeal to different
+            demographics
+            and player preferences.</li><br />
+        </ol>
+
+        <p>By analyzing these factors, you can identify the genre that best fits your game's design and vision.
+          Remember that genres are not rigid categories, and many games successfully blend elements from multiple
+          genres to create unique experiences.</p>
+
+
+      </article>
+      <br />
+    </section>
+    <hr />
+
+    <section class="main-section" id="Storytelling_and_Narrative_Design">
+      <br />
+      <header><b>Storytelling and Narrative Design</b></header>
+      <article>
+        <p>Often accompanying genre (and one of the four fundamental elements of game design) is the story or narrative
+          of the game. Storytelling and narrative design are crucial aspects of game development that enhance player
+          engagement and immersion.</p>
+
+        <p>Think back to our example of <i>Space Invaders</i>. While the game primarily focuses on action and shooting
+          mechanics, by incorporating a narrative element, such as defending Earth from an alien invasion, the player
+          experience is enriched. The story provides context and motivation for the player's actions, making the
+          gameplay more compelling.</p>
+
+        <p>Incorporating storytelling and narrative design into a game involves several key elements:</p>
+
+        <ol>
+          <li><b>Plot Development:</b> Create a captivating storyline that drives the game's events and provides
+            players
+            with a sense of purpose. This can include main quests, side quests, and character arcs.</li><br />
+          <li><b>Character Creation:</b> Develop memorable characters with distinct personalities, motivations, and
+            backstories. Players should feel connected to the characters they interact with in the game world.</li>
+          <br />
+          <li><b>World-Building:</b> Design a rich and immersive game world that supports the narrative. This includes
+            creating settings, cultures, and lore that enhance the player's experience.</li><br />
+          <li><b>Dialogue and Interaction:</b> Craft engaging dialogue and interactions between characters to convey the
+            story and provide players with choices that impact the narrative.</li><br />
+          <li><b>Pacing and Structure:</b> Ensure that the narrative unfolds at an appropriate pace, balancing action
+            sequences with story-driven moments to maintain player interest.</li><br />
+        </ol>
+
+        <p>The story is further enhanced by the accompanying aesthetics, including visual design, sound effects, and
+          music,
+          which work together to create a cohesive and immersive experience.</p>
+
+        <p>To understand game narratives, it is essential to
+          analyze game structures and see how they ramify into different forms of narrative play.</p>
+
+        <p>We can identify two broad structural rubrics for understanding the narrative components of a game:</p>
+
+        <ul>
+          <li><b>Embedded Narrative:</b> This refers to the story elements that are pre-designed and integrated into
+            the
+            game by the developers. These narratives are often linear and fixed, providing players with a specific
+            storyline to follow. Examples include cutscenes, scripted events, and character dialogues that advance the
+            plot.</li><br />
+          <li><b>Emergent Narrative:</b> This refers to the stories that arise organically from player interactions and
+            choices within the game world. These narratives are dynamic and can vary greatly between players, as they
+            are shaped by individual actions and decisions. Examples include player-driven quests, sandbox gameplay, and
+            multiplayer interactions that create unique experiences.</li><br />
+        </ul>
+
+        <p>The first is simple to understand, think of any narrative from a book or movie. These narratives are pre-set
+          and fixed, and we experience them passively as they unfold.</p>
+
+        <p>Examples of embedded narratives in games include:</p>
+
+        <ul>
+          <li>The main storyline of <i>The Last of Us</i>, where players follow a predetermined plot as they
+            navigate
+            through a post-apocalyptic world.</li><br />
+          <li>The scripted events and character interactions in <i>Final Fantasy VII</i>, which guide players
+            through
+            a linear narrative.</li><br />
+        </ul>
+
+        <p>The second is more complex, as it involves the player's active participation in shaping the narrative.
+          Here, the story is not predetermined but emerges from the player's actions and interactions within the game
+          world (think games like <i>Dungeons & Dragons</i> or <i>The Sims</i>).</p>
+
+        <p>Let's look the board game: <i>Clue</i> (or <i>Cluedo</i> in the UK).</p>
+
+        <p>In <i>Clue</i>, players take on the roles of detectives trying to solve a murder mystery. The game
+          incorporates
+          storytelling and narrative design through its plot, characters, and world-building elements.</p>
+
+        <p>At its core, <i>Clue</i> is a whodunit murder mystery.</p>
+
+        <p>The premise is simple: Mr. Boddy (or Dr. Black, in some versions) has been murdered in his mansion. One of
+          the
+          guests is the killer, and the players must deduce who committed the crime, in which room, and with what weapon
+        </p>
+
+        <p>Unlike a traditional story, Clue doesn't tell the events of the murder — it invites the players to
+          reconstruct them. The tension and drama arise not from cut-scenes or text, but from player discovery. The
+          "plot" is effectively written backwards by the players as they uncover the truth.</p>
+
+        <p><b>Inciting incident:</b> the crime (sets the goal and stakes)</p>
+        <p><b>Setting:</b> The game takes place in a single, self-contained location: a mansion with various distinct
+          rooms — the kitchen, ballroom, conservatory, library, etc.</p>
+
+        <p>The mansion itself acts as a narrative stage:</p>
+
+        <img src="images/clue_board.png" alt="Clue Board Game" style="max-width: 100%; height: auto;" class="center" />
+
+        <ul>
+          <li>Each room holds clues about the murder.</li><br />
+          <li>Moving between rooms mimics the process of investigation and exploration.</li><br />
+          <li>The map of the mansion visually reinforces the idea of a crime scene filled with secrets.</li><br />
+        </ul>
+
+        <p>This confined setting supports the mystery genre, where a limited cast of suspects and locations heightens
+          the feeling of suspense and containment.</p>
+
+        <p><b>Characters:</b> There are six distinct personalities and colorful suspects:</p>
+        <ul>
+          <li>Miss Scarlet</li>
+          <li>Colonel Mustard</li>
+          <li>Mrs. White (or Dr. Orchid in modern editions)</li>
+          <li>Mr. Green</li>
+          <li>Mrs. Peacock</li>
+          <li>Professor Plum</li>
+        </ul>
+
+        <p>Each character embodies an archetype — the femme fatale, the dignified colonel, the intellectual professor
+          — giving players clear roles and personalities to project onto during play. These archetypes help players
+          imagine motives and tensions without needing explicit dialogue or backstory.</p>
+
+        <p>These characters are often represented by illustrated cards, colorful tokens, or even detailed miniatures,
+          which help enhance the narrative immersion and game experience.</p>
+
+        <img src="images/clue_characters.png" alt="Clue Characters" style="max-width: 100%; height: auto;"
+          class="center" />
+
+        <p>The mechanics of <i>Clue</i> are what truly drive the story forward.</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Mechanic</th>
+              <th>Narrative Function</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Deduction (Who, What, Where)</strong></td>
+              <td>Mirrors the process of solving a mystery; players reconstruct the crime scene piece by piece.</td>
+            </tr>
+            <tr>
+              <td><strong>Movement between rooms</strong></td>
+              <td>Feels like an investigation — players "search" rooms and gather evidence firsthand.</td>
+            </tr>
+            <tr>
+              <td><strong>Making suggestions ("I think it was Miss Scarlet in the Library with the
+                  Candlestick")</strong></td>
+              <td>Acts as a form of <em>interrogation scene</em> — each suggestion is a mini narrative hypothesis.</td>
+            </tr>
+            <tr>
+              <td><strong>Refutation by other players (showing a card)</strong></td>
+              <td>Symbolizes discovering contradictions or alibis in the story.</td>
+            </tr>
+            <tr>
+              <td><strong>Hidden information (solution cards in envelope)</strong></td>
+              <td>Maintains suspense — the truth is literally sealed until the end, just like a mystery’s final reveal.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>Thus, the gameplay loop itself is the story structure:</p>
+
+        <ul>
+          <li><b>Setup:</b> A murder occurs.</li>
+          <li><b>Rising action:</b> Players gather clues and make deductions.</li>
+          <li><b>Climax:</b> A player makes an accusation.</li>
+          <li><b>Resolution:</b> The envelope is opened, and the truth is revealed.</li>
+        </ul>
+
+        <p>The harmony between <i>Clue</i>'s mechanics and narrative lies in <b>player agency and discovery</b>.</p>
+
+        <ul>
+          <li>Players are not told what happened — they uncover what happened through gameplay.</li>
+          <li>The mechanics simulate the logic and reasoning process of detective work.</li>
+          <li>The setting and characters give emotional and thematic context to what would otherwise be an abstract
+            puzzle.</li>
+        </ul>
+
+        <p>Together, they form a complete storytelling experience where the plot emerges from play, rather than being
+          pre-scripted.</p>
+
+        <p><i>Clue</i> demonstrates how <b>game mechanics can become storytelling tools</b>.</p>
+
+        <p>Its story — a murder in a mansion — is timeless and simple, but its narrative power comes from how it allows
+          players to participate in constructing that story. Every session produces a slightly different narrative
+          depending on the players' deductions and the hidden cards, making each play-through a unique retelling of the
+          same mystery.</p>
+
+        <h2>How Can We Determine the Story/Narrative of Our Games?</h2>
+
+        <p>When determining the story or narrative for your game, consider the following key elements:</p>
+
+        <ol>
+          <li><b>Core Concept</b>: Start with a clear central idea or theme that drives your story.
+            <ul>
+              <li>What is the main conflict or challenge?</li>
+              <li>What makes this story unique?</li>
+              <li>How does it relate to your gameplay mechanics?</li>
+            </ul>
+          </li><br />
+
+          <li><b>Story Structure</b>: Plan how your narrative will unfold.
+            <ul>
+              <li>Beginning (setup and introduction)</li>
+              <li>Middle (rising action and conflicts)</li>
+              <li>End (resolution and conclusion)</li>
+              <li>Consider whether your story will be linear, branching, or emergent</li>
+            </ul>
+          </li><br />
+
+          <li><b>Character Development</b>: Create compelling characters that players will connect with.
+            <ul>
+              <li>Define their motivations, goals, and conflicts</li>
+              <li>Establish their relationships with other characters</li>
+              <li>Consider their growth throughout the story</li>
+            </ul>
+          </li><br />
+
+          <li><b>World-Building</b>: Develop the setting and context for your story.
+            <ul>
+              <li>Define the rules and logic of your game world</li>
+              <li>Create history and lore</li>
+              <li>Design environments that support your narrative</li>
+            </ul>
+          </li><br />
+
+          <li><b>Player Agency</b>: Consider how players will interact with and influence the story.
+            <ul>
+              <li>What choices will players make?</li>
+              <li>How do these choices impact the narrative?</li>
+              <li>Balance between scripted story and player freedom</li>
+            </ul>
+          </li>
+        </ol>
+
+        <p>Remember that the narrative should enhance and support your gameplay mechanics, not compete with them. A good
+          game story:</p>
+
+        <ul>
+          <li>Provides context and motivation for player actions</li>
+          <li>Creates emotional investment in the game world</li>
+          <li>Maintains player interest throughout the experience</li>
+          <li>Complements and enhances the core gameplay mechanics</li>
+        </ul>
+
+      </article>
+      <br />
+    </section>
+    <hr />
+    <section class="main-section" id="Game_Design_Documents">
+      <br />
+      <header><b>Game Design Documents</b></header>
+      <article>
+        <p>A <b>Game Design Document (GDD)</b> is a comprehensive document that outlines the vision, mechanics, story,
+          and overall design of a game. It serves as a blueprint for the development team, providing clear guidelines
+          and reference points throughout the game's creation process.</p>
+
+        <p>The document is created by the development team as result of collaboration between their designers, artists
+          and programmers as a guiding vision which is used throughout the game development process.</p>
+
+        <p>The purpose of a game design document is to unambiguously describe the game's selling points, target
+          audience, gameplay, art, level design, story, characters, UI, assets, etc.</p>
+
+        <p>In short, every game part requiring development should be included by the developer in enough detail for the
+          respective developers to implement the said part The document is purposely sectioned and divided in a way that
+          game developers can refer to and maintain the relevant parts.</p>
+
+        <p>A well-structured GDD typically includes the following sections:</p>
+
+        <ol>
+          <li><b>Game Overview:</b> A brief summary of the game's concept, genre, target audience, and unique selling
+            points.</li><br />
+          <li><b>Gameplay Mechanics:</b> Detailed descriptions of the core gameplay mechanics, controls, and player
+            interactions.</li><br />
+          <li><b>Story and Narrative:</b> An outline of the game's plot, characters, and world-building elements.</li>
+          <br />
+          <li><b>Level Design:</b> Descriptions of the game's levels, environments, and challenges.</li><br />
+          <li><b>Art and Visual Style:</b> Guidelines for the game's art direction, including character designs,
+            environments, and user interface elements.</li><br />
+          <li><b>Audio Design:</b> Plans for the game's sound effects, music, and voice acting.</li><br />
+          <li><b>Technical Specifications:</b> Information about the game's platform, engine, and technical
+            requirements.
+          </li><br />
+        </ol>
+
+        <p>This list is by no means exhaustive or applicable to every game. Some of these sections might not appear in
+          the GDD itself but may instead appear in supplemental documents.</p>
+
+        <h2>Game Concept</h2>
+
+        <p>The game concept describes the main idea of the game. This section of the document is a simple explanation of
+          the ideas for the game.</p>
+
+        <p>The concept includes what the game exactly is, and what is being made of it. This portion of the document
+          will also inform such people like the art team, publishers, developers, etc., on the expectations of the game
+          when it is being developed.</p>
+
+        <p>So while in the production phase of the game, the document is being used as a guide to create the game.</p>
+
+        <p>The Game Concept portion of the document may contain the following:</p>
+
+        <ul>
+          <li>Game title</li>
+          <li>High concept (a one-sentence summary of the game)</li>
+          <li>Genre</li>
+          <li>Target audience</li>
+          <li>Platform(s)</li>
+          <li>Concept art</li>
+        </ul>
+
+        <p>Here are some example GDDs for reference:</p>
+
+        <ul>
+          <li><a href="https://gamescrye.com/wp-content/uploads/2023/02/Tic-tac-toe-GDD.pdf"><i>Tic-Tac-Toe</i></a></li>
+          <li><a href="https://gamescrye.com/wp-content/uploads/2023/02/Super-Mario-GDD.pdf"><i>Super Mario Bros.</i>
+              (1985)</a></li>
+          <li><a href="https://gamescrye.com/wp-content/uploads/2023/02/Prince-of-Persia-2-GDD.pdf"><i>Prince of Persia
+                2</i> (1993)</a></li>
+        </ul>
+
+        <p>These documents provide detailed insights into the design and development process of these classic games,
+          showcasing how game concepts are translated into comprehensive design plans.</p>
+
+      </article>
+      <br />
+    </section>
+    <hr />
+    <section class="main-section" id="Serious_Games">
+      <br />
+      <header><b>Serious Games</b></header>
+      <article>
+
+        <p>Think back to Nicole Lazzaro's Four Keys to Fun. One of the keys identified was <b>Serious Fun</b>, in
+          other words, purposeful fun. This brings us to the concept of <b>serious games</b>.</p>
+
+        <p><b>Serious games</b> are games designed for purposes <b>beyond pure entertainment</b>. They are used in
+          various
+          fields such as education, training, healthcare, and social change to engage users in learning and
+          problem-solving
+          activities.</p>
+
+        <p>Serious games leverage the engaging and interactive nature of games to achieve specific goals, such as
+          <b>teaching new skills, promoting awareness, or simulating real-world scenarios</b>.
+        </p>
+
+        <h2>Examples of Serious Games</h2>
+
+        <p>Here are some examples of serious games across different domains:</p>
+
+        <p>Social benefit – e.g. scientific research</p>
+
+        <ul>
+          <li><a href="https://fold.it/" target="_blank">Foldit</a> - A puzzle game that allows players to contribute to
+            scientific
+            research by folding proteins to help understand their structures.<br /><br />Scientists can then use these
+            solutions to
+            target and eradicate diseases and create biological innovations.<br /><br />A 2010 paper in the
+            science journal Nature credited Foldit's 57,000 players with providing useful results that
+            matched or outperformed algorithmically computed solutions</li><br />
+          <li><a
+              href="https://www.alzheimersresearchuk.org/research/for-researchers/resources-and-information/sea-hero-quest/"
+              target="_blank">Sea Hero Quest</a> - A mobile game designed to help researchers understand spatial
+            navigation and its decline in
+            conditions like dementia. Players navigate a boat through various mazes, generating data that aids in
+            studying cognitive health.</li><br />
+        </ul>
+
+        <p>Simulation</p>
+
+        <ul>
+          <li><a href="https://projects-old.etc.cmu.edu/hazmat_2005/" target="_blank">Hazmat Hotzone</a> - A training
+            simulation game for emergency responders to practice handling hazardous materials incidents in a safe
+            virtual
+            environment.</li><br />
+        </ul>
+
+        <p>Education (Digital Game-Based Learning)</p>
+
+        <ul>
+          <li><a href="https://www.mangahigh.com/en-gb/" target="_blank">MangaHigh</a> - An educational platform that
+            uses
+            games to teach math concepts to students in an engaging way.</li><br />
+          <li><a href="http://www.mission-us.org" target="_blank">Mission US</a> - A series of interactive games that
+            immerse players in
+            historical events, allowing them to experience and learn about different periods in American history.</li>
+          <br />
+          <li><a href="https://oregontrail.ws/games/the-oregon-trail/play/" target="_blank">The Oregon Trail</a> - A
+            classic educational game that simulates the challenges faced by pioneers
+            traveling the Oregon Trail in the 19th century. Players make decisions about supplies, routes, and health to
+            successfully complete the journey.</li><br />
+          <li><a href="https://www.duolingo.com/" target="_blank">Duolingo</a> - A language learning app that
+            incorporates
+            gamification elements to make learning new languages fun and interactive.</li><br />
+        </ul>
+
+        <p>Attitude Education</p>
+
+        <ul>
+          <li><a href="https://www.thatdragoncancer.com/" target="_blank">That Dragon, Cancer</a> - An emotional
+            narrative-driven game that explores the experiences of a family dealing with a child's terminal cancer
+            diagnosis, aiming to raise awareness and empathy.</li><br />
+          <li><a href="https://playspent.org/" target="_blank">Spent</a> - An online game that simulates the challenges
+            of living in poverty, aiming to raise awareness about the difficulties faced by low-income individuals.</li>
+          <br />
+        </ul>
+
+        <h2>Benefits of Serious Games</h2>
+
+        <p>Serious games offer several benefits, including:</p>
+
+        <ul>
+          <li><b>Engagement:</b> Games can capture players' attention and motivate them to learn and participate
+            actively.
+          </li><br />
+          <li><b>Experiential Learning:</b> Players can learn by doing, which can enhance understanding and retention of
+            information.</li><br />
+          <li><b>Safe Environment:</b> Serious games provide a safe space for players to experiment, make mistakes, and
+            learn from them without real-world consequences.</li><br />
+          <li><b>Collaboration:</b> Many serious games encourage teamwork and communication among players, fostering
+            social skills.</li><br />
+        </ul>
+
+        <h2>Why Use Games?</h2>
+
+        <p>Games are an effective medium for serious purposes because they:</p>
+
+        <ul>
+          <li><b>Active Participation:</b> Games require the learner to be <b>actively engaged</b> rather than passively
+            receiving information.
+            This active involvement leads to better retention of knowledge and skills.</li>
+          <li><b>Instant Feedback and Progress:</b> In most games, players receive immediate feedback on their actions
+            (e.g., points, levels,
+            outcomes). This helps them understand <b>cause and effect</b>, encouraging them to try different
+            strategies and learn from their mistakes. In traditional learning, feedback is often delayed (e.g.,
+            waiting for test results).
+          </li>
+          <li><b>Low-Risk Environment:</b> Games allow for <b>safe failure</b>—players can experiment with different
+            approaches without
+            real-world consequences, which encourages creativity and learning from failure</li>
+          <li><b>Intrinsic and Extrinsic Motivation:</b> Many games combine <b>intrinsic motivation</b> (the joy of
+            playing) with <b>extrinsic rewards</b> (badges,
+            levels, points), motivating players to stay engaged longer. These same principles can be applied
+            to training and education.</li>
+        </ul>
+
+        <h2>How Serious Games Work</h2>
+
+        <p>A cycle of <b>initiate > persist > succeed</b>
+          leads players of training games to
+          remain involved as they initiate game
+          play, adopt a role, control game play,
+          practice skills, solve problems persist to
+          the end and strive to win (which
+          translates as "learn")
+        </p>
+
+        <p>The following TED Talk can further explain: <a href="https://youtu.be/Axk5-i8oTIU?si=Ujyhd3-4MUJbuZy5"
+            target="_blank">Gabe Zichermann - "Changing the Game in Education"</a></p>
+
+      </article>
+      <br />
+    </section>
+    <hr />
 
 
 
