@@ -1,0 +1,188 @@
+REVIEW
+
+a) 
+
+1  8  8
+-48  8  8
+
+b) 
+
+a. public static int method(int b, int a)
+
+b. c = method(a, b); AND a = method(b, a);
+
+c. 
+
+public static int method(int b, int a) {
+    int d;
+
+    d = a * b - b * b;
+    return d + b;
+}
+
+c) 
+
+import java.util.Scanner;//Scanner
+public class CountOccurrences {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a String: ");
+        String temp = sc.nextLine().toLowerCase();
+        int count = 0;
+        for(char c='a'; c<='z'; c++) {// iterate for each lower case letter
+            count = countOccurrences(temp, c);// count number of times lower case letter appears
+            if(count>0) System.out.println(c + " appears " + count + " times");// if it appears, output how many times
+        }
+    }
+
+    // iterate through the String and compare each lowercase version of the letter at that index to c, returning the count
+    public static int countOccurrences(String temp, char c) {
+        int count = 0;
+        for(int i=0; i<temp.length(); i++) {
+            if(c==temp.charAt(i)) count++;
+        }
+        return count;
+    }
+}
+
+d)
+
+public static boolean isDivisible(double n, double m) {
+    return (n % m == 0);
+}
+
+e) 
+
+/**
+ * Checks if the given three sides form a valid triangle.
+ * @param side1 the length of the first side of the triangle
+ * @param side2 the length of the second side of the triangle
+ * @param side3 the length of the third side of the triangle
+ * @return true if the sides can form a valid triangle, false otherwise 
+ */
+public static boolean isTriangle(int side1, int side2, int side3) {
+    boolean isPositive = (side1 > 0) && (side2 > 0) && (side3 > 0);
+    return (isPositive && (side1 + side2 > side3) && (side1 + side3 > side2) && (side2 + side3 > side1));
+}
+
+f) 
+
+true
+true
+ping!
+pong!
+
+g) 
+
+public static double calculateVolumeOfSphere(double radius) {
+    return (4.0/3.0) * Math.PI * Math.pow(radius, 3);
+}
+
+public static double calculateSurfaceAreaOfSphere(double radius) {
+    return 4 * Math.PI * Math.pow(radius, 2);
+}
+
+public static boolean isSphereLarge(double radius) {
+    return calculateVolumeOfSphere(radius) > 1000;
+}
+
+public static void main(String [] args) {
+    double radius = 5.0;
+    double volume = calculateVolumeOfSphere(radius);
+    double surfaceArea = calculateSurfaceAreaOfSphere(radius);
+    boolean isLarge = isSphereLarge(radius);
+
+    System.out.println("Volume of the sphere: " + volume + " cubic units");
+    System.out.println("Surface area of the sphere: " + surfaceArea + " square units");
+    System.out.println("Is the sphere large: " + isLarge);
+}
+
+LAB 4 TO BE DISCUSSED IN CLASS
+
+----------------------------------------------------------------------------------------
+
+Week 11
+
+1) 
+
+Value: 1
+Value: 4
+Value: 7
+Value: 10
+
+2) 
+
+1 : 0.5
+2 : 2.0
+3 : 4.5
+4 : 8.0
+5 : 12.5
+
+3) 
+
+public class RandomIntegersCounter {
+    public static void main(String [] args) {
+        final int SIZE = 20;
+        int max = 100;
+        int min = 1;
+        int[] randomNumbers = new int[SIZE];
+
+        for (int i = 0; i < SIZE; i++) {
+            int rand = (int) (Math.random() * (max - min) + min);
+            randomNumbers[i] = rand;
+        }
+
+        System.out.println("Generated random numbers:");
+        System.out.print("{");
+        for (int i = 0; i < randomNumbers.length; i++) {
+            System.out.print(randomNumbers[i]);
+            if(i < randomNumbers.length - 1)
+                System.out.print(", ");
+        }
+        System.out.println("}");
+        System.out.println();
+
+        System.out.println("Even numbers count: " + countEvenNumbers(randomNumbers));
+        System.out.println("Odd numbers count: " + countOddNumbers(randomNumbers));
+        System.out.println("Multiples of 5 count: " + countMultiplesOf5(randomNumbers));
+    }
+
+
+    public static int countEvenNumbers(int [] arr) {
+        int count = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] % 2 == 0) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public static int countOddNumbers(int [] arr) {
+        int count = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] % 2 != 0) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public static int countMultiplesOf5(int [] arr) {
+        int count = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] % 5 == 0) {
+                count++;
+            }
+        }
+        return count;
+    }
+}
+
+4)
+
+for (int i = 0; i < (arr.length+1) / 2; i++) {
+      int temp = arr[i];
+      arr[i] = arr[arr.length-i-1];
+      arr[arr.length-i-1] = temp;
+}
