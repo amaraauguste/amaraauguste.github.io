@@ -1,0 +1,72 @@
+1999,One Piece,JP,ONGOING
+2020,Ted Lasso,US,ONGOING
+2011,Game of Thrones,US,2019
+2008,Merlin,UK,2012
+2007,Gurren Lagann,JP,2007
+2012,Gravity Falls,US,2016
+1951,I Love Lucy,US,1957
+2023,The Last of Us,US,ONGOING
+1998,The King of Queens,US,2007
+2011,Jessie,US,2015
+2015,Star vs The Forces of Evil,US,2019
+2015,K.C. Undercover,US,2018
+2010,Blue Mountain State,US,2011
+2006,Supernatural,US,2020
+2013,Vikings,CA,2021
+2022,Peacemaker,US,2025
+2019,The Boys,US,ONGOING
+2008,Breaking Bad,US,2013
+1999,One Piece,JP,ONGOING
+2021,Blue Period ,JP,2021
+2025,Gachiakuta,JP,ONGOING
+2008,Breaking Bad,US,2013
+2015,Better Call Saul,US,2022
+2022,Blue Lock,JP,ONGOING
+2019,You,US,2025
+2019,The Boys,US,ONGOING
+2011,Person of Interest,US,2016
+2010,Sherlock,UK,2017
+2008,Breaking Bad,US,2013
+1999,The Sopranos,US,2007
+2008,Breaking Bad,US,2013
+2011,Game of Thrones,US,2019
+2004,House,US,2012
+2015,Better Call Saul,US,2022
+2011,Shameless,US,2021
+2007,The Big Bang Theory,US,2019
+2020,The Owl House,US,2023
+2019,Amphibia,US,2022
+2012,Lab Rats,US,2016
+1997,Pokémon,JP,ONGOING
+2010,Adventure Time,US,2018
+2005,Ben 10,US,2021
+2008,Breaking Bad,US,2013
+2013,Attack On Titan,JP,2023
+2017,Money Heist,SP,2021
+2016,Stranger Things,US,ONGOING
+2021,Squid Game,KR,ONGOING
+2021,Invincible,US,ONGOING
+2011,Game of Thrones,US,2019
+2021,Mare of Easttown,US,2021
+2022,This is Going to Hurt,UK,2022
+2020,All Creatures Great and Small,UK,ONGOING
+2019,Patrick Melrose ,UK,2018
+2022,Severance,US,ONGOING
+2008,Breaking Bad,US,2013
+2016,Stranger Things,US,ONGOING
+2005,Avatar: The Last Airbender,US,2008
+2005,The Office,US,2013
+2015,Better Call Saul,US,2022
+2011,Game of Thrones,US,2019
+2025,Sakamoto Days,JP,2025
+2002,The Most Extreme,US,2007
+1999,Courage the Cowardly Dog,US,2002
+2001,Totally Spies!,FR,ONGOING
+1999,Crashbox,CA,2000
+1986,The Oprah Winfrey Show ,US,2011
+2013,Brooklyn Nine-Nine,US,2021
+2005,The Office,US,2013
+2009,Modern Family,US,2020
+2009,Parks and Recreation,US,2015
+1959,The Twilight Zone,US,2020
+2005,Avatar: The Last Airbender,US,2008
