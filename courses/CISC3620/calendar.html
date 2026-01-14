@@ -45,155 +45,96 @@
   <div id="calendar"></div>
 </body>
 <script>
+  const eventColorMap = {
+    holiday: "#CC0000",   // updated red for better contrast
+    canceled: "#CC0000",  // updated red for better contrast
+    classDay: "#D186FF",  // unchanged (purple already high contrast)
+    assigned: "#9E6700",  // updated yellow/orange for contrast
+    due: "Blue",          // acceptable contrast on white
+    exam: "#007A0C",      // accessible green
+    expired: "#AD0A00",   // dark red-orange
+  };
+
   $(document).ready(function () {
     $("#calendar").fullCalendar({
       defaultView: "month",
       events: [
-        {
-          title: "Start of Spring 2025 Semester",
-          start: "2025-01-25",
-          color: "#FF0000",
-        },
-        {
-          title: "First Day of TR2 Class",
-          start: "2025-01-28",
-          color: "#D186FF",
-        },
-        {
-          title: "No Classes Scheduled",
-          start: "2025-01-29", 
-          color: "#FF0000",
-        },
-        {
-          title: "HW 1 Assigned",
-          start: "2025-02-06",
-          color: "Orange",
-        },
-        {
-          title: "HW 1 Due",
-          start: "2025-02-13",
-          color: "Blue",
-        },
-        {
-          title: "College Closed - No Classes Scheduled",
-          start: "2025-02-12", 
-          color: "#FF0000",
-        },
-        {
-          title: "College Closed - No Classes Scheduled",
-          start: "2025-02-17", // Presidents' Day,
-          color: "#FF0000",
-        },
-        {
-          title: "No Class - Monday Schedule",
-          start: "2025-02-18", //Conversion Day - Monday Schedule
-          color: "#FF0000",
-        },
-        {
-          title: "No Class - Wednesday Schedule",
-          start: "2025-03-06", //Conversion Day - Wednesday Schedule
-          color: "#FF0000",
-        },
-        {
-          title: "No Classes Scheduled",
-          start: "2025-03-31", 
-          color: "#FF0000",
-        },
-        {
-          title: "Withdrawal Deadline",
-          start: "2025-04-01",
-          color: "#FF0000",
-        },
-        {
-          title: "Spring Break - No Classes",
-          start: "2025-04-12",
-          end: "2025-04-21",
-          color: "#FF0000",
-        },
-        {
-          title: "Last Day of Class",
-          start: "2025-05-15",
-          color: "#FF0000",
-        },
-        {
-          title: "HW 2 Assigned",
-          start: "2025-02-25",
-          color: "Orange",
-        },
-        {
-          title: "HW 2 Due",
-          start: "2025-03-04",
-          color: "Blue",
-        },
-        {
-          title: "HW 3 Assigned",
-          start: "2025-03-04",
-          color: "Orange",
-        },
-        {
-          title: "HW 3 Due",
-          start: "2025-03-11",
-          color: "Blue",
-        },
-        {
-          title: "Midterm",
-          start: "2025-03-18",
-          color: "#00CD14 ",
-        },
-        
-        {
-          title: "HW 4 Assigned",
-          start: "2025-03-25",
-          color: "Orange",
-        },
-        {
-          title: "HW 4 Due",
-          start: "2025-04-03",
-          color: "Blue",
-        },
-         {
-          title: "Class Canceled",
-          start: "2025-04-03",
-          color: "Red",
-        },
-        {
-          title: "HW 5 Assigned",
-          start: "2025-04-10",
-          color: "Orange",
-        },
-        {
-          title: "HW 5 Due",
-          start: "2025-04-22",
-          color: "Blue",
-        },
-        {
-          title: "HW 6 Assigned",
-          start: "2025-04-29",
-          color: "Orange",
-        },
-        {
-          title: "HW 6 Due",
-          start: "2025-05-15",
-          color: "Blue",
-        },
-        {
-          title: "Extra Credit Due",
-          start: "2025-05-15",
-          color: "Blue",
-        },
-        {
-          title: "Final Exam",
-          start: "2025-05-22",
-          color: "#00CD14 ",
-        },
+        { title: "Start of Spring 2025 Semester", start: "2025-01-25", color: eventColorMap.holiday },
+        { title: "First Day of TR2 Class", start: "2025-01-28", color: eventColorMap.classDay },
+        { title: "No Classes Scheduled", start: "2025-01-29", color: eventColorMap.holiday },
+
+        { title: "HW 1 Assigned", start: "2025-02-06", color: eventColorMap.assigned },
+        { title: "HW 1 Due", start: "2025-02-13", color: eventColorMap.due },
+
+        { title: "College Closed - No Classes Scheduled", start: "2025-02-12", color: eventColorMap.holiday },
+        { title: "College Closed - No Classes Scheduled", start: "2025-02-17", color: eventColorMap.holiday },
+
+        { title: "No Class - Monday Schedule", start: "2025-02-18", color: eventColorMap.holiday },
+        { title: "No Class - Wednesday Schedule", start: "2025-03-06", color: eventColorMap.holiday },
+
+        { title: "No Classes Scheduled", start: "2025-03-31", color: eventColorMap.holiday },
+        { title: "Withdrawal Deadline", start: "2025-04-01", color: eventColorMap.holiday },
+
+        { title: "Spring Break - No Classes", start: "2025-04-12", end: "2025-04-21", color: eventColorMap.holiday },
+
+        { title: "Last Day of Class", start: "2025-05-15", color: eventColorMap.holiday },
+
+        { title: "HW 2 Assigned", start: "2025-02-25", color: eventColorMap.assigned },
+        { title: "HW 2 Due", start: "2025-03-04", color: eventColorMap.due },
+
+        { title: "HW 3 Assigned", start: "2025-03-04", color: eventColorMap.assigned },
+        { title: "HW 3 Due", start: "2025-03-11", color: eventColorMap.due },
+
+        { title: "Midterm", start: "2025-03-18", color: eventColorMap.exam },
+
+        { title: "HW 4 Assigned", start: "2025-03-25", color: eventColorMap.assigned },
+        { title: "HW 4 Due", start: "2025-04-03", color: eventColorMap.due },
+
+        { title: "Class Canceled", start: "2025-04-03", color: eventColorMap.canceled },
+
+        { title: "HW 5 Assigned", start: "2025-04-10", color: eventColorMap.assigned },
+        { title: "HW 5 Due", start: "2025-04-22", color: eventColorMap.due },
+
+        { title: "HW 6 Assigned", start: "2025-04-29", color: eventColorMap.assigned },
+        { title: "HW 6 Due", start: "2025-05-15", color: eventColorMap.due },
+
+        { title: "Extra Credit Due", start: "2025-05-15", color: eventColorMap.due },
+
+        { title: "Final Exam", start: "2025-05-22", color: eventColorMap.exam },
+        { title: "Start of Spring 2026 Semester", start: "2026-01-26", color: eventColorMap.holiday },
+        { title: "First Day of TR2 Class", start: "2026-01-27", color: eventColorMap.classDay },
+        { title: "HW 1 Assigned", start: "2026-02-05", color: eventColorMap.assigned },
+        { title: "HW 1 Due", start: "2026-02-19", color: eventColorMap.due },
+        { title: "College Closed - No Classes Scheduled", start: "2026-02-12", color: eventColorMap.holiday },
+        { title: "College Closed - No Classes Scheduled", start: "2026-02-16", color: eventColorMap.holiday },
+        { title: "No Classes Scheduled", start: "2026-02-17", color: eventColorMap.holiday },
+        { title: "HW 2 Assigned", start: "2026-02-26", color: eventColorMap.assigned },
+        { title: "HW 2 Due", start: "2026-03-05", color: eventColorMap.due },
+        { title: "HW 3 Assigned", start: "2026-03-05", color: eventColorMap.assigned },
+        { title: "HW 3 Due", start: "2026-03-12", color: eventColorMap.due },
+        { title: "Midterm", start: "2026-03-19", color: eventColorMap.exam },
+        { title: "HW 4 Assigned", start: "2026-03-26", color: eventColorMap.assigned },
+        { title: "HW 4 Due", start: "2026-04-14", color: eventColorMap.due },
+        { title: "HW 5 Assigned", start: "2026-04-16", color: eventColorMap.assigned },
+        { title: "HW 5 Due", start: "2026-04-23", color: eventColorMap.due },
+        { title: "HW 6 Assigned", start: "2026-04-30", color: eventColorMap.assigned },
+        { title: "HW 6 Due", start: "2026-05-19", color: eventColorMap.due },
+        //{ title: "Extra Credit Due", start: "2026-05-19", color: eventColorMap.due },
+        //{ title: "Final Exam", start: "2026-05-26", color: eventColorMap.exam },
+        { title: "No Classes Scheduled", start: "2026-03-20", color: eventColorMap.holiday },
+        { title: "Withdrawal Deadline", start: "2026-04-13", color: eventColorMap.holiday },
+        { title: "Spring Break - No Classes", start: "2026-04-01", end: "2026-04-10", color: eventColorMap.holiday },
+        { title: "Last Day of Class", start: "2026-05-19", color: eventColorMap.holiday },
 
       ],
+
       eventRender: function (event, element) {
-        element.css("background-color", event.color); // set background color
-        element.css("border-color", event.color); // set border color
+        element.css("background-color", event.color);
+        element.css("border-color", event.color);
       },
     });
   });
+
 </script>
 
 </html>
