@@ -1,0 +1,139 @@
+a) 
+
+1. compiler error - incompatible types int and String
+
+fix:
+
+int x = 5;
+int y = 10; 
+
+int sum = x + y;
+
+System.out.println("Sum: " + sum);
+
+2. first compiler error - if for loop does not execute sum cannot be printed out as it  only exists in the scope of the loop
+
+fix:
+
+Scanner stdin = new Scanner(System.in);
+int n = stdin.nextInt();
+int sum = 0;
+for (int i = 1; i <= n; i++) {
+    sum = 0; 
+    sum = sum + i;
+}
+
+System.out.println("sum = " + sum);
+
+THEN logical error - sum is reset on every iteration of the loop
+
+fix: 
+
+Scanner stdin = new Scanner(System.in);
+int n = stdin.nextInt();
+int sum = 0;
+for (int i = 1; i <= n; i++) {
+    sum = sum + i;
+}
+
+System.out.println("sum = " + sum);
+
+b)
+
+import java.util.Scanner;
+
+public class PositiveNumberCheck {
+    public static void main(String[] args) {
+        // Create a Scanner object to read input
+        Scanner scanner = new Scanner(System.in);
+
+        // Declare and initialize the variables x and y
+        System.out.print("Enter value for x: ");
+        int x = scanner.nextInt();
+
+        System.out.print("Enter value for y: ");
+        int y = scanner.nextInt();
+
+        // 1. Check if both x and y are positive
+        if (x > 0 && y > 0) {
+            System.out.println("they are both positive");
+        } else {
+            System.out.println("they are not both positive");
+        }
+
+        // 2. Check if at least one of x or y is positive
+        if (x > 0 || y > 0) {
+            System.out.println("at least one is positive");
+        } else {
+            System.out.println("neither one is positive");
+        }
+
+        // 3. Check if either x or y is not not positive
+        if (!(x > 0 && y > 0)) { // This effectively checks if either x or y is positive
+            System.out.println("it is not positive");
+        } else {
+            System.out.println("it is positive"); // This means both are positive
+        }
+
+        // Close the Scanner
+        scanner.close();
+    }
+}
+
+c) 
+
+import java.util.Scanner;
+
+public class BookInfo {
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in); //allows us to read from kybd
+        int bookID = input.nextInt();
+        //while loop
+        while (bookID != -1) {
+            input.nextLine(); //input buffer; reads newline operator
+            String title = input.nextLine();
+            String author = input.nextLine();
+            int genreNum = input.nextInt();
+            String genre = "Unconfirmed"; //default
+            String recommendedAge = "N/A"; //default
+            System.out.println("\n");
+            switch (genreNum) {
+                case 1 -> {
+                    genre = "Fiction";
+                    recommendedAge = "7+";
+                }
+                case 2 -> {
+                    genre = "Non-Fiction";
+                    recommendedAge = "10+";
+                }
+                case 3 -> {
+                    genre = "Sci-Fi";
+                    recommendedAge = "13+";
+                }
+                case 4 -> {
+                    genre = "Mystery";
+                    recommendedAge = "15+";
+                }
+                case 5 -> {
+                    genre = "Romance";
+                    recommendedAge = "16+";
+                }
+                default -> {
+                }
+            }
+           
+            System.out.printf("Book ID: %d%n", bookID); //int
+            System.out.printf("Title: %s%n", title); //String
+            System.out.printf("Author: %s%n", author); //String
+            System.out.printf("Genre: %s%n", genre); //String
+            System.out.printf("Recommended age: %s%n", recommendedAge); //String
+            System.out.println("\n\n\n");
+
+            bookID = input.nextInt(); //read again to avoid infinite loop
+        }
+
+        input.close();
+    }
+
+}
