@@ -1,0 +1,31 @@
+DAY 1
+
+1) 
+
+for (numberOfIncompletes=0,k=0; k<incompletes.length; k++) {
+    if (incompletes[k] == studentID) {
+        numberOfIncompletes++;
+    }
+}
+
+2) 
+
+Enter any number: 3
+3 spring
+Enter any number: 6
+6 summer
+Enter any number: 9
+9 fall
+Enter any number: 12
+12 winter
+Enter any number: 0
+0 error
+Enter any number: 15
+15 error
+Enter any number: 2
+2 winter
+Enter any number: 5
+5 spring
+Enter any number: 8
+8 summer
+
