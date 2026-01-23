@@ -1,0 +1,84 @@
+DAY 1
+
+1) 
+
+import java.util.Scanner;
+public class CountriesAndCapitals {
+    public static void main(String [] args) {
+        String [] countries = {"China", "Egypt", "France", "Germany", "India", "Japan", "Kenya", "Mexico", "United Kingdom", "United States"};
+        String [] capitals = {"Beijing", "Cairo", "Paris", "Berlin", "New Delhi", "Tokyo", "Nairobi", "Mexico City", "London", "Washington D.C."};
+        printMenu(countries);
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("\n\nPlease enter a country from the list above: ");
+        String selectedCountry = scanner.nextLine();
+        getCapital(countries, capitals, selectedCountry);
+    }
+
+    public static void printMenu(String [] countries) {
+        System.out.println("List of Countries:");
+        for (String country : countries) {
+            System.out.println(country);
+        }
+    }
+
+
+    public static void getCapital(String [] countries, String [] capitals, String country) {
+        int index = findIndex(countries, country);
+        if (index == -1) {
+            System.out.println("Error: Country not found in the list.");
+        } else {
+            System.out.println("The capital of " + country + " is " + capitals[index] + ".");
+        }
+    }
+
+    public static int findIndex(String [] countries, String country) {
+        for (int i = 0; i < countries.length; i++) {
+            if (countries[i].equalsIgnoreCase(country)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+}
+
+--------------------------------------------------------------------------------
+
+DAY 2
+
+1)
+
+a) 
+
+Sequential (Linear) search:
+2 5 8 12 16 23
+
+b) 
+
+Binary search:
+Low    Mid    High
+2      16      91
+23     56      91
+23     23      38
+
+2) 
+
+Sequential (Linear) search:
+3 15 25 43
+
+Binary search:
+Low    Mid    High
+3      50     120
+3      15      43
+25     25      43
+43     43      43
+
+3) 
+
+Binary search:
+Low    Mid    High
+9      85     1000
+9      23       78
+9       9       15
+15     15       15
+
+
