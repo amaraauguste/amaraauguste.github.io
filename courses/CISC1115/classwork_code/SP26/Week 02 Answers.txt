@@ -1,0 +1,133 @@
+REVIEW
+
+a)
+
+public class TemperatureConverter {
+    public static void main(String [] args) {
+        double f = 255.5;
+
+        // Convert Fahrenheit to Celsius
+        double c = (f - 32) * 5 / 9;
+
+        // Print temperature in Celsius 
+        System.out.println(f + " degree(s) Fahrenheit is equal to " + c + " degree(s) Celsius.");
+    }
+}
+
+b) -9 4 2.00
+
+c) This is a perfectly legal statement because the class name Math allows Java to distinguish between the variable sqrt and the method sqrt. 
+However, we should avoid having multiple aspects of a program with the same name as it may cause confusion.
+
+d) (Math.pow(x, 2) - (1 / (y + 3))) / ((1 / z) + Math.sqrt(x))
+
+----------------------------------------------------------------------------------------
+
+1) val = stdin.nextInt();
+
+2) eurasiaSales = Arithmetic.add(euroSales,asiaSales);
+
+3) pricePerCase * 12
+
+4) y = ((9 * Math.pow(x,3)) - (27 * Math.pow(x,2)) - (4 * x) + 12)/(Math.sqrt((3 * Math.pow(x,2)) + 1) + (Math.abs(5 - Math.pow(x,4))))
+
+5) 
+
+import java.util.Scanner;
+
+public class CitiesComparison {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        String city1, city2;
+        int distance;
+        double costPerMile;
+        int dollarAmount;
+        System.out.print("Enter the starting city: ");
+        city1 = in.next();
+        System.out.print("Enter the ending city: ");
+        city2 = in.next();
+        System.out.print("Enter distance in miles between cities: ");
+        distance = in.nextInt();
+        System.out.print("Enter the cost of travel per mile: ");
+        costPerMile = in.nextDouble();
+        dollarAmount = (int) (distance * costPerMile);
+        System.out.println("\n\nThe cost of traveling from "
+                + city1 + " to " + city2 + " is $" + dollarAmount);
+    }
+}
+
+6) 
+
+import java.util.Scanner;
+
+public class SecondsConversion {
+    public static void main (String [] args){
+        //prompt the user for input
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter number of seconds: ");
+        int totalSeconds = sc.nextInt();
+       
+        //measurement constants
+        final int SEC_PER_MIN = 60;
+        final int MIN_PER_HR = 60;
+        final int SEC_PER_HR = SEC_PER_MIN * MIN_PER_HR; //3600
+       
+        //convert
+        int hours = totalSeconds / SEC_PER_HR;
+        int remSeconds = totalSeconds % SEC_PER_HR; //not enough to make a full hr
+        int minutes = remSeconds / 60;
+        int seconds = remSeconds % 60; //not enough to make a full min
+       
+        System.out.print(totalSeconds + " seconds = ");
+        System.out.printf("%d hours, %d minutes, %d seconds%n", hours, minutes, seconds);
+
+				sc.close();
+    }
+}
+
+7) 
+
+public class RandomFile {
+    public static void main(String[] args) throws Exception{
+        //read in user's name
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter first name: ");
+        String firstName = input.next();
+        System.out.print("Enter last name: ");
+        String lastName = input.next();
+        String filename = lastName+"_"+firstName+"_Info.txt";
+       
+       
+        //generate ID number
+        int min = 1000; //inclusive
+        int max = 10000; //exclusive
+        int id = (int) (Math.random() * (max - min) + min);
+       
+        //write info to file
+       
+        PrintWriter pw = new PrintWriter (filename);
+        pw.print(id);
+        pw.close();
+       
+        //read file content to the console
+       
+        System.out.print("Enter first name to search for: ");
+        String firstName2 = input.next();
+        System.out.print("Enter last name to search for: ");
+        String lastName2 = input.next();
+        input.close();
+        String filename2 = lastName2+"_"+firstName2+"_Info.txt";
+        File f = new File(filename2);
+        Scanner sc = new Scanner(f);
+        System.out.println("User: " + firstName2 + ", " + lastName2);
+        int userID = sc.nextInt();
+        System.out.println("ID Number: " + userID);
+        sc.close();
+    }
+}
+
+----------------------------------------------------------------------------------------
+
+LAB 1 TO BE DISCUSSED IN CLASS
+
+----------------------------------------------------------------------------------------
