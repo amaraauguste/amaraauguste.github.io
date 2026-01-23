@@ -1,0 +1,243 @@
+REVIEW
+
+a)
+
+import java.util.Scanner;
+public class IsPalindrome {
+    public static void main(String [] args) {
+        Scanner sc = new Scanner (System.in);
+        System.out.print("Enter a String: ");
+        String s = sc.next();
+
+        String revS = "";
+        for(int i = s.length()-1; i >= 0; i--) {
+            revS += s.charAt(i);
+        }
+
+        System.out.println("String reversed: " + revS);
+
+        if(s.equalsIgnoreCase(revS)) {
+            System.out.println("This String is a palindrome.");
+        } else {
+            System.out.println("This String is nota palindrome.");
+        }
+    }
+}
+
+
+b) 
+
+public static void main(String[] args) throws Exception {
+    File file = new File("Week9Emails.txt");
+    Scanner scanner = new Scanner(file);
+
+    System.out.println("Unique Domain Names:");
+
+    while (scanner.hasNext()) {
+         String first = scanner.next();
+         String last = scanner.next();
+         String email = scanner.next();
+         String domain = email.substring(email.indexOf('@') + 1);
+         System.out.println(domain);
+    }
+    scanner.close();
+}
+
+c) first = (name1.compareTo(name2) < 0) ? name2 : name1;
+
+d)
+
+String word, prev;
+boolean isdup=false;
+n=0;
+prev=stdin.next();
+word=stdin.next();
+while (!word.equals("xxxxx")) {
+	if (word.equals(prev))
+		isdup=true;
+	else {
+		if (!isdup) n++;
+		isdup=false;
+	}
+	prev = word;
+	word=stdin.next();
+}
+if (!isdup) n++;
+
+----------------------------------------------------------------------------------------
+
+DAY 1
+
+1) 
+
+public static void printMessage(String message) {
+    System.out.println(message);
+}
+
+2)
+
+public static void calculateArea(double length, double width) {
+    double area = length * width;
+    System.out.println("The area of the rectangle is: " + area);
+}
+
+
+3)
+
+public static void calcAverage() {
+    Scanner scanner = new Scanner(System.in);
+
+    System.out.print("Input the first number: ");
+    double num1 = scanner.nextDouble();
+
+    System.out.print("Input the second number: ");
+    double num2 = scanner.nextDouble();
+
+    System.out.print("Input the third number: ");
+    double num3 = scanner.nextDouble();
+
+    double average = (num1 + num2 + num3) / 3;
+
+    System.out.printf("The average value is %.1f\n", average);
+
+    scanner.close();
+}
+
+4)
+
+public static void printPattern(int n) {
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= i; j++) {
+            System.out.print("*");
+        }
+        System.out.println();
+    }
+}
+
+5)
+
+import java.util.Scanner;
+public class W11_Q1 {
+    public static void main(String [] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter the day of the week:");
+        String day = scanner.next();
+
+        System.out.println("Enter the date:");
+        int date = scanner.nextInt();
+
+        System.out.println("Enter the month (January to December):");
+        String month = scanner.next();
+
+        System.out.println("Enter the year:");
+        int year = scanner.nextInt();
+
+        printAmerican(day, date, month, year);
+        printEuropean(day, date, month, year);
+
+        scanner.close();
+    }
+
+    public static void printAmerican(String day, int date, String month, int year) {
+        System.out.println(day + ", " + month + " " + date + ", " + year);
+    }
+
+    public static void printEuropean(String day, int date, String month, int year) {
+        System.out.println(day + " " + date + " " + month + " " + year);
+    }
+}
+
+----------------------------------------------------------------------------------------
+
+DAY 2
+
+1) 
+
+// Method to find the largest of three integers
+public static int biggest(int a, int b, int c) {
+    int largest = a; // assume 'a' is the largest to start
+
+    if (b > largest) {
+        largest = b;
+    }
+    if (c > largest) {
+        largest = c;
+    }
+
+    return largest; // return the largest value
+}
+
+OR 
+
+public static int biggest(int a, int b, int c) {
+    return Math.max(a, Math.max(b, c));
+}
+
+2)
+
+// Method to calculate the perimeter of a triangle
+public static double calcPerimeter(double a, double b, double c) {
+    return a + b + c;
+}
+
+// Method to calculate the perimeter of a square
+public static double calcPerimeter(double length) {
+    return 4 * length;
+}
+
+// Method to calculate the perimeter of a rectangle
+public static double calcPerimeter(double length, double width) {
+    return 2 * (length + width);
+}
+
+3) 
+
+1  8  8
+-48  8  8
+
+4) 
+
+a. public static int method(int b, int a)
+
+b. c = method(a, b); AND a = method(b, a);
+
+c. 
+
+public static int method(int b, int a) {
+    int d;
+
+    d = a * b - b * b;
+    return d + b;
+}
+
+5) 
+
+import java.util.Scanner;//Scanner
+public class CountOccurrences {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a String: ");
+        String temp = sc.nextLine().toLowerCase();
+        int count = 0;
+        for(char c='a'; c<='z'; c++) {// iterate for each lower case letter
+            count = countOccurrences(temp, c);// count number of times lower case letter appears
+            if(count>0) System.out.println(c + " appears " + count + " times");// if it appears, output how many times
+        }
+    }
+
+    // iterate through the String and compare each lowercase version of the letter at that index to c, returning the count
+    public static int countOccurrences(String temp, char c) {
+        int count = 0;
+        for(int i=0; i<temp.length(); i++) {
+            if(c==temp.charAt(i)) count++;
+        }
+        return count;
+    }
+}
+
+6)
+
+public static boolean isDivisible(double n, double m) {
+    return (n % m == 0);
+}
