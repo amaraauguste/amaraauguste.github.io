@@ -4,7 +4,19 @@
 <head>
     <link rel="stylesheet" href="3620style.css" />
     <title>CISC 3620</title>
+    <style>
+        /* Hidden until reveal time */
+        .is-locked {
+            display: none !important;
+        }
 
+        /* Optional: show a subtle placeholder while locked */
+        .hw-placeholder {
+            opacity: 0.75;
+            font-style: italic;
+            margin: 0.35em 0;
+        }
+    </style>
 </head>
 
 <body>
@@ -65,11 +77,10 @@
             <article>
                 <p>As previously mentioned, there will be a total of six (6) homeworks incorporating several concepts
                     and topics as discussed in class.</p>
-                <p>For this course, every student is required to make a CodePen account.</p>
+                <p>For this course, every student is required to make a <a href="https://codepen.io/" target="_blank">CodePen</a> account.</p>
                 <p>Homework will be listed both here and on Brightspace and <b>MUST</b> be submitted as a link to your
                     complete assignment hosted on CodePen via Brightspace.</p>
-                <p>Homework:</p>
-                <ul>
+                <ul id="homeworkList" style="column-count: 1; font-size: 29px">
                     <li>
                         <p>
                             <b><u>Homework 0</u>:</b> If I do not have it already, please email me your preferred email
@@ -79,32 +90,32 @@
                         </p>
                     </li>
 
-                    <li><b>
+                    <li data-reveal="2026-02-05T08:00"><b>
                             <p><a href="CISC3620/homeworks/CISC 3620 HW 1.pdf">Homework 1</a>: DUE 02/19 by 1:45 PM
                         </b></p>
 
                     </li>
-                    <li><b>
+                    <li data-reveal="2026-02-26T08:00"><b>
                             <p><a href="CISC3620/homeworks/CISC 3620 HW 2.pdf">Homework 2</a>: DUE 03/05 by 1:45 PM
                         </b></p>
 
                     </li>
-                    <li><b>
+                    <li data-reveal="2026-03-05T08:00"><b>
                             <p><a href="CISC3620/homeworks/CISC 3620 HW 3.pdf">Homework 3</a>: DUE 03/12 by 1:45 PM
                         </b></p>
 
                     </li>
-                    <li><b>
+                    <li data-reveal="2026-03-26T08:00"><b>
                             <p><a href="CISC3620/homeworks/CISC 3620 HW 4.pdf">Homework 4</a>: DUE 04/14 by 1:45 PM
                         </b></p>
 
                     </li>
-                    <li><b>
+                    <li data-reveal="2026-04-16T08:00"><b>
                             <p><a href="CISC3620/homeworks/CISC 3620 HW 5.pdf">Homework 5</a>: DUE 04/23 by 1:45 PM
                         </b></p>
 
                     </li>
-                    <li><b>
+                    <li data-reveal="2026-04-30T08:00"><b>
                             <p><a href="CISC3620/homeworks/CISC 3620 HW 6.pdf">Homework 6</a>: DUE 05/19 by 1:45 PM
                         </b></p>
 
@@ -156,6 +167,54 @@
                 }
             });
         }
+    </script>
+    <script>
+        // ---- Homework reveal timer ----
+        (function () {
+            const TZ_NOTE = "Times are interpreted in the student's local browser time unless you include a timezone offset.";
+
+            // If you want to force New York time interpretation, include an offset like -05:00 or -04:00
+            // Example: 2026-02-01T09:00-05:00
+            // Otherwise: 2026-02-01T09:00 will be treated as the viewer's local time.
+
+            const items = document.querySelectorAll('#homeworkList [data-reveal]');
+            if (!items.length) return;
+
+            // Optional placeholder shown when something is still locked
+            const placeholder = document.createElement('div');
+            placeholder.className = 'hw-placeholder';
+            placeholder.textContent = 'More homework will appear here as it is released.';
+            const list = document.getElementById('homeworkList');
+            if (list) list.parentNode.insertBefore(placeholder, list.nextSibling);
+
+            function updateHomeworkVisibility() {
+                const now = Date.now();
+                let anyLocked = false;
+
+                items.forEach((li) => {
+                    const revealStr = li.getAttribute('data-reveal');
+                    const revealTime = Date.parse(revealStr);
+
+                    // If the date string is invalid, don't hide it (fail open)
+                    if (Number.isNaN(revealTime)) return;
+
+                    if (now >= revealTime) {
+                        li.classList.remove('is-locked');
+                    } else {
+                        li.classList.add('is-locked');
+                        anyLocked = true;
+                    }
+                });
+
+                // Show placeholder only if something is still locked
+                placeholder.style.display = anyLocked ? 'block' : 'none';
+            }
+
+            updateHomeworkVisibility();
+
+            // Re-check every minute (lightweight + good enough)
+            setInterval(updateHomeworkVisibility, 60 * 1000);
+        })();
     </script>
 </body>
 
