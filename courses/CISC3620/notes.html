@@ -2523,15 +2523,15 @@ ctx.fillText("Hello World", 10, 50);</code></pre>
 
         <p>The point (a, b) can be written in terms of trigonometric ratios as follows:</p>
 
-        <p>The x-ordinate is given by a = <b>r cos 𝛳</b></p>
+        <p>The x-coordinate is given by a = <b>r cos 𝛳</b></p>
 
-        <p>The y-ordinate is given by b = <b>r sin 𝛳</b></p>
+        <p>The y-coordinate is given by b = <b>r sin 𝛳</b></p>
 
         <p>In Javascript we can identify the first point as:</p>
 
         <text class="center"><b>(x + radius * Math.cos(angle), y + radius * Math.sin(angle))</b></text>
 
-        <p>Note that we add the (x, y) ordinate values since we will not necessarily be centering the circle at (0, 0).
+        <p>Note that we add the (x, y) coordinate values since we will not necessarily be centering the circle at (0, 0).
         </p>
 
         <p>Since we are drawing a pentagon we know that the angle we will need to rotate through will be 360o / 5.
@@ -2546,8 +2546,8 @@ ctx.fillText("Hello World", 10, 50);</code></pre>
           <li>Since we are drawing a pentagon we set the number of sides to 5</li>
           <li>We define a radius for our circle. The pentagon will be drawn inside the circle, each vertex of the
             pentagon will be on the circumference of the circle.</li>
-          <li>We set the x-ordinate of the centre of the circle</li>
-          <li>We set the y-ordinate of the centre of the circle</li>
+          <li>We set the x-coordinate of the centre of the circle</li>
+          <li>We set the y-coordinate of the centre of the circle</li>
           <li>We calculate the size of the external angle of the pentagon. This is the angle we will need to rotate
             through after each line is drawn</li>
         </ul>
