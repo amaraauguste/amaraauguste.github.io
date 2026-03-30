@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -68,7 +69,7 @@
         const rug = new THREE.Mesh(rugGeometry, rugMaterial);
         rug.rotation.x = -Math.PI / 2;
         rug.position.y = -0.25; // Adjust floor position if needed
-        //rug.receiveShadow = true;
+        rug.receiveShadow = true;
         room.add(rug);
 
         // Create wall texture
@@ -212,14 +213,26 @@
 
         // Load the Fiddle-leaf Plant model
         const modelLoader = new THREE.GLTFLoader();
-        modelLoader.load('https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/master/courses/CISC3620/models/Fiddle-leaf%20Plant.glb', (gltf) => {
-            const flowerPot = gltf.scene;
-            flowerPot.position.set(100, -69, -75);
-            flowerPot.scale.set(10, 10, 10);
-            flowerPot.rotation.y = Math.PI / 2;
+       modelLoader.load(
+  'https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/master/courses/CISC3620/models/Fiddle-leaf%20Plant.glb',
+  (gltf) => {
 
-            scene.add(flowerPot);
-        });
+    const flowerPot = gltf.scene;
+
+    flowerPot.position.set(100, -69, -75);
+    flowerPot.scale.set(10, 10, 10);
+    flowerPot.rotation.y = Math.PI / 2;
+
+    flowerPot.traverse((child) => {
+      if (child.isMesh) {
+        child.castShadow = true;
+        child.receiveShadow = true;
+      }
+    });
+
+    scene.add(flowerPot);
+  }
+);
 
         // Load the Bookshelf model
         const modelLoader2 = new THREE.GLTFLoader();
@@ -228,6 +241,14 @@
             bookcase.position.set(0, -50, -100);
             bookcase.scale.set(100, 100, 100);
             bookcase.rotation.y = Math.PI;
+            
+             bookcase.traverse((child) => {
+      if (child.isMesh) {
+        child.castShadow = true;
+        child.receiveShadow = true;
+      }
+    });
+            
             scene.add(bookcase);
         });
 
