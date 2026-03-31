@@ -29,7 +29,7 @@
         const scene = new THREE.Scene();
 
         // Set up the camera
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 5000);
         camera.position.set(0, 0, 200); // Position it to have a wider and more centered view
 
         // Initialize the renderer
@@ -81,7 +81,7 @@
 
         // Create left wall
         const leftWallGeometry = new THREE.PlaneGeometry(250.5, 174.025);
-        const leftWallMaterial = new THREE.MeshStandardMaterial({ color: "#feede9" });
+        const leftWallMaterial = new THREE.MeshStandardMaterial({ color: "#feede9"});
         const leftWall = new THREE.Mesh(leftWallGeometry, leftWallMaterial);
         leftWall.rotation.y = Math.PI / 2;
         leftWall.position.x = -125;
@@ -124,21 +124,26 @@
         ceiling.position.y = 173.5;
         room.add(ceiling);
 
-        // Add a point light for the standing lamp
-        const pointLight1 = new THREE.PointLight(0xffffff, 1);
-        pointLight1.position.set(-100, 80, -100);
-        pointLight1.castShadow = true; // Enable casting shadows
-        room.add(pointLight1);
-        pointLight1.visible = false;
+        // Add a spot light for the standing lamp
+const pointLight1 = new THREE.PointLight(0xffffff, 1);
+
+// Position light ABOVE
+pointLight1.position.set(-100, 80, -100);
+
+pointLight1.castShadow = true;
+
+room.add(pointLight1);
+pointLight1.visible = false;
+
 
         // Add a point light
-        const ceilingLight = new THREE.PointLight(0xffffff, 1);
+        const ceilingLight = new THREE.PointLight(0xffffff, 0.5);
         ceilingLight.position.set(0, 90, 0);
         ceilingLight.castShadow = true; // Enable casting shadows
         room.add(ceilingLight);
         
-        const ambientLight = new THREE.AmbientLight(0xffffff, 1);
-        //scene.add(ambientLight);
+       const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+        scene.add(ambientLight);
 
         // Create a bottom half-sphere to cover the ceiling light
         const sphereRadius = 20;
