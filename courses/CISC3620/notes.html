@@ -8915,7 +8915,7 @@ camera.position.set(0, 0, 15);</code></pre>
     "https://raw.githubusercontent.com/amaraauguste/amaraauguste.github.io/refs/heads/master/courses/CISC3620/textures/Meadow/negz.jpg"
 ];
 const cubeLoader = new THREE.CubeTextureLoader();
-const cubeTexture = loader.load(textureURLs);
+const cubeTexture = cubeLoader.load(textureURLs);
 scene.background = cubeTexture;</code></pre>
 
         <p>Now we should see our environment as our scene is now surrounded by the skybox texture.</p>
