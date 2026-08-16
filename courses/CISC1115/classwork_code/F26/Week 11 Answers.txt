@@ -1,0 +1,138 @@
+DAY 1
+
+1) 
+
+    for (numberOfIncompletes=0,k=0; k<incompletes.length; k++) {
+        if (incompletes[k] == studentID) {
+            numberOfIncompletes++;
+        }
+    }
+
+2) 
+
+Enter any number: 3
+3 spring
+Enter any number: 6
+6 summer
+Enter any number: 9
+9 fall
+Enter any number: 12
+12 winter
+Enter any number: 0
+0 error
+Enter any number: 15
+15 error
+Enter any number: 2
+2 winter
+Enter any number: 5
+5 spring
+Enter any number: 8
+8 summer
+
+----------------------------------------------------------------------------------------
+
+DAY 2
+
+1) 
+
+    import java.util.Scanner;
+    public class CountriesAndCapitals {
+        public static void main(String [] args) {
+            String [] countries = {"China", "Egypt", "France", "Germany", "India", "Japan", "Kenya", "Mexico", "United Kingdom", "United States"};
+            String [] capitals = {"Beijing", "Cairo", "Paris", "Berlin", "New Delhi", "Tokyo", "Nairobi", "Mexico City", "London", "Washington D.C."};
+            printMenu(countries);
+            Scanner scanner = new Scanner(System.in);
+            System.out.print("\n\nPlease enter a country from the list above: ");
+            String selectedCountry = scanner.nextLine();
+            getCapital(countries, capitals, selectedCountry);
+        }
+    
+        public static void printMenu(String [] countries) {
+            System.out.println("List of Countries:");
+            for (String country : countries) {
+                System.out.println(country);
+            }
+        }
+    
+    
+        public static void getCapital(String [] countries, String [] capitals, String country) {
+            int index = findIndex(countries, country);
+            if (index == -1) {
+                System.out.println("Error: Country not found in the list.");
+            } else {
+                System.out.println("The capital of " + country + " is " + capitals[index] + ".");
+            }
+        }
+    
+        public static int findIndex(String [] countries, String country) {
+            for (int i = 0; i < countries.length; i++) {
+                if (countries[i].equalsIgnoreCase(country)) {
+                    return i;
+                }
+            }
+            return -1;
+        }
+    }
+
+2)
+
+    import java.util.Scanner;
+    
+    public class StudentGrades {
+    
+        public static void printStudents(String[] names, int[] grades) {
+            System.out.println("Student Grades");
+            System.out.println("--------------");
+    
+            for (int i = 0; i < names.length; i++) {
+                System.out.println(names[i] + ": " + grades[i]);
+            }
+        }
+    
+        public static int findIndex(String[] names, String searchName) {
+            for (int i = 0; i < names.length; i++) {
+                if (names[i].equalsIgnoreCase(searchName)) {
+                    return i;
+                }
+            }
+    
+            return -1;
+        }
+    
+        public static double getAverage(int[] grades) {
+            int sum = 0;
+    
+            for (int i = 0; i < grades.length; i++) {
+                sum += grades[i];
+            }
+    
+            return ((double) sum) / grades.length;
+        }
+    
+        public static void main(String[] args) {
+            Scanner sc = new Scanner(System.in);
+    
+            String [] names = {
+                "Alice", "Brian", "Carlos", "Diana",
+                "Elena", "Frank", "Grace", "Henry"
+            };
+    
+            int [] grades = {92, 78, 85, 96, 71, 88, 94, 82};
+    
+            printStudents(names, grades);
+    
+            System.out.print("\nEnter a student name: ");
+            String searchName = sc.nextLine();
+    
+            int index = findIndex(names, searchName);
+    
+            if (index == -1) {
+                System.out.println("\nStudent not found.");
+            } else {
+                System.out.println("\n" + names[index] + "'s grade: " + grades[index]);
+            }
+    
+            System.out.printf("\nClass average: %.2f%n", getAverage(grades));
+        }
+    }
+
