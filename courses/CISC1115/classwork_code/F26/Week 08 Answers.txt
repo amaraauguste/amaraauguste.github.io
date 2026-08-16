@@ -1,0 +1,277 @@
+DAY 1
+
+1) 
+
+      import java.io.File;
+      import java.util.Scanner;
+
+      public class CharacterAnalysis {
+          public static void main(String[] args) throws Exception {
+
+              Scanner input = new Scanner(new File("character_data.txt"));
+
+              int uppercase = 0;
+              int lowercase = 0;
+              int digits = 0;
+              int whitespace = 0;
+              int other = 0;
+
+              while (input.hasNext()) {
+                  String line = input.nextLine();
+
+                  for (int i = 0; i < line.length(); i++) {
+                      char ch = line.charAt(i);
+
+                      if (Character.isUpperCase(ch)) {
+                          uppercase++;
+                      }
+                      else if (Character.isLowerCase(ch)) {
+                          lowercase++;
+                      }
+                      else if (Character.isDigit(ch)) {
+                          digits++;
+                      }
+                      else if (Character.isWhitespace(ch)) {
+                          whitespace++;
+                      }
+                      else {
+                          other++;
+                      }
+                  }
+
+                  // Account for the newline between lines.
+                  whitespace++;
+              }
+
+              input.close();
+
+              System.out.println("Character Analysis");
+              System.out.println("------------------");
+              System.out.println("Uppercase letters: " + uppercase);
+              System.out.println("Lowercase letters: " + lowercase);
+              System.out.println("Digits: " + digits);
+              System.out.println("Whitespace: " + whitespace);
+              System.out.println("Other characters: " + other);
+          }
+      }
+
+2) 
+
+    import java.util.Scanner;
+    public class Initials {
+        public static void main(String [] args) {
+            Scanner sc = new Scanner(System.in);
+            System.out.print("Enter your name: ");
+            String first = sc.next();
+            String last = sc.next();
+            String initials = first.charAt(0)+"."+last.charAt(0)+".";
+            System.out.println("Initials: " + initials);
+        }
+    }
+
+OR (using one String variable and indexOf method)
+
+    import java.util.Scanner;
+    
+    public class Initials {
+        public static void main(String[] args) {
+            Scanner sc = new Scanner(System.in);
+    
+            System.out.print("Enter your name: ");
+            String name = sc.nextLine();
+    
+            int space = name.indexOf(' ');
+    
+            String initials = name.charAt(0) + "." +
+                              name.charAt(space + 1) + ".";
+    
+            System.out.println("Initials: " + initials);
+        }
+    }
+
+OR (using split method)
+
+      import java.util.Scanner;
+
+      public class Initials {
+          public static void main(String[] args) {
+              Scanner input = new Scanner(System.in);
+
+              System.out.print("Enter name: ");
+              String name = input.nextLine();
+
+              String[] parts = name.split(" ");
+
+              char firstInitial = parts[0].charAt(0);
+              char lastInitial = parts[1].charAt(0);
+
+              System.out.println("Initials: " + firstInitial + "." +
+                                 lastInitial + ".");
+          }
+      }
+
+3)
+
+1. Answer: 32
+2. Answer: e
+3. Answer: hannah.charAt(15)
+
+4) 
+
+    public class Decode {
+        public static void main(String [] args) {
+            String s = "Iqqf\"Lqd#\"[qw\"hkiwtgf\"kv\"qwv#";
+            String message="";
+            for(int i = 0; i < s.length(); i++) {
+                char c = s.charAt(i); //get current char
+                c -= 2; //shift down by 2
+                message += c; //append to String
+            }
+            System.out.println(message); //Good Job! You figured it out!
+        }
+    }
+
+5)
+
+a. Answer: AB-1X
+b. Answer: Denver
+c. Answer: false
+
+6)
+
+    int count = 0;
+    if(Character.isUpperCase(sentence.charAt(0))) { //if the first letter is upper case
+       count++;//count it!
+    }
+    
+    int space = sentence.indexOf(" ");//finds the index of the first space
+    while (space != -1) {//as long as there are spaces in the sentence
+       if(Character.isUpperCase(sentence.charAt(space + 1))) { //if the first letter of the next word (after the space) is uppercase
+          count++;//count it too!
+       }
+       space = sentence.indexOf(" ", space + 1);//continue updating the value for loc based on the next location of a space
+    }
+    
+    System.out.println("There are " + count + " words that start with an uppercase letter.");
+
+OR (using split method)
+
+      String[] words = sentence.split(" ");
+
+      int count = 0;
+
+      for (int i = 0; i < words.length; i++) {
+          if (Character.isUpperCase(words[i].charAt(0))) {
+              count++;
+          }
+      }
+
+      System.out.println(count);
+
+7) 
+
+    import java.util.Scanner;
+    public class CountVowels {
+        public static void main(String [] args) {
+            Scanner sc = new Scanner (System.in);
+            System.out.print("Enter a String: ");
+            String s = sc.nextLine();
+    
+            int countVowels = 0;
+    
+            for(int i = 0; i < s.length(); i++) {
+                char c = s.charAt(i); //OR convert to lowercase/uppercase to reduce comparisons by half
+                if(c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U' || c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u') {
+                    countVowels++;
+                }
+            }
+    
+            System.out.println("Number of vowels: " + countVowels);
+    
+        }
+    }
+
+----------------------------------------------------------------------------------------
+
+DAY 2 
+
+1) 
+
+    import java.util.Scanner;
+    public class IsPalindrome {
+        public static void main(String [] args) {
+            Scanner sc = new Scanner (System.in);
+            System.out.print("Enter a String: ");
+            String s = sc.next();
+    
+            String revS = "";
+            for(int i = s.length()-1; i >= 0; i--) {
+                revS += s.charAt(i);
+            }
+    
+            System.out.println("String reversed: " + revS);
+    
+            if(s.equalsIgnoreCase(revS)) {
+                System.out.println("This String is a palindrome.");
+            } else {
+                System.out.println("This String is nota palindrome.");
+            }
+        }
+    }
+
+2)
+
+    public static void main(String[] args) throws Exception {
+        File file = new File("Week9Emails.txt");
+        Scanner scanner = new Scanner(file);
+    
+        System.out.println("Unique Domain Names:");
+    
+        while (scanner.hasNext()) {
+             String first = scanner.next();
+             String last = scanner.next();
+             String email = scanner.next();
+             String domain = email.substring(email.indexOf('@') + 1);
+             System.out.println(domain);
+        }
+        scanner.close();
+    }
+
+3) first = (name1.compareTo(name2) < 0) ? name2 : name1;
+
+4) 
+
+    String word, prev;
+    boolean isdup=false;
+    n=0;
+    prev=stdin.next();
+    word=stdin.next();
+    while (!word.equals("xxxxx")) {
+    	if (word.equals(prev))
+    		isdup=true;
+    	else {
+    		if (!isdup) n++;
+    		isdup=false;
+    	}
+    	prev = word;
+    	word=stdin.next();
+    }
+    if (!isdup) n++;
+
+5)
+
+    import java.util.Scanner;
+    
+    public class WordCounter {
+        public static void main(String[] args) {
+            Scanner sc = new Scanner(System.in);
+    
+            System.out.print("Enter a sentence: ");
+            String sentence = sc.nextLine();
+    
+            String[] words = sentence.split(" ");
+    
+            System.out.println("Number of words: " + words.length);
+        }
+    }
+
