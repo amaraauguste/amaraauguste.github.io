@@ -1,0 +1,131 @@
+DAY 1
+
+1) 
+
+  a. for (int i = 2; i <= 20; i += 2) {
+          System.out.print(i + " ");
+      }
+
+  b. for (int i = 31; i <= 50; i += 2) {
+          System.out.print(i + " ");
+      }
+
+  c. for (int i = 10; i >= 1; i--) {
+          System.out.print(i + " ");
+      }
+
+  d. int sum = 0;
+
+      for (int i = 1; i <= 15; i++) {
+          sum += i * 5;
+      }
+
+2) for (int i = 1; i <= 200; i++) {
+          if (i % 2 == 0 && i % 3 == 0) {
+              System.out.print(i + " ");
+          }
+      }
+
+3) 
+
+      import java.util.Scanner;
+
+      public class Factors {
+          public static void main(String[] args) {
+              Scanner input = new Scanner(System.in);
+
+              System.out.print("Enter an integer: ");
+              int number = input.nextInt();
+
+              System.out.print("Factors: ");
+
+              for (int i = 1; i <= number; i++) {
+                  if (number % i == 0) {
+                      System.out.print(i + " ");
+                  }
+              }
+
+              System.out.println();
+          }
+      }
+
+
+4)
+
+      import java.util.Scanner;
+
+      public class DigitSum {
+          public static void main(String[] args) {
+              Scanner input = new Scanner(System.in);
+
+              System.out.print("Enter an integer: ");
+              int number = input.nextInt();
+
+              int sum = 0;
+
+              for (int i = number; i > 0; i /= 10) {
+                  sum += i % 10;
+              }
+
+              System.out.println("Sum of digits: " + sum);
+          }
+      }
+
+Challenge: Modify your program to also determine the largest digit in the number.
+
+      import java.util.Scanner;
+
+      public class DigitSum {
+          public static void main(String[] args) {
+              Scanner input = new Scanner(System.in);
+
+              System.out.print("Enter an integer: ");
+              int number = input.nextInt();
+
+              int sum = 0;
+              int largest = 0;
+
+              for (int i = number; i > 0; i /= 10) {
+                  int digit = i % 10;
+
+                  sum += digit;
+
+                  if (digit > largest) {
+                      largest = digit;
+                  }
+              }
+
+              System.out.println("Sum of digits: " + sum);
+              System.out.println("Largest digit: " + largest);
+          }
+      }
+
+5)
+
+      import java.util.Scanner;
+
+      public class MultiplicationTable {
+          public static void main(String[] args) {
+              Scanner input = new Scanner(System.in);
+
+              System.out.print("Enter a number: ");
+              int number = input.nextInt();
+
+              for (int i = 1; i <= 10; i++) {
+                  System.out.println(number + " x " + i + " = " + (number * i));
+              }
+          }
+      }
+
+
+
+
+
+
+
+
+
+
+
+
+
