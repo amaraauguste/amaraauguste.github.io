@@ -2551,7 +2551,7 @@ Binary Search:
       function updateReleases() {
         // 1) Solution links (what you already had)
         document.querySelectorAll(".solution-link[data-release]").forEach((link) => {
-          const releaseStr = link.getAttribute("><!--");
+          const releaseStr = link.getAttribute("data-release");
           const tz = link.getAttribute("data-tz") || "America/New_York";
 
           const release = parseRelease(releaseStr);
@@ -2569,7 +2569,7 @@ Binary Search:
 
         // 2) Whole sections (NEW)
         document.querySelectorAll(".main-section[data-release]").forEach((section) => {
-          const releaseStr = section.getAttribute("><!--");
+          const releaseStr = section.getAttribute("data-release");
           const tz = section.getAttribute("data-tz") || "America/New_York";
 
           const release = parseRelease(releaseStr);
