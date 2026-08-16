@@ -57,7 +57,7 @@ Low    Mid    High
             int high = numbers.length - 1;
     
             while (low <= high) {
-                int middle = (low + high) / 2;
+                int middle = low + (high - low) / 2;
     
                 if (numbers[middle] == target) {
                     return middle;
