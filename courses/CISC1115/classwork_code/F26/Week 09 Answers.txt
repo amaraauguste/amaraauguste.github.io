@@ -218,4 +218,9 @@ pong!
         System.out.println("Surface area of the sphere: " + surfaceArea + " square units");
         System.out.println("Is the sphere large: " + isLarge);
     }
-    
+
+----------------------------------------------------------------------------------------
+
+LAB 4 TO BE DISCUSSED IN CLASS
+
+----------------------------------------------------------------------------------------
