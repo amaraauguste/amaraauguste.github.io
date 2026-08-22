@@ -143,7 +143,11 @@ Challenge: Modify your program to also determine the largest digit in the number
           }
       }
 
+----------------------------------------------------------------------------------------
 
+EXAM REVIEW AND LAB 3 TO BE DISCUSSED IN CLASS
+
+----------------------------------------------------------------------------------------
 
 
 
