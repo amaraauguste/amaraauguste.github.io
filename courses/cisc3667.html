@@ -6,212 +6,19 @@
     <title>CISC 3667</title>
     <link rel="stylesheet" href="3667style.css" />
     <style>
-        /* Gamification Button */
-        #game-panel-button {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            font-size: 28px;
-            cursor: pointer;
-            z-index: 10000;
-        }
-
-        /* Gamification Panel */
-        #game-panel {
-            position: fixed;
-            bottom: 70px;
-            right: 20px;
-            width: 300px;
-            max-height: 80%;
-            background: #fff;
-            color: #000;
-            border: 2px solid #333;
-            border-radius: 12px;
-            padding: 15px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-            display: none;
-            overflow-y: auto;
-            z-index: 9999;
-        }
-
-        #game-panel h3 {
-            margin: 10px 0 5px 0;
-            font-size: 18px;
-        }
-
-        .progress-bar-container {
-            width: 100%;
-            background: #ddd;
-            border-radius: 8px;
-            overflow: hidden;
-            margin: 5px 0 15px 0;
-        }
-
-        .progress-bar {
-            height: 18px;
-            background: #4caf50;
-            width: 0%;
-            transition: width 0.3s ease;
-        }
-
-        .badge {
-            display: inline-block;
-            margin: 5px;
-            padding: 5px 10px;
-            border-radius: 8px;
-            background: #f1c40f;
-            font-size: 12px;
-        }
-
-        .quiz-button {
-            display: none;
-            margin: 5px 0;
-            padding: 5px 10px;
-            cursor: pointer;
-        }
-
-        #reset-progress {
-            display: none;
-            margin-top: 10px;
-            font-size: 12px;
-            cursor: pointer;
-        }
-
-        #screenshot-mode {
-            display: inline-block;
-            margin-top: 10px;
-            font-size: 12px;
-            cursor: pointer;
-        }
-
-        /* Screenshot Mode Styling */
-        #game-panel.screenshot-mode {
-            width: 95%;
-            height: 90%;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            padding: 10px;
-            border-radius: 15px;
-            background: #fff;
-            color: #000;
-            overflow-y: visible;
-            font-size: 16px;
-        }
-
-        #game-panel.screenshot-mode .quiz-button,
-        #game-panel.screenshot-mode #reset-progress {
+        /* Hidden until reveal time */
+        .is-locked {
             display: none !important;
         }
 
-        #game-panel.screenshot-mode .badge {
-            font-size: 16px;
-            padding: 8px 12px;
-        }
-
-        /* Popup Notifications */
-        .popup {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: #333;
-            color: #fff;
-            padding: 10px 15px;
-            border-radius: 10px;
-            opacity: 0;
-            transform: translateY(-20px);
-            transition: opacity 0.4s ease, transform 0.4s ease;
-            z-index: 10001;
-        }
-
-        .popup.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Hidden Star */
-        #hidden-star {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            font-size: 28px;
-            cursor: pointer;
-            opacity: 0.6;
-            z-index: 10005;
-            transition: opacity 0.3s ease, transform 0.2s ease;
-            user-select: none;
-        }
-
-        #hidden-star:hover {
-            opacity: 1;
-            transform: scale(1.4);
-        }
-
-        /* Modal */
-        .modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 10002;
-        }
-
-        .modal .content {
-            background: #fff;
-            color: #000;
-            padding: 20px 30px;
-            border-radius: 15px;
-            text-align: center;
-            font-size: 18px;
-        }
-
-        .modal button {
-            margin: 10px;
-        }
-
-        /* Dark Mode */
-        body.dark-mode #game-panel {
-            background: #222;
-            color: #f5f5f5;
-            border-color: #555;
-        }
-
-        body.dark-mode #game-panel.screenshot-mode {
-            background: #222;
-            color: #f5f5f5;
-        }
-
-        body.dark-mode .modal .content {
-            background: #333;
-            color: #f5f5f5;
-        }
-
-        body.dark-mode .badge {
-            background: #e1b700;
-            color: #222;
-        }
-
-        body.dark-mode .progress-bar-container {
-            background: #444;
-        }
-
-        .correct-label {
-            color: green;
-            font-weight: bold;
-            margin-left: 8px;
-        }
-
-        .wrong-label {
-            color: red;
-            font-weight: bold;
-            margin-left: 8px;
+        /* Optional: show a subtle placeholder while locked */
+        .hw-placeholder {
+            opacity: 0.75;
+            font-style: italic;
+            margin: 0.35em 0;
         }
     </style>
+   
 </head>
 
 <body>
@@ -225,16 +32,17 @@
         <div class="mode">Dark mode: <span class="change">OFF</span></div>
         <hr />
         <a class="nav-link" href="#Introduction">Introduction</a>
-        <a class="nav-link" href="CISC3667/CISC_3667_F25_TY11_Syllabus.pdf" target="_blank"
+        <a class="nav-link" href="https://docs.google.com/document/d/1U8Kyf_bjmSFuhLhpcxTPptBHYP2t9AIC-4Q59effx7k/edit?usp=sharing" target="_blank"
             style="font-size: 22px">Syllabus</a>
         <a class="nav-link" href="CISC3667/calendar.html" target="_blank">Calendar</a>
         <a class="nav-link" href="#Readings">Readings</a>
         <a class="nav-link" href="CISC3667/notes.html" target="_blank">Class Notes</a>
+        <a class="nav-link" href="#In_class_activities">In-Class Activities</a>
         <a class="nav-link" href="#Homework">Homework</a>
-        <a class="nav-link" href="#Group_Projects">Group Projects</a>
-        <a class="nav-link" href="#Unity_Labs">Unity Labs</a>
-        <a class="nav-link" href="CISC3667/CISC%203667%20F25%20Midterm%20Sample%20Questions.pdf" style="font-size: 22px">Midterm Review</a>
-        <a class="nav-link" href="CISC3667/CISC%203667%20Final%20Exam%20Question%20Bank.pdf" style="font-size: 22px">Final Review</a>
+        <!--<a class="nav-link" href="#Group_Projects">Group Projects</a>-->
+        <!--<a class="nav-link" href="#Unity_Labs">Unity Labs</a>-->
+        <!--<a class="nav-link" href="CISC3667/CISC%203667%20F25%20Midterm%20Sample%20Questions.pdf" style="font-size: 22px">Midterm Review</a>-->
+        <!--<a class="nav-link" href="CISC3667/CISC%203667%20Final%20Exam%20Question%20Bank.pdf" style="font-size: 22px">Final Review</a>-->
     </nav>
 
     <!-- Main Content -->
@@ -329,6 +137,24 @@
             <hr />
         </section>
 
+        <section class="main-section" id="In_class_activities">
+            <br />
+            <header><b>In-Class Activities</b></header>
+            <article>
+                 <ul style="column-count: 1; font-size: 29px">
+                <li><b>09/03 - <a href="CISC3667/in%20class%20activities/CISC%203667%20-%20In-Class%20Activity%201_%20Is%20it%20a%20Game_.pdf" target="_blank"
+                                rel="noopener">In-Class Activity 1: Is it a Game?</a></b>
+                    </li>
+                    <br />
+                   
+                </ul>
+
+            </article>
+            <br />
+            <hr />
+        </section>
+
+
         <section class="main-section" id="Homework">
             <br />
             <header><b>Homework</b></header>
@@ -345,22 +171,22 @@
                         </p>
                     </li>
                 </ul>
-                <ul style="column-count: 1; font-size: 29px">
-                    <li><b><a href="CISC3667/homeworks/CISC 3667 - HW 1_ What is a Game_.pdf" target="_blank"
-                                rel="noopener">Homework 1</a>: DUE 09/01 EOD</b> - The purpose of this assignment is to
+                <ul id="homeworkList" style="column-count: 1; font-size: 29px">
+                <li data-reveal="2026-09-03T08:00"><b><a href="CISC1115/homeworks/" target="_blank"
+                                rel="noopener">Homework 1</a>: DUE 09/08 by 11:00 AM</b> - The purpose of this assignment is to
                         critically examine what counts as a "game" through the lens of different game design theorists.
-                        Submit your 1-2 page response on Brightspace.
+                        Submit your 2 page response on Brightspace.
                     </li>
                     <br />
-                    <li><b><a href="CISC3667/homeworks/CISC%203667%20-%20In-Class%20Case%20Study_%20Players%20and%20Rules.pdf" target="_blank" rel="noopener">In-Class Case Study: Players and
+                    <!--<li><b><a href="CISC3667/homeworks/CISC%203667%20-%20In-Class%20Case%20Study_%20Players%20and%20Rules.pdf" target="_blank" rel="noopener">In-Class Case Study: Players and
                                 Rules</a>: DUE 09/29 EOD</b> - The purpose of this assignment is to gain a better
                         understanding of how different kinds of players interact with game rules and what that means for
                         game design and fairness. Submit your response on Brightspace.</li>
-                    <br/>
-                    <li><b><a href="CISC3667/homeworks/CISC%203667%20-%20HW%202_%20Randomness%20and%20Probability.pdf" target="_blank"
+                    <br/>-->
+                    <!--<li><b><a href="CISC3667/homeworks/CISC%203667%20-%20HW%202_%20Randomness%20and%20Probability.pdf" target="_blank"
                                 rel="noopener">Homework 2</a>: DUE 10/27 EOD</b> - The purpose of this assignment is to
                         understand randomness and probability. Solve the problems and submit your solutions on Brightspace.
-                    </li>
+                    </li>-->
 
                 </ul>
 
@@ -369,6 +195,8 @@
             <hr />
         </section>
 
+
+       <!--
         <section class="main-section" id="Group_Projects">
             <br />
             <header><b>Group Projects</b></header>
@@ -407,14 +235,14 @@
                     </li>
 
                 </ul>
-                <!--<br />-->
-
+                
             </article>
             <br />
             <hr />
         </section>
+    -->
 
-
+        <!--
         <section class="main-section" id="Unity_Labs">
             <br />
             <header><b>Unity Labs</b></header>
@@ -452,402 +280,70 @@
                                 href="CISC3667/Unity%20Labs/CISC%203667%20-%20Unity%20Lab%208_%20Animations%20and%20Final%20Submission.pdf"
                                 target="_blank" rel="noopener">Instructions</a></b>
                     </li>
-                    <!--<br />-->
-
+                    
                 </ul>
 
             </article>
             <br />
             <hr />
         </section>
-
+    -->
       
 
 
     </main>
 
-    <!-- Gamification Button -->
-    <div id="game-panel-button">🎮</div>
 
-    <!-- Gamification Panel -->
-    <div id="game-panel">
-        <h3>⭐ XP & Level</h3>
-        <div id="xp-display">XP: 0 | Level: 1</div>
-        <div class="progress-bar-container">
-            <div class="progress-bar" id="xp-bar"></div>
-        </div>
+        <script>
+        // ---- Homework reveal timer ----
+        (function () {
+            const TZ_NOTE = "Times are interpreted in the student's local browser time unless you include a timezone offset.";
 
-        <!-- Wrap quizzes in a container -->
-        <div id="quiz-section" style="display:none;">
-            <h3>Quizzes</h3>
-            <!-- inside #quiz-buttons -->
-            <div id="quiz-buttons">
-                <button class="quiz-button" data-quiz="quiz-what-is-game">Take Quiz: What is a Game?</button>
-                <button class="quiz-button" data-quiz="quiz-randomness">Take Quiz: Randomness & Probability</button>
-            </div>
-        </div>
+            // If you want to force New York time interpretation, include an offset like -05:00 or -04:00
+            // Example: 2026-02-01T09:00-05:00
+            // Otherwise: 2026-02-01T09:00 will be treated as the viewer's local time.
 
-        <h3>Badges</h3>
-        <div id="badge-area">
-            <p>No badges yet—explore the site to earn some!</p>
-        </div>
+            const items = document.querySelectorAll('#homeworkList [data-reveal]');
+            if (!items.length) return;
 
-        <button id="screenshot-mode">Toggle View</button>
-        <button id="reset-progress">Reset Progress</button>
-    </div>
+            // Optional placeholder shown when something is still locked
+            const placeholder = document.createElement('div');
+            placeholder.className = 'hw-placeholder';
+            placeholder.textContent = 'More homework will appear here as it is released.';
+            const list = document.getElementById('homeworkList');
+            if (list) list.parentNode.insertBefore(placeholder, list.nextSibling);
 
+            function updateHomeworkVisibility() {
+                const now = Date.now();
+                let anyLocked = false;
 
-    <!-- Hidden Star -->
-    <div id="hidden-star">⭐</div>
+                items.forEach((li) => {
+                    const revealStr = li.getAttribute('data-reveal');
+                    const revealTime = Date.parse(revealStr);
 
-    <!-- Secret Modal -->
-    <div id="secret-modal" class="modal">
-        <div class="content">
-            🎉 Secret Star Found! <br> Badge Unlocked! <br>
-            <button onclick="closeSecret()">Close</button>
-        </div>
-    </div>
+                    // If the date string is invalid, don't hide it (fail open)
+                    if (Number.isNaN(revealTime)) return;
 
-    <!-- Quiz Modal -->
-    <div id="quiz-modal" class="modal">
-        <div class="content" id="quiz-content"></div>
-    </div>
-
-    <!-- Popup -->
-    <div id="popup" class="popup"></div>
-
-    <script>
-        // === Gamification Data ===
-        let xp = parseInt(localStorage.getItem('xp')) || 0;
-        let level = parseInt(localStorage.getItem('level')) || 1;
-        let readPDFs = JSON.parse(localStorage.getItem('readPDFs')) || [];
-        let completedQuizzes = JSON.parse(localStorage.getItem('completedQuizzes')) || [];
-        let badges = JSON.parse(localStorage.getItem('badges')) || [];
-        let quizAttempts = JSON.parse(localStorage.getItem('quizAttempts')) || {};
-        let lastQuizPerfect = JSON.parse(localStorage.getItem('lastQuizPerfect')) || false;
-        let readingTimestamps = JSON.parse(localStorage.getItem('readingTimestamps')) || {};
-
-        const xpDisplay = document.getElementById('xp-display');
-        const xpBar = document.getElementById('xp-bar');
-        const badgeArea = document.getElementById('badge-area');
-        const readingLinks = document.querySelectorAll('#readings-list a');
-
-        // === Utility Functions ===
-        function updateXPBar() {
-            xpDisplay.textContent = `XP: ${xp} | Level: ${level}`;
-            xpBar.style.width = Math.min((xp / (level * 50)) * 100, 100) + '%';
-        }
-
-        function earnXP(amount) {
-            xp += amount;
-            if (xp >= level * 50) {
-                level++;
-                showPopup(`⬆️ Level Up! Now Level ${level}`);
-            }
-            localStorage.setItem('xp', xp);
-            localStorage.setItem('level', level);
-            updateXPBar();
-        }
-
-        function earnBadge(name) {
-            if (!badges.includes(name)) {
-                badges.push(name);
-                localStorage.setItem('badges', JSON.stringify(badges));
-                renderBadges();
-                showPopup(`🏅 Badge Unlocked: ${name}`);
-            }
-        }
-
-        function renderBadges() {
-            if (badges.length === 0) {
-                badgeArea.innerHTML = "<p>No badges yet—explore the site to earn some!</p>";
-            } else {
-                badgeArea.innerHTML = badges.map(b => `<span class="badge">${b}</span>`).join(" ");
-            }
-        }
-
-        function showPopup(msg) {
-            const popup = document.getElementById('popup');
-            popup.textContent = msg;
-            popup.classList.add('show');
-            setTimeout(() => popup.classList.remove('show'), 2500);
-        }
-
-        // === Dark Mode ===
-        if (localStorage.getItem('darkMode') === 'enabled') {
-            document.body.classList.add('dark-mode');
-            document.querySelector('.change').textContent = 'ON';
-            if (!badges.includes("🌓 Dark Mode Devotee")) earnBadge("🌓 Dark Mode Devotee");
-        }
-
-        document.querySelector('.mode').addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            const change = document.querySelector('.change');
-            if (document.body.classList.contains('dark-mode')) {
-                change.textContent = 'ON';
-                localStorage.setItem('darkMode', 'enabled');
-                if (!badges.includes("🌓 Dark Mode Devotee")) earnBadge("🌓 Dark Mode Devotee");
-            } else {
-                change.textContent = 'OFF';
-                localStorage.setItem('darkMode', 'disabled');
-            }
-        });
-
-        // === Night Owl Badge ===
-        function checkNightOwl() {
-            const hour = new Date().getHours();
-            if (hour >= 0 && hour < 4) earnBadge("🌙 Night Owl");
-        }
-        checkNightOwl();
-
-        // === Hidden Star ===
-        document.getElementById('hidden-star').addEventListener('click', () => {
-            earnBadge('🌠 Secret Star Finder');
-            earnXP(50);
-            document.getElementById('secret-modal').style.display = 'flex';
-        });
-        function closeSecret() {
-            document.getElementById('secret-modal').style.display = 'none';
-        }
-
-        // === Panel Toggle ===
-        document.getElementById('game-panel-button').addEventListener('click', () => {
-            const panel = document.getElementById('game-panel');
-            panel.style.display = (panel.style.display === 'block' ? 'none' : 'block');
-        });
-
-        // === Screenshot Mode ===
-        document.getElementById('screenshot-mode').addEventListener('click', () => {
-            const panel = document.getElementById('game-panel');
-            panel.classList.toggle('screenshot-mode');
-            showPopup(panel.classList.contains('screenshot-mode') ? '📸 Screenshot Mode Activated' : '📄 Normal Mode Restored');
-        });
-
-        // === Reset Progress ===
-        document.getElementById('reset-progress').addEventListener('click', () => {
-            if (confirm('Reset all progress?')) {
-                localStorage.clear();
-                location.reload();
-            }
-        });
-        document.addEventListener('keydown', e => {
-            if (e.ctrlKey && e.key.toLowerCase() === 'r') document.getElementById('reset-progress').style.display = 'inline-block';
-        });
-
-        // === Readings Tracking ===
-        readingLinks.forEach(a => {
-            a.addEventListener('click', () => {
-                const pdfName = a.textContent.trim();
-                if (!readPDFs.includes(pdfName)) {
-                    readPDFs.push(pdfName);
-                    localStorage.setItem('readPDFs', JSON.stringify(readPDFs));
-                    readingTimestamps[pdfName] = Date.now();
-                    localStorage.setItem('readingTimestamps', JSON.stringify(readingTimestamps));
-                    earnXP(10);
-                    showPopup(`📖 Read: ${pdfName}`);
-                }
-                if (readPDFs.length === readingLinks.length) earnBadge('📚 Read All Readings');
-                updateQuizButtons();
-            });
-        });
-
-        // === Quiz Unlocking ===
-        function updateQuizButtons() {
-            let anyQuizUnlocked = false;
-            document.querySelectorAll('.quiz-button').forEach(btn => {
-                const quizId = btn.dataset.quiz;
-
-                if (quizId === "quiz-what-is-game") {
-                    const groupLinks = [...readingLinks].filter(a => a.dataset.group === "what-is-game");
-                    const allRead = groupLinks.every(a => readPDFs.includes(a.textContent.trim()));
-                    btn.style.display = allRead ? 'inline-block' : 'none';
-                    if (allRead) anyQuizUnlocked = true;
-                }
-
-                if (quizId === "quiz-randomness") {
-                    const randomnessLink = [...readingLinks].find(a => a.textContent.includes("Chance"));
-                    const read = randomnessLink && readPDFs.includes(randomnessLink.textContent.trim());
-                    btn.style.display = read ? 'inline-block' : 'none';
-                    if (read) anyQuizUnlocked = true;
-                }
-            });
-            document.getElementById('quiz-section').style.display = anyQuizUnlocked ? 'block' : 'none';
-        }
-
-        // === Quiz Logic ===
-        document.querySelectorAll('.quiz-button').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const quizId = btn.dataset.quiz;
-                const quizContent = document.getElementById('quiz-content');
-
-                if (quizId === "quiz-what-is-game") {
-                    quizContent.innerHTML = `
-                    <h3>Quiz: What is a Game?</h3>
-                    <form id="quiz-form">
-                        <p>1. According to Chris Crawford, which best describes Tetris?</p>
-                        <label><input type="radio" name="q1" value="a"> A toy</label><br>
-                        <label><input type="radio" name="q1" value="b"> A game</label><br>
-                        <label><input type="radio" name="q1" value="c"> A puzzle</label><br>
-                        <label><input type="radio" name="q1" value="d"> A challenge</label><br><br>
-
-                        <p>2. NOT required in Jane McGonigal's definition?</p>
-                        <label><input type="radio" name="q2" value="a"> Voluntary Participation</label><br>
-                        <label><input type="radio" name="q2" value="b"> Competition</label><br>
-                        <label><input type="radio" name="q2" value="c"> Feedback System</label><br>
-                        <label><input type="radio" name="q2" value="d"> Rules</label><br><br>
-
-                        <p>3. Jesse Schell describes games as...?</p>
-                        <label><input type="radio" name="q3" value="a"> A series of puzzles</label><br>
-                        <label><input type="radio" name="q3" value="b"> Problem-solving with playful attitude</label><br>
-                        <label><input type="radio" name="q3" value="c"> Play with goals and structure</label><br>
-                        <label><input type="radio" name="q3" value="d"> A distraction from life</label><br><br>
-
-                        <button type="button" onclick="submitQuiz('quiz-what-is-game')">Submit</button>
-                        <button type="button" onclick="closeQuiz()">Close</button>
-                    </form>`;
-                }
-
-                if (quizId === "quiz-randomness") {
-                    quizContent.innerHTML = `
-                    <h3>Quiz: Randomness & Probability</h3>
-                    <form id="quiz-form">
-                        <p>1. Randomness is used to...?</p>
-                        <label><input type="radio" name="q1" value="a"> Remove all strategy</label><br>
-                        <label><input type="radio" name="q1" value="b"> Create uncertainty and replayability</label><br>
-                        <label><input type="radio" name="q1" value="c"> Guarantee player victory</label><br>
-                        <label><input type="radio" name="q1" value="d"> Make rules irrelevant</label><br><br>
-
-                        <p>2. A fair six-sided die means...?</p>
-                        <label><input type="radio" name="q2" value="a"> Each outcome has probability 1/6</label><br>
-                        <label><input type="radio" name="q2" value="b"> Always rolls high numbers</label><br>
-                        <label><input type="radio" name="q2" value="c"> Odd numbers more likely</label><br>
-                        <label><input type="radio" name="q2" value="d"> Player chooses outcome</label><br><br>
-
-                        <p>3. Best balances randomness and skill?</p>
-                        <label><input type="radio" name="q3" value="a"> Rock-Paper-Scissors</label><br>
-                        <label><input type="radio" name="q3" value="b"> Poker</label><br>
-                        <label><input type="radio" name="q3" value="c"> Roulette</label><br>
-                        <label><input type="radio" name="q3" value="d"> Slot Machines</label><br><br>
-
-                        <button type="button" onclick="submitQuiz('quiz-randomness')">Submit</button>
-                        <button type="button" onclick="closeQuiz()">Close</button>
-                    </form>`;
-                }
-
-                document.getElementById('quiz-modal').style.display = 'flex';
-                if (completedQuizzes.includes(quizId)) {
-                    markCorrectAnswers(quizId);
-                    document.querySelectorAll('#quiz-form input').forEach(i => i.disabled = true);
-                }
-            });
-        });
-
-        function submitQuiz(quizId) {
-            const form = document.getElementById('quiz-form');
-            let answers = {};
-            let badgeName = "";
-            let xpReward = 50;
-
-            if (quizId === "quiz-what-is-game") {
-                answers = { q1: 'c', q2: 'b', q3: 'b' };
-                badgeName = "🎯 What is a Game? Quiz Mastery";
-            }
-            if (quizId === "quiz-randomness") {
-                answers = { q1: 'b', q2: 'a', q3: 'b' };
-                badgeName = "🎲 Randomness & Probability Quiz Mastery";
-            }
-
-            let correct = 0;
-            form.querySelectorAll("label").forEach(l => {
-                l.style.color = "";
-                const old = l.querySelector(".correct-label, .wrong-label");
-                if (old) old.remove();
-            });
-
-            Object.keys(answers).forEach(q => {
-                const options = form.querySelectorAll(`input[name="${q}"]`);
-                options.forEach(opt => {
-                    const lbl = opt.parentNode;
-                    if (opt.checked) {
-                        if (opt.value === answers[q]) {
-                            lbl.style.color = "green";
-                            if (!lbl.querySelector(".correct-label")) lbl.insertAdjacentHTML("beforeend", `<span class="correct-label"> ✅ Correct</span>`);
-                            correct++;
-                        } else {
-                            lbl.style.color = "red";
-                            if (!lbl.querySelector(".wrong-label")) lbl.insertAdjacentHTML("beforeend", `<span class="wrong-label"> ❌ Wrong</span>`);
-                        }
+                    if (now >= revealTime) {
+                        li.classList.remove('is-locked');
+                    } else {
+                        li.classList.add('is-locked');
+                        anyLocked = true;
                     }
                 });
-            });
 
-            if (!quizAttempts[quizId]) quizAttempts[quizId] = { tries: 0, passed: false };
-            quizAttempts[quizId].tries++;
-
-            if (correct === Object.keys(answers).length) {
-                earnXP(xpReward);
-                earnBadge(badgeName);
-                if (!completedQuizzes.includes(quizId)) {
-                    completedQuizzes.push(quizId);
-                    localStorage.setItem("completedQuizzes", JSON.stringify(completedQuizzes));
-                }
-                quizAttempts[quizId].passed = true;
-
-                // Speed Reader badge
-                const groupLinks = [...readingLinks].filter(a => a.dataset.group === quizId.split('-')[1]);
-                if (groupLinks.length > 0) {
-                    const earliest = Math.min(...groupLinks.map(a => readingTimestamps[a.textContent.trim()] || Date.now()));
-                    if ((Date.now() - earliest) <= 10 * 60 * 1000) earnBadge("⚡ Speed Reader");
-                }
-
-                // Persistence badge
-                if (quizAttempts[quizId].tries > 3) earnBadge("🔁 Persistence (3+ fails before passing)");
-
-                // Quiz Champion
-                if (completedQuizzes.length === document.querySelectorAll(".quiz-button").length) {
-                    earnBadge("👑 Quiz Champion (complete all quizzes)");
-                }
-
-                showPopup("✅ All answers correct! Badge earned.");
-                markCorrectAnswers(quizId);
-                form.querySelectorAll("input").forEach(i => i.disabled = true);
-            } else {
-                showPopup("❌ Some answers wrong. Try again!");
+                // Show placeholder only if something is still locked
+                placeholder.style.display = anyLocked ? 'block' : 'none';
             }
 
-            localStorage.setItem("quizAttempts", JSON.stringify(quizAttempts));
-            localStorage.setItem("lastQuizPerfect", JSON.stringify(lastQuizPerfect));
-            localStorage.setItem("readingTimestamps", JSON.stringify(readingTimestamps));
-        }
+            updateHomeworkVisibility();
 
-        function markCorrectAnswers(quizId) {
-            const form = document.getElementById('quiz-form');
-            if (!form) return;
-
-            let answers = {};
-            if (quizId === "quiz-what-is-game") answers = { q1: 'c', q2: 'b', q3: 'b' };
-            if (quizId === "quiz-randomness") answers = { q1: 'b', q2: 'a', q3: 'b' };
-
-            Object.keys(answers).forEach(q => {
-                const option = form.querySelector(`input[name="${q}"][value="${answers[q]}"]`);
-                if (option) {
-                    const lbl = option.parentNode;
-                    lbl.style.color = "green";
-                    if (!lbl.querySelector(".correct-label")) lbl.insertAdjacentHTML("beforeend", `<span class="correct-label"> ✅ Correct</span>`);
-                }
-            });
-        }
-
-        function closeQuiz() {
-            document.getElementById('quiz-modal').style.display = 'none';
-        }
-
-        // === Initialize ===
-        renderBadges();
-        updateXPBar();
-        updateQuizButtons();
+            // Re-check every minute (lightweight + good enough)
+            setInterval(updateHomeworkVisibility, 60 * 1000);
+        })();
     </script>
 
+    
 
 </body>
 
