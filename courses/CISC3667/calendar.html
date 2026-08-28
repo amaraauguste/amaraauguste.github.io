@@ -3,32 +3,35 @@
 
 <head>
   <title>CISC 3667 Calendar</title>
-  <!-- CSS for full calendar -->
+
+  <!-- CSS for FullCalendar -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.css" rel="stylesheet" />
-  <!-- JS for jQuery -->
+
+  <!-- jQuery -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <!-- JS for full calendar -->
+
+  <!-- Moment.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
+
+  <!-- FullCalendar -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js"></script>
+
   <style>
-    /* width */
+    /* Scrollbar */
     ::-webkit-scrollbar {
       width: 10px;
     }
 
-    /* Track */
     ::-webkit-scrollbar-track {
       box-shadow: inset 0 0 5px grey;
       border-radius: 10px;
     }
 
-    /* Handle */
     ::-webkit-scrollbar-thumb {
       background: rgb(183, 147, 241);
       border-radius: 10px;
     }
 
-    /* Handle on hover */
     ::-webkit-scrollbar-thumb:hover {
       background: rgb(140, 111, 186);
     }
@@ -42,202 +45,437 @@
 </head>
 
 <body>
+
   <div id="calendar"></div>
-</body>
-<script>
-  $(document).ready(function () {
-    $("#calendar").fullCalendar({
-      defaultView: "month",
-      events: [
-        {
-          title: "Start of Fall 2025 Semester",
-          start: "2025-08-26",
-          color: "#FF0000",
-        },
-        {
-          title: "First Day of TY11 Class",
-          start: "2025-08-26",
-          color: "#D186FF",
-        },
-        {
-          title: "HW 1 Assigned",
-          start: "2025-08-28",
-          color: "Orange",
-        },
-        {
-          title: "College Closed - No Classes Scheduled",
-          start: "2025-09-01", // Labor Day
-          color: "#FF0000",
-        },
-        {
-          title: "HW 1 Due EOD",
-          start: "2025-09-01",
-          color: "Blue",
-        },
-         {
-          title: "Group Project 1 Assigned",
-          start: "2025-09-04",
-          color: "Orange",
-        },
-        {
-          title: "Group Project 1 Due EOD",
-          start: "2025-09-15",
-          color: "Blue",
-        },
-         {
-          title: "Unity Lab 1 Assigned",
-          start: "2025-09-18",
-          color: "Orange",
-        },
-        {
-          title: "No Classes Scheduled",
-          start: "2025-09-22", // Rosh Hashanah
-          end: "2025-09-25",
-          color: "#FF0000",
-        },
-        {
-          title: "Case Study 1 Assigned",
-          start: "2025-09-25",
-          color: "Orange",
-        },
-        {
-          title: "Case Study 1 Due EOD",
-          start: "2025-09-29",
-          color: "Blue",
-        },
-         {
-          title: "Unity Lab 2 Assigned",
-          start: "2025-09-30",
-          color: "Orange",
-        },
-        {
-          title: "Unity Lab 3 Assigned",
-          start: "2025-10-09",
-          color: "Orange",
-        },
-        {
-          title: "No Classes Scheduled",
-          start: "2025-10-01", // Yom Kippur
-          end: "2025-10-03",
-          color: "#FF0000",
-        },
-        {
-          title: "College Closed - No Classes Scheduled",
-          start: "2025-10-13", // Indigenous Peoples' Day,
-          color: "#FF0000",
-        },
-        {
-          title: "No Class - Monday Schedule",
-          start: "2025-10-14", //Conversion Day - Monday Schedule
-          color: "#FF0000",
-        },
-        {
-          title: "Midterm Exam",
-          start: "2025-10-16",
-          color: "#00CD14 ",
-        },
-        {
-          title: "No Classes Scheduled",
-          start: "2025-10-20",
-          color: "#FF0000",
-        },
-        {
-          title: "Unity Lab 4 Assigned",
-          start: "2025-10-21",
-          color: "Orange",
-        },
-        {
-          title: "HW 2 Assigned",
-          start: "2025-10-21",
-          color: "Orange",
-        },
-        {
-          title: "HW 2 Due EOD",
-          start: "2025-10-27",
-          color: "Blue",
-        },
-        {
-          title: "Class Canceled",
-          start: "2025-10-23", 
-          color: "#FF0000",
-        },
 
-        {
-          title: "Conversion Day - Monday Schedule",
-          start: "2025-10-24", //Conversion Day - Monday Schedule
-          color: "#FF0000",
-        },
-        {
-          title: "Unity Labs 1-4 Due EOD",
-          start: "2025-10-30",
-          color: "Blue",
-        },
-         {
-          title: "Group Project 2 Assigned",
-          start: "2025-10-30",
-          color: "Orange",
-        },
-        {
-          title: "Group Project 2 Due EOD",
-          start: "2025-11-25",
-          color: "Blue",
-        },
-         {
-          title: "Unity Lab 5 Assigned",
-          start: "2025-11-04",
-          color: "Orange",
-        },
-        {
-          title: "Withdrawal Deadline",
-          start: "2025-11-06",
-          color: "#FF0000",
-        },
-         {
-          title: "Unity Lab 6/7 Assigned",
-          start: "2025-11-18",
-          color: "Orange",
-        },
+  <script>
+    $(document).ready(function () {
 
-         {
-          title: "Unity Lab 8 Assigned",
-          start: "2025-11-25",
-          color: "Orange",
-        },
-        {
-          title: "No Class - Thanksgiving Holiday",
-          start: "2025-11-27",
-          end: "2025-11-30",
-          color: "#FF0000",
-        },
-        {
-          title: "Class Canceled",
-          start: "2025-12-02",
-          color: "Red",
-        },
-        {
-          title: "Unity Labs 1-8 Due EOD",
-          start: "2025-12-09",
-          color: "Blue",
-        },
-        {
-          title: "End of Fall 2025 Semester",
-          start: "2025-12-15",
-          color: "#FF0000",
-        },
-        {
-          title: "Final Exam",
-          start: "2025-12-16",
-          color: "#00CD14 ",
-        },
+      /*
+       * Calendar Color Scheme
+       *
+       * Each event should use one of these categories
+       * rather than defining a custom color individually.
+       */
+      const eventColorMap = {
+        holiday: "#CC0000",
+        canceled: "#CC0000",
+        classDay: "#D186FF",
+        assigned: "#9E6700",
+        due: "Blue",
+        labAssigned: "#DB006E",
+        labDue: "#581845",
+        review: "#007A0C",
+        exam: "#007A0C",
+        expired: "#AD0A00",
+        presentations: "#FF8C00",
+      };
 
 
-      ],
-      eventRender: function (event, element) {
-        element.css("background-color", event.color); // set background color
-        element.css("border-color", event.color); // set border color
-      },
+      $("#calendar").fullCalendar({
+
+        defaultView: "month",
+
+        events: [
+
+          /* =========================
+             SEMESTER / CLASS DAYS
+          ========================= */
+
+          {
+            title: "Start of Fall 2025 Semester",
+            start: "2025-08-26",
+            color: eventColorMap.classDay,
+          },
+
+          {
+            title: "First Day of TY11 Class",
+            start: "2025-08-26",
+            color: eventColorMap.classDay,
+          },
+
+
+          /* =========================
+             HOMEWORK
+          ========================= */
+
+          {
+            title: "HW 1 Assigned",
+            start: "2025-08-28",
+            color: eventColorMap.assigned,
+          },
+
+          {
+            title: "HW 1 Due EOD",
+            start: "2025-09-01",
+            color: eventColorMap.due,
+          },
+
+          {
+            title: "HW 2 Assigned",
+            start: "2025-10-21",
+            color: eventColorMap.assigned,
+          },
+
+          {
+            title: "HW 2 Due EOD",
+            start: "2025-10-27",
+            color: eventColorMap.due,
+          },
+
+
+          /* =========================
+             GROUP PROJECTS
+          ========================= */
+
+          {
+            title: "Group Project 1 Assigned",
+            start: "2025-09-04",
+            color: eventColorMap.assigned,
+          },
+
+          {
+            title: "Group Project 1 Due EOD",
+            start: "2025-09-15",
+            color: eventColorMap.due,
+          },
+
+          {
+            title: "Group Project 2 Assigned",
+            start: "2025-10-30",
+            color: eventColorMap.assigned,
+          },
+
+          {
+            title: "Group Project 2 Due EOD",
+            start: "2025-11-25",
+            color: eventColorMap.due,
+          },
+
+
+          /* =========================
+             CASE STUDIES
+          ========================= */
+
+          {
+            title: "Case Study 1 Assigned",
+            start: "2025-09-25",
+            color: eventColorMap.assigned,
+          },
+
+          {
+            title: "Case Study 1 Due EOD",
+            start: "2025-09-29",
+            color: eventColorMap.due,
+          },
+
+
+          /* =========================
+             UNITY LABS
+          ========================= */
+
+          {
+            title: "Unity Lab 1 Assigned",
+            start: "2025-09-18",
+            color: eventColorMap.labAssigned,
+          },
+
+          {
+            title: "Unity Lab 2 Assigned",
+            start: "2025-09-30",
+            color: eventColorMap.labAssigned,
+          },
+
+          {
+            title: "Unity Lab 3 Assigned",
+            start: "2025-10-09",
+            color: eventColorMap.labAssigned,
+          },
+
+          {
+            title: "Unity Lab 4 Assigned",
+            start: "2025-10-21",
+            color: eventColorMap.labAssigned,
+          },
+
+          {
+            title: "Unity Labs 1–4 Due EOD",
+            start: "2025-10-30",
+            color: eventColorMap.labDue,
+          },
+
+          {
+            title: "Unity Lab 5 Assigned",
+            start: "2025-11-04",
+            color: eventColorMap.labAssigned,
+          },
+
+          {
+            title: "Unity Lab 6/7 Assigned",
+            start: "2025-11-18",
+            color: eventColorMap.labAssigned,
+          },
+
+          {
+            title: "Unity Lab 8 Assigned",
+            start: "2025-11-25",
+            color: eventColorMap.labAssigned,
+          },
+
+          {
+            title: "Unity Labs 1–8 Due EOD",
+            start: "2025-12-09",
+            color: eventColorMap.labDue,
+          },
+
+
+          /* =========================
+             HOLIDAYS / NO CLASSES
+          ========================= */
+
+          {
+            title: "College Closed - No Classes Scheduled",
+            start: "2025-09-01",
+            color: eventColorMap.holiday,
+          },
+
+          {
+            title: "No Classes Scheduled",
+            start: "2025-09-22",
+            end: "2025-09-25",
+            color: eventColorMap.holiday,
+          },
+
+          {
+            title: "No Classes Scheduled",
+            start: "2025-10-01",
+            end: "2025-10-03",
+            color: eventColorMap.holiday,
+          },
+
+          {
+            title: "College Closed - No Classes Scheduled",
+            start: "2025-10-13",
+            color: eventColorMap.holiday,
+          },
+
+          {
+            title: "No Classes Scheduled",
+            start: "2025-10-20",
+            color: eventColorMap.holiday,
+          },
+
+          {
+            title: "No Class - Thanksgiving Holiday",
+            start: "2025-11-27",
+            end: "2025-11-30",
+            color: eventColorMap.holiday,
+          },
+
+
+          /* =========================
+             SCHEDULE CHANGES
+          ========================= */
+
+          {
+            title: "No Class - Monday Schedule",
+            start: "2025-10-14",
+            color: eventColorMap.canceled,
+          },
+
+          {
+            title: "Class Canceled",
+            start: "2025-10-23",
+            color: eventColorMap.canceled,
+          },
+
+          {
+            title: "Conversion Day - Monday Schedule",
+            start: "2025-10-24",
+            color: eventColorMap.canceled,
+          },
+
+          {
+            title: "Class Canceled",
+            start: "2025-12-02",
+            color: eventColorMap.canceled,
+          },
+
+
+          /* EXAMS */
+
+          {
+            title: "Midterm Exam",
+            start: "2025-10-16",
+            color: eventColorMap.exam,
+          },
+
+          {
+            title: "Final Exam",
+            start: "2025-12-16",
+            color: eventColorMap.exam,
+          },
+
+
+          /* IMPORTANT DATES */
+
+          {
+            title: "Withdrawal Deadline",
+            start: "2025-11-06",
+            color: eventColorMap.expired,
+          },
+
+          {
+            title: "End of Fall 2025 Semester",
+            start: "2025-12-15",
+            color: eventColorMap.classDay,
+          },
+
+          {
+            title: "Start of Fall 2026 Semester",
+            start: "2026-08-28",
+            color: eventColorMap.holiday,
+          },
+
+          {
+            title: "First Day of Fall 2026 Semester",
+            start: "2026-09-01",
+            color: eventColorMap.classDay,
+          },
+
+          {
+            title: "College Closed - No Classes Scheduled",
+            start: "2026-09-07",
+            color: eventColorMap.holiday,
+          },
+
+          {
+            title: "College Closed - No Classes Scheduled",
+            start: "2026-10-12",
+            color: eventColorMap.holiday,
+          },
+          {
+            title: "Conversion Day - Monday Schedule",
+            start: "2026-10-13", //Conversion Day - Monday Schedule
+            color: eventColorMap.holiday,
+          },
+
+          {
+            title: "Review for Midterm Exam",
+            start: "2026-10-15",
+            color: eventColorMap.review,
+          },
+
+          {
+            title: "Midterm Exam",
+            start: "2026-10-20",
+            color: eventColorMap.exam,
+          },
+
+          {
+            title: "College Closed - No Classes Scheduled",
+            start: "2026-11-26",
+            end: "2026-11-28",
+            color: eventColorMap.holiday,
+          },
+
+          {
+            title: "HW 1 Assigned",
+            start: "2026-09-03",
+            color: eventColorMap.assigned,
+          },
+
+          {
+            title: "HW 1 Due",
+            start: "2026-09-08",
+            color: eventColorMap.due,
+          },
+
+          {
+            title: "HW 2 Assigned",
+            start: "2026-09-29",
+            color: eventColorMap.assigned,
+          },
+
+          {
+            title: "HW 2 Due",
+            start: "2026-10-01",
+            color: eventColorMap.due,
+          },
+
+          {
+            title: "Group Project 1 Assigned",
+            start: "2026-09-17",
+            color: eventColorMap.assigned,
+          },
+
+          {
+            title: "Group Project 1 Due",
+            start: "2026-09-29",
+            color: eventColorMap.due,
+          },
+
+          {
+            title: "Group Project 2 Assigned",
+            start: "2026-11-12",
+            color: eventColorMap.assigned,
+          },
+
+          {
+            title: "Group Project 2 Due",
+            start: "2026-11-24",
+            color: eventColorMap.due,
+          },
+
+          {
+            title: "Final Project Assigned",
+            start: "2026-09-01",
+            color: eventColorMap.assigned,
+          },
+          {
+            title: "Final Project Due",
+            start: "2026-12-01",
+            color: eventColorMap.due,
+          },
+          {
+            title: "Final Presentations Day 1",
+            start: "2026-12-01",
+            color: eventColorMap.presentations,
+          },
+          {
+            title: "Final Presentations Day 2",
+            start: "2026-12-03",
+            color: eventColorMap.presentations,
+          },
+          {
+            title: "Final Presentations Day 3",
+            start: "2026-12-08",
+            color: eventColorMap.presentations,
+          },
+          {
+            title: "Final Presentations Day 4",
+            start: "2026-12-10",
+            color: eventColorMap.presentations,
+          },
+          {
+            title: "Last Day of Fall 2026 Semester",
+            start: "2026-12-10",
+            color: eventColorMap.holiday,
+          }
+
+        ],
+
+
+        eventRender: function (event, element) {
+          element.css("background-color", event.color);
+          element.css("border-color", event.color);
+        }
+
+      });
+
     });
-  });
-</script>
+  </script>
+
+</body>
 
 </html>
