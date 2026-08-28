@@ -18,7 +18,7 @@
             margin: 0.35em 0;
         }
     </style>
-   
+
 </head>
 
 <body>
@@ -32,12 +32,13 @@
         <div class="mode">Dark mode: <span class="change">OFF</span></div>
         <hr />
         <a class="nav-link" href="#Introduction">Introduction</a>
-        <a class="nav-link" href="https://docs.google.com/document/d/1U8Kyf_bjmSFuhLhpcxTPptBHYP2t9AIC-4Q59effx7k/edit?usp=sharing" target="_blank"
-            style="font-size: 22px">Syllabus</a>
+        <a class="nav-link"
+            href="https://docs.google.com/document/d/1U8Kyf_bjmSFuhLhpcxTPptBHYP2t9AIC-4Q59effx7k/edit?usp=sharing"
+            target="_blank" style="font-size: 22px">Syllabus</a>
         <a class="nav-link" href="CISC3667/calendar.html" target="_blank">Calendar</a>
         <a class="nav-link" href="#Readings">Readings</a>
         <a class="nav-link" href="CISC3667/notes.html" target="_blank">Class Notes</a>
-        <a class="nav-link" href="#In_class_activities">In-Class Activities</a>
+        <a class="nav-link" href="#In_class_activities_and_Labs">In-Class Activities and Labs</a>
         <a class="nav-link" href="#Homework">Homework</a>
         <!--<a class="nav-link" href="#Group_Projects">Group Projects</a>-->
         <!--<a class="nav-link" href="#Unity_Labs">Unity Labs</a>-->
@@ -137,16 +138,37 @@
             <hr />
         </section>
 
-        <section class="main-section" id="In_class_activities">
+        <section class="main-section" id="In_class_activities_and_Labs">
             <br />
-            <header><b>In-Class Activities</b></header>
+            <header><b>In-Class Activities/Labs</b></header>
             <article>
-                 <ul style="column-count: 1; font-size: 29px">
-                <li><b>09/03 - <a href="CISC3667/in%20class%20activities/CISC%203667%20-%20In-Class%20Activity%201_%20Is%20it%20a%20Game_.pdf" target="_blank"
-                                rel="noopener">In-Class Activity 1: Is it a Game?</a></b>
+                <ul style="column-count: 1; font-size: 29px">
+                    <li><b>09/03 - <a
+                                href="CISC3667/in%20class%20activities/CISC%203667%20-%20In-Class%20Activity%201_%20Is%20it%20a%20Game_.pdf"
+                                target="_blank" rel="noopener">In-Class Activity 1: Is it a Game?</a></b>
                     </li>
                     <br />
-                   
+                    <li><b>09/10 - <a
+                                href="CISC3667/in%20class%20activities/"
+                                target="_blank" rel="noopener">In-Class Activity 2: Build a Game</a></b>
+                    </li>
+                    <br />
+                    <li><b>09/15 - <a
+                                href="CISC3667/in%20class%20activities/"
+                                target="_blank" rel="noopener">In-Class Activity 3: Case Study - Players and Rules</a></b>
+                    </li>
+                    <br />
+                    <li><b>09/22 - <a
+                                href="CISC3667/in%20class%20activities/"
+                                target="_blank" rel="noopener">In-Class Activity 4: Case Study - Feedback Loops</a></b>
+                    </li>
+                    <br />
+                    <li><b>10/1 - <a
+                                href="CISC3667/in%20class%20activities/"
+                                target="_blank" rel="noopener">In-Class Activity 5: Case Study - Balancing Games</a></b>
+                    </li>
+                    <br />
+
                 </ul>
 
             </article>
@@ -172,8 +194,9 @@
                     </li>
                 </ul>
                 <ul id="homeworkList" style="column-count: 1; font-size: 29px">
-                <li data-reveal="2026-09-03T08:00"><b><a href="CISC1115/homeworks/" target="_blank"
-                                rel="noopener">Homework 1</a>: DUE 09/08 by 11:00 AM</b> - The purpose of this assignment is to
+                    <li data-reveal="2026-09-03T08:00"><b><a href="CISC3667/homeworks/CISC%203667%20-%20HW%201_%20What%20is%20a%20Game_.pdf" target="_blank"
+                                rel="noopener">Homework 1</a>: DUE 09/08 by 11:00 AM</b> - The purpose of this
+                        assignment is to
                         critically examine what counts as a "game" through the lens of different game design theorists.
                         Submit your 2 page response on Brightspace.
                     </li>
@@ -196,7 +219,7 @@
         </section>
 
 
-       <!--
+        <!--
         <section class="main-section" id="Group_Projects">
             <br />
             <header><b>Group Projects</b></header>
@@ -288,13 +311,13 @@
             <hr />
         </section>
     -->
-      
+
 
 
     </main>
 
 
-        <script>
+    <script>
         // ---- Homework reveal timer ----
         (function () {
             const TZ_NOTE = "Times are interpreted in the student's local browser time unless you include a timezone offset.";
@@ -342,8 +365,55 @@
             setInterval(updateHomeworkVisibility, 60 * 1000);
         })();
     </script>
+    <script>
+    // Check for saved dark mode preference
+    if (localStorage.getItem('darkMode') === 'enabled') {
+      document.body.classList.add('dark-mode');
+      document.querySelector('.change').textContent = 'ON';
+    }
 
-    
+    // Dark mode toggle functionality
+    document.querySelector('.mode').addEventListener('click', function () {
+      document.body.classList.toggle('dark-mode');
+
+      // Get the change element
+      const changeModeText = document.querySelector('.change');
+
+      // Update the text based on dark mode status
+      if (document.body.classList.contains('dark-mode')) {
+        changeModeText.textContent = 'ON'; // Change the text to 'ON'
+        localStorage.setItem('darkMode', 'enabled'); // Save preference
+      } else {
+        changeModeText.textContent = 'OFF'; // Change the text to 'OFF'
+        localStorage.setItem('darkMode', 'disabled'); // Save preference
+      }
+    });
+
+  </script>
+  <script>
+    function toggleMode() {
+      const lightModeLink = document.getElementById('light-mode');
+      const darkModeLink = document.getElementById('dark-mode');
+      const modeText = document.querySelector('.change');
+
+      if (lightModeLink.disabled) {
+        lightModeLink.disabled = false;
+        darkModeLink.disabled = true;
+        modeText.textContent = "OFF"; // Update the mode text to show Dark mode is off
+      } else {
+        lightModeLink.disabled = true;
+        darkModeLink.disabled = false;
+        modeText.textContent = "ON"; // Update the mode text to show Dark mode is on
+      }
+    }
+
+    // Call highlight.js to apply syntax highlighting
+    document.addEventListener('DOMContentLoaded', () => {
+      hljs.highlightAll();
+    });
+  </script>
+
+
 
 </body>
 
