@@ -39,7 +39,6 @@
     <hr />
 
     <ul>
-      <!--Chapter 1 Dropdown-->
       <li>
         <a class="dropdown-btn" style="font-size: 22px">Introduction</a>
         <div class="dropdown-container">
@@ -67,26 +66,28 @@
           <a href="#Game_Elements_and_Mechanics" onclick="closeDropdown()" style="font-size: 20px">Game Elements and
             Mechanics</a>
           <a href="#Defining_Rules" onclick="closeDropdown()" style="font-size: 20px">Defining Rules</a>
-          <a href="#Players_and_Rules" onclick="closeDropdown()" style="font-size: 20px">Players and Rules</a>
           <a href="#Objects_attributes_states" onclick="closeDropdown()" style="font-size: 20px">Objects, Attributes,
             and States</a>
+          <a href="#Players_and_Rules" onclick="closeDropdown()" style="font-size: 20px">Players and Rules</a>
           <a href="#Feedback_Loops" onclick="closeDropdown()" style="font-size: 20px">Feedback Loops</a>
-          <a href="#Game_Balance" onclick="closeDropdown()" style="font-size: 20px">Balancing Games</a>
           <a href="#Randomness_and_Probability" onclick="closeDropdown()" style="font-size: 20px">Randomness and
             Probability</a>
+          <a href="#Game_Balance" onclick="closeDropdown()" style="font-size: 20px">Balancing Games</a>
         </div>
         </div>
       </li>
       <li>
-        <a class="dropdown-btn" style="font-size: 22px">Unity for Game Development</a>
+        <a class="dropdown-btn" style="font-size: 22px">Digital Game Development</a>
         <div class="dropdown-container">
-          <a href="#What_is_Unity?" onclick="closeDropdown()" style="font-size: 20px">What is Unity?</a>
+          <a href="#HTML_CSS_JavaScript_and_Game_Logic" onclick="closeDropdown()" style="font-size: 20px">HTML, CSS,
+            JavaScript, and Game Logic</a>
+          <!--<a href="#What_is_Unity?" onclick="closeDropdown()" style="font-size: 20px">What is Unity?</a>
           <a href="CISC%203667_%20Intro%20to%20Unity%20-%20Recap%20of%20Labs%201-2.pdf" target="_blank"
-            onclick="closeDropdown()" style="font-size: 20px">Intro to Unity - Recap of Labs 1-2</a>
+            onclick="closeDropdown()" style="font-size: 20px">Intro to Unity - Recap of Labs 1-2</a>-->
 
         </div>
       </li>
-      <li>
+      <!--<li>
         <a class="dropdown-btn" style="font-size: 22px">Designing Game Experiences</a>
         <div class="dropdown-container">
           <a href="#Game_Concepts_and_Genre" onclick="closeDropdown()" style="font-size: 20px">Game Concepts and
@@ -99,9 +100,9 @@
           <a href="#Accessibility" onclick="closeDropdown()" style="font-size: 20px">Accessibility</a>
           <a href="#Ethics_in_Game_Design" onclick="closeDropdown()" style="font-size: 20px">Ethics in Game
             Design</a>
-           <a href="#Digitizing_Games" onclick="closeDropdown()" style="font-size: 20px">Digitizing Games</a>
+          <a href="#Digitizing_Games" onclick="closeDropdown()" style="font-size: 20px">Digitizing Games</a>
         </div>
-      </li>
+      </li>-->
 
 
       <li><a href="#Reference" style="font-size: 22px">Reference</a></li>
@@ -227,35 +228,104 @@
     <section class="main-section" id="Game_Engines">
       <br />
       <header><b>Game Engines</b></header>
+
       <article>
-        <p>In this course, we will be creating both traditional games like board games and card games.
-          For these types of games, we will simply be using
-          pen, paper, and any other physical materials we may need.</p>
+        <p>
+          In this course, we will create both traditional games, such as board games and card games,
+          and digital games. Traditional games can be created using physical materials such as paper,
+          cards, dice, game pieces, and other materials needed to design and test the game.
+        </p>
 
-        <p>However, for video games, we will need to use a game engine. A game engine is a software framework designed
-          for the creation and development
-          of video games. It provides developers with a set of tools and features that simplify the game development
-          process, allowing them to focus on creating the game's content rather than building everything from scratch.
-          Game
-          engines typically include features such as graphics rendering, physics simulation, audio processing, input
-          handling,
-          and scripting capabilities. Some popular game engines include Unity, Unreal Engine, Godot, and CryEngine.
-          These
-          engines are used by both indie developers and large game studios to create games for various platforms,
-          including PC,
-          consoles, and mobile devices.</p>
+        <p>
+          As we move further into digital game development, we will begin exploring <b>game engines</b>.
+          A game engine is a software framework specifically designed to support the creation and
+          development of video games. Game engines provide developers with a collection of specialized
+          tools and systems that make it easier to design, build, test, and publish games.
+        </p>
 
-        <p>Unity is a powerful and widely used game engine that provides a comprehensive set of tools and features for
-          game development. It supports 2D and 3D game development, as well as virtual reality (VR) and augmented
-          reality (AR) experiences. Unity offers a user-friendly interface, a robust asset store, and a large community
-          of
-          developers, making it an excellent choice for both beginners and experienced game developers.</p>
+        <p>
+          Depending on the engine, these tools may include graphics rendering, physics simulation,
+          collision detection, animation, audio, player input, user interfaces, scene management,
+          asset management, scripting, and other systems needed to create interactive games. Rather
+          than building every one of these systems from scratch, developers can use the tools provided
+          by the engine and focus more of their time on designing and developing their games.
+        </p>
 
-        <p>We will be using the free version of Unity, which provides access to most of the engine's features and is
-          suitable for small to medium-sized projects. You can download Unity for free from the official website: <a
-            href="https://unity.com/" target="_blank">https://unity.com/</a>. Make sure to check the system requirements
-          to ensure that your computer meets the necessary specifications to run Unity smoothly.</p>
+        <p>
+          There are many different game engines available. Each engine has its own features, workflow,
+          strengths, and approach to game development. Some engines are designed to support both 2D
+          and 3D games, while others are particularly well suited for specific types of games or
+          development workflows.
+        </p>
 
+        <h3>Unity</h3>
+
+        <p>
+          <b>Unity</b> is one of the most widely used game engines. It supports both 2D and 3D game
+          development and provides tools for working with game objects, scenes, physics, animation,
+          audio, user interfaces, lighting, and more. Unity games are typically programmed using the
+          C# programming language. Unity is used by independent developers, small teams, and larger
+          studios to create games for a variety of platforms, including computers, mobile devices,
+          consoles, and the web.
+        </p>
+
+        <h3>Godot</h3>
+
+        <p>
+          <b>Godot</b> is a free and open-source game engine that supports both 2D and 3D game
+          development. It provides an editor for creating scenes, managing game objects, working with
+          animations, physics, audio, and user interfaces. Godot uses its own scripting language,
+          GDScript, which has a syntax similar to Python, and it also supports other programming
+          languages. Because Godot is open source, developers can access and modify the engine's
+          source code. It is a popular choice for independent developers and developers interested in
+          creating games without relying on proprietary software.
+        </p>
+
+        <h3>GameMaker</h3>
+
+        <p>
+          <b>GameMaker</b> is a game development engine that is particularly well known for creating
+          2D games. It provides visual tools that allow developers to create game objects, rooms,
+          sprites, animations, and other elements of a game. GameMaker also includes its own
+          programming language, GameMaker Language (GML), which allows developers to create more
+          complex game behavior and systems. Its accessible development environment makes it a popular
+          choice for beginners and independent developers, especially those creating 2D games.
+        </p>
+
+        <h3>Unreal Engine</h3>
+
+        <p>
+          <b>Unreal Engine</b> is a powerful game engine that is widely used for creating high-quality
+          3D games and other interactive experiences. It provides advanced tools for graphics,
+          lighting, animation, physics, audio, and world building. Developers can create game logic
+          using C++ or Unreal Engine's visual scripting system, called Blueprints. Although Unreal
+          Engine is often associated with large-scale and visually complex 3D games, it can also be
+          used to create a wide variety of other interactive projects.
+        </p>
+
+        <h3>Other Game Engines</h3>
+
+        <p>
+          Unity, Godot, GameMaker, and Unreal Engine are only a few examples of the many game engines
+          available to developers. Other tools include engines such as CryEngine, RPG Maker, Construct,
+          and Ren'Py. Some of these engines are designed for specific types of games or provide
+          specialized development tools. For example, RPG Maker focuses on role-playing games,
+          Construct provides a visual approach to creating games, and Ren'Py is designed primarily for
+          creating visual novels.
+        </p>
+
+        <p>
+          There is no single game engine that is best for every project. The choice of engine can
+          depend on the type of game being created, whether the game is 2D or 3D, the target platform,
+          the tools and features required, the programming languages supported, the experience of the
+          development team, and the overall goals of the project.
+        </p>
+
+        <p>
+          Throughout this course, we will explore game engines and the specialized tools they provide
+          for game creation. We will examine different approaches to game development and gain
+          experience using game engines designed specifically for building interactive games.
+        </p>
 
 
       </article>
@@ -332,7 +402,7 @@
       <br />
     </section>
     <hr />
-    <section class="main-section" id="Careers_in_Game_Development?">
+    <section class="main-section" id="Careers_in_Game_Development">
       <br />
       <header><b>Careers in Game Development</b></header>
       <article>
@@ -843,7 +913,7 @@
           Your browser does not support the video tag.
         </video>
 
-        <h4>Player Type Case Studies</h4>
+        <!--<h4>Player Type Case Studies</h4>
 
         <p>Here are some examples of case studies describing a player, based on Bartle's taxonomy, how might they
           approach a game?</p>
@@ -925,7 +995,7 @@
           <li><b>Achiever</b>: Moderate — enjoys group accomplishments and meaningful goals.</li>
           <li><b>Explorer</b>: Minor — appreciates new experiences but not the main focus.</li>
           <li><b>Killer</b>: Minor — not focused on competition or dominance.</li>
-        </ul>
+        </ul>-->
 
         <p>The Bartle Test is a simple quiz that can help you determine your player type. You can take the test
           <a href="https://matthewbarr.co.uk/bartle/" target="_blank">here</a>.
@@ -2024,373 +2094,6 @@
       <br />
     </section>
     <hr />
-    <section class="main-section" id="Players_and_Rules">
-      <br />
-      <header><b>Players and Rules</b></header>
-      <article>
-
-        <p>So far, we have been looking at rules from a designer's point of view. But what about the players? How do
-          players
-          relate to the rules of a game?</p>
-
-        <p>Players are not just passive recipients of rules. Players actively interpret and make use of rules in
-          particular ways. Players also bring their own expectations and experiences to bear on how they understand
-          rules.</p>
-
-        <p>In this section, we will look at how players interact with rules in three ways: learning, interpreting, and
-          using
-          rules.</p>
-
-        <h3>Learning Rules</h3>
-
-        <p>Before players can play a game, they must learn the rules. Learning the rules of a game is an active process.
-          Players must read, hear about, or be taught the rules of a game before they can play. Learning the rules is
-          often
-          a social activity, in which experienced players teach novices how to play.</p>
-
-        <p>Learning the rules of a game is not always easy. Some games have complex rule sets that take time to master.
-          Even
-          simple games can have subtle nuances that are not immediately obvious. Players often learn the rules through
-          trial and error, making mistakes and learning from them.</p>
-
-        <p>Game designers can help players learn the rules by providing clear and concise instructions, tutorials,
-          and examples. Good rule books are essential for helping players understand how to play a game.</p>
-
-        <h3>Breaking the Rules</h3>
-
-        <p>Once players have learned the rules of a game, they know not only how to play but how to win. Players
-          often
-          develop strategies and tactics to maximize their chances of winning within the constraints of the rules.
-          Sometimes, players even find ways to exploit loopholes or ambiguities in the rules to gain an advantage.</p>
-
-        <p>Folklorist Kenneth
-          Goldstein points out that although games have rules, they should be considered to have two sets of rules:
-          <b>the
-            ideal rules of play and the actual rules of play, which sometimes misapply and subvert the ideal rules</b>.
-        </p>
-
-
-        <p> So far, we have described game players in an
-          almost naïve way: we have assumed that every player is an earnest player, carefully and honestly playing by
-          the rules. </p>
-
-        <p>Although this does describe many game players, it is certainly not true of every single one.</p>
-
-        <p>In reality, players are not always so earnest. Players sometimes cheat, bend the rules, or even break
-          them outright.</p>
-
-        <h3>Kinds of Rule-Breaking</h3>
-
-        <p>Rule-bending and rule-breaking manipulate the structure of a game. To cheat or transgress in a game means to
-          break the rules, to have a relationship to the formal system that is different than the relationship that the
-          formal system itself presupposes and endorses.</p>
-
-        <p>In considering the ways that game rules are broken, we can
-          divide players into different player "types." Each type of player is defined by his or her relation to the
-          formal
-          systems of a game, along three related axes of behavior and attitude:</p>
-
-        <ul>
-          <li>The rule-breaking player's adherence to the rules</li>
-          <li>The rule-breaking player's interest in winning</li>
-          <li>The rule-breaking player's degree of lusory attitude</li>
-        </ul>
-
-        <p>We can divide these players into the following five types:</p>
-
-        <ul>
-          <li><b>The Standard Player</b>: is the typical rule-following player that obeys the restrictions of the game
-            and
-            possesses the lusory attitude. Even if the standard player is a theoretical fiction, it is important to
-            acknowledge this player position, which stands in contrast to the other four types.<br /><br />
-            This player type is a "standard" and honest game player that plays the game as
-            it was
-            designed to be played, following the rules and respecting their authority.</li><br />
-          <li><b>The Dedicated Player</b>: is similar to the standard player but has an extra zealousness toward
-            succeeding
-            at a game. The dedicated player follows the rules, is interested in winning, and possesses the lusory
-            attitude.<br /><br />This close cousin of the standard player studies the formal systems of a game
-            in order
-            to master and perfect his or her play of the game, often finding and exploiting unusual strategies in order
-            to
-            win. Examples: professional athletes, hardcore gamers.</li><br />
-          <li><b>The Unsportsmanlike Player</b>: This third type of player follows the rules of a game, but does so in a
-            way that
-            violates the spirit of the lusory attitude. Examples: The older sibling that never lets the younger sibling
-            win, or
-            the baseball catcher that tries to distract the batter's concentration at the plate. They <b>violate the
-              implicit rules of a game without actually breaking operational
-              rules</b>. Their strong interest in winning gives them license to violate rules of etiquette and proper
-            game
-            behavior.<br /><br />
-            It is important to note
-            that <b>an unsportsmanlike player does not cheat</b>; rather, this kind of player follows the rules in a way
-            that
-            is
-            seen as unfair or ungentlemanly by other players.
-          </li><br />
-          <li><b>The Cheat</b>: The cheater, unlike the other kinds of game-players, actually violates the formal rules
-            of the
-            game, but does so in order to win the game. Example: The hide-and-seek player that peeks while the other
-            players are hiding. They <b>break operational rules of a game in order to win</b>. Cheating players thus
-            possess a strong
-            interest in winning, but will forgo the normal means of achieving victory. Acknowledging that other
-            players can invoke the authority of the rules, cheaters break rules secretly.
-          </li><br />
-          <li><b>The Spoil-Sport</b>: This kind of game player is hardly a player at all. Unlike the cheat, the
-            spoil-sport refuses to
-            acknowledge the magic circle of the game and does not care about winning or about following the rules.
-            Example: The frustrated Twister player that ruins a game by pushing over the other players. A spoil-sport
-            refuses to acknowledge the authority of a game in any way. These
-            nihilistic players do not hesitate to destroy the magic circle of a game.
-          </li>
-        </ul>
-
-        <p>It is
-          important to recognize that <b>these categories are neither fixed nor mutually exclusive</b>. The boundaries
-          between them are quite fuzzy, and often contextual.</p>
-
-        <p>A player that is a dedicated hardcore gamer among gamer friends
-          might be seen as an unsportsmanlike, overly competitive "power gamer" when playing a game with more
-          casual players. Likewise, a player might shift between categories over time, or even within the course of a
-          single game.</p>
-
-        <p>Despite the fluid boundaries between them, however, these categories provide a useful typology
-          for understanding the ways players stretch, bend, and break game rules.</p>
-
-        <p>Based on the following chart, the slippery slope between the dedicated
-          player and the cheat becomes particularly clear. An enthusiasm for playing a game can quickly become a
-          zealous winning-for-its-own-sake, which can lead to unsportsmanlike behavior and outright cheating. In their
-          shared investment in the outcome of the game, players and cheaters have a great deal in common.
-        </p>
-
-        <img src="images/five%20player%20types.png" alt="Player Types" style="max-width: 100%; height: auto;"
-          class="center" />
-
-        <p>A <b>degenerate strategy</b> or <b>exploit</b> is a way of playing a game that ensures victory every time.
-          Dedicated players and unsportsmanlike players make use of degenerate strategies. In general,
-          degenerate strategies are detrimental to a game. However, within a community of players, degenerate
-          strategies can sometimes act to expand the space of possibility.</p>
-
-        <h3>Sanctioned Violations / Rule Breaking</h3>
-
-        <p>In some games, rules of game actually allow or make provisions for rule breaking (sometimes and
-          with penalties).</p>
-
-        <p>There is one category of game in
-          which rule-breaking by players and punishments for violations of the rules are an important part of the
-          overall
-          game structure: professional sports.</p>
-
-        <p>In professional sports, rules are often broken, and penalties for rule violations are built into the
-          structure of the game. For example, in American football, a team can commit a "delay of game" penalty, which
-          results in a loss of yardage. In basketball, a player can commit a "traveling" violation, which results in a
-          turnover. In both cases, the rules allow for violations, and the penalties are part of the game's structure.
-        </p>
-
-        <h2>Hacks, Cheats, and Mods: Digital Rule-Breaking</h2>
-
-        <p>When it comes to forms of rule-breaking incorporated into the design and experience of games, computer and
-          video games offer a cornucopia of examples. Following are some sample instances of digital game
-          rule-breaking, ranging from the timidly transgressive to the truly unlawful:</p>
-
-        <ul>
-          <li>Easter eggs</li>
-          <li>Mods in games</li>
-          <li>Cheat codes</li>
-          <li>Game guides / walkthroughs</li>
-          <li>Workarounds / glitches</li>
-          <li>True cheating (e.g. multiplayer game, playing on two computers)</li>
-          <li>Hacks</li>
-          <li>Spoil-sport hacking</li>
-        </ul>
-
-        <p>As game designers, it is important to recognize that rule-breaking is a common phenomenon in gaming and
-          incorporate it into their game design thinking.<br /><br />One solution, which comes from the New Games
-          Movement, is to empower players to be more like game designers by creating games with rules that
-          are meant to broken and modified.</p>
-
-
-
-
-
-
-      </article>
-      <br />
-    </section>
-    <hr />
-    <section class="main-section" id="What_is_Unity?">
-      <br />
-      <header><b>What is Unity?</b></header>
-      <article>
-        <p>So we have discussed the basics of games and game design. Now let's look at a popular game development
-          platform: Unity.</p>
-
-        <p><b>Unity</b> is a cross-platform game engine used for creating 2D, 3D, VR, and AR experiences. It's one of
-          the most
-          popular engines in the world, used by both indie developers and large studios.</p>
-
-        <p>It provides a comprehensive set of tools and features that enable developers to design,
-          build, and deploy games across multiple platforms, including PC, consoles, mobile devices, and web browsers.
-        </p>
-
-        <p>Unity offers a user-friendly interface and a visual scripting system, making it accessible to both
-          beginners and experienced developers.</p>
-
-        <p><b>Why Unity?</b></p>
-
-        <ul>
-          <li>Free to use for students and small developers</li>
-          <li>Large online community, tutorials, and Asset Store</li>
-          <li>Flexible: build for PC, consoles, mobile, VR, AR</li>
-        </ul>
-
-        <p><b>Famous Games Made With Unity:</b></p>
-
-        <ul>
-          <li>Hollow Knight: <a href="https://unity.com/made-with-unity/hollow-knight" target="_blank">here</a></li>
-          <li>Cuphead: <a href="https://unity.com/made-with-unity/cuphead" target="_blank">here</a></li>
-          <li>Among Us: <a href="https://unity.com/case-study/innersloth-among-us" target="_blank">here</a></li>
-        </ul>
-
-
-        <h3>Scripting in Unity</h3>
-
-        <p>Unity uses C# as its primary scripting language. Scripts are used to control the behavior of game objects,
-          handle user input, manage game logic, and more.</p>
-
-        <p>Scripts are typically attached to game objects as components, allowing for modular and reusable code.
-          Unity provides a powerful API that allows developers to interact with the engine's features and systems.
-        </p>
-
-        <p>Writing in C# is similar to writing in Java or C++, so if you have experience with those languages,
-          you'll find
-          it easy to pick up C#.</p>
-
-        <h2>Intro to C# for Unity</h2>
-
-        <p><b>What is C#?</b> C# (pronounced "C-sharp") is a modern, object-oriented programming language created by
-          Microsoft. Unity uses C# for all scripting. It is strongly typed, meaning every variable must have a specific
-          type, and it supports concepts like classes, methods, and inheritance.</p>
-
-        <p><b>Files and Structure:</b> In Unity, scripts are written in files that end with <b>.cs</b>. Each
-          script usually defines one class that matches the filename. Most Unity scripts inherit from a special class
-          called <b>MonoBehaviour</b>, which allows the script to be attached to GameObjects in the Unity Editor.
-        </p>
-
-        <p><b>Variables and Types:</b> Variables are containers that hold values. In C#, you must declare the type of
-          data the variable will hold. For example, <b>int</b> is used for whole numbers, <b>float</b> for
-          decimals, <b>bool</b> for true/false, and <b>string</b> for text. Declaring variables correctly is
-          important because C# will not allow you to assign the wrong type of value.</p>
-
-        <p><b>Operators:</b> Operators let you perform actions on values. Arithmetic operators include <b>+</b>,
-          <b>-</b>, <b>*</b>, and <b>/</b>. Comparison operators like <b>&gt;</b>,
-          <b>&lt;</b>, and <b>==</b> let you compare values. Logical operators such as <b>&&</b> (and)
-          and <b>||</b> (or) let you combine conditions.
-        </p>
-
-        <p><b>Conditionals:</b> Conditionals allow your program to make decisions. The <b>if</b> statement checks
-          if a condition is true, and if so, runs a block of b. You can add <b>else if</b> and
-          <b>else</b> blocks to handle other possibilities. Conditionals are often used in games to check for
-          things like "is the player's health zero?" or "did the player press the jump button?"
-        </p>
-
-        <p><b>Loops:</b> Loops allow you to repeat actions multiple times. A <b>for</b> loop is useful when you
-          know how many times you want to run b, such as counting from 1 to 10. A <b>while</b> loop repeats as
-          long as a condition is true, such as moving an object forward until it reaches a wall. Loops are powerful for
-          tasks like spawning enemies or running animations frame by frame.</p>
-
-        <p><b>Methods:</b> Methods (also called functions) are reusable blocks of b that perform a specific task. You
-          can call a method whenever you want that task to happen. Some methods return values, and some just perform
-          actions. In Unity, you will also use special built-in methods like <b>Start()</b> and
-          <b>Update()</b>.
-        </p>
-
-        <p><b>Classes and Objects:</b> C# is an object-oriented language. This means you can define your own
-          "blueprints" called classes, and then create objects based on those blueprints. A class can contain variables
-          (fields) and methods. In Unity, every script you write is actually a class, and each instance of that script
-          attached to a GameObject is an object.</p>
-
-        <p><b>Unity Lifecycle Methods:</b> Unity calls certain methods automatically at specific times. The two most
-          common are <b>Start()</b> and <b>Update()</b>. <b>Start()</b> runs once when the object
-          first becomes active, and it is usually used for initialization. <b>Update()</b> runs once per frame and
-          is typically used for things like player input, movement, or checking conditions that change continuously.</p>
-
-        <p><b>Debugging in Unity:</b> When learning C#, you will make mistakes—that is part of programming! Use
-          <b>Debug.Log()</b> statements in your scripts to print messages to Unity’s Console. This can help you
-          understand what your code is doing and identify problems. Always check the Console when your script does not
-          behave as expected.
-        </p>
-
-        <h2>Installing Unity (Step 1: Unity Hub)</h2>
-
-        <p>To install Unity, you first need to download and install Unity Hub, which is a management tool for your Unity
-          projects and installations.</p>
-
-        <ol>
-          <li>Go to the Unity website: <a href="https://unity.com/download"
-              target="_blank">https://unity.com/download</a></li>
-          <li>Click on the "Download Unity Hub" button.</li>
-          <li>Once the download is complete, open the installer and follow the on-screen instructions to install Unity
-            Hub on your computer.</li>
-        </ol>
-
-        <h2>Installing Unity (Step 2: Install Unity Editor)</h2>
-
-        <p>After installing Unity Hub, you can use it to install the Unity Editor, which is the main application for
-          creating and managing your Unity projects.</p>
-        <ol>
-          <li>Open Unity Hub.</li>
-          <li>Go to the "Installs" tab on the left side of the window.</li>
-          <li>Click on the "Add" button to install a new version of Unity.</li>
-          <li>Select the version of Unity you want to install. For beginners, it's recommended to choose the latest
-            Long-Term Support (LTS) version for stability.</li>
-          <li>Choose the modules you want to install along with Unity. At a minimum, you should select the platform you
-            plan to develop for (e.g., Windows, Mac, Android, iOS).</li>
-          <li>Click "Next" and then "Done" to start the installation process. This may take some time depending on your
-            internet speed and the number of modules selected.</li>
-          <li>Once the installation is complete, you can start creating projects in Unity!</li>
-        </ol>
-
-        <p>It is also recommended that you install some kind of editor, such as
-          Visual Studio (Windows) or VS Code (cross-platform) for C# scripting.</p>
-
-        <p>We can learn about the basics of Unity <a href="https://docs.unity3d.com/Manual/index.html"
-            target="_blank">here</a></p>
-
-        <p>To create a new project, go to the "Projects" tab in Unity Hub and click on the "New" button. Choose a
-          template
-          (2D, 3D, etc.), name your project, select a location to save it, and click "Create". This will open the Unity
-          Editor where you can start building your game.</p>
-
-        <h2>Getting Started with Tutorials</h2>
-
-        <p>Once you have Unity installed, it's a good idea to start with some beginner tutorials to get familiar with
-          the interface and basic concepts. Here are some resources to help you get started:</p>
-
-        <p>Unity actually provides a great set of tutorials on their website. You can find them here:
-          <a href="https://learn.unity.com/" target="_blank">https://learn.unity.com/</a>
-        </p>
-
-        <p>In this class, I would recommend that you follow the provided tutorials in addition to any labs and
-          assignments that we will have.</p>
-
-        <p>We will start with the following learning pathway: <a href="https://learn.unity.com/pathway/unity-essentials"
-            target="_blank">Unity Essentials</a></p>
-
-
-
-
-
-
-
-
-
-
-      </article>
-      <br />
-    </section>
-    <hr />
     <section class="main-section" id="Objects_attributes_states">
       <br />
       <header><b>Objects, Attributes, and States</b></header>
@@ -2738,7 +2441,201 @@
       <br />
     </section>
     <hr />
+    <section class="main-section" id="Players_and_Rules">
+      <br />
+      <header><b>Players and Rules</b></header>
+      <article>
 
+        <p>So far, we have been looking at rules from a designer's point of view. But what about the players? How do
+          players
+          relate to the rules of a game?</p>
+
+        <p>Players are not just passive recipients of rules. Players actively interpret and make use of rules in
+          particular ways. Players also bring their own expectations and experiences to bear on how they understand
+          rules.</p>
+
+        <p>In this section, we will look at how players interact with rules in three ways: learning, interpreting, and
+          using
+          rules.</p>
+
+        <h3>Learning Rules</h3>
+
+        <p>Before players can play a game, they must learn the rules. Learning the rules of a game is an active process.
+          Players must read, hear about, or be taught the rules of a game before they can play. Learning the rules is
+          often
+          a social activity, in which experienced players teach novices how to play.</p>
+
+        <p>Learning the rules of a game is not always easy. Some games have complex rule sets that take time to master.
+          Even
+          simple games can have subtle nuances that are not immediately obvious. Players often learn the rules through
+          trial and error, making mistakes and learning from them.</p>
+
+        <p>Game designers can help players learn the rules by providing clear and concise instructions, tutorials,
+          and examples. Good rule books are essential for helping players understand how to play a game.</p>
+
+        <h3>Breaking the Rules</h3>
+
+        <p>Once players have learned the rules of a game, they know not only how to play but how to win. Players
+          often
+          develop strategies and tactics to maximize their chances of winning within the constraints of the rules.
+          Sometimes, players even find ways to exploit loopholes or ambiguities in the rules to gain an advantage.</p>
+
+        <p>Folklorist Kenneth
+          Goldstein points out that although games have rules, they should be considered to have two sets of rules:
+          <b>the
+            ideal rules of play and the actual rules of play, which sometimes misapply and subvert the ideal rules</b>.
+        </p>
+
+
+        <p> So far, we have described game players in an
+          almost naïve way: we have assumed that every player is an earnest player, carefully and honestly playing by
+          the rules. </p>
+
+        <p>Although this does describe many game players, it is certainly not true of every single one.</p>
+
+        <p>In reality, players are not always so earnest. Players sometimes cheat, bend the rules, or even break
+          them outright.</p>
+
+        <h3>Kinds of Rule-Breaking</h3>
+
+        <p>Rule-bending and rule-breaking manipulate the structure of a game. To cheat or transgress in a game means to
+          break the rules, to have a relationship to the formal system that is different than the relationship that the
+          formal system itself presupposes and endorses.</p>
+
+        <p>In considering the ways that game rules are broken, we can
+          divide players into different player "types." Each type of player is defined by his or her relation to the
+          formal
+          systems of a game, along three related axes of behavior and attitude:</p>
+
+        <ul>
+          <li>The rule-breaking player's adherence to the rules</li>
+          <li>The rule-breaking player's interest in winning</li>
+          <li>The rule-breaking player's degree of lusory attitude</li>
+        </ul>
+
+        <p>We can divide these players into the following five types:</p>
+
+        <ul>
+          <li><b>The Standard Player</b>: is the typical rule-following player that obeys the restrictions of the game
+            and
+            possesses the lusory attitude. Even if the standard player is a theoretical fiction, it is important to
+            acknowledge this player position, which stands in contrast to the other four types.<br /><br />
+            This player type is a "standard" and honest game player that plays the game as
+            it was
+            designed to be played, following the rules and respecting their authority.</li><br />
+          <li><b>The Dedicated Player</b>: is similar to the standard player but has an extra zealousness toward
+            succeeding
+            at a game. The dedicated player follows the rules, is interested in winning, and possesses the lusory
+            attitude.<br /><br />This close cousin of the standard player studies the formal systems of a game
+            in order
+            to master and perfect his or her play of the game, often finding and exploiting unusual strategies in order
+            to
+            win. Examples: professional athletes, hardcore gamers.</li><br />
+          <li><b>The Unsportsmanlike Player</b>: This third type of player follows the rules of a game, but does so in a
+            way that
+            violates the spirit of the lusory attitude. Examples: The older sibling that never lets the younger sibling
+            win, or
+            the baseball catcher that tries to distract the batter's concentration at the plate. They <b>violate the
+              implicit rules of a game without actually breaking operational
+              rules</b>. Their strong interest in winning gives them license to violate rules of etiquette and proper
+            game
+            behavior.<br /><br />
+            It is important to note
+            that <b>an unsportsmanlike player does not cheat</b>; rather, this kind of player follows the rules in a way
+            that
+            is
+            seen as unfair or ungentlemanly by other players.
+          </li><br />
+          <li><b>The Cheat</b>: The cheater, unlike the other kinds of game-players, actually violates the formal rules
+            of the
+            game, but does so in order to win the game. Example: The hide-and-seek player that peeks while the other
+            players are hiding. They <b>break operational rules of a game in order to win</b>. Cheating players thus
+            possess a strong
+            interest in winning, but will forgo the normal means of achieving victory. Acknowledging that other
+            players can invoke the authority of the rules, cheaters break rules secretly.
+          </li><br />
+          <li><b>The Spoil-Sport</b>: This kind of game player is hardly a player at all. Unlike the cheat, the
+            spoil-sport refuses to
+            acknowledge the magic circle of the game and does not care about winning or about following the rules.
+            Example: The frustrated Twister player that ruins a game by pushing over the other players. A spoil-sport
+            refuses to acknowledge the authority of a game in any way. These
+            nihilistic players do not hesitate to destroy the magic circle of a game.
+          </li>
+        </ul>
+
+        <p>It is
+          important to recognize that <b>these categories are neither fixed nor mutually exclusive</b>. The boundaries
+          between them are quite fuzzy, and often contextual.</p>
+
+        <p>A player that is a dedicated hardcore gamer among gamer friends
+          might be seen as an unsportsmanlike, overly competitive "power gamer" when playing a game with more
+          casual players. Likewise, a player might shift between categories over time, or even within the course of a
+          single game.</p>
+
+        <p>Despite the fluid boundaries between them, however, these categories provide a useful typology
+          for understanding the ways players stretch, bend, and break game rules.</p>
+
+        <p>Based on the following chart, the slippery slope between the dedicated
+          player and the cheat becomes particularly clear. An enthusiasm for playing a game can quickly become a
+          zealous winning-for-its-own-sake, which can lead to unsportsmanlike behavior and outright cheating. In their
+          shared investment in the outcome of the game, players and cheaters have a great deal in common.
+        </p>
+
+        <img src="images/five%20player%20types.png" alt="Player Types" style="max-width: 100%; height: auto;"
+          class="center" />
+
+        <p>A <b>degenerate strategy</b> or <b>exploit</b> is a way of playing a game that ensures victory every time.
+          Dedicated players and unsportsmanlike players make use of degenerate strategies. In general,
+          degenerate strategies are detrimental to a game. However, within a community of players, degenerate
+          strategies can sometimes act to expand the space of possibility.</p>
+
+        <h3>Sanctioned Violations / Rule Breaking</h3>
+
+        <p>In some games, rules of game actually allow or make provisions for rule breaking (sometimes and
+          with penalties).</p>
+
+        <p>There is one category of game in
+          which rule-breaking by players and punishments for violations of the rules are an important part of the
+          overall
+          game structure: professional sports.</p>
+
+        <p>In professional sports, rules are often broken, and penalties for rule violations are built into the
+          structure of the game. For example, in American football, a team can commit a "delay of game" penalty, which
+          results in a loss of yardage. In basketball, a player can commit a "traveling" violation, which results in a
+          turnover. In both cases, the rules allow for violations, and the penalties are part of the game's structure.
+        </p>
+
+        <h2>Hacks, Cheats, and Mods: Digital Rule-Breaking</h2>
+
+        <p>When it comes to forms of rule-breaking incorporated into the design and experience of games, computer and
+          video games offer a cornucopia of examples. Following are some sample instances of digital game
+          rule-breaking, ranging from the timidly transgressive to the truly unlawful:</p>
+
+        <ul>
+          <li>Easter eggs</li>
+          <li>Mods in games</li>
+          <li>Cheat codes</li>
+          <li>Game guides / walkthroughs</li>
+          <li>Workarounds / glitches</li>
+          <li>True cheating (e.g. multiplayer game, playing on two computers)</li>
+          <li>Hacks</li>
+          <li>Spoil-sport hacking</li>
+        </ul>
+
+        <p>As game designers, it is important to recognize that rule-breaking is a common phenomenon in gaming and
+          incorporate it into their game design thinking.<br /><br />One solution, which comes from the New Games
+          Movement, is to empower players to be more like game designers by creating games with rules that
+          are meant to broken and modified.</p>
+
+
+
+
+
+
+      </article>
+      <br />
+    </section>
+    <hr />
     <section class="main-section" id="Feedback_Loops">
       <br />
       <header><b>Feedback Loops</b></header>
@@ -2965,8 +2862,8 @@
         <p>By carefully balancing these different types of feedback loops, game designers can create games that are both
           challenging and rewarding for players of all skill levels.</p>
 
-        <a href="exercises/CISC%203667%20–%20In-Class%20Exercise_%20Feedback%20Loops%20in%20Games.pdf"
-          target="_blank">In-Class Exercise: Feedback Loops in Games</a>
+        <!--<a href="exercises/CISC%203667%20–%20In-Class%20Exercise_%20Feedback%20Loops%20in%20Games.pdf"
+          target="_blank">In-Class Exercise: Feedback Loops in Games</a>-->
 
         <h2>Feedback Loops in Games Specifically</h2>
 
@@ -3092,403 +2989,6 @@
     <hr />
 
 
-    <section class="main-section" id="Game_Balance">
-      <br />
-      <header><b>Balancing Games</b></header>
-      <article>
-
-        <p>All this talk about feedback loops, objects, attributes, states, and emergent gameplay leads us to the
-          topic of <b>game balance</b>.</p>
-
-        <p>Have you ever looked forward to playing a game that you were certain was
-          going to be incredibly fun, only to be terribly disappointed? This game had a
-          story that sounded interesting, the kind of gameplay action that is your favorite, cutting-edge technology,
-          and beautiful artwork—but somehow the play
-          was monotonous, confusing, and frustrating.</p>
-
-        <p>This is a game that is out of balance.</p>
-
-        <p><b>Game balance</b> is the process of adjusting game mechanics to ensure that no single strategy, character,
-          or
-          element dominates the gameplay experience. A well-balanced game provides players with a fair and enjoyable
-          experience, where different strategies and play styles can be effective.</p>
-
-        <p>To novice designers, the business of balancing a game seems quite mysterious—
-          but really, balancing a game is nothing more than adjusting the elements of the
-          game until they deliver the experience you want.</p>
-
-        <p>Balancing a game is far from a
-          science; in fact, despite the simple mathematics that is often involved, it is generally considered the most
-          artful part of game design, for it is all about <b>understanding subtle nuances in the relationships between
-            the
-            elements of your game and
-            knowing which ones to alter, how much to alter them, and which ones to leave
-            alone</b>.</p>
-
-        <p>Part of what makes game balancing so difficult is that no two games are alike
-          and every game has many different factors that need to be in balance. As a designer,
-          you must discern what elements in your game need to be balanced and then experiment with changing them until
-          you have them generating exactly the experience
-          you want your players to have.</p>
-
-        <p>Game balancing can come in a variety of forms, because every different game
-          has different things that must be brought into balance. Still, there are some patterns
-          of balance that occur over and over again</p>
-
-        <h2>The Most Common Types of Game Balance</h2>
-
-        <h3>Balance Type #1: Fairness</h3>
-
-        <p>One quality that players universally seek in games is fairness. Players want to feel
-          that the forces working against them do not have an advantage that will make them
-          impossible to defeat.</p>
-
-        <p>One of the simplest ways to ensure this is to make your game
-          <b>symmetrical</b>, that is, to give equal resources and powers to all players. Most traditional board games
-          (such as checkers, chess, and Monopoly) and almost all sports
-          use this method to be sure that no player has an unfair advantage over another.
-        </p>
-
-        <p>If
-          you want to put players in direct competition with each other and you expect them
-          to have roughly equal levels of skill, symmetrical games are a great choice. They
-          are particularly good systems for determining which players are the best, since
-          <b>all things in the game are equal but for the skill and strategy that the individual
-            players bring to the game</b>.
-        </p>
-
-        <p>In these games, perfect symmetry is not always possible
-          as there is often some minor issue such as "who goes first?" or "who starts with
-          the ball?" that gives one side a small advantage over the other.</p>
-
-        <p>Generally, random
-          selection, such as a coin toss or die roll, is the solution. Though it gives one player
-          a small advantage, over many games, the advantage is distributed evenly.</p>
-
-        <p>In some
-          cases, the way this asymmetry is remedied is by giving the advantage to the player
-          with the least skill—such as "youngest player goes first". This is an elegant way to
-          use the natural imbalance of the game to help balance the skill levels of the players.</p>
-
-        <p>It is also possible, and often desirable, to give opponents different resources and
-          abilities.</p>
-
-        <p>This is called <b>asymmetrical balance</b>, and it is often used in games where players have
-          different roles, such as in team sports (offense vs. defense) or in games where players have different
-          characters with different abilities (such as in many role-playing games).</p>
-
-        <p>Here are some of the reasons you might create an asymmetrical game:</p>
-
-        <ul>
-          <li>To simulate a real-world situation</li>
-          <li>To give players another way to explore the game space</li>
-          <li>Personalization</li>
-          <li>To level the playing field</li>
-          <li>To create interesting situations</li>
-        </ul>
-
-        <p>In asymmetrical games, it is crucial to ensure that the different roles or characters are balanced in terms
-          of
-          their strengths and weaknesses. This often requires extensive playtesting and fine-tuning to achieve a fair
-          and enjoyable experience for all players.</p>
-
-        <p>One simple way to balance elements for fairness is to make sure that whenever
-          something in your game has an advantage over something else, yet another thing
-          has an advantage over that!</p>
-
-        <p>Often referred to as "<b>circular balance</b>", the iconic example of this is the game of <i>Rock, Paper,
-            Scissors</i>.</p>
-
-        <img src="images/rock_paper_scissors.png" alt="Rock Paper Scissors" style="max-width: 50%; height: auto;"
-          class="center" />
-
-        <p>Where:</p>
-
-        <ul>
-          <li>Rock crushes Scissors</li>
-          <li>Scissors cut Paper</li>
-          <li>Paper covers Rock</li>
-        </ul>
-
-        <p>None of the elements can be supreme, because there is always another that can defeat it.</p>
-
-        <p>We can see this balance better in a matrix, where the rows represent the choice of player 1 and the columns
-          represent the choice of player 2:</p>
-        <table>
-          <tr>
-            <th></th>
-            <th>Rock</th>
-            <th>Paper</th>
-            <th>Scissors</th>
-          </tr>
-          <tr>
-            <th>Rock</th>
-            <td>Tie</td>
-            <td>Lose</td>
-            <td>Win</td>
-          </tr>
-          <tr>
-            <th>Paper</th>
-            <td>Win</td>
-            <td>Tie</td>
-            <td>Lose</td>
-          </tr>
-          <tr>
-            <th>Scissors</th>
-            <td>Lose</td>
-            <td>Win</td>
-            <td>Tie</td>
-          </tr>
-        </table>
-
-        <p>A numerical representation:</p>
-
-        <img src="images/rock%20paper%20scissors%20matrix.png" alt="Rock Paper Scissors Matrix"
-          style="max-width: 50%; height: auto;" class="center" />
-
-        <p>It is a simple way to ensure that every game element has both strengths
-          and weaknesses. Fighting games particularly like to use this technique to help
-          ensure none of the warriors a player might choose are undefeatable.</p>
-
-        <p>Balancing your game to make it feel fair is one of the most fundamental types
-          of game balancing.</p>
-
-        <h3>Balance Type #2: Challenge</h3>
-
-        <p>Another common type of balance is the balance of challenge. Players want to feel that
-          they are being challenged by a game, but they do not want to feel that the game is
-          impossible.</p>
-
-        <img src="images/challenge%20vs%20success.png" alt="Challenge vs Success" style="max-width: 80%; height: auto;"
-          class="center" />
-
-        <p><b>If play is
-            too challenging, the player becomes frustrated</b>. But <b>if the player succeeds too
-            easily, they can become bored.</b> Keeping the player on the middle path means
-          keeping the experiences of challenge and success in proper balance.</p>
-
-        <p>This can
-          be particularly difficult since players may have all different levels of skill. What
-          one player finds boring, another may find challenging, and yet another may find
-          frustrating.</p>
-
-        <p>Some common techniques for striking a proper balance include the
-          following:</p>
-
-        <ul>
-          <li>Increase difficulty with each success</li>
-          <li>Let players get through easy parts fast</li>
-          <li>Create "layers of challenge"</li>
-          <li>Let players choose the difficulty level</li>
-          <li>Playtest with a variety of players</li>
-          <li>Give the losers a break</li>
-        </ul>
-
-        <p>One of the toughest challenges in game balancing is deciding how difficult the
-          game should get over time.</p>
-
-        <p>Many designers are so afraid of players beating their
-          game too easily that they make later levels so fiendishly difficult to win that 90% of
-          players eventually give up on the game in frustration.</p>
-
-        <p>These designers hope that the
-          increased challenge will extend the play time—and there is something to that—if
-          you have expended forty hours to get through level nine, you will probably be willing to work pretty hard to
-          defeat level ten.</p>
-
-        <p>But in truth, there are so many competing
-          games to play that many players just give up in frustration. On the other hand, with
-          a free to play game, this late-game frustration might be just what you want, to spur
-          players to pay money and move toward completion.</p>
-
-        <p>As a designer, it makes sense
-          to ask yourself, "What percentage of players do I want to be able to complete this
-          game?" and then design for that.</p>
-
-        <p>And don't forget: just learning to play a game at all is a challenge! For this reason, the first level or two
-          of a game is often incredibly simplistic—the player is so
-          challenged just trying to understand the “controls and goals” that any additional
-          challenge might push them right into frustration.</p>
-
-        <p>Not to mention the fact that a few
-          early successes can do a lot to build a player's confidence—<b>a confident player will
-            give up less easily on a game.</b></p>
-
-        <h3>Balance Type #3: Meaningful Choices</h3>
-
-        <p>There are many different ways to give a player choices in a game.</p>
-
-        <p>Meaningful choices for a player lead them to ask themselves questions, such as the following:</p>
-
-        <ul>
-          <li>Where should I go?</li>
-          <li>How should I spend my resources?</li>
-          <li>What should I practice and try to perfect?</li>
-          <li>How should I dress my character?</li>
-          <li>Should I try to get through the game quickly or carefully?</li>
-          <li>Should I focus on offense or defense?</li>
-          <li>What strategy should I use in this situation?</li>
-          <li>Which power should I choose?</li>
-          <li>Should I play it safe or take a big risk?</li>
-        </ul>
-
-        <p>A good game gives the player meaningful choices. Not just any choices but <b>choices
-            that will have a real impact on what happens next and how the game turns out</b>.
-        </p>
-
-        <p>Many designers fall into the trap of offering the player meaningless choices; for
-          example, in a racing game, you might have 50 vehicles to choose from, but if they
-          all drive the same way, it is like having no choice at all.</p>
-
-        <p>Other designers fall into a
-          different trap—offering choices that no one would want. You might offer a soldier
-          ten guns, all different, but if one of them is clearly better than the rest, again it is
-          like having no choice at all.</p>
-
-        <p>When choices are offered to a player, but one of them is clearly better than the
-          rest, this is called a <b>dominant strategy</b>. Once a dominant strategy is discovered, <b>the
-            game is no longer fun</b>, because the puzzle of the game has been solved—there are
-          no more choices to make.</p>
-
-        <p>When you discover that a game you are working on has a
-          dominant strategy, you must change the rules (balance things) so that this strategy
-          no longer dominates and meaningful choice can be restored to the game.</p>
-
-        <p>Hidden dominant strategies that are discovered by players are often referred to as
-          "<b>exploits</b>", since <b>they can be exploited by players to take a shortcut to success that
-            the designer never intended</b>.
-        </p>
-
-        <p>The NES game, <i>Double Dribble</i> (1987), is a classic example of a game with an exploit.</p>
-
-        <p>In this
-          basketball game, <a href="https://youtu.be/yzC8m7i1ZXg?si=kFF86v2F1MJVDmCZ" target="_blank">players could move
-            their character to a specific spot on the court's corner, take a
-            three-point jump shot, and the shot would go in nearly every time due to a programming glitch, making it a
-            highly effective and notorious tactic.</a> This was not the intended way to play
-          the game, but it was a dominant strategy that many players discovered and used to
-          win games easily.</p>
-
-        <p>In early development of a game, dominant strategies abound. As the game continues development, these
-          strategies start to get properly balanced. Paradoxically,
-          this often throws novice designers into a panic: "Yesterday, I understood the right
-          way to play this game—but with these new changes, I'm not sure about the right
-          way to play it!"</p>
-
-        <p>They feel like they have lost their handle on their own game. But
-          in reality, the game has just taken a big step forward!</p>
-
-        <p><b>It no longer has a dominant
-            strategy, and now there are meaningful choices to be made</b>. Instead of fearing this
-          moment, you should cherish it and take the opportunity to see if you can understand why the current
-          configuration of rules and values is putting your game into
-          balance.</p>
-
-        <p>But this leads to another question: how many meaningful choices should we give
-          to a player? Computer Scientist and Game Designer, Michael Mateas points out that the number of choices a
-          player seeks is
-          dependent on the number of things they desire:</p>
-
-        <ul>
-          <li>If <b>choices > desires</b>, then the player is <b>overwhelmed</b>.</li>
-          <li>If <b>choices < desires</b>, the player is <b>frustrated</b>.</li>
-          <li>If <b>choices = desires</b>, the player has a <b>feeling of freedom and fulfillment</b>.</li>
-        </ul>
-
-        <p>So, to properly determine the number of choices, you need to figure out the types
-          and number of things the player would like to do.</p>
-
-        <p>In some situations, the player
-          wants only a small number of meaningful choices (choosing to take the left or
-          right fork in the road is interesting—choosing to take one of thirty side roads is
-          overwhelming).</p>
-
-        <p>Other times, a huge number of choices are desired (e.g., a clothes
-          shopping interface in the Sims).</p>
-
-        <p>In general, the more complex the game, the more choices a player will want to
-          make. But in all cases, the choices must be meaningful, or they are not really
-          choices at all.</p>
-
-        <h3>Triangularity</h3>
-
-        <p>One of the most exciting and interesting choices for a player to make is whether
-          to play it safe and go for a small reward or take a big risk to try for a big reward.</p>
-
-        <p>This is a hard decision to make, if the game is balanced properly. Eight out of ten times someone needs help
-          on a game
-          prototype that "just isn't fun", the game is missing this kind of meaningful
-          choice.</p>
-
-        <p>You could call this "balanced asymmetric risk", since you are balancing a low risk with low reward against a
-          high risk for high reward, but that is
-          kind of a mouthful. This relationship comes up so often, and is so important,
-          that we can refer to it by a shorter name: <b>triangularity</b>.</p>
-
-        <p><b>Triangularity</b> is the relationship between three things: <b>risk</b>, <b>reward</b>, and
-          <b>certainty</b>.
-        </p>
-
-        <p>The player is one point of
-          the triangle, the low-risk choice is the second point, and the high-risk choice
-          is the third.</p>
-
-        <p>The <b>more certain you are of a reward, the less risky it is to go
-            after it</b>. The <b>more risky something is, the less certain you can be of getting it</b>. The
-          <b>more reward you want, the more risk you must take, and the less certain you
-            can be of getting it</b>.
-        </p>
-
-        <img src="images/triangularity.png" alt="Triangularity" style="max-width: 50%; height: auto;" class="center" />
-
-        <p>An example of a game that has good triangularity is <i>Space Invaders</i>.</p>
-
-        <p>Most of
-          the time in the game you are shooting at low point aliens near your ship worth
-          10, 20, and 30 points. They are slow moving and easy to shoot, and shooting them
-          makes you safer because it stops them from dropping bombs on you.</p>
-
-        <p>Every once
-          in a while, however, a little red flying saucer flies across the top of the screen.
-          It poses no threat, and it is quite difficult and dangerous to shoot.</p>
-
-        <p>It is difficult
-          because it is moving and far away, and it is dangerous because to properly aim at it, you have to take your
-          eyes off your ship to look at it, and you risk getting
-          hit by a bomb. However, it is worth between 100 and 300 points!</p>
-
-        <p>Without the flying saucer, <i>Space Invaders</i> gets quite tedious, because your choices are few—you
-          just shoot and shoot and shoot. With the flying saucer, you occasionally have a
-          very difficult, meaningful choice to make—should you play it safe or take a risk
-          and go for the big points?</p>
-
-        <p><i>Mario Kart</i> is a symphony of triangularity. Again and again, it brings
-          you high-risk/low-risk choices with appropriate payoffs. Examples include the
-          following:</p>
-
-        <ul>
-          <li><b>Manual or automatic?</b> Manual requires more skill to use, but when used well, it
-            gives you more speed boosts.</li>
-          <li><b>Kart or bike?</b> Karts have a faster base speed—but if you do a wheelie on a bike
-            (which is risky because you can't turn during a wheelie), you go faster than the
-            karts do.</li>
-          <li><b>Grab power-ups?</b> (risking a crash) or ignore them?</li>
-          <li><b>Use power-ups?</b> (risk breaking your concentration) or ignore them?</li>
-          <li><b>Keep the power-up you've got?</b> or dump it in favor of a new one?</li>
-          <li><b>Use speed boost pads?</b> They speed you up but tend to be in dangerous
-            locations.</li>
-          <li><b>Hit the gas early?</b> If you hit the gas early at the starting line, you get a speed
-            boost if you time it right, and a frustrating delay if you time it wrong.</li>
-          <li><b>Left or right?</b> Many tracks include forking tracks that have a low-risk and highrisk path—and of
-            course the high-risk path has more speed boosts.
-          </li>
-        </ul>
-
-
-      </article>
-      <br />
-    </section>
-    <hr />
     <section class="main-section" id="Randomness_and_Probability">
       <br />
       <header><b>Randomness and Probability</b></header>
@@ -3918,9 +3418,1462 @@
       </article>
       <br />
     </section>
+    <hr />
+    <section class="main-section" id="Game_Balance">
+      <br />
+      <header><b>Balancing Games</b></header>
+      <article>
+
+        <p>All this talk about feedback loops, objects, attributes, states, and emergent gameplay leads us to the
+          topic of <b>game balance</b>.</p>
+
+        <p>Have you ever looked forward to playing a game that you were certain was
+          going to be incredibly fun, only to be terribly disappointed? This game had a
+          story that sounded interesting, the kind of gameplay action that is your favorite, cutting-edge technology,
+          and beautiful artwork—but somehow the play
+          was monotonous, confusing, and frustrating.</p>
+
+        <p>This is a game that is out of balance.</p>
+
+        <p><b>Game balance</b> is the process of adjusting game mechanics to ensure that no single strategy, character,
+          or
+          element dominates the gameplay experience. A well-balanced game provides players with a fair and enjoyable
+          experience, where different strategies and play styles can be effective.</p>
+
+        <p>To novice designers, the business of balancing a game seems quite mysterious—
+          but really, balancing a game is nothing more than adjusting the elements of the
+          game until they deliver the experience you want.</p>
+
+        <p>Balancing a game is far from a
+          science; in fact, despite the simple mathematics that is often involved, it is generally considered the most
+          artful part of game design, for it is all about <b>understanding subtle nuances in the relationships between
+            the
+            elements of your game and
+            knowing which ones to alter, how much to alter them, and which ones to leave
+            alone</b>.</p>
+
+        <p>Part of what makes game balancing so difficult is that no two games are alike
+          and every game has many different factors that need to be in balance. As a designer,
+          you must discern what elements in your game need to be balanced and then experiment with changing them until
+          you have them generating exactly the experience
+          you want your players to have.</p>
+
+        <p>Game balancing can come in a variety of forms, because every different game
+          has different things that must be brought into balance. Still, there are some patterns
+          of balance that occur over and over again</p>
+
+        <h2>The Most Common Types of Game Balance</h2>
+
+        <h3>Balance Type #1: Fairness</h3>
+
+        <p>One quality that players universally seek in games is fairness. Players want to feel
+          that the forces working against them do not have an advantage that will make them
+          impossible to defeat.</p>
+
+        <p>One of the simplest ways to ensure this is to make your game
+          <b>symmetrical</b>, that is, to give equal resources and powers to all players. Most traditional board games
+          (such as checkers, chess, and Monopoly) and almost all sports
+          use this method to be sure that no player has an unfair advantage over another.
+        </p>
+
+        <p>If
+          you want to put players in direct competition with each other and you expect them
+          to have roughly equal levels of skill, symmetrical games are a great choice. They
+          are particularly good systems for determining which players are the best, since
+          <b>all things in the game are equal but for the skill and strategy that the individual
+            players bring to the game</b>.
+        </p>
+
+        <p>In these games, perfect symmetry is not always possible
+          as there is often some minor issue such as "who goes first?" or "who starts with
+          the ball?" that gives one side a small advantage over the other.</p>
+
+        <p>Generally, random
+          selection, such as a coin toss or die roll, is the solution. Though it gives one player
+          a small advantage, over many games, the advantage is distributed evenly.</p>
+
+        <p>In some
+          cases, the way this asymmetry is remedied is by giving the advantage to the player
+          with the least skill—such as "youngest player goes first". This is an elegant way to
+          use the natural imbalance of the game to help balance the skill levels of the players.</p>
+
+        <p>It is also possible, and often desirable, to give opponents different resources and
+          abilities.</p>
+
+        <p>This is called <b>asymmetrical balance</b>, and it is often used in games where players have
+          different roles, such as in team sports (offense vs. defense) or in games where players have different
+          characters with different abilities (such as in many role-playing games).</p>
+
+        <p>Here are some of the reasons you might create an asymmetrical game:</p>
+
+        <ul>
+          <li>To simulate a real-world situation</li>
+          <li>To give players another way to explore the game space</li>
+          <li>Personalization</li>
+          <li>To level the playing field</li>
+          <li>To create interesting situations</li>
+        </ul>
+
+        <p>In asymmetrical games, it is crucial to ensure that the different roles or characters are balanced in terms
+          of
+          their strengths and weaknesses. This often requires extensive playtesting and fine-tuning to achieve a fair
+          and enjoyable experience for all players.</p>
+
+        <p>One simple way to balance elements for fairness is to make sure that whenever
+          something in your game has an advantage over something else, yet another thing
+          has an advantage over that!</p>
+
+        <p>Often referred to as "<b>circular balance</b>", the iconic example of this is the game of <i>Rock, Paper,
+            Scissors</i>.</p>
+
+        <img src="images/rock_paper_scissors.png" alt="Rock Paper Scissors" style="max-width: 50%; height: auto;"
+          class="center" />
+
+        <p>Where:</p>
+
+        <ul>
+          <li>Rock crushes Scissors</li>
+          <li>Scissors cut Paper</li>
+          <li>Paper covers Rock</li>
+        </ul>
+
+        <p>None of the elements can be supreme, because there is always another that can defeat it.</p>
+
+        <p>We can see this balance better in a matrix, where the rows represent the choice of player 1 and the columns
+          represent the choice of player 2:</p>
+        <table>
+          <tr>
+            <th></th>
+            <th>Rock</th>
+            <th>Paper</th>
+            <th>Scissors</th>
+          </tr>
+          <tr>
+            <th>Rock</th>
+            <td>Tie</td>
+            <td>Lose</td>
+            <td>Win</td>
+          </tr>
+          <tr>
+            <th>Paper</th>
+            <td>Win</td>
+            <td>Tie</td>
+            <td>Lose</td>
+          </tr>
+          <tr>
+            <th>Scissors</th>
+            <td>Lose</td>
+            <td>Win</td>
+            <td>Tie</td>
+          </tr>
+        </table>
+
+        <p>A numerical representation:</p>
+
+        <img src="images/rock%20paper%20scissors%20matrix.png" alt="Rock Paper Scissors Matrix"
+          style="max-width: 50%; height: auto;" class="center" />
+
+        <p>It is a simple way to ensure that every game element has both strengths
+          and weaknesses. Fighting games particularly like to use this technique to help
+          ensure none of the warriors a player might choose are undefeatable.</p>
+
+        <p>Balancing your game to make it feel fair is one of the most fundamental types
+          of game balancing.</p>
+
+        <h3>Balance Type #2: Challenge</h3>
+
+        <p>Another common type of balance is the balance of challenge. Players want to feel that
+          they are being challenged by a game, but they do not want to feel that the game is
+          impossible.</p>
+
+        <img src="images/challenge%20vs%20success.png" alt="Challenge vs Success" style="max-width: 80%; height: auto;"
+          class="center" />
+
+        <p><b>If play is
+            too challenging, the player becomes frustrated</b>. But <b>if the player succeeds too
+            easily, they can become bored.</b> Keeping the player on the middle path means
+          keeping the experiences of challenge and success in proper balance.</p>
+
+        <p>This can
+          be particularly difficult since players may have all different levels of skill. What
+          one player finds boring, another may find challenging, and yet another may find
+          frustrating.</p>
+
+        <p>Some common techniques for striking a proper balance include the
+          following:</p>
+
+        <ul>
+          <li>Increase difficulty with each success</li>
+          <li>Let players get through easy parts fast</li>
+          <li>Create "layers of challenge"</li>
+          <li>Let players choose the difficulty level</li>
+          <li>Playtest with a variety of players</li>
+          <li>Give the losers a break</li>
+        </ul>
+
+        <p>One of the toughest challenges in game balancing is deciding how difficult the
+          game should get over time.</p>
+
+        <p>Many designers are so afraid of players beating their
+          game too easily that they make later levels so fiendishly difficult to win that 90% of
+          players eventually give up on the game in frustration.</p>
+
+        <p>These designers hope that the
+          increased challenge will extend the play time—and there is something to that—if
+          you have expended forty hours to get through level nine, you will probably be willing to work pretty hard to
+          defeat level ten.</p>
+
+        <p>But in truth, there are so many competing
+          games to play that many players just give up in frustration. On the other hand, with
+          a free to play game, this late-game frustration might be just what you want, to spur
+          players to pay money and move toward completion.</p>
+
+        <p>As a designer, it makes sense
+          to ask yourself, "What percentage of players do I want to be able to complete this
+          game?" and then design for that.</p>
+
+        <p>And don't forget: just learning to play a game at all is a challenge! For this reason, the first level or two
+          of a game is often incredibly simplistic—the player is so
+          challenged just trying to understand the “controls and goals” that any additional
+          challenge might push them right into frustration.</p>
+
+        <p>Not to mention the fact that a few
+          early successes can do a lot to build a player's confidence—<b>a confident player will
+            give up less easily on a game.</b></p>
+
+        <h3>Balance Type #3: Meaningful Choices</h3>
+
+        <p>There are many different ways to give a player choices in a game.</p>
+
+        <p>Meaningful choices for a player lead them to ask themselves questions, such as the following:</p>
+
+        <ul>
+          <li>Where should I go?</li>
+          <li>How should I spend my resources?</li>
+          <li>What should I practice and try to perfect?</li>
+          <li>How should I dress my character?</li>
+          <li>Should I try to get through the game quickly or carefully?</li>
+          <li>Should I focus on offense or defense?</li>
+          <li>What strategy should I use in this situation?</li>
+          <li>Which power should I choose?</li>
+          <li>Should I play it safe or take a big risk?</li>
+        </ul>
+
+        <p>A good game gives the player meaningful choices. Not just any choices but <b>choices
+            that will have a real impact on what happens next and how the game turns out</b>.
+        </p>
+
+        <p>Many designers fall into the trap of offering the player meaningless choices; for
+          example, in a racing game, you might have 50 vehicles to choose from, but if they
+          all drive the same way, it is like having no choice at all.</p>
+
+        <p>Other designers fall into a
+          different trap—offering choices that no one would want. You might offer a soldier
+          ten guns, all different, but if one of them is clearly better than the rest, again it is
+          like having no choice at all.</p>
+
+        <p>When choices are offered to a player, but one of them is clearly better than the
+          rest, this is called a <b>dominant strategy</b>. Once a dominant strategy is discovered, <b>the
+            game is no longer fun</b>, because the puzzle of the game has been solved—there are
+          no more choices to make.</p>
+
+        <p>When you discover that a game you are working on has a
+          dominant strategy, you must change the rules (balance things) so that this strategy
+          no longer dominates and meaningful choice can be restored to the game.</p>
+
+        <p>Hidden dominant strategies that are discovered by players are often referred to as
+          "<b>exploits</b>", since <b>they can be exploited by players to take a shortcut to success that
+            the designer never intended</b>.
+        </p>
+
+        <p>The NES game, <i>Double Dribble</i> (1987), is a classic example of a game with an exploit.</p>
+
+        <p>In this
+          <a href="https://www.youtube.com/watch?v=faj_ulzFddA" target="_blank">basketball game</a>, players could move
+          their character to a specific spot on the court's corner, take a
+          three-point jump shot, and the shot would go in nearly every time due to a programming glitch, making it a
+          highly effective and notorious tactic. This was not the intended way to play
+          the game, but it was a dominant strategy that many players discovered and used to
+          win games easily.
+        </p>
+
+        <p>In early development of a game, dominant strategies abound. As the game continues development, these
+          strategies start to get properly balanced. Paradoxically,
+          this often throws novice designers into a panic: "Yesterday, I understood the right
+          way to play this game—but with these new changes, I'm not sure about the right
+          way to play it!"</p>
+
+        <p>They feel like they have lost their handle on their own game. But
+          in reality, the game has just taken a big step forward!</p>
+
+        <p><b>It no longer has a dominant
+            strategy, and now there are meaningful choices to be made</b>. Instead of fearing this
+          moment, you should cherish it and take the opportunity to see if you can understand why the current
+          configuration of rules and values is putting your game into
+          balance.</p>
+
+        <p>But this leads to another question: how many meaningful choices should we give
+          to a player? Computer Scientist and Game Designer, Michael Mateas points out that the number of choices a
+          player seeks is
+          dependent on the number of things they desire:</p>
+
+        <ul>
+          <li>If <b>choices > desires</b>, then the player is <b>overwhelmed</b>.</li>
+          <li>If <b>choices < desires</b>, the player is <b>frustrated</b>.</li>
+          <li>If <b>choices = desires</b>, the player has a <b>feeling of freedom and fulfillment</b>.</li>
+        </ul>
+
+        <p>So, to properly determine the number of choices, you need to figure out the types
+          and number of things the player would like to do.</p>
+
+        <p>In some situations, the player
+          wants only a small number of meaningful choices (choosing to take the left or
+          right fork in the road is interesting—choosing to take one of thirty side roads is
+          overwhelming).</p>
+
+        <p>Other times, a huge number of choices are desired (e.g., a clothes
+          shopping interface in the Sims).</p>
+
+        <p>In general, the more complex the game, the more choices a player will want to
+          make. But in all cases, the choices must be meaningful, or they are not really
+          choices at all.</p>
+
+        <h3>Triangularity</h3>
+
+        <p>One of the most exciting and interesting choices for a player to make is whether
+          to play it safe and go for a small reward or take a big risk to try for a big reward.</p>
+
+        <p>This is a hard decision to make, if the game is balanced properly. Eight out of ten times someone needs help
+          on a game
+          prototype that "just isn't fun", the game is missing this kind of meaningful
+          choice.</p>
+
+        <p>You could call this "balanced asymmetric risk", since you are balancing a low risk with low reward against a
+          high risk for high reward, but that is
+          kind of a mouthful. This relationship comes up so often, and is so important,
+          that we can refer to it by a shorter name: <b>triangularity</b>.</p>
+
+        <p><b>Triangularity</b> is the relationship between three things: <b>risk</b>, <b>reward</b>, and
+          <b>certainty</b>.
+        </p>
+
+        <p>The player is one point of
+          the triangle, the low-risk choice is the second point, and the high-risk choice
+          is the third.</p>
+
+        <p>The <b>more certain you are of a reward, the less risky it is to go
+            after it</b>. The <b>more risky something is, the less certain you can be of getting it</b>. The
+          <b>more reward you want, the more risk you must take, and the less certain you
+            can be of getting it</b>.
+        </p>
+
+        <img src="images/triangularity.png" alt="Triangularity" style="max-width: 50%; height: auto;" class="center" />
+
+        <p>An example of a game that has good triangularity is <i>Space Invaders</i>.</p>
+
+        <p>Most of
+          the time in the game you are shooting at low point aliens near your ship worth
+          10, 20, and 30 points. They are slow moving and easy to shoot, and shooting them
+          makes you safer because it stops them from dropping bombs on you.</p>
+
+        <p>Every once
+          in a while, however, a little red flying saucer flies across the top of the screen.
+          It poses no threat, and it is quite difficult and dangerous to shoot.</p>
+
+        <p>It is difficult
+          because it is moving and far away, and it is dangerous because to properly aim at it, you have to take your
+          eyes off your ship to look at it, and you risk getting
+          hit by a bomb. However, it is worth between 100 and 300 points!</p>
+
+        <p>Without the flying saucer, <i>Space Invaders</i> gets quite tedious, because your choices are few—you
+          just shoot and shoot and shoot. With the flying saucer, you occasionally have a
+          very difficult, meaningful choice to make—should you play it safe or take a risk
+          and go for the big points?</p>
+
+        <p><i>Mario Kart</i> is a symphony of triangularity. Again and again, it brings
+          you high-risk/low-risk choices with appropriate payoffs. Examples include the
+          following:</p>
+
+        <ul>
+          <li><b>Manual or automatic?</b> Manual requires more skill to use, but when used well, it
+            gives you more speed boosts.</li>
+          <li><b>Kart or bike?</b> Karts have a faster base speed—but if you do a wheelie on a bike
+            (which is risky because you can't turn during a wheelie), you go faster than the
+            karts do.</li>
+          <li><b>Grab power-ups?</b> (risking a crash) or ignore them?</li>
+          <li><b>Use power-ups?</b> (risk breaking your concentration) or ignore them?</li>
+          <li><b>Keep the power-up you've got?</b> or dump it in favor of a new one?</li>
+          <li><b>Use speed boost pads?</b> They speed you up but tend to be in dangerous
+            locations.</li>
+          <li><b>Hit the gas early?</b> If you hit the gas early at the starting line, you get a speed
+            boost if you time it right, and a frustrating delay if you time it wrong.</li>
+          <li><b>Left or right?</b> Many tracks include forking tracks that have a low-risk and highrisk path—and of
+            course the high-risk path has more speed boosts.
+          </li>
+        </ul>
+
+
+      </article>
+      <br />
+    </section>
+    <hr />
+    <!--END OF DEFINING GAMES SECTION (BEFORE MIDTERM)-->
+
+    <!-- START OF DIGITAL GAME DEVELOPMENT SECTION -->
+
+    <section class="main-section" id="Digital_Game_Development">
+      <br />
+
+      <header><b>Digital Game Development</b></header>
+
+      <article>
+
+        ```
+        <p>
+          <b>Digital game development</b> is the process of designing and creating interactive games for digital
+          platforms such as computers, mobile devices, web browsers, and game consoles. Digital games combine
+          multiple disciplines, including <b>game design, programming, visual art, animation, audio, storytelling,
+            and user interface design</b>.
+        </p>
+
+        <p>
+          Depending on the size and complexity of a project, a game may be created by a single developer or by a
+          large multidisciplinary team. Regardless of the size of the project, developers must transform a game
+          idea into a playable experience by designing rules and mechanics, creating assets, programming systems,
+          testing the game, and refining the experience based on feedback.
+        </p>
+
+        <h2>The Digital Game Development Process</h2>
+
+        <p>
+          Although the exact process varies between projects and teams, digital game development typically includes
+          the following stages:
+        </p>
+
+        <ol>
+
+          <li>
+            <b>Conceptualization:</b> Developing the initial idea for the game. This may include identifying the
+            game's genre, target audience, theme, goals, and core gameplay mechanics.
+          </li>
+
+          <br />
+
+          <li>
+            <b>Design:</b> Planning how the game will work. Designers may create a
+            <b>Game Design Document (GDD)</b>, sketches, prototypes, level layouts, story concepts, character
+            designs, and user interface plans.
+          </li>
+
+          <br />
+
+          <li>
+            <b>Development:</b> Building the playable game. This includes programming gameplay systems and creating
+            or integrating assets such as artwork, animations, sound effects, music, and user interface elements.
+            Developers may use programming languages and frameworks directly or work with a game engine such as
+            Unity or Godot.
+          </li>
+
+          <br />
+
+          <li>
+            <b>Testing and Iteration:</b> Playing and evaluating the game to identify bugs, usability problems,
+            balance issues, and areas where the player experience can be improved. Feedback from testing is used
+            to revise and improve the game.
+          </li>
+
+          <br />
+
+          <li>
+            <b>Release:</b> Preparing and publishing the completed game for its intended platform. This may also
+            involve creating promotional materials and marketing the game to potential players.
+          </li>
+
+          <br />
+
+          <li>
+            <b>Post-Release Support:</b> Continuing to improve the game after release through updates, bug fixes,
+            balance changes, patches, and potentially new content.
+          </li>
+
+        </ol>
+
+        <p>
+          In practice, game development is rarely a completely linear process. Developers often move back and forth
+          between <b>design, development, testing, and revision</b>. A mechanic may be designed, implemented,
+          playtested, changed, and tested again several times before it becomes part of the final game.
+        </p>
+
+        <h2>Different Ways to Develop a Digital Game</h2>
+
+        <p>
+          Digital games can be created using many different tools and approaches. A developer might build a game
+          directly using programming languages such as <b>HTML, CSS, and JavaScript</b>, or use a
+          <b>game engine</b> such as Unity or Godot.
+        </p>
+
+        <p>
+          When creating a game from scratch, the developer is responsible for building many of the systems that
+          make the game work. These systems may include:
+        </p>
+
+        <ul>
+          <li>Player input</li>
+          <li>Game rules and mechanics</li>
+          <li>Movement and physics</li>
+          <li>Collision detection</li>
+          <li>Graphics and animation</li>
+          <li>Audio</li>
+          <li>User interfaces</li>
+          <li>Level or scene management</li>
+          <li>Saving and loading game data</li>
+        </ul>
+
+        <p>
+          Game engines provide many of these systems in advance. This allows developers to focus more of their time
+          on creating the specific gameplay, levels, assets, and experiences that make their game unique.
+        </p>
+
+
+      </article>
+
+      <br />
+    </section>
+
+    <hr />
+
+    <!-- HTML, CSS, AND JAVASCRIPT SECTION -->
+
+    <section class="main-section" id="HTML_CSS_JavaScript_and_Game_Logic">
+      <br />
+
+      <header><b>HTML, CSS, JavaScript, and Game Logic</b></header>
+
+      <article>
+
+        <p>If you're old enough to have played a browser game, you may be familiar with Adobe Flash. Flash was a popular
+          platform for creating interactive games and animations on the web, but it has been deprecated and is no longer
+          supported by most browsers. Due to security concerns and the rise of modern web technologies, Flash has been
+          phased out in favor of HTML5 and WebGL, which allow developers to create interactive content using standard
+          web technologies.</p>
+
+
+        <p>
+          Today, we can build interactive games directly in the browser using <b>HTML, CSS, and JavaScript</b>. These
+          technologies are widely supported across modern web browsers and provide a powerful platform for creating
+          games that can run on a variety of devices without the need for additional plugins. While HTML and CSS are
+          used to create the structure and style of the game, the real magic happens with JavaScript, which allows us to
+          implement game logic, handle user input, and create dynamic interactions.
+        </p>
+
+        <p>
+          <b>Game logic</b> consists of the rules and systems that determine how the game behaves. It controls what
+          happens when the player performs an action, when objects interact, and when the state of the game changes.
+        </p>
+
+        <p>For example, JavaScript can be used to:</p>
+
+        <ul>
+          <li>Read player input from the keyboard, mouse, or other controls.</li>
+          <li>Store and update game data such as scores, lives, health, timers, and player positions.</li>
+          <li>Apply rules that determine what happens when the player performs an action.</li>
+          <li>Move game objects and update their state.</li>
+          <li>Detect interactions or collisions between objects.</li>
+          <li>Determine whether the player has won, lost, or completed an objective.</li>
+          <li>Update the screen to display the current state of the game.</li>
+        </ul>
+
+        <h2>A Simple Example: Guessing Game</h2>
+
+        <p>
+          The following example creates a simple guessing game. The program generates a secret number, receives
+          a guess from the player, checks whether the guess is correct, and updates the game state.
+        </p>
+
+        <h3>JavaScript</h3>
+
+        <pre><code class="language-javascript">let secretNumber = Math.floor(Math.random() * 10) + 1;
+let score = 0;
+
+function makeGuess(guess) {
+  if (guess === secretNumber) {
+    score++;
+    console.log("Correct! Score: " + score);
+    secretNumber = Math.floor(Math.random() * 10) + 1;
+  } else {
+    console.log("Try again!");
+  }
+}
+
+makeGuess(5);</code></pre>
+
+        <p>
+          Even though this example is very simple, it demonstrates several important ideas that appear in larger
+          games:
+        </p>
+
+        <ul>
+          <li>
+            <b>Game State:</b> The secret number and score represent information that the game needs to remember.
+          </li>
+
+          <li>
+            <b>Player Input:</b> The player's guess is an action provided to the game.
+          </li>
+
+          <li>
+            <b>Rules:</b> The if statement determines what happens when the guess is correct or incorrect.
+          </li>
+
+          <li>
+            <b>State Changes:</b> When the player guesses correctly, the score increases and a new secret number
+            is created.
+          </li>
+        </ul>
+
+        <p>
+          A more complex version could include a timer, multiple rounds, limited attempts, buttons, graphics,
+          sound effects, or a visual interface. The underlying idea remains the same: the game receives input,
+          applies its rules, and updates its state.
+        </p>
+
+        <hr />
+
+        <h2>Interactive Canvas Example: Collect the Star</h2>
+
+        <p>
+          HTML provides an element called the <b>canvas</b>, which can be used as a drawing area for graphics,
+          animation, and interactive games. JavaScript can control what is drawn on the canvas and update it while
+          the game is running.
+        </p>
+
+        <p>
+          The following example demonstrates how <b>HTML, CSS, and JavaScript</b> can work together to create a
+          simple game.
+        </p>
+
+        <ul>
+          <li><b>HTML</b> creates the canvas, score display, and restart button.</li>
+          <li><b>CSS</b> controls the appearance and layout of those elements.</li>
+          <li><b>JavaScript</b> controls player movement, scoring, collision detection, and drawing.</li>
+        </ul>
+
+        <h2>HTML</h2>
+
+        <p>
+          The HTML creates the elements that will appear on the page. In this example, we create a
+          <code>&lt;canvas&gt;</code> element for the game, a paragraph for displaying the score, and a button for
+          restarting the game.
+        </p>
+
+        <pre><code class="language-html">&lt;div id="canvasGame"&gt;
+  &lt;canvas
+    id="gameCanvas"
+    width="480"
+    height="300"
+    tabindex="0"
+    aria-label="Canvas game. Use the arrow keys or W A S D to collect the star."&gt;
+  &lt;/canvas&gt;
+
+  &lt;p id="gameStatus" aria-live="polite"&gt;
+    Score: 0 | Use Arrow Keys or W A S D to move.
+  &lt;/p&gt;
+
+  &lt;button id="restartGame" type="button"&gt;
+    Restart Game
+  &lt;/button&gt;
+
+&lt;/div&gt;</code></pre>
+
+        <h2>CSS</h2>
+
+        <p>
+          The CSS controls the appearance and layout of the game elements.
+        </p>
+
+        <pre><code class="language-css">#canvasGame {
+  max-width: 520px;
+}
+
+#gameCanvas {
+  display: block;
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+  border: 3px solid #333;
+  background: #152238;
+  border-radius: 8px;
+}
+
+#gameStatus {
+  font-weight: bold;
+  margin: 8px 0;
+}
+
+#restartGame {
+  padding: 6px 12px;
+  cursor: pointer;
+}</code></pre>
+
+        <h2>JavaScript</h2>
+
+        <p>
+          The JavaScript controls the behavior of the game. It keeps track of the player and star positions,
+          reads keyboard input, checks for collisions, updates the score, and redraws the game repeatedly.
+        </p>
+
+        <pre><code class="language-javascript">const canvas = document.getElementById("gameCanvas");
+
+const context = canvas.getContext("2d");
+const status = document.getElementById("gameStatus");
+
+const keys = {};
+
+const player = {
+  x: 40,
+  y: 130,
+  size: 22,
+  speed: 4
+};
+
+const star = {
+  x: 400,
+  y: 130,
+  size: 14
+};
+
+let score = 0;
+
+function resetGame() {
+  player.x = 40;
+  player.y = 130;
+  score = 0;
+
+  placeStar();
+  updateStatus();
+}
+
+function placeStar() {
+  star.x = 25 + Math.random() * (canvas.width - 50);
+  star.y = 25 + Math.random() * (canvas.height - 50);
+}
+
+function updateStatus() {
+  status.textContent =
+  `Score: ${score} | Use Arrow Keys or W A S D to move.`;
+}
+
+function update() {
+
+  // Move the player based on keyboard input.
+
+  if (keys.arrowup || keys.w) {
+    player.y -= player.speed;
+  }
+
+  if (keys.arrowdown || keys.s) {
+    player.y += player.speed;
+  }
+
+  if (keys.arrowleft || keys.a) {
+    player.x -= player.speed;
+  }
+
+  if (keys.arrowright || keys.d) {
+    player.x += player.speed;
+  }
+
+  // Keep the player inside the canvas.
+
+  player.x = Math.max(
+  0,
+  Math.min(canvas.width - player.size, player.x)
+  );
+
+  player.y = Math.max(
+  0,
+  Math.min(canvas.height - player.size, player.y)
+  );
+
+  // Calculate the distance between the player and the star.
+
+  const distance = Math.hypot(
+  player.x + player.size / 2 - star.x,
+  player.y + player.size / 2 - star.y
+  );
+
+  // If the player touches the star, increase the score.
+
+  if (distance < player.size / 2 + star.size) {
+    score++;
+    placeStar();
+    updateStatus();
+  }
+}
+
+function draw() {
+
+  // Clear the previous frame.
+
+  context.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Draw the background.
+
+  context.fillStyle = "#152238";
+
+  context.fillRect(0, 0, canvas.width, canvas.height);
+
+  // Draw the player.
+
+  context.fillStyle = "#4fc3f7";
+
+  context.fillRect(player.x, player.y, player.size, player.size);
+
+  // Draw the star.
+
+  context.fillStyle = "#ffd54f";
+
+  context.beginPath();
+
+  context.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+
+  context.fill();
+}
+
+function gameLoop() {
+  update();
+  draw();
+
+  requestAnimationFrame(gameLoop);
+}
+
+// Record when a key is pressed.
+
+window.addEventListener("keydown", event => {
+
+keys[event.key.toLowerCase()] = true;
+
+if (
+[
+"arrowup",
+"arrowdown",
+"arrowleft",
+"arrowright",
+" "
+].includes(event.key.toLowerCase())
+) {
+event.preventDefault();
+}
+});
+
+// Record when a key is released.
+
+window.addEventListener("keyup", event => {
+keys[event.key.toLowerCase()] = false;
+});
+
+// Restart the game when the button is clicked.
+
+document
+.getElementById("restartGame")
+.addEventListener("click", resetGame);
+
+// Start the game.
+
+resetGame();
+gameLoop();</code></pre>
+
+        <h2>Understanding the Game Loop</h2>
+
+        <p>
+          Most digital games repeatedly perform a series of operations while the game is running. This process is
+          called a <b>game loop</b>.
+        </p>
+
+        <p>
+          A simplified game loop usually follows this pattern:
+        </p>
+
+        <ol>
+          <li><b>Read Input:</b> Determine what the player is doing.</li>
+          <li><b>Update:</b> Change the positions, values, and states of game objects.</li>
+          <li><b>Check Rules and Interactions:</b> Determine whether events such as collisions or scoring have occurred.
+          </li>
+          <li><b>Render:</b> Draw the updated game state on the screen.</li>
+          <li><b>Repeat:</b> Continue the process while the game is running.</li>
+        </ol>
+
+        <p>
+          In the Collect the Star example, this process is handled by the following function:
+        </p>
+
+        <pre><code class="language-javascript">function gameLoop() {
+  update();
+  draw();
+  requestAnimationFrame(gameLoop);
+}
+
+gameLoop();</code></pre>
+
+        <p>
+          The browser repeatedly calls <b>gameLoop()</b>. Each time the function runs, the game first
+          updates its current state and then redraws the game world.
+        </p>
+
+        <p>
+          The basic process can be represented as:
+        </p>
+
+       <pre><code class="language-text">       PLAYER INPUT
+            ↓
+     UPDATE GAME STATE
+            ↓
+CHECK RULES AND COLLISIONS
+            ↓
+     RENDER THE GAME
+            ↓
+          REPEAT</code></pre>
+
+
+        <hr />
+
+        <h2>Adding an Enemy</h2>
+
+        <p>
+          Our current game has a player and a collectible star. We can make the game more challenging by adding
+          an <b>enemy</b> that moves around the game world and attempts to follow the player.
+        </p>
+
+        <p>
+          Unlike the player, which moves based on keyboard input, the enemy moves automatically according to
+          rules defined by the game. In this example, the enemy generally moves toward the player, but also has
+          a random movement influence that makes its behavior less predictable.
+        </p>
+
+        <p>
+          First, we create an object to store information about the enemy:
+        </p>
+
+        <pre><code class="language-javascript">const enemy = {
+  x: 200,
+  y: 50,
+  size: 30,
+  speed: 2.2,
+
+  directionX: 0,
+  directionY: 0,
+  randomTimer: 0
+};</code></pre>
+
+        <p>
+          Like the player, the enemy has an <b>x</b> position, a <b>y</b> position, a
+          <b>size</b>, and a <b>speed</b>.
+        </p>
+
+        <p>
+          The enemy also has three additional values:
+        </p>
+
+        <ul>
+          <li><b>directionX</b> stores the horizontal influence of its random movement.</li>
+          <li><b>directionY</b> stores the vertical influence of its random movement.</li>
+          <li><b>randomTimer</b> determines when the enemy should choose a new random direction.</li>
+        </ul>
+
+        <h2>Making the Enemy Follow the Player</h2>
+
+        <p>
+          To move the enemy toward the player, we first need to determine the direction from the enemy to the
+          player.
+        </p>
+
+        <pre><code class="language-javascript">let directionX = player.x - enemy.x;
+let directionY = player.y - enemy.y;</code></pre>
+
+        <p>
+          The horizontal direction is calculated by subtracting the enemy's <b>x</b> position from the
+          player's <b>x</b> position. The vertical direction is calculated in the same way.
+        </p>
+
+        <p>
+          For example, if the player is to the right of the enemy, <b>directionX</b> will be positive.
+          If the player is to the left, it will be negative.
+        </p>
+
+        <h3>Calculating the Distance</h3>
+
+        <p>
+          We can calculate the distance between the enemy and the player using
+          <b>Math.hypot()</b>:
+        </p>
+
+        <pre><code class="language-javascript">const enemyDistance = Math.hypot(directionX, directionY);</code></pre>
+
+        <p>
+          <b>Math.hypot()</b> calculates the length of a direction vector using its horizontal and
+          vertical components.
+        </p>
+
+        <h3>Normalizing the Direction</h3>
+
+        <p>
+          Before moving the enemy, we normalize the direction.
+        </p>
+
+        <pre><code class="language-javascript">if (enemyDistance > 0) {
+  directionX /= enemyDistance;
+  directionY /= enemyDistance;
+}</code></pre>
+
+        <p>
+          <b>Normalization</b> changes the direction so that its length is equal to <b>1</b> while preserving
+          the direction in which it points.
+        </p>
+
+        <p>
+          This is useful because it allows us to control the enemy's movement using its
+          <b>speed</b> value rather than having the speed depend on how far away the player is.
+        </p>
+
+        <h2>Adding Random Enemy Movement</h2>
+
+        <p>
+          If the enemy always moved directly toward the player, its movement would be very predictable. To make
+          the game more challenging, we add a small random influence to the enemy's movement.
+        </p>
+
+        <p>
+          First, we decrease the enemy's <b>randomTimer</b> using <b>deltaTime</b>:
+        </p>
+
+        <pre><code class="language-javascript">enemy.randomTimer -= deltaTime;</code></pre>
+
+        <p>
+          When the timer reaches zero, the enemy chooses a new random movement direction:
+        </p>
+
+        <pre><code class="language-javascript">if (enemy.randomTimer <= 0) {
+  enemy.directionX = (Math.random() - 0.5) * 0.8;
+  enemy.directionY = (Math.random() - 0.5) * 0.8;
+  enemy.randomTimer = 0.5 + Math.random();
+}</code></pre>
+
+        <p>
+          <b>Math.random()</b> normally produces a number between <b>0</b> and
+          <b>1</b>. By subtracting <b>0.5</b>, we create values that can be either positive or
+          negative.
+        </p>
+
+        <p>
+          Multiplying by <b>0.8</b> limits the strength of the random movement.
+        </p>
+
+        <p>
+          The enemy keeps its random direction for between <b>0.5 and 1.5 seconds</b> before choosing another
+          one.
+        </p>
+
+        <h2>Combining Player-Following and Random Movement</h2>
+
+        <p>
+          The enemy now has two different movement influences:
+        </p>
+
+        <ul>
+          <li>A direction that points toward the player.</li>
+          <li>A random direction that changes periodically.</li>
+        </ul>
+
+        <p>
+          We combine these two directions:
+        </p>
+
+        <pre><code class="language-javascript">directionX += enemy.directionX;
+directionY += enemy.directionY;</code></pre>
+
+        <p>
+          The result is a direction that generally follows the player but does not move in a perfectly straight
+          line.
+        </p>
+
+        <p>
+          After combining the directions, we normalize the result again:
+        </p>
+
+        <pre><code class="language-javascript">const finalDistance = Math.hypot(directionX, directionY);
+
+if (finalDistance > 0) {
+  directionX /= finalDistance;
+  directionY /= finalDistance;
+}</code></pre>
+
+        <p>
+          Normalizing the final direction ensures that the enemy continues to move at a consistent speed.
+        </p>
+
+        <h2>Moving the Enemy</h2>
+
+        <p>
+          Once we have calculated the final direction, we can move the enemy:
+        </p>
+
+        <pre><code class="language-javascript">enemy.x += directionX * enemy.speed;
+enemy.y += directionY * enemy.speed;</code></pre>
+
+        <p>
+          The enemy's horizontal movement depends on <b>directionX</b>, while its vertical movement depends
+          on <b>directionY</b>.
+        </p>
+
+        <p>
+          Because both values are combined with the enemy's <b>speed</b>, the enemy can move in any
+          direction while generally following the player.
+        </p>
+
+        <h2>Keeping the Enemy Inside the Game World</h2>
+
+        <p>
+          Just like the player, we need to prevent the enemy from moving outside the canvas.
+        </p>
+
+        <pre><code class="language-javascript">enemy.x = Math.max(0, Math.min(canvas.width - enemy.size, enemy.x));
+enemy.y = Math.max(0, Math.min(canvas.height - enemy.size, enemy.y));</code></pre>
+
+        <p>
+          This limits the enemy's <b>x</b> and <b>y</b> positions so that it remains inside the
+          boundaries of the game world.
+        </p>
+
+        <h2>Drawing the Enemy</h2>
+
+        <p>
+          Next, we draw the enemy inside the <b>draw()</b> function.
+        </p>
+
+        <pre><code class="language-javascript">context.fillStyle = "#ef5350";
+context.fillRect(enemy.x, enemy.y, enemy.size, enemy.size);</code></pre>
+
+        <p>
+          The enemy is drawn as a red square using its current position. Because the
+          <b>draw()</b> function runs repeatedly, the enemy appears to move smoothly around the game world.
+        </p>
+
+        <h2>Detecting a Collision with the Enemy</h2>
+
+        <p>
+          We already use collision detection to determine when the player collects a star. We can also check
+          whether the player touches the enemy.
+        </p>
+
+        <p>
+          Because both the player and enemy are rectangular, we can use
+          <b>rectangle collision detection</b>.
+        </p>
+
+        <p>
+          Instead of creating a function that only works with the player and enemy, our game uses a more general
+          function that can compare any two square or rectangular game objects.
+        </p>
+
+        <pre><code class="language-javascript">function checkRectangleCollision(object1, object2) {
+  return (
+    object1.x < object2.x + object2.size &&
+    object1.x + object1.size > object2.x &&
+    object1.y < object2.y + object2.size &&
+    object1.y + object1.size > object2.y
+  );
+}</code></pre>
+
+        <p>
+          The function returns <b>true</b> when the two objects overlap and <b>false</b> when they do not.
+        </p>
+
+        <p>
+          We can check whether the player has collided with the enemy:
+        </p>
+
+        <pre><code class="language-javascript">if (checkRectangleCollision(player, enemy)) {
+  gameOver = true;
+}</code></pre>
+
+        <p>
+          If the player touches the enemy, the game state changes and the game ends.
+        </p>
+
+        <h2>Adding a Game State</h2>
+
+        <p>
+          A game often needs to keep track of its current <b>state</b>. For example, a game might be:
+        </p>
+
+        <ul>
+          <li>Playing</li>
+          <li>Paused</li>
+          <li>Game Over</li>
+          <li>Won</li>
+        </ul>
+
+        <p>
+          In this game, we use a variable called <b>gameOver</b>:
+        </p>
+
+        <pre><code class="language-javascript">let gameOver = false;</code></pre>
+
+        <p>
+          When the player collides with the enemy or runs out of time, we change this value to
+          <b>true</b>.
+        </p>
+
+        <p>
+          At the beginning of the <b>update()</b> function, we check whether the game has ended:
+        </p>
+
+        <pre><code class="language-javascript">if (gameOver) {
+  return;
+}</code></pre>
+
+        <p>
+          The <b>return</b> statement immediately exits the <b>update()</b> function. This means
+          that once <b>gameOver</b> becomes <b>true</b>, the player, enemy, timer, and other game
+          systems stop updating.
+        </p>
+
+        <h3>Displaying Game Over</h3>
+
+        <p>
+          Even though the game stops updating, the <b>draw()</b> function continues to render the game.
+          We can use this to display a message when the game ends.
+        </p>
+
+        <pre><code class="language-javascript">if (gameOver) {
+
+  context.fillStyle = "white";
+  context.font = "32px Arial";
+  context.textAlign = "center";
+
+  context.fillText("GAME OVER", canvas.width / 2, canvas.height / 2);
+}</code></pre>
+
+        <p>
+          This displays the message in the center of the canvas when <b>gameOver</b> is
+          <b>true</b>.
+        </p>
+
+        <h2>Adding a Timer</h2>
+
+        <p>
+          Another way to create challenge is to give the player a limited amount of time to collect stars.
+          We can add a <b>timer</b> that counts down during gameplay.
+        </p>
+
+        <p>
+          First, we create a variable to store the amount of time remaining:
+        </p>
+
+        <pre><code class="language-javascript">let timeRemaining = 30;</code></pre>
+
+        <p>
+          This gives the player 30 seconds to collect as many stars as possible before the game ends.
+        </p>
+
+        <h3>Displaying the Timer</h3>
+
+        <p>
+          The status display can show both the player's score and the remaining time:
+        </p>
+
+        <pre><code class="language-javascript">function updateStatus() {
+  status.textContent = `Score: ${score} | Time: ${Math.ceil(timeRemaining)}`;
+}</code></pre>
+
+        <p>
+          The <b>Math.ceil()</b> function rounds the remaining time up to the nearest whole number.
+          For example, if the timer contains <b>12.4</b>, the player will see <b>13</b>.
+        </p>
+
+        <h2>Why We Need Delta Time</h2>
+
+        <p>
+          The game loop runs repeatedly, but we cannot assume that it runs at exactly the same speed on every
+          computer. Some devices may update the game more frequently than others.
+        </p>
+
+        <p>
+          Because of this, subtracting a fixed value from the timer during every frame would cause the timer to
+          run at different speeds on different devices.
+        </p>
+
+        <p>
+          Instead, we use <b>delta time</b>, which represents the amount of time that has passed since the
+          previous frame.
+        </p>
+
+        <p>
+          Delta time is also used in our game to control how often the enemy changes its random movement
+          direction.
+        </p>
+
+        <h3>Storing the Previous Frame Time</h3>
+
+        <p>
+          First, we create a variable to store the time of the previous frame:
+        </p>
+
+        <pre><code class="language-javascript">let lastTime = 0;</code></pre>
+
+        <h3>Updating the Game Loop</h3>
+
+        <p>
+          The <b>requestAnimationFrame()</b> function provides a timestamp that can be used to calculate
+          the amount of time between frames.
+        </p>
+
+        <pre><code class="language-javascript">function gameLoop(currentTime) {
+  const deltaTime = (currentTime - lastTime) / 1000;
+  lastTime = currentTime;
+  update(deltaTime);
+  draw();
+  requestAnimationFrame(gameLoop);
+}
+
+requestAnimationFrame(gameLoop);</code></pre>
+
+        <p>
+          The difference between <b>currentTime</b> and <b>lastTime</b> gives us the amount of
+          time that has passed since the previous frame. Dividing by <b>1000</b> converts milliseconds
+          into seconds.
+        </p>
+
+        <h3>Updating the Timer</h3>
+
+        <p>
+          The <b>update()</b> function receives <b>deltaTime</b> as a parameter. We can subtract
+          this amount from the remaining time:
+        </p>
+
+        <pre><code class="language-javascript">timeRemaining -= deltaTime;</code></pre>
+
+        <p>
+          We then check whether the timer has reached zero:
+        </p>
+
+        <pre><code class="language-javascript">if (timeRemaining <= 0) {
+  timeRemaining = 0;
+  gameOver = true;
+}</code></pre>
+
+        <p>
+          If the timer reaches zero, we set <b>timeRemaining</b> to zero and change
+          <b>gameOver</b> to <b>true</b>.
+        </p>
+
+        <h2>Updating the Game</h2>
+
+        <p>
+          Our game now has several different systems working together:
+        </p>
+
+        <ul>
+          <li>The player responds to keyboard input.</li>
+          <li>The player can collect stars to increase the score.</li>
+          <li>The enemy calculates a direction toward the player.</li>
+          <li>The enemy adds random movement to make its behavior less predictable.</li>
+          <li>The enemy remains inside the boundaries of the game world.</li>
+          <li>The game checks whether the player collides with the enemy.</li>
+          <li>A timer counts down while the game is being played.</li>
+          <li>The game ends when the enemy catches the player or time runs out.</li>
+        </ul>
+
+        <p>
+          The game loop now coordinates all of these systems:
+        </p>
+
+        <pre><code class="language-text">    PLAYER INPUT
+         ↓
+    UPDATE PLAYER
+         ↓
+CALCULATE ENEMY DIRECTION
+         ↓
+  ADD RANDOM MOVEMENT
+         ↓
+    UPDATE ENEMY
+         ↓
+    UPDATE TIMER
+         ↓
+   CHECK COLLISIONS
+         ↓
+   CHECK GAME STATE
+         ↓
+   RENDER THE GAME
+         ↓
+       REPEAT</code></pre>
+        <p>
+          As games become more complex, the number of systems being updated during each frame increases.
+          Game engines such as Unity and Godot provide tools to help organize these systems, but the fundamental
+          process remains the same: the game repeatedly updates its state, applies its rules, and displays the
+          results to the player.
+        </p>
+
+
+        <h2>From Programming to Game Engines</h2>
+
+        <p>
+          HTML, CSS, and JavaScript can provide the foundation for creating a game directly in a web browser.
+          However, as games become more complex, developers must build and manage an increasing number of systems.
+        </p>
+
+        <p>
+          For example, a larger game may require systems for:
+        </p>
+
+        <ul>
+          <li>Rendering graphics and animations</li>
+          <li>Handling player input</li>
+          <li>Detecting collisions</li>
+          <li>Managing physics</li>
+          <li>Playing sound and music</li>
+          <li>Organizing levels or scenes</li>
+          <li>Creating user interfaces</li>
+          <li>Saving player progress and game data</li>
+          <li>Supporting different devices and platforms</li>
+        </ul>
+
+        <p>
+          Building all of these systems from scratch can require a significant amount of time and programming.
+          <b>Game engines</b> provide many of these systems as part of the development environment.
+        </p>
+
+        <p>
+          This does not mean that the fundamental concepts of programming disappear. The same ideas demonstrated
+          in the JavaScript examples still exist when developing games with an engine. Developers still work with:
+        </p>
+
+        <ul>
+          <li><b>Variables</b> to store game data.</li>
+          <li><b>Input</b> to determine what the player is doing.</li>
+          <li><b>Game objects</b> that represent things in the game world.</li>
+          <li><b>Game state</b> that changes while the game is running.</li>
+          <li><b>Rules and conditions</b> that determine what happens.</li>
+          <li><b>Collisions and interactions</b> between game objects.</li>
+          <li><b>Repeated updates</b> that keep the game running.</li>
+        </ul>
+
+        <p>
+          The primary difference is that a game engine provides additional tools and systems to help developers
+          create and manage these elements. As we move into development with engines such as <b>Unity</b> and
+          <b>Godot</b>, we will continue working with the same fundamental concepts while using the engine's tools
+          to build more complex games.
+        </p>
+
+      </article>
+
+      <br />
+    </section>
 
 
 
+
+    <!--
     <section class="main-section" id="Game_Concepts_and_Genre">
       <br />
       <header><b>Game Concepts and Genre</b></header>
@@ -5355,7 +6308,8 @@
             crossing the
             line from gaming into gambling, which can be highly addictive and destructive. Belgium and the Netherlands
             have already banned loot boxes in games for this reason.</li>
-          <li><b>Child-targeted monetisation:</b> Games marketed to children that include in-app purchases are nothing short of
+          <li><b>Child-targeted monetisation:</b> Games marketed to children that include in-app purchases are nothing
+            short of
             exploitative, as children are less able to understand the real-world cost of virtual items.</li>
         </ul>
 
@@ -5385,7 +6339,7 @@
       </article>
       <br />
     </section>
-    <hr/>
+    <hr />
     <section class="main-section" id="Digitizing_Games">
       <br />
       <header><b>Digitizing Games</b></header>
@@ -5395,7 +6349,8 @@
 
         <p>We also discussed how certain aspects such as rules and narrative define and shape these games.</p>
 
-        <p>However, how do we pick a medium when designing a game? What factors influence the choice between a physical or
+        <p>However, how do we pick a medium when designing a game? What factors influence the choice between a physical
+          or
           digital format?</p>
 
         <p>Let's explore the considerations involved in digitizing games and the impact of this choice on game design
@@ -5403,33 +6358,40 @@
 
         <p>Let's look at an example with the game: <b><i>Werewolf</i></b></p>
 
-        <p><b><i>Werewolf</i></b> is a social deduction game that can be played in both physical and digital formats. In its physical
+        <p><b><i>Werewolf</i></b> is a social deduction game that can be played in both physical and digital formats. In
+          its physical
           form, players gather around a table, taking on roles such as villagers or werewolves, engaging in face-to-face
           interactions to deduce who the werewolves are.</p>
 
         <p>The game relies heavily on social dynamics, body language, and verbal communication, making it a highly
           interactive and immersive experience.</p>
 
-        <p>However, the physical version of <b><i>Werewolf</i></b> can be limited by factors such as the number of players that can
+        <p>However, the physical version of <b><i>Werewolf</i></b> can be limited by factors such as the number of
+          players that can
           participate, geographical constraints, and the need for a physical space to gather.</p>
 
         <p>Let's take some time to play Werewolf in its physical format to experience these dynamics firsthand.</p>
 
-        <p>Now, let's consider the digital version of <b><i>Werewolf</i></b>. In this format, players can connect online through
+        <p>Now, let's consider the digital version of <b><i>Werewolf</i></b>. In this format, players can connect online
+          through
           platforms that facilitate the game's mechanics, allowing for remote play and automated role assignments.</p>
 
-        <p>The digital version of <b><i>Werewolf</i></b> can accommodate a larger number of players from different locations,
+        <p>The digital version of <b><i>Werewolf</i></b> can accommodate a larger number of players from different
+          locations,
           breaking down geographical barriers.</p>
 
         <p>However, the digital format may lack some of the nuances of face-to-face interaction, such as body language
           and vocal inflections, which can be crucial in a social deduction game.</p>
 
         <p>Let's also take some time to play Werewolf in its digital format to compare the experiences. Join here: <a
-            href="https://netgames.io/games/onu-werewolf/" target="_blank">Netgames.io - One Night Ultimate Werewolf</a></p>
+            href="https://netgames.io/games/onu-werewolf/" target="_blank">Netgames.io - One Night Ultimate Werewolf</a>
+        </p>
 
-        <p>Note: this is a digital version of <b><i>One Night Ultimate Werewolf</i></b> (a variant of the original <b><i>Werewolf</i></b> game).</p> 
+        <p>Note: this is a digital version of <b><i>One Night Ultimate Werewolf</i></b> (a variant of the original
+          <b><i>Werewolf</i></b> game).</p>
 
-        <p>How did these two experiences differ? What aspects of the game were enhanced or diminished in each format?</p>
+        <p>How did these two experiences differ? What aspects of the game were enhanced or diminished in each format?
+        </p>
 
         <p>When deciding whether to digitize a game, several factors come into play:</p>
 
@@ -5447,12 +6409,16 @@
         <p>Ultimately, the choice between physical and digital formats depends on the game's design goals, target
           audience, and the desired player experience.</p>
 
-        <p>Both formats have their unique advantages and challenges, and understanding these can help game designers make
+        <p>Both formats have their unique advantages and challenges, and understanding these can help game designers
+          make
           informed decisions about how to best bring their games to life.</p>
 
       </article>
       <br />
     </section>
+    -->
+
+
     <!--<hr />-->
 
 
