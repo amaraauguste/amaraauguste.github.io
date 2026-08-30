@@ -38,6 +38,7 @@
         <a class="nav-link" href="CISC3667/calendar.html" target="_blank">Calendar</a>
         <a class="nav-link" href="#Readings">Readings</a>
         <a class="nav-link" href="CISC3667/notes.html" target="_blank">Class Notes</a>
+        <a class="nav-link" href="#Final_Project">Final Project</a>
         <a class="nav-link" href="#In_class_activities_and_Labs">In-Class Activities and Labs</a>
         <a class="nav-link" href="#Homework">Homework</a>
         <!--<a class="nav-link" href="#Group_Projects">Group Projects</a>-->
@@ -121,7 +122,7 @@
                                 Learning by Design: Good Video Games as Learning Machines</a>
                         </li>
                     </ul>
-                    
+
                 </ul>
 
                 <p>In addition, you are more than welcome to read any other game design or development books you
@@ -134,6 +135,70 @@
                 </ul>
 
                 <p>If you have any suggestions for additional readings, please let me know!</p>
+            </article>
+            <br />
+            <hr />
+        </section>
+
+        <section class="main-section" id="Final_Project">
+            <br />
+            <header><b>Final Project</b></header>
+            <article>
+
+                <p>
+                    The Final Project is an <b>individual, semester-long game development project</b>.
+                    You will design, develop, test, and present an original playable digital game.
+                    Your game will be developed throughout the semester and will be submitted to the
+                    <b>CISC 3667 Class Game Jam</b> at the end of the course.
+                </p>
+
+                <p>
+                    <b>Remember:</b> You will work on this project throughout the semester.
+                    Start thinking about your game early, but keep your scope realistic.
+                    You are not expected to create a commercial-quality game. Focus on creating
+                    a <b>finished game that demonstrates your understanding of the concepts and
+                        skills covered in this course.</b>
+                </p>
+
+                <p>
+                    Your project must demonstrate important game design and development concepts,
+                    including:
+                </p>
+
+                <ul>
+                    <li>A clear game goal and core mechanic</li>
+                    <li>A gameplay loop</li>
+                    <li>Rules and meaningful challenge</li>
+                    <li>Meaningful game state</li>
+                    <li>Player feedback</li>
+                    <li>Progression or difficulty</li>
+                    <li>User interface and navigation</li>
+                    <li>Persistence or meaningful data management</li>
+                </ul>
+
+                <p>
+                    You will also create a <b>Game Design Document (GDD)</b> that explains your
+                    game concept, design decisions, development process, playtesting, iteration,
+                    and sources or assistance used.
+                </p>
+
+                <p>
+                    <b>Final Project:</b>
+                    <a href="CISC3667/final%20project/CISC%203667%20Final%20Project_%20Original%20Game%20Design%20and%20Development.pdf"
+                        target="_blank" rel="noopener">Instructions</a>
+                </p>
+
+                <p>
+                    <b>Final Project Due:</b> December 1, 2026 before the start of class
+                </p>
+
+                <p>
+                    The completed project will be evaluated based on <b>Game Design, Game
+                        Development, Player Experience, Technical Quality and Completion,
+                        Playtesting and Iteration, the Game Design Document, and the Game Jam
+                        Submission & Presentation.</b>
+                </p>
+
             </article>
             <br />
             <hr />
@@ -195,8 +260,10 @@
                     </li>
                 </ul>
                 <ul id="homeworkList" style="column-count: 1; font-size: 29px">
-                    <li data-reveal="2026-09-03T08:00"><b><a href="CISC3667/homeworks/CISC%203667%20-%20HW%201_%20What%20is%20a%20Game_.pdf" target="_blank"
-                                rel="noopener">Homework 1</a>: DUE 09/08 by 11:00 AM</b> - The purpose of this
+                    <li data-reveal="2026-09-03T08:00"><b><a
+                                href="CISC3667/homeworks/CISC%203667%20-%20HW%201_%20What%20is%20a%20Game_.pdf"
+                                target="_blank" rel="noopener">Homework 1</a>: DUE 09/08 by 11:00 AM</b> - The purpose
+                        of this
                         assignment is to
                         critically examine what counts as a "game" through the lens of different game design theorists.
                         Submit your 2 page response on Brightspace.
@@ -367,52 +434,52 @@
         })();
     </script>
     <script>
-    // Check for saved dark mode preference
-    if (localStorage.getItem('darkMode') === 'enabled') {
-      document.body.classList.add('dark-mode');
-      document.querySelector('.change').textContent = 'ON';
-    }
+        // Check for saved dark mode preference
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            document.body.classList.add('dark-mode');
+            document.querySelector('.change').textContent = 'ON';
+        }
 
-    // Dark mode toggle functionality
-    document.querySelector('.mode').addEventListener('click', function () {
-      document.body.classList.toggle('dark-mode');
+        // Dark mode toggle functionality
+        document.querySelector('.mode').addEventListener('click', function () {
+            document.body.classList.toggle('dark-mode');
 
-      // Get the change element
-      const changeModeText = document.querySelector('.change');
+            // Get the change element
+            const changeModeText = document.querySelector('.change');
 
-      // Update the text based on dark mode status
-      if (document.body.classList.contains('dark-mode')) {
-        changeModeText.textContent = 'ON'; // Change the text to 'ON'
-        localStorage.setItem('darkMode', 'enabled'); // Save preference
-      } else {
-        changeModeText.textContent = 'OFF'; // Change the text to 'OFF'
-        localStorage.setItem('darkMode', 'disabled'); // Save preference
-      }
-    });
+            // Update the text based on dark mode status
+            if (document.body.classList.contains('dark-mode')) {
+                changeModeText.textContent = 'ON'; // Change the text to 'ON'
+                localStorage.setItem('darkMode', 'enabled'); // Save preference
+            } else {
+                changeModeText.textContent = 'OFF'; // Change the text to 'OFF'
+                localStorage.setItem('darkMode', 'disabled'); // Save preference
+            }
+        });
 
-  </script>
-  <script>
-    function toggleMode() {
-      const lightModeLink = document.getElementById('light-mode');
-      const darkModeLink = document.getElementById('dark-mode');
-      const modeText = document.querySelector('.change');
+    </script>
+    <script>
+        function toggleMode() {
+            const lightModeLink = document.getElementById('light-mode');
+            const darkModeLink = document.getElementById('dark-mode');
+            const modeText = document.querySelector('.change');
 
-      if (lightModeLink.disabled) {
-        lightModeLink.disabled = false;
-        darkModeLink.disabled = true;
-        modeText.textContent = "OFF"; // Update the mode text to show Dark mode is off
-      } else {
-        lightModeLink.disabled = true;
-        darkModeLink.disabled = false;
-        modeText.textContent = "ON"; // Update the mode text to show Dark mode is on
-      }
-    }
+            if (lightModeLink.disabled) {
+                lightModeLink.disabled = false;
+                darkModeLink.disabled = true;
+                modeText.textContent = "OFF"; // Update the mode text to show Dark mode is off
+            } else {
+                lightModeLink.disabled = true;
+                darkModeLink.disabled = false;
+                modeText.textContent = "ON"; // Update the mode text to show Dark mode is on
+            }
+        }
 
-    // Call highlight.js to apply syntax highlighting
-    document.addEventListener('DOMContentLoaded', () => {
-      hljs.highlightAll();
-    });
-  </script>
+        // Call highlight.js to apply syntax highlighting
+        document.addEventListener('DOMContentLoaded', () => {
+            hljs.highlightAll();
+        });
+    </script>
 
 
 
