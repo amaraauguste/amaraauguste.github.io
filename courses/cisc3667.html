@@ -1,330 +1,472 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>CISC 3667</title>
     <link rel="stylesheet" href="3667style.css" />
     <style>
-        /* Hidden until reveal time */
-        .is-locked {
-            display: none !important;
-        }
+      /* Hidden until reveal time */
+      .is-locked {
+        display: none !important;
+      }
 
-        /* Optional: show a subtle placeholder while locked */
-        .hw-placeholder {
-            opacity: 0.75;
-            font-style: italic;
-            margin: 0.35em 0;
-        }
+      /* Optional: show a subtle placeholder while locked */
+      .hw-placeholder {
+        opacity: 0.75;
+        font-style: italic;
+        margin: 0.35em 0;
+      }
     </style>
+  </head>
 
-</head>
-
-<body>
-
+  <body>
     <!-- Navigation -->
     <nav id="navbar">
-        <header class="header-link">
-            <a href="https://amaraauguste.github.io/courses/cisc3667.html"
-                style="color: inherit; text-decoration: none;" class="header-text">CISC 3667</a>
-        </header>
-        <div class="mode">Dark mode: <span class="change">OFF</span></div>
-        <hr />
-        <a class="nav-link" href="#Introduction">Introduction</a>
-        <a class="nav-link"
-            href="https://docs.google.com/document/d/1U8Kyf_bjmSFuhLhpcxTPptBHYP2t9AIC-4Q59effx7k/edit?usp=sharing"
-            target="_blank" style="font-size: 22px">Syllabus</a>
-        <a class="nav-link" href="CISC3667/calendar.html" target="_blank">Calendar</a>
-        <a class="nav-link" href="#Readings">Readings</a>
-        <a class="nav-link" href="CISC3667/notes.html" target="_blank">Class Notes</a>
-        <a class="nav-link" href="#Final_Project">Final Project</a>
-        <a class="nav-link" href="#In_class_activities_and_Labs">In-Class Activities and Labs</a>
-        <a class="nav-link" href="#Homework">Homework</a>
-        <a class="nav-link" href="#Group_Projects">Group Projects</a>
-        <!--<a class="nav-link" href="#Unity_Labs">Unity Labs</a>-->
-        <!--<a class="nav-link" href="CISC3667/CISC%203667%20F25%20Midterm%20Sample%20Questions.pdf" style="font-size: 22px">Midterm Review</a>-->
-        <!--<a class="nav-link" href="CISC3667/CISC%203667%20Final%20Exam%20Question%20Bank.pdf" style="font-size: 22px">Final Review</a>-->
+      <header class="header-link">
+        <a
+          href="https://amaraauguste.github.io/courses/cisc3667.html"
+          style="color: inherit; text-decoration: none"
+          class="header-text"
+          >CISC 3667</a
+        >
+      </header>
+      <div class="mode">Dark mode: <span class="change">OFF</span></div>
+      <hr />
+      <a class="nav-link" href="#Introduction">Introduction</a>
+      <a
+        class="nav-link"
+        href="https://docs.google.com/document/d/1U8Kyf_bjmSFuhLhpcxTPptBHYP2t9AIC-4Q59effx7k/edit?usp=sharing"
+        target="_blank"
+        style="font-size: 22px"
+        >Syllabus</a
+      >
+      <a class="nav-link" href="CISC3667/calendar.html" target="_blank"
+        >Calendar</a
+      >
+      <a class="nav-link" href="#Readings">Readings</a>
+      <a class="nav-link" href="CISC3667/notes.html" target="_blank"
+        >Class Notes</a
+      >
+      <a class="nav-link" href="#Final_Project">Final Project</a>
+      <a class="nav-link" href="#In_class_activities_and_Labs"
+        >In-Class Activities and Labs</a
+      >
+      <a class="nav-link" href="#Homework">Homework</a>
+      <a class="nav-link" href="#Group_Projects">Group Projects</a>
+      <!--<a class="nav-link" href="#Unity_Labs">Unity Labs</a>-->
+      <!--<a class="nav-link" href="CISC3667/CISC%203667%20F25%20Midterm%20Sample%20Questions.pdf" style="font-size: 22px">Midterm Review</a>-->
+      <!--<a class="nav-link" href="CISC3667/CISC%203667%20Final%20Exam%20Question%20Bank.pdf" style="font-size: 22px">Final Review</a>-->
     </nav>
 
     <!-- Main Content -->
     <main id="main-doc">
-        <section class="main-section" id="Introduction">
+      <section class="main-section" id="Introduction">
+        <br />
+        <header><b>Introduction</b></header>
+        <article>
+          <p>Welcome to CISC 3667 - Game Design and Development!</p>
+          <p>
+            This web-site will provide a basic course outline, syllabus, and
+            anything else that is important for the class. Feel free to email
+            any questions, suggestions, thoughts, etc.
+          </p>
+        </article>
+        <br />
+        <hr />
+      </section>
+
+      <section class="main-section" id="Readings">
+        <br />
+        <header><b>Readings</b></header>
+        <article>
+          <ul id="readings-list">
+            <li>
+              <a
+                href="CISC3667/readings/Iterative_Design%20(1).pdf"
+                target="_blank"
+                data-quiz="quiz1"
+                >Eric Zimmerman, Play as Research: The Iterative Design
+                Process</a
+              >
+            </li>
             <br />
-            <header><b>Introduction</b></header>
-            <article>
-                <p>Welcome to CISC 3667 - Game Design and Development!</p>
-                <p>This web-site will provide a basic course outline, syllabus, and anything else that is important for
-                    the class. Feel free to email any questions, suggestions, thoughts, etc.</p>
-            </article>
+            <li><b>What is a Game?</b></li>
+            <ul>
+              <li>
+                <a
+                  href="https://web.archive.org/web/20221208215052/http://www.thegamesjournal.com/articles/MyEntireWakingLife.shtml"
+                  target="_blank"
+                  data-group="what-is-game"
+                  >Kevin Maroney, What is a Game?</a
+                >
+              </li>
+              <li>
+                <a
+                  href="CISC3667/readings/Jane%20McGonigal-%20Reality%20is%20Broken%20(1).pdf"
+                  target="_blank"
+                  data-group="what-is-game"
+                  >Jane McGonigal, Reality is Broken</a
+                >
+              </li>
+              <li>
+                <a
+                  href="CISC3667/readings/Art%20of%20Game%20Design%20Chapter%204.pdf"
+                  target="_blank"
+                  data-group="what-is-game"
+                  >Jesse Schell, The Art of Game Design, Chapter 4</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.erasmatazz.com/library/the-journal-of-computer/jcgd-volume-4/my-definition-of-game.html"
+                  target="_blank"
+                  data-group="what-is-game"
+                  >Chris Crawford, My Definition of 'Game'</a
+                >
+              </li>
+            </ul>
             <br />
-            <hr />
-        </section>
-
-        <section class="main-section" id="Readings">
+            <li><b>Game Mechanics and Rules</b></li>
+            <ul>
+              <li>
+                <a
+                  href="CISC3667/readings/rules%20of%20play%20chapters%2011-12%20(1).pdf"
+                  target="_blank"
+                  data-quiz="quiz1"
+                  >Rules of Play, by Salen & Zimmerman, Chapter 11-12</a
+                >
+              </li>
+              <li>
+                <a
+                  href="CISC3667/readings/Art%20of%20Game%20Design%2C%20Chapter%205.pdf"
+                  target="_blank"
+                  >Jesse Schell, The Art of Game Design, Chapter 5</a
+                >
+              </li>
+            </ul>
             <br />
-            <header><b>Readings</b></header>
-            <article>
-                <ul id="readings-list">
-                    <li><a href="CISC3667/readings/Iterative_Design%20(1).pdf" target="_blank" data-quiz="quiz1">Eric
-                            Zimmerman, Play as Research: The Iterative Design Process</a></li>
-                    <br />
-                    <li><b>What is a Game?</b></li>
-                    <ul>
-                        <li><a href="https://web.archive.org/web/20221208215052/http://www.thegamesjournal.com/articles/MyEntireWakingLife.shtml"
-                                target="_blank" data-group="what-is-game">Kevin Maroney, What is a Game?</a></li>
-                        <li><a href="CISC3667/readings/Jane%20McGonigal-%20Reality%20is%20Broken%20(1).pdf"
-                                target="_blank" data-group="what-is-game">Jane McGonigal, Reality is Broken</a></li>
-                        <li><a href="CISC3667/readings/Art%20of%20Game%20Design%20Chapter%204.pdf" target="_blank"
-                                data-group="what-is-game">Jesse Schell, The Art of Game Design, Chapter 4</a></li>
-                        <li><a href="https://www.erasmatazz.com/library/the-journal-of-computer/jcgd-volume-4/my-definition-of-game.html"
-                                target="_blank" data-group="what-is-game">Chris Crawford, My Definition of 'Game'</a>
-                        </li>
-                    </ul>
-                    <br />
-                    <li><b>Game Mechanics and Rules</b></li>
-                    <ul>
-                        <li><a href="CISC3667/readings/rules%20of%20play%20chapters%2011-12%20(1).pdf" target="_blank"
-                                data-quiz="quiz1">Rules of Play, by Salen & Zimmerman, Chapter 11-12</a>
-                        </li>
-                        <li><a href="CISC3667/readings/Art%20of%20Game%20Design%2C%20Chapter%205.pdf"
-                                target="_blank">Jesse Schell, The Art of Game
-                                Design, Chapter 5</a></li>
-                    </ul>
-                    <br />
-                    <li><b>Players' Relationship to Rules</b></li>
-                    <ul>
-                        <li><a href="CISC3667/readings/RulesofPlay.Ch21.pdf" target="_blank" data-quiz="quiz1">Rules of
-                                Play, by Salen & Zimmerman, Chapter 21</a>
-                        </li>
-                    </ul>
-                    <br />
-                    <li><b>Objects/Attributes/States/Actions, Feedback Loops</b></li>
-                    <ul>
-                        <li><a href="CISC3667/readings/Art%20of%20Game%20Design%20Chapter%2012.pdf"
-                                target="_blank">Jesse Schell, The Art of Game Design, Chapter 12</a>
-                        </li>
-                        <li><a href="CISC3667/readings/RulesofPlay.Ch18.pdf" target="_blank">Rules of Play, by Salen &
-                                Zimmerman, Chapter 18</a></li>
-                    </ul>
-                    <br />
-                    <li><b>Randomness and Probability</b></li>
-                    <ul>
-                        <li><a href="CISC3667/readings/Art%20of%20Game%20Design%20Chapter%2012%20chance.pdf"
-                                target="_blank">Jesse Schell, The Art of Game Design, Chapter 12:
-                                Chance</a>
-                        </li>
-                    </ul>
-                    <br />
-                    <li><b>Serious Games</b></li>
-                    <ul>
-                        <li><a href="CISC3667/readings/geeGBL.pdf" target="_blank" data-quiz="quiz1">James Paul Gee,
-                                Learning by Design: Good Video Games as Learning Machines</a>
-                        </li>
-                    </ul>
-
-                </ul>
-
-                <p>In addition, you are more than welcome to read any other game design or development books you
-                    find interesting. Here are a few suggestions:</p>
-                <ul>
-                    <li><b>The Art of Game Design: A Book of Lenses</b> by Jesse Schell</li>
-                    <li><b>Rules of Play: Game Design Fundamentals</b> by Katie Salen and Eric Zimmerman</li>
-                    <li><b>Game Design Workshop: A Playcentric Approach to Creating Innovative Games</b> by Tracy
-                        Fullerton</li>
-                </ul>
-
-                <p>If you have any suggestions for additional readings, please let me know!</p>
-            </article>
+            <li><b>Players' Relationship to Rules</b></li>
+            <ul>
+              <li>
+                <a
+                  href="CISC3667/readings/RulesofPlay.Ch21.pdf"
+                  target="_blank"
+                  data-quiz="quiz1"
+                  >Rules of Play, by Salen & Zimmerman, Chapter 21</a
+                >
+              </li>
+            </ul>
             <br />
-            <hr />
-        </section>
-
-        <section class="main-section" id="Final_Project">
+            <li><b>Objects/Attributes/States/Actions, Feedback Loops</b></li>
+            <ul>
+              <li>
+                <a
+                  href="CISC3667/readings/Art%20of%20Game%20Design%20Chapter%2012.pdf"
+                  target="_blank"
+                  >Jesse Schell, The Art of Game Design, Chapter 12</a
+                >
+              </li>
+              <li>
+                <a href="CISC3667/readings/RulesofPlay.Ch18.pdf" target="_blank"
+                  >Rules of Play, by Salen & Zimmerman, Chapter 18</a
+                >
+              </li>
+            </ul>
             <br />
-            <header><b>Final Project</b></header>
-            <article>
-
-                <p>
-                    The Final Project is an <b>individual, semester-long game development project</b>.
-                    You will design, develop, test, and present an original playable digital game.
-                    Your completed game will be submitted to the <b>CISC 3667 Class Game Jam</b>
-                    and presented to the class at the end of the semester.
-                </p>
-
-                <p>
-                    <b>Remember:</b> You will work on this project throughout the semester.
-                    Start thinking about your game early, but keep your scope realistic.
-                    You are not expected to create a commercial-quality game. Focus on creating
-                    a <b>finished game that demonstrates your understanding of the concepts and
-                        skills covered in this course.</b>
-                </p>
-
-                <h3>Project Requirements</h3>
-
-                <p>
-                    Your game should demonstrate the game design and development concepts covered
-                    throughout the course, including:
-                </p>
-
-                <ul>
-                    <li>A clear goal and core mechanic</li>
-                    <li>A gameplay loop</li>
-                    <li>Rules and meaningful challenge</li>
-                    <li>Meaningful game state</li>
-                    <li>Player feedback</li>
-                    <li>Progression or difficulty</li>
-                    <li>User interface and navigation</li>
-                    <li>Persistence or meaningful data management</li>
-                </ul>
-
-                <p>
-                    You will also create a <b>Game Design Document (GDD)</b> that explains your
-                    game concept, design decisions, development process, playtesting,
-                    iteration, and sources or assistance used.
-                </p>
-
-                <h3>Project Timeline</h3>
-
-                <p>
-                    The project will develop alongside the topics covered in class. Use the
-                    milestones below to stay on track.
-                </p>
-
-                <ul>
-                    <li>
-                        <b>Sept. 1 — Get Started:</b>
-                        Begin thinking about possible game ideas, genres, themes, and player
-                        experiences. Start considering what you might realistically create
-                        during the semester.
-                    </li>
-
-                    <li>
-                        <b>Sept. 10 — Develop Your Game Concept:</b>
-                        Begin defining your game's goal, core mechanics, rules, objects,
-                        attributes, states, and interactions.
-                    </li>
-
-                    <li>
-                        <b>Sept. 22–24 — Gameplay Loop and Prototype:</b>
-                        Develop your core gameplay loop and begin thinking about how player
-                        actions, game states, and feedback work together. Experiment with
-                        a rough prototype of your game's core mechanic.
-                    </li>
-
-                    <li>
-                        <b>Oct. 6–8 — Explore Web-Based Development:</b>
-                        Experiment with HTML, CSS, and JavaScript by building a small playable
-                        browser game. Apply concepts such as player input, game state,
-                        interaction, scoring, and progression.
-                    </li>
-
-                    <li>
-                        <b>Oct. 20 — Explore Game Engines, and Development Tools:</b>
-                        Learn about different approaches to game development, including
-                        game engines and code-based development. Begin considering which
-                        approach may be appropriate for your game.
-                    </li>
-
-                    <li>
-                        <b>Oct. 22–Nov. 5 — Development Workshops:</b>
-                        Experiment with Unity and Godot and apply game development concepts
-                        such as player input, movement, interaction, collision, game logic,
-                        game state, and progression.
-                    </li>
-
-                    <li>
-                        <b>Nov. 5 — Choose Your Development Tool:</b>
-                        After exploring different development approaches, choose the tool
-                        or engine you will use for your final game. Consider your game's
-                        scope, mechanics, technical requirements, and your own skills.
-                    </li>
-
-                    <li>
-                        <b>Nov. 5–17 — Build, Expand, and Develop Your Game Experience:</b>
-                        Continue developing your game by implementing the core gameplay and adding
-                        the systems, content, challenge, progression, and features needed to create
-                        a complete experience. Refine your game's <b>concept, genre, theme, and
-                            narrative</b> as appropriate, and consider how the story and player
-                        experience work together with your gameplay mechanics.
-                    </li>
-
-                    <li>
-                        <b>Nov. 17 — UX/UI and Accessibility:</b>
-                        Review your controls, interface, instructions, navigation, onboarding,
-                        feedback, and accessibility. Make sure players can understand and
-                        interact with your game effectively.
-                    </li>
-
-                    <li>
-                        <b>Nov. 19–24 — Playtest, Revise, and Polish:</b>
-                        Test your game, identify problems with gameplay, usability, balance,
-                        difficulty, or technical functionality, and make meaningful
-                        improvements based on your findings.
-                    </li>
-
-                    <li>
-                        <b>Dec. 1 — FINAL PROJECT DUE:</b>
-                        Submit your completed game, Game Design Document, Class Game Jam
-                        submission, and required project files or documentation.
-                        <b>Final presentations begin.</b>
-                    </li>
-
-                    <li>
-                        <b>Dec. 1–10 — Final Presentations:</b>
-                        Present and demonstrate your completed game. Discuss your game's
-                        design and development process, challenges you encountered,
-                        changes made through playtesting or development, and your final
-                        playable game.
-                    </li>
-                </ul>
-                <p>
-                    <b>Important:</b> These milestones are intended to keep you on track.
-                    Your game may change as you prototype, develop, test, and revise it.
-                    Iteration is an important part of the game development process.
-                </p>
-
-                <p>
-                    <b>Final Project:</b>
-                    <b><a href="CISC3667/final%20project/CISC%203667%20Final%20Project_%20Original%20Game%20Design%20and%20Development.pdf"
-                            target="_blank" rel="noopener">Instructions</a></b>
-                </p>
-
-                <p>
-                    <b>Final Project Due:</b> December 1, 2026 before the start of class
-                </p>
-
-            </article>
+            <li><b>Randomness and Probability</b></li>
+            <ul>
+              <li>
+                <a
+                  href="CISC3667/readings/Art%20of%20Game%20Design%20Chapter%2012%20chance.pdf"
+                  target="_blank"
+                  >Jesse Schell, The Art of Game Design, Chapter 12: Chance</a
+                >
+              </li>
+            </ul>
             <br />
-            <hr />
-        </section>
+            <li><b>Serious Games</b></li>
+            <ul>
+              <li>
+                <a
+                  href="CISC3667/readings/geeGBL.pdf"
+                  target="_blank"
+                  data-quiz="quiz1"
+                  >James Paul Gee, Learning by Design: Good Video Games as
+                  Learning Machines</a
+                >
+              </li>
+            </ul>
+          </ul>
 
-        <section class="main-section" id="In_class_activities_and_Labs">
+          <p>
+            In addition, you are more than welcome to read any other game design
+            or development books you find interesting. Here are a few
+            suggestions:
+          </p>
+          <ul>
+            <li>
+              <b>The Art of Game Design: A Book of Lenses</b> by Jesse Schell
+            </li>
+            <li>
+              <b>Rules of Play: Game Design Fundamentals</b> by Katie Salen and
+              Eric Zimmerman
+            </li>
+            <li>
+              <b
+                >Game Design Workshop: A Playcentric Approach to Creating
+                Innovative Games</b
+              >
+              by Tracy Fullerton
+            </li>
+          </ul>
+
+          <p>
+            If you have any suggestions for additional readings, please let me
+            know!
+          </p>
+        </article>
+        <br />
+        <hr />
+      </section>
+
+      <section class="main-section" id="Final_Project">
+        <br />
+        <header><b>Final Project</b></header>
+        <article>
+          <p>
+            The Final Project is an
+            <b>individual, semester-long game development project</b>. You will
+            design, develop, test, and present an original playable digital
+            game. Your completed game will be submitted to the
+            <b>CISC 3667 Class Game Jam</b>
+            and presented to the class at the end of the semester.
+          </p>
+
+          <p>
+            <b>Remember:</b> You will work on this project throughout the
+            semester. Start thinking about your game early, but keep your scope
+            realistic. You are not expected to create a commercial-quality game.
+            Focus on creating a
+            <b
+              >finished game that demonstrates your understanding of the
+              concepts and skills covered in this course.</b
+            >
+          </p>
+
+          <h3>Project Requirements</h3>
+
+          <p>
+            Your game should demonstrate the game design and development
+            concepts covered throughout the course, including:
+          </p>
+
+          <ul>
+            <li>A clear goal and core mechanic</li>
+            <li>A gameplay loop</li>
+            <li>Rules and meaningful challenge</li>
+            <li>Meaningful game state</li>
+            <li>Player feedback</li>
+            <li>Progression or difficulty</li>
+            <li>User interface and navigation</li>
+            <li>Persistence or meaningful data management</li>
+          </ul>
+
+          <p>
+            You will also create a <b>Game Design Document (GDD)</b> that
+            explains your game concept, design decisions, development process,
+            playtesting, iteration, and sources or assistance used.
+          </p>
+
+          <h3>Project Timeline</h3>
+
+          <p>
+            The project will develop alongside the topics covered in class. Use
+            the milestones below to stay on track.
+          </p>
+
+          <ul>
+            <li>
+              <b>Sept. 1 — Get Started:</b>
+              Begin thinking about possible game ideas, genres, themes, and
+              player experiences. Start considering what you might realistically
+              create during the semester.
+            </li>
+
+            <li>
+              <b>Sept. 10 — Develop Your Game Concept:</b>
+              Begin defining your game's goal, core mechanics, rules, objects,
+              attributes, states, and interactions.
+            </li>
+
+            <li>
+              <b>Sept. 22–24 — Gameplay Loop and Prototype:</b>
+              Develop your core gameplay loop and begin thinking about how
+              player actions, game states, and feedback work together.
+              Experiment with a rough prototype of your game's core mechanic.
+            </li>
+
+            <li>
+              <b>Oct. 6–8 — Explore Web-Based Development:</b>
+              Experiment with HTML, CSS, and JavaScript by building a small
+              playable browser game. Apply concepts such as player input, game
+              state, interaction, scoring, and progression.
+            </li>
+
+            <li>
+              <b>Oct. 20 — Explore Game Engines, and Development Tools:</b>
+              Learn about different approaches to game development, including
+              game engines and code-based development. Begin considering which
+              approach may be appropriate for your game.
+            </li>
+
+            <li>
+              <b>Oct. 22–Nov. 5 — Development Workshops:</b>
+              Experiment with Unity and Godot and apply game development
+              concepts such as player input, movement, interaction, collision,
+              game logic, game state, and progression.
+            </li>
+
+            <li>
+              <b>Nov. 5 — Choose Your Development Tool:</b>
+              After exploring different development approaches, choose the tool
+              or engine you will use for your final game. Consider your game's
+              scope, mechanics, technical requirements, and your own skills.
+            </li>
+
+            <li>
+              <b
+                >Nov. 5–17 — Build, Expand, and Develop Your Game Experience:</b
+              >
+              Continue developing your game by implementing the core gameplay
+              and adding the systems, content, challenge, progression, and
+              features needed to create a complete experience. Refine your
+              game's <b>concept, genre, theme, and narrative</b> as appropriate,
+              and consider how the story and player experience work together
+              with your gameplay mechanics.
+            </li>
+
+            <li>
+              <b>Nov. 17 — UX/UI and Accessibility:</b>
+              Review your controls, interface, instructions, navigation,
+              onboarding, feedback, and accessibility. Make sure players can
+              understand and interact with your game effectively.
+            </li>
+
+            <li>
+              <b>Nov. 19–24 — Playtest, Revise, and Polish:</b>
+              Test your game, identify problems with gameplay, usability,
+              balance, difficulty, or technical functionality, and make
+              meaningful improvements based on your findings.
+            </li>
+
+            <li>
+              <b>Dec. 1 — FINAL PROJECT DUE:</b>
+              Submit your completed game, Game Design Document, Class Game Jam
+              submission, and required project files or documentation.
+              <b>Final presentations begin.</b>
+            </li>
+
+            <li>
+              <b>Dec. 1–10 — Final Presentations:</b>
+              Present and demonstrate your completed game. Discuss your game's
+              design and development process, challenges you encountered,
+              changes made through playtesting or development, and your final
+              playable game.
+            </li>
+          </ul>
+          <p>
+            <b>Important:</b> These milestones are intended to keep you on
+            track. Your game may change as you prototype, develop, test, and
+            revise it. Iteration is an important part of the game development
+            process.
+          </p>
+
+          <p>
+            <b>Final Project:</b>
+            <b
+              ><a
+                href="CISC3667/final%20project/CISC%203667%20Final%20Project_%20Original%20Game%20Design%20and%20Development.pdf"
+                target="_blank"
+                rel="noopener"
+                >Instructions</a
+              ></b
+            >
+          </p>
+
+          <p>
+            <b>Final Project Due:</b> December 1, 2026 before the start of class
+          </p>
+        </article>
+        <br />
+        <hr />
+      </section>
+
+      <section class="main-section" id="In_class_activities_and_Labs">
+        <br />
+        <header><b>In-Class Activities/Labs</b></header>
+        <article>
+          <ul style="column-count: 1; font-size: 29px">
+            <li>
+              <b
+                >09/03 -
+                <a
+                  href="CISC3667/in%20class%20activities/CISC%203667%20-%20In-Class%20Activity%201_%20Is%20it%20a%20Game_.pdf"
+                  target="_blank"
+                  rel="noopener"
+                  >In-Class Activity 1: Is it a Game?</a
+                ></b
+              >
+            </li>
             <br />
-            <header><b>In-Class Activities/Labs</b></header>
-            <article>
-                <ul style="column-count: 1; font-size: 29px">
-                    <li><b>09/03 - <a
-                                href="CISC3667/in%20class%20activities/CISC%203667%20-%20In-Class%20Activity%201_%20Is%20it%20a%20Game_.pdf"
-                                target="_blank" rel="noopener">In-Class Activity 1: Is it a Game?</a></b>
-                    </li>
-                    <br />
-                    <li><b>09/10 - <a
-                                href="CISC3667/in%20class%20activities/CISC%203667%20-%20In-Class%20Activity%202_%20Build%20a%20Game.pdf"
-                                target="_blank" rel="noopener">In-Class Activity 2: Build a Game</a></b>
-                    </li>
-                    <br />
-                    <li><b>09/15 - <a
-                                href="CISC3667/in%20class%20activities/CISC%203667%20-%20In-Class%20Activity%203_%20Case%20Study%20-%20Players%2C%20Rules%2C%20and%20Wobbling%20in%20Super%20Smash%20Bros.%20Melee.pdf"
-                                target="_blank" rel="noopener">In-Class Activity 3: Case Study - Players, Rules, and
-                                Wobbling in Super Smash Bros. Melee</a></b>
-                    </li>
-                    <br />
-                    <li><b>09/22 - <a
-                                href="CISC3667/in%20class%20activities/CISC%203667%20–%20In-Class%20Activity%204_%20Feedback%20Loops%20in%20Games.pdf"
-                                target="_blank" rel="noopener">In-Class Activity 4: Feedback Loops in Games</a></b>
-                    </li>
-                    <!--<br />
+            <li>
+              <b
+                >09/10 -
+                <a
+                  href="CISC3667/in%20class%20activities/CISC%203667%20-%20In-Class%20Activity%202_%20Build%20a%20Game.pdf"
+                  target="_blank"
+                  rel="noopener"
+                  >In-Class Activity 2: Build a Game</a
+                ></b
+              >
+            </li>
+            <br />
+            <li>
+              <b
+                >09/15 -
+                <a
+                  href="CISC3667/in%20class%20activities/CISC%203667%20-%20In-Class%20Activity%203_%20Case%20Study%20-%20Players%2C%20Rules%2C%20and%20Wobbling%20in%20Super%20Smash%20Bros.%20Melee.pdf"
+                  target="_blank"
+                  rel="noopener"
+                  >In-Class Activity 3: Case Study - Players, Rules, and
+                  Wobbling in Super Smash Bros. Melee</a
+                ></b
+              >
+            </li>
+            <br />
+            <li>
+              <b
+                >09/22 -
+                <a
+                  href="CISC3667/in%20class%20activities/CISC%203667%20–%20In-Class%20Activity%204_%20Feedback%20Loops%20in%20Games.pdf"
+                  target="_blank"
+                  rel="noopener"
+                  >In-Class Activity 4: Feedback Loops in Games</a
+                ></b
+              >
+            </li>
+            <br />
+            <li>
+              <b
+                >09/22 -
+                <a
+                  href="CISC3667/in%20class%20activities/CISC%203667%20–%20In-Class%20Activity%205_%20Balancing%20Games.pdf"
+                  target="_blank"
+                  rel="noopener"
+                  >In-Class Activity 5: Balancing Games</a
+                ></b
+              >
+            </li>
+            <!--<br />
                     <li><b>09/22 - <a
                                 href="CISC3667/in%20class%20activities/"
                                 target="_blank" rel="noopener">In-Class Activity 4: Case Study - Feedback Loops</a></b>
@@ -335,126 +477,144 @@
                                 target="_blank" rel="noopener">In-Class Activity 5: Case Study - Balancing Games</a></b>
                     </li>
                     <br />-->
+          </ul>
+        </article>
+        <br />
+        <hr />
+      </section>
 
-                </ul>
-
-            </article>
+      <section class="main-section" id="Homework">
+        <br />
+        <header><b>Homework</b></header>
+        <article>
+          <p>
+            Homework will be listed both here and on Brightspace and
+            <b>MUST</b> be submitted via Brightspace unless instructed
+            otherwise.
+          </p>
+          <p>Homework:</p>
+          <ul>
+            <li>
+              <p>
+                <b><u>Homework 0</u>:</b> If I do not have it already, please
+                email me your preferred email address to ensure that you receive
+                any class messages that will be sent out.
+              </p>
+            </li>
+          </ul>
+          <ul id="homeworkList" style="column-count: 1; font-size: 29px">
+            <li data-reveal="2026-09-03T08:00">
+              <b
+                ><a
+                  href="CISC3667/homeworks/CISC%203667%20-%20HW%201_%20What%20is%20a%20Game_.pdf"
+                  target="_blank"
+                  rel="noopener"
+                  >Homework 1</a
+                >: DUE 09/08 by 11:00 AM</b
+              >
+              - The purpose of this assignment is to critically examine what
+              counts as a "game" through the lens of different game design
+              theorists. Submit your 2 page response on Brightspace.
+            </li>
             <br />
-            <hr />
-        </section>
+            <li data-reveal="2026-09-29T08:00">
+              <b
+                ><a
+                  href="CISC3667/homeworks/CISC%203667%20-%20HW%201_%20What%20is%20a%20Game_.pdf"
+                  target="_blank"
+                  rel="noopener"
+                  >Homework 2</a
+                >: DUE 10/01 by 11:00 AM</b
+              >
+              - The purpose of this assignment is to explore how randomness,
+              probability, and expected value can be applied to game design.
+              Submit your completed homework on Brightspace.
+            </li>
+          </ul>
+        </article>
+        <br />
+        <hr />
+      </section>
 
+      <section class="main-section" id="Group_Projects">
+        <br />
+        <header><b>Group Projects</b></header>
 
-        <section class="main-section" id="Homework">
-            <br />
-            <header><b>Homework</b></header>
-            <article>
-                <p>Homework will be listed both here and on Brightspace and <b>MUST</b> be submitted via Brightspace
-                    unless instructed otherwise.
-                </p>
-                <p>Homework:</p>
-                <ul>
-                    <li>
-                        <p>
-                            <b><u>Homework 0</u>:</b> If I do not have it already, please email me your preferred email
-                            address to ensure that you receive any class messages that will be sent out.
-                        </p>
-                    </li>
-                </ul>
-                <ul id="homeworkList" style="column-count: 1; font-size: 29px">
-                    <li data-reveal="2026-09-03T08:00"><b><a
-                                href="CISC3667/homeworks/CISC%203667%20-%20HW%201_%20What%20is%20a%20Game_.pdf"
-                                target="_blank" rel="noopener">Homework 1</a>: DUE 09/08 by 11:00 AM</b> - The purpose
-                        of this
-                        assignment is to
-                        critically examine what counts as a "game" through the lens of different game design theorists.
-                        Submit your 2 page response on Brightspace.
-                    </li>
-                    <br />
-                    <li data-reveal="2026-09-29T08:00"><b><a
-                                href="CISC3667/homeworks/CISC%203667%20-%20HW%201_%20What%20is%20a%20Game_.pdf"
-                                target="_blank" rel="noopener">Homework 2</a>: DUE 10/01 by 11:00 AM</b> - The purpose
-                        of this assignment is to explore how randomness, probability, and expected value can be applied
-                        to game design. Submit your completed homework on Brightspace.
-                    </li>
+        <article>
+          <p>
+            Group projects will be listed both here and on Brightspace. Unless
+            instructed otherwise, all assignments must be submitted through
+            Brightspace.
+          </p>
 
+          <h3>Group Project 1: Race-to-the-End!</h3>
 
-                </ul>
+          <p>
+            In this project, you will work in groups to design, prototype,
+            playtest, and revise a race-to-the-end board game. You will focus on
+            game rules, player actions and choices, interactions, chance,
+            strategy, and the overall player experience.
+          </p>
 
-            </article>
-            <br />
-            <hr />
-        </section>
+          <h4>Important Dates</h4>
 
+          <ul>
+            <li>
+              <b>September 17:</b> Project assigned and group work begins.
+            </li>
+            <li><b>September 24:</b> Playtesting with another group.</li>
+            <li>
+              <b>September 25–28:</b> Revise your game and complete your
+              submissions.
+            </li>
+            <li><b>September 29:</b> Final submission due before class.</li>
+          </ul>
 
-        <section class="main-section" id="Group_Projects">
-            <br />
-            <header><b>Group Projects</b></header>
+          <h4>Project Materials</h4>
 
-            <article>
-                <p>
-                    Group projects will be listed both here and on Brightspace.
-                    Unless instructed otherwise, all assignments must be submitted
-                    through Brightspace.
-                </p>
+          <ul style="margin-left: 30px; font-size: 29px">
+            <li>
+              <b>
+                <a
+                  href="CISC3667/group%20projects/CISC%203667%20-%20Group%20Project%201_%20Race%20to%20the%20End!.pdf"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Group Project 1: Race-to-the-End! — Instructions
+                </a>
+              </b>
+            </li>
+          </ul>
 
-                <h3>Group Project 1: Race-to-the-End!</h3>
+          <h4>Group Assignments</h4>
 
-                <p>
-                    In this project, you will work in groups to design, prototype,
-                    playtest, and revise a race-to-the-end board game. You will
-                    focus on game rules, player actions and choices, interactions,
-                    chance, strategy, and the overall player experience.
-                </p>
+          <p>
+            Review the image below to find your assigned group members. You will
+            work with your group throughout the project.
+          </p>
 
-                <h4>Important Dates</h4>
+          <!-- Replace the image filename with the actual image path -->
+          <div style="text-align: center; margin: 20px 0">
+            <img
+              src="CISC3667/groups/CISC%203667_F26_GP1.png"
+              alt="Group Project 1 group assignments"
+              style="max-width: 100%; height: auto; border-radius: 8px"
+            />
+          </div>
 
-                <ul>
-                    <li><b>September 17:</b> Project assigned and group work begins.</li>
-                    <li><b>September 24:</b> Playtesting with another group.</li>
-                    <li><b>September 25–28:</b> Revise your game and complete your submissions.</li>
-                    <li><b>September 29:</b> Final submission due before class.</li>
-                </ul>
+          <p>
+            <b>Reminder:</b> Review the complete project instructions before
+            beginning your work. Your group will submit one Game Design Report,
+            and each student must submit an individual reflection through
+            Brightspace.
+          </p>
+        </article>
 
+        <br />
+        <hr />
+      </section>
 
-                <h4>Project Materials</h4>
-
-                <ul style="margin-left: 30px; font-size: 29px;">
-                    <li>
-                        <b>
-                            <a href="CISC3667/group%20projects/CISC%203667%20-%20Group%20Project%201_%20Race%20to%20the%20End!.pdf"
-                                target="_blank" rel="noopener">
-                                Group Project 1: Race-to-the-End! — Instructions
-                            </a>
-                        </b>
-                    </li>
-                </ul>
-
-                <h4>Group Assignments</h4>
-
-                <p>
-                    Review the image below to find your assigned group members.
-                    You will work with your group throughout the project.
-                </p>
-
-                <!-- Replace the image filename with the actual image path -->
-                <div style="text-align: center; margin: 20px 0;">
-                    <img src="CISC3667/groups/CISC%203667_F26_GP1.png" alt="Group Project 1 group assignments"
-                        style="max-width: 100%; height: auto; border-radius: 8px;" />
-                </div>
-
-                <p>
-                    <b>Reminder:</b> Review the complete project instructions before
-                    beginning your work. Your group will submit one Game Design Report,
-                    and each student must submit an individual reflection through
-                    Brightspace.
-                </p>
-            </article>
-
-            <br />
-            <hr />
-        </section>
-
-        <!--
+      <!--
         <section class="main-section" id="Unity_Labs">
             <br />
             <header><b>Unity Labs</b></header>
@@ -499,111 +659,103 @@
             <br />
             <hr />
         </section>
-    -->
-
-
-
-    </main>
-
+    --></main>
 
     <script>
-        // ---- Homework reveal timer ----
-        (function () {
-            const TZ_NOTE = "Times are interpreted in the student's local browser time unless you include a timezone offset.";
+      // ---- Homework reveal timer ----
+      (function () {
+        const TZ_NOTE =
+          "Times are interpreted in the student's local browser time unless you include a timezone offset.";
 
-            // If you want to force New York time interpretation, include an offset like -05:00 or -04:00
-            // Example: 2026-02-01T09:00-05:00
-            // Otherwise: 2026-02-01T09:00 will be treated as the viewer's local time.
+        // If you want to force New York time interpretation, include an offset like -05:00 or -04:00
+        // Example: 2026-02-01T09:00-05:00
+        // Otherwise: 2026-02-01T09:00 will be treated as the viewer's local time.
 
-            const items = document.querySelectorAll('#homeworkList [data-reveal]');
-            if (!items.length) return;
+        const items = document.querySelectorAll("#homeworkList [data-reveal]");
+        if (!items.length) return;
 
-            // Optional placeholder shown when something is still locked
-            const placeholder = document.createElement('div');
-            placeholder.className = 'hw-placeholder';
-            placeholder.textContent = 'More homework will appear here as it is released.';
-            const list = document.getElementById('homeworkList');
-            if (list) list.parentNode.insertBefore(placeholder, list.nextSibling);
+        // Optional placeholder shown when something is still locked
+        const placeholder = document.createElement("div");
+        placeholder.className = "hw-placeholder";
+        placeholder.textContent =
+          "More homework will appear here as it is released.";
+        const list = document.getElementById("homeworkList");
+        if (list) list.parentNode.insertBefore(placeholder, list.nextSibling);
 
-            function updateHomeworkVisibility() {
-                const now = Date.now();
-                let anyLocked = false;
+        function updateHomeworkVisibility() {
+          const now = Date.now();
+          let anyLocked = false;
 
-                items.forEach((li) => {
-                    const revealStr = li.getAttribute('data-reveal');
-                    const revealTime = Date.parse(revealStr);
+          items.forEach((li) => {
+            const revealStr = li.getAttribute("data-reveal");
+            const revealTime = Date.parse(revealStr);
 
-                    // If the date string is invalid, don't hide it (fail open)
-                    if (Number.isNaN(revealTime)) return;
+            // If the date string is invalid, don't hide it (fail open)
+            if (Number.isNaN(revealTime)) return;
 
-                    if (now >= revealTime) {
-                        li.classList.remove('is-locked');
-                    } else {
-                        li.classList.add('is-locked');
-                        anyLocked = true;
-                    }
-                });
-
-                // Show placeholder only if something is still locked
-                placeholder.style.display = anyLocked ? 'block' : 'none';
+            if (now >= revealTime) {
+              li.classList.remove("is-locked");
+            } else {
+              li.classList.add("is-locked");
+              anyLocked = true;
             }
+          });
 
-            updateHomeworkVisibility();
-
-            // Re-check every minute (lightweight + good enough)
-            setInterval(updateHomeworkVisibility, 60 * 1000);
-        })();
-    </script>
-    <script>
-        // Check for saved dark mode preference
-        if (localStorage.getItem('darkMode') === 'enabled') {
-            document.body.classList.add('dark-mode');
-            document.querySelector('.change').textContent = 'ON';
+          // Show placeholder only if something is still locked
+          placeholder.style.display = anyLocked ? "block" : "none";
         }
 
-        // Dark mode toggle functionality
-        document.querySelector('.mode').addEventListener('click', function () {
-            document.body.classList.toggle('dark-mode');
+        updateHomeworkVisibility();
 
-            // Get the change element
-            const changeModeText = document.querySelector('.change');
-
-            // Update the text based on dark mode status
-            if (document.body.classList.contains('dark-mode')) {
-                changeModeText.textContent = 'ON'; // Change the text to 'ON'
-                localStorage.setItem('darkMode', 'enabled'); // Save preference
-            } else {
-                changeModeText.textContent = 'OFF'; // Change the text to 'OFF'
-                localStorage.setItem('darkMode', 'disabled'); // Save preference
-            }
-        });
-
+        // Re-check every minute (lightweight + good enough)
+        setInterval(updateHomeworkVisibility, 60 * 1000);
+      })();
     </script>
     <script>
-        function toggleMode() {
-            const lightModeLink = document.getElementById('light-mode');
-            const darkModeLink = document.getElementById('dark-mode');
-            const modeText = document.querySelector('.change');
+      // Check for saved dark mode preference
+      if (localStorage.getItem("darkMode") === "enabled") {
+        document.body.classList.add("dark-mode");
+        document.querySelector(".change").textContent = "ON";
+      }
 
-            if (lightModeLink.disabled) {
-                lightModeLink.disabled = false;
-                darkModeLink.disabled = true;
-                modeText.textContent = "OFF"; // Update the mode text to show Dark mode is off
-            } else {
-                lightModeLink.disabled = true;
-                darkModeLink.disabled = false;
-                modeText.textContent = "ON"; // Update the mode text to show Dark mode is on
-            }
+      // Dark mode toggle functionality
+      document.querySelector(".mode").addEventListener("click", function () {
+        document.body.classList.toggle("dark-mode");
+
+        // Get the change element
+        const changeModeText = document.querySelector(".change");
+
+        // Update the text based on dark mode status
+        if (document.body.classList.contains("dark-mode")) {
+          changeModeText.textContent = "ON"; // Change the text to 'ON'
+          localStorage.setItem("darkMode", "enabled"); // Save preference
+        } else {
+          changeModeText.textContent = "OFF"; // Change the text to 'OFF'
+          localStorage.setItem("darkMode", "disabled"); // Save preference
         }
-
-        // Call highlight.js to apply syntax highlighting
-        document.addEventListener('DOMContentLoaded', () => {
-            hljs.highlightAll();
-        });
+      });
     </script>
+    <script>
+      function toggleMode() {
+        const lightModeLink = document.getElementById("light-mode");
+        const darkModeLink = document.getElementById("dark-mode");
+        const modeText = document.querySelector(".change");
 
+        if (lightModeLink.disabled) {
+          lightModeLink.disabled = false;
+          darkModeLink.disabled = true;
+          modeText.textContent = "OFF"; // Update the mode text to show Dark mode is off
+        } else {
+          lightModeLink.disabled = true;
+          darkModeLink.disabled = false;
+          modeText.textContent = "ON"; // Update the mode text to show Dark mode is on
+        }
+      }
 
-
-</body>
-
+      // Call highlight.js to apply syntax highlighting
+      document.addEventListener("DOMContentLoaded", () => {
+        hljs.highlightAll();
+      });
+    </script>
+  </body>
 </html>
