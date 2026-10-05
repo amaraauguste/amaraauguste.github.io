@@ -4719,13 +4719,14 @@ requestAnimationFrame(gameLoop);</code></pre>
 
     <!-- HTML, CSS, AND JAVASCRIPT SECTION -->
 
-
     <section class="main-section" id="HTML_CSS_JavaScript_and_Game_Logic">
+
       <br />
 
       <header><b>HTML, CSS, JavaScript, and Game Logic</b></header>
 
       <article>
+
         <h2>From a Game Idea to a Program</h2>
 
         <p>
@@ -4741,10 +4742,25 @@ requestAnimationFrame(gameLoop);</code></pre>
         </ul>
 
         <p>
-          We will start with a number guessing game. Then we will examine an
-          animated canvas game and consider how additional mechanics change
-          its challenge.
+          Different games may use these tools in different ways. A guessing game
+          may only need to respond when the player submits an answer. A platformer
+          must constantly update movement, gravity, collisions, and the positions
+          of game objects.
         </p>
+
+        <p>
+          We will look at several small games to see how common programming
+          concepts can be combined to create different types of gameplay.
+        </p>
+
+        <ul>
+          <li><b>Number Guessing Game:</b> input, conditions, randomness, and feedback</li>
+          <li><b>Tic-Tac-Toe:</b> turns, arrays, game state, and win conditions</li>
+          <li><b>Match Game:</b> matching, shuffling, and delayed actions</li>
+          <li><b>Collect the Star:</b> movement, game loops, collision, enemies, and scoring</li>
+          <li><b>Platformer:</b> gravity, jumping, platforms, hazards, and goals</li>
+          <li><b>Pong:</b> two-player controls, velocity, bouncing, collision, and scoring</li>
+        </ul>
 
         <hr />
 
@@ -4753,7 +4769,7 @@ requestAnimationFrame(gameLoop);</code></pre>
         <p>
           In this simple
           <a href="https://codepen.io/editor/amaraauguste/pen/01a0e52e-512d-71a2-94e7-c2a26cd1c7fb" target="_blank"
-            rel="noopener noreferrer">number guessing game</a>,
+            rel="noopener noreferrer">Number Guessing Game</a>,
           the computer selects a secret number between 1 and 10. The player
           enters a guess and receives feedback: the guess is too low, too high,
           or correct. A correct guess increases the score and starts another
@@ -4822,11 +4838,13 @@ const scoreDisplay = document.getElementById("score");</code></pre>
           <b>input.value</b> reads what the player typed.
           <b>feedback.textContent</b> changes the message the player sees,
           and <b>scoreDisplay.textContent</b> changes the displayed score.
-          Changing the text on the page does not automatically change the
-          game's score variable; the program updates both when needed.
         </p>
 
-
+        <p>
+          Changing the text on the page does not automatically change the
+          game's score variable. The program updates both the game state and
+          the displayed information when needed.
+        </p>
 
         <h3>Variables Store the State</h3>
 
@@ -4846,14 +4864,13 @@ let score = 0;</code></pre>
         <pre><code class="language-javascript">function makeGuess(guess) {
   if (guess === secretNumber) {
     score++;
-
     feedback.textContent = "Correct! A new number has been chosen.";
-
     scoreDisplay.textContent = `Score: ${score}`;
-
     secretNumber = Math.floor(Math.random() * 10) + 1;
+
   } else if (guess &lt; secretNumber) {
     feedback.textContent = "Too low! Try again.";
+
   } else {
     feedback.textContent = "Too high! Try again.";
   }
@@ -4870,37 +4887,37 @@ let score = 0;</code></pre>
 
         <p>
           An <b>event</b> is something that happens on the page, such as
-          submitting a form or clicking a button. An <b>event listener</b>
-          tells JavaScript which function to run when that happens.
+          submitting a form, clicking a button, or pressing a key. An
+          <b>event listener</b> tells JavaScript which function to run when
+          that event happens.
         </p>
 
-        <pre><code class="language-javascript">document.getElementById("guessForm").addEventListener("submit", function(event) {
-    event.preventDefault();
+      <pre><code class="language-javascript">document.getElementById("guessForm").addEventListener("submit", function(event) {
+  event.preventDefault();
 
-    const guess = Number(input.value);
+  const guess = Number(input.value);
 
-    if (!Number.isInteger(guess) || guess &lt; 1 || guess &gt; 10) {
-      feedback.textContent = "Enter a whole number from 1 to 10.";
-      return;
-    }
+  if (!Number.isInteger(guess) || guess &lt; 1 || guess &gt; 10) {
+    feedback.textContent = "Enter a whole number from 1 to 10.";
+    return;
+  }
 
-    makeGuess(guess);
-    input.value = "";
-  });</code></pre>
+  makeGuess(guess);
+  input.value = "";
+});</code></pre>
 
         <p>
           When the player presses Guess, the browser fires a
-          <b>submit event</b>. Normally, submitting a form reloads the
-          page. <b>event.preventDefault()</b> stops that behavior so the
-          game can handle the guess without losing its current state.
+          <b>submit event</b>. Normally, submitting a form reloads the page.
+          <b>event.preventDefault()</b> stops that behavior so the game can
+          handle the guess without losing its current state.
         </p>
 
         <p>
           The input's value begins as text, so <b>Number()</b> converts it
           to a number. The program checks that the result is a whole number
           from 1 to 10. If it is valid, <b>makeGuess()</b> applies the game
-          rules and updates the feedback. Clearing the input prepares the
-          form for the next guess.
+          rules and updates the feedback.
         </p>
 
         <p>
@@ -4911,7 +4928,212 @@ let score = 0;</code></pre>
 
         <hr />
 
-        <h2>Example 2: Collect the Star</h2>
+        <h2>Two Ways Games Can Update</h2>
+
+        <p>
+          Not every game needs to update in the same way. Some games mainly
+          respond to individual player actions, while others need to change
+          continuously.
+        </p>
+
+        <h3>Event-Driven Games</h3>
+
+        <p>
+          Some games spend most of their time waiting for the player to do
+          something. When an event occurs, JavaScript applies the rules,
+          changes the game state, and updates the display.
+        </p>
+
+        <pre><code class="language-javascript">button.addEventListener("click", function() {
+  // Respond to the player's action
+});</code></pre>
+
+        <p>
+          The Number Guessing Game is event-driven because the game changes
+          when the player submits a guess. Tic-Tac-Toe and the Match Game
+          also work primarily through player events.
+        </p>
+
+        <h3>Games with a Game Loop</h3>
+
+        <p>
+          Other games need to change even when the player is not pressing a
+          button. Enemies may move, objects may fall, timers may count down,
+          or a ball may continue traveling across the screen.
+        </p>
+
+        <p>
+          These games use a <b>game loop</b> that repeatedly updates the
+          game state and displays the result.
+        </p>
+
+        <pre><code class="language-javascript">function gameLoop() {
+  update();
+  draw();
+
+  requestAnimationFrame(gameLoop);
+}</code></pre>
+
+        <p>
+          Collect the Star, the Platformer, and Pong all use this general
+          structure.
+        </p>
+
+        <hr />
+
+        <h2>Example 2: Tic-Tac-Toe</h2>
+
+        <p>
+          In this
+          <a href="https://codepen.io/amaraauguste/pen/01a10950-9702-7167-b647-acce1d81637c" target="_blank"
+            rel="noopener noreferrer">Tic-Tac-Toe example</a>,
+          two players take turns selecting spaces on a 3-by-3 board. Instead
+          of entering a value into a form, the players interact directly with
+          cells on the game board. Each click can change the state of the board.
+        </p>
+
+        <h3>Representing the Board with an Array</h3>
+
+        <p>
+          The board can be represented by an array:
+        </p>
+
+        <pre><code class="language-javascript">let board = [
+  "", "", "",
+  "", "", "",
+  "", "", ""
+];</code></pre>
+
+        <p>
+          Each position in the array corresponds to a position on the visible
+          board. An empty string means that the space has not been played yet.
+          When a player chooses a space, the program stores either
+          <b>"X"</b> or <b>"O"</b> in that position.
+        </p>
+
+        <pre><code class="language-javascript">board[index] = currentPlayer;</code></pre>
+
+        <h3>Turns Are Part of the Game State</h3>
+
+        <p>
+          The program also needs to remember whose turn it is:
+        </p>
+
+        <pre><code class="language-javascript">let currentPlayer = "X";</code></pre>
+
+        <p>
+          After a valid move, the game switches players:
+        </p>
+
+        <pre><code class="language-javascript">currentPlayer = currentPlayer === "X" ? "O" : "X";</code></pre>
+
+        <p>
+          This is an example of state that does not represent a physical object.
+          Game state can include positions and scores, but it can also include
+          information such as whose turn it is, whether a door is unlocked,
+          whether a power-up is active, or whether the game has ended.
+        </p>
+
+        <h3>Checking a Win Condition</h3>
+
+        <p>
+          Tic-Tac-Toe has several possible winning combinations:
+        </p>
+
+        <pre><code class="language-javascript">const winningCombinations = [
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8],
+  [0, 4, 8],
+  [2, 4, 6]
+];</code></pre>
+
+        <p>
+          Instead of writing a separate condition for every possible win,
+          the program stores the patterns as data and checks them. Arrays can
+          therefore help organize game rules.
+        </p>
+
+        <hr />
+
+        <h2>Example 3: Match Game</h2>
+
+        <p>
+          In this
+          <a href="https://codepen.io/amaraauguste/pen/01a10952-a358-7363-bbad-cae32aa12499" target="_blank"
+            rel="noopener noreferrer">Match Game example</a>,
+          the player selects two cards at a time and tries to find matching
+          pairs. The game remembers the selected cards and checks whether
+          their symbols match.
+        </p>
+
+        <h3>Creating the Cards</h3>
+
+        <p>
+          If we want four pairs, we can begin with four symbols and create
+          two copies of each:
+        </p>
+
+        <pre><code class="language-javascript">const symbols = ["★", "●", "▲", "■"];
+
+let cards = [
+  ...symbols,
+  ...symbols
+];</code></pre>
+
+        <p>
+          The cards can then be shuffled before the game begins. Randomness
+          changes where the cards appear while the underlying rules remain
+          the same.
+        </p>
+
+        <h3>Remembering Player Selections</h3>
+
+        <pre><code class="language-javascript">let firstCard = null;
+let secondCard = null;</code></pre>
+
+        <p>
+          When the player selects the first card, the game remembers it.
+          When a second card is selected, the game has enough information
+          to compare the two.
+        </p>
+
+        <p>
+          This demonstrates an important idea: sometimes a game must wait
+          until several player actions have occurred before it can apply
+          a rule.
+        </p>
+
+        <h3>Delayed Actions</h3>
+
+        <p>
+          If two cards do not match, we do not want to hide them immediately.
+          The player needs enough time to see the second card.
+        </p>
+
+        <pre><code class="language-javascript">setTimeout(() => {
+  firstCard.textContent = "";
+  secondCard.textContent = "";
+}, 800);</code></pre>
+
+        <p>
+          <b>setTimeout()</b> tells JavaScript to perform an action once
+          after a delay. Here, it creates a short period of feedback before
+          the cards turn back over.
+        </p>
+
+        <p>
+          The game also temporarily prevents the player from selecting more
+          cards while the current pair is being checked. This is another
+          example of game state controlling which actions are currently allowed.
+        </p>
+
+        <hr />
+
+        <h2>Example 4: Collect the Star</h2>
 
         <p>
           The
@@ -4976,10 +5198,23 @@ const star = {
           The canvas game also uses events, but it handles keyboard input
           differently from the guessing game. A <b>keydown event</b> records
           that a movement key is pressed, and a <b>keyup event</b> records
-          that it has been released. The game loop reads those values during
-          each update. This allows the player to keep moving while a key is
-          held down.
+          that it has been released.
         </p>
+
+        <p>
+          The game loop reads those values during each update. This allows
+          the player to keep moving while a key is held down.
+        </p>
+
+        <pre><code class="language-javascript">const keys = {};
+
+window.addEventListener("keydown", event => {
+  keys[event.key.toLowerCase()] = true;
+});
+
+window.addEventListener("keyup", event => {
+  keys[event.key.toLowerCase()] = false;
+});</code></pre>
 
         <p>
           If the player presses two directions at once, the direction is
@@ -4990,8 +5225,8 @@ const star = {
         <h3>The Game Loop</h3>
 
         <p>
-          Unlike the guessing game, Collect the Star must update and redraw
-          continuously. Its game loop has two main steps:
+          Unlike the earlier event-driven examples, Collect the Star must
+          update and redraw continuously.
         </p>
 
         <pre><code class="language-javascript">function gameLoop(currentTime) {
@@ -4999,10 +5234,7 @@ const star = {
     lastTime = currentTime;
   }
 
-  const deltaTime = Math.min(
-    (currentTime - lastTime) / 1000,
-    0.05
-  );
+  const deltaTime = Math.min((currentTime - lastTime) / 1000, 0.05);
 
   lastTime = currentTime;
 
@@ -5072,13 +5304,13 @@ const star = {
         <p>
           Notice how these systems affect one another. The star encourages the
           player to move toward a location, while the enemy makes that movement
-          risky. The timer pressures the player to keep making decisions
-          rather than waiting indefinitely.
+          risky. The timer pressures the player to keep making decisions rather
+          than waiting indefinitely.
         </p>
 
         <hr />
 
-        <h2>Extending the Game: Difficulty and a Power-Up</h2>
+        <h2>Extending Collect the Star: Difficulty and a Power-Up</h2>
 
         <p>
           The
@@ -5194,6 +5426,782 @@ const star = {
           result, and choose whether to play again.
         </p>
 
+        <hr />
+
+        <h2>Example 5: Mini Platformer</h2>
+
+        <p>
+          This
+          <a href="https://codepen.io/amaraauguste/pen/01a10955-8279-73d0-b903-d7af2059d2d5" target="_blank"
+            rel="noopener noreferrer">Basic Platformer example</a>
+          uses many of the same ideas as Collect the Star, but introduces
+          vertical movement, gravity, jumping, platforms, hazards, and a goal.
+        </p>
+
+        <p>
+          The player now needs additional attributes:
+        </p>
+
+        <pre><code class="language-javascript">const player = {
+  x: 40,
+  y: 300,
+  width: 30,
+  height: 30,
+  speed: 4,
+  velocityY: 0,
+  jumpStrength: 11,
+  onGround: false
+};</code></pre>
+
+        <p>
+          <b>velocityY</b> represents how quickly the player is moving
+          vertically. A positive value moves the player downward, while a
+          negative value moves the player upward.
+        </p>
+
+        <h3>Gravity</h3>
+
+        <p>
+          Gravity continually changes the player's vertical velocity:
+        </p>
+
+        <pre><code class="language-javascript">player.velocityY += gravity;
+player.y += player.velocityY;</code></pre>
+
+        <p>
+          The longer the player is in the air, the more gravity changes the
+          velocity. This causes the player to rise after a jump, slow down,
+          and eventually fall.
+        </p>
+
+        <h3>Jumping</h3>
+
+        <p>
+          Jumping gives the player an upward velocity:
+        </p>
+
+        <pre><code class="language-javascript">if (player.onGround) {
+  player.velocityY = -player.jumpStrength;
+  player.onGround = false;
+}</code></pre>
+
+        <p>
+          The <b>onGround</b> state prevents the player from repeatedly
+          jumping while already in the air.
+        </p>
+
+        <h3>Building a Level with Objects</h3>
+
+        <p>
+          Instead of creating a separate variable for every platform, we
+          can describe the level with an array:
+        </p>
+
+        <pre><code class="language-javascript">const platforms = [
+  { x: 0, y: 370, width: 600, height: 30 },
+  { x: 100, y: 300, width: 120, height: 20 },
+  { x: 280, y: 240, width: 120, height: 20 },
+  { x: 450, y: 170, width: 110, height: 20 }
+];</code></pre>
+
+        <p>
+          JavaScript can loop through this array to draw each platform and
+          check collisions with it. Adding another object to the array adds
+          another platform to the level.
+        </p>
+
+        <h3>Different Collisions Can Have Different Results</h3>
+
+        <p>
+          Collision detection tells us that objects touched. The game's
+          rules determine what that collision means.
+        </p>
+
+        <ul>
+          <li>Landing on a <b>platform</b> stops the player's fall.</li>
+          <li>Touching a <b>hazard</b> ends the game.</li>
+          <li>Touching the <b>goal</b> wins the game.</li>
+        </ul>
+
+        <p>
+          The same basic programming system can therefore support several
+          different game mechanics.
+        </p>
+
+        <hr />
+
+        <h2>Example 6: Pong</h2>
+
+        <p>
+          This
+          <a href="https://codepen.io/amaraauguste/pen/01a10e25-3c02-7643-bb88-a64d8dd8de7c" target="_blank"
+            rel="noopener noreferrer">Basic Pong example</a>
+          is a two-player canvas game. Player 1 uses W and S to move the
+          left paddle, while Player 2 uses the Up and Down arrow keys to move
+          the right paddle. Each player tries to prevent the ball from passing
+          their side of the screen.
+        </p>
+
+        <p>
+          Like Collect the Star and the Platformer, Pong uses a canvas and
+          a continuous game loop. However, it introduces several new ideas:
+          two-player controls, ball velocity, bouncing, paddle-based changes
+          in direction, scoring, and a countdown between rounds.
+        </p>
+
+        <h3>Game Objects and Configuration</h3>
+
+        <p>
+          Some values describe the general rules and dimensions of the game:
+        </p>
+
+        <pre><code class="language-javascript">const paddleWidth = 10;
+const paddleHeight = 80;
+const ballRadius = 8;
+const paddleSpeed = 6;</code></pre>
+
+        <p>
+          Keeping these values near the beginning of the program makes them
+          easy to adjust. Increasing <b>paddleHeight</b>, for example, makes
+          returning the ball easier. Increasing <b>paddleSpeed</b> allows
+          players to move more quickly.
+        </p>
+
+        <p>
+          Each player is represented by an object containing a position and
+          score:
+        </p>
+
+        <pre><code class="language-javascript">const player1 = {
+  x: 10,
+  y: canvas.height / 2 - paddleHeight / 2,
+  score: 0
+};
+
+const player2 = {
+  x: canvas.width - 10 - paddleWidth,
+  y: canvas.height / 2 - paddleHeight / 2,
+  score: 0
+};</code></pre>
+
+        <p>
+          The ball is another game object:
+        </p>
+
+        <pre><code class="language-javascript">const ball = {
+  x: canvas.width / 2,
+  y: canvas.height / 2,
+  speedX: 0,
+  speedY: 0
+};</code></pre>
+
+        <p>
+          The ball has both an <b>x</b> and <b>y</b> position and horizontal
+          and vertical speeds. Its speeds begin at zero because the game starts
+          with a countdown before launching the ball.
+        </p>
+
+        <h3>Tracking Two Players</h3>
+
+        <p>
+          Pong uses the same key-tracking idea as our other movement examples:
+        </p>
+
+        <pre><code class="language-javascript">const keys = {};
+
+window.addEventListener("keydown", (e) => {
+  keys[e.key] = true;
+});
+
+window.addEventListener("keyup", (e) => {
+  keys[e.key] = false;
+});</code></pre>
+
+        <p>
+          The difference is that different keys control different game objects.
+          Player 1 uses W and S, while Player 2 uses the arrow keys.
+        </p>
+
+        <pre><code class="language-javascript">if (keys["w"] || keys["W"]) {
+  player1.y = Math.max(0, player1.y - paddleSpeed);
+}
+
+if (keys["s"] || keys["S"]) {
+  player1.y = Math.min(canvas.height - paddleHeight, player1.y + paddleSpeed);
+}
+
+if (keys["ArrowUp"]) {
+  player2.y = Math.max(0, player2.y - paddleSpeed);
+}
+
+if (keys["ArrowDown"]) {
+  player2.y = Math.min(canvas.height - paddleHeight, player2.y + paddleSpeed);
+}</code></pre>
+
+        <p>
+          <b>Math.max()</b> and <b>Math.min()</b> keep the paddles inside
+          the canvas.
+        </p>
+
+        <h3>Ball Velocity</h3>
+
+        <p>
+          When a round is active, the ball moves according to its horizontal
+          and vertical speeds:
+        </p>
+
+        <pre><code class="language-javascript">ball.x += ball.speedX;
+ball.y += ball.speedY;</code></pre>
+
+        <p>
+          <b>speedX</b> determines horizontal movement. A positive value
+          moves the ball to the right, while a negative value moves it to
+          the left.
+        </p>
+
+        <p>
+          <b>speedY</b> determines vertical movement. A positive value moves
+          the ball down, while a negative value moves it up. Together, these
+          values determine the direction in which the ball travels.
+        </p>
+
+        <h3>Bouncing Off the Walls</h3>
+
+        <p>
+          The ball should bounce when it reaches the top or bottom of the
+          canvas.
+        </p>
+
+        <pre><code class="language-javascript">if (ball.y - ballRadius &lt;= 0 || ball.y + ballRadius &gt;= canvas.height) {
+  ball.speedY = -ball.speedY;
+}</code></pre>
+
+        <p>
+          Reversing <b>speedY</b> changes the vertical direction without
+          changing the horizontal direction.
+        </p>
+
+        <p>
+          For example, if the ball is moving upward with a vertical speed
+          of <b>-3</b>, reversing it produces <b>3</b>, causing the ball
+          to move downward.
+        </p>
+
+        <h3>Collision with the Paddles</h3>
+
+        <p>
+          The game checks whether the ball reaches a paddle and whether the
+          ball's vertical position is within the paddle.
+        </p>
+
+        <pre><code class="language-javascript">if (ball.x - ballRadius &lt;= player1.x + paddleWidth && ball.y &gt;= player1.y && ball.y &lt;= player1.y + paddleHeight) {
+  ball.speedX = Math.abs(ball.speedX) + 0.5;
+  ball.speedY = (ball.y - (player1.y + paddleHeight / 2)) * 0.2;
+}</code></pre>
+
+        <p>
+          Several things happen when the ball hits a paddle.
+        </p>
+
+        <p>
+          First, the horizontal direction changes. <b>Math.abs()</b> makes
+          the horizontal speed positive after hitting the left paddle,
+          causing the ball to travel to the right.
+        </p>
+
+        <p>
+          The game also adds <b>0.5</b> to the horizontal speed. This means
+          successful returns gradually make the ball faster and increase
+          the challenge.
+        </p>
+
+        <h3>Where the Ball Hits the Paddle Matters</h3>
+
+        <p>
+          Pong also changes the ball's vertical movement based on where it
+          touches the paddle:
+        </p>
+
+        <pre><code class="language-javascript">ball.speedY = (ball.y - (player1.y + paddleHeight / 2)) * 0.2;</code></pre>
+
+        <p>
+          The program finds the center of the paddle and compares it with
+          the ball's position.
+        </p>
+
+        <ul>
+          <li>Hitting near the <b>top</b> sends the ball upward.</li>
+          <li>Hitting near the <b>center</b> produces a flatter return.</li>
+          <li>Hitting near the <b>bottom</b> sends the ball downward.</li>
+        </ul>
+
+        <p>
+          This makes player positioning important. Players are not only
+          trying to reach the ball; they can also influence the direction
+          of the return.
+        </p>
+
+        <p>
+          The right paddle uses the same idea, but the horizontal speed
+          becomes negative so the ball travels back toward Player 1:
+        </p>
+
+        <pre><code class="language-javascript">ball.speedX = -(Math.abs(ball.speedX) + 0.5);</code></pre>
+
+        <h3>Scoring</h3>
+
+        <p>
+          A player scores when the ball travels completely past the
+          opponent's side of the canvas.
+        </p>
+
+        <pre><code class="language-javascript">if (ball.x &lt; 0) {
+  player2.score++;
+  triggerDelay();
+
+} else if (ball.x &gt; canvas.width) {
+  player1.score++;
+  triggerDelay();
+}</code></pre>
+
+        <p>
+          Unlike touching a paddle, reaching the left or right boundary
+          does not cause the ball to bounce. Instead, it changes the score
+          and begins a new round.
+        </p>
+
+        <p>
+          This demonstrates again that detecting an interaction is only
+          part of the system. The game's rules determine what happens
+          because of that interaction.
+        </p>
+
+        <h3>Adding a Delay Between Points</h3>
+
+        <p>
+          Immediately launching another ball after a point could make the
+          next round difficult to follow. Instead, the game resets the ball
+          and displays a short countdown.
+        </p>
+
+        <pre><code class="language-javascript">let countdownValue = 3;
+let isCountingDown = true;</code></pre>
+
+        <p>
+          <b>isCountingDown</b> is another example of game state. When it
+          is true, the paddles can still move, but the ball does not update
+          its position.
+        </p>
+
+        <pre><code class="language-javascript">if (!isCountingDown) {
+  ball.x += ball.speedX;
+  ball.y += ball.speedY;
+}</code></pre>
+
+        <p>
+          The delay resets the ball to the center and temporarily gives it
+          no movement:
+        </p>
+
+        <pre><code class="language-javascript">ball.x = canvas.width / 2;
+ball.y = canvas.height / 2;
+
+ball.speedX = 0;
+ball.speedY = 0;</code></pre>
+
+        <h3>Using setInterval() for the Countdown</h3>
+
+        <p>
+          The game uses <b>setInterval()</b> to repeatedly decrease the
+          countdown value:
+        </p>
+
+        <pre><code class="language-javascript">const interval = setInterval(() => {
+  countdownValue--;
+
+  if (countdownValue &lt;= 0) {
+    clearInterval(interval);
+
+    isCountingDown = false;
+
+    ball.speedX = nextBallDirectionX;
+    ball.speedY = nextBallDirectionY;
+  }
+}, 500);</code></pre>
+
+        <p>
+          <b>setInterval()</b> repeatedly runs a function after a specified
+          amount of time. In this example, the countdown changes every
+          500 milliseconds.
+        </p>
+
+        <p>
+          Once the countdown reaches zero, <b>clearInterval()</b> stops the
+          interval and the ball receives its new horizontal and vertical
+          speeds.
+        </p>
+
+        <p>
+          This is different from <b>setTimeout()</b> in the Match Game.
+          <b>setTimeout()</b> performs an action once after a delay, while
+          <b>setInterval()</b> repeats an action until it is stopped.
+        </p>
+
+        <h3>Randomizing the Next Ball</h3>
+
+        <p>
+          The game also uses randomness when preparing the next ball:
+        </p>
+
+        <pre><code class="language-javascript">nextBallDirectionY = (Math.random() &gt; 0.5 ? 1 : -1) * (2 + Math.random() * 2);</code></pre>
+
+        <p>
+          The first random choice determines whether the ball initially
+          moves upward or downward. The second creates some variation in
+          its vertical speed.
+        </p>
+
+        <p>
+          As a result, each new round does not begin with exactly the same
+          ball movement.
+        </p>
+
+        <h3>Drawing Pong on the Canvas</h3>
+
+        <p>
+          The <b>draw()</b> function displays the current game state.
+          The paddles are rectangles:
+        </p>
+
+        <pre><code class="language-javascript">ctx.fillRect(player1.x, player1.y, paddleWidth, paddleHeight);
+ctx.fillRect(player2.x, player2.y, paddleWidth, paddleHeight);</code></pre>
+
+        <p>
+          The ball is drawn as a circle:
+        </p>
+
+        <pre><code class="language-javascript">ctx.beginPath();
+ctx.arc(ball.x, ball.y, ballRadius, 0, Math.PI * 2);
+ctx.fill();</code></pre>
+
+        <p>
+          The scores and countdown are also drawn directly on the canvas
+          using <b>fillText()</b>.
+        </p>
+
+        <h3>The Game Loop</h3>
+
+        <p>
+          Pong follows the same general update-and-draw structure as our
+          other canvas games:
+        </p>
+
+        <pre><code class="language-javascript">function gameLoop() {
+  update();
+  draw();
+
+  requestAnimationFrame(gameLoop);
+}</code></pre>
+
+        <p>
+          <b>update()</b> handles paddle movement, ball movement, collision,
+          and scoring. <b>draw()</b> displays the resulting game state.
+        </p>
+
+        <p>
+          The countdown does not require us to stop the game loop. Instead,
+          <b>isCountingDown</b> determines whether the ball should move
+          during that part of the loop.
+        </p>
+
+        <h3>What Pong Adds to Our Examples</h3>
+
+        <ul>
+          <li><b>Two-player input</b> allows different keys to control different game objects.</li>
+          <li><b>Horizontal and vertical velocity</b> determine the ball's movement.</li>
+          <li><b>Bouncing</b> can be created by reversing velocity.</li>
+          <li><b>Paddle collision</b> changes both the direction and speed of the ball.</li>
+          <li><b>Collision location</b> affects the angle of the return.</li>
+          <li><b>Increasing ball speed</b> creates increasing difficulty during a rally.</li>
+          <li><b>Scoring</b> creates repeated rounds within the larger game.</li>
+          <li><b>Game state</b> controls whether the ball is active or waiting.</li>
+          <li><b>setInterval()</b> creates a repeating countdown between rounds.</li>
+          <li><b>Randomness</b> adds variation to each new ball.</li>
+        </ul>
+
+        <hr />
+
+        <h2>Comparing the Examples</h2>
+
+        <p>
+          These games look and play differently, but they are built from many
+          of the same programming ideas.
+        </p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Game</th>
+              <th>Input</th>
+              <th>Important State</th>
+              <th>Main Programming Ideas</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+           <tr style="background-color: white;">
+              <td>Number Guessing</td>
+              <td>Form submission</td>
+              <td>Secret number, score</td>
+              <td>Conditions, randomness, DOM events</td>
+            </tr>
+
+            <tr>
+              <td>Tic-Tac-Toe</td>
+              <td>Clicks</td>
+              <td>Board, current player, game over</td>
+              <td>Arrays, turns, win conditions</td>
+            </tr>
+
+            <tr>
+              <td>Match Game</td>
+              <td>Clicks</td>
+              <td>Selected cards, matches</td>
+              <td>Arrays, shuffling, delayed actions</td>
+            </tr>
+
+            <tr>
+              <td>Collect the Star</td>
+              <td>Keyboard</td>
+              <td>Positions, score, timer</td>
+              <td>Canvas, game loop, movement, collision, enemy behavior</td>
+            </tr>
+
+            <tr>
+              <td>Platformer</td>
+              <td>Keyboard</td>
+              <td>Position, velocity, on-ground state</td>
+              <td>Canvas, gravity, jumping, platforms, collision</td>
+            </tr>
+
+            <tr>
+              <td>Pong</td>
+              <td>Keyboard (Two Players)</td>
+              <td>Paddle positions, ball position and velocity, scores, countdown state</td>
+              <td>Canvas, velocity, bouncing, collision angles, scoring, setInterval()</td>
+            </tr>
+
+          </tbody>
+        </table>
+
+        <h2>Different Games, Shared Programming Ideas</h2>
+
+        <p>
+          Looking across all of these examples, we can see that very different
+          games are often built from the same basic programming tools.
+        </p>
+
+        <h3>Variables and Objects Store State</h3>
+
+        <p>
+          Games need to remember information. Depending on the game, this
+          might include:
+        </p>
+
+        <ul>
+          <li>score</li>
+          <li>player position</li>
+          <li>ball velocity</li>
+          <li>whose turn it is</li>
+          <li>which cards have been selected</li>
+          <li>whether a power-up is active</li>
+          <li>whether the player is on the ground</li>
+          <li>whether a countdown is active</li>
+        </ul>
+
+        <p>
+          Together, these values describe the current <b>game state</b>.
+        </p>
+
+        <h3>Conditions Apply Rules</h3>
+
+        <p>
+          Conditions allow the program to decide what should happen based
+          on the current state.
+        </p>
+
+        <pre><code class="language-javascript">if (condition) {
+  // Apply a game rule
+}</code></pre>
+
+        <p>
+          A condition might check whether a guess is correct, whether three
+          spaces form a winning line, whether two cards match, whether a
+          player touches an enemy, whether a character is standing on a
+          platform, or whether a Pong ball reaches a paddle.
+        </p>
+
+        <h3>Events Handle Player Actions</h3>
+
+        <p>
+          Events allow JavaScript to respond to actions such as clicking,
+          submitting a form, and pressing or releasing keys.
+        </p>
+
+        <p>
+          In some games, events directly cause most of the changes in the
+          game. In other games, events record player input while a game loop
+          continuously updates the world.
+        </p>
+
+        <h3>Arrays Organize Groups of Data</h3>
+
+        <p>
+          Arrays appear in several different forms across the examples.
+          They can store:
+        </p>
+
+        <ul>
+          <li>the spaces on a Tic-Tac-Toe board</li>
+          <li>symbols in a Match Game</li>
+          <li>winning combinations</li>
+          <li>platforms in a level</li>
+          <li>groups of enemies or collectibles in a larger game</li>
+        </ul>
+
+        <p>
+          Once objects are organized into an array, loops can process them
+          instead of requiring separate code for every individual object.
+        </p>
+
+        <h3>Randomness Creates Variation</h3>
+
+        <p>
+          Randomness appears in several of the examples, but it serves
+          different purposes.
+        </p>
+
+        <ul>
+          <li>The Number Guessing Game chooses a secret number.</li>
+          <li>The Match Game shuffles the cards.</li>
+          <li>Collect the Star changes item locations and enemy behavior.</li>
+          <li>Pong varies the movement of the next ball.</li>
+        </ul>
+
+        <p>
+          Randomness can make repeated play less predictable, but the rules
+          still determine what random outcomes are possible and how they
+          affect the player.
+        </p>
+
+        <h3>Timing Can Work in Different Ways</h3>
+
+        <p>
+          Our examples also use several different tools for controlling time.
+        </p>
+
+        <ul>
+          <li>
+            <b>setTimeout()</b> performs an action once after a delay, such
+            as turning unmatched cards back over.
+          </li>
+
+          <li>
+            <b>setInterval()</b> repeatedly performs an action until it is
+            stopped, such as updating Pong's countdown.
+          </li>
+
+          <li>
+            <b>requestAnimationFrame()</b> repeatedly runs a game loop so
+            movement and drawing can update smoothly.
+          </li>
+
+          <li>
+            <b>Delta time</b> measures elapsed time between frames so
+            movement and timers can be based on time rather than frame count.
+          </li>
+        </ul>
+
+        <h2>Game State, Rules, and Feedback</h2>
+
+        <p>
+          Regardless of the type of game, JavaScript is repeatedly doing
+          the same general work:
+        </p>
+
+        <ol>
+          <li>Receive or detect an action or event.</li>
+          <li>Check the current game state.</li>
+          <li>Apply the appropriate rules.</li>
+          <li>Change the game state.</li>
+          <li>Show the player what happened.</li>
+        </ol>
+
+        <p>
+          For example, clicking a Tic-Tac-Toe cell changes the board.
+          Selecting two cards in the Match Game causes the game to compare
+          them. Collecting a star changes the score. Landing on a platform
+          changes the player's position and vertical velocity. Hitting a
+          Pong paddle changes the direction and speed of the ball.
+        </p>
+
+        <p>
+          The specific code is different, but the relationship between
+          <b>player action, rules, state, and feedback</b> remains the same.
+        </p>
+
+        <h2>From Examples to Your Own Game</h2>
+
+        <p>
+          You do not need to create one of these exact games. Instead, think
+          about the systems each example demonstrates and how those systems
+          could be combined or changed to support your own game idea.
+        </p>
+
+        <ul>
+          <li>
+            A <b>collectible</b> can increase a score, unlock a door,
+            restore health, or give the player a temporary ability.
+          </li>
+
+          <li>
+            A <b>collision</b> can stop movement, cause damage, award
+            points, bounce an object, or end the game.
+          </li>
+
+          <li>
+            A <b>timer</b> can create a deadline, control a power-up,
+            spawn an enemy, or trigger an event.
+          </li>
+
+          <li>
+            An <b>array</b> can represent a board, cards, platforms,
+            enemies, collectibles, or other groups of game objects.
+          </li>
+
+          <li>
+            <b>Randomness</b> can change item locations, enemy behavior,
+            card order, ball movement, or game events.
+          </li>
+
+          <li>
+            A <b>variable</b> can track score, health, lives, turns,
+            progress, abilities, direction, or whether an event has occurred.
+          </li>
+
+          <li>
+            A <b>game loop</b> can continuously update movement,
+            animation, timers, enemies, physics, and other changing systems.
+          </li>
+        </ul>
+
+        <p>
+          Start with the experience and rules you want to create. Then think
+          about what objects, attributes, states, and interactions the program
+          needs to represent those rules.
+        </p>
+
         <h2>From Browser Code to Game Engines</h2>
 
         <p>
@@ -5204,14 +6212,39 @@ const star = {
         </p>
 
         <p>
-          The programming tools may change, but the underlying design
-          questions remain: What can the player do? What are the rules?
-          How does the challenge change? What feedback helps the player
-          understand the result of each action?
+          For example, a platformer in Unity or Godot may use a built-in
+          physics system instead of manually updating gravity. A game engine
+          may provide collision components instead of requiring us to write
+          every collision check ourselves.
         </p>
+
+        <p>
+          The programming tools may change, but the underlying design
+          questions remain:
+        </p>
+
+        <ul>
+          <li>What can the player do?</li>
+          <li>What is the player's goal?</li>
+          <li>What are the rules?</li>
+          <li>What objects exist in the game?</li>
+          <li>What information represents the current game state?</li>
+          <li>How do objects interact?</li>
+          <li>How does the challenge change?</li>
+          <li>What feedback helps the player understand what happened?</li>
+        </ul>
+
+        <p>
+          Learning to identify and implement these systems is more important
+          than memorizing the code for any one game. Once you understand how
+          input, rules, state, feedback, and game objects work together, you
+          can use those ideas to build many different types of games.
+        </p>
+
       </article>
 
       <br />
+
     </section>
 
     <!--
