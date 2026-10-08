@@ -410,7 +410,7 @@ The program prompts for the next item number after each transaction. Entering `0
 
 ---
 
-## Additional Review Questions — Answers
+## Additional Review Questions: Answers
 
 1. **`=` vs. `==`:** `=` assigns a value to a variable; `==` compares two values for equality and produces a Boolean result.
 2. **`nextInt()` vs. `nextDouble()`:** `nextInt()` reads an integer; `nextDouble()` reads a floating-point number as a `double`. For example, entering `3.5` for `nextInt()` causes an input mismatch exception.
