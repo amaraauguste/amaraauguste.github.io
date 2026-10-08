@@ -307,7 +307,7 @@ body {
 }
 
 .dark-mode tr{
-  background-color: #0b0b31;
+  background-color: transparent;
  }
 
  .dark-mode a {
