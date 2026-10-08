@@ -1,4 +1,4 @@
-# CISC 1115 — Exam 1 Practice Questions: Answers
+# Exam 1 Practice Questions: Answers
 
 These are sample solutions. Other correct approaches are possible.
 
