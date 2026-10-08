@@ -54,7 +54,7 @@
     <a class="nav-link" href="#Week4" style="font-size: 22px">Week 4</a>
     <a class="nav-link" href="#Week5" style="font-size: 22px">Week 5</a>
     <a class="nav-link" href="#Week6" style="font-size: 22px">Week 6</a>
-    <!--<a class="nav-link" href="#Exam1" style="font-size: 22px">Exam 1 Review</a>-->
+    <a class="nav-link" href="#Exam1" style="font-size: 22px">Exam 1 Review</a>
     <a class="nav-link" href="#Week8" style="font-size: 22px">Week 8</a>
     <a class="nav-link" href="#Week9" style="font-size: 22px">Week 9</a>
     <a class="nav-link" href="#Week10" style="font-size: 22px">Week 10</a>
@@ -1115,6 +1115,427 @@ Sum of digits: 24</pre>
       <hr />
 
     </section>
+
+    <!-- EXAM 1 REVIEW -->
+<section class="main-section" id="Exam1">
+
+  <h2>Exam 1 Review</h2>
+
+  <p>
+    <b>Exam 1: October 15, 2026</b><br />
+    <b>Total: 100 points</b>
+  </p>
+
+  <p>
+    The exam will include debugging Java code, writing Java
+    expressions, tracing code, and writing complete Java programs.
+  </p>
+
+  <h3>Exam Breakdown</h3>
+
+  <ul>
+    <li><b>Question 1 (20 pts):</b> Debugging Java Code</li>
+    <li><b>Question 2 (20 pts):</b> Writing Java Expressions</li>
+    <li><b>Question 3 (15 pts):</b> Tracing Java Code</li>
+    <li><b>Question 4 (20 pts):</b> File Input/Output &amp; Loops</li>
+    <li><b>Question 5 (25 pts):</b> Complete Java Program</li>
+  </ul>
+
+    
+<h3>Practice Questions</h3>
+
+<p>
+  The following questions are intended to help you review the
+  Java programming concepts covered in class. They do not
+  necessarily reflect the exact structure, difficulty, or
+  content of the exam.
+</p>
+
+<p>
+  Try completing each question <b>without running the code first</b>.
+  Afterward, use Java to check your answers and understand any mistakes.
+</p>
+
+<hr />
+
+<h3>Part A: Debugging and Understanding Code</h3>
+
+<ol>
+  <li>
+    The following code is supposed to calculate the area of a rectangle.
+    <b>Identify the error, classify it as a syntax/compiler, run-time,
+    or logical error, and correct it.</b>
+
+    <pre><code class="language-java">int length = 8;
+int width = 5;
+
+int area = length + width;
+
+System.out.println("Area: " + area);</code></pre>
+  </li>
+
+  <br />
+
+  <li>
+    The following code is supposed to print the numbers from 1 through 5.
+    <b>Identify the error and correct it.</b>
+
+    <pre><code class="language-java">int i = 1;
+
+while (i &lt;= 5) {
+    System.out.println(i);
+}</code></pre>
+  </li>
+
+  <br />
+
+  <li>
+    The following code is supposed to determine whether a student
+    passed a course with a score of at least 60.
+    <b>Identify the error and correct it.</b>
+
+    <pre><code class="language-java">int score = 75;
+
+if (score &gt;= 60);
+{
+    System.out.println("Passed");
+}
+else {
+    System.out.println("Failed");
+}</code></pre>
+  </li>
+</ol>
+
+<hr />
+
+<h3>Part B: Arithmetic Expressions</h3>
+
+<ol start="4">
+  <li>
+    <b>Write valid Java expressions</b> for the following mathematical
+    equations. Assume all variables have already been declared.
+
+    <ol style="list-style-type: lower-alpha;">
+      <li>
+        y = (3x<sup>2</sup> + 5) / (2x + 1)
+      </li>
+      <br />
+      <li>
+        z = &radic;(a<sup>2</sup> + b<sup>2</sup>)
+      </li>
+      <br />
+      <li>
+        w = (|x - 10| + 4y<sup>3</sup>) / 5
+      </li>
+    </ol>
+  </li>
+
+  <br />
+
+  <li>
+    <b>Determine the value of each expression</b> using the
+    following variables:
+
+    <pre><code class="language-java">int a = 17;
+int b = 5;
+double c = 5.0;</code></pre>
+
+    <ol style="list-style-type: lower-alpha;">
+      <li><code>a / b</code></li>
+      <li><code>a % b</code></li>
+      <li><code>a / c</code></li>
+      <li><code>2 + 3 * 4 - 6 / 2</code></li>
+      <li><code>(a + b) / 2.0</code></li>
+    </ol>
+  </li>
+</ol>
+
+<hr />
+
+<h3>Part C: Tracing Code and Boolean Expressions</h3>
+
+<ol start="6">
+  <li>
+    <b>Determine the exact output</b> of the following code.
+    Show how the values of the variables change.
+
+    <pre><code class="language-java">int a = 4;
+int b = 9;
+
+if (a &lt; b) {
+    a = a + 5;
+}
+
+if (a == b) {
+    b = b * 2;
+}
+else {
+    b = b - 3;
+}
+
+System.out.println("a = " + a);
+System.out.println("b = " + b);</code></pre>
+  </li>
+
+  <br />
+
+  <li>
+    Given the following variables, <b>determine whether each
+    expression evaluates to true or false.</b>
+
+    <pre><code class="language-java">int x = 6;
+int y = 10;
+int z = 3;</code></pre>
+
+    <ol style="list-style-type: lower-alpha;">
+      <li><code>x &lt; y &amp;&amp; z &gt; 5</code></li>
+      <li><code>x == 6 || y &lt; 5</code></li>
+      <li><code>!(x &gt; z)</code></li>
+      <li><code>x + z &gt;= y</code></li>
+      <li><code>(x &lt; y &amp;&amp; z &lt; x) || y == 0</code></li>
+    </ol>
+  </li>
+
+  <br />
+
+  <li>
+    <b>Determine the exact output</b> of the following code.
+
+    <pre><code class="language-java">int total = 0;
+
+for (int i = 1; i &lt;= 5; i++) {
+    if (i % 2 == 0) {
+        total += i;
+    }
+    else {
+        total++;
+    }
+}
+
+System.out.println(total);</code></pre>
+  </li>
+</ol>
+
+<hr />
+
+<h3>Part D: Conditionals and Loops</h3>
+
+<ol start="9">
+  <li>
+    Write a complete Java program that <b>prompts the user to enter
+    an integer</b> and determines whether it is
+    <b>positive, negative, or zero</b>.
+  </li>
+
+  <br />
+
+  <li>
+    Write a Java program that prompts the user to enter a
+    <b>number from 1 through 7</b> and uses a
+    <b>switch statement</b> to display the corresponding
+    day of the week.
+
+    <p>
+      Display <b>"Invalid day"</b> for any other number.
+    </p>
+
+    <p>
+      Try writing the program using either the traditional
+      switch statement or arrow (->) syntax.
+    </p>
+  </li>
+
+  <br />
+
+  <li>
+    Write a Java program that <b>repeatedly asks the user to
+    enter a number until they enter 0</b>.
+
+    <p>
+      The program should calculate and display the
+      <b>sum of all numbers entered</b>, excluding the sentinel.
+    </p>
+
+    <b>Example:</b>
+
+    <pre>Enter a number (0 to stop): 5
+Enter a number (0 to stop): 8
+Enter a number (0 to stop): 3
+Enter a number (0 to stop): 0
+Sum: 16</pre>
+  </li>
+
+  <br />
+
+  <li>
+    Write a Java program that uses <b>nested loops</b>
+    to produce the following pattern:
+
+    <pre>1
+12
+123
+1234
+12345</pre>
+  </li>
+</ol>
+
+<hr />
+
+<h3>Part E: File Input/Output</h3>
+
+<ol start="13">
+  <li>
+    A file named <b>numbers.txt</b> contains an unknown
+    number of integers.
+
+    <p>
+      Write a complete Java program that <b>reads every integer
+      from the file and calculates the sum</b>.
+      Display the final sum on the screen.
+    </p>
+
+    <p>
+      Your program should use a <b>while loop</b> and stop
+      when there are no more integers to read.
+    </p>
+  </li>
+
+  <br />
+
+  <li>
+    A file named <b>temperatures.txt</b> contains a
+    <b>header value</b> indicating how many temperatures follow.
+
+    <p><b>Example file:</b></p>
+
+    <pre>4
+72
+68
+75
+81</pre>
+
+    <p>Write a complete Java program that:</p>
+
+    <ul>
+      <li>Reads the header value.</li>
+      <li>Uses a <b>for loop</b> to read the temperatures.</li>
+      <li>Determines the <b>highest temperature</b>.</li>
+      <li>
+        Writes the highest temperature to a file
+        named <b>highest.txt</b>.
+      </li>
+    </ul>
+
+    <p>Assume the file contains at least one temperature.</p>
+
+    <p><b>Expected output file:</b></p>
+
+    <pre>Highest temperature: 81</pre>
+  </li>
+</ol>
+
+<hr />
+
+<h3>Part F: Complete Programming Practice</h3>
+
+<ol start="15">
+  <li>
+    Write a complete Java program that <b>repeatedly reads
+    information about a store transaction</b> from the keyboard.
+
+    <p>For each transaction, read:</p>
+
+    <ul>
+      <li>Item number (integer)</li>
+      <li>Quantity purchased (integer)</li>
+      <li>Price per item (double)</li>
+    </ul>
+
+    <p>
+      Continue reading transactions until an
+      <b>item number of 0</b> is entered.
+    </p>
+
+    <p>
+      For each transaction, calculate the total cost
+      (<b>quantity * price</b>) and apply the following
+      shipping charge:
+    </p>
+
+    <table border="1" cellpadding="8" cellspacing="0">
+      <tr>
+        <th>Total Cost</th>
+        <th>Shipping Charge</th>
+      </tr>
+      <tr>
+        <td>Less than $25</td>
+        <td>$5.00</td>
+      </tr>
+      <tr>
+        <td>$25 to less than $75</td>
+        <td>$3.00</td>
+      </tr>
+      <tr style="background-color: transparent;">
+  <td>$75 or more</td>
+  <td>Free</td>
+</tr>
+    </table>
+
+    <p>
+      Display the <b>item number, total cost, shipping charge,
+      and final amount</b> (including shipping).
+    </p>
+
+    <p>
+      All dollar amounts should be formatted to
+      <b>two decimal places</b>.
+    </p>
+  </li>
+</ol>
+
+<hr />
+
+<h3>Additional Review Questions</h3>
+
+<p>
+  Use these questions to review important Java concepts
+  and terminology.
+</p>
+
+<ol>
+  <li>What is the difference between <b>=</b> and <b>==</b>?</li>
+  <li>What is the difference between <b>nextInt()</b> and <b>nextDouble()</b>?</li>
+  <li>What happens when you divide two integers in Java?</li>
+  <li>What is the difference between <b>print()</b>, <b>println()</b>, and <b>printf()</b>?</li>
+  <li>When would you choose a <b>while</b> loop instead of a <b>for</b> loop?</li>
+  <li>What is the difference between a <b>sentinel value</b> and a <b>file header value</b>?</li>
+  <li>What is the difference between <b>while</b> and <b>do-while</b>?</li>
+  <li>What happens if you forget <b>break</b> in a traditional <b>switch</b> statement?</li>
+  <li>Why should you close a <b>PrintWriter</b> after writing to a file?</li>
+  <li>What is the difference between a <b>compiler error</b> and a <b>logical error</b>?</li>
+</ol>
+
+
+
+<hr />
+
+<p>
+  <a href="/courses/CISC1115/classwork_code/F26/Exam%201%20Review%20Answers.md"
+    class="solution-link"
+    data-release="2026-10-08T17:00:00"
+    data-tz="America/New_York">
+    Answers to Exam 1 Review found here
+  </a>
+
+  <span class="solution-locked" aria-live="polite">
+    (Solutions available on October 8, 2026 @ 5:00 PM ET)
+  </span>
+</p>
+
+<hr />
+
+
+</section>
 
 
     <!-- WEEK 8 EXERCISES -->
