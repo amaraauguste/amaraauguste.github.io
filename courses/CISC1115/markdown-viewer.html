@@ -249,8 +249,10 @@
           throw new Error("Invalid Markdown file path.");
         }
 
-        const response = await fetch(url);
-
+       const response = await fetch(url, {
+          cache: "no-store"
+       });
+        
         if (!response.ok) {
           throw new Error("Unable to load Markdown file.");
         }
