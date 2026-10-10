@@ -124,11 +124,11 @@ public class ReverseNumber {
 
 ```text
 10
-   5
-   6
-   3
-   4
-   2
+5
+6
+3
+4
+2
 ```
 
 ### Exercise 4
