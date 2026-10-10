@@ -1,19 +1,28 @@
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>CISC 1115 – Solutions</title>
 
+  <!-- GitHub Markdown Styling -->
   <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown.min.css">
+    href="https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown.min.css">
 
+  <!-- Highlight.js Light Theme -->
   <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
 
   <style>
     body {
-      background: #ffffff;
+      margin: 0;
+      background-color: #ffffff;
+      color: #24292f;
+      font-family: -apple-system, BlinkMacSystemFont,
+        "Segoe UI", Helvetica, Arial, sans-serif;
     }
 
     .markdown-body {
@@ -21,43 +30,264 @@
       max-width: 900px;
       margin: 40px auto;
       padding: 30px;
+      background-color: #ffffff;
+      color: #24292f;
+    }
+
+    /* Headings */
+
+    .markdown-body h1,
+    .markdown-body h2,
+    .markdown-body h3 {
+      color: #24292f;
+    }
+
+    /* Java Code Blocks */
+
+    .markdown-body pre {
+      background-color: #f6f8fa !important;
+      border: 1px solid #d0d7de;
+      border-radius: 6px;
+      padding: 16px;
+      overflow-x: auto;
+    }
+
+    .markdown-body pre code,
+    .markdown-body pre code.hljs {
+      display: block;
+      background-color: transparent !important;
+      color: #24292f;
+      padding: 0;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    /* Syntax Highlighting */
+
+    .markdown-body .hljs-keyword {
+      color: #cf222e;
+    }
+
+    .markdown-body .hljs-number {
+      color: #0550ae;
+    }
+
+    .markdown-body .hljs-string {
+      color: #0a3069;
+    }
+
+    .markdown-body .hljs-title {
+      color: #8250df;
+    }
+
+    .markdown-body .hljs-type,
+    .markdown-body .hljs-built_in {
+      color: #953800;
+    }
+
+    .markdown-body .hljs-comment {
+      color: #6e7781;
+    }
+
+    /* Inline Code */
+
+    .markdown-body :not(pre) > code {
+      background-color: #f6f8fa;
+      color: #24292f;
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-size: 0.9em;
+    }
+
+    /* Tables */
+
+    .markdown-body table {
+      display: block;
+      width: max-content;
+      max-width: 100%;
+      overflow-x: auto;
+      border-collapse: collapse;
+    }
+
+    .markdown-body table th {
+      background-color: #f6f8fa;
+      font-weight: 600;
+    }
+
+    .markdown-body table th,
+    .markdown-body table td {
+      border: 1px solid #d0d7de;
+      padding: 8px 12px;
+    }
+
+    /* LaTeX Equations */
+
+    .markdown-body mjx-container {
+      overflow-x: auto;
+      overflow-y: hidden;
+      max-width: 100%;
+    }
+
+    /* Error Messages */
+
+    .error {
+      color: #cf222e;
+      padding: 15px;
+      background-color: #fff1f0;
+      border: 1px solid #ffccc7;
+      border-radius: 6px;
+    }
+
+    /* Mobile Layout */
+
+    @media (max-width: 768px) {
+      .markdown-body {
+        margin: 15px auto;
+        padding: 16px;
+      }
+
+      .markdown-body pre {
+        padding: 12px;
+      }
     }
   </style>
+
+  <!-- Markdown Parser -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  <!-- HTML Sanitizer -->
+  <script src="https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js"></script>
+
+  <!-- Highlight.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+  <!-- MathJax Configuration -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [
+          ['\\(', '\\)'],
+          ['$', '$']
+        ],
+        displayMath: [
+          ['\\[', '\\]'],
+          ['$$', '$$']
+        ]
+      },
+      options: {
+        skipHtmlTags: [
+          'script', 'noscript', 'style',
+          'textarea', 'pre', 'code'
+        ]
+      }
+    };
+  </script>
+
+  <!-- MathJax -->
+  <script defer
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
 </head>
 
 <body>
+
   <article id="content" class="markdown-body">
     Loading solutions...
   </article>
 
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-
   <script>
-    const params = new URLSearchParams(window.location.search);
-    const file = params.get("file");
+    async function loadMarkdown() {
+      const content = document.getElementById("content");
+      const params = new URLSearchParams(window.location.search);
+      const file = params.get("file");
 
-    if (file) {
-      fetch(file)
-        .then(response => {
-          if (!response.ok) {
-            throw new Error("Unable to load Markdown file.");
-          }
-          return response.text();
-        })
-        .then(markdown => {
-          document.getElementById("content").innerHTML =
-            marked.parse(markdown);
+      if (!file) {
+        content.textContent = "No Markdown file specified.";
+        return;
+      }
 
-          document.querySelectorAll("pre code").forEach(block => {
-            hljs.highlightElement(block);
-          });
-        })
-        .catch(() => {
-          document.getElementById("content").textContent =
-            "Unable to load solutions.";
+      try {
+        // Only allow Markdown files within the course directory.
+        const url = new URL(file, window.location.origin);
+
+        if (
+          url.origin !== window.location.origin ||
+          !url.pathname.startsWith("/courses/CISC1115/") ||
+          !url.pathname.toLowerCase().endsWith(".md")
+        ) {
+          throw new Error("Invalid Markdown file path.");
+        }
+
+        const response = await fetch(url);
+
+        if (!response.ok) {
+          throw new Error("Unable to load Markdown file.");
+        }
+
+        const markdown = await response.text();
+
+        // Preserve LaTeX delimiters before Markdown parsing.
+        const mathExpressions = [];
+
+        const placeholder = (match) => {
+          const index = mathExpressions.length;
+          mathExpressions.push(match);
+          return `MATHPLACEHOLDER${index}END`;
+        };
+
+        const protectedMarkdown = markdown
+          .replace(
+            /```[\s\S]*?```|`[^`\n]*`/g,
+            match => {
+              const index = mathExpressions.length;
+              mathExpressions.push(null);
+              return match;
+            }
+          )
+          .replace(
+            /\\\([\s\S]*?\\\)|\\\[[\s\S]*?\\\]|\$\$[\s\S]*?\$\$/g,
+            placeholder
+          );
+
+        let html = marked.parse(protectedMarkdown);
+
+        html = html.replace(
+          /MATHPLACEHOLDER(\d+)END/g,
+          (_, index) => mathExpressions[Number(index)] || ""
+        );
+
+        // Sanitize rendered HTML.
+        content.innerHTML = DOMPurify.sanitize(html);
+
+        // Apply syntax highlighting.
+        content.querySelectorAll("pre code").forEach(block => {
+          hljs.highlightElement(block);
         });
+
+        // Render LaTeX equations.
+        if (window.MathJax) {
+          await MathJax.startup.promise;
+          await MathJax.typesetPromise([content]);
+        }
+
+        document.title =
+          "CISC 1115 – " +
+          decodeURIComponent(url.pathname.split("/").pop())
+            .replace(/\.md$/i, "");
+
+      } catch (error) {
+        content.innerHTML = "";
+
+        const message = document.createElement("div");
+        message.className = "error";
+        message.textContent = error.message;
+
+        content.appendChild(message);
+      }
     }
+
+    loadMarkdown();
   </script>
+
 </body>
 </html>
