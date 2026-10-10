@@ -106,10 +106,10 @@ else {
 
 ```java
 switch(response) {
-		case 'y': System.out.print("Your request is being processed"); break;
-		case 'n': System.out.print("Thank you anyway for your consideration"); break;
-		case 'h': System.out.print("Sorry, no help is currently available"); break;
-		default: System.out.print("Invalid entry; please try again"); break;
+	case 'y': System.out.print("Your request is being processed"); break;
+	case 'n': System.out.print("Thank you anyway for your consideration"); break;
+	case 'h': System.out.print("Sorry, no help is currently available"); break;
+	default: System.out.print("Invalid entry; please try again"); break;
 }
 System.out.println();
 ```
