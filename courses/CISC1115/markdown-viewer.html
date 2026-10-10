@@ -10,7 +10,7 @@
 
   <!-- GitHub Markdown Styling -->
   <link rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown.min.css">
+  href="https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown-light.min.css">
 
   <!-- Highlight.js Light Theme -->
   <link rel="stylesheet"
@@ -101,24 +101,55 @@
 
     /* Tables */
 
-    .markdown-body table {
-      display: block;
-      width: max-content;
-      max-width: 100%;
-      overflow-x: auto;
-      border-collapse: collapse;
-    }
+    
+/* Tables */
 
-    .markdown-body table th {
-      background-color: #f6f8fa;
-      font-weight: 600;
-    }
+.markdown-body table {
+  display: block;
+  width: max-content;
+  max-width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  background-color: #ffffff !important;
+  color: #24292f !important;
+}
 
-    .markdown-body table th,
-    .markdown-body table td {
-      border: 1px solid #d0d7de;
-      padding: 8px 12px;
-    }
+/* Table headers */
+.markdown-body table th {
+  background-color: #f6f8fa !important;
+  color: #24292f !important;
+  font-weight: 600;
+}
+
+/* All table cells */
+.markdown-body table td {
+  background-color: #ffffff !important;
+  color: #24292f !important;
+}
+
+/* Table borders and spacing */
+.markdown-body table th,
+.markdown-body table td {
+  border: 1px solid #d0d7de !important;
+  padding: 8px 12px;
+}
+
+/* Alternating rows */
+.markdown-body table tr:nth-child(even) td {
+  background-color: #f6f8fa !important;
+}
+
+/* Inline code inside tables */
+.markdown-body table code {
+  background-color: #eaeef2 !important;
+  color: #24292f !important;
+}
+
+/* Bold text inside tables */
+.markdown-body table strong {
+  color: #24292f !important;
+}
+
 
     /* LaTeX Equations */
 
