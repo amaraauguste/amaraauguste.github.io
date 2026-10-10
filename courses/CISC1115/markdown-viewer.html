@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CISC 1115 – Solutions</title>
+
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown.min.css">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+
+  <style>
+    body {
+      background: #ffffff;
+    }
+
+    .markdown-body {
+      box-sizing: border-box;
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 30px;
+    }
+  </style>
+</head>
+
+<body>
+  <article id="content" class="markdown-body">
+    Loading solutions...
+  </article>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const file = params.get("file");
+
+    if (file) {
+      fetch(file)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error("Unable to load Markdown file.");
+          }
+          return response.text();
+        })
+        .then(markdown => {
+          document.getElementById("content").innerHTML =
+            marked.parse(markdown);
+
+          document.querySelectorAll("pre code").forEach(block => {
+            hljs.highlightElement(block);
+          });
+        })
+        .catch(() => {
+          document.getElementById("content").textContent =
+            "Unable to load solutions.";
+        });
+    }
+  </script>
+</body>
+</html>
