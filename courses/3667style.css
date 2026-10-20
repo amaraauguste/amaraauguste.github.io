@@ -54,11 +54,13 @@ th {
   padding: 8px;
 }
 
+/* Light mode: First row gray */
 table tr:first-child {
   background-color: #dddddd;
 }
 
-table tbody tr {
+/* Light mode: All remaining rows */
+table tr:not(:first-child) {
   background-color: transparent;
 }
 
@@ -303,22 +305,15 @@ body {
   background-color: #4e1826; /* Darker navbar */
 }
 
-.dark-mode tr:nth-child(1) {
-  background-color: #222222;
+/* Dark mode: All rows */
+.dark-mode table tr {
+  background-color: #0b0b31;
 }
 
-/*
-.dark-mode tr:nth-child(4),
-.dark-mode tr:nth-child(6),
-.dark-mode tr:nth-child(8),
-.dark-mode tr:nth-child(9) {
-  background-color: #02025c;
-}*/
-
-.dark-mode tr{
-  background-color: #0b0b31;
- }
-
+/* Dark mode: First row */
+.dark-mode table tr:first-child {
+  background-color: #222222;
+}
 /*.dark-mode .structure tr:nth-child(1) {
   background-color: #222222;
 }
