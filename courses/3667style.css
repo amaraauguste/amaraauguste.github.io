@@ -54,8 +54,12 @@ th {
   padding: 8px;
 }
 
-tr:nth-child(1) {
+table tr:first-child {
   background-color: #dddddd;
+}
+
+table tbody tr {
+  background-color: transparent;
 }
 
 /*tr:nth-child(4),
