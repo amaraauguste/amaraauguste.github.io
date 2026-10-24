@@ -6921,22 +6921,16 @@ ctx.fill();</code></pre>
 
 
         <section class="main-section" id="Unity_and_Introduction_to_CSharp">
-
             <br />
-
             <header><b>Unity and Introduction to C#</b></header>
-
             <article>
-
                 <h2>Transitioning from JavaScript to Unity</h2>
-
                 <p>
                     In our previous lessons, we created games using HTML, CSS, and
                     JavaScript. We implemented game systems such as player movement,
                     keyboard input, collision detection, scoring, timers, and enemy
                     behavior.
                 </p>
-
                 <p>
                     We also learned about game engines and how they provide reusable
                     systems for developing games. Rather than implementing every
@@ -6944,22 +6938,18 @@ ctx.fill();</code></pre>
                     to organize objects, manage physics, display graphics, and
                     create interactions.
                 </p>
-
                 <p>
                     We will now begin exploring <b>Unity</b>, a game engine that
                     supports both 2D and 3D development. Our class will focus
                     on creating <b>2D games</b>.
                 </p>
-
                 <p>
                     Although Unity uses a different development environment and
                     programming language, the underlying game design concepts
                     remain the same. Games still consist of objects, attributes,
                     states, rules, player actions, and feedback.
                 </p>
-
                 <h3>Comparing JavaScript and Unity</h3>
-
                 <table>
                     <thead>
                         <tr>
@@ -7006,24 +6996,19 @@ ctx.fill();</code></pre>
                         </tr>
                     </tbody>
                 </table>
-
                 <p>
                     The important distinction is that Unity manages many of the
                     underlying systems for us. However, we must still determine
                     how objects behave, how players interact with the game,
                     and how the rules are enforced.
                 </p>
-
                 <hr />
-
                 <h2>Choosing a Development Tool for Your Final Project</h2>
-
                 <p>
                     As you begin developing your individual final project, you
                     should consider which development tool best supports your
                     game's design and scope.
                 </p>
-
                 <p>
                     A game engine is not automatically the best choice for every
                     project. A relatively simple browser-based game may be easier
@@ -7031,11 +7016,9 @@ ctx.fill();</code></pre>
                     animated objects, physics interactions, or multiple levels
                     may benefit from a game engine.
                 </p>
-
                 <p>
                     When selecting a tool, consider the following:
                 </p>
-
                 <ul>
                     <li>
                         <b>Game Type:</b> What mechanics and interactions does your
@@ -7058,68 +7041,54 @@ ctx.fill();</code></pre>
                         with the time and resources available?
                     </li>
                 </ul>
-
                 <p>
                     Our classroom demonstrations will focus on 2D development.
                     Students interested in creating a 3D game will need to
                     independently learn the additional tools and concepts
                     required for 3D development.
                 </p>
-
                 <hr />
-
                 <h2>Visual Scripting and Code-Based Development</h2>
-
                 <p>
                     Game engines allow developers to create gameplay behavior
                     using different programming approaches. Two common approaches
                     are <b>code-based scripting</b> and <b>visual scripting</b>.
                 </p>
-
                 <h3>Code-Based Scripting</h3>
-
                 <p>
                     Code-based scripting involves writing instructions using a
                     programming language. These instructions define how objects
                     respond to input, interact with one another, and change
                     the game state.
                 </p>
-
                 <p>
                     Unity primarily uses <b>C#</b> for code-based scripting.
                     For example, the following code checks whether a player
                     has earned enough points to win:
                 </p>
-
-                <pre><code class="language-csharp">if (score >= 10)
+                <pre><code class="language-csharp">if (score &gt;= 10)
 {
     Debug.Log("You win!");
 }</code></pre>
-
                 <p>
                     The program evaluates the condition and executes the
                     instructions inside the braces when the condition is true.
                 </p>
-
                 <h3>Visual Scripting</h3>
-
                 <p>
                     <b>Visual scripting</b> allows developers to create behavior
                     by connecting nodes that represent events, conditions,
                     operations, and actions.
                 </p>
-
                 <p>
                     For example, a visual script could respond to a collision
                     event, check whether the object is a collectible, increase
                     the player's score, and remove the collectible from the scene.
                 </p>
-
                 <p>
                     Instead of writing these instructions as text, the developer
                     connects nodes that represent the sequence of operations.
                 </p>
-
                 <table>
                     <thead>
                         <tr>
@@ -7146,18 +7115,14 @@ ctx.fill();</code></pre>
                         </tr>
                     </tbody>
                 </table>
-
                 <p>
                     Both approaches require an understanding of programming
                     concepts. Visual scripting changes how the logic is
                     represented, but it does not eliminate the need to
                     understand variables, conditions, events, and game states.
                 </p>
-
                 <hr />
-
                 <h2>Introduction to Unity</h2>
-
                 <p>
                     <b>Unity</b> is a cross-platform game engine used to create
                     2D and 3D games and interactive applications. It provides
@@ -7165,7 +7130,6 @@ ctx.fill();</code></pre>
                     organize scenes, create objects, import assets, configure
                     components, and test their games.
                 </p>
-
                 <p>
                     Unity uses a <b>component-based architecture</b>.
                     Instead of defining all of an object's properties and
@@ -7173,55 +7137,44 @@ ctx.fill();</code></pre>
                     objects by attaching components that provide specific
                     functionality.
                 </p>
-
                 <h3>Scenes</h3>
-
                 <p>
                     A <b>Scene</b> represents a particular part of a game.
                     It contains the GameObjects that make up a level, menu,
                     or other game environment.
                 </p>
-
                 <p>
                     For example, a game might contain separate scenes for
                     its title screen, first level, second level, and
                     game-over screen.
                 </p>
-
                 <p>
                     Each scene contains its own arrangement of objects
                     and components. Developers can load different scenes
                     as the player progresses through the game.
                 </p>
-
                 <h3>GameObjects</h3>
-
                 <p>
                     A <b>GameObject</b> is the fundamental object in a
                     Unity scene. Players, enemies, collectibles, obstacles,
                     cameras, and other game elements can all be represented
                     by GameObjects.
                 </p>
-
                 <p>
                     A GameObject acts as a container for components.
                     The components determine how the object appears,
                     behaves, and interacts with the game.
                 </p>
-
                 <h3>Components</h3>
-
                 <p>
                     A <b>Component</b> adds data or functionality to a
                     GameObject. A GameObject can contain multiple components
                     that work together to produce its behavior.
                 </p>
-
                 <p>
                     For example, a player GameObject in a 2D game
                     might contain the following components:
                 </p>
-
                 <table>
                     <thead>
                         <tr>
@@ -7252,83 +7205,67 @@ ctx.fill();</code></pre>
                         </tr>
                     </tbody>
                 </table>
-
                 <p>
                     Every GameObject has a <b>Transform</b> component.
                     Other components can be added or removed depending
                     on the object's purpose.
                 </p>
-
                 <p>
                     For example, a background image may only require
                     a Transform and Sprite Renderer, while a moving
                     player may also need a Rigidbody2D, Collider2D,
                     and custom movement script.
                 </p>
-
                 <h3>Sprites</h3>
-
                 <p>
                     A <b>sprite</b> is a two-dimensional graphic
                     used to represent an object in a game.
                     Sprites can represent characters, enemies,
                     collectibles, backgrounds, and other visual elements.
                 </p>
-
                 <p>
                     Unity uses the <b>Sprite Renderer</b> component
                     to display a sprite. The sprite determines the
                     object's appearance, while other components
                     control its movement and interactions.
                 </p>
-
                 <h3>Prefabs</h3>
-
                 <p>
                     A <b>Prefab</b> is a reusable GameObject template.
                     It stores an object's components and configuration,
                     allowing developers to create multiple instances
                     without rebuilding the object each time.
                 </p>
-
                 <p>
                     For example, a game that launches projectiles
                     can use a Prefab to create new projectiles
                     whenever the player shoots.
                 </p>
-
                 <p>
                     Prefabs are useful for objects that appear
                     repeatedly, such as enemies, collectibles,
                     obstacles, and projectiles.
                 </p>
-
                 <hr />
-
                 <h2>Introduction to C# Programming</h2>
-
                 <p>
                     <b>C#</b> (pronounced "C sharp") is a general-purpose,
                     object-oriented programming language developed by
                     Microsoft. It is used to create many types of software,
                     including games and interactive applications.
                 </p>
-
                 <p>
                     In Unity, C# scripts define custom gameplay behavior.
                     Scripts can control movement, process input, respond
                     to collisions, update scores, and enforce game rules.
                 </p>
-
                 <p>
                     C# shares many programming concepts with JavaScript,
                     including variables, operators, conditions, loops,
                     and functions. However, the languages differ in
                     how they declare variables and organize programs.
                 </p>
-
                 <h3>JavaScript and C#: Comparing Syntax</h3>
-
                 <table>
                     <thead>
                         <tr>
@@ -7375,42 +7312,34 @@ ctx.fill();</code></pre>
                         </tr>
                     </tbody>
                 </table>
-
                 <p>
                     One important difference is that C# is a
                     <b>statically typed language</b>.
                     The type of a variable is checked by the compiler.
                 </p>
-
                 <p>
                     JavaScript is dynamically typed, meaning that
                     a variable can hold values of different types
                     during execution.
                 </p>
-
                 <h3>Variables and Data Types</h3>
-
                 <p>
                     A <b>variable</b> stores information that a
                     program can use or modify.
                 </p>
-
                 <p>
                     In games, variables commonly represent
                     scores, health, speed, time, player names,
                     and game states.
                 </p>
-
                 <pre><code class="language-csharp">int score = 0;
 float speed = 5f;
 bool isAlive = true;
 string playerName = "Player1";</code></pre>
-
                 <p>
                     Each variable begins with a data type
                     that specifies what kind of value it stores.
                 </p>
-
                 <table>
                     <thead>
                         <tr>
@@ -7442,43 +7371,35 @@ string playerName = "Player1";</code></pre>
                         </tr>
                     </tbody>
                 </table>
-
                 <p>
                     Notice that decimal values assigned to a
                     <b>float</b> often include the suffix <b>f</b>.
                     This tells C# to treat the literal as a
                     float rather than a double.
                 </p>
-
                 <h3>Updating Variables</h3>
-
                 <p>
                     Variable values can change during gameplay.
                     For example, collecting an item may increase
                     the player's score.
                 </p>
-
                 <pre><code class="language-csharp">int score = 0;
 
 score = score + 10;
 score += 5;
 score++;</code></pre>
-
                 <p>
                     The first statement adds 10 points,
                     the second adds 5 points, and the third
                     increases the score by 1.
                     The final score is 16.
                 </p>
-
                 <h3>Operators</h3>
-
                 <p>
                     C# uses arithmetic, comparison, and logical
                     operators to perform calculations and
                     evaluate conditions.
                 </p>
-
                 <table>
                     <thead>
                         <tr>
@@ -7560,28 +7481,24 @@ score++;</code></pre>
                         </tr>
                     </tbody>
                 </table>
-
                 <h3>Conditional Statements</h3>
-
                 <p>
                     Conditional statements allow a program
                     to make decisions based on the current
                     game state.
                 </p>
-
                 <p>
                     For example, a game might check whether
                     the player has earned enough points
                     to win.
                 </p>
-
                 <pre><code class="language-csharp">int score = 15;
 
-if (score >= 20)
+if (score &gt;= 20)
 {
     Debug.Log("You win!");
 }
-else if (score >= 10)
+else if (score &gt;= 10)
 {
     Debug.Log("Almost there!");
 }
@@ -7589,57 +7506,47 @@ else
 {
     Debug.Log("Keep playing!");
 }</code></pre>
-
                 <p>
                     The conditions are evaluated in order.
                     Because the score is 15, the program
                     displays <b>"Almost there!"</b>.
                 </p>
-
                 <p>
                     <b>Debug.Log()</b> is a Unity method
                     that prints messages to the Console.
                     Developers commonly use it to test
                     their programs and identify problems.
                 </p>
-
                 <h3>Loops</h3>
-
                 <p>
                     A <b>loop</b> repeats a set of instructions.
                     Loops are useful when processing collections
                     of objects or performing repeated calculations.
                 </p>
-
                 <p>
                     A <b>for</b> loop repeats instructions
                     a specified number of times.
                 </p>
-
-                <pre><code class="language-csharp">for (int i = 0; i < 5; i++)
+                <pre><code class="language-csharp">for (int i = 0; i &lt; 5; i++)
 {
     Debug.Log("Enemy " + i);
 }</code></pre>
-
                 <p>
                     This loop executes five times,
                     with <b>i</b> taking the values
                     0 through 4.
                 </p>
-
                 <p>
                     A <b>while</b> loop repeats as long
                     as its condition remains true.
                 </p>
-
                 <pre><code class="language-csharp">int lives = 3;
 
-while (lives > 0)
+while (lives &gt; 0)
 {
     Debug.Log("Lives remaining: " + lives);
     lives--;
 }</code></pre>
-
                 <p>
                     In Unity, we generally do not use
                     an ordinary loop to run the entire game.
@@ -7647,113 +7554,87 @@ while (lives > 0)
                     and automatically executes certain
                     methods during gameplay.
                 </p>
-
                 <hr />
-
                 <h2>Methods in C#</h2>
-
                 <p>
                     A <b>method</b> is a named block of code
                     that performs a particular task.
                     Methods allow developers to organize
                     and reuse functionality.
                 </p>
-
                 <p>
                     Methods in C# are similar to functions
                     in JavaScript, but C# method declarations
                     specify parameter types and return types.
                 </p>
-
                 <h3>Methods Without Parameters</h3>
-
                 <pre><code class="language-csharp">void SayHello()
 {
     Debug.Log("Welcome to the game!");
 }</code></pre>
-
                 <p>
                     The keyword <b>void</b> indicates
                     that the method does not return a value.
                 </p>
-
                 <p>
                     We execute the method by calling
                     it using its name:
                 </p>
-
                 <pre><code class="language-csharp">SayHello();</code></pre>
-
                 <h3>Methods with Parameters</h3>
-
                 <p>
                     A <b>parameter</b> allows a method
                     to receive information when it is called.
                 </p>
-
                 <p>
                     For example, the following method adds
                     a specified number of points to the
                     player's score:
                 </p>
-
                 <pre><code class="language-csharp">void AddScore(int points)
 {
     score += points;
 }</code></pre>
-
                 <p>
                     Assuming <b>score</b> is a field in
                     the surrounding class, we can call
                     the method with different arguments:
                 </p>
-
                 <pre><code class="language-csharp">AddScore(10);
 AddScore(5);</code></pre>
-
                 <p>
                     The first call adds 10 points,
                     while the second adds 5 points.
                 </p>
-
                 <h3>Methods That Return Values</h3>
-
                 <p>
                     Some methods calculate and return a value.
                     Instead of using <b>void</b>, the method
                     declares the type of value it returns.
                 </p>
-
                 <pre><code class="language-csharp">int CalculateScore(int coins)
 {
     return coins * 10;
 }</code></pre>
-
                 <p>
                     Calling <b>CalculateScore(5)</b>
                     returns the integer value 50.
                 </p>
-
                 <hr />
-
                 <h2>Classes and Objects in C#</h2>
-
                 <p>
                     C# is an <b>object-oriented programming language</b>.
                     One of its central concepts is the class.
                 </p>
-
                 <p>
                     A <b>class</b> defines a type of object,
                     including the data it stores and the
                     behavior it supports.
                 </p>
-
                 <p>
                     For example, we can define a class
                     that represents a player.
                 </p>
-
                 <pre><code class="language-csharp">public class Player
 {
     public string playerName = "Player1";
@@ -7764,50 +7645,40 @@ AddScore(5);</code></pre>
         health -= amount;
     }
 }</code></pre>
-
                 <p>
                     This class contains two <b>fields</b>,
                     which store information about the player:
                     <b>playerName</b> and <b>health</b>.
                 </p>
-
                 <p>
                     It also contains a method called
                     <b>TakeDamage()</b>, which decreases
                     the player's health.
                 </p>
-
                 <p>
                     An <b>object</b> is an instance
                     of a class. We can create an instance
                     using the <b>new</b> keyword:
                 </p>
-
                 <pre><code class="language-csharp">Player player1 = new Player();
 
 player1.TakeDamage(20);</code></pre>
-
                 <p>
                     The player's health decreases from
                     100 to 80.
                 </p>
-
                 <p>
                     This example uses a regular C# class.
                     In Unity, scripts that are attached
                     to GameObjects commonly inherit from
                     a special class called <b>MonoBehaviour</b>.
                 </p>
-
                 <hr />
-
                 <h2>C# Scripts in Unity</h2>
-
                 <p>
                     Unity uses C# scripts to define custom
                     behavior for GameObjects.
                 </p>
-
                 <p>
                     Scripts that inherit from
                     <b>MonoBehaviour</b> can be attached
@@ -7816,14 +7687,12 @@ player1.TakeDamage(20);</code></pre>
                     with Unity's systems and control
                     the object it is attached to.
                 </p>
-
                 <h3>Structure of a Unity Script</h3>
-
                 <pre><code class="language-csharp">using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class MovingObject : MonoBehaviour
 {
-    public float speed = 5f;
+    [SerializeField] private float speed = 5f;
 
     void Start()
     {
@@ -7835,82 +7704,65 @@ public class PlayerMovement : MonoBehaviour
         transform.position += Vector3.right * speed * Time.deltaTime;
     }
 }</code></pre>
-
                 <p>
                     This script moves a GameObject
                     continuously to the right.
                     Let us examine its structure.
                 </p>
-
                 <h3>Using Directives</h3>
-
                 <pre><code class="language-csharp">using UnityEngine;</code></pre>
-
                 <p>
                     The <b>using</b> directive allows
                     the script to refer to types from
                     the UnityEngine namespace without
                     writing their fully qualified names.
                 </p>
-
                 <p>
                     For example, we can write
                     <b>Vector3</b> instead of
                     <b>UnityEngine.Vector3</b>.
                 </p>
-
                 <h3>Class Declaration and Inheritance</h3>
-
-                <pre><code class="language-csharp">public class PlayerMovement : MonoBehaviour</code></pre>
-
+                <pre><code class="language-csharp">public class MovingObject : MonoBehaviour</code></pre>
                 <p>
                     This statement declares a class
-                    named <b>PlayerMovement</b>.
+                    named <b>MovingObject</b>.
                 </p>
-
                 <p>
                     The colon indicates that
-                    <b>PlayerMovement</b> inherits
+                    <b>MovingObject</b> inherits
                     from <b>MonoBehaviour</b>.
                 </p>
-
                 <p>
                     <b>Inheritance</b> allows a class
                     to build upon functionality provided
                     by another class.
                 </p>
-
                 <p>
                     MonoBehaviour provides integration
                     with Unity's component system and
                     lifecycle methods.
                 </p>
-
                 <p>
                     The script file should use the same
                     name as its MonoBehaviour class.
                     For example, this script should
-                    be saved as <b>PlayerMovement.cs</b>.
+                    be saved as <b>MovingObject.cs</b>.
                 </p>
-
                 <h3>Public and Private Fields</h3>
-
                 <p>
                     C# uses <b>access modifiers</b>
                     to control which parts of a program
                     can access members of a class.
                 </p>
-
-                <pre><code class="language-csharp">public float speed = 5f;
+                <pre><code class="language-csharp">[SerializeField] private float speed = 5f;
 private int score = 0;</code></pre>
-
                 <p>
                     A <b>public</b> field can be
                     accessed by other classes.
                     In Unity, supported public fields
                     are normally displayed in the Inspector.
                 </p>
-
                 <p>
                     A <b>private</b> field can only
                     be accessed directly within
@@ -7918,40 +7770,32 @@ private int score = 0;</code></pre>
                     Private fields are not displayed
                     in the Inspector by default.
                 </p>
-
                 <p>
                     Unity also provides the
                     <b>[SerializeField]</b> attribute,
                     which allows supported private fields
                     to be displayed in the Inspector.
                 </p>
-
                 <pre><code class="language-csharp">[SerializeField] private float speed = 5f;</code></pre>
-
                 <p>
                     This allows a developer to change
                     the movement speed through the
                     Inspector without making the field
                     publicly accessible to other classes.
                 </p>
-
                 <hr />
-
                 <h2>Unity's Script Lifecycle</h2>
-
                 <p>
                     Unity automatically calls certain
                     methods on active MonoBehaviour
                     components at particular points
                     during execution.
                 </p>
-
                 <p>
                     These methods allow developers
                     to initialize objects, update
                     behavior, and work with physics.
                 </p>
-
                 <table>
                     <thead>
                         <tr>
@@ -7983,119 +7827,93 @@ private int score = 0;</code></pre>
                         </tr>
                     </tbody>
                 </table>
-
                 <h3>Start()</h3>
-
                 <p>
                     <b>Start()</b> is commonly used
                     to initialize game behavior when
                     a script first becomes active.
                 </p>
-
                 <pre><code class="language-csharp">void Start()
 {
     Debug.Log("The game has started!");
 }</code></pre>
-
                 <p>
                     This message is printed once
                     when Start() executes.
                 </p>
-
                 <h3>Update()</h3>
-
                 <p>
                     <b>Update()</b> is called once
                     per rendered frame while the
                     script is enabled.
                 </p>
-
                 <p>
                     It is commonly used to read input,
                     update timers, and control behavior
                     that must be evaluated continuously.
                 </p>
-
                 <pre><code class="language-csharp">void Update()
 {
     Debug.Log("Updating the game.");
 }</code></pre>
-
                 <p>
                     Unlike an ordinary method,
                     we do not need to call
                     <b>Update()</b> ourselves.
                     Unity calls it automatically.
                 </p>
-
                 <p>
                     This example demonstrates how
                     Update() works, but developers
                     should avoid printing messages
                     every frame in finished games.
                 </p>
-
                 <h3>FixedUpdate()</h3>
-
                 <p>
                     <b>FixedUpdate()</b> is called
                     according to Unity's fixed
                     physics timestep rather than
                     once per rendered frame.
                 </p>
-
                 <p>
                     It is commonly used for physics
                     operations involving Rigidbody
                     components.
                 </p>
-
                 <p>
                     We will explore physics-based
                     movement and collision handling
                     in our upcoming Unity workshops.
                 </p>
-
                 <hr />
-
                 <h2>Positions, Movement, and Vectors</h2>
-
                 <p>
                     In our JavaScript games, we
                     represented object positions
                     using x and y coordinates.
                 </p>
-
                 <p>
                     Unity uses <b>vectors</b>
                     to represent positions,
                     directions, and movement.
                 </p>
-
                 <h3>Vector2</h3>
-
                 <p>
                     A <b>Vector2</b> contains
                     two components: x and y.
                 </p>
-
                 <pre><code class="language-csharp">Vector2 direction = new Vector2(1f, 0f);</code></pre>
-
                 <p>
                     This vector points to the right.
                     Its x component is 1, and
                     its y component is 0.
                 </p>
-
                 <h3>Vector3</h3>
-
                 <p>
                     A <b>Vector3</b> contains
                     three components: x, y, and z.
                 </p>
-
                 <pre><code class="language-csharp">Vector3 position = new Vector3(2f, 3f, 0f);</code></pre>
-
                 <p>
                     Even in a 2D Unity project,
                     GameObject Transforms use
@@ -8104,39 +7922,31 @@ private int score = 0;</code></pre>
                     kept unchanged in simple
                     2D games.
                 </p>
-
                 <h3>Transform and Position</h3>
-
                 <p>
                     Every GameObject has a
                     <b>Transform</b> component
                     that stores its position,
                     rotation, and scale.
                 </p>
-
                 <p>
                     A script can access the
                     Transform of the GameObject
                     it is attached to using
                     <b>transform</b>.
                 </p>
-
                 <pre><code class="language-csharp">transform.position = new Vector3(2f, 3f, 0f);</code></pre>
-
                 <p>
                     This statement sets the
                     GameObject's world position
                     to x = 2, y = 3, z = 0.
                 </p>
-
                 <p>
                     We can also change the
                     object's current position
                     by adding a vector:
                 </p>
-
                 <pre><code class="language-csharp">transform.position += Vector3.right;</code></pre>
-
                 <p>
                     <b>Vector3.right</b> represents
                     the direction (1, 0, 0).
@@ -8144,16 +7954,13 @@ private int score = 0;</code></pre>
                     position moves the object
                     one world unit to the right.
                 </p>
-
                 <h3>Movement and Delta Time</h3>
-
                 <p>
                     Recall that our JavaScript
                     games used delta time to
                     keep movement consistent
                     across different frame rates.
                 </p>
-
                 <p>
                     Unity provides
                     <b>Time.deltaTime</b>,
@@ -8161,14 +7968,11 @@ private int score = 0;</code></pre>
                     time between frame updates
                     in seconds.
                 </p>
-
                 <pre><code class="language-csharp">transform.position += Vector3.right * speed * Time.deltaTime;</code></pre>
-
                 <p>
                     This expression combines
                     three values:
                 </p>
-
                 <ul>
                     <li>
                         <b>Vector3.right:</b>
@@ -8185,7 +7989,6 @@ private int score = 0;</code></pre>
                         the elapsed frame time.
                     </li>
                 </ul>
-
                 <p>
                     For example, if the speed is
                     5 units per second and a frame
@@ -8193,18 +7996,14 @@ private int score = 0;</code></pre>
                     moves approximately 0.1 units
                     during that frame.
                 </p>
-
                 <p>
                     Multiplying by delta time
                     helps movement remain consistent
                     when the game runs at different
                     frame rates.
                 </p>
-
                 <hr />
-
                 <h2>Putting It Together: A Moving GameObject</h2>
-
                 <p>
                     The following script combines
                     several concepts we have introduced:
@@ -8212,7 +8011,6 @@ private int score = 0;</code></pre>
                     conditions, vectors, and
                     Unity's game loop.
                 </p>
-
                 <pre><code class="language-csharp">using UnityEngine;
 
 public class MovingObject : MonoBehaviour
@@ -8231,43 +8029,38 @@ public class MovingObject : MonoBehaviour
             transform.position += Vector3.left * speed * Time.deltaTime;
         }
 
-        if (transform.position.x >= 5f)
+        if (transform.position.x &gt;= 5f)
         {
             movingRight = false;
         }
-        else if (transform.position.x <= -5f)
+        else if (transform.position.x &lt;= -5f)
         {
             movingRight = true;
         }
     }
 }</code></pre>
-
                 <p>
                     This script causes a GameObject
                     to move horizontally between
                     two positions.
                 </p>
-
                 <p>
                     The <b>speed</b> field controls
                     how quickly the object moves.
                     The <b>movingRight</b> variable
                     stores its current direction.
                 </p>
-
                 <p>
                     During each frame, Update()
                     checks the current direction
                     and changes the object's position.
                 </p>
-
                 <p>
                     When the object reaches x = 5,
                     it changes direction and begins
                     moving left. When it reaches
                     x = -5, it begins moving right.
                 </p>
-
                 <p>
                     This demonstrates how a script
                     can use variables to represent
@@ -8275,7 +8068,6 @@ public class MovingObject : MonoBehaviour
                     to apply rules, and Unity's
                     game loop to update behavior.
                 </p>
-
                 <p>
                     In our JavaScript games, we
                     implemented similar behavior
@@ -8286,34 +8078,17 @@ public class MovingObject : MonoBehaviour
                     our C# script defines the
                     object's specific behavior.
                 </p>
-
                 <hr />
-
-                <h2>Preparing for Our Unity Lab</h2>
-
-                <p>
-                    In our next class, we will begin
-                    working directly in the Unity Editor
-                    to create a simple 2D game.
+                <h2>Connecting These Concepts to Our Unity Labs</h2>
+                <p>In <b>Unity Lab 1: Getting Started, Sprites, and Movement</b>, we will build the foundation of a
+                    small 2D game called <b>Balloon Popper!</b>. We will create the project and organize its folders,
+                    import the provided sprites, configure the gameplay scene, and implement horizontal player movement
+                    and automatic balloon movement. We will also prepare a Pin Prefab for use in the next lab.</p>
+                <p>In <b>Unity Lab 2: Player Interaction, Collision, and Game State</b>, we will continue with the same
+                    project and add shooting, projectile movement, collision detection, balloon popping, scoring, and
+                    player feedback. The goal is to connect individual objects and scripts into a working gameplay loop.
                 </p>
-
-                <p>
-                    We will explore the Unity interface,
-                    create and configure GameObjects,
-                    attach components, and write
-                    C# scripts to control player movement.
-                </p>
-
-                <p>
-                    In the following week, we will
-                    extend our game by introducing
-                    additional mechanics, including
-                    collisions, object interactions,
-                    and basic game state.
-                </p>
-
                 <h3>Concepts to Review</h3>
-
                 <ul>
                     <li>
                         How Unity differs from creating
@@ -8350,7 +8125,6 @@ public class MovingObject : MonoBehaviour
                         are used for movement.
                     </li>
                 </ul>
-
                 <p>
                     You do not need to memorize
                     every C# statement immediately.
@@ -8359,56 +8133,26 @@ public class MovingObject : MonoBehaviour
                     JavaScript game development
                     concepts we have already studied.
                 </p>
-
             </article>
-
         </section>
-
-
         <section class="main-section" id="Introduction_to_Unity_Editor">
-
             <br />
-
             <header><b>Introduction to the Unity Editor</b></header>
-
             <article>
-
                 <h2>Getting Started with Unity</h2>
-
-                <p>
-                    In our previous lesson, we introduced Unity's component-based
-                    architecture and examined how C# scripts can control the
-                    behavior of GameObjects.
-                </p>
-
-                <p>
-                    Today, we will begin working directly in the
-                    <b>Unity Editor</b> to create a simple 2D game.
-                    We will learn how to organize a project, create
-                    GameObjects, import sprites, attach components,
-                    and use C# scripts to implement movement.
-                </p>
-
-                <p>
-                    Our example will be a game called <b>Balloon Popper!</b>
-                    The player will eventually move around the screen,
-                    launch pins, and pop balloons to earn points.
-                </p>
-
-                <p>
-                    We will develop the game incrementally. Our first
-                    goal is to create the environment, add the player,
-                    and implement basic movement. Later, we will
-                    introduce projectiles, collisions, and scoring.
-                </p>
-
+                <p>We will apply Unity's component-based architecture and C# scripts to control GameObjects by creating
+                    the initial version of <b>Balloon Popper!</b>, a small 2D game. These notes introduce the editor and
+                    concepts needed for the first lab before moving into the mechanics added in the second lab.</p>
+                <p>In Lab 1, the project will include a gameplay scene, a background, a player that moves horizontally,
+                    a balloon that moves automatically, and a Pin Prefab prepared for the next stage of development.</p>
+                <p>In Lab 2, we will build on this foundation by implementing shooting, projectile movement, collisions,
+                    scoring, and feedback. The examples below explain the concepts behind the labs; the lab handouts
+                    remain the source for required steps and submission instructions.</p>
                 <h3>Our Game Assets</h3>
-
                 <p>
                     We will use several 2D image assets to create
                     the appearance of our game.
                 </p>
-
                 <table>
                     <thead>
                         <tr>
@@ -8420,10 +8164,6 @@ public class MovingObject : MonoBehaviour
                         <tr>
                             <td><b>Background</b></td>
                             <td>Provides the sky, clouds, ground, and scenery.</td>
-                        </tr>
-                        <tr>
-                            <td><b>Title Image</b></td>
-                            <td>Displays the game's title on a menu screen.</td>
                         </tr>
                         <tr>
                             <td><b>Player</b></td>
@@ -8439,31 +8179,24 @@ public class MovingObject : MonoBehaviour
                         </tr>
                     </tbody>
                 </table>
-
                 <p>
                     These images are called <b>assets</b>.
                     Unity allows us to import assets into a project
                     and use them to construct GameObjects.
                 </p>
-
                 <hr />
-
                 <h2>Creating a Unity Project</h2>
-
                 <p>
                     A <b>Unity project</b> contains the files and
                     resources needed to develop a game, including
                     scenes, scripts, images, audio, and project settings.
                 </p>
-
                 <p>
                     Projects are created and managed through
                     <b>Unity Hub</b>, which provides access to
                     installed Unity Editor versions and existing projects.
                 </p>
-
                 <h3>Creating a New 2D Project</h3>
-
                 <ol>
                     <li>Open <b>Unity Hub</b>.</li>
                     <li>Select <b>New Project</b>.</li>
@@ -8472,31 +8205,25 @@ public class MovingObject : MonoBehaviour
                     <li>Choose a location to save the project.</li>
                     <li>Click <b>Create Project</b>.</li>
                 </ol>
-
                 <p>
                     Unity will create the project and open it in
                     the Unity Editor. The first time a project
                     opens, Unity may take additional time to
                     import packages and initialize its resources.
                 </p>
-
                 <p>
                     The Universal 2D template provides a starting
                     configuration for 2D development using the
                     Universal Render Pipeline. Some Unity versions
                     also provide other 2D templates.
                 </p>
-
                 <hr />
-
                 <h2>Understanding the Unity Editor</h2>
-
                 <p>
                     The <b>Unity Editor</b> is the main development
                     environment used to create, organize, and test
                     Unity games.
                 </p>
-
                 <p>
                     It contains several windows, each serving
                     a different purpose. Understanding these
@@ -8504,9 +8231,7 @@ public class MovingObject : MonoBehaviour
                     frequently move between them while
                     developing our game.
                 </p>
-
                 <h3>Main Unity Editor Windows</h3>
-
                 <table>
                     <thead>
                         <tr>
@@ -8545,41 +8270,33 @@ public class MovingObject : MonoBehaviour
                         </tr>
                     </tbody>
                 </table>
-
                 <h3>Scene View vs. Game View</h3>
-
                 <p>
                     The <b>Scene View</b> is used to construct
                     and edit the game environment. Developers
                     can select objects, change their positions,
                     resize them, and organize the scene.
                 </p>
-
                 <p>
                     The <b>Game View</b> displays what the
                     game's camera sees. It represents the
                     player's view of the game during execution.
                 </p>
-
                 <p>
                     An object may be visible in the Scene View
                     but not in the Game View if it is outside
                     the camera's visible area.
                 </p>
-
                 <h3>Hierarchy vs. Project Window</h3>
-
                 <p>
                     The <b>Hierarchy</b> contains GameObjects
                     that exist in the currently open scenes.
                 </p>
-
                 <p>
                     The <b>Project Window</b> contains the assets
                     stored in the Unity project, including images,
                     scripts, scenes, and prefabs.
                 </p>
-
                 <p>
                     For example, an image imported into the
                     project appears in the Project Window.
@@ -8587,120 +8304,95 @@ public class MovingObject : MonoBehaviour
                     Unity creates a GameObject that appears
                     in the Hierarchy.
                 </p>
-
                 <h3>The Inspector</h3>
-
                 <p>
                     The <b>Inspector</b> displays the properties
                     and components of the currently selected
                     object or asset.
                 </p>
-
                 <p>
                     For example, selecting a GameObject in
                     the Hierarchy allows us to examine
                     its Transform, Sprite Renderer,
                     and other attached components.
                 </p>
-
                 <p>
                     The Inspector is also where we can
                     adjust values exposed by C# scripts,
                     such as a player's movement speed.
                 </p>
-
                 <hr />
-
                 <h2>Scenes and GameObjects</h2>
-
                 <p>
                     Recall that a <b>Scene</b> contains
                     the GameObjects that make up a particular
                     part of a game.
                 </p>
-
                 <p>
                     In our Balloon Popper game, we will
                     initially create a single scene
                     containing the background, player,
                     and camera.
                 </p>
-
                 <h3>Saving a Scene</h3>
-
                 <p>
                     Unity projects can contain multiple scenes.
                     Each scene is saved as an asset in the project.
                 </p>
-
                 <p>
                     To save the current scene, select
                     <b>File &gt; Save</b> or use the
                     appropriate keyboard shortcut.
                 </p>
-
                 <p>
                     We can name our gameplay scene
                     <b>GameScene</b>.
                 </p>
-
                 <p>
                     Saving a scene preserves the arrangement
                     of GameObjects and their serialized
                     component settings.
                 </p>
-
                 <h3>Creating GameObjects</h3>
-
                 <p>
                     A <b>GameObject</b> is the basic
                     building block of a Unity scene.
                 </p>
-
                 <p>
                     GameObjects can be created using
                     the Hierarchy menu, the GameObject
                     menu, or by dragging compatible
                     assets into the scene.
                 </p>
-
                 <p>
                     A newly created empty GameObject
                     contains a Transform component,
                     but it does not automatically
                     display a graphic.
                 </p>
-
                 <p>
                     To display an image, the GameObject
                     needs a suitable rendering component,
                     such as a Sprite Renderer.
                 </p>
-
                 <h3>Renaming GameObjects</h3>
-
                 <p>
                     GameObjects should have descriptive
                     names that identify their purpose.
                 </p>
-
                 <p>
                     For example, we might use
                     <b>Player</b>, <b>Background</b>,
                     <b>Balloon</b>, and <b>Pin</b>
                     instead of generic names.
                 </p>
-
                 <p>
                     Descriptive names make the Hierarchy
                     easier to navigate and help developers
                     identify objects when debugging.
                 </p>
-
                 <hr />
-
                 <h2>Understanding the Transform Component</h2>
-
                 <p>
                     Every GameObject contains a
                     <b>Transform</b> component.
@@ -8708,7 +8400,6 @@ public class MovingObject : MonoBehaviour
                     object's position, rotation,
                     and scale.
                 </p>
-
                 <table>
                     <thead>
                         <tr>
@@ -8731,42 +8422,34 @@ public class MovingObject : MonoBehaviour
                         </tr>
                     </tbody>
                 </table>
-
                 <h3>Position</h3>
-
                 <p>
                     Unity uses coordinates to determine
                     the location of objects in a scene.
                 </p>
-
                 <p>
                     In a typical 2D game, the
                     <b>x-axis</b> represents horizontal
                     movement, while the <b>y-axis</b>
                     represents vertical movement.
                 </p>
-
                 <ul>
                     <li><b>Positive x:</b> Move right.</li>
                     <li><b>Negative x:</b> Move left.</li>
                     <li><b>Positive y:</b> Move up.</li>
                     <li><b>Negative y:</b> Move down.</li>
                 </ul>
-
                 <p>
                     Unity also includes a z coordinate.
                     In our simple 2D game, most gameplay
                     objects will remain on the same
                     z plane.
                 </p>
-
                 <h3>Rotation</h3>
-
                 <p>
                     Rotation determines which direction
                     an object faces.
                 </p>
-
                 <p>
                     In 2D games, rotation commonly
                     occurs around the z-axis.
@@ -8774,14 +8457,11 @@ public class MovingObject : MonoBehaviour
                     can change the direction in which
                     its sprite appears to point.
                 </p>
-
                 <h3>Scale</h3>
-
                 <p>
                     Scale controls the relative size
                     of a GameObject.
                 </p>
-
                 <p>
                     A scale of (1, 1, 1) represents
                     the object's default scale.
@@ -8789,7 +8469,6 @@ public class MovingObject : MonoBehaviour
                     makes the object larger along
                     that axis.
                 </p>
-
                 <p>
                     When possible, we should configure
                     sprite import settings and
@@ -8797,26 +8476,20 @@ public class MovingObject : MonoBehaviour
                     instead of relying on extreme
                     Transform scale values.
                 </p>
-
                 <hr />
-
                 <h2>Importing and Using Sprites</h2>
-
                 <p>
                     A <b>sprite</b> is a 2D graphic
                     that can represent a character,
                     object, background, or other
                     visual element.
                 </p>
-
                 <p>
                     Unity allows us to import image
                     files into the project and use
                     them as sprites.
                 </p>
-
                 <h3>Importing Image Assets</h3>
-
                 <ol>
                     <li>Locate the <b>Project Window</b>.</li>
                     <li>Create a folder named <b>Sprites</b> inside Assets.</li>
@@ -8825,24 +8498,19 @@ public class MovingObject : MonoBehaviour
                     <li>Set <b>Texture Type</b> to <b>Sprite (2D and UI)</b>, if needed.</li>
                     <li>Click <b>Apply</b> after changing import settings.</li>
                 </ol>
-
                 <p>
                     The imported images can now be
                     used to create visible GameObjects.
                 </p>
-
                 <h3>Sprite Renderer</h3>
-
                 <p>
                     The <b>Sprite Renderer</b> component
                     displays a sprite in the scene.
                 </p>
-
                 <p>
                     It contains several useful
                     properties, including:
                 </p>
-
                 <ul>
                     <li>
                         <b>Sprite:</b> Determines which
@@ -8867,20 +8535,16 @@ public class MovingObject : MonoBehaviour
                         within the same sorting layer.
                     </li>
                 </ul>
-
                 <h3>Sorting Sprites</h3>
-
                 <p>
                     Multiple sprites may overlap
                     in a 2D game.
                 </p>
-
                 <p>
                     Unity uses sorting settings
                     to help determine which sprites
                     appear in front of others.
                 </p>
-
                 <p>
                     For example, our background
                     should appear behind the player.
@@ -8888,7 +8552,6 @@ public class MovingObject : MonoBehaviour
                     lower <b>Order in Layer</b>
                     than the player.
                 </p>
-
                 <p>
                     If the background has an order
                     of -10 and the player has an
@@ -8896,32 +8559,25 @@ public class MovingObject : MonoBehaviour
                     appear in front when both use
                     the same Sorting Layer.
                 </p>
-
                 <hr />
-
                 <h2>Adding Components to GameObjects</h2>
-
                 <p>
                     Unity uses components to define
                     the properties and behavior
                     of GameObjects.
                 </p>
-
                 <p>
                     We can add components through
                     the Inspector using the
                     <b>Add Component</b> button.
                 </p>
-
                 <p>
                     For example, a player GameObject
                     may contain a Sprite Renderer
                     to display its appearance and
                     a C# script to control movement.
                 </p>
-
                 <h3>Common Components for 2D Games</h3>
-
                 <table>
                     <thead>
                         <tr>
@@ -8956,14 +8612,12 @@ public class MovingObject : MonoBehaviour
                         </tr>
                     </tbody>
                 </table>
-
                 <p>
                     Components can be combined
                     to create more complex objects.
                     We do not need every component
                     on every GameObject.
                 </p>
-
                 <p>
                     For example, our background
                     does not need physics components,
@@ -8971,109 +8625,94 @@ public class MovingObject : MonoBehaviour
                     may need them when we introduce
                     collision interactions.
                 </p>
-
                 <hr />
 
-                <h2>Creating and Attaching C# Scripts</h2>
 
-                <p>
-                    In Unity, a C# script can be
-                    attached to a GameObject
-                    as a component.
-                </p>
 
-                <p>
-                    The script defines custom behavior,
-                    such as moving a player, launching
-                    a projectile, or updating a score.
-                </p>
 
-                <h3>Creating a Script</h3>
 
-                <ol>
-                    <li>Create a folder named <b>Scripts</b> in the Project Window.</li>
-                    <li>Right-click inside the folder.</li>
-                    <li>Select <b>Create &gt; Scripting &gt; MonoBehaviour Script</b>, or the equivalent option in your
-                        Unity version.</li>
-                    <li>Name the script <b>PlayerMovement</b>.</li>
-                    <li>Open the script in your configured code editor.</li>
-                </ol>
 
-                <p>
-                    The file should be named
-                    <b>PlayerMovement.cs</b>,
-                    matching the MonoBehaviour
-                    class it contains.
-                </p>
 
-                <h3>Attaching a Script</h3>
 
-                <p>
-                    Creating a script does not
-                    automatically attach it to
-                    a GameObject.
-                </p>
 
-                <p>
-                    To attach the script, select
-                    the <b>Player</b> GameObject
-                    and either drag the script
-                    into the Inspector or use
-                    <b>Add Component</b>.
-                </p>
 
-                <p>
-                    Once attached, Unity can
-                    execute the script's lifecycle
-                    methods while the GameObject
-                    and component are active.
-                </p>
 
-                <hr />
 
-                <h2>Implementing Basic Player Movement</h2>
 
-                <p>
-                    In our JavaScript games,
-                    we updated a player's
-                    x and y coordinates
-                    in response to keyboard input.
-                </p>
 
-                <p>
-                    We can implement similar
-                    behavior in Unity using
-                    a C# script.
-                </p>
 
-                <p>
-                    Our player will move
-                    horizontally using the
-                    left and right arrow keys
-                    or the A and D keys.
-                </p>
 
-                <h3>Reading Keyboard Input</h3>
 
-                <p>
-                    Unity provides an
-                    <b>Input System</b>
-                    that allows scripts
-                    to read keyboard,
-                    mouse, and controller input.
-                </p>
 
-                <p>
-                    The following example uses
-                    Unity's newer Input System
-                    and checks whether certain
-                    keys are currently pressed.
-                </p>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <h2>Player Input in Unity</h2>
+                <p><b>Input</b> is information received from a device such as a keyboard, mouse, or controller. In our
+                    earlier JavaScript games, we responded to browser keyboard events. In Unity, we can use the newer
+                    <b>Input System</b> to read the current keyboard state. For Lab 1, the player moves horizontally
+                    using the left and right arrow keys or the A and D keys.</p>
+                <p>The examples in this section use <b>UnityEngine.InputSystem</b>. The Input System package must be
+                    installed and enabled in the project's input settings. Do not mix these examples with the older
+                    <b>Input.GetKey()</b> or <b>Input.GetButton()</b> API unless the project is specifically configured
+                    to support the legacy input system.</p>
+                <h3>Held Keys vs. Single Key Presses</h3>
+                <p>Different actions need different kinds of input checks. A held-key check is useful when an action
+                    should continue while the player holds a key. A single-press check is useful when an action should
+                    happen once when the key is pressed.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Property</th>
+                            <th>Behavior</th>
+                            <th>Appropriate Use</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><b>isPressed</b></td>
+                            <td>True while a key is held down.</td>
+                            <td>Continuous movement.</td>
+                        </tr>
+                        <tr>
+                            <td><b>wasPressedThisFrame</b></td>
+                            <td>True during the frame when the key becomes pressed.</td>
+                            <td>Firing one projectile per key press.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>The following is a small teaching example. It demonstrates how to read keyboard input; it is <b>not
+                        an additional script required for Lab 1</b>.</p>
                 <pre><code class="language-csharp">using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerMovement : MonoBehaviour
+public class InputExample : MonoBehaviour
 {
     void Update()
     {
@@ -9082,60 +8721,62 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
-        if (Keyboard.current.rightArrowKey.isPressed)
-        {
-            Debug.Log("Moving right");
-        }
-
-        if (Keyboard.current.leftArrowKey.isPressed)
+        if (Keyboard.current.aKey.isPressed)
         {
             Debug.Log("Moving left");
         }
+
+        if (Keyboard.current.spaceKey.wasPressedThisFrame)
+        {
+            Debug.Log("Shoot once");
+        }
     }
 }</code></pre>
-
-                <p>
-                    <b>Keyboard.current</b>
-                    provides access to the
-                    current keyboard device.
-                </p>
-
-                <p>
-                    The <b>isPressed</b>
-                    property indicates whether
-                    a particular key is
-                    currently being held down.
-                </p>
-
-                <p>
-                    We use <b>Update()</b>
-                    because keyboard input
-                    should be checked
-                    during frame updates.
-                </p>
-
-                <p>
-                    This example requires the
-                    Input System package to be
-                    installed and enabled in
-                    the project's input settings.
-                </p>
-
-                <h3>Moving the Player</h3>
-
-                <p>
-                    We can extend the script
-                    to change the player's
-                    position when a movement
-                    key is pressed.
-                </p>
-
+                <p><b>Keyboard.current</b> provides access to the current keyboard device. The null check prevents the
+                    script from reading key properties when no keyboard is available. <b>Update()</b> runs once per
+                    frame, so it is a suitable place to check the current input state.</p>
+                <hr />
+                <h2>Player Movement and Delta Time</h2>
+                <p>Before writing the movement script, identify how input should affect the player's position. For
+                    horizontal movement, we can represent direction with a number:</p>
+                <ul>
+                    <li><b>-1:</b> move left.</li>
+                    <li><b>0:</b> remain still.</li>
+                    <li><b>1:</b> move right.</li>
+                </ul>
+                <p>The movement direction is multiplied by the player's speed and by <b>Time.deltaTime</b>, then used to
+                    update the x-coordinate of the Player GameObject. <b>Time.deltaTime</b> represents the time elapsed
+                    since the previous frame. Multiplying by it helps movement remain consistent when the frame rate
+                    changes.</p>
+                <p>The player should also remain inside the visible play area. <b>Mathf.Clamp()</b> limits the
+                    x-coordinate to a minimum and maximum value. The correct boundary values depend on the camera view
+                    and the width and scale of the player sprite, so the example values below may need to be adjusted
+                    for your scene.</p>
+                <h3>Creating and Attaching the PlayerMovement Script</h3>
+                <p>Once the intended input and movement behavior is clear, implement it in a C# script. Unity scripts
+                    can be attached to GameObjects as components to define custom behavior.</p>
+                <ol>
+                    <li>Create a folder named <b>Scripts</b> in the Project Window if it does not already exist.</li>
+                    <li>Right-click inside the folder.</li>
+                    <li>Select <b>Create &gt; Scripting &gt; MonoBehaviour Script</b>, or the equivalent option in your
+                        Unity version.</li>
+                    <li>Name the script <b>PlayerMovement</b>.</li>
+                    <li>Open the script in your configured code editor.</li>
+                </ol>
+                <p>The file should be named <b>PlayerMovement.cs</b>, matching the <b>PlayerMovement</b> class it
+                    contains.</p>
+                <h3>Implementing PlayerMovement.cs</h3>
+                <p>This script uses the keyboard input concepts introduced above to move the player left and right. The
+                    <b>[SerializeField]</b> attributes let Unity show the private speed and boundary fields in the
+                    Inspector, where you can adjust them without making the fields public.</p>
                 <pre><code class="language-csharp">using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 5f;
+    [SerializeField] private float speed = 5f;
+    [SerializeField] private float leftBoundary = -7f;
+    [SerializeField] private float rightBoundary = 7f;
 
     void Update()
     {
@@ -9146,104 +8787,51 @@ public class PlayerMovement : MonoBehaviour
 
         float direction = 0f;
 
-        if (Keyboard.current.rightArrowKey.isPressed ||
-            Keyboard.current.dKey.isPressed)
-        {
-            direction = 1f;
-        }
-        else if (Keyboard.current.leftArrowKey.isPressed ||
-                 Keyboard.current.aKey.isPressed)
+        if (Keyboard.current.aKey.isPressed ||
+            Keyboard.current.leftArrowKey.isPressed)
         {
             direction = -1f;
         }
+        else if (Keyboard.current.dKey.isPressed ||
+                 Keyboard.current.rightArrowKey.isPressed)
+        {
+            direction = 1f;
+        }
 
-        transform.position += Vector3.right * direction * speed * Time.deltaTime;
+        Vector3 position = transform.position;
+        position.x += direction * speed * Time.deltaTime;
+        position.x = Mathf.Clamp(position.x, leftBoundary, rightBoundary);
+        transform.position = position;
     }
 }</code></pre>
-
-                <p>
-                    This script introduces
-                    a variable named
-                    <b>direction</b>,
-                    which represents the
-                    player's horizontal
-                    movement direction.
+                <p><b>Keyboard.current</b> accesses the keyboard, and the <b>isPressed</b> checks allow movement to
+                    continue while a key is held. The <b>direction</b> variable records whether the player should move
+                    left, right, or stay still. The script then updates the x-coordinate using <b>speed</b> and
+                    <b>Time.deltaTime</b>, and <b>Mathf.Clamp()</b> keeps the player between the configured boundaries.
                 </p>
-
-                <ul>
-                    <li><b>1:</b> Move right.</li>
-                    <li><b>-1:</b> Move left.</li>
-                    <li><b>0:</b> Do not move.</li>
-                </ul>
-
-                <p>
-                    The script checks
-                    the keyboard input
-                    and updates the
-                    direction variable.
-                </p>
-
-                <p>
-                    It then uses the
-                    direction, speed,
-                    and delta time to
-                    update the player's
-                    position.
-                </p>
-
-                <p>
-                    This example directly changes
-                    the Transform position.
-                    It is suitable for demonstrating
-                    basic movement before we
-                    introduce physics-based movement.
-                </p>
-
-                <h3>Changing Speed in the Inspector</h3>
-
-                <p>
-                    Notice that the
-                    <b>speed</b> field
-                    is declared public.
-                </p>
-
-                <pre><code class="language-csharp">public float speed = 5f;</code></pre>
-
-                <p>
-                    When the script is attached
-                    to a GameObject, Unity
-                    displays this field
-                    in the Inspector.
-                </p>
-
-                <p>
-                    This allows us to experiment
-                    with different movement speeds
-                    without changing the source code.
-                </p>
-
-                <p>
-                    For example, increasing
-                    the speed from 5 to 8
-                    makes the player move
-                    faster across the screen.
-                </p>
-
-
+                <p>The values <b>-7</b> and <b>7</b> are examples, not universal screen boundaries. After attaching the
+                    script, adjust <b>Speed</b>, <b>Left Boundary</b>, and <b>Right Boundary</b> in the Inspector so
+                    they fit your camera view and player sprite.</p>
+                <h3>Attaching the Script</h3>
+                <p>Creating a script does not automatically attach it to a GameObject. Select the <b>Player</b>
+                    GameObject and either drag <b>PlayerMovement.cs</b> into the Inspector or choose <b>Add
+                        Component</b> and select the script. Once attached, Unity can execute the script's lifecycle
+                    methods while the GameObject and component are active.</p>
+                <h3>Adjusting Movement Settings in the Inspector</h3>
+                <p>The movement settings use <b>[SerializeField]</b> with <b>private</b> fields:</p>
+                <pre><code class="language-csharp">[SerializeField] private float speed = 5f;
+[SerializeField] private float leftBoundary = -7f;
+[SerializeField] private float rightBoundary = 7f;</code></pre>
+                <p><b>[SerializeField]</b> tells Unity to show these private fields in the Inspector and save their
+                    values with the scene or prefab. This lets you adjust the player's speed and movement boundaries
+                    without making the fields public or changing the script's code. For example, increasing the speed
+                    from 5 to 8 makes the player move faster across the screen. Adjust the boundary values to fit the
+                    camera view and the player's size.</p>
                 <h3>Implementing Automatic Balloon Movement</h3>
-
-                <p>
-                    Unlike the player, the balloon moves automatically without
-                    keyboard input. We can use a C# script to move the balloon
-                    horizontally and reverse its direction when it reaches
-                    the edges of the play area.
+                <p>Unlike the player, the balloon moves automatically without keyboard input. We can use a C# script to
+                    move the balloon horizontally and reverse its direction when it reaches the edges of the play area.
                 </p>
-
-                <p>
-                    Create a script named <b>BalloonMovement.cs</b> and
-                    attach it to the Balloon GameObject.
-                </p>
-
+                <p>Create a script named <b>BalloonMovement.cs</b> and attach it to the Balloon GameObject.</p>
                 <pre><code class="language-csharp">using UnityEngine;
 
 public class BalloonMovement : MonoBehaviour
@@ -9261,12 +8849,12 @@ public class BalloonMovement : MonoBehaviour
         Vector3 position = transform.position;
         position.x += direction * speed * Time.deltaTime;
 
-        if (position.x >= rightBoundary)
+        if (position.x &gt;= rightBoundary)
         {
             position.x = rightBoundary;
             movingRight = false;
         }
-        else if (position.x <= leftBoundary)
+        else if (position.x &lt;= leftBoundary)
         {
             position.x = leftBoundary;
             movingRight = true;
@@ -9275,38 +8863,17 @@ public class BalloonMovement : MonoBehaviour
         transform.position = position;
     }
 }</code></pre>
-
-                <p>
-                    The <b>movingRight</b> variable stores the balloon's
-                    current direction. When the balloon reaches the right
-                    boundary, the direction changes to left. When it
-                    reaches the left boundary, it changes back to right.
-                </p>
-
-                <p>
-                    The conditional expression
-                    <b>movingRight ? 1f : -1f</b> selects a movement
-                    direction based on the boolean value.
-                    It is a shorter way to write an if/else statement.
-                </p>
-
-                <p>
-                    The <b>speed</b>, <b>leftBoundary</b>, and
-                    <b>rightBoundary</b> fields can be adjusted in
-                    the Inspector. The boundary values should match
-                    the visible play area and account for the balloon's size.
-                </p>
-
-                <p>
-                    Press Play to confirm that the balloon moves
-                    continuously from side to side without leaving
-                    the intended play area.
-                </p>
-
+                <p>The <b>movingRight</b> variable stores the balloon's current direction. When the balloon reaches the
+                    right boundary, the direction changes to left. When it reaches the left boundary, it changes back to
+                    right.</p>
+                <p>The conditional expression <b>movingRight ? 1f : -1f</b> selects a direction based on the boolean
+                    value. It is a shorter way to write an if/else statement.</p>
+                <p>The <b>speed</b>, <b>leftBoundary</b>, and <b>rightBoundary</b> fields can be adjusted in the
+                    Inspector. The boundary values should match the visible play area and account for the balloon's
+                    size. Press Play to confirm that the balloon moves continuously from side to side without leaving
+                    the intended play area.</p>
                 <hr />
-
                 <h2>Understanding Prefabs</h2>
-
                 <p>
                     A <b>Prefab</b> is a
                     reusable GameObject
@@ -9314,23 +8881,19 @@ public class BalloonMovement : MonoBehaviour
                     an object's components
                     and configuration.
                 </p>
-
                 <p>
                     Prefabs are particularly
                     useful for objects that
                     appear multiple times
                     during gameplay.
                 </p>
-
                 <p>
                     In Balloon Popper,
                     we will eventually
                     use prefabs to create
                     pins and balloons.
                 </p>
-
                 <h3>Creating a Prefab</h3>
-
                 <p>
                     A common way to create
                     a Prefab is to configure
@@ -9339,34 +8902,25 @@ public class BalloonMovement : MonoBehaviour
                     Hierarchy into a folder
                     in the Project Window.
                 </p>
-
                 <p>
                     For example, we can:
                 </p>
-
                 <ol>
-                    <li>Create a Balloon GameObject.</li>
-                    <li>Assign its sprite.</li>
-                    <li>Configure its Transform and other components.</li>
-                    <li>Create a folder named <b>Prefabs</b>.</li>
-                    <li>Drag the Balloon GameObject into that folder.</li>
+                    <li>Create and configure the <b>Pin</b> GameObject.</li>
+                    <li>Assign the required sprite and configure its Transform and components.</li>
+                    <li>Create a folder named <b>Prefabs</b> in the Project window, if one does not already exist.</li>
+                    <li>Drag the Pin GameObject from the Hierarchy into the Prefabs folder.</li>
                 </ol>
-
                 <p>
-                    Unity creates a Prefab
-                    asset that can be reused
-                    to create additional
-                    balloon instances.
+                    Unity creates a <b>Pin Prefab</b> asset. In Lab 1, we prepare this Prefab so that
+                    Lab 2 can create pin projectiles during gameplay.
                 </p>
-
                 <h3>Instantiating Prefabs</h3>
-
                 <p>
                     To <b>instantiate</b>
                     an object means to create
                     an instance of it.
                 </p>
-
                 <p>
                     Unity provides the
                     <b>Instantiate()</b>
@@ -9374,52 +8928,37 @@ public class BalloonMovement : MonoBehaviour
                     copies of objects
                     during gameplay.
                 </p>
-
-                <pre><code class="language-csharp">Instantiate(balloonPrefab, transform.position, Quaternion.identity);</code></pre>
-
+                <pre><code class="language-csharp">Instantiate(pinPrefab, transform.position, Quaternion.identity);</code></pre>
                 <p>
                     This example creates
-                    a copy of a referenced
-                    balloon Prefab at the
-                    current object's position
-                    with no additional rotation.
+                    a copy of the referenced
+                    Pin Prefab at the current
+                    object's position with no additional rotation.
                 </p>
-
                 <p>
-                    The variable
-                    <b>balloonPrefab</b>
-                    must first be declared
-                    and assigned a Prefab
-                    reference.
+                    The variable <b>pinPrefab</b> must first be declared and assigned a reference
+                    to the Pin Prefab, such as through an Inspector field marked with
+                    <b>[SerializeField]</b>.
                 </p>
-
                 <p>
-                    We will use this
-                    concept when implementing
-                    projectiles and additional
-                    game objects in our
-                    next Unity lab.
+                    This is the idea behind the Pin Prefab prepared in Lab 1 and used to create
+                    projectiles in Lab 2. The balloon is a separate GameObject; it is not the
+                    Prefab prepared for Lab 1.
                 </p>
-
                 <hr />
-
                 <h2>Testing and Debugging in Unity</h2>
-
                 <p>
                     Unity allows developers
                     to test their games
                     directly inside the Editor
                     using <b>Play mode</b>.
                 </p>
-
                 <h3>Entering Play Mode</h3>
-
                 <p>
                     Click the <b>Play</b>
                     button in the Toolbar
                     to run the game.
                 </p>
-
                 <p>
                     While the game is running,
                     Unity executes scripts,
@@ -9427,12 +8966,10 @@ public class BalloonMovement : MonoBehaviour
                     displays the results
                     in the Game View.
                 </p>
-
                 <p>
                     Click Play again to
                     exit Play mode.
                 </p>
-
                 <p>
                     Changes made to scene
                     objects during Play mode
@@ -9440,24 +8977,19 @@ public class BalloonMovement : MonoBehaviour
                     and revert when Play
                     mode ends.
                 </p>
-
                 <h3>Using the Console</h3>
-
                 <p>
                     The <b>Console</b>
                     displays messages,
                     warnings, and errors.
                 </p>
-
                 <p>
                     Developers can use
                     <b>Debug.Log()</b>
                     to display information
                     while testing.
                 </p>
-
                 <pre><code class="language-csharp">Debug.Log("Player movement script is running.");</code></pre>
-
                 <p>
                     This is useful for
                     confirming that a script
@@ -9465,9 +8997,7 @@ public class BalloonMovement : MonoBehaviour
                     a particular condition
                     has been reached.
                 </p>
-
                 <h3>Common Problems to Check</h3>
-
                 <table>
                     <thead>
                         <tr>
@@ -9500,7 +9030,6 @@ public class BalloonMovement : MonoBehaviour
                         </tr>
                     </tbody>
                 </table>
-
                 <p>
                     When something does not work,
                     begin by checking the Console,
@@ -9508,11 +9037,8 @@ public class BalloonMovement : MonoBehaviour
                     components attached to
                     the relevant GameObject.
                 </p>
-
                 <hr />
-
                 <h2>Connecting the Editor to Game Design</h2>
-
                 <p>
                     Unity provides the tools
                     needed to implement
@@ -9522,13 +9048,11 @@ public class BalloonMovement : MonoBehaviour
                     and interactions that
                     create gameplay.
                 </p>
-
                 <p>
                     Consider how our
                     Balloon Popper game
                     will eventually work.
                 </p>
-
                 <table>
                     <thead>
                         <tr>
@@ -9567,7 +9091,6 @@ public class BalloonMovement : MonoBehaviour
                         </tr>
                     </tbody>
                 </table>
-
                 <p>
                     These systems work together
                     to create the game's
@@ -9578,70 +9101,41 @@ public class BalloonMovement : MonoBehaviour
                     receives feedback,
                     and earns points.
                 </p>
-
                 <hr />
-
-                <h2>In-Class Activity 7: Unity Lab 1</h2>
-
+                <h2>Review: In-Class Activity 7 — Unity Lab 1</h2>
                 <p>
-                    In today's lab,
-                    we will begin creating
-                    our Balloon Popper game
-                    using Unity.
+                    In Lab 1, we created the foundation of <b>Balloon Popper!</b> in Unity.
+                    We organized the project, imported the provided assets, created the
+                    gameplay scene, configured GameObjects and components, and wrote C#
+                    scripts for movement.
                 </p>
-
+                <ul>
+                    <li>The player moves horizontally using keyboard input.</li>
+                    <li>The balloon moves automatically and reverses direction at the screen boundaries.</li>
+                    <li>The player and balloon are separate GameObjects with their own behavior.</li>
+                    <li>The Pin Prefab is saved so that the game can create projectile instances in Lab 2.</li>
+                </ul>
                 <p>
-                    We will focus on
-                    becoming comfortable
-                    with the Unity Editor
-                    and implementing the
-                    game's initial setup
-                    and player movement.
+                    Keep the same project for Lab 2. Do not start a new project; the next lab
+                    adds mechanics to the work already completed. Refer to the
+                    <b>In-Class Activity 7: Unity Lab 1</b> handout for the full requirements.
                 </p>
-
-                <p>
-                    The lab will involve
-                    creating a Unity project,
-                    importing the provided
-                    assets, configuring
-                    GameObjects and components,
-                    and writing a C# script
-                    to control the player.
-                </p>
-
-                <p>
-                    We will build the
-                    initial game together
-                    before you continue
-                    working on the
-                    activity independently.
-                </p>
-
-                <p>
-                    Refer to the
-                    <b>In-Class Activity 7:
-                        Unity Lab 1</b>
-                    instructions for the
-                    complete requirements
-                    and submission details.
-                </p>
-
             </article>
-
         </section>
-
+        <hr/>
         <section class="main-section" id="Unity_Game_Development_and_Publishing">
             <br />
             <header><b>Unity Game Development and Publishing</b></header>
             <article>
                 <h2>Unity Game Development Concepts</h2>
-                <p>Last week, we created the first version of <b>Balloon Popper!</b> using a scene, sprites,
-                    GameObjects, components, and C# scripts. The player moves horizontally, and a balloon moves
-                    automatically. Today we will learn how to connect these objects through <b>input, projectiles,
-                        physics, collisions, interactions, and game state</b>.</p>
-                <p>On October 29, we will implement these mechanics together, test the complete game, and publish it as
-                    a playable browser game using <b>Unity WebGL</b> and <b>itch.io</b>.</p>
-
+                <p>In Unity Lab 1, we built the initial version of <b>Balloon
+                        Popper!</b> using a scene, sprites, GameObjects, components, and C# scripts. The player moves
+                    horizontally, the balloon moves automatically, and the Pin Prefab is prepared for use as a
+                    projectile. In Unity Lab 2, we extend this same project with <b>shooting, projectile movement,
+                        collisions, object interactions, scoring, and player feedback</b>.</p>
+                <p>After implementing and testing the required mechanics, we will publish the completed lab project as a
+                    playable browser game using Unity's <b>Web build support</b> and <b>itch.io</b>. Follow the Lab 2
+                    handout for the current submission steps and requirements.</p>
                 <h3>From Movement to a Gameplay Loop</h3>
                 <p>Our initial scene has moving objects, but movement alone does not create the complete game. We need
                     rules that connect the player's actions to consequences and feedback.</p>
@@ -9654,111 +9148,86 @@ public class BalloonMovement : MonoBehaviour
                 </ol>
                 <p>This is the game's <b>core gameplay loop</b>: action, interaction, feedback, and repetition.</p>
 
-                <hr />
-                <h2>Player Input in Unity</h2>
-                <p><b>Input</b> refers to information received from devices such as keyboards, mice, and controllers.
-                    Our earlier JavaScript games listened for browser keyboard events. In Unity, we can use the <b>Input
-                        System</b> to read the current keyboard state.</p>
-                <p>The examples below use <b>UnityEngine.InputSystem</b>. This requires the Input System package to be
-                    installed and enabled. Do not mix these examples with the older <b>Input.GetKey()</b> or
-                    <b>Input.GetButton()</b> API unless your project is specifically configured to support the legacy
-                    input system.
-                </p>
-                <h3>Held Keys vs. Single Key Presses</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Property</th>
-                            <th>Behavior</th>
-                            <th>Appropriate Use</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><b>isPressed</b></td>
-                            <td>True while a key is held down.</td>
-                            <td>Continuous player movement.</td>
-                        </tr>
-                        <tr>
-                            <td><b>wasPressedThisFrame</b></td>
-                            <td>True during the frame when the key becomes pressed.</td>
-                            <td>One projectile per key press.</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <pre><code class="language-csharp">using UnityEngine;
-using UnityEngine.InputSystem;
+                <section class="lesson-prep" id="Tuesday_Gameplay_Loops_Collisions">
+                    <h2>Gameplay Loops, Collisions, and Triggers</h2>
+                    <p>Before we implement Lab 2 on Thursday, we will examine what makes the Balloon Popper scene into a
+                        game. Lab 1 gave us a player that responds to input, a balloon that moves automatically, and a
+                        Pin Prefab. Lab 2 connects these pieces through player action, object interaction, game rules,
+                        and feedback.</p>
 
-public class InputExample : MonoBehaviour
-{
-    void Update()
-    {
-        if (Keyboard.current == null)
-        {
-            return;
-        }
+                    <h3>What Is a Gameplay Loop?</h3>
+                    <p>A <b>gameplay loop</b> is a repeating sequence of actions and responses that keeps the player
+                        engaged. It is more than an object moving on screen: the player does something, the game
+                        evaluates the action, and the game communicates the result.</p>
+                    <ol>
+                        <li><b>Action:</b> The player moves into position and presses Space to launch a pin.</li>
+                        <li><b>Game response:</b> The pin travels upward through the scene.</li>
+                        <li><b>Interaction:</b> The pin overlaps a balloon.</li>
+                        <li><b>Rule and consequence:</b> The game recognizes a valid hit, removes the pin, and pops or
+                            resets the balloon.</li>
+                        <li><b>Feedback:</b> The score changes and a pop sound or visual effect confirms the hit.</li>
+                        <li><b>Repeat:</b> The player can aim and shoot again.</li>
+                    </ol>
+                    <p>As we design this loop, ask: What action can the player take? What conditions count as success?
+                        What changes when the action succeeds? How does the player know that it worked? What allows the
+                        player to continue?</p>
 
-        if (Keyboard.current.aKey.isPressed)
-        {
-            Debug.Log("Moving left");
-        }
+                    <h3>What Does It Mean for Objects to Collide?</h3>
+                    <p>In a game, objects often need to detect when they touch or overlap. Unity's 2D physics system
+                        uses <b>Collider2D</b> components to define the shapes used to detect these interactions. A
+                        collider is not the visible sprite itself; it is the shape Unity checks for contact or overlap.
+                    </p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Concept</th>
+                                <th>What it means</th>
+                                <th>Balloon Popper example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><b>Sprite</b></td>
+                                <td>The image the player sees.</td>
+                                <td>The image of the pin or balloon.</td>
+                            </tr>
+                            <tr>
+                                <td><b>Collider2D</b></td>
+                                <td>An invisible shape used to detect contact or overlap.</td>
+                                <td>A box around the pin and a circle around the balloon.</td>
+                            </tr>
+                            <tr>
+                                <td><b>Collision</b></td>
+                                <td>Physical contact that can affect movement and prevent objects from passing through
+                                    each other.</td>
+                                <td>A character landing on a platform or bumping into a wall.</td>
+                            </tr>
+                            <tr>
+                                <td><b>Trigger</b></td>
+                                <td>An overlap that invokes a response without acting as a solid barrier.</td>
+                                <td>A pin passing into the balloon's trigger area to register a hit.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p>For Balloon Popper, we generally want the pin to register a hit rather than bounce off the
+                        balloon. A <b>trigger</b> is therefore a useful choice: Unity detects the overlap, and a script
+                        decides what should happen next.</p>
 
-        if (Keyboard.current.spaceKey.wasPressedThisFrame)
-        {
-            Debug.Log("Shoot once");
-        }
-    }
-}</code></pre>
-                <p>We check for a keyboard before reading its keys because <b>Keyboard.current</b> can be null when no
-                    keyboard is available. For continuous movement, a held-key check is useful; for shooting, a
-                    single-press check prevents creating a pin on every frame while Space is held.</p>
+                    <h3>From Detection to Game Response</h3>
+                    <p>Detecting an overlap does not automatically mean that a balloon should pop or the score should
+                        increase. The game needs a rule that interprets the interaction. For example:</p>
+                    <ol>
+                        <li>Unity detects that one collider has entered another collider's trigger area.</li>
+                        <li>The script checks whether the entering object is a pin.</li>
+                        <li>If it is a pin, the game treats the overlap as a successful hit.</li>
+                        <li>The game removes the pin, resets or pops the balloon, updates the score, and plays feedback.
+                        </li>
+                    </ol>
+                    <p>This distinction is important: <b>the collider detects the overlap; the script defines the game's
+                            response.</b> The same kind of detection could lead to different outcomes in another game,
+                        such as collecting a coin, taking damage, opening a door, or activating a checkpoint.</p>
 
-                <hr />
-                <h2>Player Movement and Delta Time</h2>
-                <p>We previously changed a GameObject's <b>Transform</b> to move it. A movement direction of -1 means
-                    left, 0 means stationary, and 1 means right. Multiplying by <b>Time.deltaTime</b> makes the movement
-                    speed approximately independent of the rendered frame rate.</p>
-                <pre><code class="language-csharp">using UnityEngine;
-using UnityEngine.InputSystem;
-
-public class PlayerMovement : MonoBehaviour
-{
-    [SerializeField] private float speed = 5f;
-    [SerializeField] private float leftBoundary = -7f;
-    [SerializeField] private float rightBoundary = 7f;
-
-    void Update()
-    {
-        if (Keyboard.current == null)
-        {
-            return;
-        }
-
-        float direction = 0f;
-
-        if (Keyboard.current.aKey.isPressed ||
-            Keyboard.current.leftArrowKey.isPressed)
-        {
-            direction = -1f;
-        }
-        else if (Keyboard.current.dKey.isPressed ||
-                 Keyboard.current.rightArrowKey.isPressed)
-        {
-            direction = 1f;
-        }
-
-        Vector3 position = transform.position;
-        position.x += direction * speed * Time.deltaTime;
-        position.x = Mathf.Clamp(position.x, leftBoundary, rightBoundary);
-        transform.position = position;
-    }
-}</code></pre>
-                <p><b>Mathf.Clamp()</b> limits the x coordinate to a range. The values -7 and 7 are examples, not
-                    universal screen boundaries; adjust them to match the visible camera area and the width of the
-                    player sprite. This is <b>Transform-based movement</b>, suitable for our simple horizontal player.
-                    We will use Unity's 2D physics system to detect projectile hits.</p>
-
-                <hr />
+                </section>
                 <h2>Understanding 2D Physics</h2>
                 <p>A <b>physics engine</b> can simulate movement and detect interactions between objects. In Unity, 2D
                     physics uses components with the suffix <b>2D</b>. Do not confuse <b>Rigidbody2D</b> with the
@@ -9834,7 +9303,6 @@ public class PlayerMovement : MonoBehaviour
                     <b>OnTriggerEnter2D(Collider2D other)</b> when the overlap begins, provided the required physics
                     components and settings are present.
                 </p>
-
                 <hr />
                 <h2>Tags and Object Identification</h2>
                 <p>When a balloon detects a trigger, it needs to determine <b>which object</b> entered. Unity
@@ -9851,7 +9319,6 @@ public class PlayerMovement : MonoBehaviour
                 <p>The parameter <b>other</b> refers to the Collider2D that entered the trigger. <b>CompareTag()</b>
                     checks whether its GameObject has the specified tag. Tags must be created and assigned in the Editor
                     before using them in this example.</p>
-
                 <hr />
                 <h2>Prefabs, Instantiate(), and Destroy()</h2>
                 <p>A <b>Prefab</b> is a reusable GameObject template. Instead of placing every pin into the scene
@@ -9868,7 +9335,6 @@ public class PlayerMovement : MonoBehaviour
                     <b>Destroy(other.gameObject)</b> removes the GameObject associated with the collider that entered
                     the trigger.
                 </p>
-
                 <hr />
                 <h2>Implementing Shooting</h2>
                 <p>The player should fire <b>one pin each time Space is pressed</b>. The script below uses the Input
@@ -9922,7 +9388,6 @@ public class PinMovement : MonoBehaviour
                     This beginner example uses Transform movement; the Rigidbody2D is present to participate in trigger
                     detection. For more complex physics-based games, use the Rigidbody2D's physics movement methods
                     consistently rather than mixing Transform changes with physical collision responses.</p>
-
                 <hr />
                 <h2>Collision Interaction: Popping a Balloon</h2>
                 <p>When a pin enters a balloon's trigger, the game should remove the pin, remove the balloon, and
@@ -9955,7 +9420,6 @@ public class GameManager : MonoBehaviour
         scoreText.text = "Score: " + score;
     }
 }</code></pre>
-
                 <p>
                     This example uses <b>TextMeshPro</b> (the <b>TMPro</b> namespace),
                     Unity's text rendering system for displaying UI elements such as
@@ -9964,16 +9428,13 @@ public class GameManager : MonoBehaviour
                     We will now configure the GameManager and connect it to a
                     TextMeshPro UI element in the Unity Editor.
                 </p>
-
                 <h3>Setting Up the GameManager in Unity</h3>
-
                 <p>
                     The GameManager script needs to be attached to a
                     GameObject in the scene. Unlike the player or balloon,
                     the GameManager does not need a visible sprite because
                     its purpose is to manage gameplay information.
                 </p>
-
                 <ol>
                     <li>
                         In the Hierarchy, right-click and select
@@ -10000,22 +9461,17 @@ public class GameManager : MonoBehaviour
                         into the <b>Score Text</b> field in the Inspector.
                     </li>
                 </ol>
-
                 <p>
                     When the game starts, the GameManager initializes
                     the score display to <b>Score: 0</b>. Whenever
                     AddScore() is called, the score increases and
                     the displayed text updates.
                 </p>
-
                 <p>
                     If the score does not appear, check that the
                     TextMeshPro element is visible within the Canvas
                     and that the Score Text reference has been assigned.
                 </p>
-
-
-
                 <h3>PopOnContact Script</h3>
                 <p>For a beginner-friendly game, we can <b>reset the same balloon</b> after a successful hit rather than
                     create a new one. Create an empty GameObject called <b>BalloonResetPoint</b> in the scene and
@@ -10053,10 +9509,7 @@ public class PopOnContact : MonoBehaviour
                     when hit; for a more polished pop, students can add a short animation or briefly hide the sprite.
                     Make sure the reset point is away from any pins so the same hit does not immediately trigger again.
                 </p>
-
-
                 <h3>Providing Visual Feedback When a Balloon Pops</h3>
-
                 <p>
                     In our basic example, the balloon immediately
                     moves to its reset position after being hit.
@@ -10064,14 +9517,12 @@ public class PopOnContact : MonoBehaviour
                     movement alone may not clearly communicate
                     that the balloon has popped.
                 </p>
-
                 <p>
                     <b>Visual feedback</b> helps the player understand
                     that an action was successful. For example,
                     a balloon could briefly disappear, play a
                     popping animation, or display a particle effect.
                 </p>
-
                 <p>
                     For our introductory game, the balloon resetting
                     to its starting position, the score increasing,
@@ -10079,17 +9530,17 @@ public class PopOnContact : MonoBehaviour
                     Students may add additional visual effects
                     to make the interaction clearer and more satisfying.
                 </p>
-
-
                 <p>Separating score tracking from the collision script makes the game's logic easier to maintain. The
                     <b>GameManager</b> manages the score, while <b>PopOnContact</b> manages the interaction between a
                     balloon and a pin.
                 </p>
-
                 <hr />
                 <h2>Unity Development Lab 2</h2>
-                <p>Today we will finish <b>In-Class Activity 8: Unity Lab 2</b>. Continue the same project started on
-                    October 22. No separate submission is required for Lab 1.</p>
+                <p>Use this section as a guide to the mechanics in <b>In-Class Activity 8: Unity Lab 2</b>. Continue the
+                    same
+                    <b>BalloonPopper</b> project from Lab 1. Labs 1 and 2 are submitted together; follow the lab
+                    handout for the deadline, publishing instructions, and required submission links.
+                </p>
                 <h3>Workshop Sequence</h3>
                 <ol>
                     <li><b>Review:</b> Confirm the player moves, the balloon moves, and the Pin Prefab exists.</li>
@@ -10116,7 +9567,6 @@ public class PopOnContact : MonoBehaviour
                     <li>The game continues after a successful hit.</li>
                     <li>The Console contains no errors that prevent gameplay.</li>
                 </ul>
-
                 <hr />
                 <h2>Publishing a Unity Game for the Web</h2>
                 <p>Our final game must be playable in a web browser. Unity's <b>WebGL</b> web build option packages a
@@ -10197,16 +9647,14 @@ public class PopOnContact : MonoBehaviour
                 </ul>
                 <h3>Step 7: Join the Class Game Jam</h3>
                 <ol>
-
                     <li>
                         Open the
-                        <a href="https://itch.io/jam/fall-2026-unity-labs-1-2-submission" target="_blank"
-                            rel="noopener">
+                        <a href="https://itch.io/jam/fall-2026-unity-labs-1-2-submission" rel="noopener"
+                            target="_blank">
                             <b>CISC 3667 F26 Unity Lab Submission</b>
                         </a>
                         Game Jam on itch.io.
                     </li>
-
                     <li>Choose <b>Submit your project</b> (wording may vary).</li>
                     <li>Select your published Balloon Popper project.</li>
                     <li>Complete the submission process and verify that your game appears in the jam's submissions.</li>
@@ -10215,7 +9663,6 @@ public class PopOnContact : MonoBehaviour
                     separate steps. Confirm that the project is associated with the correct class jam before the
                     deadline.</p>
                 <h3>Step 8: Submit the Game Link on Brightspace</h3>
-
                 <p>
                     Submit the URL of your published itch.io game page
                     to the <b>In-Class Activities 7 &amp; 8:
@@ -10224,11 +9671,85 @@ public class PopOnContact : MonoBehaviour
                     The same project covers both Unity labs, so
                     <b>no separate October 22 submission</b> is required.
                 </p>
-
                 <p><b>Due: Thursday, October 29, 2026, at 11:59 PM.</b> Your game should be browser-playable, submitted
                     to the class Game Jam, and linked on Brightspace.</p>
-
                 <hr />
+                <h2>Future Topics: Menus, Levels, and Persistent Data</h2>
+                <p>
+                    The current Unity labs focus on building and testing the core gameplay
+                    mechanics of <b>Balloon Popper!</b>. A complete game may also include
+                    menus, instructions, multiple levels, and data that is saved between
+                    play sessions. These are useful concepts to understand, but they are
+                    <b>not required features of Unity Labs 1 and 2</b> unless they are
+                    specifically added to the lab instructions.
+                </p>
+                <h3>Game Title and Title Screen</h3>
+                <p>
+                    A game's <b>title</b> is its name. A <b>title screen</b> is a screen
+                    shown before gameplay that may display the title, provide a Start
+                    button, and present other menu options. The title of a game does not
+                    require a separate title-image asset; it can also be displayed using
+                    a UI text element. Our current Balloon Popper labs begin in the
+                    gameplay scene and do not require a title screen.
+                </p>
+                <h3>Instructions and Controls</h3>
+                <p>
+                    Instructions help players understand the game's objective, rules,
+                    and controls. For Balloon Popper, the basic controls are moving left
+                    and right with the arrow keys or A and D, and shooting with the
+                    Spacebar. Clear instructions are part of good user experience, even
+                    when a separate instruction screen is not implemented.
+                </p>
+                <h3>Scenes and Levels</h3>
+                <p>
+                    A <b>scene</b> is a Unity asset containing a particular arrangement
+                    of GameObjects. A <b>level</b> is a portion of gameplay with its own
+                    challenges or objectives. A game may use one scene per level, but
+                    the terms do not mean the same thing: a scene can also contain a
+                    menu, and a level may be built within a larger scene.
+                </p>
+                <p>
+                    In our labs, the gameplay scene is named <b>GameScene</b>. We do not
+                    need multiple levels to implement the current shooting and scoring
+                    mechanics. Scene transitions and level progression can be introduced
+                    as a later topic when a project needs them.
+                </p>
+                <h3>Game State and Persistent Data</h3>
+                <p>
+                    <b>Game state</b> is information about what is happening in the game
+                    right now. In Balloon Popper, the score and whether a balloon has
+                    been popped are examples of game state. In Lab 2, the score starts
+                    at zero and changes when the player successfully hits a balloon.
+                </p>
+                <p>
+                    <b>Persistent data</b> is information saved so that it can be
+                    retrieved after the current play session ends or the game is
+                    reopened. Examples include a saved high score, sound settings, or
+                    unlocked levels. A score stored only in an ordinary variable is
+                    not automatically saved between sessions. Persistent data requires
+                    an explicit saving and loading mechanism.
+                </p>
+                <p>
+                    Persistent data is different from saving the Unity project or scene
+                    in the Editor. Saving a scene preserves its GameObject arrangement
+                    and serialized settings during development; it does not, by itself,
+                    save a player's runtime score between play sessions.
+                </p>
+                <h3>Win, Lose, and Restart Conditions</h3>
+                <p>
+                    A game can use conditions to determine when a player wins, loses,
+                    or should be allowed to restart. These conditions are part of the
+                    game's rules and state management. A timer, limited ammunition,
+                    win condition, game-over condition, or restart button may be useful
+                    extensions, but they are optional enhancements in the current Lab 2
+                    handout rather than required mechanics.
+                </p>
+                <p>
+                    When planning your individual final project, decide which of these
+                    features your game actually needs. Add them when they support the
+                    game's objective and gameplay loop rather than adding them simply
+                    because other games often contain them.
+                </p>
                 <h2>Review: How the Game Systems Work Together</h2>
                 <table>
                     <thead>
@@ -10273,8 +9794,6 @@ public class PopOnContact : MonoBehaviour
                     feedback.</p>
             </article>
         </section>
-
-
 
         <!--
     <section class="main-section" id="Game_Concepts_and_Genre">
