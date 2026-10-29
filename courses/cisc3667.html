@@ -60,6 +60,13 @@
         style="font-size: 22px"
         >Midterm Review</a
       >
+       <a class="dropdown-btn" style="font-size: 22px">Development Tutorials</a>
+        <div class="dropdown-container">
+            <a href="CISC3667/Unity%20Labs/Unity%20Lab_Balloon%20Popper%20Tutorial.pdf" target="_blank" rel="noopener"
+                style="font-size: 22px" onclick="closeDropdown()">Balloon Popper! (Unity)</a>
+            <!--<a href="CISC1115/CISC%201115%20F24%20TY8%20Exam%202%20REVIEW.pdf" target="_blank" rel="noopener"
+                style="font-size: 22px" onclick="closeDropdown()">Exam 2</a>-->
+        </div>
       <!--<a class="nav-link" href="CISC3667/CISC%203667%20Final%20Exam%20Question%20Bank.pdf" style="font-size: 22px">Final Review</a>-->
     </nav>
 
@@ -801,6 +808,16 @@
           localStorage.setItem("darkMode", "disabled"); // Save preference
         }
       });
+
+        var dropdown = document.getElementsByClassName("dropdown-btn");
+        for (let i = 0; i < dropdown.length; i++) {
+            dropdown[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                let dropdownContent = this.nextElementSibling;
+                dropdownContent.style.display =
+                    dropdownContent.style.display === "block" ? "none" : "block";
+            });
+        }
     </script>
     <script>
       function toggleMode() {
