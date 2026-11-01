@@ -85,6 +85,7 @@
                 </div>
                 </div>
             </li>
+
             <li>
                 <a class="dropdown-btn" style="font-size: 22px" href="#Digital_Game_Development">Digital Game
                     Development</a>
@@ -98,25 +99,31 @@
                         style="font-size: 20px">Introduction to the Unity Editor</a>
                     <a href="#Unity_Game_Development_and_Publishing" onclick="closeDropdown()"
                         style="font-size: 20px">Unity Game Development and Publishing</a>
-
+                    <a href="#Introduction_to_Godot" onclick="closeDropdown()" style="font-size: 20px">Introduction to
+                        Godot</a>
                 </div>
             </li>
-            <!--<li>
-        <a class="dropdown-btn" style="font-size: 22px">Designing Game Experiences</a>
-        <div class="dropdown-container">
-          <a href="#Game_Concepts_and_Genre" onclick="closeDropdown()" style="font-size: 20px">Game Concepts and
-            Genre</a>
-          <a href="#Storytelling_and_Narrative_Design" onclick="closeDropdown()" style="font-size: 20px">Storytelling
-            and Narrative Design</a>
-          <a href="#Game_Design_Documents" onclick="closeDropdown()" style="font-size: 20px">Game Design Documents</a>
-          <a href="#Serious_Games" onclick="closeDropdown()" style="font-size: 20px">Serious Games</a>
-          <a href="#UX/UI_in_Game_Design" onclick="closeDropdown()" style="font-size: 20px">UX/UI in Game Design</a>
-          <a href="#Accessibility" onclick="closeDropdown()" style="font-size: 20px">Accessibility</a>
-          <a href="#Ethics_in_Game_Design" onclick="closeDropdown()" style="font-size: 20px">Ethics in Game
-            Design</a>
-          <a href="#Digitizing_Games" onclick="closeDropdown()" style="font-size: 20px">Digitizing Games</a>
-        </div>
-      </li>-->
+
+            <li>
+                <a class="dropdown-btn" style="font-size: 22px">Designing Game Experiences</a>
+                <div class="dropdown-container">
+                    <a href="#Game_Concepts_and_Genre" onclick="closeDropdown()" style="font-size: 20px">Game Concepts
+                        and
+                        Genre</a>
+                    <a href="#Storytelling_and_Narrative_Design" onclick="closeDropdown()"
+                        style="font-size: 20px">Storytelling
+                        and Narrative Design</a>
+                    <a href="#Game_Design_Documents" onclick="closeDropdown()" style="font-size: 20px">Game Design
+                        Documents</a>
+                    <a href="#Serious_Games" onclick="closeDropdown()" style="font-size: 20px">Serious Games</a>
+                    <a href="#UX/UI_in_Game_Design" onclick="closeDropdown()" style="font-size: 20px">UX/UI in Game
+                        Design</a>
+                    <a href="#Accessibility" onclick="closeDropdown()" style="font-size: 20px">Accessibility</a>
+                    <a href="#Ethics_in_Game_Design" onclick="closeDropdown()" style="font-size: 20px">Ethics in Game
+                        Design</a>
+                    <a href="#Digitizing_Games" onclick="closeDropdown()" style="font-size: 20px">Digitizing Games</a>
+                </div>
+            </li>
 
 
             <li><a href="#Reference" style="font-size: 22px">Reference</a></li>
@@ -8677,11 +8684,13 @@ public class MovingObject : MonoBehaviour
                 <p><b>Input</b> is information received from a device such as a keyboard, mouse, or controller. In our
                     earlier JavaScript games, we responded to browser keyboard events. In Unity, we can use the newer
                     <b>Input System</b> to read the current keyboard state. For Lab 1, the player moves horizontally
-                    using the left and right arrow keys or the A and D keys.</p>
+                    using the left and right arrow keys or the A and D keys.
+                </p>
                 <p>The examples in this section use <b>UnityEngine.InputSystem</b>. The Input System package must be
                     installed and enabled in the project's input settings. Do not mix these examples with the older
                     <b>Input.GetKey()</b> or <b>Input.GetButton()</b> API unless the project is specifically configured
-                    to support the legacy input system.</p>
+                    to support the legacy input system.
+                </p>
                 <h3>Held Keys vs. Single Key Presses</h3>
                 <p>Different actions need different kinds of input checks. A held-key check is useful when an action
                     should continue while the player holds a key. A single-press check is useful when an action should
@@ -8768,7 +8777,8 @@ public class InputExample : MonoBehaviour
                 <h3>Implementing PlayerMovement.cs</h3>
                 <p>This script uses the keyboard input concepts introduced above to move the player left and right. The
                     <b>[SerializeField]</b> attributes let Unity show the private speed and boundary fields in the
-                    Inspector, where you can adjust them without making the fields public.</p>
+                    Inspector, where you can adjust them without making the fields public.
+                </p>
                 <pre><code class="language-csharp">using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9122,7 +9132,7 @@ public class BalloonMovement : MonoBehaviour
                 </p>
             </article>
         </section>
-        <hr/>
+        <hr />
         <section class="main-section" id="Unity_Game_Development_and_Publishing">
             <br />
             <header><b>Unity Game Development and Publishing</b></header>
@@ -9795,7 +9805,772 @@ public class PopOnContact : MonoBehaviour
             </article>
         </section>
 
-        <!--
+        <hr />
+
+        <section id="Introduction_to_Godot">
+            <h2>Introduction to Godot</h2>
+
+            <p>Godot is a free, open-source game engine used to develop 2D and 3D games. Like Unity, it provides tools
+                for creating game objects, managing scenes, handling player input, detecting collisions, and building
+                user interfaces.</p>
+
+            <p>For this course, we will use Godot to continue exploring 2D game development concepts. Many of the ideas
+                you learned while working with Unity also apply to Godot, although the terminology and workflow are
+                different.</p>
+
+            <h3>Unity and Godot: Comparing Concepts</h3>
+
+            <p>Although Unity and Godot organize projects differently, many of their features serve similar purposes.
+            </p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Unity</th>
+                        <th>Godot</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>GameObjects</td>
+                        <td>Nodes</td>
+                    </tr>
+                    <tr>
+                        <td>Hierarchy</td>
+                        <td>Scene Tree</td>
+                    </tr>
+                    <tr>
+                        <td>Scenes and Prefabs</td>
+                        <td>Scenes (including reusable scenes)</td>
+                    </tr>
+                    <tr>
+                        <td>C#</td>
+                        <td>GDScript or C#</td>
+                    </tr>
+                    <tr>
+                        <td>Input System</td>
+                        <td>Input Map and Input Actions</td>
+                    </tr>
+                    <tr>
+                        <td>Colliders and Physics</td>
+                        <td>Collision Nodes and Physics</td>
+                    </tr>
+                    <tr>
+                        <td>Events</td>
+                        <td>Signals</td>
+                    </tr>
+                    <tr>
+                        <td>Canvas and UI</td>
+                        <td>Control Nodes</td>
+                    </tr>
+                    <tr>
+                        <td>Scene Manager</td>
+                        <td>SceneTree methods</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Understanding Nodes and Scenes</h3>
+
+            <p>Godot uses <b>nodes</b> and <b>scenes</b> as the foundation for organizing a game.</p>
+
+            <p>A <b>node</b> is an individual building block that provides a specific function or behavior. Different
+                node types are designed for different purposes. For example, a node might represent a character, display
+                an image, detect collisions, play an animation, or display text.</p>
+
+            <p>Some common node types used in 2D game development include:</p>
+
+            <ul>
+                <li><b>Node2D:</b> A basic 2D node that provides position, rotation, and scale for organizing objects in
+                    a 2D scene.</li>
+                <li><b>CharacterBody2D:</b> A physics body commonly used for characters and other objects that need
+                    scripted movement and collision handling.</li>
+                <li><b>Sprite2D:</b> Displays a 2D image.</li>
+                <li><b>AnimatedSprite2D:</b> Displays and controls 2D animations.</li>
+                <li><b>Area2D:</b> Detects when another object enters, exits, or overlaps an area.</li>
+                <li><b>CollisionShape2D:</b> Defines the shape used for collision detection.</li>
+                <li><b>Control:</b> Used to create user interface elements such as buttons, labels, and panels.</li>
+            </ul>
+
+            <p>A <b>scene</b> is a collection of nodes organized into a hierarchy called the <b>Scene Tree</b>. Nodes
+                can have parent-child relationships, allowing related objects and their behaviors to be grouped
+                together.</p>
+
+            <p>For example, a player character might have a CharacterBody2D node as its parent, with an AnimatedSprite2D
+                and CollisionShape2D as children.</p>
+
+            <p>Scenes can also be saved and reused. You might create a Player scene once and then instance it in your
+                main gameplay scene. This makes it easier to organize a game into smaller, reusable parts instead of
+                building everything in one large scene.</p>
+
+            <h3>Understanding Input and Interaction</h3>
+
+            <p>Games need a way to recognize player input and respond to interactions between objects. Godot provides an
+                <b>Input Map</b> for organizing keyboard, mouse, and controller inputs into named actions.
+            </p>
+
+            <p>For example, a game might define actions such as <b>move_left</b>, <b>move_right</b>, <b>jump</b>, or
+                <b>interact</b>. A script can check whether one of these actions is being pressed without needing to
+                directly reference a specific keyboard key. This also makes it easier to support different input
+                devices.
+            </p>
+
+            <p>Godot also provides physics processing and collision detection to help game objects interact with one
+                another.</p>
+
+            <ul>
+                <li><b>Physics processing:</b> The <b>_physics_process()</b> callback runs at a fixed rate and is
+                    commonly used for movement and physics-related updates.</li>
+                <li><b>Collision detection:</b> Nodes such as CharacterBody2D, Area2D, and CollisionShape2D help detect
+                    when objects touch or overlap.</li>
+                <li><b>Signals:</b> Nodes can communicate when an event occurs. For example, an Area2D can emit a signal
+                    when the player enters its area, allowing the game to respond to that interaction.</li>
+            </ul>
+
+            <p>These features allow developers to connect player input, movement, and object interactions to create
+                gameplay.</p>
+
+            <p>In our upcoming lab, we will apply these concepts by creating a 2D game in which the player moves around
+                the screen, collects coins, and tracks their score.</p>
+        </section>
+
+        <section id="gdscript-introduction">
+            <h2>What is GDScript?</h2>
+
+            <p><b>GDScript</b> is Godot's built-in scripting language. It is used to control game behavior, respond to
+                player input, update variables, manage interactions, and communicate between nodes.</p>
+
+            <p>Its syntax is similar to Python, but it is designed specifically for working with Godot's nodes, scenes,
+                signals, and other engine features. Just as you used C# scripts in Unity and JavaScript in your earlier
+                game-development activities, you will use GDScript to control objects and implement game mechanics in
+                Godot.</p>
+
+            <p>Although the programming concepts are familiar, GDScript is written a little differently. For example,
+                functions begin with <b>func</b> instead of <b>function</b>, code blocks use indentation instead of
+                curly braces, and variable types are written after a colon.</p>
+
+            <h3>Variables and Data Types</h3>
+
+            <p>Variables store information that your game needs to use or update. In GDScript, you declare a variable
+                using <b>var</b>.</p>
+
+            <p>Here is how a variable storing a score of zero might be declared in JavaScript:</p>
+
+            <pre><code>let score = 0;</code></pre>
+
+            <p>In C#, you specify the data type before the variable name:</p>
+
+            <pre><code>int score = 0;</code></pre>
+
+            <p>In GDScript, you use <b>var</b> followed by the variable name, a colon, and the data type:</p>
+
+            <pre><code>var score: int = 0</code></pre>
+
+            <p>The colon and data type are called a <b>type annotation</b>. They indicate what kind of value the
+                variable is expected to store.</p>
+
+            <p>Common GDScript data types include:</p>
+
+            <ul>
+                <li><b>int:</b> Stores whole numbers, such as a score or number of coins.</li>
+                <li><b>float:</b> Stores decimal numbers, such as movement speed.</li>
+                <li><b>String:</b> Stores text, such as a player's name.</li>
+                <li><b>bool:</b> Stores either <b>true</b> or <b>false</b>, such as whether a game is over.</li>
+            </ul>
+
+            <p>Here are some additional GDScript examples:</p>
+
+            <pre><code>var score: int = 0
+var speed: float = 250.0
+var player_name: String = "Bear"
+var game_over: bool = false</code></pre>
+
+            <p>You can change a variable's value while the game is running, just as you would in JavaScript or C#:</p>
+
+            <pre><code>score = 5
+score += 1</code></pre>
+
+            <p>The second statement increases the score by one.</p>
+
+            <h3>Functions</h3>
+
+            <p>Functions are reusable blocks of code that perform a particular task. You have already worked with
+                functions in JavaScript and methods in C#. GDScript uses the keyword <b>func</b> to declare a function.
+            </p>
+
+            <p>For example, here is a JavaScript function that increases the score by one:</p>
+
+            <pre><code>function collectCoin() {
+    score += 1;
+}</code></pre>
+
+            <p>In C#, the same task would be written as a method:</p>
+
+            <pre><code>void CollectCoin() {
+    score += 1;
+}</code></pre>
+
+            <p>In GDScript, the function is written differently:</p>
+
+            <pre><code>func collect_coin() -> void:
+    score += 1</code></pre>
+
+            <p>Although all three functions perform the same task, notice the differences in how they are written:</p>
+
+            <ul>
+                <li><b>JavaScript:</b> Uses the <b>function</b> keyword, parentheses, and curly braces to define the
+                    function body.</li>
+                <li><b>C#:</b> Specifies the return type (<b>void</b>) before the function name and uses curly braces to
+                    define the function body.</li>
+                <li><b>GDScript:</b> Uses <b>func</b> before the function name, followed by parentheses, a colon, and an
+                    indented function body.</li>
+            </ul>
+
+            <p>In GDScript, <b>-> void</b> indicates that the function does not return a value. The colon marks the
+                beginning of the function body, and indentation determines which statements belong to that function. You
+                do not use curly braces to surround the code.</p>
+
+            <p>GDScript also commonly uses <b>snake_case</b> for function and variable names. This means words are
+                written in lowercase and separated by underscores, such as <b>collect_coin()</b> instead of
+                <b>collectCoin()</b> or <b>CollectCoin()</b>.
+            </p>
+
+            <h3>Functions with Parameters and Return Values</h3>
+
+            <p>Like JavaScript and C#, GDScript functions can receive information through parameters. Parameters allow a
+                function to work with different values each time it is called.</p>
+
+            <p>Here is an example in JavaScript:</p>
+
+            <pre><code>function addPoints(amount) {
+    score += amount;
+}</code></pre>
+
+            <p>In C#:</p>
+
+            <pre><code>void AddPoints(int amount) {
+    score += amount;
+}</code></pre>
+
+            <p>And in GDScript:</p>
+
+            <pre><code>func add_points(amount: int) -> void:
+    score += amount</code></pre>
+
+            <p>In this example, <b>amount</b> is an integer parameter. The function adds that amount to the current
+                score. Notice that GDScript places the parameter's data type after its name, separated by a colon.</p>
+
+            <p>Functions can also return a value. In GDScript, the return type is written after an arrow (<b>-></b>).
+            </p>
+
+            <p>Here is a JavaScript function that returns the total number of coins:</p>
+
+            <pre><code>function getTotalCoins() {
+    return 5;
+}</code></pre>
+
+            <p>In C#:</p>
+
+            <pre><code>int GetTotalCoins() {
+    return 5;
+}</code></pre>
+
+            <p>And in GDScript:</p>
+
+            <pre><code>func get_total_coins() -> int:
+    return 5</code></pre>
+
+            <p>This function returns an integer value. The <b>return</b> statement sends that value back to the part of
+                the script that called the function.</p>
+
+            <h3>Code Blocks and Conditional Statements</h3>
+
+            <p>Conditional statements allow your game to make decisions based on whether a condition is true or false.
+                You have used <b>if</b> and <b>else</b> statements in JavaScript and C#. GDScript uses the same general
+                logic, but its code blocks are structured differently.</p>
+
+            <p>In JavaScript, an if/else statement looks like this:</p>
+
+            <pre><code>if (score >= 5) {
+    console.log("You collected all the coins!");
+} else {
+    console.log("Keep collecting!");
+}</code></pre>
+
+            <p>In GDScript, the same conditional is written as:</p>
+
+            <pre><code>if score >= 5:
+    print("You collected all the coins!")
+else:
+    print("Keep collecting!")</code></pre>
+
+            <p>Notice these differences:</p>
+
+            <ul>
+                <li>GDScript does not require parentheses around the condition.</li>
+                <li>A colon (<b>:</b>) marks the beginning of the code block.</li>
+                <li>Indentation determines which statements belong inside the <b>if</b> or <b>else</b> block.</li>
+                <li>GDScript does not use semicolons at the end of statements.</li>
+            </ul>
+
+            <p><b>Important:</b> Indentation is part of GDScript's syntax. Statements that belong inside a function,
+                conditional, or other code block must be indented consistently. Incorrect indentation can cause errors
+                or change how your code is interpreted.</p>
+
+            <h3>Built-in Functions and Callbacks</h3>
+
+            <p>Godot provides built-in functions that run automatically at specific points in a node's lifecycle or game
+                loop. These functions are sometimes called <b>callbacks</b> because Godot calls them for you when the
+                appropriate event or update occurs.</p>
+
+            <p>Some important built-in functions include:</p>
+
+            <ul>
+                <li><b>_ready():</b> Runs once when a node and its children are ready. It is commonly used to initialize
+                    variables or connect signals.</li>
+                <li><b>_process(delta):</b> Runs every frame. It is commonly used for updates that do not require
+                    physics calculations.</li>
+                <li><b>_physics_process(delta):</b> Runs at a fixed physics update rate. It is commonly used for player
+                    movement and physics-related behavior.</li>
+            </ul>
+
+            <p>For example:</p>
+
+            <pre><code>func _ready() -> void:
+    print("The game is ready!")</code></pre>
+
+            <p>Godot automatically calls <b>_ready()</b> when the node is ready. You do not need to call it yourself.
+            </p>
+
+            <p>If you have worked with Unity, you may recognize similar behavior in methods such as <b>Start()</b> and
+                <b>FixedUpdate()</b>. In JavaScript, you may have written your own game loop or used event listeners to
+                respond to events. Godot provides built-in callbacks for many common game-development tasks.
+            </p>
+
+            <p>The parameter <b>delta</b> represents the amount of time that has passed since the previous update. It
+                can be used to make movement and other time-based changes consistent regardless of frame rate.</p>
+
+            <h3>Accessing Other Nodes</h3>
+
+            <p>Scripts often need to access other nodes in the scene tree. You can use the <b>$</b> shorthand to
+                reference a node by its path.</p>
+
+            <pre><code>@onready var score_label = $ScoreLabel</code></pre>
+
+            <p>This example creates a reference to a child node named <b>ScoreLabel</b>. The <b>@onready</b> keyword
+                delays assigning the reference until the node is ready.</p>
+
+            <p>Once you have a reference to the node, you can access and change its properties. For example:</p>
+
+            <pre><code>score_label.text = "Score: 5"</code></pre>
+
+            <p>This changes the text displayed by the Label node. In Unity, you might access a UI element through a
+                serialized variable or a component reference. In Godot, you can use a node path to access another node
+                in the scene tree.</p>
+
+            <h3>Signals and Events</h3>
+
+            <p>Signals allow nodes to communicate when something happens. They are similar to events in C# or event
+                listeners in JavaScript.</p>
+
+            <p>For example, a Button has a built-in <b>pressed</b> signal that is emitted when the player clicks it. You
+                can connect this signal to a function that handles what should happen next.</p>
+
+            <pre><code>func _on_start_button_pressed() -> void:
+    print("Starting the game!")</code></pre>
+
+            <p>When you connect the Button's <b>pressed</b> signal to this function, Godot calls it automatically when
+                the button is clicked. You can connect signals through the Godot editor rather than writing all the
+                event-handling code yourself.</p>
+
+            <h3>How GDScript Will Be Used in This Lab</h3>
+
+            <p>Throughout the <b>Collect the Coins!</b> project, you will use these programming concepts to:</p>
+
+            <ul>
+                <li>Read keyboard input and move the player.</li>
+                <li>Control the bear's animations.</li>
+                <li>Detect when the player collects a coin.</li>
+                <li>Update the score and track the number of remaining coins.</li>
+                <li>Change between the title, gameplay, and results screens.</li>
+                <li>Save and load the player's high score.</li>
+            </ul>
+
+            <p>You do not need to memorize every function or syntax rule before beginning the lab. The programming
+                concepts are similar to what you have already learned, but you will need to pay attention to how
+                GDScript organizes its code. Refer back to these examples as you work through the instructions.</p>
+        </section>
+        <hr />
+        <section id="godot-lab-preparation">
+            <h2>Getting Familiar with Godot</h2>
+
+            <p><b>Before Thursday's lab:</b> Take some time to become familiar with the Godot editor and its basic
+                terminology. This preparation is intended to help you recognize the interface and understand the
+                concepts used in the upcoming lab. You do not need to complete every tutorial or build a game
+                independently.</p>
+
+            <h3>Step 1: Download Godot</h3>
+
+            <ol>
+                <li>Visit the <a href="https://godotengine.org/download/" target="_blank">official Godot download
+                        page</a>.</li>
+                <li>Download <b>Godot 4.7.2</b>.</li>
+                <li>Launch Godot and become familiar with the Project Manager.</li>
+            </ol>
+
+            <p><b>Note:</b> For this lab, we will use the Compatibility renderer when creating the project.</p>
+
+            <h3>Step 2: Explore the Godot Editor</h3>
+
+            <p>Once you have opened Godot, take a few minutes to identify the main areas of the editor:</p>
+
+            <ul>
+                <li><b>Scene dock:</b> Displays the nodes that make up the current scene.</li>
+                <li><b>Inspector:</b> Displays and allows you to modify the properties of the selected node.</li>
+                <li><b>FileSystem dock:</b> Displays the files and folders in your project.</li>
+                <li><b>Viewport:</b> Displays the scene you are currently editing.</li>
+                <li><b>Script editor:</b> Allows you to write and edit GDScript code.</li>
+            </ul>
+
+            <h3>Step 3: Review the Official Godot Tutorials</h3>
+
+            <p>Use the following resources to become familiar with Godot's workflow and terminology:</p>
+
+            <ul>
+                <li><a href="https://docs.godotengine.org/en/stable/getting_started/step_by_step/index.html"
+                        target="_blank">Step by Step: Godot's Getting Started Guide</a> – Introduces the editor, nodes,
+                    scenes, and other basic concepts.</li>
+                <li><a href="https://docs.godotengine.org/en/stable/getting_started/introduction/learn_to_code_with_gdscript.html"
+                        target="_blank">Learn to Code with GDScript</a> – Introduces variables, functions, and basic
+                    programming concepts.</li>
+                <li><a href="https://docs.godotengine.org/en/stable/getting_started/first_2d_game/index.html"
+                        target="_blank">Your First 2D Game</a> – Demonstrates how Godot's nodes and scripts work
+                    together in a 2D project.</li>
+            </ul>
+
+            <p>You do not need to complete the entire 2D game tutorial. Focus on understanding the editor, scene tree,
+                nodes, and how scripts are attached to nodes. You can refer to the GDScript examples in the previous
+                section if you want to review how the syntax differs from JavaScript and C#.</p>
+
+            <h3>Step 4: Review These Concepts</h3>
+
+            <p>Before beginning the hands-on lab, make sure you can explain the following:</p>
+
+            <ul>
+                <li>What is a node in Godot?</li>
+                <li>What is a scene, and how can scenes be reused?</li>
+                <li>What is GDScript used for?</li>
+                <li>What is a variable, and how can its value change?</li>
+                <li>How does GDScript declare a function differently from JavaScript and C#?</li>
+                <li>What do the colon, indentation, and arrow (<b>-></b>) mean in GDScript?</li>
+                <li>What is the purpose of a built-in callback such as <b>_ready()</b>?</li>
+                <li>What is the purpose of a signal?</li>
+                <li>What is the Input Map used for in Godot?</li>
+                <li>What is the difference between <b>_process()</b> and <b>_physics_process()</b>?</li>
+                <li>How do collision nodes help objects interact with one another?</li>
+            </ul>
+
+            <h3>What We Will Build</h3>
+
+            <p>During the hands-on lab, you will create <b>Collect the Coins!</b>, a 2D game in which you control a bear
+                character, collect coins, track your score, and try to achieve a high score.</p>
+
+            <p>You will apply concepts from your previous Unity labs while learning how Godot handles nodes, scenes,
+                GDScript, input, collisions, user interfaces, and persistent data.</p>
+        </section>
+
+        <hr />
+        <section id="game-screens-introduction">
+            <h2>Understanding Game Screens and Menus</h2>
+
+            <p>Most games are made up of more than just the main gameplay area. They often include different screens
+                that help players navigate the game, understand its instructions, view their progress, and make
+                decisions about what to do next.</p>
+
+            <p>These screens are part of the game's <b>user interface (UI)</b>. The UI provides information and
+                interactive elements that allow players to communicate with the game. Examples include buttons, menus,
+                score displays, instructions, health bars, and other on-screen elements.</p>
+
+            <p>You briefly encountered this concept in the optional title screen extension from the Unity Balloon Popper
+                lab. In this lab, you will build on that idea by creating multiple screens for <b>Collect the
+                    Coins!</b>.</p>
+
+            <h3>What is a Title Screen?</h3>
+
+            <p>A <b>title screen</b> is the first screen a player sees when launching a game. It introduces the game and
+                provides a starting point before gameplay begins.</p>
+
+            <p>A title screen commonly includes:</p>
+
+            <ul>
+                <li><b>Game title:</b> Displays the name of the game.</li>
+                <li><b>Start button:</b> Allows the player to begin playing.</li>
+                <li><b>Instructions button:</b> Provides information about the controls and objectives.</li>
+                <li><b>Other menu options:</b> May provide access to settings, scores, credits, or other features.</li>
+            </ul>
+
+            <p>The purpose of a title screen is to give players a clear starting point and allow them to decide what
+                they want to do before entering the game.</p>
+
+            <h3>Other Common Game Screens</h3>
+
+            <p>Games often use additional screens to organize different parts of the player experience. For example:</p>
+
+            <ul>
+                <li><b>Instructions screen:</b> Explains the game's objective, rules, and controls so players know how
+                    to play.</li>
+                <li><b>Gameplay screen:</b> Displays the actual game while the player is interacting with it. This may
+                    include the player character, environment, score, timer, and other gameplay information.</li>
+                <li><b>Results or Game Over screen:</b> Appears when a round or game ends. It can display the player's
+                    final score and provide options to play again or return to the main menu.</li>
+                <li><b>Scores screen:</b> Displays information about the player's performance, such as their current
+                    score or previously achieved high score.</li>
+            </ul>
+
+            <h3>How Screens Work Together</h3>
+
+            <p>Each screen serves a different purpose, but they are connected through the game's navigation and logic.
+                When a player selects a button, the game responds by changing to the appropriate screen or performing an
+                action.</p>
+
+            <p>For example, the Start button on a title screen might take the player to the gameplay screen, while an
+                Instructions button opens a screen explaining the controls.</p>
+
+            <p>In Godot, each of these screens can be created as a separate <b>scene</b>. You can then use buttons and
+                scripts to move between scenes.</p>
+
+            <p>For example, the following GDScript changes from the title screen to the gameplay scene when the Start
+                button is pressed:</p>
+
+            <pre><code>func _on_start_button_pressed() -> void:
+    get_tree().change_scene_to_file("res://Scenes/Game.tscn")</code></pre>
+
+            <p>The <b>change_scene_to_file()</b> method tells Godot to load another scene. In this example, it loads the
+                gameplay scene.</p>
+
+            <h3>Screens in Collect the Coins!</h3>
+
+            <p>For this lab, you will create several connected screens:</p>
+
+            <ul>
+                <li><b>Main Menu:</b> Introduces Collect the Coins! and provides buttons to start the game, view
+                    instructions, or view scores.</li>
+                <li><b>Instructions:</b> Explains how to move the bear, collect coins, and achieve a high score.</li>
+                <li><b>Gameplay:</b> Displays the bear, coins, and current score while the player collects coins.</li>
+                <li><b>Game Over:</b> Displays the final score after all coins have been collected and allows the player
+                    to play again or return to the main menu.</li>
+                <li><b>Scores:</b> Displays the player's high score and other score information.</li>
+            </ul>
+
+            <p><b>Note:</b> We will explore UI design, layout, visual hierarchy, usability, and accessibility in a
+                dedicated lesson later in the course. For now, the goal is to understand why games use different screens
+                and how those screens help organize the player's experience.</p>
+        </section>
+        <hr />
+        <section id="sprite-animation-introduction">
+            <h2>Understanding 2D Animation and Sprite Sheets</h2>
+
+            <p>Many 2D games use animation to make characters and objects appear to move. Instead of displaying a single
+                static image, the game displays a sequence of images in rapid succession. Each image represents a
+                slightly different moment in the animation.</p>
+
+            <p>This is similar to traditional frame-by-frame animation. When the images are displayed one after another,
+                they create the appearance of movement.</p>
+
+            <h3>What is a Sprite?</h3>
+
+            <p>A <b>sprite</b> is a 2D image used to represent a character, object, or visual element in a game. For
+                example, the bear that you will control in Collect the Coins! is represented by a sprite.</p>
+
+            <p>A sprite can be a single static image, or it can be part of an animation made up of multiple frames.</p>
+
+            <h3>What is a Sprite Sheet?</h3>
+
+            <p>A <b>sprite sheet</b> is an image file containing multiple individual animation frames arranged in a
+                grid. Each cell in the grid contains one frame of the animation.</p>
+
+            <div style="text-align: center; margin: 20px 0;">
+                <img src="https://openclipart.org/image/800px/248259"
+                    alt="Pixel art character sprite sheet showing a character in multiple animation frames and directions"
+                    style="display: block; max-width: 100%; width: 400px; height: auto; margin: 0 auto;">
+                <p><i>Example of a sprite sheet: each individual image represents a frame that can be used to create an
+                        animation.</i></p>
+            </div>
+
+            <p>Instead of storing every animation frame as a separate image file, a sprite sheet groups the frames
+                together in one image. The game engine can then select and display the appropriate frames in sequence.
+            </p>
+
+            <p>For example, a character sprite sheet might contain separate rows for walking in different directions:
+            </p>
+
+            <ul>
+                <li><b>Walking down:</b> Frames showing the character moving toward the viewer.</li>
+                <li><b>Walking up:</b> Frames showing the character moving away from the viewer.</li>
+                <li><b>Walking left:</b> Frames showing the character moving to the left.</li>
+                <li><b>Walking right:</b> Frames showing the character moving to the right.</li>
+            </ul>
+
+            <p>Each frame captures a slightly different position of the character. When the frames are played in order,
+                the character appears to walk.</p>
+
+            <h3>How Animation Works</h3>
+
+            <p>An animation is created by displaying a sequence of frames at a particular speed. The speed is often
+                measured in <b>frames per second (FPS)</b>.</p>
+
+            <p>For example, an animation running at 8 FPS displays eight frames every second. Playing the frames in
+                sequence creates the appearance of movement.</p>
+
+            <p>Different animations can represent different character states or actions, such as:</p>
+
+            <ul>
+                <li><b>Idle:</b> The character is standing still or performing a small resting movement.</li>
+                <li><b>Walking:</b> The character moves in a particular direction.</li>
+                <li><b>Running:</b> The character moves at a faster pace.</li>
+                <li><b>Jumping:</b> The character performs a jump.</li>
+                <li><b>Attacking:</b> The character performs an action such as swinging a weapon.</li>
+            </ul>
+
+            <p>The game determines which animation to play based on what the character is doing. For example, when the
+                player presses a movement key, the game can play the corresponding walking animation. When the player
+                stops moving, the game can switch back to the idle animation.</p>
+
+            <h3>Using Sprite Sheets in Godot</h3>
+
+            <p>Godot provides nodes and resources for displaying and controlling 2D animations. In this lab, you will
+                use an <b>AnimatedSprite2D</b> node to animate the bear character.</p>
+
+            <p>The AnimatedSprite2D node uses a <b>SpriteFrames</b> resource. This resource stores the individual
+                animation frames and organizes them into named animations.</p>
+
+            <p>For example, you will use the bear's sprite sheet to create the following animations:</p>
+
+            <ul>
+                <li><b>idle</b></li>
+                <li><b>walk_down</b></li>
+                <li><b>walk_up</b></li>
+                <li><b>walk_left</b></li>
+                <li><b>walk_right</b></li>
+            </ul>
+
+            <p>Once the animations are created, your GDScript can tell the AnimatedSprite2D node which animation to
+                play.</p>
+
+            <p>For example:</p>
+
+            <pre><code>animated_sprite.play("walk_right")</code></pre>
+
+            <p>This tells Godot to play the animation named <b>walk_right</b>.</p>
+
+            <p>You will also use conditional statements to determine which animation should play based on the player's
+                movement direction. This connects animation to the input and movement concepts you learned in the Unity
+                labs.</p>
+
+            <p><b>In Thursday's lab:</b> You will import the provided bear sprite sheet, create the individual
+                animations, and connect them to the player's movement script. This will allow the bear to display
+                different animations when moving in different directions and when standing still.</p>
+        </section>
+        <hr />
+        <section id="persistent-data-introduction">
+            <h2>Understanding Persistent Data</h2>
+
+            <p>Games often need to remember information even after the player closes the game. For example, a game might
+                need to remember a player's high score, unlocked levels, completed achievements, or game settings.</p>
+
+            <p><b>Persistent data</b> is information that is saved so it can be accessed again later, including after
+                the game has been closed and reopened.</p>
+
+            <h3>Temporary Data vs. Persistent Data</h3>
+
+            <p>Not all information in a game needs to be saved permanently. Some information is only needed while the
+                current game session or round is active.</p>
+
+            <ul>
+                <li><b>Temporary data:</b> Information stored while the game is running. It may be reset when a new
+                    round begins or when the game closes.</li>
+                <li><b>Persistent data:</b> Information saved to storage so it can be retrieved later, even after the
+                    game has been closed.</li>
+            </ul>
+
+            <p>For example, consider the score in Collect the Coins!:</p>
+
+            <ul>
+                <li><b>Current score:</b> Tracks how many coins the player has collected during the current round. It
+                    resets when a new round begins.</li>
+                <li><b>High score:</b> Tracks the player's best performance. It should remain available even after the
+                    game is closed and reopened.</li>
+            </ul>
+
+            <p>The current score is temporary data, while the high score is persistent data.</p>
+
+            <h3>Why Do Games Use Persistent Data?</h3>
+
+            <p>Persistent data allows a game to maintain information about a player's progress between sessions. Without
+                it, information stored only in memory would be lost when the game closes.</p>
+
+            <p>Games commonly use persistent data to store:</p>
+
+            <ul>
+                <li>High scores and player statistics.</li>
+                <li>Unlocked characters, levels, or achievements.</li>
+                <li>Completed missions or saved game progress.</li>
+                <li>Player preferences, such as volume or control settings.</li>
+                <li>Inventory or other collected items.</li>
+            </ul>
+
+            <h3>How Does Saving and Loading Work?</h3>
+
+            <p>Saving and loading are two important parts of working with persistent data:</p>
+
+            <ul>
+                <li><b>Saving:</b> Writes information from the game to a file or another storage location.</li>
+                <li><b>Loading:</b> Retrieves previously saved information so the game can use it again.</li>
+            </ul>
+
+            <p>For example, when a player achieves a new high score, the game can save that score to a file. The next
+                time the game starts, it can load the saved value and display it.</p>
+
+            <p>Godot provides ways to read and write files. In this lab, you will use its <b>FileAccess</b>
+                functionality to save the player's high score.</p>
+
+            <p>Godot also provides a special location called <b>user://</b> for storing files created by your game.
+                Unlike a temporary variable, a file saved in this location can remain available between game sessions.
+            </p>
+
+            <p>For example, the following line defines the location where the high score data will be stored:</p>
+
+            <pre><code>const SAVE_PATH = "user://save_data.json"</code></pre>
+
+            <p>The file will store the saved score in JSON format, which is a text-based format for organizing data.</p>
+
+            <h3>Persistent Data in Collect the Coins!</h3>
+
+            <p>In this lab, you will use persistent data to save and retrieve the player's high score.</p>
+
+            <p>The process will work as follows:</p>
+
+            <ol>
+                <li><b>Start the game:</b> Godot checks whether a saved high score exists.</li>
+                <li><b>Load the high score:</b> If a saved score is available, the game retrieves it and stores it for
+                    use during the session.</li>
+                <li><b>Play a round:</b> The player's current score increases as coins are collected.</li>
+                <li><b>Finish the round:</b> The game compares the final score with the saved high score.</li>
+                <li><b>Save a new high score:</b> If the player earns a higher score, the game updates the saved value.
+                </li>
+                <li><b>Play again later:</b> The game can retrieve the saved high score the next time it is opened.</li>
+            </ol>
+
+            <p>This means the player does not have to start over with a high score of zero every time the game is
+                launched.</p>
+
+            <p><b>In Thursday's lab:</b> You will create a GameManager script to keep track of the score and other game
+                information. You will also add saving and loading functionality so that the player's high score is
+                preserved between sessions.</p>
+        </section>
+
+
+        
     <section class="main-section" id="Game_Concepts_and_Genre">
       <br />
       <header><b>Game Concepts and Genre</b></header>
@@ -10028,10 +10803,10 @@ public class PopOnContact : MonoBehaviour
         <p>The mechanics of <i>Clue</i> are what truly drive the story forward.</p>
 
         <table>
-          <tr>
+          <thead>
             <th>Mechanic</th>
             <th>Narrative Function</th>
-          </tr>
+          </thead>
           <tr>
             <td><strong>Deduction (Who, What, Where)</strong></td>
             <td>Mirrors the process of solving a mystery; players reconstruct the crime scene piece by piece.</td>
@@ -11262,83 +12037,137 @@ public class PopOnContact : MonoBehaviour
       <br />
     </section>
     <hr />
-    <section class="main-section" id="Digitizing_Games">
-      <br />
-      <header><b>Digitizing Games</b></header>
-      <article>
-        <p>We've looked at a handful of games so far, from board games to physical card games to early video
-          games.</p>
+    
+<section class="main-section" id="Digitizing_Games">
+  <br />
+  <header><b>Digitizing Games</b></header>
+  <article>
 
-        <p>We also discussed how certain aspects such as rules and narrative define and shape these games.</p>
+    <p>We've explored several types of games, including board games, physical card games, and digital video games. We've also discussed how elements such as rules, mechanics, narrative, and player interaction shape the overall game experience.</p>
 
-        <p>However, how do we pick a medium when designing a game? What factors influence the choice between a physical
-          or
-          digital format?</p>
+    <p>But when designing a game, how do we decide which medium to use? Should a game be physical, digital, or perhaps a combination of both?</p>
 
-        <p>Let's explore the considerations involved in digitizing games and the impact of this choice on game design
-          and player experience.</p>
+    <p><b>The medium should be chosen based on the experience the designer wants to create.</b> A game does not necessarily become better by being digitized. Instead, designers must consider how the medium influences gameplay, player interaction, accessibility, and the way players engage with the game.</p>
 
-        <p>Let's look at an example with the game: <b><i>Werewolf</i></b></p>
+    <h3>Physical vs. Digital Games</h3>
 
-        <p><b><i>Werewolf</i></b> is a social deduction game that can be played in both physical and digital formats. In
-          its physical
-          form, players gather around a table, taking on roles such as villagers or werewolves, engaging in face-to-face
-          interactions to deduce who the werewolves are.</p>
+    <p>Both physical and digital games have advantages and limitations. The best choice depends on the game's mechanics, design goals, and intended player experience.</p>
 
-        <p>The game relies heavily on social dynamics, body language, and verbal communication, making it a highly
-          interactive and immersive experience.</p>
+    <p><b>Physical Games</b></p>
 
-        <p>However, the physical version of <b><i>Werewolf</i></b> can be limited by factors such as the number of
-          players that can
-          participate, geographical constraints, and the need for a physical space to gather.</p>
+    <p>Physical games use tangible components such as cards, dice, boards, tokens, and miniatures. Players interact directly with these objects and often share a physical space.</p>
 
-        <p>Let's take some time to play Werewolf in its physical format to experience these dynamics firsthand.</p>
+    <p>Physical games are particularly effective when the designer wants to emphasize:</p>
 
-        <p>Now, let's consider the digital version of <b><i>Werewolf</i></b>. In this format, players can connect online
-          through
-          platforms that facilitate the game's mechanics, allowing for remote play and automated role assignments.</p>
+    <ul>
+      <li><b>Tactile Interaction:</b> Players physically handle cards, move pieces, roll dice, or manipulate objects.</li>
+      <li><b>Social Interaction:</b> Players communicate face-to-face, observe one another, and share a physical space.</li>
+      <li><b>Player Creativity:</b> Players can interpret rules, manipulate components, or create their own variations.</li>
+      <li><b>Accessibility Without Technology:</b> Players do not necessarily need a computer, console, or internet connection.</li>
+    </ul>
 
-        <p>The digital version of <b><i>Werewolf</i></b> can accommodate a larger number of players from different
-          locations,
-          breaking down geographical barriers.</p>
+    <p>For example, <b><i>Jenga</i></b> relies on players physically removing and stacking wooden blocks. The tension comes partly from the physical instability of the tower and the player's ability to carefully manipulate the pieces. Digitizing this experience would change an important part of what makes the game engaging.</p>
 
-        <p>However, the digital format may lack some of the nuances of face-to-face interaction, such as body language
-          and vocal inflections, which can be crucial in a social deduction game.</p>
+    <p><b>Digital Games</b></p>
 
-        <p>Let's also take some time to play Werewolf in its digital format to compare the experiences. Join here: <a
-            href="https://netgames.io/games/onu-werewolf/" target="_blank">Netgames.io - One Night Ultimate Werewolf</a>
-        </p>
+    <p>Digital games use computers, consoles, mobile devices, or other electronic platforms to facilitate gameplay. The software handles game logic, processes player input, and displays the game's state.</p>
 
-        <p>Note: this is a digital version of <b><i>One Night Ultimate Werewolf</i></b> (a variant of the original
-          <b><i>Werewolf</i></b> game).</p>
+    <p>Digital games are particularly effective when the designer wants to emphasize:</p>
 
-        <p>How did these two experiences differ? What aspects of the game were enhanced or diminished in each format?
-        </p>
+    <ul>
+      <li><b>Automation:</b> The game can automatically calculate scores, enforce rules, track resources, and manage complex systems.</li>
+      <li><b>Complexity:</b> Digital systems can handle large numbers of variables, interactions, and calculations that would be difficult to manage manually.</li>
+      <li><b>Accessibility and Reach:</b> Players can potentially participate from different locations and access the game through various devices.</li>
+      <li><b>Dynamic Experiences:</b> Games can include animation, sound, visual effects, procedural generation, and responsive environments.</li>
+      <li><b>Persistence:</b> The game can save player progress, remember decisions, and maintain game states between sessions.</li>
+    </ul>
 
-        <p>When deciding whether to digitize a game, several factors come into play:</p>
+    <p>For example, <b><i>Minecraft</i></b> uses a digital environment to create a world where players can explore, build, collect resources, and interact with systems that would be difficult to reproduce with physical components.</p>
 
-        <ul>
-          <li><b>Audience Reach:</b> Digital games can reach a global audience, while physical games may be limited by
-            location and accessibility.</li>
-          <li><b>Interactivity:</b> Physical games often allow for more tactile and social interactions, while digital
-            games can offer automated features and online connectivity.</li>
-          <li><b>Cost and Resources:</b> Developing a digital game may require more technical resources and expertise,
-            while physical games may involve production and distribution costs.</li>
-          <li><b>Game Mechanics:</b> Some game mechanics may be better suited to one format over the other, depending on
-            the level of complexity and interaction required.</li>
-        </ul>
+    <h3>Choosing the Right Medium: What Experience Do You Want to Create?</h3>
 
-        <p>Ultimately, the choice between physical and digital formats depends on the game's design goals, target
-          audience, and the desired player experience.</p>
+    <p>When deciding whether to develop a physical or digital game, designers should consider what they want players to experience. Some mechanics naturally lend themselves to one medium, while others can work well in either.</p>
 
-        <p>Both formats have their unique advantages and challenges, and understanding these can help game designers
-          make
-          informed decisions about how to best bring their games to life.</p>
+    <p><b>Example 1: Social Deduction – Werewolf</b></p>
 
-      </article>
-      <br />
-    </section>
-    -->
+    <p><b><i>Werewolf</i></b> is a social deduction game in which players take on secret roles, such as villagers or werewolves, and attempt to identify the opposing team.</p>
+
+    <p>In its physical format, players gather together and interact face-to-face. They can observe body language, facial expressions, and verbal communication when deciding whom to trust. These social cues are an important part of the experience.</p>
+
+    <p>In a digital format, players can connect remotely, and the software can automatically assign roles, manage voting, and handle certain game rules. This makes it easier to play with people in different locations, but the experience may lose some of the nuances of face-to-face interaction.</p>
+
+    <p>Let's experience both formats and compare them:</p>
+
+    <ol>
+      <li><b>Physical Version:</b> We will play <i>Werewolf</i> together in class.</li>
+      <li><b>Digital Version:</b> Play <a href="https://netgames.io/games/onu-werewolf/" target="_blank">Netgames.io – One Night Ultimate Werewolf</a>.</li>
+    </ol>
+
+    <p><i>Note: One Night Ultimate Werewolf is a variant of the original Werewolf game, so the rules and gameplay are not identical.</i></p>
+
+    <p>After playing, consider: Which format made it easier to read other players? Which offered more convenience? Did either format change how you approached the game?</p>
+
+    <p><b>Example 2: Strategy and Resource Management – Monopoly</b></p>
+
+    <p><b><i>Monopoly</i></b> is traditionally a physical board game in which players move tokens, purchase properties, exchange money, and manage resources.</p>
+
+    <p>The physical version makes money management and property ownership tangible. Players physically exchange money, handle property cards, and move their tokens around the board.</p>
+
+    <p>A digital version can automatically calculate transactions, manage player balances, enforce rules, and handle property exchanges. This reduces the amount of manual bookkeeping and can make the game move faster.</p>
+
+    <p>However, the physical version may encourage more direct negotiation and social interaction, particularly when players exchange properties or discuss deals.</p>
+
+    <p><b>Example 3: Puzzle and Logic Games – Sudoku</b></p>
+
+    <p><b><i>Sudoku</i></b> can be played using a physical paper grid or through a digital application.</p>
+
+    <p>The physical version allows players to write notes, erase mistakes, and work through the puzzle at their own pace. Some players may enjoy the experience of solving a puzzle with pencil and paper.</p>
+
+    <p>A digital version can provide hints, validate answers, track completion time, and automatically generate new puzzles. These features can make the experience more convenient and provide additional challenges.</p>
+
+    <p>In this case, both formats support the same fundamental puzzle-solving experience, but the digital version can introduce additional functionality.</p>
+
+    <h3>Factors to Consider When Choosing a Medium</h3>
+
+    <p>When selecting a medium for a game, designers should consider the following:</p>
+
+    <ul>
+      <li><b>Core Mechanics:</b> Do the mechanics require physical manipulation, or would they benefit from automated calculations and digital systems?</li>
+      <li><b>Player Interaction:</b> Should players interact face-to-face, communicate remotely, compete against a computer, or play independently?</li>
+      <li><b>Complexity:</b> How many rules, resources, variables, and interactions must be managed? Would the game become difficult to track manually?</li>
+      <li><b>Accessibility:</b> What equipment, technology, physical space, or materials will players need? Who might have difficulty accessing or using the game?</li>
+      <li><b>Presentation and Atmosphere:</b> Would physical components create a stronger experience, or would animation, sound, and interactive environments better support the game's theme?</li>
+      <li><b>Development and Production:</b> What resources, skills, time, and costs are involved in creating, distributing, and maintaining the game?</li>
+      <li><b>Target Audience:</b> Who is the game intended for, and what platforms or types of interaction would best suit those players?</li>
+    </ul>
+
+    <h3>Can a Game Use Both Mediums?</h3>
+
+    <p>Designers do not always have to choose exclusively between physical and digital formats. Some games combine the two to create a hybrid experience.</p>
+
+    <p>For example, <b><i>Jackbox Party Pack</i></b> uses a shared screen to display the game while players use their phones as controllers. This combines the social experience of playing together in person with the convenience and functionality of digital systems.</p>
+
+    <p>Other games use companion applications to track scores, provide additional information, or introduce digital elements into traditional board games.</p>
+
+    <h3>Final Takeaway</h3>
+
+    <p><b>The goal is not simply to digitize a game, but to choose the medium that best supports the intended player experience.</b></p>
+
+    <p>Before deciding on a format, designers should ask themselves:</p>
+
+    <ul>
+      <li>What is the core experience I want players to have?</li>
+      <li>Which medium best supports the game's mechanics?</li>
+      <li>What interactions do I want to encourage between players?</li>
+      <li>What does the physical or digital format make possible?</li>
+      <li>What might be lost by choosing one format over the other?</li>
+    </ul>
+
+    <p>A successful game is not defined by whether it is physical or digital. It is defined by how effectively its mechanics, rules, components, and chosen medium work together to create the intended experience.</p>
+
+  </article>
+  <br />
+</section>
 
 
         <!--<hr />-->
