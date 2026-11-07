@@ -640,56 +640,132 @@
       </section>
 
       <section class="main-section" id="Group_Projects">
-        <br />
-        <header><b>Group Projects</b></header>
+    <br />
+    <header><b>Group Projects</b></header>
 
-        <article>
-          <p>
+    <article>
+        <p>
             Group projects will be listed both here and on Brightspace. Unless
             instructed otherwise, all assignments must be submitted through
             Brightspace.
-          </p>
+        </p>
 
-          <h3>Group Project 1: Race-to-the-End!</h3>
+        <!-- Project Selector -->
+        <div style="margin: 20px 0;">
+            <label for="projectSelector"><b>Project:</b></label>
+            <select id="projectSelector"
+                style="margin-left: 10px; padding: 8px; border-radius: 6px;
+                font-size: 16px; max-width: 100%;">
+                <option value="project2" selected>Group Project 2: Serious Games</option>
+                <option value="project1">Group Project 1: Race-to-the-End!</option>
+            </select>
+        </div>
 
-          <p>
-            In this project, you will work in groups to design, prototype,
-            playtest, and revise a race-to-the-end board game. You will focus on
-            game rules, player actions and choices, interactions, chance,
-            strategy, and the overall player experience.
-          </p>
+        <hr/>
 
-          <h4>Important Dates</h4>
+        <!-- ===================================== -->
+        <!-- GROUP PROJECT 2: SERIOUS GAMES        -->
+        <!-- ===================================== -->
 
-          <ul>
-            <li>
-              <b>September 17:</b> Project assigned and group work begins.
-            </li>
-            <li><b>September 24:</b> Playtesting with another group.</li>
-            <li>
-              <b>September 25–28:</b> Revise your game and complete your
-              submissions.
-            </li>
-            <li><b>September 29:</b> Final submission due before class.</li>
-          </ul>
+        <div id="project2" class="project-content">
 
-          <h4>Project Materials</h4>
+            <h3>Group Project 2: Serious Games – Designing a Game That Makes a Difference</h3>
 
-          <ul style="margin-left: 30px; font-size: 29px">
-            <li>
-              <b>
-                <a
-                  href="CISC3667/group%20projects/CISC%203667%20-%20Group%20Project%201_%20Race%20to%20the%20End!.pdf"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  Group Project 1: Race-to-the-End! — Instructions
-                </a>
-              </b>
-            </li>
-          </ul>
+            <p>
+                In this project, you will work in groups to design, prototype,
+                playtest, and revise a <b>Serious Game</b>: a game created not just
+                for entertainment, but to teach, train, inform, raise awareness,
+                or encourage positive change.
+            </p>
 
-          <!--<h4>Group Assignments</h4>
+            <p>
+                Your group will choose a real-world topic or issue and design a
+                game that communicates its purpose through gameplay. You may
+                choose the medium that best supports your intended player
+                experience:
+            </p>
+
+            <ul>
+                <li><b>Physical Game:</b> A board game, card game, tabletop game, or another playable physical experience.</li>
+                <li><b>Digital Game:</b> A computer, browser-based, or other digital game.</li>
+            </ul>
+
+            <p>
+                The serious purpose should be meaningfully integrated into the
+                gameplay itself, rather than simply adding educational
+                information to an otherwise ordinary game.
+            </p>
+
+            <h4>Important Dates</h4>
+            <ul>
+                <li><b>November 12:</b> Project assigned and group work begins.</li>
+                <li><b>November 13–18:</b> Design and prototype development.</li>
+                <li><b>November 19:</b> Playtesting with another group.</li>
+                <li><b>November 20–23:</b> Revise your game and complete your Game Design Document (GDD).</li>
+                <li><b>November 24:</b> Final submission due before class.</li>
+            </ul>
+
+            <h4>Project Materials</h4>
+            <ul style="margin-left: 30px; font-size: 29px;">
+                <li>
+                    <b>
+                        <a href="CISC3667/group%20projects/CISC%203667%20-%20Group%20Project%202_%20Serious%20Games.pdf"
+                            target="_blank" rel="noopener">
+                            Group Project 2: Serious Games — Instructions
+                        </a>
+                    </b>
+                </li>
+            </ul>
+
+            <!-- Add Group Project 2 group assignments here after groups have been assigned. -->
+
+            <p>
+                <b>Reminder:</b> Review the complete project instructions before
+                beginning your work. Your group will submit <b>one Game Design
+                Document (GDD) and one revised playable prototype</b>. Only one
+                group member needs to submit the final project to Brightspace
+                on behalf of the entire group. All group members will receive
+                the same project grade.
+            </p>
+
+        </div>
+
+        <!-- ===================================== -->
+        <!-- GROUP PROJECT 1: RACE-TO-THE-END      -->
+        <!-- ===================================== -->
+
+        <div id="project1" class="project-content" hidden>
+
+            <h3>Group Project 1: Race-to-the-End!</h3>
+
+            <p>
+                In this project, you will work in groups to design, prototype,
+                playtest, and revise a race-to-the-end board game. You will
+                focus on game rules, player actions and choices, interactions,
+                chance, strategy, and the overall player experience.
+            </p>
+
+            <h4>Important Dates</h4>
+            <ul>
+                <li><b>September 17:</b> Project assigned and group work begins.</li>
+                <li><b>September 24:</b> Playtesting with another group.</li>
+                <li><b>September 25–28:</b> Revise your game and complete your submissions.</li>
+                <li><b>September 29:</b> Final submission due before class.</li>
+            </ul>
+
+            <h4>Project Materials</h4>
+            <ul style="margin-left: 30px; font-size: 29px;">
+                <li>
+                    <b>
+                        <a href="CISC3667/group%20projects/CISC%203667%20-%20Group%20Project%201_%20Race%20to%20the%20End!.pdf"
+                            target="_blank" rel="noopener">
+                            Group Project 1: Race-to-the-End! — Instructions
+                        </a>
+                    </b>
+                </li>
+            </ul>
+
+          <h4>Group Assignments</h4>
 
           <p>
             Review the image below to find your assigned group members. You will
@@ -705,18 +781,20 @@
             />
           </div>
 
-          <p>
-            <b>Reminder:</b> Review the complete project instructions before
-            beginning your work. Your group will submit one Game Design Report,
-            and each student must submit an individual reflection through
-            Brightspace.
-          </p> -->
-        </article>
+            <p>
+                <b>Reminder:</b> Review the complete project instructions before
+                beginning your work. Your group will submit one Game Design
+                Report, and each student must submit an individual reflection
+                through Brightspace.
+            </p>
 
-        <br />
-        <hr />
-      </section>
+        </div>
 
+    </article>
+
+    <br />
+    <hr />
+</section>
       <!--
         <section class="main-section" id="Unity_Labs">
             <br />
@@ -870,5 +948,25 @@
         hljs.highlightAll();
       });
     </script>
+    <!-- Project Selector Functionality -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const selector = document.getElementById("projectSelector");
+        const projects = document.querySelectorAll(".project-content");
+
+        function showProject(projectId) {
+            projects.forEach(function (project) {
+                project.hidden = project.id !== projectId;
+            });
+        }
+
+        selector.addEventListener("change", function () {
+            showProject(this.value);
+        });
+
+        // Show Group Project 2 by default.
+        showProject("project2");
+    });
+</script>
   </body>
 </html>
