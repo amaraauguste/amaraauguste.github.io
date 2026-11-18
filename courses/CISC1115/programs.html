@@ -2543,31 +2543,54 @@ Binary Search:
 
       <hr />
 
-    <h2>Week 12: Practice Exercises</h2>
+   <h2>Week 12: Practice Exercises</h2>
 
     <p>
-        Use the following exercises to review strings, methods, arrays,
-        searching algorithms, and file input/output. Work through each
-        problem and be prepared to explain your approach.
+        Use the following exercises to review important Java programming
+        concepts covered in class. These activities will help you practice
+        reading and tracing code, working with strings and arrays, using
+        methods and loops, and processing data from files. Try to work
+        through each problem on your own and pay attention to how the
+        program executes step by step.
     </p>
 
     <hr />
 
-    <p>1. <b>Trace the following code.</b> Determine what is displayed by each
-    <code>System.out.println()</code> statement.</p>
+      
+<section class="main-section" id="Week12Practice">
+    <h2>Week 12: Practice Exercises</h2>
 
-    <pre><code>String message = "Game design takes practice.";
+    <p>
+        Use the following exercises to review important Java programming
+        concepts covered in class. These activities will help you practice
+        reading and tracing code, working with strings and arrays, using
+        methods and loops, and processing data from files. Try to work
+        through each problem on your own and pay attention to how the
+        program executes step by step.
+    </p>
+
+    <hr />
+
+    <p>
+        1. <b>Trace the following code.</b> Determine what is displayed by
+        each <code>System.out.println()</code> statement.
+    </p>
+
+    <pre><code>String message = "Welcome to the Java programming course.";
 String first, updated;
 
-first = message.substring(5, 11);
+first = message.substring(11, 15);
 System.out.println(first);
 
-updated = message.substring(0, 5) +
-          "development " + message.substring(12);
+updated = message.substring(0, 11) +
+          "Python " + message.substring(15);
 System.out.println(updated);
 
-System.out.println(message.indexOf("practice"));
-System.out.println(updated.charAt(5));
+System.out.println(message.indexOf("programming"));
+System.out.println(updated.charAt(11));
+
+System.out.println(message.compareTo(updated) < 0);
+System.out.println(message.equals(updated));
 
 if (updated.length() > message.length()) {
     System.out.println("updated is longer");
@@ -2579,49 +2602,53 @@ if (updated.length() > message.length()) {
     <ol>
         <li>What is stored in <code>first</code>?</li>
         <li>What is stored in <code>updated</code>?</li>
-        <li>What index does <code>practice</code> begin at in <code>message</code>?</li>
-        <li>What character is at index 5 of <code>updated</code>?</li>
+        <li>What index does <code>programming</code> begin at in <code>message</code>?</li>
+        <li>What character is at index 11 of <code>updated</code>?</li>
+        <li>What does the <code>compareTo()</code> expression evaluate to?</li>
+        <li>What does the <code>equals()</code> expression evaluate to?</li>
         <li>What is the complete program output?</li>
     </ol>
 
     <hr />
 
-    <p>2. <b>Trace the following program.</b> Pay attention to the values passed
-    to the method, the loop condition, and the return statement.</p>
+    <p>
+        2. <b>Trace the following program.</b> Pay attention to the value
+        passed to the method, how the loop changes the variables, and
+        when the <code>if</code> statement executes.
+    </p>
 
     <pre><code>public static void main(String[] args) {
     int result;
 
-    result = findFirstMultiple(7, 5);
+    result = sumEvenNumbers(5);
     System.out.println(result);
 
-    result = findFirstMultiple(4, 6);
+    result = sumEvenNumbers(8);
     System.out.println(result);
 }
 
-public static int findFirstMultiple(int number, int limit) {
-    int i = 1;
+public static int sumEvenNumbers(int number) {
+    int sum = 0;
 
-    while (i <= limit) {
-        if ((number * i) % 3 == 0) {
-            return number * i;
+    for (int i = 1; i <= number; i++) {
+        if (i % 2 == 0) {
+            sum = sum + i;
         }
-        i++;
     }
 
-    return -1;
+    return sum;
 }</code></pre>
 
     <p><b>Questions:</b></p>
     <ol>
-        <li>What values are passed to the method during the first call?</li>
-        <li>How many times does the <code>while</code> loop execute during each method call?</li>
-        <li>What value does each method call return?</li>
+        <li>What argument is passed during the first method call?</li>
+        <li>Which values of <code>i</code> cause the <code>if</code> condition to be true during the first method call?</li>
+        <li>How does the value of <code>sum</code> change during the first method call?</li>
+        <li>What value does the method return for each call?</li>
         <li>What is the complete program output?</li>
     </ol>
 
     <hr />
-
 
     <p>3. Consider the following sorted array:</p>
 
@@ -2684,15 +2711,13 @@ public static int findFirstMultiple(int number, int limit) {
         an integer array and returns the number of even values in the array.
     </p>
 
-    <p>For example:</p>
+    <p><b>Example:</b></p>
 
     <pre><code>int[] numbers = {3, 8, 12, 5, 7, 10, 15};
 
 System.out.println(countEvenNumbers(numbers));</code></pre>
 
-    <p>Expected output:</p>
-
-    <pre><code>3</code></pre>
+    <p><b>Expected output:</b> <b>3</b></p>
 
     <p><b>Your method should:</b></p>
     <ul>
@@ -2722,20 +2747,19 @@ System.out.println(countEvenNumbers(numbers));</code></pre>
 
     <p><b>Example input file (scores.txt):</b></p>
 
-    <pre><code>85
-72
-58
-93
-64
-100
-</code></pre>
+    <p><b>85</b></p>
+    <p><b>72</b></p>
+    <p><b>58</b></p>
+    <p><b>93</b></p>
+    <p><b>64</b></p>
+    <p><b>100</b></p>
 
     <p><b>Expected results:</b></p>
     <ul>
-        <li>Total: 472</li>
-        <li>Average: 78.67 (approximately)</li>
-        <li>Passing scores: 4</li>
-        <li>Scores processed: 6</li>
+        <li>Total: <b>472</b></li>
+        <li>Average: <b>78.67</b> (approximately)</li>
+        <li>Passing scores: <b>4</b></li>
+        <li>Scores processed: <b>6</b></li>
     </ul>
 
     <p>
@@ -2745,11 +2769,23 @@ System.out.println(countEvenNumbers(numbers));</code></pre>
 
     <hr />
 
-    <p><b>Remember:</b> Practice tracing code by hand, identifying how
-    variables change, and understanding how loops, methods, arrays, and
-    file operations work. Focus on understanding the logic rather than
-    simply memorizing code.</p>
+    <p>
+        <b>Remember:</b> Practice tracing code by hand, identifying how
+        variables change, and understanding how loops, methods, arrays,
+        and file operations work. Focus on understanding the logic rather
+        than simply memorizing code.
+    </p>
+</section>
 
+
+    <hr />
+
+    <p>
+        <b>Remember:</b> Practice tracing code by hand, identifying how
+        variables change, and understanding how loops, methods, arrays,
+        and file operations work. Focus on understanding the logic rather
+        than simply memorizing code.
+    </p>
 <hr/>
 
       <p>
