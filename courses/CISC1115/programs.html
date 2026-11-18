@@ -2543,21 +2543,7 @@ Binary Search:
 
       <hr />
 
-   <h2>Week 12: Practice Exercises</h2>
-
-    <p>
-        Use the following exercises to review important Java programming
-        concepts covered in class. These activities will help you practice
-        reading and tracing code, working with strings and arrays, using
-        methods and loops, and processing data from files. Try to work
-        through each problem on your own and pay attention to how the
-        program executes step by step.
-    </p>
-
-    <hr />
-
-      
-<section class="main-section" id="Week12Practice">
+   
     <h2>Week 12: Practice Exercises</h2>
 
     <p>
@@ -2569,11 +2555,10 @@ Binary Search:
         program executes step by step.
     </p>
 
-    <hr />
 
     <p>
         1. <b>Trace the following code.</b> Determine what is displayed by
-        each <code>System.out.println()</code> statement.
+        each <b>System.out.println()</b> statement.
     </p>
 
     <pre><code>String message = "Welcome to the Java programming course.";
@@ -2582,8 +2567,7 @@ String first, updated;
 first = message.substring(11, 15);
 System.out.println(first);
 
-updated = message.substring(0, 11) +
-          "Python " + message.substring(15);
+updated = message.substring(0, 11) + "Python " + message.substring(15);
 System.out.println(updated);
 
 System.out.println(message.indexOf("programming"));
@@ -2600,12 +2584,12 @@ if (updated.length() > message.length()) {
 
     <p><b>Questions:</b></p>
     <ol>
-        <li>What is stored in <code>first</code>?</li>
-        <li>What is stored in <code>updated</code>?</li>
-        <li>What index does <code>programming</code> begin at in <code>message</code>?</li>
-        <li>What character is at index 11 of <code>updated</code>?</li>
-        <li>What does the <code>compareTo()</code> expression evaluate to?</li>
-        <li>What does the <code>equals()</code> expression evaluate to?</li>
+        <li>What is stored in <b>first</b>?</li>
+        <li>What is stored in <b>updated</b>?</li>
+        <li>What index does <b>programming</b> begin at in <b>message</b>?</li>
+        <li>What character is at index 11 of <b>updated</b>?</li>
+        <li>What does the <b>compareTo()</b> expression evaluate to?</li>
+        <li>What does the <b>equals()</b> expression evaluate to?</li>
         <li>What is the complete program output?</li>
     </ol>
 
@@ -2614,7 +2598,7 @@ if (updated.length() > message.length()) {
     <p>
         2. <b>Trace the following program.</b> Pay attention to the value
         passed to the method, how the loop changes the variables, and
-        when the <code>if</code> statement executes.
+        when the <b>if</b> statement executes.
     </p>
 
     <pre><code>public static void main(String[] args) {
@@ -2642,8 +2626,8 @@ public static int sumEvenNumbers(int number) {
     <p><b>Questions:</b></p>
     <ol>
         <li>What argument is passed during the first method call?</li>
-        <li>Which values of <code>i</code> cause the <code>if</code> condition to be true during the first method call?</li>
-        <li>How does the value of <code>sum</code> change during the first method call?</li>
+        <li>Which values of <b>i</b> cause the <b>if</b> condition to be true during the first method call?</li>
+        <li>How does the value of <b>sum</b> change during the first method call?</li>
         <li>What value does the method return for each call?</li>
         <li>What is the complete program output?</li>
     </ol>
@@ -2654,7 +2638,7 @@ public static int sumEvenNumbers(int number) {
 
     <pre><code>int[] numbers = {4, 11, 19, 27, 36, 48, 64, 73, 81, 95, 108};</code></pre>
 
-    <p>Suppose you want to search for the value <code>64</code>.</p>
+    <p>Suppose you want to search for the value <b>64</b>.</p>
 
     <p><b>Part A: Linear Search</b></p>
     <ol>
@@ -2665,7 +2649,7 @@ public static int sumEvenNumbers(int number) {
     <p><b>Part B: Binary Search</b></p>
     <ol>
         <li>Trace the binary search process using the table below.</li>
-        <li>Use zero-based indexing. Remember that <code>low</code> and <code>high</code> are inclusive.</li>
+        <li>Use zero-based indexing. Remember that <b>low</b> and <b>high</b> are inclusive.</li>
         <li>Continue until the value is found.</li>
     </ol>
 
@@ -2707,7 +2691,7 @@ public static int sumEvenNumbers(int number) {
     <hr />
 
     <p>
-        4. Write a method named <code>countEvenNumbers()</code> that accepts
+        4. Write a method named <b>countEvenNumbers()</b> that accepts
         an integer array and returns the number of even values in the array.
     </p>
 
@@ -2731,16 +2715,16 @@ System.out.println(countEvenNumbers(numbers));</code></pre>
 
     <p>
         5. Write a Java program that reads a list of test scores from a file
-        named <code>scores.txt</code>. Each score is stored on a separate line.
+        named <b>scores.txt</b>. Each score is stored on a separate line.
     </p>
 
     <p><b>Your program should:</b></p>
     <ol>
-        <li>Open and read the scores from <code>scores.txt</code>.</li>
+        <li>Open and read the scores from <b>scores.txt</b>.</li>
         <li>Continue reading until the end of the file.</li>
         <li>Calculate the total and average score.</li>
         <li>Count how many scores are greater than or equal to 70.</li>
-        <li>Write the total, average, and passing count to <code>summary.txt</code>.</li>
+        <li>Write the total, average, and passing count to <b>summary.txt</b>.</li>
         <li>Display the number of scores processed.</li>
         <li>Close the input and output files when finished.</li>
     </ol>
@@ -2763,7 +2747,7 @@ System.out.println(countEvenNumbers(numbers));</code></pre>
     </ul>
 
     <p>
-        Your <code>summary.txt</code> file should contain the total,
+        Your <b>summary.txt</b> file should contain the total,
         average, and number of passing scores.
     </p>
 
@@ -2775,17 +2759,7 @@ System.out.println(countEvenNumbers(numbers));</code></pre>
         and file operations work. Focus on understanding the logic rather
         than simply memorizing code.
     </p>
-</section>
 
-
-    <hr />
-
-    <p>
-        <b>Remember:</b> Practice tracing code by hand, identifying how
-        variables change, and understanding how loops, methods, arrays,
-        and file operations work. Focus on understanding the logic rather
-        than simply memorizing code.
-    </p>
 <hr/>
 
       <p>
